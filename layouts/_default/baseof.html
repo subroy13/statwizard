@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {{ block "title" . }}
+            {{ .Site.Title }}
+        {{ end }}
+    </title>
+
+    <!-- Main Tailwind CSS Pipe -->
+    {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
+    <!-- Tailwind CSS Pipe end -->
+
+
+</head>
+<body>
+    
+    <div class="app-container">
+        {{ block "main" . }}
+            <!-- The part of the page that begins to differ between templates -->
+        {{ end }}
+    </div>
+
+</body>
+</html>

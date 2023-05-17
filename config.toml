@@ -1,4 +1,14 @@
-baseURL = "http://example.org/"
+baseURL = "/"
 languageCode = "en-us"
-title = "My New Hugo Site"
-theme = "introduction"
+title = "StatWizard"
+paginate = 4
+publishDir = "docs"
+
+[markup.goldmark.renderer]
+    unsafe = true
+
+[taxonomies]
+    tag = "tags"
+
+
+
