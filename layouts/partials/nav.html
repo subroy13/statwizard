@@ -1,0 +1,48 @@
+<nav class="bg-white shadow-xl">
+    <!-- Big device menu -->
+    <div class="hidden mx-auto max-w-7xl py-4 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                {{ .Site.Title }}
+            </p>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            {{ range .Site.Menus.main }}
+                <a href="{{ .URL | relURL }}" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    {{ .Name }}
+                </a>
+            {{ end }}
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            {{ range .Site.Params.social }}
+                <a href="{{ .link }}">
+                    <i class = "{{ .icon }} fa-lg"></i>
+                </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                {{ .Site.Title }}
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative group">
+            <i class="fas fa-bars fa-lg"></i>
+            <div class="absolute end-0 bg-white min-w-max hidden group-hover:block group-focus:block">
+                <ul class="flex flex-col">
+                    {{ range .Site.Menus.main }}
+                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                        <a href="{{ .URL | relURL }}" class="">
+                            {{ .Name }}
+                        </a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+            </ul>
+        </div>
+    </div>
+</nav>

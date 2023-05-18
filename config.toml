@@ -11,4 +11,48 @@ publishDir = "docs"
     tag = "tags"
 
 
+# MENU LEVEL PROPERTIES
+
+[menu]
+    [[menu.main]]
+        name = "Home"
+        url = "/"
+        weight = 1
+
+    [[menu.main]]
+        name = "About Us"
+        url = "#about-us"
+        weight = 2
+
+    [[menu.main]]
+        name = "Posts"
+        url = "/posts"
+        weight = 3
+
+    [[menu.main]]
+        name = "Contact Us"
+        url = "#contact-us"
+        weight = 4
+
+
+# Custom Parameters
+
+[ params ]
+
+    [[params.social]]
+        name = "subhrajyotyroy@gmail.com"
+        link = "mailto:subhrajyotyroy@gmail.com"
+        icon = "fas fa-envelope"
+
+
+    [[params.social]]
+        name = "Facebook"
+        link = "https://www.facebook.com/subroy13/"
+        icon = "fab fa-facebook-square"
+
+    [[params.social]]
+        name = "Github"
+        link = "https://github.com/subroy13"
+        icon = "fab fa-github-square"
+
 

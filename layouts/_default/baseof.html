@@ -10,20 +10,29 @@
         {{ end }}
     </title>
 
-    <!-- Main Tailwind CSS Pipe -->
+    <!-- Main Tailwind CSS Pipe 
     {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
     <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
-    <!-- Tailwind CSS Pipe end -->
+     Tailwind CSS Pipe end -->
 
+    <!-- Tailwind developer CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
+    {{ partial "header.html" . }}
 </head>
 <body>
-    
-    <div class="app-container">
-        {{ block "main" . }}
-            <!-- The part of the page that begins to differ between templates -->
-        {{ end }}
-    </div>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
+        {{ partial "nav.html" . }}
 
+        <div class="container mx-auto">
+            {{ block "main" . }}
+                <!-- The part of the page that begins to differ between templates -->
+            {{ end }}
+        </div>
+
+        {{ partial "footer.html" . }}
+    </div>
+    {{ block "pagescripts" . }}
+    {{ end }}
 </body>
 </html>
