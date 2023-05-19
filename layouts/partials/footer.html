@@ -24,19 +24,19 @@
                     <!-- Newsletter sign-up input field -->
                     <div class="relative">
                         <input type="text" name="newsletterSignup" id="newsletterSignup"
-                            class="peer block min-h-[auto] w-full rounded border-0 bg-neutral-800
-                            px-3 py-2 leading-6 text-neutral-200 outline-none"
+                            class="peer block min-h-[auto] rounded border-0 bg-neutral-800
+                            px-3 py-2 leading-6 text-neutral-200 outline-none w-[400px]"
                         />
                         <label 
                             class="pointer-events-none absolute left-3 top-0 mb-0 pt-[0.37rem] max-w-[90%] origin-[0_0] truncate leading-6
-                            transition-all duration-200 ease-out 
+                            transition-all duration-200 ease-out
                             peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200">
                             Email Address
                         </label>
                     </div>
 
                     <!-- Subscribe button -->
-                    <div class="md:mr-auto">
+                    <div class="md:ml-6 md:mr-auto">
                         <button type="submit"
                             class="inline-block rounded border-2 border-neutral-50 px-6 py-2 text-xs font-medium uppercase leading-normal text-neutral-50 
                             transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-50 hover:text-neutral-800
@@ -48,11 +48,10 @@
                 </div>
             </form>
         </div>
-
-        <!-- Copyright section -->
-        <div class="p-4 text-center mx-auto" style="background-color: rgba(0, 0, 0, 0.2)">
-            © 2023 Copyright:
-            <a class="text-white" href="{{ .Site.BaseURL }}">StatWizard.in</a>
-        </div>
+    </div>
+    <!-- Copyright section -->
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="{{ .Site.BaseURL }}">StatWizard.in</a>
     </div>
 </footer>
