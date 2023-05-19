@@ -44,15 +44,29 @@ publishDir = "docs"
         link = "mailto:subhrajyotyroy@gmail.com"
         icon = "fas fa-envelope"
 
-
     [[params.social]]
         name = "Facebook"
         link = "https://www.facebook.com/subroy13/"
-        icon = "fab fa-facebook-square"
+        icon = "fab fa-facebook"
 
     [[params.social]]
         name = "Github"
         link = "https://github.com/subroy13"
-        icon = "fab fa-github-square"
+        icon = "fab fa-github"
 
+    [[params.social]]
+        name = "Twitter"
+        link = "#"
+        icon = "fab fa-twitter"
 
+    [[params.social]]
+        name = "LinkedIn"
+        link = "#"
+        icon = "fab fa-linkedin-in"
+
+    [[params.social]]
+        name = "Instagram"
+        link = "#"
+        icon = "fab fa-instagram"
+        
+    
