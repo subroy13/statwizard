@@ -40,20 +40,20 @@
     </div>
     <div class="grid md:grid-cols-2 gap-4">
         {{ range .Page.Params.showcase }}
-            <div class="group rounded-md shadow-md flex flex-col items-center md:flex-row my-4 p-4 hover:bg-neutral-100 hover:text-black transition ease-in-out">
-                <div class="w-32 h-32 group-hover:scale-105 transition-all ease-in-out p-2 rounded-md flex justify-center items-center 
-                    bg-white text-black group-hover:bg-neutral-900 group-hover:text-white">
-                    <i class="{{ .icon }} fa-5x"></i>
-                </div>
-                <div class="mx-0 md:mx-4 text-justify font-normal group-hover:bg-neutral-100 group-hover:text-black transition ease-in-out">
-                    <p class="text-lg">
-                        If you are a <span class="font-semibold">{{ .slog }}</span>,
-                    </p>
-                    <p class="mt-2 font-normal">
-                        {{ .content }}
-                    </p>
-                </div>
+        <div class="rounded-md shadow-md flex flex-col justify-center items-center my-4 p-4 mt-[150px] border-2 text-center">
+            <div class="relative w-[150px]">
+                <img src="{{ .iconimg }}" 
+                    class="w-[150px] h-[150px] rounded-md absolute -top-[140px] mx-auto"/>
             </div>
+            <div class="my-4 mt-10">
+                <p class="text-lg">
+                    If you are a <span class="font-semibold">{{ .slog }}</span>,
+                </p>
+                <p class="mt-2 text-justify text-sm mx-6">
+                    {{ .content }}
+                </p>
+            </div>
+        </div>
         {{ end }}
     </div>
 </section>
