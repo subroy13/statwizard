@@ -10,14 +10,18 @@
             StatWizard
         
     </title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 
     
     
-    <link rel="stylesheet" type="text/css" href="/css/index.7c27404e1da07a90836d444876abc405.css" />
     
 
     
-    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     
 
@@ -30,6 +34,7 @@
 
 
 <script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
 
 
 <script>
@@ -52,11 +57,11 @@
     <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
         <nav class="bg-white shadow-xl z-50">
     
-    <div class="hidden mx-auto max-w-7xl py-4 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
         <div class="w-[200px] flex items-center">
-            <p class="uppercase font-extrabold font-mono text-2xl">
-                StatWizard
-            </p>
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
         </div>
         <div class="w-full flex flex-row justify-center items-center gap-4">
             
@@ -79,27 +84,27 @@
         </div>
         <div class="w-[200px] flex flex-row justify-around items-center">
             
-                <a href="mailto:subhrajyotyroy@gmail.com">
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fas fa-envelope fa-lg"></i>
                 </a>
             
-                <a href="https://www.facebook.com/subroy13/">
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-facebook fa-lg"></i>
                 </a>
             
-                <a href="https://github.com/subroy13">
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-github fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-twitter fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-linkedin-in fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-instagram fa-lg"></i>
                 </a>
             
@@ -113,292 +118,468 @@
                 StatWizard
             </p>
         </div>
-        <div class="w-[30px] mr-4 relative group">
-            <i class="fas fa-bars fa-lg"></i>
-            <div class="absolute end-0 bg-white min-w-max hidden group-hover:block group-focus:block">
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
                 <ul class="flex flex-col">
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/" class="">
-                            Home
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/#about-us" class="">
-                            About Us
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#about-us" class="">
+                                About Us
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/posts" class="">
-                            Posts
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/#contact-us" class="">
-                            Contact Us
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-us" class="">
+                                Contact Us
+                            </a>
+                        </li>
                     
                 </ul>
             </div>
-            </ul>
         </div>
     </div>
 </nav>
 
 
-        <div class="container mx-auto">
+        <div class="px-4 mx-4 md:mx-auto">
             
 
 
-<section class="mx-4 md:mx-auto max-w-6xl min-h-[100vh] flex flex-col gap-6 justify-center">
-    <h1 class="text-black text-4xl md:text-8xl animate__animated animate__fadeIn">
-        Hi, We&#39;re StatWizards
-    </h1>
-    <p class="text-light text-xl md:text-2xl animate__animated animate__fadeIn animate__delay-1s text-gray-700">
-        A few guys coming together to make esoteric statistical and related topics open-sourced to everybody!
-    </p>
-    <a class="py-2 px-6 rounded-md border-2 text-neutral-900 border-neutral-900 bg-white
-        hover:bg-neutral-900 focus:bg-neutral-900 hover:text-white focus:text-white
-        hover:border-white font-semibold
-        transition ease-in-out max-w-[200px] text-center"
-        href="#"
+<section
+  class="mx-4 md:mx-auto max-w-6xl min-h-[100vh] flex flex-col gap-6 justify-center"
+>
+  <h1 class="text-black text-4xl md:text-8xl animate__animated animate__fadeIn">
+    Hi, We&#39;re StatWizards
+  </h1>
+  <p
+    class="text-light text-xl md:text-2xl animate__animated animate__fadeIn animate__delay-1s text-gray-700"
+  >
+    A few guys coming together to make esoteric statistical and related topics open-sourced to everybody!
+  </p>
+  <a
+    class="py-2 px-6 rounded-md border-2 text-neutral-900 border-neutral-900 bg-white hover:bg-neutral-900 focus:bg-neutral-900 hover:text-white focus:text-white hover:border-white font-semibold transition ease-in-out max-w-[200px] text-center"
+    href="#"
+  >
+    Explore Posts
+  </a>
+</section>
+
+
+<section class="mb-16 w-full mx-4 md:mx-auto">
+    <div class="grid grid-cols-5 gap-2">
+        
+        <ul class="col-span-1 flex list-none flex-col flex-wrap" role="tablist" data-te-nav-ref>
+            <li role="presentation" class="text-center w-full">
+                
+            </li>
+        </ul>
+    </div>
+
+
+  
+  <ul
+    class="mr-4 flex list-none flex-col flex-wrap pl-0"
+    role="tablist"
+    data-te-nav-ref
+  >
+    <li role="presentation" class="flex-grow text-center">
+      <a
+        href="#tabs-home03"
+        class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+        data-te-toggle="pill"
+        data-te-target="#tabs-home03"
+        data-te-nav-active
+        role="tab"
+        aria-controls="tabs-home03"
+        aria-selected="true"
+        >Home</a
+      >
+    </li>
+    <li role="presentation" class="flex-grow text-center">
+      <a
+        href="#tabs-profile03"
+        class="focus:border-transparen my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+        data-te-toggle="pill"
+        data-te-target="#tabs-profile03"
+        role="tab"
+        aria-controls="tabs-profile03"
+        aria-selected="false"
+        >Profile</a
+      >
+    </li>
+    <li role="presentation" class="flex-grow text-center">
+      <a
+        href="#tabs-messages03"
+        class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+        data-te-toggle="pill"
+        data-te-target="#tabs-messages03"
+        role="tab"
+        aria-controls="tabs-messages03"
+        aria-selected="false"
+        >Messages</a
+      >
+    </li>
+    <li role="presentation" class="flex-grow text-center">
+      <a
+        href="#tabs-contact03"
+        class="disabled pointer-events-none my-2 block border-x-0 border-b-2 border-t-0 border-transparent bg-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-400 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent dark:text-neutral-600"
+        data-te-toggle="pill"
+        data-te-target="#tabs-contact03"
+        role="tab"
+        aria-controls="tabs-contact03"
+        aria-selected="false"
+        >Contact</a
+      >
+    </li>
+  </ul>
+
+  
+  <div class="my-2">
+    <div
+      class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+      id="tabs-home03"
+      role="tabpanel"
+      aria-labelledby="tabs-home-tab03"
+      data-te-tab-active
     >
-        Explore Posts
-    </a>
+      Tab 1 content
+    </div>
+    <div
+      class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+      id="tabs-profile03"
+      role="tabpanel"
+      aria-labelledby="tabs-profile-tab03"
+    >
+      Tab 2 content
+    </div>
+    <div
+      class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+      id="tabs-messages03"
+      role="tabpanel"
+      aria-labelledby="tabs-profile-tab03"
+    >
+      Tab 3 content
+    </div>
+    <div
+      class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+      id="tabs-contact03"
+      role="tabpanel"
+      aria-labelledby="tabs-contact-tab03"
+    >
+      Tab 4 content
+    </div>
+  </div>
+</section>
+
+
+<section
+  id="contact-us"
+  class="my-16 -mx-8 w-[100vw] bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to us via</p>
+    
+    <div class="flex flex-row justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-sky-500 focus:bg-sky-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-twitter fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
 </section>
 
 
 <section class="mb-16 max-w-6xl mx-auto border-2 rounded-md p-6">
-    <h1 class="text-neutral-900 text-4xl text-center px-4 py-2 font-light">
-        Our Story
-    </h1>
-    <p class="text-base px-4 text-neutral-700 mt-6">
-        We are a few folks who all believe in the magic of statistics and its profound impact on understanding the world around us. While learning statistics, data science and other related concepts from both academic and industrial world, we all felt mesmerized and become passionate about these. We all strongly believed in the open-source framework and hence we started thinking about sharing our wizardry and making complex concepts accessible to all. So, StatWizard was born.
-    </p>
+  <h1 class="text-neutral-900 text-4xl text-center px-4 py-2 font-light">
+    Our Story
+  </h1>
+  <p class="text-base px-4 text-neutral-700 mt-6">
+    We are a few folks who all believe in the magic of statistics and its profound impact on understanding the world around us. While learning statistics, data science and other related concepts from both academic and industrial world, we all felt mesmerized and become passionate about these. We all strongly believed in the open-source framework and hence we started thinking about sharing our wizardry and making complex concepts accessible to all. So, StatWizard was born.
+  </p>
 </section>
 
 
-
 <section class="my-16 p-6 max-w-6xl mx-auto mt-[100px]">
-    <div class="container flex justify-center mx-auto pt-16">
-        <div>
-            <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto">
-                What you'll find here
-            </h1>
-        </div>
+  <div class="container flex justify-center mx-auto pt-16">
+    <div>
+      <h1
+        class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto"
+      >
+        What you'll find here
+      </h1>
     </div>
-    <div class="grid md:grid-cols-2 gap-4">
-        
-            <div class="group rounded-md shadow-md flex flex-col items-center md:flex-row my-4 p-4 hover:bg-neutral-100 hover:text-black transition ease-in-out">
-                <div class="w-32 h-32 group-hover:scale-105 transition-all ease-in-out p-2 rounded-md flex justify-center items-center 
-                    bg-white text-black group-hover:bg-neutral-900 group-hover:text-white">
-                    <i class="fas fa-users fa-5x"></i>
-                </div>
-                <div class="mx-0 md:mx-4 text-justify font-normal group-hover:bg-neutral-100 group-hover:text-black transition ease-in-out">
-                    <p class="text-lg">
-                        If you are a <span class="font-semibold">Websurfer</span>,
-                    </p>
-                    <p class="mt-2 font-normal">
-                        The enchanted scrolls of our blog reveal the latest trends, advancements, and applications in statistics and related fields. We delve into captivating real-world examples, practical spells, and thought-provoking discussions that bring statistical concepts to life. Our goal is to foster a community of learners and practitioners who can exchange magical insights, learn from each other&#39;s experiences, and stay spellbound by the ever-evolving landscape of data analysis.
-                    </p>
-                </div>
-            </div>
-        
-            <div class="group rounded-md shadow-md flex flex-col items-center md:flex-row my-4 p-4 hover:bg-neutral-100 hover:text-black transition ease-in-out">
-                <div class="w-32 h-32 group-hover:scale-105 transition-all ease-in-out p-2 rounded-md flex justify-center items-center 
-                    bg-white text-black group-hover:bg-neutral-900 group-hover:text-white">
-                    <i class="fas fa-graduation-cap fa-5x"></i>
-                </div>
-                <div class="mx-0 md:mx-4 text-justify font-normal group-hover:bg-neutral-100 group-hover:text-black transition ease-in-out">
-                    <p class="text-lg">
-                        If you are a <span class="font-semibold">Student</span>,
-                    </p>
-                    <p class="mt-2 font-normal">
-                        We offer spellbinding explanations of academic papers that have shaped the field of statistics. We understand that deciphering academic spells can sometimes be challenging, especially for those new to the mystical arts. By distilling complex research into enchanting summaries, we aim to bridge the gap between the arcane realms of academia and wider audiences, making groundbreaking discoveries more accessible and applicable.
-                    </p>
-                </div>
-            </div>
-        
+  </div>
+  <div class="grid md:grid-cols-2 gap-4">
+    
+    <div
+      class="rounded-md shadow-md flex flex-col justify-center items-center my-4 p-4 mt-[150px] border-2 text-center"
+    >
+      <div class="relative w-[150px]">
+        <img
+          src="/svg/undraw_browsing.svg"
+          class="w-[150px] h-[150px] rounded-md absolute -top-[140px] mx-auto"
+        />
+      </div>
+      <div class="my-4 mt-10">
+        <p class="text-lg">
+          If you are a <span class="font-semibold">Websurfer</span>,
+        </p>
+        <p class="mt-2 text-justify text-sm mx-6">The enchanted scrolls of our blog reveal the latest trends, advancements, and applications in statistics and related fields. We delve into captivating real-world examples, practical spells, and thought-provoking discussions that bring statistical concepts to life. Our goal is to foster a community of learners and practitioners who can exchange magical insights, learn from each other&#39;s experiences, and stay spellbound by the ever-evolving landscape of data analysis.</p>
+      </div>
     </div>
+    
+    <div
+      class="rounded-md shadow-md flex flex-col justify-center items-center my-4 p-4 mt-[150px] border-2 text-center"
+    >
+      <div class="relative w-[150px]">
+        <img
+          src="/svg/undraw_mathematics.svg"
+          class="w-[150px] h-[150px] rounded-md absolute -top-[140px] mx-auto"
+        />
+      </div>
+      <div class="my-4 mt-10">
+        <p class="text-lg">
+          If you are a <span class="font-semibold">Student</span>,
+        </p>
+        <p class="mt-2 text-justify text-sm mx-6">We offer spellbinding explanations of academic papers that have shaped the field of statistics. We understand that deciphering academic spells can sometimes be challenging, especially for those new to the mystical arts. By distilling complex research into enchanting summaries, we aim to bridge the gap between the arcane realms of academia and wider audiences, making groundbreaking discoveries more accessible and applicable.</p>
+      </div>
+    </div>
+    
+    <div
+      class="rounded-md shadow-md flex flex-col justify-center items-center my-4 p-4 mt-[150px] border-2 text-center"
+    >
+      <div class="relative w-[150px]">
+        <img
+          src="/svg/undraw_teacher.svg"
+          class="w-[150px] h-[150px] rounded-md absolute -top-[140px] mx-auto"
+        />
+      </div>
+      <div class="my-4 mt-10">
+        <p class="text-lg">
+          If you are a <span class="font-semibold">Researcher</span>,
+        </p>
+        <p class="mt-2 text-justify text-sm mx-6">Lorem Ipsum and some dummy content</p>
+      </div>
+    </div>
+    
+    <div
+      class="rounded-md shadow-md flex flex-col justify-center items-center my-4 p-4 mt-[150px] border-2 text-center"
+    >
+      <div class="relative w-[150px]">
+        <img
+          src="/svg/undraw_industry.svg"
+          class="w-[150px] h-[150px] rounded-md absolute -top-[140px] mx-auto"
+        />
+      </div>
+      <div class="my-4 mt-10">
+        <p class="text-lg">
+          If you are a <span class="font-semibold">Industry Professional</span>,
+        </p>
+        <p class="mt-2 text-justify text-sm mx-6">Lorem Ipsum and some dummy content</p>
+      </div>
+    </div>
+    
+  </div>
 </section>
 
 
 <section class="my-6 p-6 max-w-6xl mx-auto">
-    <div class="container flex justify-center mx-auto pt-16">
-        <div>
-            <h1 class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto">
-                The Wizards
-            </h1>
-        </div>
+  <div class="container flex justify-center mx-auto pt-16">
+    <div>
+      <h1
+        class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto"
+      >
+        The Wizards
+      </h1>
     </div>
-    <div class="w-full bg-neutral-100 px-10 pt-10">
-        <div class="container mx-auto">
-            <div role="list" class="sm:flex items-center xl:justify-between flex-wrap sm:justify-around">
-                
-                <div role="listitem" class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
-                    <div class="rounded overflow-hidden shadow-md bg-white">
-                        <div class="absolute -mt-20 w-full flex justify-center">
-                            <div class="h-32 w-32">
-                                <img src="https://cdn.tuk.dev/assets/photo-1564061170517-d3907caa96ea.jfif" alt="Display Picture of Andres Berlin" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
-                            </div>
-                        </div>
-                        <div class="px-6 mt-16">
-                            <h1 class="font-bold text-3xl text-center mb-1">
-                                Andres Berlin
-                            </h1>
-                            <p class="text-gray-800 text-sm text-center">
-                                Chief Executive Officer
-                            </p>
-                            <p class="text-center text-gray-600 text-base pt-3 font-normal">
-                                The CEO&#39;s role in raising a company&#39;s corporate IQ is to establish an atmosphere that promotes knowledge sharing and collaboration.
-                            </p>
-                            <div class="w-full flex justify-center pt-5 pb-5 gap-4">
-                                
-                                    <a href="https://github.com/subroy13" class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out">
-                                        <i class="fab fa-github fa-lg"></i>
-                                    </a>
-                                
-                                    <a href="#" class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out">
-                                        <i class="fab fa-twitter fa-lg"></i>
-                                    </a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div role="listitem" class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
-                    <div class="rounded overflow-hidden shadow-md bg-white">
-                        <div class="absolute -mt-20 w-full flex justify-center">
-                            <div class="h-32 w-32">
-                                <img src="https://cdn.tuk.dev/assets/photo-1530577197743-7adf14294584.jfif" alt="Display Picture of Silene Tokyo" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
-                            </div>
-                        </div>
-                        <div class="px-6 mt-16">
-                            <h1 class="font-bold text-3xl text-center mb-1">
-                                Silene Tokyo
-                            </h1>
-                            <p class="text-gray-800 text-sm text-center">
-                                Chief Executive Officer
-                            </p>
-                            <p class="text-center text-gray-600 text-base pt-3 font-normal">
-                                The emphasis on innovation and technology in our companies has resulted in a few of them establishing global benchmarks in product design and development.
-                            </p>
-                            <div class="w-full flex justify-center pt-5 pb-5 gap-4">
-                                
-                                    <a href="https://github.com/subroy13" class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out">
-                                        <i class="fab fa-github fa-lg"></i>
-                                    </a>
-                                
-                                    <a href="#" class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out">
-                                        <i class="fab fa-twitter fa-lg"></i>
-                                    </a>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+  </div>
+  <div class="w-full bg-neutral-100 px-10 pt-10">
+    <div class="container mx-auto">
+      <div
+        role="list"
+        class="sm:flex items-center xl:justify-between flex-wrap sm:justify-around"
+      >
+        
+        <div
+          role="listitem"
+          class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+        >
+          <div class="rounded overflow-hidden shadow-md bg-white">
+            <div class="absolute -mt-20 w-full flex justify-center">
+              <div class="h-32 w-32">
+                <img
+                  src="/images/001.jpeg"
+                  alt="Display Picture of Andres Berlin"
+                  role="img"
+                  class="rounded-full object-cover h-full w-full shadow-md"
+                />
+              </div>
             </div>
+            <div class="px-6 mt-16">
+              <h1 class="font-bold text-3xl text-center mb-1">Andres Berlin</h1>
+              <p class="text-gray-800 text-sm text-center">Chief Executive Officer</p>
+              <p class="text-center text-gray-600 text-base pt-3 font-normal">
+                The CEO&#39;s role in raising a company&#39;s corporate IQ is to establish an atmosphere that promotes knowledge sharing and collaboration.
+              </p>
+              <div class="w-full flex justify-center pt-5 pb-5 gap-4">
+                
+                <a
+                  href="https://github.com/subroy13"
+                  class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out"
+                >
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                
+                <a
+                  href="#"
+                  class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out"
+                >
+                  <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                
+              </div>
+            </div>
+          </div>
         </div>
+        
+        <div
+          role="listitem"
+          class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5"
+        >
+          <div class="rounded overflow-hidden shadow-md bg-white">
+            <div class="absolute -mt-20 w-full flex justify-center">
+              <div class="h-32 w-32">
+                <img
+                  src="/images/00043-1.jpeg"
+                  alt="Display Picture of Silene Tokyo"
+                  role="img"
+                  class="rounded-full object-cover h-full w-full shadow-md"
+                />
+              </div>
+            </div>
+            <div class="px-6 mt-16">
+              <h1 class="font-bold text-3xl text-center mb-1">Silene Tokyo</h1>
+              <p class="text-gray-800 text-sm text-center">Chief Executive Officer</p>
+              <p class="text-center text-gray-600 text-base pt-3 font-normal">
+                The emphasis on innovation and technology in our companies has resulted in a few of them establishing global benchmarks in product design and development.
+              </p>
+              <div class="w-full flex justify-center pt-5 pb-5 gap-4">
+                
+                <a
+                  href="https://github.com/subroy13"
+                  class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out"
+                >
+                  <i class="fab fa-github fa-lg"></i>
+                </a>
+                
+                <a
+                  href="#"
+                  class="rounded-full w-[36px] h-[36px] p-2 flex justify-center items-center hover:bg-neutral-900 hover:text-white transition-all ease-in-out"
+                >
+                  <i class="fab fa-twitter fa-lg"></i>
+                </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
     </div>
+  </div>
 </section>
-
-
 
 
         </div>
 
         
 <footer class="bg-neutral-900 text-center text-white">
-    <div class="flex flex-col justify-center px-6 mx-6 pt-6">
-        
-        <div class="mb-6 max-w-4xl flex flex-row justify-center items-center mx-auto gap-4">
-            
-                <a href="mailto:subhrajyotyroy@gmail.com" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fas fa-envelope fa-lg"></i>
-                </a>
-            
-                <a href="https://www.facebook.com/subroy13/" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-facebook fa-lg"></i>
-                </a>
-            
-                <a href="https://github.com/subroy13" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-github fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-twitter fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-linkedin-in fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-instagram fa-lg"></i>
-                </a>
-            
-        </div>
-
-        
-        <div class="max-w-6xl mb-6 mx-auto">
-            <form action="">
-                <div class="grid justify-center items-center gap-4 grid-col-1 md:grid-cols-3">
-                    <p class="font-semibold text-white md:ml-auto">
-                        Sign up for our newsletter
-                    </p>
-
-                    
-                    <div class="relative">
-                        <input type="text" name="newsletterSignup" id="newsletterSignup"
-                            class="peer block min-h-[auto] rounded border-0 bg-neutral-800
-                            px-3 py-2 leading-6 text-neutral-200 outline-none w-[400px]"
-                        />
-                        <label 
-                            class="pointer-events-none absolute left-3 top-0 mb-0 pt-[0.37rem] max-w-[90%] origin-[0_0] truncate leading-6
-                            transition-all duration-200 ease-out
-                            peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200">
-                            Email Address
-                        </label>
-                    </div>
-
-                    
-                    <div class="md:ml-6 md:mr-auto">
-                        <button type="submit"
-                            class="inline-block rounded border-2 border-neutral-50 px-6 py-2 text-xs font-medium uppercase leading-normal text-neutral-50 
-                            transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-50 hover:text-neutral-800
-                            focus:border-neutral-800 focus:bg-neutral-50 focus:text-neutral-800"
-                        >
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     
     <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2023 Copyright:
@@ -407,6 +588,21 @@
 </footer>
 
     </div>
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     
     
 </body>

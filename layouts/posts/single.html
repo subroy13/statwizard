@@ -1,0 +1,87 @@
+{{ define "title" }}
+{{ .Params.title }}
+{{ end }}
+
+{{ define "main" }}
+
+{{ $item := . }}
+{{ range .Resources.Match "featured*" }}
+    <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('{{ .Permalink }}')">
+        {{ if isset $item.Params "imagecaption" }}
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from {{ $item.Params.imageCaption | markdownify }}</p>
+            </div>
+        {{ end }}
+    </div>
+{{ end }}
+
+<!-- Main item Article -->
+<div class="grid grid-cols-1 md:grid-cols-3">
+    <div class="col-span-1">
+        <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+            <h1 class="text-2xl text-neutral-600 font-bold">
+                {{ $item.Title }}
+            </h1>
+            <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                <p class="font-bold">Date:</p>
+                <p class="font-light">{{ $item.Date.Format "02 January, 2006" }}</p>
+            </div>
+            {{ if isset $item.Params "authors" }}
+                <div class="flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Team Members:</p>
+                    <ul class="font-light">
+                        {{ range $item.Params.authors }}
+                        <li>{{ . }}</li> 
+                        {{ end }}        
+                    </ul>
+                </div>
+            {{ end }}
+            <div class="">
+                <h2 class="text-neutral-900 font-bold">
+                    Important Links:
+                </h2>
+                {{ range $item.Params.links }}
+                    {{ if isset . "color" }}
+                        <div class="p-2 my-1 rounded-sm bg-{{ .color }}-100 text-{{ .color }}-800">
+                            <i class = "{{ .icon }}"></i> <a href="{{ .link }}" class = "text-{{ .color }}-800 hover:text-black hover:underline cursor-pointer" target="_blank" >{{ .name }}</a>
+                        </div>
+                    {{ else }}
+                        <div class="p-2 my-1 rounded-sm bg-blue-100 text-blue-800">
+                            <i class = "{{ .icon }}"></i> <a href="{{ .link }}" class = "text-blue-800 hover:text-black hover:underline cursor-pointer" target="_blank">{{ .name }}</a>
+                        </div>
+                    {{ end }}
+                {{ end }}
+            </div>
+            <div class="mt-2 py-2">
+                {{ range (.GetTerms "tags") }}
+                    <a href="{{ .Permalink }}" 
+                        class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                        hover:underline hover:bg-gray-300 transition ease-in-out">
+                        {{ .LinkTitle }}
+                    </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    <div class="col-span-2 p-4 md:px-6">
+        <div class="font-light text-justify break-words w-full">
+            <div class="prose" style="max-width: none;">
+                {{ $item.Content | markdownify }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Extra Section -->
+<section>
+    <div class="my-4 py-4 mx-4 md:mx-auto max-w-6xl flex justify-center items-center">
+        <a href="{{ $item.FirstSection.Permalink }}" 
+            class="py-2 px-6 shadow-sm rounded-md bg-neutral-600 text-white hover:bg-neutral-800 focus:bg-neutral-800 transition ease-in-out"
+        >
+            See list of all posts
+        </a>
+    </div>
+</section>
+
+{{ end }}

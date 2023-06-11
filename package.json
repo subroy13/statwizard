@@ -4,13 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prebuild": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
-    "predeploy": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify",
-    "hugo:dev": "hugo server",
-    "hugo:prod": "hugo",
-    "hugo:minify": "hugo --gc --minify",
-    "start": "npm run prebuild && npm run hugo:dev",
-    "deploy": "npm run predeploy && npm run hugo:minify && npm run hugo:prod",
+    "dev:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --jit",
+    "dev:hugo": "hugo server",
+    "dev": "hugo && npm run dev:css && npm run dev:hugo",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,5 +24,9 @@
     "autoprefixer": "10.4.14",
     "postcss": "8.4.23",
     "tailwindcss": "3.3.2"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "tw-elements": "^1.0.0-beta2"
   }
 }

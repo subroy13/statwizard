@@ -5,6 +5,16 @@
     <link>/</link>
     <description>Recent content in Hi, We&#39;re StatWizards on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Texture Networks</title>
+      <link>/posts/texture-network-style-transfer/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/texture-network-style-transfer/</guid>
+      <description>This is a short project where I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
+    </item>
+    
   </channel>
 </rss>

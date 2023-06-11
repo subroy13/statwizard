@@ -9,14 +9,18 @@
     Not Found!
 
     </title>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 
     
     
-    <link rel="stylesheet" type="text/css" href="/css/index.7c27404e1da07a90836d444876abc405.css" />
     
 
     
-    
+    <script src="https://cdn.tailwindcss.com"></script>
 
     
 
@@ -29,6 +33,7 @@
 
 
 <script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
 
 
 <script>
@@ -51,11 +56,11 @@
     <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
         <nav class="bg-white shadow-xl z-50">
     
-    <div class="hidden mx-auto max-w-7xl py-4 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
         <div class="w-[200px] flex items-center">
-            <p class="uppercase font-extrabold font-mono text-2xl">
-                StatWizard
-            </p>
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
         </div>
         <div class="w-full flex flex-row justify-center items-center gap-4">
             
@@ -78,27 +83,27 @@
         </div>
         <div class="w-[200px] flex flex-row justify-around items-center">
             
-                <a href="mailto:subhrajyotyroy@gmail.com">
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fas fa-envelope fa-lg"></i>
                 </a>
             
-                <a href="https://www.facebook.com/subroy13/">
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-facebook fa-lg"></i>
                 </a>
             
-                <a href="https://github.com/subroy13">
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-github fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-twitter fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-linkedin-in fa-lg"></i>
                 </a>
             
-                <a href="#">
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-instagram fa-lg"></i>
                 </a>
             
@@ -112,44 +117,59 @@
                 StatWizard
             </p>
         </div>
-        <div class="w-[30px] mr-4 relative group">
-            <i class="fas fa-bars fa-lg"></i>
-            <div class="absolute end-0 bg-white min-w-max hidden group-hover:block group-focus:block">
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
                 <ul class="flex flex-col">
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/" class="">
-                            Home
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/#about-us" class="">
-                            About Us
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#about-us" class="">
+                                About Us
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/posts" class="">
-                            Posts
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
                     
-                    <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                        <a href="/#contact-us" class="">
-                            Contact Us
-                        </a>
-                    </li>
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-us" class="">
+                                Contact Us
+                            </a>
+                        </li>
                     
                 </ul>
             </div>
-            </ul>
         </div>
     </div>
 </nav>
 
 
-        <div class="container mx-auto">
+        <div class="px-4 mx-4 md:mx-auto">
             
     <div class="container min-h-[100vh] flex flex-col justify-center items-center gap-4">
         <p class="font-normal text-sm text-neutral-900 text-justify max-w-4xl">Looks like you've lost! Let us help you get back!</p>
@@ -166,90 +186,6 @@
 
         
 <footer class="bg-neutral-900 text-center text-white">
-    <div class="flex flex-col justify-center px-6 mx-6 pt-6">
-        
-        <div class="mb-6 max-w-4xl flex flex-row justify-center items-center mx-auto gap-4">
-            
-                <a href="mailto:subhrajyotyroy@gmail.com" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fas fa-envelope fa-lg"></i>
-                </a>
-            
-                <a href="https://www.facebook.com/subroy13/" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-facebook fa-lg"></i>
-                </a>
-            
-                <a href="https://github.com/subroy13" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-github fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-twitter fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-linkedin-in fa-lg"></i>
-                </a>
-            
-                <a href="#" 
-                    class="m-2 p-4 h-[25px] w-[25px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition duration-500 ease-in-out
-                    hover:bg-gray-100 focus:bg-gray-100 hover:text-neutral-800 focus:text-neutral-800">
-                    <i class = "fab fa-instagram fa-lg"></i>
-                </a>
-            
-        </div>
-
-        
-        <div class="max-w-6xl mb-6 mx-auto">
-            <form action="">
-                <div class="grid justify-center items-center gap-4 grid-col-1 md:grid-cols-3">
-                    <p class="font-semibold text-white md:ml-auto">
-                        Sign up for our newsletter
-                    </p>
-
-                    
-                    <div class="relative">
-                        <input type="text" name="newsletterSignup" id="newsletterSignup"
-                            class="peer block min-h-[auto] rounded border-0 bg-neutral-800
-                            px-3 py-2 leading-6 text-neutral-200 outline-none w-[400px]"
-                        />
-                        <label 
-                            class="pointer-events-none absolute left-3 top-0 mb-0 pt-[0.37rem] max-w-[90%] origin-[0_0] truncate leading-6
-                            transition-all duration-200 ease-out
-                            peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-neutral-200">
-                            Email Address
-                        </label>
-                    </div>
-
-                    
-                    <div class="md:ml-6 md:mr-auto">
-                        <button type="submit"
-                            class="inline-block rounded border-2 border-neutral-50 px-6 py-2 text-xs font-medium uppercase leading-normal text-neutral-50 
-                            transition duration-150 ease-in-out hover:border-neutral-800 hover:bg-neutral-50 hover:text-neutral-800
-                            focus:border-neutral-800 focus:bg-neutral-50 focus:text-neutral-800"
-                        >
-                            Subscribe
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     
     <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
         © 2023 Copyright:
@@ -258,6 +194,21 @@
 </footer>
 
     </div>
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
     
     
 </body>

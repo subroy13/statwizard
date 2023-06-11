@@ -9,6 +9,7 @@ publishDir = "docs"
 
 [taxonomies]
     tag = "tags"
+    author = "authors"
 
 
 # MENU LEVEL PROPERTIES
@@ -43,30 +44,35 @@ publishDir = "docs"
         name = "subhrajyotyroy@gmail.com"
         link = "mailto:subhrajyotyroy@gmail.com"
         icon = "fas fa-envelope"
+        color = "red-500"
 
     [[params.social]]
         name = "Facebook"
         link = "https://www.facebook.com/subroy13/"
         icon = "fab fa-facebook"
+        color = "blue-500"
 
     [[params.social]]
         name = "Github"
         link = "https://github.com/subroy13"
         icon = "fab fa-github"
+        color = "gray-500"
 
     [[params.social]]
         name = "Twitter"
         link = "#"
         icon = "fab fa-twitter"
+        color = "sky-500"
 
     [[params.social]]
         name = "LinkedIn"
         link = "#"
         icon = "fab fa-linkedin-in"
+        color = "indigo-800"
 
     [[params.social]]
         name = "Instagram"
         link = "#"
         icon = "fab fa-instagram"
-        
+        color = "pink-800"
     
