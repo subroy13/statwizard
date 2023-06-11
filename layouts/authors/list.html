@@ -1,0 +1,19 @@
+{{ define "title" }}
+    Authors
+{{ end }}
+
+{{ define "main" }}
+<section class="max-w-6xl mx-4 md:mx-auto">
+    <!-- About Us Section -->
+    <div class="max-w-4xl md:mx-auto border-2 rounded-md p-6">
+        <h1 class="text-neutral-900 text-4xl text-center px-4 py-2 font-light">
+            Our Story
+        </h1>
+        <p class="text-base px-4 text-neutral-700 mt-6">
+        {{ .Params.story }}
+        </p>
+    </div>
+  
+</section>
+
+{{ end }}

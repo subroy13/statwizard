@@ -22,7 +22,7 @@ publishDir = "docs"
 
     [[menu.main]]
         name = "About Us"
-        url = "#about-us"
+        url = "/authors"
         weight = 2
 
     [[menu.main]]

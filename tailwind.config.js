@@ -2,15 +2,13 @@
 module.exports = {
   content: [
     "./content/**/*.{html,js}", 
-    "./layouts/**/*.{html,js}",
-    "./node_modules/tw-elements/dist/js/**/*.js"
+    "./layouts/**/*.{html,js}"
   ],
   theme: {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require("tw-elements/dist/plugin.cjs")
+    require('@tailwindcss/typography')
   ],
 }
 
