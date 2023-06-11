@@ -16,5 +16,14 @@
       <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
     </item>
     
+    <item>
+      <title>Analysis of basic Epidemiological models</title>
+      <link>/posts/covid19-basic-models/</link>
+      <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/covid19-basic-models/</guid>
+      <description>This project was to familiarize ourselves with a basic understanding of statistical modelling of epidemiology, learn about SIR and eSIR model, their estimation procedures both under frequentist and Baysian perspectives, as well as make projections of the covid cases over next several days.</description>
+    </item>
+    
   </channel>
 </rss>

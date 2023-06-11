@@ -29,11 +29,21 @@ publishDir = "docs"
         name = "Posts"
         url = "/posts"
         weight = 3
+    
+    [[menu.main]]
+        name = "Explained Papers"
+        url = "/3levelpapers"
+        weight = 4
+
+    [[menu.main]]
+        name = "Tutorials"
+        url = "/tutorials"
+        weight = 5
 
     [[menu.main]]
         name = "Contact Us"
         url = "#contact-us"
-        weight = 4
+        weight = 6
 
 
 # Custom Parameters

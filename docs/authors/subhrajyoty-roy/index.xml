@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hi, We&#39;re StatWizards on StatWizard</title>
-    <link>/</link>
-    <description>Recent content in Hi, We&#39;re StatWizards on StatWizard</description>
+    <title>Subhrajyoty Roy on StatWizard</title>
+    <link>/authors/subhrajyoty-roy/</link>
+    <description>Recent content in Subhrajyoty Roy on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="/authors/subhrajyoty-roy/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Texture Networks</title>
-      <link>/posts/texture-network-style-transfer/</link>
-      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      <title>Natural Language Processing in R</title>
+      <link>/posts/nlp-r/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/texture-network-style-transfer/</guid>
-      <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
+      <guid>/posts/nlp-r/</guid>
+      <description>Understanding of changes in US president&amp;rsquo;s views by analyzing presidential speech data.</description>
     </item>
     
     <item>

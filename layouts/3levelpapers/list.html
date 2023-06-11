@@ -3,5 +3,59 @@
 {{ end }}
 
 {{ define "main" }}
+<section class="my-8 md:mx-auto max-w-4xl p-2 md:p-4 shadow-sm rounded-md">
+    <p class="text-3xl md:text-6xl font-bold leading-normal md:leading-relaxed text-neutral-800">
+        {{ .Title }}
+    </p>
+    <p class="font-normal text-sm text-black">
+        {{ .Description }}
+    </p>
+</section>
 
+<section class="my-8 md:mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {{ range .Paginator.Pages }}
+        <div class="hover:scale-105 transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
+            {{ range .Resources.Match "featured*" }}
+                <img class="w-full max-h-[300px] object-cover" src="{{ .Permalink }}" alt="">
+            {{ end }}
+            <div class="px-6 py-4">
+                <a href="{{ .Permalink }}" class="font-bold text-xl mb-2 text-blue-600
+                    hover:text-blue-900 cursor-pointer transition ease-in-out">
+                    {{ .Title }}
+                </a>
+                <p class="text-neutral-800 text-sm font-light">
+                    {{ .Date.Format "02 January 2006" }}
+                </p>
+                <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
+                    <p class="italic"> &#8212; </p>
+                    {{ range (.GetTerms "authors") }}
+                        <a href="{{ .Permalink }}" class="text-{{ .Params.color }} hover:underline hover:text-gray-700 transition-all ease-in-out">
+                            {{ .Params.emoji }} {{ .Title }}
+                        </a>
+                    {{ end }}
+                </div>
+                <p class="text-neutral-700 text-base">
+                    {{ .Summary | truncate 100 }}
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                {{ range (.GetTerms "tags") }}
+                        <a href="{{ .Permalink }}" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            {{ .LinkTitle }}
+                        </a>
+                {{ end }}
+            </div>
+        </div>
+        {{ else }}
+        <div class="col-span-3 py-8 text-center flex justify-center items-center">
+            <h2 class="text-4xl font-bold">More Content Coming Soon!</h2>
+        </div>
+        {{ end }}
+    </div>
+
+    {{ partial "pagination.html" . }}
+</section>
 {{ end }}

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/output.css --jit",
+    "dev:css": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
     "dev:hugo": "hugo server",
     "dev": "hugo && npm run dev:css && npm run dev:hugo",
     "test": "echo \"Error: no test specified\" && exit 1"

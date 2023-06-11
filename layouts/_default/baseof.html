@@ -16,8 +16,8 @@
     </style>
 
     <!-- Main Tailwind CSS Pipe -->
-    <!-- {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
-    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" /> -->
+    {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
     <!-- Tailwind CSS Pipe end -->
 
     <!-- Tailwind developer CDN -->

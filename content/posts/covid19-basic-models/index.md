@@ -2,9 +2,6 @@
 title: "Analysis of basic Epidemiological models"
 date: "2020-03-25T00:00:00Z"
 team: true
-authors: 
-    - Subhrajyoty Roy
-    - Soham Bonnerjee
 imageCaption: "[CNN.com](https://edition.cnn.com/2020/03/24/world/coronavirus-newsletter-03-24-20/index.html)"
 summary: "This project was to familiarize ourselves with a basic understanding of statistical modelling of epidemiology, learn about SIR and eSIR model, their estimation procedures both under frequentist and Baysian perspectives, as well as make projections of the covid cases over next several days."
 mermaid: true
@@ -16,6 +13,10 @@ links:
       icon: "fas fa-database"
       link: "https://github.com/CSSEGISandData/COVID-19"
       color: success
+
+authors:
+    - Turtle
+
 ---
 
 # PART 1: SIR Modelling
