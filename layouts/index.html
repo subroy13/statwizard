@@ -23,13 +23,20 @@
 
 <!-- What you'll find here -->
 <section id="explore" class="mb-16 p-6 max-w-6xl mx-auto">
-  <div class="container flex justify-center mx-auto pt-16">
+  <div class="container flex flex-col justify-center mx-auto pt-16">
     <div>
       <h1
         class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto"
       >
         What you'll find here
       </h1>
+    </div>
+    <div>
+      <h2
+        class="text-base text-center text-gray-500 font-semibold pb-6 mx-auto"
+      >
+        An assorted list of receipes for successful mastery of statistical, mathematical and data science wizardy, all for free!
+      </h2>
     </div>
   </div>
   
@@ -41,7 +48,7 @@
           class="w-[150px] h-[150px] rounded-md mx-auto"
       />
       <div class="mt-4 text-neutral-900">
-        <p class="font-regular text-lg">
+        <p class="font-regular text-sm">
           If you are a <span class="font-semibold">{{ .Params.slog }}</span>, {{ .Params.subtitle }}, 
           our {{ .Title }} can help you!
         </p>
