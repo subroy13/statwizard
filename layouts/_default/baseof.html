@@ -9,20 +9,7 @@
             {{ .Site.Title }}
         {{ end }}
     </title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-
-    <!-- Main Tailwind CSS Pipe -->
-    {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
-    <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
-    <!-- Tailwind CSS Pipe end -->
-
-    <!-- Tailwind developer CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    
     {{ partial "header.html" . }}
 </head>
 <body>

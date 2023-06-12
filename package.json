@@ -7,10 +7,9 @@
     "prebuild": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
     "predeploy": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit --minify",
     "hugo:dev": "hugo server",
-    "hugo:prod": "hugo",
     "hugo:minify": "hugo --gc --minify",
-    "start": "npm run prebuild && npm run hugo:dev",
-    "deploy": "npm run predeploy && npm run hugo:minify && npm run hugo:prod"
+    "start": "hugo && npm run prebuild && npm run hugo:dev",
+    "deploy": "hugo && npm run predeploy && npm run hugo:minify && hugo"
   },
   "repository": {
     "type": "git",

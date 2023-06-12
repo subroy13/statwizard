@@ -9,20 +9,7 @@
 Posts
 
     </title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-
     
-    
-    <link rel="stylesheet" type="text/css" href="/css/index.c6486cd53ec4a409101cf6d20d904974.css" />
-    
-
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-
     
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,6 +22,24 @@ Posts
 
 <script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.7b2452f9c89e85a39c06cc5158b916f8.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
 
 
 <script>
@@ -247,12 +252,47 @@ Posts
         
         <div class="hover:scale-105 transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
             
-                <img class="w-full max-h-[300px] object-cover" src="/posts/covid19-basic-models/featured.jpg" alt="">
+                <img class="w-full max-h-[300px] object-cover" src="/posts/covid19-esir-model/featured.jpg" alt="">
             
             <div class="px-6 py-4">
-                <a href="/posts/covid19-basic-models/" class="font-bold text-xl mb-2 text-blue-600
+                <a href="/posts/covid19-esir-model/" class="font-bold text-xl mb-2 text-blue-600
                     hover:text-blue-900 cursor-pointer transition ease-in-out">
-                    Analysis of basic Epidemiological models
+                    Analysis of basic Epidemiological models - Part 2
+                </a>
+                <p class="text-neutral-800 text-sm font-light">
+                    01 April 2020
+                </p>
+                <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
+                    <p class="italic"> &#8212; </p>
+                    
+                        <a href="/authors/turtle/" class="text-green-700 hover:underline hover:text-gray-700 transition-all ease-in-out">
+                            🐢 Turtle
+                        </a>
+                    
+                </div>
+                <p class="text-neutral-700 text-base">
+                    In this post, we describe a slight generalization of the basic SIR model of epidemiology and its …
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                
+                        <a href="/tags/epidemiology/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Epidemiology
+                        </a>
+                
+            </div>
+        </div>
+        
+        <div class="hover:scale-105 transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
+            
+                <img class="w-full max-h-[300px] object-cover" src="/posts/covid19-sir-model/featured.jpg" alt="">
+            
+            <div class="px-6 py-4">
+                <a href="/posts/covid19-sir-model/" class="font-bold text-xl mb-2 text-blue-600
+                    hover:text-blue-900 cursor-pointer transition ease-in-out">
+                    Analysis of basic Epidemiological models - Part 1
                 </a>
                 <p class="text-neutral-800 text-sm font-light">
                     25 March 2020
@@ -266,7 +306,7 @@ Posts
                     
                 </div>
                 <p class="text-neutral-700 text-base">
-                    This project was to familiarize ourselves with a basic understanding of statistical modelling of …
+                    In this post, we describe a basic statistical model of epidemiology, named SIR model and its …
                 </p>
             </div>
             <div class="px-6 pt-4 pb-2">
@@ -315,7 +355,11 @@ Posts
 
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
     
     
 </body>

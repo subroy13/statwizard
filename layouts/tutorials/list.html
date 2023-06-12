@@ -14,7 +14,7 @@
 
 <section class="my-8 md:mx-auto max-w-6xl">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {{ range .Paginator.Pages }}
+        {{ range (.Paginate .Pages).Pages }}
         <div class="hover:scale-105 transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
             {{ range .Resources.Match "featured*" }}
                 <img class="w-full max-h-[300px] object-cover" src="{{ .Permalink }}" alt="">

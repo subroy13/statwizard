@@ -11,6 +11,24 @@
 <script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
 
+
+<!-- Main Tailwind CSS Pipe -->
+{{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
+<link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
+<!-- Tailwind CSS Pipe end -->
+
+<!-- Tailwind developer CDN -->
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
 <!-- Mathjax CDN -->
 <script>
     MathJax = {

@@ -1,7 +1,7 @@
 baseURL = "/"
+paginate = 6
 languageCode = "en-us"
 title = "StatWizard"
-paginate = 4
 publishDir = "docs"
 
 [markup.goldmark.renderer]

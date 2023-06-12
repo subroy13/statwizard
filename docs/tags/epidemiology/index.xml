@@ -6,14 +6,23 @@
     <description>Recent content in Epidemiology on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 25 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/epidemiology/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/epidemiology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Analysis of basic Epidemiological models</title>
-      <link>/posts/covid19-basic-models/</link>
+      <title>Analysis of basic Epidemiological models - Part 2</title>
+      <link>/posts/covid19-esir-model/</link>
+      <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/covid19-esir-model/</guid>
+      <description>In this post, we describe a slight generalization of the basic SIR model of epidemiology and its estimation procedure under both frequentist and Bayesian paradigms. We also make projections of the covid cases over next several days based on the fitted model.</description>
+    </item>
+    
+    <item>
+      <title>Analysis of basic Epidemiological models - Part 1</title>
+      <link>/posts/covid19-sir-model/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/covid19-basic-models/</guid>
-      <description>This project was to familiarize ourselves with a basic understanding of statistical modelling of epidemiology, learn about SIR and eSIR model, their estimation procedures both under frequentist and Baysian perspectives, as well as make projections of the covid cases over next several days.</description>
+      <guid>/posts/covid19-sir-model/</guid>
+      <description>In this post, we describe a basic statistical model of epidemiology, named SIR model and its estimation procedure under both frequentist and Bayesian paradigms.</description>
     </item>
     
   </channel>

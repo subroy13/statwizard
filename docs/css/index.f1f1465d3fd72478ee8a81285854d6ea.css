@@ -1607,11 +1607,6 @@ video {
   line-height: 1.5rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1837,6 +1832,11 @@ video {
   background-color: rgb(55 65 81 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-neutral-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-neutral-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(38 38 38 / var(--tw-bg-opacity));
@@ -1911,9 +1911,9 @@ video {
   outline-offset: 2px;
 }
 
-.group:hover .group-hover\:text-gray-300 {
+.group:hover .group-hover\:text-gray-50 {
   --tw-text-opacity: 1;
-  color: rgb(209 213 219 / var(--tw-text-opacity));
+  color: rgb(249 250 251 / var(--tw-text-opacity));
 }
 
 .group:hover .group-hover\:text-white {

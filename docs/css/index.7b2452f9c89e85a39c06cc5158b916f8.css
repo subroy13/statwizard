@@ -1091,11 +1091,6 @@ video {
   margin-right: auto;
 }
 
-.my-1 {
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
-}
-
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -1567,10 +1562,6 @@ video {
   padding-bottom: 1.5rem;
 }
 
-.pl-4 {
-  padding-left: 1rem;
-}
-
 .pt-16 {
   padding-top: 4rem;
 }
@@ -2005,15 +1996,6 @@ video {
   .md\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
-  }
-
-  .md\:px-8 {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  .md\:pt-6 {
-    padding-top: 1.5rem;
   }
 
   .md\:text-2xl {
