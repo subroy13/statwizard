@@ -4,31 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/svg/avatar.svg">
     <title>
         {{ block "title" . }}
             {{ .Site.Title }}
         {{ end }}
     </title>
-
+    
     {{ partial "header.html" . }}
-
-    {{ block "customCSS" . }} {{ end }}
-    {{ block "customJS" . }} {{ end }}
 </head>
 <body>
-    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+    <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
         {{ partial "nav.html" . }}
 
-        <div class="content-container">
+        <div class="px-4 mx-4 md:mx-auto">
             {{ block "main" . }}
+                <!-- The part of the page that begins to differ between templates -->
             {{ end }}
         </div>
 
         {{ partial "footer.html" . }}
     </div>
-
     {{ partial "commonScripts.html" . }}
-    {{ block "pageScripts" . }} {{ end }}
+    {{ block "pagescripts" . }}
+    {{ end }}
 </body>
 </html>
