@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.80.0" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+            StatWizard
+        
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.2e01192cc59873b5a31ae3cd2d23ceb9.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+<section
+  class="min-h-[100vh] mx-4 md:mx-auto max-w-6xl grid grid-cols-2 gap-2"
+>
+    <div class="min-h-[100vh] flex flex-col gap-6 justify-center">
+        <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
+        </h1>
+        <p
+            class="text-light text-xl md:text-xl animate__animated animate__fadeIn animate__delay-2s text-gray-700"
+        >
+            and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance.
+        </p>
+        <a
+            class="py-2 px-6 rounded-md border-2 text-blue-600 
+                border-blue-600 bg-white hover:bg-blue-600 
+                focus:bg-blue-600 hover:text-white focus:text-white 
+                hover:border-white font-semibold transition ease-in-out 
+                max-w-[200px] text-center animate__animated animate__fadeIn animate__delay-2s"
+            href="/posts"
+        >
+            Explore Posts
+        </a>
+    </div>
+    <div>
+        <img src="/images/cover-1.png"/>
+    </div>
+</section>
+
+
+<section class="py-8 mx-4 md:mx-auto max-w-6xl">
+    <h1 class="mb-4 text-center text-blue-600 text-4xl md:text-6xl">
+        About Me
+    </h1>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+        I am <span class="text-blue-600 font-semibold">Subhrajyoty Roy, </span> 
+        I am just a soul curious about learning about statistics, mathematics and data science.
+    </p>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+      
+          
+              I am currently 
+          
+          <span class="font-semibold text-gray-900">Principal Information Researcher</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer"><a href="https://www.syscloud.com/">SysCloud</a></span>
+      
+          
+              and
+          
+          <span class="font-semibold text-gray-900">an External Research Fellow</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer"><a href="https://www.isical.ac.in">Indian Statistical Institute, Kolkata</a></span>
+      .
+      I believe in the magic of statistics and its profound impact on understanding the world around us. While learning statistics, data science and other related concepts from both academic and industrial world, I felt mesmerized and become passionate about these. I also strongly believed in the open-source framework and hence started thinking about sharing the wizardry and making complex concepts accessible to all. So, StatWizard was born.
+    </p>
+    <div class="mt-8 mx-auto flex flex-row gap-4 justify-center items-center">
+      <a href="/aboutme"
+        class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
+        transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
+        More about me
+      </a>
+      <a 
+        href="cv.pdf"
+        class="px-6 py-2 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 rounded-full shadow-2xl cursor-pointer hover:text-white
+        transition-all duration-300 ease-in-out bg-white text-blue-600 border-2 border-blue-500">
+        Download my CV
+      </a>
+    </div>
+</section>
+
+
+
+
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-[100vw] bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="flex flex-row justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-500 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+    
+
+
+<script>
+    var typed = new Typed('#typehead', {
+      strings: ["Hi, ^400 Let's make you a StatWizard"],
+      typeSpeed: 20,
+      showCursor: false
+    });
+</script>
+
+
+</body>
+</html>

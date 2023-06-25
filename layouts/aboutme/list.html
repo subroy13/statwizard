@@ -1,5 +1,46 @@
 {{ define "main" }}
 
+
+<section class="py-8 max-w-6xl md:mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">
+    <div class="col-span-2 flex flex-col justify-center gap-4 text-right">
+        <p class="break-words text-gray-700">
+            {{ .Params.home.subtitle }}
+        </p>
+        <div class="flex flex-col gap-2">
+            {{ range $bioitem_index, $bioitem_val := .Params.home.biolist }}
+                <p class="text-gray-700">
+                    {{ if eq $bioitem_index 0 }}
+                        I am currently 
+                    {{ else }}
+                        and
+                    {{ end }}
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">{{ $bioitem_val.bio | markdownify }}</span>
+                    at 
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
+                </p>
+            {{ end }}
+        </div>  
+        <div class="flex flex-row gap-2 justify-end">
+            <p class="font-base text-neutral-800 text-xl">
+                My <span class="text-2xl font-semibold text-blue-600">Life Goal</span> is to try 
+                unwrapping the gift of knowledge
+            </p>
+            <img
+                src="/svg/infinityBox.svg"
+                class="w-full max-w-[50px] max-h-[50px]"
+            />
+        </div>
+    </div>
+    <div class="col-span-1 flex flex-col justify-start items-center gap-4">
+        <img src="/images/avatar.jpg" alt=""
+            class="max-w-[200px] h-[200px] rounded-lg border-2"
+        />
+        <p class="text-3xl text-blue-700 font-semibold">
+            {{ .Params.home.title }}
+         </p> 
+    </div>
+</section>
+
 <section>
     <div class="py-8">
         <div class="mx-4 md:mx-auto max-w-6xl flex flex-row gap-2 justify-center">

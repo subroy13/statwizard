@@ -31,7 +31,7 @@ publishDir = "docs"
     
     [[menu.main]]
         name = "Contact Me"
-        url = "/contact-me"
+        url = "/#contact-me"
         weight = 4
 
 

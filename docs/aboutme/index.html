@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+            StatWizard
+        
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.2e01192cc59873b5a31ae3cd2d23ceb9.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+<section class="py-8 max-w-6xl md:mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">
+    <div class="col-span-2 flex flex-col justify-center gap-4 text-right">
+        <p class="break-words text-gray-700">
+            I am just a soul curious about learning about statistics, mathematics and data science.
+        </p>
+        <div class="flex flex-col gap-2">
+            
+                <p class="text-gray-700">
+                    
+                        I am currently 
+                    
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">Principal Information Researcher</span>
+                    at 
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer"><a href="https://www.syscloud.com/">SysCloud</a></span>
+                </p>
+            
+                <p class="text-gray-700">
+                    
+                        and
+                    
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">an External Research Fellow</span>
+                    at 
+                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer"><a href="https://www.isical.ac.in">Indian Statistical Institute, Kolkata</a></span>
+                </p>
+            
+        </div>  
+        <div class="flex flex-row gap-2 justify-end">
+            <p class="font-base text-neutral-800 text-xl">
+                My <span class="text-2xl font-semibold text-blue-600">Life Goal</span> is to try 
+                unwrapping the gift of knowledge
+            </p>
+            <img
+                src="/svg/infinityBox.svg"
+                class="w-full max-w-[50px] max-h-[50px]"
+            />
+        </div>
+    </div>
+    <div class="col-span-1 flex flex-col justify-start items-center gap-4">
+        <img src="/images/avatar.jpg" alt=""
+            class="max-w-[200px] h-[200px] rounded-lg border-2"
+        />
+        <p class="text-3xl text-blue-700 font-semibold">
+            Subhrajyoty Roy
+         </p> 
+    </div>
+</section>
+
+<section>
+    <div class="py-8">
+        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row gap-2 justify-center">
+            
+                <button
+                    id="experiences-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fa fa-globe mx-2"></i>
+                    My Education and Work Experiences
+                </button>
+            
+                <button
+                    id="publications-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fa fa-book mx-2"></i>
+                    My Publications
+                </button>
+            
+                <button
+                    id="softwares-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fa fa-cogs mx-2"></i>
+                    Softwares
+                </button>
+            
+        </div>
+
+        <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
+            <div class="w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
+                
+                
+                
+                    <div class="flex flex-col w-full tab-header" id="experiences-tab-header">
+                        <img
+                            src="/svg/eye.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            My Education and Work Experiences
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            Nurturing Knowledge and Cultivating Expertise
+                        </p>
+                    </div>
+                
+                    <div class="flex flex-col w-full tab-header" id="publications-tab-header">
+                        <img
+                            src="/svg/book.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            My Publications
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            Sharing Knowledge, Insight, and Innovation: I have had the privilege to contribute to the field through talks, publications, and project reports.
+                        </p>
+                    </div>
+                
+                    <div class="flex flex-col w-full tab-header" id="softwares-tab-header">
+                        <img
+                            src="/svg/pyramid.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            Softwares
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            Innovative Solutions, Custom Tools, and Streamlined Workflows: Throughout my journey, I have developed some softwares and packages to address specific needs and enhance productivity, as well as data science tools related to my publications.
+                        </p>
+                    </div>
+                
+            </div>
+            <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
+
+                
+                <div id="experiences-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="relative wrap overflow-hidden p-10 h-full">
+                        <div class="absolute h-full border-[2px] border-blue-600 right-[50%]"></div>
+                        <div class="absolute h-full border-[2px] border-blue-600 left-[50%]"></div>
+                        
+                            
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+                            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-right">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2014
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Secondary
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        Nimta High School
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Secured 12th rank in all West Bengal with a score of 94.57%</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            <div class="mb-8 flex justify-between  items-center w-full right-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-left">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2014-2016
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Higher Secondary
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        Nimta High School
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Secured 2nd rank in the district with a score of 93.4%</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+                            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-right">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2016-2019
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Bachelors of Statistics
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        Indian Statistical Institute
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Obtained D. Basu Memorial Gold medal for the most outstanding performance.</li>
+                                            <hr/>
+                                            
+                                            <li> Obtained Nikhilesh Bhattacharya Memorial Gold Medal for the best performance in Statistics.</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            <div class="mb-8 flex justify-between  items-center w-full right-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-left">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        May 2019 - June 2019
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Statistical Consultant Intern
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        SysCloud
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Analysis of efficient backup procedure for cost optimization</li>
+                                            <hr/>
+                                            
+                                            <li> Modelling deep neural networks to perform phishing detection.</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+                            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-right">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        May 2020 - June 2020
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Engineering / Technology Intern
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        General Electric (Aviation)
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Understanding the impact of COVID-19 in aviation industry using tweets.</li>
+                                            <hr/>
+                                            
+                                            <li> Experience in web scraping, twitter API, NLP and Transformer type neural network.</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            <div class="mb-8 flex justify-between  items-center w-full right-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-left">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2020-2021
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Masters of Statistics
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        Indian Statistical Institute
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Financial Statistics Specialization</li>
+                                            <hr/>
+                                            
+                                            <li> Obtained J. K. Ghosh Memorial Gold Medal for the best performance in Statistics.</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+                            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-right">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2021-2022
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Data Scientist
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        SysCloud
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Analytics and optimization for Google Ads.</li>
+                                            <hr/>
+                                            
+                                            <li> Design of scalable graph backup and restore algorithms</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                            <div class="mb-8 flex justify-between  items-center w-full right-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-left">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2021-Current
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        External Research Fellow
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        Indian Statistical Institute
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> Supervisors: Prof. Ayanendranath Basu and Dr. Abhik Ghosh, ISRU, ASU</li>
+                                            <hr/>
+                                            
+                                            <li> Robust Matrix Factorization and its Applications</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            
+                            
+                            
+                            
+                                
+                                
+                                
+                            
+                            <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-right">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        2022-Current
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        Principal Information Researcher
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        SysCloud
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            
+                                            <li> System designing and framework building for microservices.</li>
+                                            <hr/>
+                                            
+                                            <li> Designing scalable AI powered systems to improve customer experience</li>
+                                            <hr/>
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        
+
+                    </div>
+                    <img class="mx-auto -mt-36 md:-mt-36" src="/images/launch-rocket.png" />
+                </div>
+
+                
+                <div id="publications-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/rough-fuzzy-changepoint-detection/featured.png" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/rough-fuzzy-changepoint-detection/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Rough-Fuzzy CPD: a gradual change point detection algorithm
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        15 November 2022
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/changepoint-detection/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Changepoint Detection
+                                                </a>
+                                        
+                                                <a href="/tags/time-series-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Time Series Analysis
+                                                </a>
+                                        
+                                                <a href="/tags/fuzzy-systems/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Fuzzy Systems
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/covid19-sintrue-model/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/covid19-sintrue-model/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        A generalized epidemiological model with dynamic and asymptomatic population
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        17 August 2022
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/epidemiology/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Epidemiology
+                                                </a>
+                                        
+                                                <a href="/tags/time-series-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Time Series Analysis
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/rsvddpd-video-surveillance/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/rsvddpd-video-surveillance/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        22 September 2021
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/image-processing/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Image Processing
+                                                </a>
+                                        
+                                                <a href="/tags/robust-statistical-inference/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Robust Statistical Inference
+                                                </a>
+                                        
+                                                <a href="/tags/dimension-reduction/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Dimension Reduction
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/pollution-analysis-kolkata/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/pollution-analysis-kolkata/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Analysis of Pollution Patterns in Regions of Kolkata
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        01 November 2020
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    This article analyzes the pollution patterns of Kolkata based on an extensive historical data of more than 15 years. The analysis focus on interpreting general patterns present in pollution and a prediction methodology, which may be used to calibrate low-cost pollution monitoring sensors.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/time-series-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Time Series Analysis
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/information-content-tea-arxiv/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/information-content-tea-arxiv/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        The Information Content of Taster&#39;s Valuation in Tea Auctions of India
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        07 May 2020
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    Tea auctions across India occur as an ascending open auction, conducted online. Before the auction, a sample of the tea lot is sent to potential bidders and a group of tea tasters. The seller&rsquo;s reserve price is a confidential function of the tea taster&rsquo;s valuation, which also possibly acts as a signal to the bidders.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/regression-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Regression Analysis
+                                                </a>
+                                        
+                                                <a href="/tags/clustering/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Clustering
+                                                </a>
+                                        
+                                                <a href="/tags/auction-theory/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Auction Theory
+                                                </a>
+                                        
+                                                <a href="/tags/bayesian-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Bayesian Analysis
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/tea-auction-feasibility/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/tea-auction-feasibility/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Feasibility of Transparent Price Discovery in Tea through Auction in India
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        01 November 2019
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    This article examines Tea Auctions in India and forms an idea about the valuations that occur for several of the tea grades, and endeavoured to fit the model determining the final transaction price of the auction based on several relevant factors. The article also looks into the significance of manual valuations as predictors for the final price, and discussed several aspects to do away with the practice of manual valuations.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/regression-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Regression Analysis
+                                                </a>
+                                        
+                                                <a href="/tags/clustering/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Clustering
+                                                </a>
+                                        
+                                                <a href="/tags/auction-theory/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Auction Theory
+                                                </a>
+                                        
+                                                <a href="/tags/bayesian-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Bayesian Analysis
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/onset-detection-arxiv/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/onset-detection-arxiv/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Onset detection - A new approach to QBH system
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        21 August 2019
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    We develop a QBH system based on detection of onsets of a song, within a statistical framework.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/sound-processing/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Sound processing
+                                                </a>
+                                        
+                                                <a href="/tags/hypothesis-testing/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Hypothesis testing
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="softwares-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/callgrind-reader/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/callgrind-reader/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        callgrind-reader - Typescript Package
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        18 April 2023
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    An npm package written in typescript to parse callgrind like files and extract profiling metrics from code  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/system-architecture-design/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    System Architecture Design
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/password-manager/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/password-manager/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Pwdmgr
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        20 November 2022
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    An open source python application for lightweight password management system through console.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/software-package/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Software Package
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/rsvddpd/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/rsvddpd/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        rsvddpd - R package
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        23 October 2021
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    An R package to perform robust singular value decomposition using minimum density power divergence estimator  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/robust-statistics/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Robust Statistics
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/roufcp/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/roufcp/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        roufcp - Python package
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        04 October 2020
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/changepoint-detection/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Changepoint Detection
+                                                </a>
+                                        
+                                                <a href="/tags/fuzzy-systems/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Fuzzy Systems
+                                                </a>
+                                        
+                                                <a href="/tags/time-series/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Time Series
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/covid19-tracker/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/covid19-tracker/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        COVID 19 Tracker
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        02 June 2020
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    A Dashboard for Prediction and Control assistance and management of resources in view of Covid-19 pandemic, sponsored by IIM, Vishakhapatnam  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/epidemiology/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Epidemiology
+                                                </a>
+                                        
+                                                <a href="/tags/time-series-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Time Series Analysis
+                                                </a>
+                                        
+                                                <a href="/tags/software-package/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Software Package
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/seq2seq-chatbot/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/seq2seq-chatbot/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Chatbot with Seq2Seq model
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        10 January 2020
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/deep-learning/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Deep Learning
+                                                </a>
+                                        
+                                                <a href="/tags/natural-language-processing/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Natural Language Processing
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/text-pred-app/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/text-pred-app/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        A simple Text Prediction Application
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        13 November 2018
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    A simple text prediction application built for Data Science Specialization in Coursera.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/natural-language-processing/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Natural Language Processing
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+    
+
+<script>
+    $(document).ready(() => {
+        $('.tab-content').hide();
+        $('.tab-header').hide();
+        $('.tab-content').first().show();        
+        $('.tab-header').first().show();
+        $('.tab-button').attr('aria-selected', "false");
+        $('.tab-button').first().attr('aria-selected', "true");
+
+        $('.tab-button').click(function(){
+            const tabid = $(this).attr('id').replace('-tab', '');
+
+            
+            $('.tab-content').hide();
+            $('.tab-header').hide();
+            $(`#${tabid}-tab-header`).show();
+            $(`#${tabid}-tab-content`).show();
+            $('.tab-button').attr('aria-selected', "false");
+            $(`#${tabid}-tab`).attr('aria-selected', "true");
+        });
+    });
+</script>
+
+
+</body>
+</html>

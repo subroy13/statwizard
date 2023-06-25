@@ -1,6 +1,13 @@
 ---
 title: About Me
-
+home:
+    title: Subhrajyoty Roy
+    subtitle: I am just a soul curious about learning about statistics, mathematics and data science.
+    biolist:
+    -   bio: "Principal Information Researcher"
+        affiliation: "[SysCloud](https://www.syscloud.com/)"
+    -   bio: "an External Research Fellow"
+        affiliation: "[Indian Statistical Institute, Kolkata](https://www.isical.ac.in)"
 tabs:
     -   id: "experiences"
         title: "My Education and Work Experiences"
@@ -19,8 +26,6 @@ tabs:
         subtitle: "Innovative Solutions, Custom Tools, and Streamlined Workflows: Throughout my journey, I have developed some softwares and packages to address specific needs and enhance productivity, as well as data science tools related to my publications."
         img: "/svg/pyramid.svg"
         icon: "fa fa-cogs"
-
-
 experiences:
     -   title: "Secondary"
         timeline: "2014"
@@ -100,8 +105,5 @@ experiences:
         description:
             - "System designing and framework building for microservices."
             - "Designing scalable AI powered systems to improve customer experience"
-
-
-
 
 ---

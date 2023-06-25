@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Learning on StatWizard</title>
+    <link>/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on StatWizard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Texture Networks</title>
+      <link>/posts/texture-network-style-transfer/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/texture-network-style-transfer/</guid>
+      <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
+    </item>
+    
+    <item>
+      <title>Chatbot with Seq2Seq model</title>
+      <link>/aboutme/seq2seq-chatbot/</link>
+      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/seq2seq-chatbot/</guid>
+      <description>A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.</description>
+    </item>
+    
+  </channel>
+</rss>
