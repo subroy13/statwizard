@@ -36,17 +36,33 @@
     <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
         I am <span class="text-blue-600 font-semibold">{{ .Params.title }}, </span> 
         {{ .Params.subtitle }}
-        {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
-            {{ if eq $bioitem_index 0 }}
-                I am currently 
-            {{ else }}
-                and
-            {{ end }}
-            <span class="font-semibold text-gray-900">{{ $bioitem_val.bio | markdownify }}</span>
-            at 
-            <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
-        {{ end }}
     </p>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+      {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
+          {{ if eq $bioitem_index 0 }}
+              I am currently 
+          {{ else }}
+              and
+          {{ end }}
+          <span class="font-semibold text-gray-900">{{ $bioitem_val.bio | markdownify }}</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
+      {{ end }}.
+      {{ .Params.story }}
+    </p>
+    <div class="mt-8 mx-auto flex flex-row gap-4 justify-center items-center">
+      <a href="/aboutme"
+        class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
+        transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
+        More about me
+      </a>
+      <a 
+        href="cv.pdf"
+        class="px-6 py-2 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 rounded-full shadow-2xl cursor-pointer hover:text-white
+        transition-all duration-300 ease-in-out bg-white text-blue-600 border-2 border-blue-500">
+        Download my CV
+      </a>
+    </div>
 </section>
 
 
