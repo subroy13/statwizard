@@ -1,7 +1,7 @@
 ---
 title: "Pwdmgr"
 date: "2022-11-20T00:00:00Z"
-type: software
+mytype: software
 imageCaption: "Photo from Pngtree.com"    
 summary: An open source python application for lightweight password management system through console.
 tags:

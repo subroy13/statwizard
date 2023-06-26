@@ -6,7 +6,7 @@ authors:
   - Subhrajyoty Roy
 date: "2020-05-07T00:00:00Z"
 imageCaption: 'Image credit: [**MCX**](https://www.mcxindia.com/home)'
-type: publication
+mytype: publication
 summary: Tea auctions across India occur as an ascending open auction, conducted online. Before the auction, a sample of the tea lot is sent to potential bidders and a group of tea tasters. The seller's reserve price is a confidential function of the tea taster's valuation, which also possibly acts as a signal to the bidders.
 
 tags:
@@ -15,7 +15,7 @@ tags:
   - Auction Theory
   - Bayesian Analysis
 
-publication:
+links:
     - type: arxiv
       url: "https://arxiv.org/abs/2005.02814"
       identifier: "2005.02814"

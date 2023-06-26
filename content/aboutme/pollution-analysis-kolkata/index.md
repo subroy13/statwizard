@@ -6,7 +6,7 @@ authors:
 - Kalyan Rudra
 - Udit Surya Saha
 
-type: publication
+mytype: publication
 date: "2020-11-01T00:00:00Z"
 
 summary: "This article analyzes the pollution patterns of Kolkata based on an extensive historical data of more than 15 years. The analysis focus on interpreting general patterns present in pollution and a prediction methodology, which may be used to calibrate low-cost pollution monitoring sensors."
@@ -14,7 +14,7 @@ summary: "This article analyzes the pollution patterns of Kolkata based on an ex
 tags:
   - Time Series Analysis
 
-publication:
+links:
     - type: journal
       journal: "Calcutta Statistical Association Bulletin"
       volume: "72 (issue 2)"

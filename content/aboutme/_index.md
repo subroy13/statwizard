@@ -9,11 +9,6 @@ home:
     -   bio: "an External Research Fellow"
         affiliation: "[Indian Statistical Institute, Kolkata](https://www.isical.ac.in)"
 tabs:
-    -   id: "experiences"
-        title: "My Education and Work Experiences"
-        subtitle: "Nurturing Knowledge and Cultivating Expertise"
-        img: "/svg/eye.svg"
-        icon: "fa fa-globe"
 
     -   id: "publications"
         title: My Publications
@@ -21,11 +16,31 @@ tabs:
         img: "/svg/book.svg"
         icon: "fa fa-book"
 
+    -   id: "reports"
+        title: "Project and Tech Reports"
+        subtitle: ""
+        img: "/svg/data-science.svg"
+        icon: "fas fa-clipboard"
+
+    -   id: "talks"
+        title: "Talks and Presentations"
+        subtitle: ""
+        img: "/svg/undraw_teaching.svg"
+        icon: "fas fa-volume-high"
+
     -   id: "softwares"
         title: Softwares
         subtitle: "Innovative Solutions, Custom Tools, and Streamlined Workflows: Throughout my journey, I have developed some softwares and packages to address specific needs and enhance productivity, as well as data science tools related to my publications."
         img: "/svg/pyramid.svg"
         icon: "fa fa-cogs"
+
+    -   id: "experiences"
+        title: "My Education and Work Experiences"
+        subtitle: "Nurturing Knowledge and Cultivating Expertise"
+        img: "/svg/eye.svg"
+        icon: "fa fa-globe"
+
+
 experiences:
     -   title: "Secondary"
         timeline: "2014"

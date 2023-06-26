@@ -6,7 +6,7 @@ authors:
 - Subhrajyoty Roy
 date: "2019-11-01T00:00:00Z"
 imageCaption: 'Image credit: [**MCX**](https://www.mcxindia.com/home)'
-type: publication
+mytype: publication
 summary: "This article examines Tea Auctions in India and forms an idea about the valuations that occur for several of the tea grades, and endeavoured to fit the model determining the final transaction price of the auction based on several relevant factors. The article also looks into the significance of manual valuations as predictors for the final price, and discussed several aspects to do away with the practice of manual valuations."
 
 tags:
@@ -15,7 +15,7 @@ tags:
   - Auction Theory
   - Bayesian Analysis
 
-publication:
+links:
     - type: report
       journal: "Commodity Insights Yearbook 2019 - MCX"
       publisher: "National Institute of Securities Market (NISM) and MCX Investor Protection Fund"

@@ -1,7 +1,7 @@
 ---
 title: callgrind-reader - Typescript Package
 date: "2023-04-18T00:00:00Z"
-type: software
+mytype: software
 imageCaption: ""
 summary: An npm package written in typescript to parse callgrind like files and extract profiling metrics from code
 tags:

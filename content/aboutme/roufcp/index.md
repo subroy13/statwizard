@@ -1,7 +1,7 @@
 ---
 title: "roufcp - Python package"
 date: "2020-10-04T00:00:00Z"
-type: software
+mytype: software
 imageCaption: ""
 summary: A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory
 tags:

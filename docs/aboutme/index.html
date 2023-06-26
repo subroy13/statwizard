@@ -27,7 +27,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.2e01192cc59873b5a31ae3cd2d23ceb9.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.496f0b11ae99e91cef9d3a04f33fb76c.css" />
 
 
 
@@ -232,7 +232,7 @@
 
 <section>
     <div class="py-8">
-        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row gap-2 justify-center">
+        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row flex-wrap gap-2 justify-center">
             
                 <button
                     id="experiences-tab"
@@ -250,6 +250,24 @@
                 >
                     <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fa fa-book mx-2"></i>
                     My Publications
+                </button>
+            
+                <button
+                    id="reports-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fas fa-clipboard mx-2"></i>
+                    Project and Tech Reports
+                </button>
+            
+                <button
+                    id="talks-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fas fa-volume-high mx-2"></i>
+                    Talks and Presentations
                 </button>
             
                 <button
@@ -294,6 +312,32 @@
                         </p>
                     </div>
                 
+                    <div class="flex flex-col w-full tab-header" id="reports-tab-header">
+                        <img
+                            src="/svg/data-science.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            Project and Tech Reports
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            
+                        </p>
+                    </div>
+                
+                    <div class="flex flex-col w-full tab-header" id="talks-tab-header">
+                        <img
+                            src="/svg/undraw_teaching.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            Talks and Presentations
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            
+                        </p>
+                    </div>
+                
                     <div class="flex flex-col w-full tab-header" id="softwares-tab-header">
                         <img
                             src="/svg/pyramid.svg"
@@ -309,6 +353,7 @@
                 
             </div>
             <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
+                
 
                 
                 <div id="experiences-tab-content" class="tab-content container mx-auto w-full h-full">
@@ -1191,6 +1236,120 @@
                         
                     </div>
                 </div>
+
+                
+                <div id="reports-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/trustworthy-dimensionality-reduction/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/trustworthy-dimensionality-reduction/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Trustworthy Dimensionality Reduction
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        21 June 2021
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    My master&rsquo;s dissertation about creating a new dimensionality reduction technique which is trustworthy.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/dimension-reduction/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Dimension Reduction
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/causal-dag/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/causal-dag/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        Causal Inference using DAG Models
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        20 December 2019
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    Introduction to Causal Analysis using Directed Acylic Graphs (DAG)  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/network-analysis/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Network Analysis
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
+                
+                <div id="talks-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="/aboutme/d-basu-pres/featured.jpg" alt="">
+                                    
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="/aboutme/d-basu-pres/"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        D. Basu Gold Medal Award Presentation on tSNE
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        13 December 2019
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    This is a talk I gave during the D. Basu Gold Medal Award Ceremony in Indian Statistical Institute, Kolkata.  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        
+                                                <a href="/tags/dimension-reduction/" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    Dimension Reduction
+                                                </a>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

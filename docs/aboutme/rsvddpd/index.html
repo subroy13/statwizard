@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+    rsvddpd - R package
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.496f0b11ae99e91cef9d3a04f33fb76c.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+    
+    
+    
+        <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+            style = "background-image: url('/aboutme/rsvddpd/featured.jpg')">
+            
+                <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                    <p>Cover image taken from </p>
+                </div>
+            
+        </div>
+    
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-span-1">
+            <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+                <h1 class="text-2xl text-blue-600 font-bold">
+                    rsvddpd - R package
+                </h1>
+                <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">23 October, 2021</p>
+                </div>
+                
+                <div class="">
+                    <h2 class="text-neutral-900 font-bold">
+                        Metadata:
+                    </h2>
+                    
+                        
+                            
+                                <div class="p-2 my-1 rounded-sm bg-neutral-100 text-neutral-800">
+                                    <i class = "fab fa-github"></i> <a href="https://github.com/subroy13/rsvddpd" class = "text-neutral-800 hover:text-black hover:underline cursor-pointer" target="_blank" >Github Repository</a>
+                                </div>
+                            
+                        
+                    
+                        
+                            
+                                <div class="p-2 my-1 rounded-sm bg-green-100 text-green-800">
+                                    <i class = "fa-brands fa-r-project"></i> <a href="https://CRAN.R-project.org/package=rsvddpd" class = "text-green-800 hover:text-black hover:underline cursor-pointer" target="_blank" >CRAN</a>
+                                </div>
+                            
+                        
+                    
+                </div>
+                <div class="mt-2 py-2">
+                    
+                        <a href="/tags/robust-statistics/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Robust Statistics
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2 p-4 md:px-6">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h1 id="rsvddpd">rsvddpd</h1>
+<!-- badges: start -->
+<p><a href="https://github.com/subroy13/rsvddpd/actions"><img src="https://github.com/subroy13/rsvddpd/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></p>
+<p><a href="https://cran.r-project.org/package=rsvddpd"><img src="https://cranlogs.r-pkg.org/badges/grand-total/rsvddpd" alt=""></a><a href="https://cran.r-project.org/package=rsvddpd"><img src="https://cranlogs.r-pkg.org/badges/rsvddpd" alt=""></a> <a href="https://cran.r-project.org/package=rsvddpd"><img src="https://cranlogs.r-pkg.org/badges/last-day/rsvddpd" alt=""></a></p>
+<!-- badges: end -->
+<p>The <code>R</code> package <code>rsvddpd</code> is an acronym for Robust Singular Value
+Decomposition using Density Power Divergence. As the name suggests, the
+package mainly concerns with a special function for performing SVD in a
+robust way in presence of outliers. The details of the algorithm can be
+found in the paper <a href="https://arxiv.org/abs/2109.10680">https://arxiv.org/abs/2109.10680</a>.</p>
+<p>There are 3 primary functions in the package.</p>
+<ul>
+<li><code>rSVDdpd</code> - Performs the robust SVD of a numeric matrix <em>X</em>.</li>
+<li><code>simSVD</code> - Simulates different scenarios to compare performances of
+SVD algorithms under outlier contamination.</li>
+<li>cv.alpha - It computes the optimal robustness parameter <em>α</em> for the
+<code>rSVDdpd</code> algorithm based on the data matrix <em>X</em>.</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>You can install the development version from
+<a href="https://github.com/subroy13/rsvddpd">GitHub</a> with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># install.packages(&#34;devtools&#34;)</span>
+devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>)
+</code></pre></div><p>Use the following to install the development version with manuals and
+vignettes, which provides useful information about the structure of the
+function.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>, build_opts <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;--no-resave-data&#34;</span>), build_manual <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, build_vignettes <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</code></pre></div><h2 id="examples">Examples</h2>
+<p>This is a basic example usages which shows the need for the package.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(rsvddpd)
+<p>X <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">20</span>, nrow <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, ncol <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>)
+<span style="color:#a6e22e">svd</span>(X)
+<span style="color:#75715e">#&gt; $d</span>
+<span style="color:#75715e">#&gt; [1] 5.352022e+01 2.363426e+00 4.870683e-15 7.906968e-16</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $u</span>
+<span style="color:#75715e">#&gt;            [,1]       [,2]        [,3]       [,4]</span>
+<span style="color:#75715e">#&gt; [1,] -0.4430188 -0.7097424 -0.52426094  0.1585890</span>
+<span style="color:#75715e">#&gt; [2,] -0.4798725 -0.2640499  0.81721984  0.1793091</span>
+<span style="color:#75715e">#&gt; [3,] -0.5167262  0.1816426 -0.06165685 -0.8343851</span>
+<span style="color:#75715e">#&gt; [4,] -0.5535799  0.6273351 -0.23130204  0.4964870</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $v</span>
+<span style="color:#75715e">#&gt;             [,1]        [,2]       [,3]       [,4]</span>
+<span style="color:#75715e">#&gt; [1,] -0.09654784  0.76855612 -0.6000256  0.1704800</span>
+<span style="color:#75715e">#&gt; [2,] -0.24551564  0.48961420  0.5577664 -0.5560862</span>
+<span style="color:#75715e">#&gt; [3,] -0.39448345  0.21067228  0.2312115  0.1606664</span>
+<span style="color:#75715e">#&gt; [4,] -0.54345125 -0.06826963  0.2643802  0.6650059</span>
+<span style="color:#75715e">#&gt; [5,] -0.69241905 -0.34721155 -0.4533325 -0.4400661</span>
+</code></pre></div><p>As you can see, the first two singular values are 53.5 and 2.36, and the
+third and fourth singular values are very small positive reals.</p></p>
+<p>Let us see what happens when you contaminate just one entry of the
+matrix by a large value say 100.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">X[2, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">100</span>
+<span style="color:#a6e22e">svd</span>(X)
+<span style="color:#75715e">#&gt; $d</span>
+<span style="color:#75715e">#&gt; [1] 1.070340e+02 3.617861e+01 2.200002e+00 1.851858e-15</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $u</span>
+<span style="color:#75715e">#&gt;            [,1]       [,2]         [,3]          [,4]</span>
+<span style="color:#75715e">#&gt; [1,] -0.1472125 -0.4893994  0.816938282  2.672612e-01</span>
+<span style="color:#75715e">#&gt; [2,] -0.9548191  0.2971284  0.005940614 -1.110223e-16</span>
+<span style="color:#75715e">#&gt; [3,] -0.1753739 -0.5614500 -0.105644232 -8.017837e-01</span>
+<span style="color:#75715e">#&gt; [4,] -0.1894546 -0.5974754 -0.566935489  5.345225e-01</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $v</span>
+<span style="color:#75715e">#&gt;             [,1]       [,2]         [,3]          [,4]</span>
+<span style="color:#75715e">#&gt; [1,] -0.03121244 -0.1097166 -0.798115312  3.357170e-01</span>
+<span style="color:#75715e">#&gt; [2,] -0.08603093 -0.2591083 -0.524844308 -6.516983e-01</span>
+<span style="color:#75715e">#&gt; [3,] -0.94371346  0.3306537 -0.008548386  1.387779e-16</span>
+<span style="color:#75715e">#&gt; [4,] -0.19566792 -0.5578918  0.021697699  6.122270e-01</span>
+<span style="color:#75715e">#&gt; [5,] -0.25048641 -0.7072836  0.294968703 -2.962457e-01</span>
+</code></pre></div><p>Note that, the first singular value changes drastically, being 107,
+while second and third singular values 36.1 and 2.2 respectively.
+However, such error is very common in practice, and can pose serious
+problem in many statistical estimation techniques. <code>rSVDdpd</code> solves the
+problem as shown in the following code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">rSVDdpd</span>(X, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>)
+<span style="color:#75715e">#&gt; $d</span>
+<span style="color:#75715e">#&gt; [1] 5.355990e+01 2.358915e+00 1.492008e-01 6.694858e-11</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $u</span>
+<span style="color:#75715e">#&gt;           [,1]       [,2]       [,3]          [,4]</span>
+<span style="color:#75715e">#&gt; [1,] 0.4426825 -0.7124356  0.4743827  2.672615e-01</span>
+<span style="color:#75715e">#&gt; [2,] 0.4810583 -0.2588203 -0.8376126  2.697441e-07</span>
+<span style="color:#75715e">#&gt; [3,] 0.5163450  0.1804013  0.2408039 -8.017834e-01</span>
+<span style="color:#75715e">#&gt; [4,] 0.5531753  0.6268197  0.1240144  5.345228e-01</span>
+<span style="color:#75715e">#&gt; </span>
+<span style="color:#75715e">#&gt; $v</span>
+<span style="color:#75715e">#&gt;            [,1]        [,2]       [,3]          [,4]</span>
+<span style="color:#75715e">#&gt; [1,] 0.09646637  0.77032520  0.2174706 -5.827481e-01</span>
+<span style="color:#75715e">#&gt; [2,] 0.24532578  0.49133794  0.2200041  7.031679e-01</span>
+<span style="color:#75715e">#&gt; [3,] 0.39606323  0.20319890 -0.8954575  5.552961e-07</span>
+<span style="color:#75715e">#&gt; [4,] 0.54304936 -0.06663662  0.2250709  2.214907e-01</span>
+<span style="color:#75715e">#&gt; [5,] 0.69191099 -0.34562390  0.2276043 -3.419085e-01</span>
+</code></pre></div><h1 id="author">Author</h1>
+<ul>
+<li>Subhrajyoty Roy, Indian Statistical Institute, Kolkata (Package
+author and Maintainer)</li>
+<li>Ayanendranath Basu, Indian Statistical Institute, Kolkata</li>
+<li>Abhik Ghosh, Indian Statistical Institute, Kolkata</li>
+</ul>
+<h1 id="getting-help">Getting help</h1>
+<p>If you encounter a clear bug, please file an issue with a minimal
+reproducible example on
+<a href="https://github.com/subroy13/rsvddpd/issues">GitHub</a>.</p>
+<hr>
+<p>This package is distributed under
+<a href="https://github.com/subroy13/rsvddpd/blob/master/LICENSE.md">MIT</a>
+license.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+     
+</body>
+</html>

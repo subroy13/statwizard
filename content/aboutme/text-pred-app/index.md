@@ -1,7 +1,7 @@
 ---
 title: A simple Text Prediction Application
 date: "2018-11-13T00:00:00Z"
-type: software
+mytype: software
 imageCaption: Photo by Chris Facer on Displayr    
 summary: A simple text prediction application built for Data Science Specialization in Coursera.
 tags:

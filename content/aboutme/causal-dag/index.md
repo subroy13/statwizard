@@ -1,7 +1,7 @@
 ---
 title: "Causal Inference using DAG Models"
 date: "2019-12-20T00:00:00Z"
-type: report
+mytype: report
 authors: 
     - Abhinandan Dalal
     - Subhrajyoty Roy
@@ -11,7 +11,7 @@ summary: "Introduction to Causal Analysis using Directed Acylic Graphs (DAG)"
 tags:
   - Network Analysis
 
-publication:
+links:
     - type: "report"
       pdf: "final-report.pdf"
 

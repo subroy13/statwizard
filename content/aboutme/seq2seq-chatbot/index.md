@@ -1,7 +1,7 @@
 ---
 title: "Chatbot with Seq2Seq model"
 date: "2020-01-10T00:00:00Z"
-type: software
+mytype: software
 imageCaption: "[Christos](https://dribbble.com/mooodswings)"
 summary: "A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset." 
 tags:

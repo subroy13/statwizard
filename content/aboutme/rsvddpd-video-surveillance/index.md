@@ -6,7 +6,7 @@ authors:
 - Abhik Ghosh
 date: "2021-09-22T00:00:00Z"
 imageCaption: 'Image credit: [**rSVDdpd**](https://arxiv.org/abs/2109.10680)'
-type: publication
+mytype: publication
 summary: "Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient."
 
 tags:
@@ -14,12 +14,15 @@ tags:
   - Robust Statistical Inference
   - Dimension Reduction
 
-publication:
+links:
     - type: arxiv
       url: "https://arxiv.org/abs/2109.10680"
       identifier: "2109.10680"
-      coee: "https://github.com/subroy13/rsvddpd"
-
+      
+    - name: Github Repository
+      icon: fab fa-github
+      link: "https://github.com/subroy13/rsvddpd"
+      color: neutral
 
 ---
 

@@ -7,7 +7,7 @@
     <link rel="icon" href="/svg/avatar.svg">
     <title>
         
-    Not Found!
+    Causal Inference using DAG Models
 
     </title>
 
@@ -181,16 +181,116 @@
 
         <div class="content-container">
             
-    <div class="container min-h-[100vh] flex flex-col justify-center items-center gap-4">
-        <p class="font-normal text-sm text-neutral-900 text-justify max-w-4xl">Looks like you've lost! Let us help you get back!</p>
-        <img src="/images/img2.jpeg" class="rounded-full w-[200px] h-[200px]" />
-        <a href='/' 
-            class="py-2 px-6 bg-neutral-50 border-2 border-neutral-900 text-neutral-900 rounded-sm shadow-sm
-            transitiion-all ease-in-out duration-200
-            hover:bg-neutral-800 hover:text-neutral-50 focus:bg-neutral-800 focus:text-neutral-50">
-            Go back to homepage
-        </a>
+    
+    
+    
+        <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+            style = "background-image: url('/aboutme/causal-dag/featured.jpg')">
+            
+                <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                    <p>Cover image taken from <a href="https://data.open.ac.uk/">Open Knowledge Graph</a></p>
+                </div>
+            
+        </div>
+    
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-span-1">
+            <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+                <h1 class="text-2xl text-blue-600 font-bold">
+                    Causal Inference using DAG Models
+                </h1>
+                <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">20 December, 2019</p>
+                </div>
+                
+                    <div class="flex flex-row text-neutral-800 gap-4">
+                        <p class="font-bold">Authors:</p>
+                        <ul class="font-normal">
+                            
+                            <li>Abhinandan Dalal</li> 
+                            
+                            <li>Subhrajyoty Roy</li> 
+                            
+                            <li>Arindam Roy Chowdhury</li> 
+                                    
+                        </ul>
+                    </div>
+                
+                <div class="">
+                    <h2 class="text-neutral-900 font-bold">
+                        Metadata:
+                    </h2>
+                    
+                        
+                            <div class="flex flex-row gap-4 items-center">
+                                <h4 class="text-neutral-800 font-semibold">
+                                    Publication Type:
+                                </h4>
+                                <div>
+                                    
+                                        <p><i class = "ai ai-open-access"></i> Open access report</p>
+                                    
+                                </div>
+                            </div>    
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-open-access"></i> </span> <a href="final-report.pdf" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank">Access PDF</a> </p>
+                            
+    
+
+                        
+                    
+                </div>
+                <div class="mt-2 py-2">
+                    
+                        <a href="/tags/network-analysis/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Network Analysis
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2 p-4 md:px-6">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h1 id="introduction">Introduction</h1>
+<p>The questions that motivate most studies in the health, social and behavioral sciences
+are not associational but causal in nature. From policy formulation in social sciences to
+assessing effectiveness of newly created drug in biological science, causal inference is very
+much demanded in different disciplines of science.</p>
+<p>In the usual statistical techniques, we proceed by following structures;</p>
+<ol>
+<li>First, we specify a model to describe the data.</li>
+<li>If possible, we try to see whether the model is valid for the observed data that we have at hand, using outlier detection or through means of hypothesis testing. If the model is not adequate, revise the model.</li>
+<li>Then we estimate various parameters of the specification for the model, through means of the observed data.</li>
+<li>Finally, we use the estimated parameters to fully specify the model, and use that to answer the required question which we are trying to answer, i.e. to meet the requirements specified by the objective of the study.</li>
+</ol>
+<p>However, such a statistical theory fails to answer the question mentioned before, due to the assumption that it only captures the essence of the behaviour of samples following a distribution governed by the model specification. There is nothing in a distribution function (as used in classical theory of Statistics) to tell us how that distribution would differ if external conditions were to change, say from observational to experimental setup, because the laws of probability theory do not dictate how one property of a distribution ought to change when another property is modified. This information must be provided by causal assumptions which identify relationships that remain invariant when external conditions change. Causal techniques are able to make inference about the sample even under the situation when underlying distribution changes due to the effect of treatments or interventions on the sampling units.</p>
+<h1 id="abstract">Abstract</h1>
+<p>In this basic introductory review, we describe how Causal relationships can be explicitly specified by using a Directed Acyclic Graph (DAG). Then we describe some special types of structures such as Chain, Forks, Colliders and separation that make up the DAGs and how the corresponding structure can be written with a probabilistic interpretation. Continuing with them, we explain frontdoor and backdoor criterion, and how mediation can be perform to obtain causal inference from data as well as estimate the effects of causal intervention. We conclude with some real-life applications of the techniques described.</p>
+<p>An extended version of the report is <a href="final-report.pdf">here</a>.</p>
+<p>The slides of the presentation can be found <a href="presentation.pdf">here</a>.</p>
+
+                </div>
+            </div>
+        </div>
     </div>
+
+    
+    
+
+
 
         </div>
 

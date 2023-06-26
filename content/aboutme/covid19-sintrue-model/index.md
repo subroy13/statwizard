@@ -7,7 +7,7 @@ authors:
 - Subhrajyoty Roy
 date: "2022-08-17T00:00:00Z"
 imageCaption: "[CNN.com](https://edition.cnn.com/2020/03/24/world/coronavirus-newsletter-03-24-20/index.html)"
-type: publication
+mytype: publication
 summary: "This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid."
 
 tags:
@@ -15,7 +15,7 @@ tags:
   - Time Series Analysis
 
 
-publication:
+links:
     - type: journal
       journal: "Statistical Methods in Medical Research"
       year: "2022"

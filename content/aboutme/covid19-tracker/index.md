@@ -3,7 +3,7 @@ date: "2020-06-02T00:00:00Z"
 imageCaption: "[COVID 19 Dashboard](http://covid-tracker.iimv.ac.in:3939/covid/)"    
 title: "COVID 19 Tracker"
 summary: 'A Dashboard for Prediction and Control assistance and management of resources in view of Covid-19 pandemic, sponsored by IIM, Vishakhapatnam'
-type: software
+mytype: software
 authors: 
     - Anirban Ghatak
     - Shivsanker Singh Patel

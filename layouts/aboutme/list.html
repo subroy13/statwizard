@@ -43,7 +43,7 @@
 
 <section>
     <div class="py-8">
-        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row gap-2 justify-center">
+        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row flex-wrap gap-2 justify-start items-center">
             {{ range .Params.tabs }}
                 <button
                     id="{{ .id }}-tab"
@@ -76,6 +76,7 @@
                 {{ end }}
             </div>
             <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
+                <!-- Write as a LOOP -->
 
                 <!-- Experience Tab -->
                 <div id="experiences-tab-content" class="tab-content container mx-auto w-full h-full">
@@ -123,7 +124,7 @@
                 <!-- Publications Tab -->
                 <div id="publications-tab-content" class="tab-content container mx-auto w-full h-full">
                     <div class="flex flex-col gap-4">
-                        {{ range (where .Pages "Type" "publication") }}
+                        {{ range (where .Pages "Params.mytype" "publication") }}
                             <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
                                 border-2 grid grid-cols-1 md:grid-cols-4">
                                 <div class="col-span-1 px-1 w-full flex justify-center items-center">
@@ -163,7 +164,7 @@
                 <!-- Softwares Tab -->
                 <div id="softwares-tab-content" class="tab-content container mx-auto w-full h-full">
                     <div class="flex flex-col gap-4">
-                        {{ range (where .Pages "Type" "software") }}
+                        {{ range (where .Pages "Params.mytype" "software") }}
                             <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
                                 border-2 grid grid-cols-1 md:grid-cols-4">
                                 <div class="col-span-1 px-1 w-full flex justify-center items-center">
@@ -199,6 +200,87 @@
                         {{ end }}
                     </div>
                 </div>
+
+                <!-- Reports Tab -->
+                <div id="reports-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        {{ range (where .Pages "Params.mytype" "report") }}
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    {{ range .Resources.Match "featured*" }}
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="{{ .Permalink }}" alt="">
+                                    {{ end }}
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="{{ .Permalink }}"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        {{ .Title }}
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        {{ .Date.Format "02 January 2006" }}
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    {{ .Summary }}  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        {{ range (.GetTerms "tags") }}
+                                                <a href="{{ .Permalink }}" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    {{ .LinkTitle }}
+                                                </a>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+
+                <!-- Talks Tab -->
+                <div id="talks-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="flex flex-col gap-4">
+                        {{ range (where .Pages "Params.mytype" "talk") }}
+                            <div class="w-full hover:scale-105 transition ease-in-out rounded overflow-hidden shadow-lg
+                                border-2 grid grid-cols-1 md:grid-cols-4">
+                                <div class="col-span-1 px-1 w-full flex justify-center items-center">
+                                    {{ range .Resources.Match "featured*" }}
+                                        <img class="w-full max-h-[150px] object-center object-cover" src="{{ .Permalink }}" alt="">
+                                    {{ end }}
+                                </div>
+                                <div class="col-span-3 py-4 px-6">
+                                    <a 
+                                        href="{{ .Permalink }}"
+                                        class="text-blue-500 font-semibold text-xl 
+                                            hover:text-blue-800 focus:text-blue-800 hover:cursor-pointer 
+                                            transition ease-in-out">
+                                        {{ .Title }}
+                                    </a>
+                                    <p class="mt-1 mb-4 text-neutral-800 text-sm font-light">
+                                        {{ .Date.Format "02 January 2006" }}
+                                    </p>
+                                    <p class="text-black text-justify">
+                                    {{ .Summary }}  
+                                    </p>
+                                    <div class="px-6 pt-4 pb-2">
+                                        {{ range (.GetTerms "tags") }}
+                                                <a href="{{ .Permalink }}" 
+                                                    class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2
+                                                    hover:underline hover:bg-gray-300 transition ease-in-out">
+                                                    {{ .LinkTitle }}
+                                                </a>
+                                        {{ end }}
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -6,7 +6,7 @@ authors:
 - Sankar K. Pal
 date: "2022-11-15T00:00:00Z"
 imageCaption: "[Paper](https://link.springer.com/article/10.1007/s42488-022-00077-3)"
-type: publication
+mytype: publication
 summary: "This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection."
 
 
@@ -16,7 +16,7 @@ tags:
   - Fuzzy Systems
 
   
-publication:
+links:
     - type: journal
       journal: "Journal of Data, Information and Management"
       year: "2022"

@@ -1,14 +1,13 @@
 ---
 title: Trustworthy Dimensionality Reduction
 date: "2021-06-21T00:00:00Z"
-type: report
+mytype: report
 imageCaption: ""    
 summary: My master's dissertation about creating a new dimensionality reduction technique which is trustworthy.
 tags:
   - Dimension Reduction
 
-
-publication:
+links:
   - type: "report"
     pdf: "./Dissertation Report.pdf"
 

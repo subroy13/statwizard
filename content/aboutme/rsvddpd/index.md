@@ -1,7 +1,7 @@
 ---
 title: rsvddpd - R package
 date: "2021-10-23T00:00:00Z"
-type: software
+mytype: software
 imageCaption: ""
 summary: An R package to perform robust singular value decomposition using minimum density power divergence estimator
 tags:

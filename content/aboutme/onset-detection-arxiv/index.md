@@ -6,7 +6,7 @@ authors:
 - Soham Bonnerjee
 - Subhrajyoty Roy
 
-type: publication
+mytype: publication
 
 date: "2019-08-21T00:00:00Z"
 imageCaption: 'Image credit: [**Freepik**](https://www.freepik.com/premium-vector/abstract-digital-sound-wave-music-beats-background_2398765.htm)'
@@ -17,13 +17,21 @@ tags:
   - Sound processing
   - Hypothesis testing
 
-publication:
+links:
     - type: arxiv
       url: "https://arxiv.org/abs/1908.07409"
       identifier: "1908.07409"
-      code: "https://github.com/subroy13/OnsetDetection"
-      dataset: "https://github.com/subroy13/OnsetDetection"
-      
+            
+    - name: Github Repository
+      icon: fab fa-github
+      link: "https://github.com/subroy13/OnsetDetection"
+      color: neutral
+
+    - name: Dataset
+      icon: "fas fa-database"
+      link: "https://github.com/subroy13/OnsetDetection"
+      color: green
+
 ---
 
 # Abstract 

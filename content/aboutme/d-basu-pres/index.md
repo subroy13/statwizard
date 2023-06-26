@@ -1,18 +1,22 @@
 ---
 title: "D. Basu Gold Medal Award Presentation on tSNE"
 date: "2019-12-13T00:00:00Z"
-type: talk
+mytype: talk
 imageCaption: ""
 summary: "This is a talk I gave during the D. Basu Gold Medal Award Ceremony in Indian Statistical Institute, Kolkata."
 tags:
     - Dimension Reduction
 
-publication:
+links:
   - type: talk
     hostedby: "Indian Statistical Institute, Kolkata"
-    code: https://github.com/subroy13/d-basu-presentation
     pdf: https://subroy13.github.io/d-basu-presentation/pres
 
+  - name: Github Repository
+    icon: fab fa-github
+    link: "https://github.com/subroy13/d-basu-presentation"
+    color: neutral
+  
 ---
 
 # Abstract
