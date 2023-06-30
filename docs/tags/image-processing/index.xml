@@ -6,7 +6,16 @@
     <description>Recent content in Image Processing on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 13 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/image-processing/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/image-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
+      <link>/aboutme/rsvddpd-video-surveillance/</link>
+      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/rsvddpd-video-surveillance/</guid>
+      <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
+    </item>
+    
     <item>
       <title>Texture Networks</title>
       <link>/posts/texture-network-style-transfer/</link>

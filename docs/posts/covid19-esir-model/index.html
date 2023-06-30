@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
     <title>
         
 Analysis of basic Epidemiological models - Part 2
 
     </title>
-    
+
     
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,13 +27,17 @@ Analysis of basic Epidemiological models - Part 2
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.7b2452f9c89e85a39c06cc5158b916f8.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
 
 
 
 
 
 <link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
 
 <style>
   html {
@@ -57,9 +62,12 @@ Analysis of basic Epidemiological models - Part 2
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
 </head>
 <body>
-    <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
         <nav class="bg-white shadow-xl z-50">
     
     <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
@@ -74,24 +82,16 @@ Analysis of basic Epidemiological models - Part 2
                     Home
                 </a>
             
-                <a href="/authors" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    About Us
-                </a>
-            
                 <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
                     Posts
                 </a>
             
-                <a href="/3levelpapers" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Explained Papers
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
                 </a>
             
-                <a href="/tutorials" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Tutorials
-                </a>
-            
-                <a href="/#contact-us" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Contact Us
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
                 </a>
             
         </div>
@@ -107,10 +107,6 @@ Analysis of basic Epidemiological models - Part 2
             
                 <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-github fa-lg"></i>
-                </a>
-            
-                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-twitter fa-lg"></i>
                 </a>
             
                 <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
@@ -159,32 +155,20 @@ Analysis of basic Epidemiological models - Part 2
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/authors" class="">
-                                About Us
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
                             <a href="/posts" class="">
                                 Posts
                             </a>
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/3levelpapers" class="">
-                                Explained Papers
+                            <a href="/aboutme" class="">
+                                About Me
                             </a>
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/tutorials" class="">
-                                Tutorials
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/#contact-us" class="">
-                                Contact Us
+                            <a href="/#contact-me" class="">
+                                Contact Me
                             </a>
                         </li>
                     
@@ -195,7 +179,7 @@ Analysis of basic Epidemiological models - Part 2
 </nav>
 
 
-        <div class="px-4 mx-4 md:mx-auto">
+        <div class="content-container">
             
 
 
@@ -211,12 +195,12 @@ Analysis of basic Epidemiological models - Part 2
 
 
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 mx-4 px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Analysis of basic Epidemiological models - Part 2
+    </h1>
     <div class="m-2 p-4 rounded-lg shadow-lg border-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col justify-center items-center gap-2">
-            <h1 class="text-3xl text-neutral-600 font-bold md:px-8 md:pt-6">
-                Analysis of basic Epidemiological models - Part 2
-            </h1>   
+        <div class="flex flex-col justify-center items-center gap-2">   
             <div class="mt-1 flex flex-row text-neutral-800 gap-4">
                 <p class="font-bold">Date:</p>
                 <p class="font-normal">01 April, 2020</p>
@@ -235,18 +219,6 @@ Analysis of basic Epidemiological models - Part 2
             </div>    
         </div>
         <div class="flex flex-col justify-center gap-2">
-            
-            <div class="flex flex-row text-neutral-800 gap-4">
-                <p class="font-bold text-xl">Authors:</p>
-                <ul class="font-normal">
-                    
-                        <a href="/authors/turtle/" class="text-xl text-green-700 hover:underline hover:text-gray-700 transition-all ease-in-out">
-                            🐢 Turtle
-                        </a>
-                            
-                </ul>
-            </div>
-            
             <div class="">
                 <h2 class="text-neutral-900 font-bold">
                     Important Links:
@@ -302,16 +274,16 @@ Analysis of basic Epidemiological models - Part 2
 <h1 id="loading-the-packages-and-the-dataset">Loading the Packages and the Dataset</h1>
 <p>We are using the same dataset source as before, except that we have updated it to include some of the current observations. Similar to before, we shall be using <code>dplyr</code> for data manipulation and summarization, <code>lubridate</code> for handling dates and times, and <code>ggplot2</code> for plotting.</p>
 <p>However, due to some Monte Carlo simulation later, we shall be needing <code>rjags</code> and we shall use <code>gtools</code> for specification of some useful probability distributions.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(readr)
-<span style="color:#a6e22e">library</span>(dplyr)
-<span style="color:#a6e22e">library</span>(lubridate)
-<span style="color:#a6e22e">library</span>(ggplot2)
-<span style="color:#a6e22e">library</span>(rjags)
-<span style="color:#a6e22e">library</span>(gtools)
-</code></pre></div><p>Now, finally we load the updated dataset, which I have already downloaded from <a href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a>, and manipulated to get the required form of data using the code discussed in my previous post <a href="https://subroy13.github.io/post/post6/">here</a>. We shall take a look at the last few columns to see how much we have updated.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#39;./datasets/covid-19-data.csv&#39;</span>)
-knitr<span style="color:#f92672">::</span><span style="color:#a6e22e">kable</span>(<span style="color:#a6e22e">tail</span>(dat, <span style="color:#ae81ff">3</span>))
-</code></pre></div><table>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(readr)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(dplyr)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(lubridate)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(ggplot2)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(rjags)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(gtools)
+</span></span></code></pre></div><p>Now, finally we load the updated dataset, which I have already downloaded from <a href="https://github.com/CSSEGISandData/COVID-19">JHU CSSE</a>, and manipulated to get the required form of data using the code discussed in my previous post <a href="https://subroy13.github.io/post/post6/">here</a>. We shall take a look at the last few columns to see how much we have updated.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#e6db74">&#39;./datasets/covid-19-data.csv&#39;</span>)
+</span></span><span style="display:flex;"><span>knitr<span style="color:#f92672">::</span><span style="color:#a6e22e">kable</span>(<span style="color:#a6e22e">tail</span>(dat, <span style="color:#ae81ff">3</span>))
+</span></span></code></pre></div><table>
 <thead>
 <tr>
 <th>State</th>
@@ -367,9 +339,9 @@ knitr<span style="color:#f92672">::</span><span style="color:#a6e22e">kable</spa
 <p>As described in part 1, <strong>Susceptibles</strong> are the general population, who is susceptible to get the disease from an infectious person. <strong>Infected</strong> state reperesents the persons who have the symptoms of the infection and is able to spread it. And finally, <strong>Recovered / Removed</strong> is the state when a person is recovered from the disease and gain immunity to it, or is dead. Let, $Y_t^S, Y_t^I, Y_t^R$ denotes the proportion of people in these states respectively at the time $t$. Note that $Y_t^S + Y_t^I + Y_t^R = 1$.  $\pi(t)$ denotes the proportion of people transiting from <strong>Susceptible</strong> to <strong>Infected</strong> state at time $t$, with the <em>proportion</em> being commensurate to the proportion of people transiting from <strong>Susceptible</strong> to <strong>Infected</strong> state at time $t$ in the original SIR modelling. Thus We can vary $\pi(t)$ from time to time to perfectly capture the effect of quarantining. In other words, the rate at which a susceptible person becomes infected is not a time varying proportion, namely $\beta \pi(t)$, where $\beta$ is the usual rate of transmission of the disease, while $\pi(t)$ is the quarantining effect which might restrict movements of general public in order to make the effective transmission rate lower than the usual quantity $\beta$.</p>
 <p>Let $\theta_t=(\theta_t^S, \theta_t^I, \theta_t^R)^T$ be the vector of underlying prevalence of the population in these three states. Since $Y_t^S, Y_t^I, Y_t^R$ are proportions, we model them via Beta distribution:</p>
 <p>$$\begin{align}
-Y_t^I \mid \theta_t, \tau \sim \text{Beta}(\lambda^I\theta_t^I,\lambda^I(1-\theta_t^I))\\\<br>
-&amp; \\\<br>
-Y_t^R \mid \theta_t, \tau \sim \text{Beta}(\lambda^R\theta_t^R,\lambda^R(1-\theta_t^R))\\\<br>
+Y_t^I \mid \theta_t, \tau \sim \text{Beta}(\lambda^I\theta_t^I,\lambda^I(1-\theta_t^I))\\\
+&amp; \\\
+Y_t^R \mid \theta_t, \tau \sim \text{Beta}(\lambda^R\theta_t^R,\lambda^R(1-\theta_t^R))\\\
 \end{align}$$</p>
 <p>where $\tau=(\beta, \gamma, \theta_0^T, \kappa, \lambda^I, \lambda^R)^T$, $\beta$, $\gamma$ are as in SIR model; $\kappa$, $\lambda^I, \lambda^R$ are parameters governing the latent process we&rsquo;ll define soon.</p>
 <p>Since $\theta_t$ is a probability, we specify a Dirichlet model for it:</p>
@@ -377,33 +349,33 @@ Y_t^R \mid \theta_t, \tau \sim \text{Beta}(\lambda^R\theta_t^R,\lambda^R(1-\thet
 <p>These together is called a Beta-Dirichlet State Space Model.</p>
 <p>Here $f(\cdot)$ is the solution of the system of ODEs:</p>
 <p>$$\begin{align}
-\dfrac{d\theta_t^S}{dt} &amp; = -\pi(t)\beta \theta_t^S \theta_t^I\\\<br>
-&amp; \\\<br>
-\dfrac{d\theta_t^I}{dt} &amp; = \pi(t)\beta \theta_t^S \theta_t^I - \gamma \theta_t^I\\\<br>
-&amp; \\\<br>
-\dfrac{d\theta_t^R}{dt} &amp; = \gamma \theta_t^I\\\<br>
+\dfrac{d\theta_t^S}{dt} &amp; = -\pi(t)\beta \theta_t^S \theta_t^I\\\
+&amp; \\\
+\dfrac{d\theta_t^I}{dt} &amp; = \pi(t)\beta \theta_t^S \theta_t^I - \gamma \theta_t^I\\\
+&amp; \\\
+\dfrac{d\theta_t^R}{dt} &amp; = \gamma \theta_t^I\\\
 \end{align}$$</p>
 <p>and this is exactly where the SIR modelling takes place. We solve this system of ODEs via <em>Runge-Kutta</em>(RK4) approximation.</p>
 <p>To implement the Markov Chain Monte Carlo method, we need to specify prior for the hyperparameters $\tau=(\beta, \gamma, \theta_0^T, \kappa, \lambda^I, \lambda^R)^{\top}$. We do that as follows:</p>
 <p>We initialize $\theta_0$ via a distribution that uses the observed data:</p>
 <p>$$\begin{align}
-\theta_0^I \sim \text{Beta}(1, \dfrac{1}{Y_1^I})\\\<br>
-&amp; \\\<br>
-\theta_0^R \sim \text{Beta}(1, \dfrac{1}{Y_1^R})\\\<br>
-&amp; \\\<br>
-\theta_0^S= 1-\theta_0^I-\theta_0^R\\\<br>
+\theta_0^I \sim \text{Beta}(1, \dfrac{1}{Y_1^I})\\\
+&amp; \\\
+\theta_0^R \sim \text{Beta}(1, \dfrac{1}{Y_1^R})\\\
+&amp; \\\
+\theta_0^S= 1-\theta_0^I-\theta_0^R\\\
 \end{align}$$</p>
 <p>We specify the other hyperparameters according to the <a href="https://arxiv.org/pdf/1007.0908.pdf">SARS data</a> in Hong-Kong.</p>
 <p>$$\begin{align}
-R_0= \dfrac{\beta}{\gamma} \sim \text{Log}\mathbb{N}(1.099,0.096) \implies \mathbb{E}(R_0)=3.15, \mathbb{V}(R_0)=1 \\\<br>
-&amp; \\\<br>
-\gamma \sim \text{Log}\mathbb{N}(-2.955,0.910) \implies \mathbb{E}(\gamma)=0.0117, \mathbb{V}(\gamma)=0.01 \\\<br>
-&amp; \\\<br>
-k \sim \text{Gamma}(2, 0.0001)\\\<br>
-&amp;  \\\<br>
-\lambda^I \sim \text{Gamma}(2, 0.0001)\\\<br>
-&amp; \\\<br>
-\lambda^R \sim \text{Gamma}(2, 0.0001)\\\<br>
+R_0= \dfrac{\beta}{\gamma} \sim \text{Log}\mathbb{N}(1.099,0.096) \implies \mathbb{E}(R_0)=3.15, \mathbb{V}(R_0)=1 \\\
+&amp; \\\
+\gamma \sim \text{Log}\mathbb{N}(-2.955,0.910) \implies \mathbb{E}(\gamma)=0.0117, \mathbb{V}(\gamma)=0.01 \\\
+&amp; \\\
+k \sim \text{Gamma}(2, 0.0001)\\\
+&amp;  \\\
+\lambda^I \sim \text{Gamma}(2, 0.0001)\\\
+&amp; \\\
+\lambda^R \sim \text{Gamma}(2, 0.0001)\\\
 \end{align}$$</p>
 <p>Now suppose , data upto time point $t_0$ are observed: $(Y_1, \cdots Y_{t_0})$. We want to predict upto time point $T$. To this end, we generate $M$ MCMC samples, such that for $m \in {1,\cdots, M}$, $(Y_{t_0+1}^{(m)}, \cdots, Y_T)$ is a draw from $Y_t \mid \theta_t, \tau$. The algorihm is described below:</p>
 <p><strong>Algorithm:</strong></p>
@@ -416,16 +388,16 @@ k \sim \text{Gamma}(2, 0.0001)\\\<br>
 <h2 id="initialization">Initialization</h2>
 <p>Note that, we wish to have a lognormal distribution $R_0 \sim LogN(\mu, \sigma^2)$, such that, $E(R_0), Var(R_0)$ is at a specified value. The specific reason is that, $R_0 = \beta_0 / \gamma_0$, which is a positive quantity, hence is better modelled by a gamma or lognormal distribution than a normal distribution, which has support as the whole of real line. Therefore, given $E(R_0) = a$, and $Var(R_0) = b$, we wish to figure out $\mu, \sigma$, the parmeters of the lognormal distribution. This can be obtained through the following simple formula and is implemented in the following function.</p>
 <p>$$\sigma^2 = \log\left( \dfrac{Var(R_0)}{E(R_0)^2} +1 \right) \qquad \qquad \mu = \log(E(R_0)) - \dfrac{\sigma^2}{2}$$</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">lognorm.param<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">function</span>(mu0,var0){
-  var <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">log</span>(var0<span style="color:#f92672">/</span>mu0^2<span style="color:#ae81ff">+1</span>)
-  mu <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">log</span>(mu0)<span style="color:#f92672">-</span>var<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
-  <span style="color:#a6e22e">return</span>(<span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">c</span>(mu,var),<span style="color:#ae81ff">3</span>))
-}
-</code></pre></div><p>Now, we specify some control parameters, which specifies the initial $E(R_0), Var(R_0)$ and some other parameters, as well as the parameters for the markov chain (like the length of the chain, the number of parallel chains to construct in order to speed up the process, number of samples to define burn in period etc.) You may want to skip these technical details for now.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.15</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>)
-control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
-control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain    <span style="color:#75715e">#number of MCMC draws in total</span>
-</code></pre></div><h2 id="performing-mcmc">Performing MCMC</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>lognorm.param<span style="color:#f92672">&lt;-</span><span style="color:#a6e22e">function</span>(mu0,var0){
+</span></span><span style="display:flex;"><span>  var <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">log</span>(var0<span style="color:#f92672">/</span>mu0^2<span style="color:#ae81ff">+1</span>)
+</span></span><span style="display:flex;"><span>  mu <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">log</span>(mu0)<span style="color:#f92672">-</span>var<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(<span style="color:#a6e22e">round</span>(<span style="color:#a6e22e">c</span>(mu,var),<span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now, we specify some control parameters, which specifies the initial $E(R_0), Var(R_0)$ and some other parameters, as well as the parameters for the markov chain (like the length of the chain, the number of parallel chains to construct in order to speed up the process, number of samples to define burn in period etc.) You may want to skip these technical details for now.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.15</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
+</span></span><span style="display:flex;"><span>control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain    <span style="color:#75715e">#number of MCMC draws in total</span>
+</span></span></code></pre></div><h2 id="performing-mcmc">Performing MCMC</h2>
 <p>Now, we shall be creating a function called <code>do.MCMC</code> which takes the observed proportion of Infected (I), Removed ( R ), then the value of the function $\pi(t)$ till the observed time period (and the control parameters). Then, it shall perform the MCMC step by generating the posterior sampels, and it shall output that posterior samples, which we shall later use to generate predictions, as well as get estimates.</p>
 <h3 id="defining-the-jags-code">Defining the JAGS Code</h3>
 <p>The very first thing to implement MCMC or any Bayesian Computation in <code>rjags</code> is the specification of a JAGS code. JAGS is the acronym for <a href="http://mcmc-jags.sourceforge.net/"><strong>Just Another Gibbs Sampler</strong></a>, which is a program for simulation from Bayesian hierarchical models using Markov chain Monte Carlo (MCMC), developed by Martyn Plummer.</p>
@@ -439,110 +411,110 @@ control.params<span style="color:#f92672">$</span>mclen <span style="color:#f926
 </li>
 </ol>
 <p>Based on the above operations, the following JAGS code creates the Bayesian model described above.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">model.string <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">             model{
-</span><span style="color:#e6db74">                   for(t in 2:(T_obs+1)){
-</span><span style="color:#e6db74">                   Km[t-1,1] &lt;- -beta*pi[t-1]*theta[t-1,1]*theta[t-1,2]
-</span><span style="color:#e6db74">                   Km[t-1,9] &lt;- gamma*theta[t-1,2]
-</span><span style="color:#e6db74">                   Km[t-1,5] &lt;- -Km[t-1,1]-Km[t-1,9]
-</span><span style="color:#e6db74">                   Km[t-1,2] &lt;- -beta*pi[t-1]*(theta[t-1,1]+0.5*Km[t-1,1])*(theta[t-1,2]+0.5*Km[t-1,5])
-</span><span style="color:#e6db74">                   Km[t-1,10] &lt;- gamma*(theta[t-1,2]+0.5*Km[t-1,5])
-</span><span style="color:#e6db74">                   Km[t-1,6] &lt;- -Km[t-1,2]-Km[t-1,10]
-</span><span style="color:#e6db74">                   Km[t-1,3] &lt;- -beta*pi[t-1]*(theta[t-1,1]+0.5*Km[t-1,2])*(theta[t-1,2]+0.5*Km[t-1,6])
-</span><span style="color:#e6db74">                   Km[t-1,11] &lt;- gamma*(theta[t-1,2]+0.5*Km[t-1,6])
-</span><span style="color:#e6db74">                   Km[t-1,7] &lt;- -Km[t-1,3]-Km[t-1,11]
-</span><span style="color:#e6db74">                   Km[t-1,4] &lt;- -beta*pi[t-1]*(theta[t-1,1]+Km[t-1,3])*(theta[t-1,2]+Km[t-1,7])
-</span><span style="color:#e6db74">                   Km[t-1,12] &lt;- gamma*(theta[t-1,2]+Km[t-1,7])
-</span><span style="color:#e6db74">                   Km[t-1,8] &lt;- -Km[t-1,4]-Km[t-1,12]
-</span><span style="color:#e6db74">                   alpha[t-1,1] &lt;- theta[t-1,1]+(Km[t-1,1]+2*Km[t-1,2]+2*Km[t-1,3]+Km[t-1,4])/6
-</span><span style="color:#e6db74">                   alpha[t-1,2] &lt;- theta[t-1,2]+(Km[t-1,5]+2*Km[t-1,6]+2*Km[t-1,7]+Km[t-1,8])/6
-</span><span style="color:#e6db74">                   alpha[t-1,3] &lt;- theta[t-1,3]+(Km[t-1,9]+2*Km[t-1,10]+2*Km[t-1,11]+Km[t-1,12])/6
-</span><span style="color:#e6db74">                   theta[t,1:3] ~ ddirch(k*alpha[t-1,1:3])
-</span><span style="color:#e6db74">                   I[t-1] ~ dbeta(lambdaI*theta[t,2],lambdaI*(1-theta[t,2]))
-</span><span style="color:#e6db74">                   R[t-1] ~ dbeta(lambdaR*theta[t,3],lambdaR*(1-theta[t,3]))
-</span><span style="color:#e6db74">                  }
-</span><span style="color:#e6db74">                  theta[1,1] &lt;-  1- theta[1,2]- theta[1,3]
-</span><span style="color:#e6db74">                  theta[1,2] ~ dbeta(&#34;</span>,<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>I[1],<span style="color:#e6db74">&#34;)
-</span><span style="color:#e6db74">                  theta[1,3] ~ dbeta(&#34;</span>,<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>R[1],<span style="color:#e6db74">&#34;)
-</span><span style="color:#e6db74">                  gamma ~  dlnorm(&#34;</span>,lognorm_gamma_param[1],<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>lognorm_gamma_param[2],<span style="color:#e6db74">&#34;)
-</span><span style="color:#e6db74">                  R0 ~ dlnorm(&#34;</span>,lognorm_R0_param[1],<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>lognorm_R0_param[2],<span style="color:#e6db74">&#34;)
-</span><span style="color:#e6db74">                  beta &lt;- R0*gamma
-</span><span style="color:#e6db74">                  k ~  dgamma(2,0.0001)
-</span><span style="color:#e6db74">                  lambdaI ~ dgamma(2,0.0001)
-</span><span style="color:#e6db74">                  lambdaR ~ dgamma(2,0.0001)
-</span><span style="color:#e6db74">               }
-</span><span style="color:#e6db74">            &#34;</span>)
-</code></pre></div><p>Here, <code>init.params</code> are to be passed accordingly in <code>lognorm.param</code> function to obtain the <code>lognorm_gamma_param</code> and <code>lognorm_R0_param</code> variables.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>model.string <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">paste0</span>(<span style="color:#e6db74">&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">             model{
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   for(t in 2:(T_obs+1)){
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,1] &lt;- -beta*pi[t-1]*theta[t-1,1]*theta[t-1,2]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,9] &lt;- gamma*theta[t-1,2]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,5] &lt;- -Km[t-1,1]-Km[t-1,9]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,2] &lt;- -beta*pi[t-1]*(theta[t-1,1]+0.5*Km[t-1,1])*(theta[t-1,2]+0.5*Km[t-1,5])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,10] &lt;- gamma*(theta[t-1,2]+0.5*Km[t-1,5])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,6] &lt;- -Km[t-1,2]-Km[t-1,10]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,3] &lt;- -beta*pi[t-1]*(theta[t-1,1]+0.5*Km[t-1,2])*(theta[t-1,2]+0.5*Km[t-1,6])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,11] &lt;- gamma*(theta[t-1,2]+0.5*Km[t-1,6])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,7] &lt;- -Km[t-1,3]-Km[t-1,11]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,4] &lt;- -beta*pi[t-1]*(theta[t-1,1]+Km[t-1,3])*(theta[t-1,2]+Km[t-1,7])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,12] &lt;- gamma*(theta[t-1,2]+Km[t-1,7])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   Km[t-1,8] &lt;- -Km[t-1,4]-Km[t-1,12]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   alpha[t-1,1] &lt;- theta[t-1,1]+(Km[t-1,1]+2*Km[t-1,2]+2*Km[t-1,3]+Km[t-1,4])/6
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   alpha[t-1,2] &lt;- theta[t-1,2]+(Km[t-1,5]+2*Km[t-1,6]+2*Km[t-1,7]+Km[t-1,8])/6
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   alpha[t-1,3] &lt;- theta[t-1,3]+(Km[t-1,9]+2*Km[t-1,10]+2*Km[t-1,11]+Km[t-1,12])/6
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   theta[t,1:3] ~ ddirch(k*alpha[t-1,1:3])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   I[t-1] ~ dbeta(lambdaI*theta[t,2],lambdaI*(1-theta[t,2]))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                   R[t-1] ~ dbeta(lambdaR*theta[t,3],lambdaR*(1-theta[t,3]))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  theta[1,1] &lt;-  1- theta[1,2]- theta[1,3]
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  theta[1,2] ~ dbeta(&#34;</span>,<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>I[1],<span style="color:#e6db74">&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  theta[1,3] ~ dbeta(&#34;</span>,<span style="color:#ae81ff">1</span>,<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>R[1],<span style="color:#e6db74">&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  gamma ~  dlnorm(&#34;</span>,lognorm_gamma_param[1],<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>lognorm_gamma_param[2],<span style="color:#e6db74">&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  R0 ~ dlnorm(&#34;</span>,lognorm_R0_param[1],<span style="color:#e6db74">&#34;,&#34;</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>lognorm_R0_param[2],<span style="color:#e6db74">&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  beta &lt;- R0*gamma
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  k ~  dgamma(2,0.0001)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  lambdaI ~ dgamma(2,0.0001)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                  lambdaR ~ dgamma(2,0.0001)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">               }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            &#34;</span>)
+</span></span></code></pre></div><p>Here, <code>init.params</code> are to be passed accordingly in <code>lognorm.param</code> function to obtain the <code>lognorm_gamma_param</code> and <code>lognorm_R0_param</code> variables.</p>
 <h3 id="running-the-gibbs-sampler">Running the Gibbs Sampler</h3>
 <p>Now, once we have the <code>model.string</code> containing the JAGS code, we need to open a connection object to that string. Because, <code>rjags</code> expect the JAGS code to be written in a file, a connection object can gimick the behavior of a file, just based on that string. Once we have the JAGS code ready, passing the data nodes in the JAGS model helps us in creating the posterior model.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">model.spec <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">textConnection</span>(model.string)
-posterior <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">jags.model</span>(model.spec, data<span style="color:#f92672">=</span><span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#39;I&#39;</span><span style="color:#f92672">=</span>I,<span style="color:#e6db74">&#39;R&#39;</span><span style="color:#f92672">=</span>R,<span style="color:#e6db74">&#39;T_obs&#39;</span><span style="color:#f92672">=</span>T_obs,<span style="color:#e6db74">&#39;pi&#39;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">pi</span>), 
-                    n.chains <span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>nchain, n.adapt <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>nadapt)
-</code></pre></div><p>Now, we first update the posterior for the burn-in period. In this time, the posterior generates samples are not close to the original sample, and hence we need to discard them. Typically, we set burn-in to be about $2000$ iterations. After that, we pass</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">update</span>(posterior, control.params<span style="color:#f92672">$</span>nburnin) <span style="color:#75715e"># update the posterior for burn in times, for this time, do not monitor anything</span>
-jags_sample <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">jags.samples</span>(posterior, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;theta&#39;</span>,<span style="color:#e6db74">&#39;gamma&#39;</span>,<span style="color:#e6db74">&#39;R0&#39;</span>,<span style="color:#e6db74">&#39;beta&#39;</span>,<span style="color:#e6db74">&#39;I&#39;</span>,<span style="color:#e6db74">&#39;lambdaI&#39;</span>,<span style="color:#e6db74">&#39;lambdaR&#39;</span>,<span style="color:#e6db74">&#39;k&#39;</span>),
-                        n.iter <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain,
-                        thin <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>thin)
-</code></pre></div><p>So, we combine these into a function called <code>do.MCMC</code> which we shall use later.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>model.spec <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">textConnection</span>(model.string)
+</span></span><span style="display:flex;"><span>posterior <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">jags.model</span>(model.spec, data<span style="color:#f92672">=</span><span style="color:#a6e22e">list</span>(<span style="color:#e6db74">&#39;I&#39;</span><span style="color:#f92672">=</span>I,<span style="color:#e6db74">&#39;R&#39;</span><span style="color:#f92672">=</span>R,<span style="color:#e6db74">&#39;T_obs&#39;</span><span style="color:#f92672">=</span>T_obs,<span style="color:#e6db74">&#39;pi&#39;</span><span style="color:#f92672">=</span><span style="color:#66d9ef">pi</span>), 
+</span></span><span style="display:flex;"><span>                    n.chains <span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>nchain, n.adapt <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>nadapt)
+</span></span></code></pre></div><p>Now, we first update the posterior for the burn-in period. In this time, the posterior generates samples are not close to the original sample, and hence we need to discard them. Typically, we set burn-in to be about $2000$ iterations. After that, we pass</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">update</span>(posterior, control.params<span style="color:#f92672">$</span>nburnin) <span style="color:#75715e"># update the posterior for burn in times, for this time, do not monitor anything</span>
+</span></span><span style="display:flex;"><span>jags_sample <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">jags.samples</span>(posterior, <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#39;theta&#39;</span>,<span style="color:#e6db74">&#39;gamma&#39;</span>,<span style="color:#e6db74">&#39;R0&#39;</span>,<span style="color:#e6db74">&#39;beta&#39;</span>,<span style="color:#e6db74">&#39;I&#39;</span>,<span style="color:#e6db74">&#39;lambdaI&#39;</span>,<span style="color:#e6db74">&#39;lambdaR&#39;</span>,<span style="color:#e6db74">&#39;k&#39;</span>),
+</span></span><span style="display:flex;"><span>                        n.iter <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain,
+</span></span><span style="display:flex;"><span>                        thin <span style="color:#f92672">=</span> control.params<span style="color:#f92672">$</span>thin)
+</span></span></code></pre></div><p>So, we combine these into a function called <code>do.MCMC</code> which we shall use later.</p>
 <h2 id="forecasting-using-esir-model">Forecasting using eSIR model</h2>
 <p>Now, since we have the MCMC samples obtained as the output of <code>do.MCMC</code> function, we can extend the chain using the exact simulation of the process described by the model above, and then, we can obtain the estimates of the proportion of infected and recovered people, as well as the confidence interval for that proportion.</p>
 <p>Again, we shall create <code>forecast.SIR</code> function which takes in the output of <code>do.MCMC</code>, and then run the simulation chains starting from the MCMC samples. Finally, it computes the estimates and confidence intervals for the estimates of proportion of infected and removed from the samples from all the chains.</p>
 <h3 id="extract-components-of-mcmc-samples">Extract components of MCMC samples</h3>
 <p>Here, we extract the components of MCMC samples from the output of <code>do.MCMC</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># extract components from mcmc samples </span>
-theta_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">array</span>(<span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>theta)[[1]], dim <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(control.params<span style="color:#f92672">$</span>mclen, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">3</span>))
-R0_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>R0)[[1]]
-gamma_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>gamma)[[1]]
-beta_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>beta)[[1]]
-lambdaI_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>lambdaI)[[1]]
-lambdaR_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>lambdaR)[[1]]
-k_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>k)[[1]]
-</code></pre></div><p>We also initialize blank arrays to store the future forecasts. Here, <code>T_new</code> is the number of time points for which new forecasting is to be done.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">theta_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">array</span>(<span style="color:#ae81ff">0</span>, dim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(control.params<span style="color:#f92672">$</span>mclen, T_new, <span style="color:#ae81ff">3</span>))
-I_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#66d9ef">NA</span>, nrow<span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>mclen, ncol<span style="color:#f92672">=</span>T_new)
-R_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#66d9ef">NA</span>, nrow<span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>mclen, ncol<span style="color:#f92672">=</span>T_new)
-</code></pre></div><h3 id="perform-forecasting">Perform Forecasting</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># extract components from mcmc samples </span>
+</span></span><span style="display:flex;"><span>theta_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">array</span>(<span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>theta)[[1]], dim <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(control.params<span style="color:#f92672">$</span>mclen, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>R0_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>R0)[[1]]
+</span></span><span style="display:flex;"><span>gamma_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>gamma)[[1]]
+</span></span><span style="display:flex;"><span>beta_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>beta)[[1]]
+</span></span><span style="display:flex;"><span>lambdaI_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>lambdaI)[[1]]
+</span></span><span style="display:flex;"><span>lambdaR_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>lambdaR)[[1]]
+</span></span><span style="display:flex;"><span>k_pre <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.mcmc.list</span>(mcmc_sample<span style="color:#f92672">$</span>k)[[1]]
+</span></span></code></pre></div><p>We also initialize blank arrays to store the future forecasts. Here, <code>T_new</code> is the number of time points for which new forecasting is to be done.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>theta_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">array</span>(<span style="color:#ae81ff">0</span>, dim<span style="color:#f92672">=</span><span style="color:#a6e22e">c</span>(control.params<span style="color:#f92672">$</span>mclen, T_new, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>I_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#66d9ef">NA</span>, nrow<span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>mclen, ncol<span style="color:#f92672">=</span>T_new)
+</span></span><span style="display:flex;"><span>R_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#66d9ef">NA</span>, nrow<span style="color:#f92672">=</span>control.params<span style="color:#f92672">$</span>mclen, ncol<span style="color:#f92672">=</span>T_new)
+</span></span></code></pre></div><h3 id="perform-forecasting">Perform Forecasting</h3>
 <p>The following piece of code basically performs the forecasting starting from the last obtained posterior samples as obtained by MCMC. Now, let us go through the code step by step.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">for</span>(l in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>control.params<span style="color:#f92672">$</span>mclen){
-    thetalt1 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">1</span>]
-    thetalt2 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">2</span>]
-    thetalt3 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">3</span>]
-    betal <span style="color:#f92672">&lt;-</span> beta_pre[l]
-    gammal <span style="color:#f92672">&lt;-</span> gamma_pre[l]
-    kt <span style="color:#f92672">&lt;-</span> k_pre[l]
-    lambdaIl <span style="color:#f92672">&lt;-</span> lambdaI_pre[l]
-    lambdaRl <span style="color:#f92672">&lt;-</span> lambdaR_pre[l]
-    <span style="color:#a6e22e">if </span>(betal<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> gammal<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> thetalt1<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> thetalt2<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span>thetalt3<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) { 
-      next 
-    }
-    <span style="color:#a6e22e">for</span>(t in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_new ){
-      <span style="color:#75715e"># perform runge kutta</span>
-      Km <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(<span style="color:#ae81ff">12</span>)
-      alpha_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(<span style="color:#ae81ff">3</span>)
-      Km[1] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>thetalt1<span style="color:#f92672">*</span>thetalt2
-      Km[9] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>thetalt2
-      Km[5] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[1]<span style="color:#f92672">-</span>Km[9]
-      Km[2] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[1])<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[5])
-      Km[10] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[5])
-      Km[6] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[2]<span style="color:#f92672">-</span>Km[10]
-      Km[3] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[2])<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[6])
-      Km[11] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[6])
-      Km[7] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[3]<span style="color:#f92672">-</span>Km[11]
-      Km[4] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#f92672">+</span>Km[3])<span style="color:#f92672">*</span>(thetalt2<span style="color:#f92672">+</span>Km[7])
-      Km[12] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#f92672">+</span>Km[7])
-      Km[8] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[4]<span style="color:#f92672">-</span>Km[12]
-      alpha_post[1] <span style="color:#f92672">&lt;-</span> thetalt1<span style="color:#f92672">+</span>(Km[1]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[2]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[3]<span style="color:#f92672">+</span>Km[4])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
-      alpha_post[2] <span style="color:#f92672">&lt;-</span> thetalt2<span style="color:#f92672">+</span>(Km[5]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[6]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[7]<span style="color:#f92672">+</span>Km[8])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
-      alpha_post[3] <span style="color:#f92672">&lt;-</span> thetalt3<span style="color:#f92672">+</span>(Km[9]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[10]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[11]<span style="color:#f92672">+</span>Km[12])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
-      thetalt_tmp <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rdirichlet</span>(<span style="color:#ae81ff">1</span>, kt<span style="color:#f92672">*</span> <span style="color:#a6e22e">abs</span>(alpha_post))
-      thetalt1 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[1]
-      thetalt2 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[2]
-      thetalt3 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[3]
-      I_post[l,t] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbeta</span>(<span style="color:#ae81ff">1</span>,lambdaIl<span style="color:#f92672">*</span>thetalt2,lambdaIl<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>thetalt2))
-      R_post[l,t] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbeta</span>(<span style="color:#ae81ff">1</span>,lambdaRl<span style="color:#f92672">*</span>thetalt3,lambdaRl<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>thetalt3)) 
-    }
-  }
-</code></pre></div><ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">for</span>(l in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>control.params<span style="color:#f92672">$</span>mclen){
+</span></span><span style="display:flex;"><span>    thetalt1 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    thetalt2 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>    thetalt3 <span style="color:#f92672">&lt;-</span> theta_pre[l, T_obs<span style="color:#ae81ff">+1</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>    betal <span style="color:#f92672">&lt;-</span> beta_pre[l]
+</span></span><span style="display:flex;"><span>    gammal <span style="color:#f92672">&lt;-</span> gamma_pre[l]
+</span></span><span style="display:flex;"><span>    kt <span style="color:#f92672">&lt;-</span> k_pre[l]
+</span></span><span style="display:flex;"><span>    lambdaIl <span style="color:#f92672">&lt;-</span> lambdaI_pre[l]
+</span></span><span style="display:flex;"><span>    lambdaRl <span style="color:#f92672">&lt;-</span> lambdaR_pre[l]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">if </span>(betal<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> gammal<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> thetalt1<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span> thetalt2<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">|</span>thetalt3<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">0</span>) { 
+</span></span><span style="display:flex;"><span>      next 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">for</span>(t in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_new ){
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># perform runge kutta</span>
+</span></span><span style="display:flex;"><span>      Km <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(<span style="color:#ae81ff">12</span>)
+</span></span><span style="display:flex;"><span>      alpha_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>      Km[1] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>thetalt1<span style="color:#f92672">*</span>thetalt2
+</span></span><span style="display:flex;"><span>      Km[9] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>thetalt2
+</span></span><span style="display:flex;"><span>      Km[5] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[1]<span style="color:#f92672">-</span>Km[9]
+</span></span><span style="display:flex;"><span>      Km[2] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[1])<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[5])
+</span></span><span style="display:flex;"><span>      Km[10] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[5])
+</span></span><span style="display:flex;"><span>      Km[6] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[2]<span style="color:#f92672">-</span>Km[10]
+</span></span><span style="display:flex;"><span>      Km[3] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[2])<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[6])
+</span></span><span style="display:flex;"><span>      Km[11] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#ae81ff">+0.5</span><span style="color:#f92672">*</span>Km[6])
+</span></span><span style="display:flex;"><span>      Km[7] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[3]<span style="color:#f92672">-</span>Km[11]
+</span></span><span style="display:flex;"><span>      Km[4] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>betal<span style="color:#f92672">*</span>pi_new[t]<span style="color:#f92672">*</span>(thetalt1<span style="color:#f92672">+</span>Km[3])<span style="color:#f92672">*</span>(thetalt2<span style="color:#f92672">+</span>Km[7])
+</span></span><span style="display:flex;"><span>      Km[12] <span style="color:#f92672">&lt;-</span> gammal<span style="color:#f92672">*</span>(thetalt2<span style="color:#f92672">+</span>Km[7])
+</span></span><span style="display:flex;"><span>      Km[8] <span style="color:#f92672">&lt;-</span> <span style="color:#f92672">-</span>Km[4]<span style="color:#f92672">-</span>Km[12]
+</span></span><span style="display:flex;"><span>      alpha_post[1] <span style="color:#f92672">&lt;-</span> thetalt1<span style="color:#f92672">+</span>(Km[1]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[2]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[3]<span style="color:#f92672">+</span>Km[4])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>      alpha_post[2] <span style="color:#f92672">&lt;-</span> thetalt2<span style="color:#f92672">+</span>(Km[5]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[6]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[7]<span style="color:#f92672">+</span>Km[8])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>      alpha_post[3] <span style="color:#f92672">&lt;-</span> thetalt3<span style="color:#f92672">+</span>(Km[9]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[10]<span style="color:#ae81ff">+2</span><span style="color:#f92672">*</span>Km[11]<span style="color:#f92672">+</span>Km[12])<span style="color:#f92672">/</span><span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>      thetalt_tmp <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rdirichlet</span>(<span style="color:#ae81ff">1</span>, kt<span style="color:#f92672">*</span> <span style="color:#a6e22e">abs</span>(alpha_post))
+</span></span><span style="display:flex;"><span>      thetalt1 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[1]
+</span></span><span style="display:flex;"><span>      thetalt2 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[2]
+</span></span><span style="display:flex;"><span>      thetalt3 <span style="color:#f92672">&lt;-</span> theta_post[l,t,<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;-</span> thetalt_tmp[3]
+</span></span><span style="display:flex;"><span>      I_post[l,t] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbeta</span>(<span style="color:#ae81ff">1</span>,lambdaIl<span style="color:#f92672">*</span>thetalt2,lambdaIl<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>thetalt2))
+</span></span><span style="display:flex;"><span>      R_post[l,t] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rbeta</span>(<span style="color:#ae81ff">1</span>,lambdaRl<span style="color:#f92672">*</span>thetalt3,lambdaRl<span style="color:#f92672">*</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>thetalt3)) 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span></code></pre></div><ol>
 <li>
 <p>The outer loop runs for each of the MCMC chains generated by <code>mcmc_output</code>.</p>
 </li>
@@ -575,147 +547,157 @@ R_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matr
 <p>To simplify the calculation of derivative, we track the quantity $(\beta \pi(t) \theta^S_t\theta^I_t - \gamma \theta^I_t)$ over time, which is equal to the derivative due to SIR modelling.</p>
 <p>The following picture taken from the <a href="https://www.medrxiv.org/content/10.1101/2020.02.29.20029421v1.full.pdf">paper</a> by Wang et al. shows the concept clearly.</p>
 <p><img src="./deriv.png" alt=""></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">theta_diff_pre <span style="color:#f92672">&lt;-</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span>[1<span style="color:#f92672">:</span>T_obs]) <span style="color:#f92672">*</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
-theta_diff_post <span style="color:#f92672">&lt;-</span> theta_post[, , <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span><span style="color:#a6e22e">[</span>(T_obs<span style="color:#ae81ff">+1</span>)<span style="color:#f92672">:</span>(T_obs<span style="color:#f92672">+</span>T_new)]) <span style="color:#f92672">*</span> theta_post[, , <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
-theta_diff <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(theta_diff_pre, theta_diff_post)
-</code></pre></div><p>Now, we find the maximum of each row of <code>theta_diff</code> and locate the timepoints, where <code>theta_diff</code> is changing its signs. They should give up the required first and second important dates.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">first_dates <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apply</span>(theta_diff, <span style="color:#ae81ff">1</span>, which.max)
-second_dates <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apply</span>(theta_diff, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">function</span>(x) { <span style="color:#a6e22e">length</span>(x) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">which</span>(<span style="color:#a6e22e">cumprod</span>(<span style="color:#a6e22e">rev</span>(x <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)[1] } )    <span style="color:#75715e"># the first time it becomes negative and stays negative throughout</span>
-</code></pre></div><p>Now, that we have the dates for each chain, let us take the mean, median, and quantiles, which would give us estimates and confidence intervals for such dates.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">conf.quant <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(conf.level<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>conf.level<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)    <span style="color:#75715e"># conf.level is the confidence coefficients for the confidence interval</span>
-first_date_summary <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>( <span style="color:#a6e22e">mean</span>(first_dates, na.rm <span style="color:#f92672">=</span> T), <span style="color:#a6e22e">quantile</span>(first_dates, probs <span style="color:#f92672">=</span> conf.quant, na.rm <span style="color:#f92672">=</span> T) )
-second_date_summary <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>( <span style="color:#a6e22e">mean</span>(second_dates, na.rm <span style="color:#f92672">=</span> T), <span style="color:#a6e22e">quantile</span>(second_dates, probs <span style="color:#f92672">=</span> conf.quant, na.rm <span style="color:#f92672">=</span> T) )
-</code></pre></div><h3 id="summarising-the-forecast-outputs">Summarising the forecast outputs</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>theta_diff_pre <span style="color:#f92672">&lt;-</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span>[1<span style="color:#f92672">:</span>T_obs]) <span style="color:#f92672">*</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
+</span></span><span style="display:flex;"><span>theta_diff_post <span style="color:#f92672">&lt;-</span> theta_post[, , <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span><span style="color:#a6e22e">[</span>(T_obs<span style="color:#ae81ff">+1</span>)<span style="color:#f92672">:</span>(T_obs<span style="color:#f92672">+</span>T_new)]) <span style="color:#f92672">*</span> theta_post[, , <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
+</span></span><span style="display:flex;"><span>theta_diff <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(theta_diff_pre, theta_diff_post)
+</span></span></code></pre></div><p>Now, we find the maximum of each row of <code>theta_diff</code> and locate the timepoints, where <code>theta_diff</code> is changing its signs. They should give up the required first and second important dates.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>first_dates <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apply</span>(theta_diff, <span style="color:#ae81ff">1</span>, which.max)
+</span></span><span style="display:flex;"><span>second_dates <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">apply</span>(theta_diff, <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">function</span>(x) { <span style="color:#a6e22e">length</span>(x) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> <span style="color:#a6e22e">which</span>(<span style="color:#a6e22e">cumprod</span>(<span style="color:#a6e22e">rev</span>(x <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>)) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)[1] } )    <span style="color:#75715e"># the first time it becomes negative and stays negative throughout</span>
+</span></span></code></pre></div><p>Now, that we have the dates for each chain, let us take the mean, median, and quantiles, which would give us estimates and confidence intervals for such dates.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>conf.quant <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(conf.level<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>conf.level<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>)    <span style="color:#75715e"># conf.level is the confidence coefficients for the confidence interval</span>
+</span></span><span style="display:flex;"><span>first_date_summary <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>( <span style="color:#a6e22e">mean</span>(first_dates, na.rm <span style="color:#f92672">=</span> T), <span style="color:#a6e22e">quantile</span>(first_dates, probs <span style="color:#f92672">=</span> conf.quant, na.rm <span style="color:#f92672">=</span> T) )
+</span></span><span style="display:flex;"><span>second_date_summary <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>( <span style="color:#a6e22e">mean</span>(second_dates, na.rm <span style="color:#f92672">=</span> T), <span style="color:#a6e22e">quantile</span>(second_dates, probs <span style="color:#f92672">=</span> conf.quant, na.rm <span style="color:#f92672">=</span> T) )
+</span></span></code></pre></div><h3 id="summarising-the-forecast-outputs">Summarising the forecast outputs</h3>
 <p>Once we have perform forecasting for each and every chain of the MCMC samples, we can aggregated them to obtain the mean, median, and quantiles, which would give us estimates for the proportion of people in state infected and removed, as well as the confidence interval for those estimates.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># till the observed time points</span>
-thetaI_band <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(theta_pre[,<span style="color:#ae81ff">-1</span>,<span style="color:#ae81ff">2</span>] , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))   
-thetaR_band<span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(theta_pre[,<span style="color:#ae81ff">-1</span>,<span style="color:#ae81ff">3</span>] , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))
-thetaI_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(theta_pre[, <span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">2</span>], na.rm <span style="color:#f92672">=</span> T)
-thetaR_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(theta_pre[, <span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">3</span>], na.rm <span style="color:#f92672">=</span> T)
-<p><span style="color:#75715e"># for the new time points</span>
-YI_band <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(I_post , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))<br>
-YR_band<span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(R_post , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))
-YI_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(I_post, na.rm <span style="color:#f92672">=</span> T)
-YR_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(R_post, na.rm <span style="color:#f92672">=</span> T)</p>
-<p><span style="color:#75715e"># combine into a data frame</span>
-infected.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>( <span style="color:#a6e22e">rbind</span>( <span style="color:#a6e22e">cbind</span>(thetaI_mean, thetaI_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&quot;pre&quot;</span>, T_obs) ), <span style="color:#a6e22e">cbind</span>(YI_mean, YI_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&quot;post&quot;</span>, T_new) ) ) )
-removed.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>( <span style="color:#a6e22e">rbind</span>( <span style="color:#a6e22e">cbind</span>(thetaR_mean, thetaR_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&quot;pre&quot;</span>, T_obs) ), <span style="color:#a6e22e">cbind</span>(YR_mean, YR_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&quot;post&quot;</span>, T_new) ) ) )</p>
-<p><span style="color:#a6e22e">colnames</span>(infected.dat) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&quot;mean&quot;</span>, <span style="color:#e6db74">&quot;lower&quot;</span>, <span style="color:#e6db74">&quot;median&quot;</span>, <span style="color:#e6db74">&quot;upper&quot;</span>)
-<span style="color:#a6e22e">colnames</span>(removed.dat) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&quot;mean&quot;</span>, <span style="color:#e6db74">&quot;lower&quot;</span>, <span style="color:#e6db74">&quot;median&quot;</span>, <span style="color:#e6db74">&quot;upper&quot;</span>)
-</code></pre></div><p>Then, we can return a list comprising of these two datasets, as well as the summary corresponding to the first and second date obtained earlier. This whole piece of code, is compressed into a function called <code>forecast.SIR</code>, which we shall call later.</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># till the observed time points</span>
+</span></span><span style="display:flex;"><span>thetaI_band <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(theta_pre[,<span style="color:#ae81ff">-1</span>,<span style="color:#ae81ff">2</span>] , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))   
+</span></span><span style="display:flex;"><span>thetaR_band<span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(theta_pre[,<span style="color:#ae81ff">-1</span>,<span style="color:#ae81ff">3</span>] , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))
+</span></span><span style="display:flex;"><span>thetaI_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(theta_pre[, <span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">2</span>], na.rm <span style="color:#f92672">=</span> T)
+</span></span><span style="display:flex;"><span>thetaR_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(theta_pre[, <span style="color:#ae81ff">-1</span>, <span style="color:#ae81ff">3</span>], na.rm <span style="color:#f92672">=</span> T)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for the new time points</span>
+</span></span><span style="display:flex;"><span>YI_band <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(I_post , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))   
+</span></span><span style="display:flex;"><span>YR_band<span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">t</span>(<span style="color:#a6e22e">apply</span>(R_post , <span style="color:#ae81ff">2</span>, quantile, probs<span style="color:#f92672">=</span>conf.quant, na.rm<span style="color:#f92672">=</span>T))
+</span></span><span style="display:flex;"><span>YI_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(I_post, na.rm <span style="color:#f92672">=</span> T)
+</span></span><span style="display:flex;"><span>YR_mean <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colMeans</span>(R_post, na.rm <span style="color:#f92672">=</span> T)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># combine into a data frame</span>
+</span></span><span style="display:flex;"><span>infected.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>( <span style="color:#a6e22e">rbind</span>( <span style="color:#a6e22e">cbind</span>(thetaI_mean, thetaI_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&#34;pre&#34;</span>, T_obs) ), <span style="color:#a6e22e">cbind</span>(YI_mean, YI_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&#34;post&#34;</span>, T_new) ) ) )
+</span></span><span style="display:flex;"><span>removed.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>( <span style="color:#a6e22e">rbind</span>( <span style="color:#a6e22e">cbind</span>(thetaR_mean, thetaR_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&#34;pre&#34;</span>, T_obs) ), <span style="color:#a6e22e">cbind</span>(YR_mean, YR_band, <span style="color:#a6e22e">rep</span>(<span style="color:#e6db74">&#34;post&#34;</span>, T_new) ) ) )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">colnames</span>(infected.dat) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;mean&#34;</span>, <span style="color:#e6db74">&#34;lower&#34;</span>, <span style="color:#e6db74">&#34;median&#34;</span>, <span style="color:#e6db74">&#34;upper&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">colnames</span>(removed.dat) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;mean&#34;</span>, <span style="color:#e6db74">&#34;lower&#34;</span>, <span style="color:#e6db74">&#34;median&#34;</span>, <span style="color:#e6db74">&#34;upper&#34;</span>)
+</span></span></code></pre></div><p>Then, we can return a list comprising of these two datasets, as well as the summary corresponding to the first and second date obtained earlier. This whole piece of code, is compressed into a function called <code>forecast.SIR</code>, which we shall call later.</p>
 <h1 id="checking-performance-of-esir">Checking Performance of eSIR</h1>
 <p>Now, we shall be using the data for <code>Italy</code>, in order to figure out how our <code>eSIR</code> model performs for this data.</p>
 <h2 id="performance-for-italy">Performance for Italy</h2>
 <p>According to <a href="https://www.worldometers.info/world-population/italy-population/">Worldometers</a> sources, the projected population for Italy is about 6 crores. Based on that, we compute the observed proportion of the infected and removed (including deaths and recovered), and fit the eSIR model. The following code calls the <code>do.MCMC</code> function and performs the MCMC fitting. Here, we use 4 weeks of data, of the available 5 weeks of data, and we shall try to forecast for the last week, to see how the model performed.</p>
 <p>Also, the $\pi(t)$ function choosen for Italy is as follows;</p>
 <p>$$\pi(t) = \begin{cases}
-1 &amp; \text{ if } t &lt; \text{4th March, 2020}\\\<br>
-0.25 &amp; \text{ if } t &gt; \text{9th March, 2020}\\\<br>
-0.5 &amp; \text{ otherwise }\\\<br>
+1 &amp; \text{ if } t &lt; \text{4th March, 2020}\\\
+0.25 &amp; \text{ if } t &gt; \text{9th March, 2020}\\\
+0.5 &amp; \text{ otherwise }\\\
 \end{cases}$$</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">subdat <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(Removed <span style="color:#f92672">=</span> Deaths <span style="color:#f92672">+</span> Recovered) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">filter</span>(Country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Italy&#34;</span> <span style="color:#f92672">&amp;</span> Removed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
-<p>N <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">60550075</span>
-R <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Removed <span style="color:#f92672">/</span> N
-I <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Confirmed<span style="color:#f92672">/</span>N <span style="color:#f92672">-</span> R
-pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-04'</span>), <span style="color:#ae81ff">1</span>,
-<span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-09'</span>), <span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">0.5</span>))</p>
-<p>init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.15</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>)
-control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
-control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain</p>
-<p>mcmc_samples <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">do.MCMC</span>(I[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], R[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], pi0[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], init.params, control.params)
-</code></pre></div><p>You should see something like this, which tells you that the JAGS code for MCMC is running properly.</p></p>
-<pre><code>Compiling model graph
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>subdat <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(Removed <span style="color:#f92672">=</span> Deaths <span style="color:#f92672">+</span> Recovered) <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">filter</span>(Country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;Italy&#34;</span> <span style="color:#f92672">&amp;</span> Removed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">60550075</span>
+</span></span><span style="display:flex;"><span>R <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Removed <span style="color:#f92672">/</span> N
+</span></span><span style="display:flex;"><span>I <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Confirmed<span style="color:#f92672">/</span>N <span style="color:#f92672">-</span> R
+</span></span><span style="display:flex;"><span>pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-04&#39;</span>), <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-09&#39;</span>), <span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">0.5</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.15</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>)
+</span></span><span style="display:flex;"><span>control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
+</span></span><span style="display:flex;"><span>control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcmc_samples <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">do.MCMC</span>(I[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], R[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], pi0[1<span style="color:#f92672">:</span><span style="color:#ae81ff">28</span>], init.params, control.params)
+</span></span></code></pre></div><p>You should see something like this, which tells you that the JAGS code for MCMC is running properly.</p>
+<pre tabindex="0"><code>Compiling model graph
    Resolving undeclared variables
    Allocating nodes
 Graph information:
    Observed stochastic nodes: 56
    Unobserved stochastic nodes: 35
    Total graph size: 1591
-
-Initializing model
-</code></pre><p>As we see from the following plot, the predictions for the last week is underestimating the true proportions. However, the observed proportions lie within the bound of $95%$ confidence band.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">28</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi0, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-02-21&#34;</span>)
-<span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-20-1.png" alt=""></p>
+<p>Initializing model
+</code></pre><p>As we see from the following plot, the predictions for the last week is underestimating the true proportions. However, the observed proportions lie within the bound of $95%$ confidence band.</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">28</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi0, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-02-21&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
+</span></span></code></pre></div><p><img src="./unnamed-chunk-20-1.png" alt=""></p>
 <p>However, if we assume that, the Italy government maintains the current lockdown indefinitely, then $\pi(t) = 0.25$ will continue to remain. In such case, the important dates (as mentioned above) for change in the rate of newly infected can be obtained, as shown in the following plot.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">200</span>))
-preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">7+200</span>, <span style="color:#ae81ff">28</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi0, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-02-21&#34;</span>)
-<span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./plot2.jpeg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">200</span>))
+</span></span><span style="display:flex;"><span>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">7+200</span>, <span style="color:#ae81ff">28</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi0, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-02-21&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
+</span></span></code></pre></div><p><img src="./plot2.jpeg" alt=""></p>
 <p>Therefore, in Italy, at about June 24, we should see decreasing increments of newly infected persons, and from August 17 onwards, the proportion of infected people should start to decline.</p>
 <h2 id="estimation-for-india">Estimation for India</h2>
 <p>However, our main concern is to find out the situation of India based on this eSIR modelling. Here, we shall use the $\pi(t)$ function as follows, as per various decision taken by the Government, like restriction on international flights, Janta Curfew and full scale lockdowns etc.</p>
 <p>$$\pi(t) = \begin{cases}
-1 &amp; \text{ if } t &lt; \text{15th March, 2020}\\\<br>
-0.95 &amp; \text{ if } \text{15th March, 2020} &lt; t &lt; \text{19th March, 2020}\\\<br>
-0.9 &amp; \text{ if } \text{19th March, 2020} &lt; t &lt; \text{22th March, 2020}\\\<br>
-0.5 &amp; \text{ if } \text{22th March, 2020} &lt; t &lt; \text{25th March, 2020}\\\<br>
-0.1 &amp; \text{ if } t &gt; \text{25th March, 2020}\\\<br>
+1 &amp; \text{ if } t &lt; \text{15th March, 2020}\\\
+0.95 &amp; \text{ if } \text{15th March, 2020} &lt; t &lt; \text{19th March, 2020}\\\
+0.9 &amp; \text{ if } \text{19th March, 2020} &lt; t &lt; \text{22th March, 2020}\\\
+0.5 &amp; \text{ if } \text{22th March, 2020} &lt; t &lt; \text{25th March, 2020}\\\
+0.1 &amp; \text{ if } t &gt; \text{25th March, 2020}\\\
 \end{cases}$$</p>
 <p>Also, note that in India, many places are rural in nature, while most of the urban population and neighbourhood areas are more susceptible to get the disease than others, due to availablity of metro cities and international airports. So, rather than using the whole population size i.e. $131$ crores as $N$, we shall use about $350$ lakhs as the adjusted population size.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">subdat <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(Removed <span style="color:#f92672">=</span> Deaths <span style="color:#f92672">+</span> Recovered, Infected <span style="color:#f92672">=</span> Confirmed <span style="color:#f92672">-</span> Removed) <span style="color:#f92672">%&gt;%</span>
-    <span style="color:#a6e22e">filter</span>(Country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;India&#34;</span> <span style="color:#f92672">&amp;</span> Removed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span> Infected <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
-<p>N <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">350e5</span>   <span style="color:#75715e"># adjusted population for metro cities and neighbourhood areas</span></p>
-<p>R <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Removed <span style="color:#f92672">/</span> N
-I <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Infected<span style="color:#f92672">/</span>N</p>
-<p>pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-15'</span>), <span style="color:#ae81ff">1</span>,
-<span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-19'</span>), <span style="color:#ae81ff">0.9</span>,
-<span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-22'</span>), <span style="color:#ae81ff">0.8</span>,
-<span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">'2020-03-25'</span>), <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.1</span>)) ))</p>
-<p>init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.48</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
-control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
-control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain</p>
-<p>mcmc_samples <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">do.MCMC</span>(I, R, pi0, init.params, control.params)
-</code></pre></div><p>And finally, we perform the prediction till the end of the lockdown, i.e. till $14$-th April, to see the effect of quarantining.</p></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">19</span>))   <span style="color:#75715e"># from 27th March, it is 19 days of lockdown left </span>
-preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi1, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
-<span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Infected<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-23-1.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>subdat <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">mutate</span>(Removed <span style="color:#f92672">=</span> Deaths <span style="color:#f92672">+</span> Recovered, Infected <span style="color:#f92672">=</span> Confirmed <span style="color:#f92672">-</span> Removed) <span style="color:#f92672">%&gt;%</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">filter</span>(Country <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;India&#34;</span> <span style="color:#f92672">&amp;</span> Removed <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;</span> Infected <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>N <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">350e5</span>   <span style="color:#75715e"># adjusted population for metro cities and neighbourhood areas</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>R <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Removed <span style="color:#f92672">/</span> N
+</span></span><span style="display:flex;"><span>I <span style="color:#f92672">&lt;-</span> subdat<span style="color:#f92672">$</span>Infected<span style="color:#f92672">/</span>N
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-15&#39;</span>), <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>              <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-19&#39;</span>), <span style="color:#ae81ff">0.9</span>, 
+</span></span><span style="display:flex;"><span>                     <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-22&#39;</span>), <span style="color:#ae81ff">0.8</span>, 
+</span></span><span style="display:flex;"><span>                            <span style="color:#a6e22e">ifelse</span>(subdat<span style="color:#f92672">$</span>Date <span style="color:#f92672">&lt;</span> <span style="color:#a6e22e">as.Date</span>(<span style="color:#e6db74">&#39;2020-03-25&#39;</span>), <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.1</span>)) ))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>init.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(R0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">12.48</span>, R0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, gamma0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.117</span>, gamma0_sd <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>control.params <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>(nchain<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, nadapt<span style="color:#f92672">=</span><span style="color:#ae81ff">1e4</span>, ndraw<span style="color:#f92672">=</span><span style="color:#ae81ff">5e2</span>, thin<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>, nburnin<span style="color:#f92672">=</span><span style="color:#ae81ff">2e2</span>)
+</span></span><span style="display:flex;"><span>control.params<span style="color:#f92672">$</span>mclen <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">round</span>(control.params<span style="color:#f92672">$</span>ndraw <span style="color:#f92672">/</span> control.params<span style="color:#f92672">$</span>thin) <span style="color:#f92672">*</span> control.params<span style="color:#f92672">$</span>nchain 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mcmc_samples <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">do.MCMC</span>(I, R, pi0, init.params, control.params)
+</span></span></code></pre></div><p>And finally, we perform the prediction till the end of the lockdown, i.e. till $14$-th April, to see the effect of quarantining.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>pi1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">19</span>))   <span style="color:#75715e"># from 27th March, it is 19 days of lockdown left </span>
+</span></span><span style="display:flex;"><span>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi1, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Infected<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
+</span></span></code></pre></div><p><img src="./unnamed-chunk-23-1.png" alt=""></p>
 <p>Although it seems that the mean proportion is overestimated during the ovserved period, however the effect of quanting seems to work to a moderate extent, as the estimated proportion stays more or less at the same level. The exact count of the infected people at the end of lockdown, provided that it is maintained properly, should be about $1571$ many infected persons, and about $2114$ confirmed cases of COVID-19.</p>
 <p>Similar to Italy, if we extend its forecast for some more days, and keep the same level of quarantining, the model predictions are given in the following plot.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">200</span>)) 
-preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi2, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
-<span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./unnamed-chunk-25-1.png" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>pi2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">200</span>)) 
+</span></span><span style="display:flex;"><span>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">200</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi2, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
+</span></span></code></pre></div><p><img src="./unnamed-chunk-25-1.png" alt=""></p>
 <p>Therefore, as it seems, if we keep the lockdown (as it is now), based on the data, it might take till October to have the proportion of infected people becoming insignificant, provided we keep the same level of quanranting effect. However, from March 17, we should see a decrease in the rate of increment in the number of infected, and from March 29 onwards, we should be at a position from where the number of newly infected persons per day starts to decrease gradually.</p>
 <p>Since, it is very economically and physically dissatisfying to be in a lockdown (or state of home quarantine till October, where Durga Puja festival is going to occur), we might want to go outside. In that case, assuming $\pi(t)$ increases to $0.5$, which is indeed less than 1, due to our increasing awareness of the scenario, then, the predicted situation would look like this.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">19</span>), <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">365</span>)) 
-preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">365</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi3, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
-preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</span>upper_new <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pmin</span>(preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</span>upper, <span style="color:#ae81ff">0.05</span>)   <span style="color:#75715e"># just for visual purpose</span>
-<span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper_new, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span> 
-    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
-    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./plot5.jpeg" alt=""></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>pi3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">19</span>), <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">365</span>)) 
+</span></span><span style="display:flex;"><span>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">365</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">25</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi3, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-03-02&#34;</span>)
+</span></span><span style="display:flex;"><span>preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</span>upper_new <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pmin</span>(preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</span>upper, <span style="color:#ae81ff">0.05</span>)   <span style="color:#75715e"># just for visual purpose</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">ggplot</span>(preds<span style="color:#f92672">$</span>infected, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> date)) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_ribbon</span>(<span style="color:#a6e22e">aes</span>(ymin <span style="color:#f92672">=</span> lower, ymax <span style="color:#f92672">=</span> upper_new, fill <span style="color:#f92672">=</span> phase), alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;brown&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span> 
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_vline</span>(xintercept <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1], color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue4&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
+</span></span></code></pre></div><p><img src="./plot5.jpeg" alt=""></p>
 <p>This scenario would be very severe for us, since it would affect about $6%$ of the urban population on about June 27, and then it would start to decrease gradually. However, it would take almost 2 years, to make this epidemic insignificant, provided there would be no generally accepted antiviral medicine for COVID-19 till then.</p>
 <p>Hence, we must avoid such situation at all costs, and to counter it, we must stay home, at a shelter in place home quarantining atmosphere.</p>
 <h1 id="conclusion">Conclusion</h1>
@@ -765,6 +747,24 @@ preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</
 
 
 
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/covid19-sir-model/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="/posts/texture-network-style-transfer/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+</div>
 
 
 
@@ -781,6 +781,7 @@ preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</
 </footer>
 
     </div>
+
     <script>
     $(document).ready(() => {
 
@@ -800,7 +801,6 @@ preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</
     mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
 </script>
 
-    
-    
+     
 </body>
 </html>

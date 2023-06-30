@@ -1,0 +1,137 @@
+{{ define "title" }}
+    {{ .Title }}
+{{ end }}
+
+
+{{ define "main" }}
+    
+    {{ $project := . }}
+    {{ range .Resources.Match "featured*" }}
+        <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+            style = "background-image: url('{{ .Permalink }}')">
+            {{ if isset $project.Params "imagecaption" }}
+                <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                    <p>Cover image taken from {{ $project.Params.imageCaption | markdownify }}</p>
+                </div>
+            {{ end }}
+        </div>
+    {{ end }}
+
+    <!-- Main Project Article -->
+    <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-span-1">
+            <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+                <h1 class="text-2xl text-blue-600 font-bold">
+                    {{ $project.Title }}
+                </h1>
+                <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">{{ $project.Date.Format "02 January, 2006" }}</p>
+                </div>
+                {{ if isset $project.Params "authors" }}
+                    <div class="flex flex-row text-neutral-800 gap-4">
+                        <p class="font-bold">Authors:</p>
+                        <ul class="font-normal">
+                            {{ range $project.Params.authors }}
+                            <li>{{ . }}</li> 
+                            {{ end }}        
+                        </ul>
+                    </div>
+                {{ end }}
+                <div class="">
+                    <h2 class="text-neutral-900 font-bold">
+                        Metadata:
+                    </h2>
+                    {{ range $project.Params.links }}
+                        {{ if isset . "type" }}
+                            <div class="flex flex-row gap-4 items-center">
+                                <h4 class="text-neutral-800 font-semibold">
+                                    Publication Type:
+                                </h4>
+                                <div>
+                                    {{ if (eq .type "arxiv") }}
+                                        <p><i class="ai ai-arxiv"></i> Arxiv pre-print</p>
+                                    {{ else if (eq .type "report" ) }}
+                                        <p><i class = "ai ai-open-access"></i> Open access report</p>
+                                    {{ else if (eq .type "journal" )}}
+                                        <p><i class = "{{ .icon }}"></i> Journal Paper</p>
+                                    {{ else if (eq .type "talk" ) }}
+                                        <p><i class="fa fas fa-headphones"></i> Conference Talk</p>
+                                    {{ end }}
+                                </div>
+                            </div>    
+                            {{ if isset . "identifier" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Identifier: </span> {{ .identifier }} </p>
+                            {{ end }}
+                            {{ if isset . "journal" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Journal: </span> {{ .journal }} </p>
+                            {{ end }}
+                            {{ if isset . "volume" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Volume: </span> {{ .volume }} </p>
+                            {{ end }}
+                            {{ if isset . "section" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Section: </span> {{ .section }} </p>
+                            {{ end }}
+                            {{ if isset . "page" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Page: </span> {{ .page }} </p>
+                            {{ end }}
+                            {{ if isset . "publisher" }}
+                                <p class="text-neutral-800"><span class="font-semibold">Publisher: </span> {{ .publisher }} </p>
+                            {{ end }}
+                            {{ if isset . "url" }}
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-doi"></i> </span> <a href="{{ .url }}" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank"> Link </a> </p>
+                            {{ end }}
+                            {{ if isset . "pdf" }}
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-open-access"></i> </span> <a href="{{ .pdf }}" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank">Access PDF</a> </p>
+                            {{ end }}
+    
+
+                        {{ else }}
+                            {{ if isset . "color" }}
+                                <div class="p-2 my-1 rounded-sm bg-{{ .color }}-100 text-{{ .color }}-800">
+                                    <i class = "{{ .icon }}"></i> <a href="{{ .link }}" class = "text-{{ .color }}-800 hover:text-black hover:underline cursor-pointer" target="_blank" >{{ .name }}</a>
+                                </div>
+                            {{ else }}
+                                <div class="p-2 my-1 rounded-sm bg-blue-100 text-blue-800">
+                                    <i class = "{{ .icon }}"></i> <a href="{{ .link }}" class = "text-blue-800 hover:text-black hover:underline cursor-pointer" target="_blank">{{ .name }}</a>
+                                </div>
+                            {{ end }}
+                        {{ end }}
+                    {{ end }}
+                </div>
+                <div class="mt-2 py-2">
+                    {{ range (.GetTerms "tags") }}
+                        <a href="{{ .Permalink }}" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            {{ .LinkTitle }}
+                        </a>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2 p-4 md:px-6">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    {{ $project.Content | markdownify }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Extra Section -->
+    <!-- <section>
+        <div class="my-4 mx-4 md:mx-auto max-w-6xl text-justify">
+            <h4 class="text-neutral-800">If you find the details interesting, be sure to check out the associated links to see more details. &#129488;</h4>
+        </div>
+        <div class="my-4 py-4 mx-4 md:mx-auto max-w-6xl flex justify-center items-center">
+            <a href="{{ $project.FirstSection.Permalink }}" 
+                class="py-2 px-6 shadow-sm rounded-md bg-blue-600 text-white hover:bg-blue-800 focus:bg-blue-800 transition ease-in-out"
+            >
+                See list of my all Softwares
+            </a>
+        </div>
+    </section> -->
+
+
+{{ end }}

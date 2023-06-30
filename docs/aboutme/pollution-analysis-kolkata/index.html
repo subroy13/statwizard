@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+    Analysis of Pollution Patterns in Regions of Kolkata
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+    
+    
+    
+        <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+            style = "background-image: url('/aboutme/pollution-analysis-kolkata/featured.jpg')">
+            
+        </div>
+    
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-span-1">
+            <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+                <h1 class="text-2xl text-blue-600 font-bold">
+                    Analysis of Pollution Patterns in Regions of Kolkata
+                </h1>
+                <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">01 November, 2020</p>
+                </div>
+                
+                    <div class="flex flex-row text-neutral-800 gap-4">
+                        <p class="font-bold">Authors:</p>
+                        <ul class="font-normal">
+                            
+                            <li>Subhrajyoty Roy</li> 
+                            
+                            <li>Debasis Sengupta</li> 
+                            
+                            <li>Kalyan Rudra</li> 
+                            
+                            <li>Udit Surya Saha</li> 
+                                    
+                        </ul>
+                    </div>
+                
+                <div class="">
+                    <h2 class="text-neutral-900 font-bold">
+                        Metadata:
+                    </h2>
+                    
+                        
+                            <div class="flex flex-row gap-4 items-center">
+                                <h4 class="text-neutral-800 font-semibold">
+                                    Publication Type:
+                                </h4>
+                                <div>
+                                    
+                                        <p><i class = ""></i> Journal Paper</p>
+                                    
+                                </div>
+                            </div>    
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Journal: </span> Calcutta Statistical Association Bulletin </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Volume: </span> 72 (issue 2) </p>
+                            
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Page: </span> 133-170 </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Publisher: </span> SAGE Journals </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-doi"></i> </span> <a href="https://doi.org/10.1177/0008068320976781" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank"> Link </a> </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-open-access"></i> </span> <a href="https://journals.sagepub.com/doi/10.1177/0008068320976781" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank">Access PDF</a> </p>
+                            
+    
+
+                        
+                    
+                </div>
+                <div class="mt-2 py-2">
+                    
+                        <a href="/tags/time-series-analysis/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Time Series Analysis
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2 p-4 md:px-6">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h1 id="abstract">Abstract</h1>
+<p>This article analyses various patterns in the pollution levels of PM10, PM2.5, NO2, and SO2 at various locations in Kolkata, India. Our analysis is based on a data set recorded by the Central Pollution Control Board of India and the West Bengal Pollution Control Board, comprising of about 15 years of irregular time series observations, due to the higher cost of precise and accurate measurements of pollution. We perform some exploratory analysis concerning the variations in trend, seasonal, and shift-specific seasonal levels. As well as a statistical model for forecasting pollution levels for two to three days in advance is also obtained, along with an analysis of the effects of festivities such as Kali Puja and Diwali on the level of the pollutants across different locations.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+     
+</body>
+</html>

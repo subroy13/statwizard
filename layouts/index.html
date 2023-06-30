@@ -1,105 +1,87 @@
 {{ define "main" }}
 
-<!-- Hero section -->
+<!-- Hero Section -->
 <section
-  class="mx-4 md:mx-auto max-w-6xl min-h-[100vh] flex flex-col gap-6 justify-center"
+  class="min-h-[100vh] mx-4 md:mx-auto max-w-6xl grid grid-cols-2 gap-2"
 >
-  <h1 class="text-black text-4xl md:text-8xl animate__animated animate__fadeIn">
-    {{ .Page.Title }}
-  </h1>
-  <p
-    class="text-light text-xl md:text-2xl animate__animated animate__fadeIn animate__delay-1s text-gray-700"
-  >
-    {{ .Page.Params.subtitle }}
-  </p>
-  <a
-    class="py-2 px-6 rounded-md border-2 text-neutral-900 border-neutral-900 bg-white hover:bg-neutral-900 focus:bg-neutral-900 hover:text-white focus:text-white hover:border-white font-semibold transition ease-in-out max-w-[200px] text-center"
-    href="#explore"
-  >
-    Explore More
-  </a>
-</section>
-
-
-<!-- What you'll find here -->
-<section id="explore" class="mb-16 p-6 max-w-6xl mx-auto">
-  <div class="container flex flex-col justify-center mx-auto pt-16">
-    <div>
-      <h1
-        class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto"
-      >
-        What you'll find here
-      </h1>
-    </div>
-    <div>
-      <h2
-        class="text-base text-center text-gray-500 font-semibold pb-6 mx-auto"
-      >
-        An assorted list of receipes for successful mastery of statistical, mathematical and data science wizardy, all for free!
-      </h2>
-    </div>
-  </div>
-  
-  {{ range .Site.Sections }}
-  <div class="my-6 grid grid-cols-1 md:grid-cols-4 gap-2">
-    <div class="col-span-1 rounded-md shadow-md border-2 flex flex-col justify-center items-center p-4">
-      <img
-          src="{{ .Params.iconimg }}"
-          class="w-[150px] h-[150px] rounded-md mx-auto"
-      />
-      <div class="mt-4 text-neutral-900">
-        <p class="font-regular text-sm">
-          If you are a <span class="font-semibold">{{ .Params.slog }}</span>, {{ .Params.subtitle }}, 
-          our {{ .Title }} can help you!
+    <div class="min-h-[100vh] flex flex-col gap-6 justify-center">
+        <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
+        </h1>
+        <p
+            class="text-light text-xl md:text-xl animate__animated animate__fadeIn animate__delay-2s text-gray-700"
+        >
+            and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance.
         </p>
-      </div>
+        <a
+            class="py-2 px-6 rounded-md border-2 text-blue-600 
+                border-blue-600 bg-white hover:bg-blue-600 
+                focus:bg-blue-600 hover:text-white focus:text-white 
+                hover:border-white font-semibold transition ease-in-out 
+                max-w-[200px] text-center animate__animated animate__fadeIn animate__delay-2s"
+            href="/posts"
+        >
+            Explore Posts
+        </a>
     </div>
-    <div class="bg-gray-200 p-4 col-span-3">
-      <div class="mb-6 flex flex-row gap-4">
-        {{ range first 3 .Pages.ByDate.Reverse  }}
-          <div class="hover:scale-105 bg-white transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
-              {{ range .Resources.Match "featured*" }}
-                  <img class="w-full max-h-[200px] object-cover" src="{{ .Permalink }}" alt="">
-              {{ end }}
-              <div class="px-6 py-4">
-                  <a href="{{ .Permalink }}" class="font-bold text-xl mb-2 text-blue-600
-                      hover:text-blue-900 cursor-pointer transition ease-in-out">
-                      {{ .Title }}
-                  </a>
-                  <p class="text-neutral-800 text-sm font-light">
-                      {{ .Date.Format "02 January 2006" }}
-                  </p>
-                  <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
-                      <p class="italic"> &#8212; </p>
-                      {{ range (.GetTerms "authors") }}
-                          <a href="{{ .Permalink }}" class="text-{{ .Params.color }} hover:underline hover:text-gray-700 transition-all ease-in-out">
-                              {{ .Params.emoji }} {{ .Title }}
-                          </a>
-                      {{ end }}
-                  </div>
-              </div>
-          </div>
-        {{ end }}
-      </div>
-      <div class="mt-6 flex flex-row justify-center items-center">
-        <a href="{{ .Permalink }}" class="mt-6 px-4 py-2 rounded-sm border-2 border-neutral-900 hover:text-white focus:text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
-          See more {{ .Title }}
-        </a>            
-      </div>
+    <div>
+        <img src="/images/cover-1.png"/>
     </div>
-  </div>
-  {{ end }}
+</section>
+
+<!-- A basic about me section -->
+<section class="py-8 mx-4 md:mx-auto max-w-6xl">
+    <h1 class="mb-4 text-center text-blue-600 text-4xl md:text-6xl">
+        About Me
+    </h1>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+        I am <span class="text-blue-600 font-semibold">{{ .Params.title }}, </span> 
+        {{ .Params.subtitle }}
+    </p>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+      {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
+          {{ if eq $bioitem_index 0 }}
+              I am currently 
+          {{ else }}
+              and
+          {{ end }}
+          <span class="font-semibold text-gray-900">{{ $bioitem_val.bio | markdownify }}</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
+      {{ end }}.
+      {{ .Params.story }}
+    </p>
+    <div class="mt-8 mx-auto flex flex-row gap-4 justify-center items-center">
+      <a href="/aboutme"
+        class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
+        transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
+        More about me
+      </a>
+      <a 
+        href="cv.pdf"
+        class="px-6 py-2 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 rounded-full shadow-2xl cursor-pointer hover:text-white
+        transition-all duration-300 ease-in-out bg-white text-blue-600 border-2 border-blue-500">
+        Download my CV
+      </a>
+    </div>
 </section>
 
 
 
-<!-- Contact Us Section -->
+<!-- Contact Me CTA Section -->
 <section
-  id="contact-us"
-  class="py-8 mt-16 -mx-8 w-[100vw] bg-gradient-to-r from-neutral-900 to-black"
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
 >
   <div class="max-w-6xl mx-auto my-8 text-white text-center">
-    <p class="font-normal text-2xl py-4">Reach out to us via</p>
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    <!-- Not visible div but used for tailwindcss -->
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
     <!-- Social media icons container -->
     <div class="flex flex-row justify-center items-center mx-auto gap-4">
       {{ range .Site.Params.social }}
@@ -107,7 +89,7 @@
         href="{{ .link }}"
         class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
                     rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-500 ease-in-out
+                    duration-300 ease-in-out
                     hover:bg-{{ .color }} focus:bg-{{ .color }} hover:text-white focus:text-white"
       >
         <i class="{{ .icon }} fa-2x"></i>
@@ -117,5 +99,20 @@
   </div>
 </section>
 
+
+
+
+{{ end }}
+
+{{ define "pageScripts" }}
+
+<!-- Setup and start animation! -->
+<script>
+    var typed = new Typed('#typehead', {
+      strings: ["Hi, ^400 Let's make you a StatWizard"],
+      typeSpeed: 20,
+      showCursor: false
+    });
+</script>
 
 {{ end }}

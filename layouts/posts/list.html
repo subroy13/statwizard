@@ -27,14 +27,6 @@
                 <p class="text-neutral-800 text-sm font-light">
                     {{ .Date.Format "02 January 2006" }}
                 </p>
-                <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
-                    <p class="italic"> &#8212; </p>
-                    {{ range (.GetTerms "authors") }}
-                        <a href="{{ .Permalink }}" class="text-{{ .Params.color }} hover:underline hover:text-gray-700 transition-all ease-in-out">
-                            {{ .Params.emoji }} {{ .Title }}
-                        </a>
-                    {{ end }}
-                </div>
                 <p class="text-neutral-700 text-base">
                     {{ .Summary | truncate 100 }}
                 </p>

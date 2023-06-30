@@ -17,12 +17,12 @@
 {{ end }}
 
 <!-- Main item Article -->
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 mx-4 px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        {{ $item.Title }}
+    </h1>
     <div class="m-2 p-4 rounded-lg shadow-lg border-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col justify-center items-center gap-2">
-            <h1 class="text-3xl text-neutral-600 font-bold md:px-8 md:pt-6">
-                {{ $item.Title }}
-            </h1>   
+        <div class="flex flex-col justify-center items-center gap-2">   
             <div class="mt-1 flex flex-row text-neutral-800 gap-4">
                 <p class="font-bold">Date:</p>
                 <p class="font-normal">{{ $item.Date.Format "02 January, 2006" }}</p>
@@ -41,18 +41,6 @@
             </div>    
         </div>
         <div class="flex flex-col justify-center gap-2">
-            {{ if isset $item.Params "authors" }}
-            <div class="flex flex-row text-neutral-800 gap-4">
-                <p class="font-bold text-xl">Authors:</p>
-                <ul class="font-normal">
-                    {{ range (.GetTerms "authors") }}
-                        <a href="{{ .Permalink }}" class="text-xl text-{{ .Params.color }} hover:underline hover:text-gray-700 transition-all ease-in-out">
-                            {{ .Params.emoji }} {{ .Title }}
-                        </a>
-                    {{ end }}        
-                </ul>
-            </div>
-            {{ end }}
             <div class="">
                 <h2 class="text-neutral-900 font-bold">
                     Important Links:
@@ -92,19 +80,29 @@
 
 
 <!-- See previous and next posts -->
-<div class="mt-6 max-w-6xl md:mx-auto mx-4 text-center">
-    <p>Explore more posts like this</p>
-    <div class="flex flex-row justify-between gap-4">
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
         {{ if .PrevInSection }}
-            <a href="{{ .PrevInSection.Permalink }}" class="px-6 py-2 bg-gray-600 text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
+            <a href="{{ .PrevInSection.Permalink }}" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
                 Previous Post
             </a>
         {{ end }}
         {{ if .NextInSection }}
-            <a href="{{ .NextInSection.Permalink }}" class="px-6 py-2 bg-gray-600 text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
+            <a href="{{ .NextInSection.Permalink }}" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
                 Next Post
             </a>
         {{ end }}
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="{{ .FirstSection.Permalink }}" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
     </div>
 </div>
 

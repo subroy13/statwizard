@@ -9,7 +9,6 @@ publishDir = "docs"
 
 [taxonomies]
     tag = "tags"
-    author = "authors"
 
 
 # MENU LEVEL PROPERTIES
@@ -21,29 +20,19 @@ publishDir = "docs"
         weight = 1
 
     [[menu.main]]
-        name = "About Us"
-        url = "/authors"
+        name = "Posts"
+        url = "/posts"
         weight = 2
 
     [[menu.main]]
-        name = "Posts"
-        url = "/posts"
+        name = "About Me"
+        url = "/aboutme"
         weight = 3
     
     [[menu.main]]
-        name = "Explained Papers"
-        url = "/3levelpapers"
+        name = "Contact Me"
+        url = "/#contact-me"
         weight = 4
-
-    [[menu.main]]
-        name = "Tutorials"
-        url = "/tutorials"
-        weight = 5
-
-    [[menu.main]]
-        name = "Contact Us"
-        url = "#contact-us"
-        weight = 6
 
 
 # Custom Parameters
@@ -67,12 +56,6 @@ publishDir = "docs"
         link = "https://github.com/subroy13"
         icon = "fab fa-github"
         color = "gray-500"
-
-    [[params.social]]
-        name = "Twitter"
-        link = "#"
-        icon = "fab fa-twitter"
-        color = "sky-500"
 
     [[params.social]]
         name = "LinkedIn"

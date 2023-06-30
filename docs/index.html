@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.80.0" />
+	<meta name="generator" content="Hugo 0.111.3">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
     <title>
         
             StatWizard
         
     </title>
-    
+
     
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,13 +28,17 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.7b2452f9c89e85a39c06cc5158b916f8.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
 
 
 
 
 
 <link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
 
 <style>
   html {
@@ -58,9 +63,12 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
 </head>
 <body>
-    <div class="app-container min-h-[100vh] flex flex-col justify-between content-center">
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
         <nav class="bg-white shadow-xl z-50">
     
     <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
@@ -75,24 +83,16 @@
                     Home
                 </a>
             
-                <a href="/authors" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    About Us
-                </a>
-            
                 <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
                     Posts
                 </a>
             
-                <a href="/3levelpapers" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Explained Papers
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
                 </a>
             
-                <a href="/tutorials" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Tutorials
-                </a>
-            
-                <a href="/#contact-us" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Contact Us
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
                 </a>
             
         </div>
@@ -108,10 +108,6 @@
             
                 <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-github fa-lg"></i>
-                </a>
-            
-                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-twitter fa-lg"></i>
                 </a>
             
                 <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
@@ -160,32 +156,20 @@
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/authors" class="">
-                                About Us
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
                             <a href="/posts" class="">
                                 Posts
                             </a>
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/3levelpapers" class="">
-                                Explained Papers
+                            <a href="/aboutme" class="">
+                                About Me
                             </a>
                         </li>
                     
                         <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/tutorials" class="">
-                                Tutorials
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/#contact-us" class="">
-                                Contact Us
+                            <a href="/#contact-me" class="">
+                                Contact Me
                             </a>
                         </li>
                     
@@ -196,205 +180,96 @@
 </nav>
 
 
-        <div class="px-4 mx-4 md:mx-auto">
+        <div class="content-container">
             
 
 
 <section
-  class="mx-4 md:mx-auto max-w-6xl min-h-[100vh] flex flex-col gap-6 justify-center"
+  class="min-h-[100vh] mx-4 md:mx-auto max-w-6xl grid grid-cols-2 gap-2"
 >
-  <h1 class="text-black text-4xl md:text-8xl animate__animated animate__fadeIn">
-    Hi, We&#39;re StatWizards
-  </h1>
-  <p
-    class="text-light text-xl md:text-2xl animate__animated animate__fadeIn animate__delay-1s text-gray-700"
-  >
-    A few guys coming together to make esoteric statistical and related topics open-sourced to everybody!
-  </p>
-  <a
-    class="py-2 px-6 rounded-md border-2 text-neutral-900 border-neutral-900 bg-white hover:bg-neutral-900 focus:bg-neutral-900 hover:text-white focus:text-white hover:border-white font-semibold transition ease-in-out max-w-[200px] text-center"
-    href="#explore"
-  >
-    Explore More
-  </a>
+    <div class="min-h-[100vh] flex flex-col gap-6 justify-center">
+        <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
+        </h1>
+        <p
+            class="text-light text-xl md:text-xl animate__animated animate__fadeIn animate__delay-2s text-gray-700"
+        >
+            and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance.
+        </p>
+        <a
+            class="py-2 px-6 rounded-md border-2 text-blue-600 
+                border-blue-600 bg-white hover:bg-blue-600 
+                focus:bg-blue-600 hover:text-white focus:text-white 
+                hover:border-white font-semibold transition ease-in-out 
+                max-w-[200px] text-center animate__animated animate__fadeIn animate__delay-2s"
+            href="/posts"
+        >
+            Explore Posts
+        </a>
+    </div>
+    <div>
+        <img src="/images/cover-1.png"/>
+    </div>
 </section>
 
 
-
-<section id="explore" class="mb-16 p-6 max-w-6xl mx-auto">
-  <div class="container flex flex-col justify-center mx-auto pt-16">
-    <div>
-      <h1
-        class="xl:text-4xl text-3xl text-center text-gray-800 font-extrabold pb-6 mx-auto"
-      >
-        What you'll find here
-      </h1>
+<section class="py-8 mx-4 md:mx-auto max-w-6xl">
+    <h1 class="mb-4 text-center text-blue-600 text-4xl md:text-6xl">
+        About Me
+    </h1>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+        I am <span class="text-blue-600 font-semibold">Subhrajyoty Roy, </span> 
+        I am just a soul curious about learning about statistics, mathematics and data science.
+    </p>
+    <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
+      
+          
+              I am currently 
+          
+          <span class="font-semibold text-gray-900">Principal Information Researcher</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer"><a href="https://www.syscloud.com/">SysCloud</a></span>
+      
+          
+              and
+          
+          <span class="font-semibold text-gray-900">an External Research Fellow</span>
+          at 
+          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer"><a href="https://www.isical.ac.in">Indian Statistical Institute, Kolkata</a></span>
+      .
+      I believe in the magic of statistics and its profound impact on understanding the world around us. While learning statistics, data science and other related concepts from both academic and industrial world, I felt mesmerized and become passionate about these. I also strongly believed in the open-source framework and hence started thinking about sharing the wizardry and making complex concepts accessible to all. So, StatWizard was born.
+    </p>
+    <div class="mt-8 mx-auto flex flex-row gap-4 justify-center items-center">
+      <a href="/aboutme"
+        class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
+        transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
+        More about me
+      </a>
+      <a 
+        href="cv.pdf"
+        class="px-6 py-2 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 rounded-full shadow-2xl cursor-pointer hover:text-white
+        transition-all duration-300 ease-in-out bg-white text-blue-600 border-2 border-blue-500">
+        Download my CV
+      </a>
     </div>
-    <div>
-      <h2
-        class="text-base text-center text-gray-500 font-semibold pb-6 mx-auto"
-      >
-        An assorted list of receipes for successful mastery of statistical, mathematical and data science wizardy, all for free!
-      </h2>
-    </div>
-  </div>
-  
-  
-  <div class="my-6 grid grid-cols-1 md:grid-cols-4 gap-2">
-    <div class="col-span-1 rounded-md shadow-md border-2 flex flex-col justify-center items-center p-4">
-      <img
-          src="/svg/undraw_browsing.svg"
-          class="w-[150px] h-[150px] rounded-md mx-auto"
-      />
-      <div class="mt-4 text-neutral-900">
-        <p class="font-regular text-sm">
-          If you are a <span class="font-semibold">Websurfer</span>, Looking for interesting ideas and thought provoking discussions related to statistics, mathematics, computer science and personal finances., 
-          our Posts can help you!
-        </p>
-      </div>
-    </div>
-    <div class="bg-gray-200 p-4 col-span-3">
-      <div class="mb-6 flex flex-row gap-4">
-        
-          <div class="hover:scale-105 bg-white transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
-              
-                  <img class="w-full max-h-[200px] object-cover" src="/posts/texture-network-style-transfer/featured.png" alt="">
-              
-              <div class="px-6 py-4">
-                  <a href="/posts/texture-network-style-transfer/" class="font-bold text-xl mb-2 text-blue-600
-                      hover:text-blue-900 cursor-pointer transition ease-in-out">
-                      Texture Networks
-                  </a>
-                  <p class="text-neutral-800 text-sm font-light">
-                      13 January 2021
-                  </p>
-                  <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
-                      <p class="italic"> &#8212; </p>
-                      
-                          <a href="/authors/turtle/" class="text-green-700 hover:underline hover:text-gray-700 transition-all ease-in-out">
-                              🐢 Turtle
-                          </a>
-                      
-                  </div>
-              </div>
-          </div>
-        
-          <div class="hover:scale-105 bg-white transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
-              
-                  <img class="w-full max-h-[200px] object-cover" src="/posts/covid19-esir-model/featured.jpg" alt="">
-              
-              <div class="px-6 py-4">
-                  <a href="/posts/covid19-esir-model/" class="font-bold text-xl mb-2 text-blue-600
-                      hover:text-blue-900 cursor-pointer transition ease-in-out">
-                      Analysis of basic Epidemiological models - Part 2
-                  </a>
-                  <p class="text-neutral-800 text-sm font-light">
-                      01 April 2020
-                  </p>
-                  <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
-                      <p class="italic"> &#8212; </p>
-                      
-                          <a href="/authors/turtle/" class="text-green-700 hover:underline hover:text-gray-700 transition-all ease-in-out">
-                              🐢 Turtle
-                          </a>
-                      
-                  </div>
-              </div>
-          </div>
-        
-          <div class="hover:scale-105 bg-white transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
-              
-                  <img class="w-full max-h-[200px] object-cover" src="/posts/covid19-sir-model/featured.jpg" alt="">
-              
-              <div class="px-6 py-4">
-                  <a href="/posts/covid19-sir-model/" class="font-bold text-xl mb-2 text-blue-600
-                      hover:text-blue-900 cursor-pointer transition ease-in-out">
-                      Analysis of basic Epidemiological models - Part 1
-                  </a>
-                  <p class="text-neutral-800 text-sm font-light">
-                      25 March 2020
-                  </p>
-                  <div class="mt-1 mb-4 text-neutral-800 text-sm flex flex-row justify-start items-center gap-2">
-                      <p class="italic"> &#8212; </p>
-                      
-                          <a href="/authors/turtle/" class="text-green-700 hover:underline hover:text-gray-700 transition-all ease-in-out">
-                              🐢 Turtle
-                          </a>
-                      
-                  </div>
-              </div>
-          </div>
-        
-      </div>
-      <div class="mt-6 flex flex-row justify-center items-center">
-        <a href="/posts/" class="mt-6 px-4 py-2 rounded-sm border-2 border-neutral-900 hover:text-white focus:text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
-          See more Posts
-        </a>            
-      </div>
-    </div>
-  </div>
-  
-  <div class="my-6 grid grid-cols-1 md:grid-cols-4 gap-2">
-    <div class="col-span-1 rounded-md shadow-md border-2 flex flex-col justify-center items-center p-4">
-      <img
-          src="/svg/undraw_teacher.svg"
-          class="w-[150px] h-[150px] rounded-md mx-auto"
-      />
-      <div class="mt-4 text-neutral-900">
-        <p class="font-regular text-sm">
-          If you are a <span class="font-semibold">Researcher</span>, Looking for simple explanations on academic papers from field of statistics, machine learning and deep learning., 
-          our Explained Papers can help you!
-        </p>
-      </div>
-    </div>
-    <div class="bg-gray-200 p-4 col-span-3">
-      <div class="mb-6 flex flex-row gap-4">
-        
-      </div>
-      <div class="mt-6 flex flex-row justify-center items-center">
-        <a href="/3levelpapers/" class="mt-6 px-4 py-2 rounded-sm border-2 border-neutral-900 hover:text-white focus:text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
-          See more Explained Papers
-        </a>            
-      </div>
-    </div>
-  </div>
-  
-  <div class="my-6 grid grid-cols-1 md:grid-cols-4 gap-2">
-    <div class="col-span-1 rounded-md shadow-md border-2 flex flex-col justify-center items-center p-4">
-      <img
-          src="/svg/undraw_mathematics.svg"
-          class="w-[150px] h-[150px] rounded-md mx-auto"
-      />
-      <div class="mt-4 text-neutral-900">
-        <p class="font-regular text-sm">
-          If you are a <span class="font-semibold">Student</span>, Looking for learning basics of concepts from statistics, mathematics or computer science., 
-          our Tutorials can help you!
-        </p>
-      </div>
-    </div>
-    <div class="bg-gray-200 p-4 col-span-3">
-      <div class="mb-6 flex flex-row gap-4">
-        
-      </div>
-      <div class="mt-6 flex flex-row justify-center items-center">
-        <a href="/tutorials/" class="mt-6 px-4 py-2 rounded-sm border-2 border-neutral-900 hover:text-white focus:text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
-          See more Tutorials
-        </a>            
-      </div>
-    </div>
-  </div>
-  
 </section>
 
 
 
 
 <section
-  id="contact-us"
-  class="py-8 mt-16 -mx-8 w-[100vw] bg-gradient-to-r from-neutral-900 to-black"
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
 >
   <div class="max-w-6xl mx-auto my-8 text-white text-center">
-    <p class="font-normal text-2xl py-4">Reach out to us via</p>
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
     
     <div class="flex flex-row justify-center items-center mx-auto gap-4">
       
@@ -433,16 +308,6 @@
         class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
                     rounded-full border-2 border-white border-solid text-white transition-all 
                     duration-500 ease-in-out
-                    hover:bg-sky-500 focus:bg-sky-500 hover:text-white focus:text-white"
-      >
-        <i class="fab fa-twitter fa-2x"></i>
-      </a>
-      
-      <a
-        href="#"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-500 ease-in-out
                     hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
       >
         <i class="fab fa-linkedin-in fa-2x"></i>
@@ -464,6 +329,8 @@
 
 
 
+
+
         </div>
 
         
@@ -476,6 +343,7 @@
 </footer>
 
     </div>
+
     <script>
     $(document).ready(() => {
 
@@ -496,6 +364,16 @@
 </script>
 
     
-    
+
+
+<script>
+    var typed = new Typed('#typehead', {
+      strings: ["Hi, ^400 Let's make you a StatWizard"],
+      typeSpeed: 20,
+      showCursor: false
+    });
+</script>
+
+
 </body>
 </html>
