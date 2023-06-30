@@ -70,10 +70,18 @@
 <!-- Contact Me CTA Section -->
 <section
   id="contact-me"
-  class="py-8 mt-16 w-[100vw] bg-gradient-to-r from-neutral-900 to-black"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
 >
   <div class="max-w-6xl mx-auto my-8 text-white text-center">
     <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    <!-- Not visible div but used for tailwindcss -->
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
     <!-- Social media icons container -->
     <div class="flex flex-row justify-center items-center mx-auto gap-4">
       {{ range .Site.Params.social }}
@@ -81,7 +89,7 @@
         href="{{ .link }}"
         class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
                     rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-500 ease-in-out
+                    duration-300 ease-in-out
                     hover:bg-{{ .color }} focus:bg-{{ .color }} hover:text-white focus:text-white"
       >
         <i class="{{ .icon }} fa-2x"></i>

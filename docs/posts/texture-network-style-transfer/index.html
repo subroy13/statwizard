@@ -27,7 +27,7 @@ Texture Networks
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.496f0b11ae99e91cef9d3a04f33fb76c.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
 
 
 
@@ -196,11 +196,11 @@ Texture Networks
 
 
 <div class="flex flex-col gap-4 mx-4 px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Texture Networks
+    </h1>
     <div class="m-2 p-4 rounded-lg shadow-lg border-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col justify-center items-center gap-2">
-            <h1 class="text-3xl text-neutral-600 font-bold md:px-8 md:pt-6">
-                Texture Networks
-            </h1>   
+        <div class="flex flex-col justify-center items-center gap-2">   
             <div class="mt-1 flex flex-row text-neutral-800 gap-4">
                 <p class="font-bold">Date:</p>
                 <p class="font-normal">13 January, 2021</p>
@@ -281,18 +281,18 @@ Texture Networks
 <p>I am going to discuss exactly how I created those stylized images, and hopefully, after reading this, you would be able to reproduce similar results with images of your choice.</p>
 <h1 id="prerequisites">Prerequisites</h1>
 <p>I am not talking about things you need to know beforehand to understand the intricate details of the mechanism, but the software requirements that I will be using to create something similar to texture networks. So, at the very beginning, I import all the required packages in <code>python</code>. Also, I shall be using an <strong>NVidia GeForce GTX 1060Ti</strong> Graphics card with CUDA computing capability 6.1, which is not at par with the GPU devices used at a professional level, but this speeds up the computations by a lot rather than using a CPU.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> tensorflow <span style="color:#f92672">as</span> tf
-<span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
-<span style="color:#f92672">import</span> time
-<span style="color:#f92672">import</span> functools
-<span style="color:#f92672">import</span> PIL.Image
-<span style="color:#f92672">import</span> IPython.display <span style="color:#f92672">as</span> display
-<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>__version__
-</code></pre></div><pre><code>'2.1.0-rc0'
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tensorflow <span style="color:#66d9ef">as</span> tf
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> functools
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> PIL.Image
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> IPython.display <span style="color:#66d9ef">as</span> display
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>__version__
+</span></span></code></pre></div><pre><code>'2.1.0-rc0'
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>test<span style="color:#f92672">.</span>gpu_device_name()
-</code></pre></div><pre><code>'/device:GPU:0'
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>test<span style="color:#f92672">.</span>gpu_device_name()
+</span></span></code></pre></div><pre><code>'/device:GPU:0'
 </code></pre>
 <h1 id="making-some-utility-functions">Making Some Utility Functions</h1>
 <p>Before proceeding with describing how the Texture Network is created, I would create some utility functions to help us later. For starters, these utility functions will allow us to load images from a path, and visualize an image given its tensor.</p>
@@ -310,51 +310,51 @@ Texture Networks
 <p>Using finer grids actually results in a better picture, as you can see. Digital black and white images are represented using the technique described above, and each of the grid cell is called a <a href="https://en.wikipedia.org/wiki/Pixel">Pixel</a>. Now, note that, we can represent this grid using a 2-dimensional matrix of 0&rsquo;s and 1&rsquo;s, where a white pixel would be represented as 0 and a black pixel would be repesented as 1. For instance, the smiley image can be matrixified like this:</p>
 <p><img src="./smiley.png" alt=""></p>
 <p>$$\begin{bmatrix}
-0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\<br>
-0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\<br>
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\<br>
-0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\<br>
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\
+1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\
 \end{bmatrix}$$</p>
 <p>Now, we shall use colour images in this context of Neural Style Transfer. To represent a colour image, we require 3 such matrices. One for Red channel, one for Blue channel and another for Green Channel. Also, the elements of the matrices will be allowed to take values between 0 and 255 (to be represented by 8 digit binary numbers) or to take any real value between 0 and 1, representing the denisty of the colour. For instance, in the above black and white images, we can put the value 0.5 in some elements to represent that those pixels should be coloured using gray, which is a colour midway between black and white. Hence, allowing floating point values would ensure a richer distribution of images.</p>
 <p>Coming back to the link between images and tensor, an image is represented by 3 such matrices, in combination, a 3-dimensional tensor, which the dimension or shape being (3, height of the image, width of the image), where 3 being number of channels.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tensor_to_image</span>(tensor):
-    tensor <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>clip_by_value(tensor, clip_value_min<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, clip_value_max<span style="color:#f92672">=</span><span style="color:#ae81ff">255.0</span>)
-    tensor <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(tensor, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)   <span style="color:#75715e"># convert tf array to np array of integers</span>
-    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>ndim(tensor)<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">3</span>:
-        <span style="color:#66d9ef">assert</span> tensor<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># asserts that the BATCH_SIZE = 1</span>
-        tensor <span style="color:#f92672">=</span> tensor[<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># take the first image</span>
-    <span style="color:#66d9ef">return</span> PIL<span style="color:#f92672">.</span>Image<span style="color:#f92672">.</span>fromarray(tensor)
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_img</span>(path_to_img, rescale <span style="color:#f92672">=</span> False):
-    <span style="color:#75715e"># we rescale the image to max dimension 256 for fasters processing</span>
-    max_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>    
-    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>io<span style="color:#f92672">.</span>read_file(path_to_img)   <span style="color:#75715e"># read the image</span>
-    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>decode_image(img, channels<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)    <span style="color:#75715e"># decode into image content</span>
-    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>convert_image_dtype(img, tf<span style="color:#f92672">.</span>float32)    <span style="color:#75715e"># convert to float</span>
-    <span style="color:#66d9ef">if</span> rescale:
-        img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(img, tf<span style="color:#f92672">.</span>constant([max_dim, max_dim]))
-    <span style="color:#66d9ef">else</span>:
-        shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(tf<span style="color:#f92672">.</span>shape(img)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], tf<span style="color:#f92672">.</span>float32)   
-        <span style="color:#75715e"># get the shape of image, cast it to float type for division, expect the last channel dimension</span>
-        long_dim <span style="color:#f92672">=</span> max(shape)
-        scale <span style="color:#f92672">=</span> max_dim <span style="color:#f92672">/</span> long_dim    <span style="color:#75715e"># scale accordingly</span>
-        new_shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(shape <span style="color:#f92672">*</span> scale, tf<span style="color:#f92672">.</span>int32)   <span style="color:#75715e"># cast the new shape to integer</span>
-        img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(img, new_shape)   <span style="color:#75715e"># resize image</span>
-    img <span style="color:#f92672">=</span> img[tf<span style="color:#f92672">.</span>newaxis, :]   <span style="color:#75715e"># newaxis builts a new batch axis in the image at first dimension</span>
-    <span style="color:#66d9ef">return</span> img
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../input/artistic-style-transfer/pattern-rooster.jpg&#39;</span>
-content_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../input/artistic-style-transfer/celebGAN_male.png&#39;</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">content_image <span style="color:#f92672">=</span> load_img(content_path, rescale <span style="color:#f92672">=</span> True)
-tensor_to_image(content_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
-</code></pre></div><p><img src="./index_13_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tensor_to_image</span>(tensor):
+</span></span><span style="display:flex;"><span>    tensor <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>clip_by_value(tensor, clip_value_min<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, clip_value_max<span style="color:#f92672">=</span><span style="color:#ae81ff">255.0</span>)
+</span></span><span style="display:flex;"><span>    tensor <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(tensor, dtype<span style="color:#f92672">=</span>np<span style="color:#f92672">.</span>uint8)   <span style="color:#75715e"># convert tf array to np array of integers</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>ndim(tensor)<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> tensor<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>  <span style="color:#75715e"># asserts that the BATCH_SIZE = 1</span>
+</span></span><span style="display:flex;"><span>        tensor <span style="color:#f92672">=</span> tensor[<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># take the first image</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> PIL<span style="color:#f92672">.</span>Image<span style="color:#f92672">.</span>fromarray(tensor)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_img</span>(path_to_img, rescale <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># we rescale the image to max dimension 256 for fasters processing</span>
+</span></span><span style="display:flex;"><span>    max_dim <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>    
+</span></span><span style="display:flex;"><span>    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>io<span style="color:#f92672">.</span>read_file(path_to_img)   <span style="color:#75715e"># read the image</span>
+</span></span><span style="display:flex;"><span>    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>decode_image(img, channels<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)    <span style="color:#75715e"># decode into image content</span>
+</span></span><span style="display:flex;"><span>    img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>convert_image_dtype(img, tf<span style="color:#f92672">.</span>float32)    <span style="color:#75715e"># convert to float</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> rescale:
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(img, tf<span style="color:#f92672">.</span>constant([max_dim, max_dim]))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(tf<span style="color:#f92672">.</span>shape(img)[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], tf<span style="color:#f92672">.</span>float32)   
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># get the shape of image, cast it to float type for division, expect the last channel dimension</span>
+</span></span><span style="display:flex;"><span>        long_dim <span style="color:#f92672">=</span> max(shape)
+</span></span><span style="display:flex;"><span>        scale <span style="color:#f92672">=</span> max_dim <span style="color:#f92672">/</span> long_dim    <span style="color:#75715e"># scale accordingly</span>
+</span></span><span style="display:flex;"><span>        new_shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(shape <span style="color:#f92672">*</span> scale, tf<span style="color:#f92672">.</span>int32)   <span style="color:#75715e"># cast the new shape to integer</span>
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(img, new_shape)   <span style="color:#75715e"># resize image</span>
+</span></span><span style="display:flex;"><span>    img <span style="color:#f92672">=</span> img[tf<span style="color:#f92672">.</span>newaxis, :]   <span style="color:#75715e"># newaxis builts a new batch axis in the image at first dimension</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> img
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>style_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../input/artistic-style-transfer/pattern-rooster.jpg&#39;</span>
+</span></span><span style="display:flex;"><span>content_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../input/artistic-style-transfer/celebGAN_male.png&#39;</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>content_image <span style="color:#f92672">=</span> load_img(content_path, rescale <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>tensor_to_image(content_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
+</span></span></code></pre></div><p><img src="./index_13_0.png" alt="png"></p>
 <p>This is the content image, on which we shall apply some style. Note that, the loaded images have elements between 0 and 1, while the <code>tensor_to_img</code> function takes in a tensor with values between 0 and 255, hence we need to multiply all the elements by 255 to convert it to the crucial range where it can be visualized.</p>
 <p>Surprisingly, the image I am using is actually an image generated via Neural Network called <a href="https://arxiv.org/abs/1710.10196">Progressive GAN</a>, which is really interesting work by Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen, who trained a network on <strong>Celeb A</strong> dataset to generate images of new celebrities, who do not exist in real life.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_image <span style="color:#f92672">=</span> load_img(style_path, rescale <span style="color:#f92672">=</span> False)
-tensor_to_image(style_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
-</code></pre></div><p><img src="./index_15_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>style_image <span style="color:#f92672">=</span> load_img(style_path, rescale <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>tensor_to_image(style_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
+</span></span></code></pre></div><p><img src="./index_15_0.png" alt="png"></p>
 <p>This is the style image that we can going to use. So, we think, the final image would look like the image of the artificial celebrity, tessalatted like the style image.</p>
 <h1 id="architecture-of-texture-network">Architecture of Texture Network</h1>
 <p>Texture Network comprised of two main components.</p>
@@ -366,20 +366,20 @@ tensor_to_image(style_image <span style="color:#f92672">*</span> <span style="co
 <p>A <strong>Descriptor Network</strong> is a neural network which takes input of the desired stylized image, and then try to figure out the underlying style and content of the stylized image, and try to match it with the original style image and content image.</p>
 <p>If you are familiar with <a href="https://en.wikipedia.org/wiki/Generative_adversarial_network">Generative Adversarial Networks</a> (GAN), then you would find a lot similarity of Texture Network with GANs. However, unlike to the case of GAN, here, the descriptor network will not be trained, but will be used to measure the style and content of the stylized images generated by Generator Network.</p>
 <p>To understand why such a descriptor network is needed at all, consider an image of a person. If one shifts the image just by one pixel to the left, then using a simple squared error loss between the original image and shifted image would become large, however, from our perception, both images would look identical. Hence, to actually compare the two images, we specifically need to compare high level representations of the images, which will be provided by the descriptor network.</p>
-<figure>
-    <img src="texnet.png"
-         alt="Description of the Network: Taken from the paper introducing Texture Networks"/> <figcaption>
+<figure><img src="texnet.png"
+         alt="Description of the Network: Taken from the paper introducing Texture Networks"/><figcaption>
             <p>Description of the Network: Taken from the paper introducing Texture Networks</p>
         </figcaption>
 </figure>
 <h2 id="choice-of-descriptor-network">Choice of Descriptor Network</h2>
 <p>We use <a href="https://arxiv.org/abs/1409.1556">VGG19</a> as our descriptor network as it is a Very Deep Convolutional Networks for Large-Scale Image Recognition. It was developed by Karen Simonyan, Andrew Zisserman in 2014, and is trained with the ImageNet dataset, comprising of millions of images. Hence, high level features of this network will be an acurate representation of the style and content of images.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vgg <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>VGG19(include_top<span style="color:#f92672">=</span>False, weights<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;imagenet&#39;</span>)   <span style="color:#75715e"># Load VGG19 pretrained Network from Keras</span>
-<p><span style="color:#66d9ef">print</span>()
-<span style="color:#66d9ef">for</span> layer <span style="color:#f92672">in</span> vgg<span style="color:#f92672">.</span>layers:
-<span style="color:#66d9ef">print</span>(layer<span style="color:#f92672">.</span>name)   <span style="color:#75715e"># print layer names so that we can reference them later</span>
-</code></pre></div><pre><code>Downloading data from <a href="https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5">https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5</a>
-80142336/80134624 [==============================] - 1s 0us/step</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vgg <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>VGG19(include_top<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, weights<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;imagenet&#39;</span>)   <span style="color:#75715e"># Load VGG19 pretrained Network from Keras</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> layer <span style="color:#f92672">in</span> vgg<span style="color:#f92672">.</span>layers:
+</span></span><span style="display:flex;"><span>    print(layer<span style="color:#f92672">.</span>name)   <span style="color:#75715e"># print layer names so that we can reference them later</span>
+</span></span></code></pre></div><pre><code>Downloading data from https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg19_weights_tf_dim_ordering_tf_kernels_notop.h5
+80142336/80134624 [==============================] - 1s 0us/step
 <p>input_1
 block1_conv1
 block1_conv2
@@ -411,39 +411,39 @@ block5_pool
 <li><a href="https://ezyang.github.io/convolution-visualizer/index.html">https://ezyang.github.io/convolution-visualizer/index.html</a> has a really good interactive environment where you can set the parameters and take look at the corresponding convolutional operation.</li>
 </ol>
 <p>Coming back to circular convolution, it is a simple 2-dimensional convolution with with a particular type of padding called <strong>Circular Padding</strong>. It essentially wraps the image from top to bottom and from left to right.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">periodic_padding</span>(x, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
-    <span style="color:#e6db74">&#39;&#39;&#39;
-</span><span style="color:#e6db74">    x: shape (batch_size, d1, d2)
-</span><span style="color:#e6db74">    return x padded with periodic boundaries. i.e. torus or donut
-</span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
-    d1 <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># dimension 1: height</span>
-    d2 <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">2</span>] <span style="color:#75715e"># dimension 2: width</span>
-    p <span style="color:#f92672">=</span> padding
-    <span style="color:#75715e"># assemble padded x from slices</span>
-    <span style="color:#75715e">#            tl,tc,tr</span>
-    <span style="color:#75715e"># padded_x = ml,mc,mr</span>
-    <span style="color:#75715e">#            bl,bc,br</span>
-    top_left <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># top left</span>
-    top_center <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, :] <span style="color:#75715e"># top center</span>
-    top_right <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, :p] <span style="color:#75715e"># top right</span>
-    middle_left <span style="color:#f92672">=</span> x[:, :, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># middle left</span>
-    middle_center <span style="color:#f92672">=</span> x <span style="color:#75715e"># middle center</span>
-    middle_right <span style="color:#f92672">=</span> x[:, :, :p] <span style="color:#75715e"># middle right</span>
-    bottom_left <span style="color:#f92672">=</span> x[:, :p, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># bottom left</span>
-    bottom_center <span style="color:#f92672">=</span> x[:, :p, :] <span style="color:#75715e"># bottom center</span>
-    bottom_right <span style="color:#f92672">=</span> x[:, :p, :p] <span style="color:#75715e"># bottom right</span>
-    top <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([top_left, top_center, top_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-    middle <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([middle_left, middle_center, middle_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-    bottom <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([bottom_left, bottom_center, bottom_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-    padded_x <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([top, middle, bottom], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-    <span style="color:#66d9ef">return</span> padded_x
-</code></pre></div><p>In the function <code>periodic_padding</code>, we give several input images, however, with only one channel for each image. Here, the input is a tensor of the shape (number of images, height of the image, width of the image). Hence, we can think of the input as if we are passing many 2-dimensional matrices of shape (height of the image, width of the image). We also pass the amount of padding that we want. Let us see what it outputs, when we pass a single 2D matrix as follows;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">periodic_padding</span>(x, padding<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    x: shape (batch_size, d1, d2)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    return x padded with periodic boundaries. i.e. torus or donut
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    d1 <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>] <span style="color:#75715e"># dimension 1: height</span>
+</span></span><span style="display:flex;"><span>    d2 <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">2</span>] <span style="color:#75715e"># dimension 2: width</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> padding
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># assemble padded x from slices</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#            tl,tc,tr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># padded_x = ml,mc,mr</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#            bl,bc,br</span>
+</span></span><span style="display:flex;"><span>    top_left <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># top left</span>
+</span></span><span style="display:flex;"><span>    top_center <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, :] <span style="color:#75715e"># top center</span>
+</span></span><span style="display:flex;"><span>    top_right <span style="color:#f92672">=</span> x[:, <span style="color:#f92672">-</span>p:, :p] <span style="color:#75715e"># top right</span>
+</span></span><span style="display:flex;"><span>    middle_left <span style="color:#f92672">=</span> x[:, :, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># middle left</span>
+</span></span><span style="display:flex;"><span>    middle_center <span style="color:#f92672">=</span> x <span style="color:#75715e"># middle center</span>
+</span></span><span style="display:flex;"><span>    middle_right <span style="color:#f92672">=</span> x[:, :, :p] <span style="color:#75715e"># middle right</span>
+</span></span><span style="display:flex;"><span>    bottom_left <span style="color:#f92672">=</span> x[:, :p, <span style="color:#f92672">-</span>p:] <span style="color:#75715e"># bottom left</span>
+</span></span><span style="display:flex;"><span>    bottom_center <span style="color:#f92672">=</span> x[:, :p, :] <span style="color:#75715e"># bottom center</span>
+</span></span><span style="display:flex;"><span>    bottom_right <span style="color:#f92672">=</span> x[:, :p, :p] <span style="color:#75715e"># bottom right</span>
+</span></span><span style="display:flex;"><span>    top <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([top_left, top_center, top_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    middle <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([middle_left, middle_center, middle_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    bottom <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([bottom_left, bottom_center, bottom_right], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    padded_x <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([top, middle, bottom], axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> padded_x
+</span></span></code></pre></div><p>In the function <code>periodic_padding</code>, we give several input images, however, with only one channel for each image. Here, the input is a tensor of the shape (number of images, height of the image, width of the image). Hence, we can think of the input as if we are passing many 2-dimensional matrices of shape (height of the image, width of the image). We also pass the amount of padding that we want. Let us see what it outputs, when we pass a single 2D matrix as follows;</p>
 <p>$$\begin{bmatrix}
 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9
 \end{bmatrix}$$</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>constant([[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>], [<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]]])
-periodic_padding(a)
-</code></pre></div><pre><code>&lt;tf.Tensor: shape=(1, 5, 5), dtype=int32, numpy=
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>constant([[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>], [<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]]])
+</span></span><span style="display:flex;"><span>periodic_padding(a)
+</span></span></code></pre></div><pre><code>&lt;tf.Tensor: shape=(1, 5, 5), dtype=int32, numpy=
 array([[[9, 7, 8, 9, 7],
         [3, 1, 2, 3, 1],
         [6, 4, 5, 6, 4],
@@ -452,20 +452,19 @@ array([[[9, 7, 8, 9, 7],
 </code></pre>
 <p>Note that, the output tensor has size 5x5, which it obtained by one unit of padding in top, bottom, left and right. Also note that, to the left of 1, we have 3, hence it is as if the rightmost column of the original matrix is wrapped to the left side of the matrix. Similar wrapping is also seen in vertical direction.</p>
 <p>However, for an image, we need to perform this circular padding for each of the channel. Hence, we first split up the 3 channels of the image, then append circular padding for each one, and finally combine them together. This is done through <code>CircularPadding</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CircularPadding</span>(inputs, kernel_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>):
-    <span style="color:#e6db74">&#34;&#34;&#34;Prepares padding for Circular convolution&#34;&#34;&#34;</span>
-    <span style="color:#75715e"># split all the filters</span>
-    n_filters_in <span style="color:#f92672">=</span> inputs<span style="color:#f92672">.</span>shape[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-    input_split <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>split(inputs, n_filters_in, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-    output_split <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">for</span> part <span style="color:#f92672">in</span> input_split:
-        part <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>squeeze(part, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-        outs <span style="color:#f92672">=</span> periodic_padding(part, padding <span style="color:#f92672">=</span> int(kernel_size <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>))
-        outs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>expand_dims(outs, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-        output_split<span style="color:#f92672">.</span>append(outs)
-    <span style="color:#66d9ef">return</span> tf<span style="color:#f92672">.</span>concat(output_split, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><figure>
-    <img src="convolution.png" width="500px"/> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CircularPadding</span>(inputs, kernel_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Prepares padding for Circular convolution&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># split all the filters</span>
+</span></span><span style="display:flex;"><span>    n_filters_in <span style="color:#f92672">=</span> inputs<span style="color:#f92672">.</span>shape[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    input_split <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>split(inputs, n_filters_in, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>    output_split <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> part <span style="color:#f92672">in</span> input_split:
+</span></span><span style="display:flex;"><span>        part <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>squeeze(part, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        outs <span style="color:#f92672">=</span> periodic_padding(part, padding <span style="color:#f92672">=</span> int(kernel_size <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>))
+</span></span><span style="display:flex;"><span>        outs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>expand_dims(outs, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        output_split<span style="color:#f92672">.</span>append(outs)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tf<span style="color:#f92672">.</span>concat(output_split, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><figure><img src="convolution.png" width="500px"/>
 </figure>
 <p>The diagram above shows the main idea of a convolutional layer. Let us say, we have an image, represented by a 5x5x3 tensor (pretty bad for visualizing, but pretty good for understanding), and we wish to perform convolution of this image with a 3x3 kernel. Then the convolution is basically a weighted combination of all the neighbouring pixels from all the layers. To understand mathematically, let us introduce some notations.</p>
 <p>Let $X$ denote the tensor image, and $X_{ijc}$ denote the value of the $(i, j)$-th pixel at the $c$-th channel. Now, let us say we wish to find out the value of the convolution at $(i_0, j_0)$ cell. Then, the convolution is defined as;</p>
@@ -491,32 +490,32 @@ array([[[9, 7, 8, 9, 7],
 </li>
 </ol>
 <h2 id="designing-convolutional-block">Designing Convolutional Block</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conv_block</span>(input_size, in_filters, out_filters):
-    <span style="color:#e6db74">&#34;&#34;&#34;Implements the convolutional block with 3x3, 3x3, 1x1 filters, with proper batch normalization and activation&#34;&#34;&#34;</span>
-    inputs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((input_size, input_size, in_filters, ))   <span style="color:#75715e"># in_filters many channels of input image</span>
-    <span style="color:#75715e"># first 3x3 conv</span>
-    conv1_pad <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: CircularPadding(x))(inputs)
-    conv1_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
-                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;valid&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv1&#39;</span>)(conv1_pad)
-    hidden_1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv1_out)
-    conv1_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel1&#39;</span>)(hidden_1)
-    <span style="color:#75715e"># second 3x3 conv</span>
-    conv2_pad <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: CircularPadding(x))(conv1_out_final)
-    conv2_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
-                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;valid&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv2&#39;</span>)(conv2_pad)
-    hidden_2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv2_out)
-    conv2_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel2&#39;</span>)(hidden_2)
-    <span style="color:#75715e"># final 1x1 conv</span>
-    conv3_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
-                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;same&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv3&#39;</span>)(conv2_out_final)
-    hidden_3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv3_out)
-    conv3_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel3&#39;</span>)(hidden_3)
-    <span style="color:#75715e"># final model</span>
-    conv_block <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model(inputs, conv3_out_final)
-    <span style="color:#66d9ef">return</span> conv_block
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">8</span>)
-model<span style="color:#f92672">.</span>summary()
-</code></pre></div><pre><code>Model: &quot;model&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">conv_block</span>(input_size, in_filters, out_filters):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Implements the convolutional block with 3x3, 3x3, 1x1 filters, with proper batch normalization and activation&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    inputs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((input_size, input_size, in_filters, ))   <span style="color:#75715e"># in_filters many channels of input image</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># first 3x3 conv</span>
+</span></span><span style="display:flex;"><span>    conv1_pad <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: CircularPadding(x))(inputs)
+</span></span><span style="display:flex;"><span>    conv1_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;valid&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv1&#39;</span>)(conv1_pad)
+</span></span><span style="display:flex;"><span>    hidden_1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv1_out)
+</span></span><span style="display:flex;"><span>    conv1_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel1&#39;</span>)(hidden_1)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># second 3x3 conv</span>
+</span></span><span style="display:flex;"><span>    conv2_pad <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: CircularPadding(x))(conv1_out_final)
+</span></span><span style="display:flex;"><span>    conv2_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;valid&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv2&#39;</span>)(conv2_pad)
+</span></span><span style="display:flex;"><span>    hidden_2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv2_out)
+</span></span><span style="display:flex;"><span>    conv2_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel2&#39;</span>)(hidden_2)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># final 1x1 conv</span>
+</span></span><span style="display:flex;"><span>    conv3_out <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Conv2D(out_filters, kernel_size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), strides <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, 
+</span></span><span style="display:flex;"><span>                                       padding <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;same&#39;</span>, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;conv3&#39;</span>)(conv2_out_final)
+</span></span><span style="display:flex;"><span>    hidden_3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(conv3_out)
+</span></span><span style="display:flex;"><span>    conv3_out_final <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>LeakyReLU(name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rel3&#39;</span>)(hidden_3)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># final model</span>
+</span></span><span style="display:flex;"><span>    conv_block <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model(inputs, conv3_out_final)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> conv_block
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>summary()
+</span></span></code></pre></div><pre><code>Model: &quot;model&quot;
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
@@ -549,12 +548,11 @@ Trainable params: 928
 Non-trainable params: 48
 _________________________________________________________________
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span>True)
-</code></pre></div><p><img src="./index_29_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p><img src="./index_29_0.png" alt="png"></p>
 <p>In the function <code>conv_block</code>, we take the height and width of the input tensor and the number of channels of the input tensor, and the number of filters to finally output after processing. Note that, after each of the Circular Convolution, we perform a Batch Normalization and a Leaky ReLU layer.</p>
 <p>Batch Normalization layer basically normalizes the outputs with respect to the batch axis (i.e. with respect to the ? or None axis indicated in the diagram, which means you are pass arbitrary number of images through the network) so that the mean values remain close to 0, and standard deviation remains close to 1. The following image from the <a href="https://arxiv.org/abs/1803.08494">2018 paper on Group Normalization</a> by Yuxin Wu, Kaiming He described the idea of normalization through the following interesting image.</p>
-<figure>
-    <img src="norm.png"/> 
+<figure><img src="norm.png"/>
 </figure>
 <p>Finally, Leaky ReLU is a layer than performs an nonlinear activation to the input vector. Leaky ReLU is basically the following function;</p>
 <p>$$f(x) = \begin{cases}
@@ -562,19 +560,19 @@ x &amp; \text{ if } x \geq 0 \\ \alpha x &amp; \text{ if } x &lt; 0
 \end{cases}$$</p>
 <p>where $\alpha &lt; 1$ is a non-trainable constant. It is usually fixed at a very low value like $0.05$ or $0.01$. Compared to that, ReLU function is similar to Leaky ReLU, but it outputs 0 if $x &lt; 0$. Hence, Leaky ReLU is essentially a leaky version of ReLU, as it leaks out some small value for negative arguments. Since, such nonlinearity does not require additional parameters, we see 0 in the above summary output.</p>
 <h2 id="designing-join-block">Designing Join Block</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">join_block</span>(input_size, n_filter_low, n_filter_high):
-    input1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((input_size, input_size, n_filter_low, ))  <span style="color:#75715e"># input to low resolution image</span>
-    input2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>input_size, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>input_size, n_filter_high, ))  <span style="color:#75715e"># input to high resolution image</span>
-    upsampled_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>UpSampling2D(size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>))(input1)
-    hidden_1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(upsampled_input)
-    hidden_2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(input2)
-    outputs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([hidden_1, hidden_2])
-    <span style="color:#75715e"># final model</span>
-    join_block <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model([input1, input2], outputs)
-    <span style="color:#66d9ef">return</span> join_block
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">model <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span>)
-model<span style="color:#f92672">.</span>summary()
-</code></pre></div><pre><code>Model: &quot;model_1&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">join_block</span>(input_size, n_filter_low, n_filter_high):
+</span></span><span style="display:flex;"><span>    input1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((input_size, input_size, n_filter_low, ))  <span style="color:#75715e"># input to low resolution image</span>
+</span></span><span style="display:flex;"><span>    input2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>input_size, <span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>input_size, n_filter_high, ))  <span style="color:#75715e"># input to high resolution image</span>
+</span></span><span style="display:flex;"><span>    upsampled_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>UpSampling2D(size <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>))(input1)
+</span></span><span style="display:flex;"><span>    hidden_1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(upsampled_input)
+</span></span><span style="display:flex;"><span>    hidden_2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>BatchNormalization()(input2)
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([hidden_1, hidden_2])
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># final model</span>
+</span></span><span style="display:flex;"><span>    join_block <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model([input1, input2], outputs)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> join_block
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>model<span style="color:#f92672">.</span>summary()
+</span></span></code></pre></div><pre><code>Model: &quot;model_1&quot;
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
@@ -596,58 +594,57 @@ Trainable params: 80
 Non-trainable params: 80
 __________________________________________________________________________________________________
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span>True)
-</code></pre></div><p><img src="./index_33_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p><img src="./index_33_0.png" alt="png"></p>
 <p>The <code>join block</code> is extremely simple, it upsamples the low resolution processed features of the image. Then it normalizes both the higher resolution processed noise, and upsampled version of low resolution features, so that the effect of both branches remain comparable in the network. Finally, it combines the normalized versions.</p>
 <h2 id="completing-the-generator">Completing the Generator</h2>
 <p>According to the <a href="https://arxiv.org/abs/1603.03417">paper</a> describing Texture Networks, the generator should have a structure similar to the following figure.</p>
-<figure>
-    <img src="gen.png"/> 
+<figure><img src="gen.png"/>
 </figure>
 <p>However, it was also mentioned that for style transfer, increasing the number of noise from 5 to 6, actually provides much better quality. So, we start the network from a noise of size 8x8x3, and keep increasing it till 256x256x3, which is of the same size of our original content image.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generator_network</span>():
-    <span style="color:#75715e"># create input nodes for noise tensors</span>
-    noise1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_1&#39;</span>)
-    noise2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_2&#39;</span>)
-    noise3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_3&#39;</span>)
-    noise4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_4&#39;</span>)
-    noise5 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_5&#39;</span>)
-    noise6 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_6&#39;</span>)
-    content <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;content_input&#39;</span>)
-    <span style="color:#75715e"># downsample the content image</span>
-    content_image_8 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>])))(content)
-    content_image_16 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>])))(content)
-    content_image_32 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>])))(content)
-    content_image_64 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>])))(content)
-    content_image_128 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>])))(content)
-    <span style="color:#75715e"># create concatenation of downsampled content image and input nodes</span>
-    noise6_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise6, content_image_8])
-    noise5_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise5, content_image_16])
-    noise4_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise4, content_image_32])
-    noise3_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise3, content_image_64])
-    noise2_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise2, content_image_128])
-    noise1_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise1, content])
-    noise6_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise6_con)   <span style="color:#75715e"># that produces 8x8x8 tensor</span>
-    noise5_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise5_con)   <span style="color:#75715e"># that produces 16x16x8 tensor</span>
-    join5 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>)([noise6_conv, noise5_conv])   <span style="color:#75715e"># that produces 16x16x16 tensor</span>
-    join5_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>)(join5)   <span style="color:#75715e"># produces 16x16x16 tensor</span>
-    noise4_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise4_con)   <span style="color:#75715e"># that produces 32x32x8 tensor</span>
-    join4 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">8</span>)([join5_conv, noise4_conv])   <span style="color:#75715e"># produces 32x32x24 tensor</span>
-    join4_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">24</span>)(join4)   <span style="color:#75715e"># produces 32x32x24 tensor</span>
-    noise3_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise3_con)  <span style="color:#75715e"># that produces 64x64x8 tensor</span>
-    join3 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">8</span>)([join4_conv, noise3_conv])   <span style="color:#75715e"># produces 64x64x32 tensor</span>
-    join3_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>)(join3)   <span style="color:#75715e"># produces 64x64x32 tensor</span>
-    noise2_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise2_con)  <span style="color:#75715e"># that produces 128x128x8 tensor</span>
-    join2 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span>)([join3_conv, noise2_conv])   <span style="color:#75715e"># produces 128x128x40 tensor</span>
-    join2_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">40</span>)(join2)   <span style="color:#75715e"># produces 128x128x40 tensor</span>
-    noise1_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise1_con)  <span style="color:#75715e"># that produces 256x256x8 tensor</span>
-    join1 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">8</span>)([join2_conv, noise1_conv])   <span style="color:#75715e"># produces 256x256x48 tensor</span>
-    output <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">3</span>)(join1)   <span style="color:#75715e"># produces 256x256x3 tensor</span>
-    model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model([content, noise1, noise2, noise3, noise4, noise5, noise6], output, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;generator&#39;</span>)
-    <span style="color:#66d9ef">return</span> model
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator <span style="color:#f92672">=</span> generator_network()
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">generator<span style="color:#f92672">.</span>summary()
-</code></pre></div><pre><code>Model: &quot;generator&quot;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generator_network</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># create input nodes for noise tensors</span>
+</span></span><span style="display:flex;"><span>    noise1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_1&#39;</span>)
+</span></span><span style="display:flex;"><span>    noise2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_2&#39;</span>)
+</span></span><span style="display:flex;"><span>    noise3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_3&#39;</span>)
+</span></span><span style="display:flex;"><span>    noise4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_4&#39;</span>)
+</span></span><span style="display:flex;"><span>    noise5 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_5&#39;</span>)
+</span></span><span style="display:flex;"><span>    noise6 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;noise_6&#39;</span>)
+</span></span><span style="display:flex;"><span>    content <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Input((<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>, ), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;content_input&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># downsample the content image</span>
+</span></span><span style="display:flex;"><span>    content_image_8 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>])))(content)
+</span></span><span style="display:flex;"><span>    content_image_16 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>])))(content)
+</span></span><span style="display:flex;"><span>    content_image_32 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>])))(content)
+</span></span><span style="display:flex;"><span>    content_image_64 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>])))(content)
+</span></span><span style="display:flex;"><span>    content_image_128 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Lambda(<span style="color:#66d9ef">lambda</span> x: tf<span style="color:#f92672">.</span>image<span style="color:#f92672">.</span>resize(x, tf<span style="color:#f92672">.</span>constant([<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>])))(content)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># create concatenation of downsampled content image and input nodes</span>
+</span></span><span style="display:flex;"><span>    noise6_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise6, content_image_8])
+</span></span><span style="display:flex;"><span>    noise5_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise5, content_image_16])
+</span></span><span style="display:flex;"><span>    noise4_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise4, content_image_32])
+</span></span><span style="display:flex;"><span>    noise3_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise3, content_image_64])
+</span></span><span style="display:flex;"><span>    noise2_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise2, content_image_128])
+</span></span><span style="display:flex;"><span>    noise1_con <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>layers<span style="color:#f92672">.</span>Concatenate(axis<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)([noise1, content])
+</span></span><span style="display:flex;"><span>    noise6_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise6_con)   <span style="color:#75715e"># that produces 8x8x8 tensor</span>
+</span></span><span style="display:flex;"><span>    noise5_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise5_con)   <span style="color:#75715e"># that produces 16x16x8 tensor</span>
+</span></span><span style="display:flex;"><span>    join5 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>)([noise6_conv, noise5_conv])   <span style="color:#75715e"># that produces 16x16x16 tensor</span>
+</span></span><span style="display:flex;"><span>    join5_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>)(join5)   <span style="color:#75715e"># produces 16x16x16 tensor</span>
+</span></span><span style="display:flex;"><span>    noise4_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise4_con)   <span style="color:#75715e"># that produces 32x32x8 tensor</span>
+</span></span><span style="display:flex;"><span>    join4 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">8</span>)([join5_conv, noise4_conv])   <span style="color:#75715e"># produces 32x32x24 tensor</span>
+</span></span><span style="display:flex;"><span>    join4_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">24</span>)(join4)   <span style="color:#75715e"># produces 32x32x24 tensor</span>
+</span></span><span style="display:flex;"><span>    noise3_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise3_con)  <span style="color:#75715e"># that produces 64x64x8 tensor</span>
+</span></span><span style="display:flex;"><span>    join3 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">24</span>, <span style="color:#ae81ff">8</span>)([join4_conv, noise3_conv])   <span style="color:#75715e"># produces 64x64x32 tensor</span>
+</span></span><span style="display:flex;"><span>    join3_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>)(join3)   <span style="color:#75715e"># produces 64x64x32 tensor</span>
+</span></span><span style="display:flex;"><span>    noise2_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise2_con)  <span style="color:#75715e"># that produces 128x128x8 tensor</span>
+</span></span><span style="display:flex;"><span>    join2 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span>)([join3_conv, noise2_conv])   <span style="color:#75715e"># produces 128x128x40 tensor</span>
+</span></span><span style="display:flex;"><span>    join2_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">40</span>)(join2)   <span style="color:#75715e"># produces 128x128x40 tensor</span>
+</span></span><span style="display:flex;"><span>    noise1_conv <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>)(noise1_con)  <span style="color:#75715e"># that produces 256x256x8 tensor</span>
+</span></span><span style="display:flex;"><span>    join1 <span style="color:#f92672">=</span> join_block(<span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">40</span>, <span style="color:#ae81ff">8</span>)([join2_conv, noise1_conv])   <span style="color:#75715e"># produces 256x256x48 tensor</span>
+</span></span><span style="display:flex;"><span>    output <span style="color:#f92672">=</span> conv_block(<span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">48</span>, <span style="color:#ae81ff">3</span>)(join1)   <span style="color:#75715e"># produces 256x256x3 tensor</span>
+</span></span><span style="display:flex;"><span>    model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model([content, noise1, noise2, noise3, noise4, noise5, noise6], output, name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;generator&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> model
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>generator <span style="color:#f92672">=</span> generator_network()
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>generator<span style="color:#f92672">.</span>summary()
+</span></span></code></pre></div><pre><code>Model: &quot;generator&quot;
 __________________________________________________________________________________________________
 Layer (type)                    Output Shape         Param #     Connected to                     
 ==================================================================================================
@@ -735,144 +732,146 @@ Trainable params: 75,269
 Non-trainable params: 1,298
 __________________________________________________________________________________________________
 </code></pre>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(generator, show_shapes <span style="color:#f92672">=</span> True)
-</code></pre></div><p><img src="./index_38_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(generator, show_shapes <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p><img src="./index_38_0.png" alt="png"></p>
 <p>Finally, we have a generator model with about 75,000 parameters.</p>
 <p>It should be clear that the low level features, i.e. the outputs of the lower level (closer to input layer that final layer in VGG19) layers are basically features such a strokes, edges which defines the artistic features of the image, whereas, high level features, i.e. the outputs of the higher level (closer to final layer than input layer in VGG19) are features that contains the summarization of the image, namely the abstract object that image contains, specifically the content of the image.</p>
 <p>However, Gatys et al. in their <a href="https://arxiv.org/abs/1508.06576">paper</a> <strong>A Neural Algorithm for Artistic Style</strong> depicts that the style is basically represented by the correlation of the low level features of an image, rather than the particular output of those low level features. An intuitive explanation to this particular observation can be given as follows: Consider our style image to be an image of a floor covered with square tiles, like a chessboard. Now, think of applying this tiling style to a complicated image of a landscape. To do this, one may need to consider rotating the tiles to be in a shape like diamonds, which may be able to capture better details of some corners presented in the content image. In this case, if we have a vertical and horizontal line detecting kernels as well as criss-cross line detecting kernels in VGG19, then such a pattern would not give similar output for both style image and final stylized image, but would give similar amount of correlation between those features.</p>
 <p>Based on this idea, Gatys et al. introduced <strong>Gram Matrix</strong> to measure the style of an image. Let us particularly concentration on one such low level layer first, for which we have a output tensor of shape (batch size, height of the image, width of the image, number of filters output). Then the corresponding gram matrix of this layer is defined as a matrix of shape (batch size, height of the image, width of the image), whose elements are given by;</p>
 <p>$$G_{bij} = \dfrac{\sum_c \sum_d X_{bijc} X_{bijd}}{HW}$$</p>
 <p>where $X$ is the output tensor of that layer, $H, W$ denoting the height and width of the images. This formula can be implemented by <code>tf.linalg.einsum</code> function available in <code>tensorflow</code>, which performs the sum operation (of the numerator here) based on a given equation.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gram_matrix</span>(input_tensor):
-    result <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74">&#39;bijc,bijd-&gt;bcd&#39;</span>, input_tensor, input_tensor)   <span style="color:#75715e"># compute the sum in numerator</span>
-    input_shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>shape(input_tensor)  <span style="color:#75715e"># get the shape</span>
-    num_locations <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(input_shape[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>input_shape[<span style="color:#ae81ff">2</span>], tf<span style="color:#f92672">.</span>float32)  
-    <span style="color:#66d9ef">return</span> result<span style="color:#f92672">/</span>(num_locations)
-</code></pre></div><p>Now, I create a function called <code>vgg_layers</code> which returns our descriptor network, given the name of layers of VGG19 network which will be used to compute content and style of the image outputted by Generator Network.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gram_matrix</span>(input_tensor):
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>einsum(<span style="color:#e6db74">&#39;bijc,bijd-&gt;bcd&#39;</span>, input_tensor, input_tensor)   <span style="color:#75715e"># compute the sum in numerator</span>
+</span></span><span style="display:flex;"><span>    input_shape <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>shape(input_tensor)  <span style="color:#75715e"># get the shape</span>
+</span></span><span style="display:flex;"><span>    num_locations <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>cast(input_shape[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>input_shape[<span style="color:#ae81ff">2</span>], tf<span style="color:#f92672">.</span>float32)  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result<span style="color:#f92672">/</span>(num_locations)
+</span></span></code></pre></div><p>Now, I create a function called <code>vgg_layers</code> which returns our descriptor network, given the name of layers of VGG19 network which will be used to compute content and style of the image outputted by Generator Network.</p>
 <p>Furthermore, a class called <code>TextureNetwork</code> is created, which is inherited from <code>tf.keras.models.Model</code>. <code>tf.keras.models.Model</code> is a basic class to build new type of neural network model in <code>keras</code>. Inheritence allows us to automatically defines several properties of the keras model, in order to perform optimization and necessary computation in the training stage. Any object of <code>TextureNetwork</code> class is a Texture Network, initialized by specified names of content layers and style layers. Also, the <code>call</code> method of the class has been overridden from call method of <code>tf.keras.models.Model</code> class, which allows to define the exact workflow of feed forward system of our Texture Network. It finally outputs the generated image, along with the content output and style outputs (i.e. the gram matrices for style layers), which we can use to compute the loss function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">vgg_layers</span>(layer_names):
-    <span style="color:#e6db74">&#34;&#34;&#34; Creates a vgg model that returns a list of intermediate output values.&#34;&#34;&#34;</span>
-    <span style="color:#75715e"># Load our model. Load pretrained VGG, trained on imagenet data</span>
-    vgg <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>VGG19(include_top<span style="color:#f92672">=</span>False, weights<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;imagenet&#39;</span>)  <span style="color:#75715e"># load the vgg model</span>
-    vgg<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> False    <span style="color:#75715e"># do not train over vgg model parameters</span>
-    outputs <span style="color:#f92672">=</span> [vgg<span style="color:#f92672">.</span>get_layer(name)<span style="color:#f92672">.</span>output <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> layer_names]    <span style="color:#75715e"># the output of the layers that we want</span>
-    model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>Model([vgg<span style="color:#f92672">.</span>input], outputs)   <span style="color:#75715e"># create a keras model</span>
-    <span style="color:#66d9ef">return</span> model
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TextureNetwork</span>(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model):
-    <span style="color:#66d9ef">def</span> __init__(self, style_layers, content_layers):
-        super(TextureNetwork, self)<span style="color:#f92672">.</span>__init__()   <span style="color:#75715e"># initialize the superClass</span>
-        self<span style="color:#f92672">.</span>vgg <span style="color:#f92672">=</span>  vgg_layers(style_layers <span style="color:#f92672">+</span> content_layers)    <span style="color:#75715e"># obtain a VGG19 model with outputs being the style and content layers</span>
-        self<span style="color:#f92672">.</span>style_layers <span style="color:#f92672">=</span> style_layers
-        self<span style="color:#f92672">.</span>content_layers <span style="color:#f92672">=</span> content_layers
-        self<span style="color:#f92672">.</span>num_style_layers <span style="color:#f92672">=</span> len(style_layers)
-        self<span style="color:#f92672">.</span>vgg<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> False  <span style="color:#75715e"># we are not going to train vgg network</span>
-        self<span style="color:#f92672">.</span>gen <span style="color:#f92672">=</span> generator_network()   <span style="color:#75715e"># create a generator network as part of it</span>
-        self<span style="color:#f92672">.</span>gen<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> True   <span style="color:#75715e"># we are going to train this generator</span>
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, content, batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>):
-        <span style="color:#75715e"># generates noise required for the network</span>
-        noise1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>))
-        noise2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">3</span>))
-        noise3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">3</span>))
-        noise4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>))
-        noise5 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>))
-        noise6 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">3</span>))
-        gen_image <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>gen([content, noise1, noise2, noise3, noise4, noise5, noise6])   <span style="color:#75715e"># pass through the generator to obtain generated image</span>
-        preprocessed_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>vgg19<span style="color:#f92672">.</span>preprocess_input(gen_image)  <span style="color:#75715e"># preprocess the image</span>
-        outputs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>vgg(preprocessed_input)  <span style="color:#75715e"># get the output from only the required layers</span>
-        style_outputs, content_outputs <span style="color:#f92672">=</span> (outputs[:self<span style="color:#f92672">.</span>num_style_layers], 
-                                      outputs[self<span style="color:#f92672">.</span>num_style_layers:])
-        style_outputs <span style="color:#f92672">=</span> [gram_matrix(style_output)
-                         <span style="color:#66d9ef">for</span> style_output <span style="color:#f92672">in</span> style_outputs]  <span style="color:#75715e"># create style type output to compare</span>
-        style_dict <span style="color:#f92672">=</span> {style_name:value
-                      <span style="color:#66d9ef">for</span> style_name, value
-                      <span style="color:#f92672">in</span> zip(self<span style="color:#f92672">.</span>style_layers, style_outputs)}
-        content_dict <span style="color:#f92672">=</span> {content_name:value 
-                    <span style="color:#66d9ef">for</span> content_name, value 
-                    <span style="color:#f92672">in</span> zip(self<span style="color:#f92672">.</span>content_layers, content_outputs)}
-        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;gen&#39;</span>:gen_image, <span style="color:#e6db74">&#39;content&#39;</span>:content_dict, <span style="color:#e6db74">&#39;style&#39;</span>:style_dict}
-</code></pre></div><p>Now that we have defined our Texture Network class, we need to specify exactly which layers we are going to use for style features. According to the <a href="https://arxiv.org/abs/1603.03417">paper</a> on Texture Network, the style layers should be <em>rel1_1, rel2_1, rel3_1, rel4_1</em>, while the content layer should be <em>rel4_2</em>. To compare it with the naming convention of VGG19, replace <em>rel</em> with <em>block</em> and add the convolution layer specified. However, I decided to add layer <em>block5_conv2</em>, since according to Gatys et al. this layer has good features related to the content, and for the style image, we can get the tessellation effect accurately by using this particular layer. However, you are welcome to try different layers, which may result in interesting stylized images.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_layers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;block1_conv1&#39;</span>,
-                <span style="color:#e6db74">&#39;block2_conv1&#39;</span>,
-                <span style="color:#e6db74">&#39;block3_conv1&#39;</span>,
-                <span style="color:#e6db74">&#39;block4_conv1&#39;</span>,
-                <span style="color:#e6db74">&#39;block5_conv2&#39;</span>]
-content_layers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;block4_conv2&#39;</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adam(learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-3</span>)  <span style="color:#75715e"># use an Adam optimizer</span>
-tex_net <span style="color:#f92672">=</span> TextureNetwork(style_layers, content_layers)   <span style="color:#75715e"># create the texture network</span>
-</code></pre></div><p>Note that, since the initial weights are set to 0, or close to 0, the illiterate network produces a black image. So, let us teach the network to learn its trainable parameters and weights, so that it can produces meaningful outputs.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">output <span style="color:#f92672">=</span> tex_net(content_image, <span style="color:#ae81ff">1</span>)
-tensor_to_image(output[<span style="color:#e6db74">&#39;gen&#39;</span>])
-</code></pre></div><p><img src="./index_47_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">vgg_layers</span>(layer_names):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34; Creates a vgg model that returns a list of intermediate output values.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Load our model. Load pretrained VGG, trained on imagenet data</span>
+</span></span><span style="display:flex;"><span>    vgg <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>VGG19(include_top<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, weights<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;imagenet&#39;</span>)  <span style="color:#75715e"># load the vgg model</span>
+</span></span><span style="display:flex;"><span>    vgg<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>    <span style="color:#75715e"># do not train over vgg model parameters</span>
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#f92672">=</span> [vgg<span style="color:#f92672">.</span>get_layer(name)<span style="color:#f92672">.</span>output <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> layer_names]    <span style="color:#75715e"># the output of the layers that we want</span>
+</span></span><span style="display:flex;"><span>    model <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>Model([vgg<span style="color:#f92672">.</span>input], outputs)   <span style="color:#75715e"># create a keras model</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> model
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">TextureNetwork</span>(tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, style_layers, content_layers):
+</span></span><span style="display:flex;"><span>        super(TextureNetwork, self)<span style="color:#f92672">.</span>__init__()   <span style="color:#75715e"># initialize the superClass</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>vgg <span style="color:#f92672">=</span>  vgg_layers(style_layers <span style="color:#f92672">+</span> content_layers)    <span style="color:#75715e"># obtain a VGG19 model with outputs being the style and content layers</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>style_layers <span style="color:#f92672">=</span> style_layers
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>content_layers <span style="color:#f92672">=</span> content_layers
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>num_style_layers <span style="color:#f92672">=</span> len(style_layers)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>vgg<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>  <span style="color:#75715e"># we are not going to train vgg network</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gen <span style="color:#f92672">=</span> generator_network()   <span style="color:#75715e"># create a generator network as part of it</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gen<span style="color:#f92672">.</span>trainable <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>   <span style="color:#75715e"># we are going to train this generator</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(self, content, batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># generates noise required for the network</span>
+</span></span><span style="display:flex;"><span>        noise1 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">256</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        noise2 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">128</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        noise3 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">64</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        noise4 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        noise5 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        noise6 <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform((batch_size, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">3</span>))
+</span></span><span style="display:flex;"><span>        gen_image <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>gen([content, noise1, noise2, noise3, noise4, noise5, noise6])   <span style="color:#75715e"># pass through the generator to obtain generated image</span>
+</span></span><span style="display:flex;"><span>        preprocessed_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>vgg19<span style="color:#f92672">.</span>preprocess_input(gen_image)  <span style="color:#75715e"># preprocess the image</span>
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>vgg(preprocessed_input)  <span style="color:#75715e"># get the output from only the required layers</span>
+</span></span><span style="display:flex;"><span>        style_outputs, content_outputs <span style="color:#f92672">=</span> (outputs[:self<span style="color:#f92672">.</span>num_style_layers], 
+</span></span><span style="display:flex;"><span>                                      outputs[self<span style="color:#f92672">.</span>num_style_layers:])
+</span></span><span style="display:flex;"><span>        style_outputs <span style="color:#f92672">=</span> [gram_matrix(style_output)
+</span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">for</span> style_output <span style="color:#f92672">in</span> style_outputs]  <span style="color:#75715e"># create style type output to compare</span>
+</span></span><span style="display:flex;"><span>        style_dict <span style="color:#f92672">=</span> {style_name:value
+</span></span><span style="display:flex;"><span>                      <span style="color:#66d9ef">for</span> style_name, value
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">in</span> zip(self<span style="color:#f92672">.</span>style_layers, style_outputs)}
+</span></span><span style="display:flex;"><span>        content_dict <span style="color:#f92672">=</span> {content_name:value 
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> content_name, value 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">in</span> zip(self<span style="color:#f92672">.</span>content_layers, content_outputs)}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;gen&#39;</span>:gen_image, <span style="color:#e6db74">&#39;content&#39;</span>:content_dict, <span style="color:#e6db74">&#39;style&#39;</span>:style_dict}
+</span></span></code></pre></div><p>Now that we have defined our Texture Network class, we need to specify exactly which layers we are going to use for style features. According to the <a href="https://arxiv.org/abs/1603.03417">paper</a> on Texture Network, the style layers should be <em>rel1_1, rel2_1, rel3_1, rel4_1</em>, while the content layer should be <em>rel4_2</em>. To compare it with the naming convention of VGG19, replace <em>rel</em> with <em>block</em> and add the convolution layer specified. However, I decided to add layer <em>block5_conv2</em>, since according to Gatys et al. this layer has good features related to the content, and for the style image, we can get the tessellation effect accurately by using this particular layer. However, you are welcome to try different layers, which may result in interesting stylized images.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>style_layers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;block1_conv1&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;block2_conv1&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;block3_conv1&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;block4_conv1&#39;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#39;block5_conv2&#39;</span>]
+</span></span><span style="display:flex;"><span>content_layers <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;block4_conv2&#39;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>optimizer <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>optimizers<span style="color:#f92672">.</span>Adam(learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-3</span>)  <span style="color:#75715e"># use an Adam optimizer</span>
+</span></span><span style="display:flex;"><span>tex_net <span style="color:#f92672">=</span> TextureNetwork(style_layers, content_layers)   <span style="color:#75715e"># create the texture network</span>
+</span></span></code></pre></div><p>Note that, since the initial weights are set to 0, or close to 0, the illiterate network produces a black image. So, let us teach the network to learn its trainable parameters and weights, so that it can produces meaningful outputs.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>output <span style="color:#f92672">=</span> tex_net(content_image, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>tensor_to_image(output[<span style="color:#e6db74">&#39;gen&#39;</span>])
+</span></span></code></pre></div><p><img src="./index_47_0.png" alt="png"></p>
 <h1 id="training-the-network">Training the Network</h1>
 <p>Before training, we require the target variables, based on which our network compares its performance and computes the loss function. In the <a href="https://arxiv.org/abs/1603.03417">paper</a> on Texture Network, the author trains this network on MS COCO and ImageNet dataset. However, we shall use only the content and style image that we have repeatedly, since training on those large datasets would take particularly large amount of time and much computational power, which I lack because of scarcity of funds. So, I shall feed in the same content image and style image to the network repeatedly, and hope that the random noise inputs to the network is going to prevent overfitting of the network.</p>
 <p>So, I define a function called <code>extract targets</code> which will extract the style and content from the style and content images, and then those values can be used to compute the loss function. To explicity write the loss function, we shall use the formula;</p>
 <p>$$\text{Loss} = w_c \times L_c + w_s \times \sum_{k} L_{s_k}$$</p>
 <p>where $L_c$ is the content loss, computed as the mean squared error between the content tensor of content image and the content tensor of generated image. $L_{s_k}$ is similar mean squared error between the gram matix of style image and gram matrix of generated image at $k$-th style layer, and $w_c$ and $w_s$ denotes the weights corresponding to content and style loss.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract_targets</span>(inputs):
-    inputs <span style="color:#f92672">=</span> inputs<span style="color:#f92672">*</span><span style="color:#ae81ff">255.0</span>
-    preprocessed_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>vgg19<span style="color:#f92672">.</span>preprocess_input(inputs)  <span style="color:#75715e"># preprocess the input image</span>
-    outputs <span style="color:#f92672">=</span> vgg_layers(style_layers <span style="color:#f92672">+</span> content_layers)(preprocessed_input)  <span style="color:#75715e"># get the output from only the required layers</span>
-    style_outputs, content_outputs <span style="color:#f92672">=</span> (outputs[:len(style_layers)], 
-                                       outputs[len(style_layers):])
-    style_outputs <span style="color:#f92672">=</span> [gram_matrix(style_output)
-                         <span style="color:#66d9ef">for</span> style_output <span style="color:#f92672">in</span> style_outputs]  <span style="color:#75715e"># create style type output to compare</span>
-    style_dict <span style="color:#f92672">=</span> {style_name:value
-                      <span style="color:#66d9ef">for</span> style_name, value
-                      <span style="color:#f92672">in</span> zip(style_layers, style_outputs)}
-    content_dict <span style="color:#f92672">=</span> {content_name:value 
-                    <span style="color:#66d9ef">for</span> content_name, value 
-                    <span style="color:#f92672">in</span> zip(content_layers, content_outputs)}
-    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;content&#39;</span>:content_dict, <span style="color:#e6db74">&#39;style&#39;</span>:style_dict}
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_targets <span style="color:#f92672">=</span> extract_targets(style_image)[<span style="color:#e6db74">&#39;style&#39;</span>]
-content_targets <span style="color:#f92672">=</span> extract_targets(content_image)[<span style="color:#e6db74">&#39;content&#39;</span>]
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-5</span>
-content_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</code></pre></div><p>This particular choice to style and content weights seems to work for me pretty well. However, you are encouraged to try out different style and content weight combination to dig up more interesting findings.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">custom_loss</span>(outputs, batch_size):
-    gen_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;gen&#39;</span>]
-    style_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;style&#39;</span>]   <span style="color:#75715e"># for generated image, get the style</span>
-    content_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;content&#39;</span>]  <span style="color:#75715e"># get content</span>
-    batch_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(batch_size):
-        style_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>add_n([tf<span style="color:#f92672">.</span>reduce_mean((style_outputs[name][i]<span style="color:#f92672">-</span>style_targets[name])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) 
-                           <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> style_outputs<span style="color:#f92672">.</span>keys()])
-        style_loss <span style="color:#f92672">*=</span> style_weight <span style="color:#f92672">/</span> len(style_layers)
-        content_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>add_n([tf<span style="color:#f92672">.</span>reduce_mean((content_outputs[name][i]<span style="color:#f92672">-</span>content_targets[name])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) 
-                                 <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> content_outputs<span style="color:#f92672">.</span>keys()])
-        content_loss <span style="color:#f92672">*=</span> content_weight <span style="color:#f92672">/</span> len(content_layers)
-        loss <span style="color:#f92672">=</span> style_loss <span style="color:#f92672">+</span> content_loss
-        batch_loss <span style="color:#f92672">+=</span> loss
-    batch_loss <span style="color:#f92672">/=</span> batch_size
-    <span style="color:#66d9ef">return</span> batch_loss
-</code></pre></div><p>Finally, we define our <code>train_step</code> method, which performs one step of training of the Texture Network. The <code>tf.function</code> decorator used for the function actually converts this function and underlying object to tensorflow graph, based on which we can perform the feed forward pass as well as compute the gradients based on back propagation. Defining this decorator is essential for the training. More details on this is available at <a href="https://www.tensorflow.org/tutorials/customization/performance">Tensorflow website</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">extract_targets</span>(inputs):
+</span></span><span style="display:flex;"><span>    inputs <span style="color:#f92672">=</span> inputs<span style="color:#f92672">*</span><span style="color:#ae81ff">255.0</span>
+</span></span><span style="display:flex;"><span>    preprocessed_input <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>vgg19<span style="color:#f92672">.</span>preprocess_input(inputs)  <span style="color:#75715e"># preprocess the input image</span>
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#f92672">=</span> vgg_layers(style_layers <span style="color:#f92672">+</span> content_layers)(preprocessed_input)  <span style="color:#75715e"># get the output from only the required layers</span>
+</span></span><span style="display:flex;"><span>    style_outputs, content_outputs <span style="color:#f92672">=</span> (outputs[:len(style_layers)], 
+</span></span><span style="display:flex;"><span>                                       outputs[len(style_layers):])
+</span></span><span style="display:flex;"><span>    style_outputs <span style="color:#f92672">=</span> [gram_matrix(style_output)
+</span></span><span style="display:flex;"><span>                         <span style="color:#66d9ef">for</span> style_output <span style="color:#f92672">in</span> style_outputs]  <span style="color:#75715e"># create style type output to compare</span>
+</span></span><span style="display:flex;"><span>    style_dict <span style="color:#f92672">=</span> {style_name:value
+</span></span><span style="display:flex;"><span>                      <span style="color:#66d9ef">for</span> style_name, value
+</span></span><span style="display:flex;"><span>                      <span style="color:#f92672">in</span> zip(style_layers, style_outputs)}
+</span></span><span style="display:flex;"><span>    content_dict <span style="color:#f92672">=</span> {content_name:value 
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">for</span> content_name, value 
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">in</span> zip(content_layers, content_outputs)}
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;content&#39;</span>:content_dict, <span style="color:#e6db74">&#39;style&#39;</span>:style_dict}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>style_targets <span style="color:#f92672">=</span> extract_targets(style_image)[<span style="color:#e6db74">&#39;style&#39;</span>]
+</span></span><span style="display:flex;"><span>content_targets <span style="color:#f92672">=</span> extract_targets(content_image)[<span style="color:#e6db74">&#39;content&#39;</span>]
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>style_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-5</span>
+</span></span><span style="display:flex;"><span>content_weight <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>This particular choice to style and content weights seems to work for me pretty well. However, you are encouraged to try out different style and content weight combination to dig up more interesting findings.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">custom_loss</span>(outputs, batch_size):
+</span></span><span style="display:flex;"><span>    gen_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;gen&#39;</span>]
+</span></span><span style="display:flex;"><span>    style_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;style&#39;</span>]   <span style="color:#75715e"># for generated image, get the style</span>
+</span></span><span style="display:flex;"><span>    content_outputs <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;content&#39;</span>]  <span style="color:#75715e"># get content</span>
+</span></span><span style="display:flex;"><span>    batch_loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(batch_size):
+</span></span><span style="display:flex;"><span>        style_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>add_n([tf<span style="color:#f92672">.</span>reduce_mean((style_outputs[name][i]<span style="color:#f92672">-</span>style_targets[name])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) 
+</span></span><span style="display:flex;"><span>                           <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> style_outputs<span style="color:#f92672">.</span>keys()])
+</span></span><span style="display:flex;"><span>        style_loss <span style="color:#f92672">*=</span> style_weight <span style="color:#f92672">/</span> len(style_layers)
+</span></span><span style="display:flex;"><span>        content_loss <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>add_n([tf<span style="color:#f92672">.</span>reduce_mean((content_outputs[name][i]<span style="color:#f92672">-</span>content_targets[name])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>) 
+</span></span><span style="display:flex;"><span>                                 <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> content_outputs<span style="color:#f92672">.</span>keys()])
+</span></span><span style="display:flex;"><span>        content_loss <span style="color:#f92672">*=</span> content_weight <span style="color:#f92672">/</span> len(content_layers)
+</span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">=</span> style_loss <span style="color:#f92672">+</span> content_loss
+</span></span><span style="display:flex;"><span>        batch_loss <span style="color:#f92672">+=</span> loss
+</span></span><span style="display:flex;"><span>    batch_loss <span style="color:#f92672">/=</span> batch_size
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> batch_loss
+</span></span></code></pre></div><p>Finally, we define our <code>train_step</code> method, which performs one step of training of the Texture Network. The <code>tf.function</code> decorator used for the function actually converts this function and underlying object to tensorflow graph, based on which we can perform the feed forward pass as well as compute the gradients based on back propagation. Defining this decorator is essential for the training. More details on this is available at <a href="https://www.tensorflow.org/tutorials/customization/performance">Tensorflow website</a>.</p>
 <p>In the <code>train_step</code> function, we use <code>tf.GradientTape</code> to record the feed forward passes through the network. It works like computing a recording of the feed forward pass through the model, and finally playing it backwards, in order to perform back propagation. This gradient tape records all the gradients happening through the graph, and finally enables us to apply the training rule to update the current value of the parameters using these gradients by <code>apply_gradients</code> function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#a6e22e">@tf.function</span>()
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_step</span>(content_image, batch_size):
-    <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
-        outputs <span style="color:#f92672">=</span> tex_net(content_image, batch_size)
-        loss <span style="color:#f92672">=</span> custom_loss(outputs, batch_size)
-    gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, tex_net<span style="color:#f92672">.</span>trainable_variables)  <span style="color:#75715e"># obtain the gradients recorded by the tape</span>
-    optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, tex_net<span style="color:#f92672">.</span>trainable_variables))   <span style="color:#75715e"># apply the training rule using the gradients to modify the current value of prameters</span>
-    <span style="color:#66d9ef">return</span> output, loss
-</code></pre></div><p>Finally, I used 2500 iterations of update to train the network. I also show the images generated by the network after each 250 iterations, to see how the network improves over training.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>
-my_content <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([content_image <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(batch_size)], axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-<p>n_epoch <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
-n_iter <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span>
-iter_to_show_output <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span></p>
-<p>loss_array <span style="color:#f92672">=</span> []
-<span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(n_epoch):
-msg <span style="color:#f92672">=</span> <span style="color:#e6db74">'Epoch: '</span> <span style="color:#f92672">+</span> str(epoch)
-<span style="color:#66d9ef">print</span>(msg)
-os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">'echo '</span> <span style="color:#f92672">+</span> msg)
-<span style="color:#66d9ef">for</span> step <span style="color:#f92672">in</span> range(n_iter):
-outputs, loss <span style="color:#f92672">=</span> train_step(my_content, batch_size)
-<span style="color:#66d9ef">if</span> step <span style="color:#f92672">%</span> iter_to_show_output <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
-os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">'echo loss: '</span> <span style="color:#f92672">+</span> str(float(loss)))
-<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">'Loss: '</span>, loss)
-loss_array<span style="color:#f92672">.</span>append(loss)
-display<span style="color:#f92672">.</span>display(tensor_to_image(tex_net(content_image, <span style="color:#ae81ff">1</span>)[<span style="color:#e6db74">'gen'</span>]))
-</code></pre></div><pre><code>Epoch: 0
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@tf.function</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">train_step</span>(content_image, batch_size):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tf<span style="color:#f92672">.</span>GradientTape() <span style="color:#66d9ef">as</span> tape:
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> tex_net(content_image, batch_size)
+</span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">=</span> custom_loss(outputs, batch_size)
+</span></span><span style="display:flex;"><span>    gradients <span style="color:#f92672">=</span> tape<span style="color:#f92672">.</span>gradient(loss, tex_net<span style="color:#f92672">.</span>trainable_variables)  <span style="color:#75715e"># obtain the gradients recorded by the tape</span>
+</span></span><span style="display:flex;"><span>    optimizer<span style="color:#f92672">.</span>apply_gradients(zip(gradients, tex_net<span style="color:#f92672">.</span>trainable_variables))   <span style="color:#75715e"># apply the training rule using the gradients to modify the current value of prameters</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output, loss
+</span></span></code></pre></div><p>Finally, I used 2500 iterations of update to train the network. I also show the images generated by the network after each 250 iterations, to see how the network improves over training.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>batch_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">32</span>
+</span></span><span style="display:flex;"><span>my_content <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>concat([content_image <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(batch_size)], axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n_epoch <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>n_iter <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span>
+</span></span><span style="display:flex;"><span>iter_to_show_output <span style="color:#f92672">=</span> <span style="color:#ae81ff">25</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>loss_array <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(n_epoch):
+</span></span><span style="display:flex;"><span>    msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Epoch: &#39;</span> <span style="color:#f92672">+</span> str(epoch)
+</span></span><span style="display:flex;"><span>    print(msg)
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#39;echo &#39;</span> <span style="color:#f92672">+</span> msg)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> step <span style="color:#f92672">in</span> range(n_iter):
+</span></span><span style="display:flex;"><span>        outputs, loss <span style="color:#f92672">=</span> train_step(my_content, batch_size)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> step <span style="color:#f92672">%</span> iter_to_show_output <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            os<span style="color:#f92672">.</span>system(<span style="color:#e6db74">&#39;echo loss: &#39;</span> <span style="color:#f92672">+</span> str(float(loss)))
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;Loss: &#39;</span>, loss)
+</span></span><span style="display:flex;"><span>            loss_array<span style="color:#f92672">.</span>append(loss)
+</span></span><span style="display:flex;"><span>    display<span style="color:#f92672">.</span>display(tensor_to_image(tex_net(content_image, <span style="color:#ae81ff">1</span>)[<span style="color:#e6db74">&#39;gen&#39;</span>]))
+</span></span></code></pre></div><pre><code>Epoch: 0
 Loss:  tf.Tensor(27138224.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(26169034.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(26064738.0, shape=(), dtype=float32)
@@ -883,7 +882,7 @@ Loss:  tf.Tensor(22932934.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(22210894.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(21038836.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(19649052.0, shape=(), dtype=float32)
-</code></pre></p>
+</code></pre>
 <p><img src="./index_57_1.png" alt="png"></p>
 <pre><code>Epoch: 1
 Loss:  tf.Tensor(16565710.0, shape=(), dtype=float32)
@@ -911,13 +910,13 @@ Loss:  tf.Tensor(2389489.8, shape=(), dtype=float32)
 </code></pre></p>
 <p><img src="./index_57_19.png" alt="png"></p>
 <p>Note how the generated image becomes better and better with more iteration, by mimicking the style of tessellation on our image of AI generated celebrity. But the image does not change much after epoch 5, except the colour gets more violet-ish rather than blue-ish. However, you can manipulate the style weights and content weights properly, in order to have a good balance between the content and style. Also, if we take a look at the loss function, we see that the loss was decreasing rapidly at the beginning, and finally it has more or less stabilized at a point where it cannot be lowered further by much. Hence, by looking at the loss function, it seems the generator is trained enough to meet its capacities.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>plot(loss_array)
-plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Loss Function over time&#39;</span>)
-plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="./index_59_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(loss_array)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Loss Function over time&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p><img src="./index_59_0.png" alt="png"></p>
 <p>From the generation the final stylized image, it seems as if the image of the celebrity is properly tessellated, as we desired. However, it is mostly blue, and there are some funny artifacts and the colour of the skin appearing at the forehead area. This can possibly be resolved by carefully trying out different style and content layer repesentations, as well as adding a variational loss to the custom loss function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tensor_to_image(tex_net(content_image, <span style="color:#ae81ff">1</span>)[<span style="color:#e6db74">&#39;gen&#39;</span>])
-</code></pre></div><p><img src="./index_61_0.png" alt="png"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>tensor_to_image(tex_net(content_image, <span style="color:#ae81ff">1</span>)[<span style="color:#e6db74">&#39;gen&#39;</span>])
+</span></span></code></pre></div><p><img src="./index_61_0.png" alt="png"></p>
 <h1 id="useful-references">Useful References</h1>
 <ol>
 <li>Texture Networks: Feed-forward Synthesis of Textures and Stylized Images - Dmitry Ulyanov, Vadim Lebedev, Andrea Vedaldi, Victor Lempitsky. <a href="https://arxiv.org/abs/1603.03417">https://arxiv.org/abs/1603.03417</a>.</li>
@@ -936,11 +935,13 @@ plt<span style="color:#f92672">.</span>show()
 
 
 
-<div class="mt-6 max-w-6xl md:mx-auto mx-4 text-center">
-    <p>Explore more posts like this</p>
-    <div class="flex flex-row justify-between gap-4">
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
         
-            <a href="/posts/covid19-esir-model/" class="px-6 py-2 bg-gray-600 text-white hover:bg-neutral-900 focus:bg-neutral-900 transition-all ease-in-out">
+            <a href="/posts/covid19-esir-model/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
                 Previous Post
             </a>
         

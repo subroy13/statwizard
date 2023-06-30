@@ -27,7 +27,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.496f0b11ae99e91cef9d3a04f33fb76c.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
 
 
 
@@ -265,12 +265,12 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>To install &ldquo;callgrind-reader&rdquo;, simply run:</p>
-<pre><code>npm install callgrind-reader
+<pre tabindex="0"><code>npm install callgrind-reader
 </code></pre><h2 id="usage">Usage</h2>
 <p>Here&rsquo;s a basic example of how to use &ldquo;callgrind-reader&rdquo; to parse a callgrind file and extract profiling data:</p>
-<pre><code>import { CallGrind } from 'callgrind-reader';
+<pre tabindex="0"><code>import { CallGrind } from &#39;callgrind-reader&#39;;
 <p>// Parse the callgrind file using CallgrindReader
-const reader = new CallGrind(&lsquo;path/to/callgrind/file&rsquo;);
+const reader = new CallGrind('path/to/callgrind/file');
 const result = reader.parse(contents);</p>
 <p>// Access the profiling data
 for (const item of result.profile) {

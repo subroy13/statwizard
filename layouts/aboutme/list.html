@@ -1,5 +1,20 @@
-{{ define "main" }}
+{{ define "title" }}
+    About Me | StatWizard
+{{ end }}
 
+{{ define "customCSS" }}
+    <link rel="stylesheet" href="/plugins/lightgallery/css/lightgallery.css">
+{{ end }}
+
+{{ define "customJS" }}
+    <!-- lightgallery plugins -->
+    <script src="/plugins/lightgallery/js/lightgallery.js"></script>
+    <script src="/plugins/lightgallery/js/lg-thumbnail.js"></script>
+    <script src="/plugins/lightgallery/js/lg-fullscreen.js"></script>
+{{ end }}
+
+
+{{ define "main" }}
 
 <section class="py-8 max-w-6xl md:mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">
     <div class="col-span-2 flex flex-col justify-center gap-4 text-right">
@@ -43,7 +58,7 @@
 
 <section>
     <div class="py-8">
-        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row flex-wrap gap-2 justify-start items-center">
+        <div class="mx-4 md:mx-auto max-w-4xl flex flex-row flex-wrap gap-2 justify-center items-center border-2 shadow-lg rounded-md p-4">
             {{ range .Params.tabs }}
                 <button
                     id="{{ .id }}-tab"
@@ -66,7 +81,7 @@
                             src="{{ .img }}"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             {{ .title }}
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
@@ -281,6 +296,37 @@
                     </div>
                 </div>
 
+                <!-- Hobbies Tab -->
+                <div id="hobbies-tab-content" class="tab-content container mx-auto w-full h-full">
+                    {{ range .Sections }}
+                        <div class="px-4 my-6">
+                            <h1 class="w-full text-center text-neutral-800 font-bold text-2xl md:text-4xl">
+                                {{ .Title }}
+                            </h1>
+                            {{ with .Description }} 
+                                <div class="py-3 mx-auto max-w-2xl flex justify-center items-center">
+                                    <p class="text-blue-500 text-sm text-center">{{ . }}</p>
+                                </div>
+                            {{ end }}
+                            {{ if eq .Params.mytype "threedarts" }}
+                            <div id = "gallery" class="grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
+                                {{ with .Resources.ByType "image" }}
+                                    {{ range . }}
+                                        {{ $image := .Fit "300x150 q90" }}
+                                        <div data-src = "{{ .Permalink }}" class="item">
+                                            <img
+                                                src="{{ $image.Permalink }}"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    {{ end }}
+                                {{ end }}
+                            </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+
             </div>
         </div>
     </div>
@@ -310,6 +356,10 @@
             $(`#${tabid}-tab-content`).show();
             $('.tab-button').attr('aria-selected', "false");
             $(`#${tabid}-tab`).attr('aria-selected', "true");
+        });
+
+        $("#gallery").lightGallery({
+                selector: '.item'
         });
     });
 </script>
