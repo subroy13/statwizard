@@ -3,6 +3,7 @@ paginate = 6
 languageCode = "en-us"
 title = "StatWizard"
 publishDir = "docs"
+disqusShortname = 'statwizard'
 
 [markup.goldmark.renderer]
     unsafe = true

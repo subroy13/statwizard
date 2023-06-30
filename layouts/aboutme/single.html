@@ -119,19 +119,10 @@
         </div>
     </div>
 
-    <!-- Extra Section -->
-    <!-- <section>
-        <div class="my-4 mx-4 md:mx-auto max-w-6xl text-justify">
-            <h4 class="text-neutral-800">If you find the details interesting, be sure to check out the associated links to see more details. &#129488;</h4>
-        </div>
-        <div class="my-4 py-4 mx-4 md:mx-auto max-w-6xl flex justify-center items-center">
-            <a href="{{ $project.FirstSection.Permalink }}" 
-                class="py-2 px-6 shadow-sm rounded-md bg-blue-600 text-white hover:bg-blue-800 focus:bg-blue-800 transition ease-in-out"
-            >
-                See list of my all Softwares
-            </a>
-        </div>
-    </section> -->
+    <!-- Comment Section -->
+    <div class="my-6 max-w-6xl md:mx-auto mx-4">
+        {{ template "_internal/disqus.html" . }}
+    </div>
 
 
 {{ end }}

@@ -7,8 +7,8 @@
     <link rel="icon" href="/svg/avatar.svg">
     <title>
         
-            StatWizard
-        
+    About Me | StatWizard
+
     </title>
 
     
@@ -27,7 +27,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.2f60085e9696c72ec8036ab8a1ecff5a.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.436ec3c9a53aac3c4f341e072d082ee0.css" />
 
 
 
@@ -63,8 +63,15 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-     
-     
+    
+    <link rel="stylesheet" href="/plugins/lightgallery/css/lightgallery.css">
+
+    
+    
+    <script src="/plugins/lightgallery/js/lightgallery.js"></script>
+    <script src="/plugins/lightgallery/js/lg-thumbnail.js"></script>
+    <script src="/plugins/lightgallery/js/lg-fullscreen.js"></script>
+
 </head>
 <body>
     <div class="app-container min-h-[100vh] flex flex-col justify-between">
@@ -182,7 +189,6 @@
         <div class="content-container">
             
 
-
 <section class="py-8 max-w-6xl md:mx-auto grid grid-cols-1 md:grid-cols-3 justify-center">
     <div class="col-span-2 flex flex-col justify-center gap-4 text-right">
         <p class="break-words text-gray-700">
@@ -232,7 +238,7 @@
 
 <section>
     <div class="py-8">
-        <div class="mx-4 md:mx-auto max-w-6xl flex flex-row flex-wrap gap-2 justify-start items-center">
+        <div class="mx-4 md:mx-auto max-w-4xl flex flex-row flex-wrap gap-2 justify-center items-center border-2 shadow-lg rounded-md p-4">
             
                 <button
                     id="experiences-tab"
@@ -279,6 +285,15 @@
                     Softwares
                 </button>
             
+                <button
+                    id="hobbies-tab"
+                    class="tab-button group bg-white p-4 rounded text-blue-500 shadow-md flex items-center justify-center
+                    hover:bg-blue-600 aria-selected:bg-blue-600 hover:text-white aria-selected:text-white"
+                >
+                    <i class="text-blue-600 group-hover:text-white group-aria-selected:text-white fa fa-icons mx-2"></i>
+                    Hobbies
+                </button>
+            
         </div>
 
         <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
@@ -291,7 +306,7 @@
                             src="/svg/eye.svg"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             My Education and Work Experiences
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
@@ -304,7 +319,7 @@
                             src="/svg/book.svg"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             My Publications
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
@@ -317,7 +332,7 @@
                             src="/svg/data-science.svg"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             Project and Tech Reports
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
@@ -330,7 +345,7 @@
                             src="/svg/undraw_teaching.svg"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             Talks and Presentations
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
@@ -343,11 +358,24 @@
                             src="/svg/pyramid.svg"
                             class="mx-auto w-[80%] mb-8"
                         />
-                        <p class="text-3xl md:text-4xl font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
                             Softwares
                         </p>
                         <p class="text-sm md:text-base text-neutral-800 mb-4">
                             Innovative Solutions, Custom Tools, and Streamlined Workflows: Throughout my journey, I have developed some softwares and packages to address specific needs and enhance productivity, as well as data science tools related to my publications.
+                        </p>
+                    </div>
+                
+                    <div class="flex flex-col w-full tab-header" id="hobbies-tab-header">
+                        <img
+                            src="/svg/hobby.svg"
+                            class="mx-auto w-[80%] mb-8"
+                        />
+                        <p class="text-3xl md:text-4xl text-center font-semibold leading-normal md:leading-relaxed mb-2 text-blue-500">
+                            Hobbies
+                        </p>
+                        <p class="text-sm md:text-base text-neutral-800 mb-4">
+                            
                         </p>
                     </div>
                 
@@ -1350,6 +1378,141 @@
                     </div>
                 </div>
 
+                
+                <div id="hobbies-tab-content" class="tab-content container mx-auto w-full h-full">
+                    
+                        <div class="px-4 my-6">
+                            <h1 class="w-full text-center text-neutral-800 font-bold text-2xl md:text-4xl">
+                                My 3D Art Models
+                            </h1>
+                             
+                                <div class="py-3 mx-auto max-w-2xl flex justify-center items-center">
+                                    <p class="text-blue-500 text-sm text-center">One of my favourite hobby is to create 3D models using computer graphics. I use Blender, Bryce 3D, Wings 3D to make these.</p>
+                                </div>
+                            
+                            
+                            <div id = "gallery" class="grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
+                                
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Abstract%203.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Abstract%203_hue9fad7bb578bdc0c377d0e8a4709e16c_54201_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Abstract1.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Abstract1_hu1c05df87c854835b2247bfe6b8761b22_740426_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Assassin_s%20Creed%20Syndicate.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Assassin_s%20Creed%20Syndicate_hu3692169fa3c9e2f248deb7b4cb2dc60d_314440_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Chess_pawn_to_king.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Chess_pawn_to_king_hudadd9445a9296dfdfc67a591491d87f1_230768_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Fireworks.png" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Fireworks_hue5bec8c9ec79742a99637c30a7f194d6_1972420_300x150_fit_q90_box_3.png"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/Woven%20cube.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/Woven%20cube_hu1a704f0a9ed31d03ef8515e82893fe4c_40853_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/basic-couch.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/basic-couch_hub7d499ec8f45c745a7c1ae9bcb3161d9_886745_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/coffeecup.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/coffeecup_hu319ed5cc16342fe1b58f7495621216a0_134164_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/desert.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/desert_hu9d0bd6c8d08897d4605fe5fd964571c7_309941_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/fiber-background.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/fiber-background_hu32c7b8d0b8d04f34753c58a742cca131_468245_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/infinte%20square.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/infinte%20square_hu9661fe6f8e34ebd4cb5fb69a9ade4214_279428_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/simple-chair.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/simple-chair_hu426ad494e10c4d7c09f9e3940e695734_205341_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/space-fantasy.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/space-fantasy_hu32c7b8d0b8d04f34753c58a742cca131_415871_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                        
+                                        <div data-src = "/aboutme/3darts/studytable.jpg" class="item">
+                                            <img
+                                                src="/aboutme/3darts/studytable_hud40ea09a43e8dc2c636525fd66889047_802408_300x150_fit_q90_box.jpg"
+                                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                                            />
+                                        </div>
+                                    
+                                
+                            </div>
+                            
+                        </div>
+                    
+                </div>
+
             </div>
         </div>
     </div>
@@ -1409,6 +1572,10 @@
             $(`#${tabid}-tab-content`).show();
             $('.tab-button').attr('aria-selected', "false");
             $(`#${tabid}-tab`).attr('aria-selected', "true");
+        });
+
+        $("#gallery").lightGallery({
+                selector: '.item'
         });
     });
 </script>
