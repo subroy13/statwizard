@@ -2,7 +2,8 @@
 
 <!-- Hero Section -->
 <section
-  class="min-h-[100vh] mx-4 md:mx-auto max-w-6xl grid grid-cols-2 gap-2"
+  class="min-h-[100vh] mx-4 xl:mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-2
+  bg-[url('/images/cover-1.png')] bg-gray-300 bg-blend-overlay md:bg-white md:bg-none bg-cover"
 >
     <div class="min-h-[100vh] flex flex-col gap-6 justify-center">
         <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
@@ -23,7 +24,7 @@
             Explore Posts
         </a>
     </div>
-    <div>
+    <div class="hidden md:block">
         <img src="/images/cover-1.png"/>
     </div>
 </section>
@@ -50,7 +51,7 @@
       {{ end }}.
       {{ .Params.story }}
     </p>
-    <div class="mt-8 mx-auto flex flex-row gap-4 justify-center items-center">
+    <div class="mt-8 mx-auto flex flex-row flex-wrap gap-4 justify-center items-center">
       <a href="/aboutme"
         class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
         transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
@@ -83,7 +84,7 @@
       <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
     </div>
     <!-- Social media icons container -->
-    <div class="flex flex-row justify-center items-center mx-auto gap-4">
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
       {{ range .Site.Params.social }}
       <a
         href="{{ .link }}"
