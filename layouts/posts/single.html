@@ -42,9 +42,11 @@
         </div>
         <div class="flex flex-col justify-center gap-2">
             <div class="">
+                {{ if isset $item.Params "links" }}
                 <h2 class="text-neutral-900 font-bold">
                     Important Links:
                 </h2>
+                {{ end }}
                 {{ range $item.Params.links }}
                     {{ if isset . "color" }}
                         <div class="px-2 mt-1 rounded-sm bg-{{ .color }}-100 text-{{ .color }}-800">
@@ -76,11 +78,16 @@
             </div>
         </div>
     </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
 </div>
 
 
 <!-- See previous and next posts -->
-<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center">
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
     <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
     <div class="flex flex-row justify-center gap-4">
         {{ if .PrevInSection }}
