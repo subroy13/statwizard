@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+    Tag - Dimension Reduction
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.64aeb3e4f01f05cab557281bb96e0915.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+<section class="mx-4 md:mx-auto max-w-6xl my-8">
+    <h1 class="my-8 w-full text-center font-bold text-blue-600 text-2xl md:text-4xl">
+        Tag Dimension Reduction
+    </h1>
+    <div class="my-8 bg-neutral-50 flex flex-col gap-4 items-center justify-center">
+        
+            <div class="w-full shadow-lg rounded-md border-2 bg-white p-4">
+                <div class="header flex flex-row justify-start items-center gap-4">
+                    <a  href="/aboutme/rsvddpd-video-surveillance/" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
+                        A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling
+                    </a>
+                    <p class="text-neutral-800 font-light flex flex-row items-center">
+                        <i class = "far fa-calendar-alt fa-2x mr-3"></i>September, 2021
+                    </p>
+                </div>
+                <div class="mt-4 text-neutral-800 text-sm text-justify">
+                    Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.
+                </div>
+                <div class="mt-4">
+                    <a 
+                        href="/aboutme/rsvddpd-video-surveillance/"
+                        class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+                    >
+                        See more
+                    </a>
+                </div>
+            </div>
+        
+            <div class="w-full shadow-lg rounded-md border-2 bg-white p-4">
+                <div class="header flex flex-row justify-start items-center gap-4">
+                    <a  href="/aboutme/trustworthy-dimensionality-reduction/" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
+                        Trustworthy Dimensionality Reduction
+                    </a>
+                    <p class="text-neutral-800 font-light flex flex-row items-center">
+                        <i class = "far fa-calendar-alt fa-2x mr-3"></i>June, 2021
+                    </p>
+                </div>
+                <div class="mt-4 text-neutral-800 text-sm text-justify">
+                    My master’s dissertation about creating a new dimensionality reduction technique which is trustworthy.
+                </div>
+                <div class="mt-4">
+                    <a 
+                        href="/aboutme/trustworthy-dimensionality-reduction/"
+                        class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+                    >
+                        See more
+                    </a>
+                </div>
+            </div>
+        
+            <div class="w-full shadow-lg rounded-md border-2 bg-white p-4">
+                <div class="header flex flex-row justify-start items-center gap-4">
+                    <a  href="/aboutme/d-basu-pres/" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
+                        D. Basu Gold Medal Award Presentation on tSNE
+                    </a>
+                    <p class="text-neutral-800 font-light flex flex-row items-center">
+                        <i class = "far fa-calendar-alt fa-2x mr-3"></i>December, 2019
+                    </p>
+                </div>
+                <div class="mt-4 text-neutral-800 text-sm text-justify">
+                    This is a talk I gave during the D. Basu Gold Medal Award Ceremony in Indian Statistical Institute, Kolkata.
+                </div>
+                <div class="mt-4">
+                    <a 
+                        href="/aboutme/d-basu-pres/"
+                        class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+                    >
+                        See more
+                    </a>
+                </div>
+            </div>
+        
+        
+
+
+
+    </div>
+    <div class="flex flex-row justify-center items-center">
+        <a 
+            href='/tags/'
+            class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+        >
+            See the list of all tags
+        </a>
+    </div>
+</section>
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+     
+</body>
+</html>

@@ -1,0 +1,71 @@
+{{ define "title" }}
+    All Tags
+{{ end }}
+
+
+{{ define "main" }}
+<section class="mx-4 md:mx-auto max-w-6xl my-8 grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+    <div class="flex flex-col">
+        <h1 class="italic font-semibold text-blue-600 text-xl">
+            Classification of <a href="/">statwizard</a> contents
+         </h1>
+         <div class="bg-white p-4 flex justify-left items-center flex-wrap">
+            {{ $count := 0 }}
+            {{ range $index, $elem := .Data.Terms }}
+                {{ if (eq (mod $count 4) 0) }}
+                <span class="inline-flex items-center m-2 px-3 py-1 bg-green-200 hover:bg-green-300 rounded-full text-sm font-semibold text-green-600">
+                    <a class="cursor-pointer hover:underline transition-all ease-in-out" href="{{ $elem.Page.Permalink }}">
+                        <span class="text-gray-800">
+                            {{ $elem.Count }}
+                        </span>
+                        <span class="ml-1">
+                        {{ $elem.Page.Title }}
+                        </span>                            
+                    </a>
+                </span>
+                {{ else if (eq (mod $count 4) 1) }}
+                <span class="inline-flex items-center m-2 px-3 py-1 bg-red-200 hover:bg-red-300 rounded-full text-sm font-semibold text-red-600">
+                    <a class="cursor-pointer hover:underline transition-all ease-in-out" href="{{ $elem.Page.Permalink }}">
+                        <span class="text-gray-800">
+                            {{ $elem.Count }}
+                        </span>
+                        <span class="ml-1">
+                        {{ $elem.Page.Title }}
+                        </span>                            
+                    </a>
+                </span>
+                {{ else if (eq (mod $count 4) 2) }}
+                <span class="inline-flex items-center m-2 px-3 py-1 bg-yellow-200 hover:bg-yellow-300 rounded-full text-sm font-semibold text-yellow-600">
+                    <a class="cursor-pointer hover:underline transition-all ease-in-out" href="{{ $elem.Page.Permalink }}">
+                        <span class="text-gray-800">
+                            {{ $elem.Count }}
+                        </span>
+                        <span class="ml-1">
+                        {{ $elem.Page.Title }}
+                        </span>                            
+                    </a>
+                </span>
+                {{ else }}
+                <span class="inline-flex items-center m-2 px-3 py-1 bg-blue-200 hover:bg-blue-300 rounded-full text-sm font-semibold text-blue-600">
+                    <a class="cursor-pointer hover:underline transition-all ease-in-out" href="{{ $elem.Page.Permalink }}">
+                        <span class="text-gray-800">
+                            {{ $elem.Count }}
+                        </span>
+                        <span class="ml-1">
+                        {{ $elem.Page.Title }}
+                        </span>                            
+                    </a>
+                </span>
+                {{ end }}
+                {{ $count = add $count 1 }}
+            {{ end }}
+         </div> 
+    </div>
+    <div>
+        <img src="/svg/indiv-think.svg" 
+            class="w-[80%] mx-auto"
+        />
+    </div>
+</section>
+
+{{ end }}

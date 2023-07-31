@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Reinforcement Learning (Part 1) - K-arm Bandit Problem
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.64aeb3e4f01f05cab557281bb96e0915.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/k-arm-bandit/featured.jpg')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from </p>
+            </div>
+        
+    </div>
+
+
+
+<div class="flex flex-col gap-4 mx-4 px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Reinforcement Learning (Part 1) - K-arm Bandit Problem
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex flex-col justify-center items-center gap-2">   
+            <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                <p class="font-bold">Date:</p>
+                <p class="font-normal">31 July, 2023</p>
+            </div> 
+            <p class="mt-1 text-neutral-600">
+                <span class="font-bold">9</span> minutes read
+            </p>
+            <div class="my-1">
+                
+                    <a href="/tags/reinforcement-learning/" 
+                        class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                        hover:underline hover:bg-gray-300 transition ease-in-out">
+                        Reinforcement Learning
+                    </a>
+                
+            </div>    
+        </div>
+        <div class="flex flex-col justify-center gap-2">
+            <div class="">
+                
+                
+            </div>
+        </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-reinforcement-learning">Why Reinforcement Learning</a></li>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#history-of-reinforcement-learning">History of Reinforcement Learning</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-puzzling-toy-problem">A Puzzling Toy Problem</a>
+      <ul>
+        <li><a href="#multi-armed-bandit">Multi-armed Bandit</a></li>
+        <li><a href="#exploitation-vs-exploration">Exploitation vs Exploration</a></li>
+        <li><a href="#epsilon-greedy-strategy">$\epsilon$-greedy strategy</a></li>
+        <li><a href="#so-can-we-do-better">So, can we do better?</a></li>
+      </ul>
+    </li>
+    <li><a href="#some-questions-to-think-about">Some Questions to think about</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="why-reinforcement-learning">Why Reinforcement Learning</h2>
+<p>In recent times, we&rsquo;ve witnessed an explosion of interest in Artificial Intelligence, particularly with the emergence of powerful Large Language Model (LLM) and AI tools like <a href="https://chat.openai.com/">ChatGPT</a>. Businesses and individuals are increasingly embracing this technology in various aspects of life, seeking to benefit from its impressive accuracy and extensive capabilities.</p>
+<p>However, amid this excitement, there&rsquo;s a crucial concern often overlooked – the impact of these AI models beyond their neural networks to the real world. Let me illustrate with an example. Imagine you create a restaurant recommendation app using AI, which considers people&rsquo;s ratings, comments, and food quality of the restaurants to make suggestions. After releasing the app, it quickly gains 100 sign-ups on the first day – impressive, right? But here&rsquo;s the catch: the app keeps recommending only one restaurant as the best in town due to its high rating. As a result, that particular restaurant becomes overcrowded, leading to longer waiting times and, ultimately, a drop in its ratings.</p>
+<p>The problem here is that if your AI model remains static and is trained only once, it cannot learn from new information and adjust its behavior accordingly. However, with reinforcement learning, the model can continuously integrate feedback and improve itself day by day.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Reinforcement Learning is one of the many paradigms of Machine Learning. Machine Learning, as the name suggests, means to enable a machine learn how to solve a particular kind of problem. To understand the paradigms in machine learning, let me again draw an analogy. Imagine you are preparing for an exam.</p>
+<ol>
+<li>
+<p>You start by creating a cheatsheet for some question-answer pairs. If the same question comes in exam, you can answer, otherwise you cannot. This is <strong>logic</strong>.</p>
+</li>
+<li>
+<p>You write another cheatsheet, but this time, with only formulas. If a question comes where the formula directly gives the answer, you can do it. Otherwise, you can&rsquo;t. This is an <strong>algorithm</strong>.</p>
+</li>
+<li>
+<p>Now imagine yourself going to a teacher to learn about the concepts in the subject. When you make mistakes, the teacher is there is help you by providing the correct solution. This is <strong>Supervised Learning</strong>.</p>
+</li>
+<li>
+<p>Now suppose, you have studied similar topics before but not this one the exam is about. So when a question is asked, you try to relate it to one of the concepts you studied before. This does not let you answer questions, but understand relevance of the question. This is <strong>Unsupervised Learning</strong>.</p>
+</li>
+<li>
+<p>Here, instead of learning about the topic, you just give plenty of mock tests. By giving so many tests and seeing their results, you start to understand what kind of questions require what kind of answers. This is <strong>Reinforcement Learning</strong>.</p>
+</li>
+</ol>
+<h3 id="history-of-reinforcement-learning">History of Reinforcement Learning</h3>
+<p>Here&rsquo;s a bit of historical timeline of our reinforcement learning evolved over time, and if history bores you, feel free to skip to next section.</p>
+<ol>
+<li>
+<p><strong>Psychology and Behaviorism (Early 1900s - 1950s)</strong>:
+The concept of reinforcement and learning through rewards and punishments can be traced back to the early works of behaviorist psychologists such as Ivan Pavlov and B.F. Skinner. Their experiments with animals laid the groundwork for understanding how behavior can be shaped and modified through reinforcement.</p>
+</li>
+<li>
+<p><strong>Control Theory and Cybernetics (1940s - 1960s)</strong>:
+Researchers in control theory and cybernetics, like Norbert Wiener and Richard Bellman, developed mathematical models to describe systems that adjust their behavior based on feedback from the environment. These early theories laid the foundation for formalizing reinforcement learning as a field of study.</p>
+</li>
+<li>
+<p><strong>Dynamic Programming (1950s - 1960s)</strong>:
+In the 1950s, Richard Bellman&rsquo;s work on dynamic programming provided a powerful framework for solving problems involving sequential decision-making.</p>
+</li>
+<li>
+<p><strong>Temporal Difference Learning (1980s)</strong>:
+In the 1980s, researchers like Richard Sutton and Andrew Barto made significant contributions to reinforcement learning with their work on temporal difference (TD) learning.</p>
+</li>
+<li>
+<p><strong>Q-Learning (1989)</strong>:
+Gerald Tesauro introduced Q-learning, a model-free reinforcement learning algorithm, which sprouted some individual researches about solving games using reinforcement learning.</p>
+</li>
+<li>
+<p><strong>Neural Networks and Deep Learning (2000s - 2010s)</strong>:
+The development of powerful computational resources and deep learning techniques revolutionized reinforcement learning. Researchers began combining deep neural networks with reinforcement learning algorithms, leading to the emergence of Deep Reinforcement Learning (DRL). Notable examples include Deep Q Networks (DQNs) by Volodymyr Mnih et al., and AlphaGo by DeepMind, which achieved remarkable success in playing complex games like Atari and Go.</p>
+</li>
+<li>
+<p><strong>Recent Advancements (2010s - present)</strong>:
+In recent years, reinforcement learning has seen incredible progress with innovations like Proximal Policy Optimization (PPO), Trust Region Policy Optimization (TRPO), and Soft Actor-Critic (SAC). Reinforcement learning is now being applied to a wide range of real-world problems, such as robotics, autonomous vehicles, finance, and healthcare.</p>
+</li>
+</ol>
+<p>Today, reinforcement learning continues to evolve rapidly, with ongoing research, new algorithms, and applications that promise to shape the future of AI and machine learning.</p>
+<h2 id="a-puzzling-toy-problem">A Puzzling Toy Problem</h2>
+<h3 id="multi-armed-bandit">Multi-armed Bandit</h3>
+<p><strong>Multi-armed Bandit</strong> is one of the most popular problem to motivate reinforcement learning. Imagine you are in a casino, and there is a slot machine in front of you with $k$ many arms. Each arm, if turned, gives a random reward. However, on average, some handles give more rewards than others. With the money that you have with you, you can only make use of the slot machine $1000$ times, and within that, you wish to accumulate as much reward as possible.</p>
+<h3 id="exploitation-vs-exploration">Exploitation vs Exploration</h3>
+<p>There are two extreme strategies you can take up with this.</p>
+<ol>
+<li>
+<p><strong>Exploit</strong> the greedy action to get the best possible reward based on whatever estimates about the stochastic behaviour you have on all arms of the slot machine.</p>
+</li>
+<li>
+<p><strong>Explore</strong> a non-greedy action to learn more about its stochastic behaviour and refine your estimates.</p>
+</li>
+</ol>
+<p>Clearly, with every turn of the arm, you can either choose to exploit or explore. You cannot do both.</p>
+<p>Let us try to see the performance of these two approaches. To compare the performance, we will generate $2000$ such $10$-arm bandit problem.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">11</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># these are expected reward, maximum reward is 5</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">k_arm_bandit_reward</span>(arm_k):
+   <span style="color:#66d9ef">if</span> arm_k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> arm_k <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9</span>:
+      <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Invalid arm&#34;</span>)
+   <span style="color:#66d9ef">else</span>:
+      <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> rewards[arm_k]   <span style="color:#75715e"># the reward will be a normally distributed random variable, with mean of that arm and variance 1</span>
+</code></pre></div><p>Now, here&rsquo;s a bit of python code that uses the first $10$ rounds to get an initial estimate of the rewards of the arms, and then it continues to take greedy action with respect to the observed rewards.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">greedy_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))  <span style="color:#75715e"># store rewards for a greedy policy</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+  rvals <span style="color:#f92672">=</span> [k_arm_bandit_reward(k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]
+  max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(rvals)
+  greedy_rewards[b, :<span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> rvals
+  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1000</span>):
+    greedy_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(max_k) <span style="color:#75715e"># keep taking the greedy action</span>
+<p>greedy_rewards <span style="color:#f92672">=</span> greedy_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># finally take average reward over all 2000 problems</span>
+</code></pre></div><p>Now we do the same for an extreme strategy that does only exploration.</p></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">explore_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+    action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>)
+    explore_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
+<p>explore_rewards <span style="color:#f92672">=</span> explore_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Here’s there plot for the average rewards obtained by these two strategies over $1000$ rounds.</p></p>
+<p><img src="greedy-explore-1.png" alt=""></p>
+<p>Clearly, the greedy method performs much better than complete exploration at random. But notice that the greedy method cannot achieve the highest possible reward, i.e., $5$ in this problem.</p>
+<h3 id="epsilon-greedy-strategy">$\epsilon$-greedy strategy</h3>
+<p>Looks like the greedy method does better, but it is not still optimal and there are rooms for improvement. This is because, often the reward from $8$-th or $9$-th arm turns out to better than the reward for the $10$-th arm at the first $10$ rounds, and hence the exploitation strategy continues to take the suboptimal action throughout. It looks like we can do better if we explore sometimes to gather more information about the other arms.</p>
+<p>So here&rsquo;s another strategy. You toss a biased coin with probability of heads turning up as $(1-\epsilon)$ at each round. If it turns up head, you exploit based on whatever information you have. If it turns up tail, you explore randomly by turning one of the $10$ arms, and then update the estimates for reward.</p>
+<p>Here&rsquo;s a simulation by employing this strategy with $\epsilon = 0.1$.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+eps1_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+      max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
+      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
+      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)      
+      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># update the average</span>
+      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      eps1_rewards[b, t] <span style="color:#f92672">=</span> reward  <span style="color:#75715e"># record the reward</span>
+<p>eps1_rewards <span style="color:#f92672">=</span> eps1_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.</p></p>
+<p><img src="greedy-explore-2.png" alt=""></p>
+<h3 id="so-can-we-do-better">So, can we do better?</h3>
+<p>Since the $0.1$-greedy strategy still does not always hit the target of $5$, can we make it even better. Note that, the $0.1$-greedy strategy always explores $10%$ of the time, even in the late rounds when the estimates of the reward distribution of the arms is known with high confidence. It does not makes sense to explore that late in the game, and hence, we must keep reducing the $\epsilon$ parameter to reduce exploration over time (or number of rounds).</p>
+<p>Here&rsquo;s the simulation with this strategy, where we take $\epsilon = 10/t$, where $t$ is the number of round. It is very similar to the code for $0.1$-strategy shown earlier, with the only change</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
+eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">/</span>(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># dynamic epsilon</span>
+action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
+</code></pre></div><p>in the inner for loop with index variable <code>t</code>. As we had hoped, this performs even better than $0.1$-greedy action.</p>
+<p><img src="greedy-explore-3.png" alt=""></p>
+<h2 id="some-questions-to-think-about">Some Questions to think about</h2>
+<p>Here&rsquo;s some questions to think about and some things to try.</p>
+<ol>
+<li>
+<p>Why is there a sharp peak at the beginning for the greedy action, and there is no peak for the non-greedy actions which smoothly increases its average reward.</p>
+</li>
+<li>
+<p>If we choose to reduce $\epsilon$ as $0.1/t$ instead of $10/t$, it achieves a reward trajectory even worse than the extreme exploration. Why is that? Here&rsquo;s the visualization plot.</p>
+</li>
+</ol>
+<p><img src="greedy-explore-4.png" alt=""></p>
+<ol start="3">
+<li>Where does this $\epsilon = 10/t$ come from? Can we use some statistical theories to dynamically come up with this rate of change to be applied on $\epsilon$?</li>
+</ol>
+<p>I shall dive into the answer of these questions in my next post of this series. Till then, feel free to explore (or exploit) the answers to these questions and let me know in the comments.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/texture-network-style-transfer/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+     
+</body>
+</html>

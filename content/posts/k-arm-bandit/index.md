@@ -1,13 +1,13 @@
 ---
 title: 'Reinforcement Learning (Part 1) - K-arm Bandit Problem'
-date: "2023-07-17T00:00:00Z"
+date: "2023-07-31T00:00:00Z"
 imageCaption: ""
 summary: "This is an introductory post about reinforcement learning. Here I discuss about the exploration-exploitation dilemma with multi-armed bandit problem and potential solutions to this."
 mermaid: false
 tags:
     - Reinforcement Learning
 
-draft: true
+draft: false
 ---
 
 ## Why Reinforcement Learning
