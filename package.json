@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
-    "hugo:draft": "hugo server -D",
+    "hugo:draft": "hugo server -D -F",
     "hugo": "hugo server",
     "dev": "hugo -D && npm run prebuild && npm run hugo:draft",
     "start": "hugo && npm run prebuild && npm run hugo",

@@ -9,9 +9,12 @@
         <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
         </h1>
         <p
-            class="text-light text-xl md:text-xl animate__animated animate__fadeIn animate__delay-2s text-gray-700"
+            class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700"
         >
-            and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance.
+            Join me in a journey:<br/>
+            &bull; To explore applications of statistics, mathematics, computer science and personal finance in your daily lives.<br/>
+            &bull; To ensure accessibility of complex statistical, mathematical and computer science concepts hidden behind a paywall of journals or academic jargons.<br/>
+            <!-- and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance. -->
         </p>
         <a
             class="py-2 px-6 rounded-md border-2 text-blue-600 
@@ -41,7 +44,7 @@
     <p class="max-w-4xl text-lg md:mx-auto text-justify break-words text-gray-700">
       {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
           {{ if eq $bioitem_index 0 }}
-              I am currently 
+              You will find me working as 
           {{ else }}
               and
           {{ end }}
