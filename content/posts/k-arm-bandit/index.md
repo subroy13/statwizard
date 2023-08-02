@@ -35,7 +35,7 @@ Reinforcement Learning is one of the many paradigms of Machine Learning. Machine
 
 ### History of Reinforcement Learning
 
-Here's a bit of historical timeline of our reinforcement learning evolved over time, and if history bores you, feel free to skip to next section.
+Here's a bit of historical timeline of our reinforcement learning evolved over time, and if history bores you, feel free to skip to next section.[^1]
 
 1. **Psychology and Behaviorism (Early 1900s - 1950s)**:
    The concept of reinforcement and learning through rewards and punishments can be traced back to the early works of behaviorist psychologists such as Ivan Pavlov and B.F. Skinner. Their experiments with animals laid the groundwork for understanding how behavior can be shaped and modified through reinforcement.
@@ -186,3 +186,8 @@ Here's some questions to think about and some things to try.
 3. Where does this $\epsilon = 10/t$ come from? Can we use some statistical theories to dynamically come up with this rate of change to be applied on $\epsilon$?
 
 I shall dive into the answer of these questions in my next post of this series. Till then, feel free to explore (or exploit) the answers to these questions and let me know in the comments.
+
+
+## References
+
+[^1]: Sutton, R. S., Barto, A. G. (2018). [Reinforcement Learning: An Introduction.](https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en) United Kingdom: MIT Press.

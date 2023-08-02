@@ -43,7 +43,7 @@ def k_arm_bandit_reward(arm_k):
 
 ## Upper Confidence Band Algorithm
 
-Upper Confidence Band (UCB) algorithm is one of the solution to this problem, which lets us dynamically adjusting the exploration-exploitation balance to get to the best result. It was independently proposed by [Agarwal 1995](https://www.jstor.org/stable/1427934) and [Katehakis and Robbins 1995](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC41010/), after the seminal work by [Lai and Robbins 1985](http://dx.doi.org/10.1016/0196-8858(85)90002-8) which proves some optimality property about an algorithm that maintains a score which can provide the best return in the long run. (*I won't go more mathematical than this, but if you want to know more, let me know in the comments, I'll make a post about it.*)
+Upper Confidence Band (UCB) algorithm is one of the solution to this problem, which lets us dynamically adjusting the exploration-exploitation balance to get to the best result. It was independently proposed by Agarwal[^1] and Katehakis and Robbins[^2], after the seminal work by Lai and Robbins[^3] which proves some optimality property about an algorithm that maintains a score which can provide the best return in the long run. (*I won't go more mathematical than this, but if you want to know more, let me know in the comments, I'll make a post about it.*)
 
 Assume that you are currently at round $t$. So, till this round, you have been maintaining your best estimate abour $p_a$ for each action, let us call that $\widehat{p}_a(t)$. Also, you have choosen arm $a$ for $N_a(t)$ number of times. Then, there are three things at play here.
 
@@ -85,7 +85,7 @@ Again, we plot the average reward obtained as a function of the number of rounds
 
 ## UCB Variant - KLUCB Algorithm
 
-There are many variants of the UCB algorithm which have been proposed over last two decades.  Here, we shall describe one variant of the algorithm called KL-UCB algorithm, proposed by [Garivier and Cappe 2011](https://arxiv.org/abs/1102.2490). 
+There are many variants of the UCB algorithm which have been proposed over last two decades.  Here, we shall describe one variant of the algorithm called KL-UCB algorithm, proposed by Garivier and Cappe[^4]. 
 
 Here, the choice of upper confidence bound (UCB) score is given by
 
@@ -189,7 +189,7 @@ which is again a Beta distribution but with new parameters $r_a(t) + \alpha_a$ a
 
 5. Finally, once we have the posterior distribution (i.e., the updated $\alpha_a$ and $\beta_a$), we can use this to simulate a future observation of the $p_a$ values. This basically means simulating one possible $k$-arm bandit game which have been consistent with the reward observations so far. Once we have simulated the $p_a$ values, clearly the best possible arm would to be take the one with the highest $p_a$ value (i.e., the highest probability of giving a reward). 
 
-This entire algorithm is called **Thompson Sampling**, proposed by William R. Thompson in 1993 in his paper [On the Likelihood that One Unknown Probability Exceeds Another in View of the Evidence of Two Samples](https://www.jstor.org/stable/2332286). Note that, in contrast to the greedy method where we find the best arm based on whatever knowledge we have so far, in Thompson sampling, we try to predict the multi-arm bandit game itself using the knowledge and use the best arm in the predicted game.
+This entire algorithm is called **Thompson Sampling**, proposed by William R. Thompson in 1993[^5]. Note that, in contrast to the greedy method where we find the best arm based on whatever knowledge we have so far, in Thompson sampling, we try to predict the multi-arm bandit game itself using the knowledge and use the best arm in the predicted game. You may want to check out this nice tutorial paper by Russo et al. on Thompson sampling[^6].
 
 Here's a bit of python code that implements this Thompson sampling algorithm.
 
@@ -231,3 +231,18 @@ Same as the previous post, here's some questions to explore.
 2. How do we model this situation mathematically, i.e., when the reward itself is changing the attributes of the slot machine?
 
 I shall answer both of these questions in my next post of this series. Till then, feel free to explore (or exploit) the answers to these questions and let me know in the comments. 
+
+
+## References
+
+[^1]: Agrawal, R. (1995). Sample Mean Based Index Policies with O(log n) Regret for the Multi-Armed Bandit Problem. Advances in Applied Probability, 27(4), 1054–1078. https://doi.org/10.2307/1427934.
+
+[^2]: Katehakis, M. N., & Robbins, H. (1995). Sequential choice from several populations. Proceedings of the National Academy of Sciences of the United States of America, 92(19), 8584–8585. https://doi.org/10.1073/pnas.92.19.8584.
+
+[^3]: Lai, T.L., & Robbins, H. (1985). Asymptotically efficient adaptive allocation rules.  Advances in Applied Mathematics, 6(1), 4-22. https://doi.org/10.1016/0196-8858(85)90002-8.
+
+[^4]: Garivier, A., & Cappé, O. (2011, December). The KL-UCB algorithm for bounded stochastic bandits and beyond. In Proceedings of the 24th annual conference on learning theory (pp. 359-376). JMLR Workshop and Conference Proceedings.
+
+[^5]: Thompson, W. R. (1933). On the Likelihood that One Unknown Probability Exceeds Another in View of the Evidence of Two Samples. Biometrika, 25(3/4), 285–294. https://doi.org/10.2307/2332286.
+
+[^6]: Russo, D. J., Van Roy, B., Kazerouni, A., Osband, I., & Wen, Z. (2018). A tutorial on thompson sampling. Foundations and Trends® in Machine Learning, 11(1), 1-96. https://arxiv.org/abs/1707.02038.
