@@ -7,14 +7,15 @@ mermaid: true
 tags:
     - Epidemiology
 
-links:
-    - name: JHU CSSE Dataset
-      icon: "fas fa-database"
-      link: "https://github.com/CSSEGISandData/COVID-19"
-      color: success
+prerequisites:
+    - topic: R Programming
+      level: 2
 
-authors:
-    - Turtle
+    - topic: Statistical Parametric Inference
+      level: 1
+      
+    - topic: Bayesian Statistics
+      level: 2
 
 ---
 

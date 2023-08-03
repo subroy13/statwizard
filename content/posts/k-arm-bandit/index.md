@@ -8,6 +8,10 @@ tags:
     - Reinforcement Learning
 
 draft: false
+prerequisites:
+   -  topic: Python Programming
+      level: 1
+
 ---
 
 ## Why Reinforcement Learning

@@ -8,6 +8,13 @@ tags:
     - Reinforcement Learning
 
 draft: true
+prerequisites:
+   -  topic: Python Programming
+      level: 1
+
+   -  topic: Probability and Bayes Rule
+      level: 2
+
 ---
 
 ## Introduction
@@ -172,7 +179,7 @@ To verify this, you can simply put the values $r_a(t) = 0$ or $r_a(t) = 1$ and w
 
 Now we are ready with all the mathematical insights that we need to understand Thompson sampling. Let's say we are at $t$-th round. We pull an arm $a$.
 
-1. If the arm gave a reward of $1$, then we should increase our estimate $\widehat{p}_a(t)$ a bit. Since $p_a = \alpha_a / (\alpha_a + \beta_a)$, it can be achieved by increasing $\alpha_a$, so we add 1 to the value of $\alpha_a$ for this particular arm.
+1. If the arm gave a reward of $1$, then we should increase our estimate $\widehat{p}_a(t)$ a bit. Since $\mathbb{E}(p_a) = \alpha_a / (\alpha_a + \beta_a)$ (i.e., the expectation of the prior distribution is $\alpha_a / (\alpha_a + \beta_a)$), it can be achieved by increasing $\alpha_a$, so we add 1 to the value of $\alpha_a$ for this particular arm.
 
 2. If the arm gave a reward of $0$, then we need to decrease our estimate. Similar as before, we can increase $\beta_a$ by 1.
 

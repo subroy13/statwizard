@@ -8,20 +8,16 @@ tags:
   - Image Processing
   - Deep Learning
 
-links:
-    - name: Original Code
-      icon: fab fa-github
-      link: "https://github.com/DmitryUlyanov/texture_nets"
-      color: dark
+prerequisites:
+    - topic: Python Programming
+      level: 1
 
-    - name: Original Arxiv Paper
-      icon: fas fa-book
-      link: "https://arxiv.org/abs/1603.03417"
-      color: warning
+    - topic: Tensorflow and Keras
+      level: 2
 
-authors: 
-    - Turtle
-
+    - topic: Neural Networks
+      level: 1
+      
 ---
 
 
@@ -949,7 +945,7 @@ tensor_to_image(tex_net(content_image, 1)['gen'])
 ![png](./index_61_0.png)
 
 
-# Useful References
+## References
 
 1. Texture Networks: Feed-forward Synthesis of Textures and Stylized Images - Dmitry Ulyanov, Vadim Lebedev, Andrea Vedaldi, Victor Lempitsky. https://arxiv.org/abs/1603.03417.
 2. https://www.tensorflow.org/tutorials/generative/style_transfer
@@ -957,4 +953,7 @@ tensor_to_image(tex_net(content_image, 1)['gen'])
 4. https://github.com/DmitryUlyanov/texture_nets
 5. Perceptual Losses for Real-Time Style Transfer and Super-Resolution - Justin Johnson, Alexandre Alahi, Li Fei-Fei. https://arxiv.org/abs/1603.08155.
 6. https://en.wikipedia.org/wiki/Circular_convolution.
+7. https://github.com/DmitryUlyanov/texture_nets
+8. Dmitry Ulyanov, Vadim Lebedev, Andrea Vedaldi, Victor Lempitsky. Texture Networks: Feed-forward Synthesis of Textures and Stylized Images. ArXiv https://arxiv.org/abs/1603.03417.
+
 
