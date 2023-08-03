@@ -24,10 +24,10 @@
                     hover:text-blue-900 cursor-pointer transition ease-in-out">
                     {{ .Title }}
                 </a>
-                <p class="text-neutral-800 text-sm font-light">
+                <p class="text-neutral-800 text-md font-semibold">
                     {{ .Date.Format "02 January 2006" }}
                 </p>
-                <p class="text-neutral-700 text-base">
+                <p class="text-neutral-700 text-sm">
                     {{ .Summary | truncate 100 }}
                 </p>
             </div>
