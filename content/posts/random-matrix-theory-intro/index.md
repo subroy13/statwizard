@@ -1,18 +1,18 @@
 ---
 title: 'Random Matrix Theory - Introduction'
-date: "2023-08-05T00:00:00Z"
+date: "2023-08-06T00:00:00Z"
 imageCaption: ""
 summary: "This is the first introductory post on Random Matrix Theory series: Here I demonstrate some phenemenon about random matrices which are very non-intuitive to the classical thinking of asymptotic result"
 
 tags:
     - Random Matrix Theory
 
-draft: true
+draft: false
 prerequisites:
     - topic: Python Programming
       level: 1
 
-    - topic: Probability (Distribution, Convergence)
+    - topic: Probability (Distribution, Change of Variable, Convergence)
       level: 2
 
     - topic: Linear Algebra
@@ -156,9 +156,12 @@ plt.show()
 
 ![](fig4.png)
 
-Well, this is no way a Gaussian kind of a distribution anymore. There is, of course, no concentration about the mean, and this semicircular structure of the probability distribution is not very traditional in nature, like the CLT or WLLN that we have know so far. Dealing with this kind of distribution thus requires new tools, so we have a separate theory on Random Matrices.
+Well, this is no way a Gaussian kind of a distribution anymore. There is, of course, no concentration about the mean, and this semicircular structure of the probability distribution is not very traditional in nature, like the CLT or LLN that we have know so far. Dealing with this kind of distribution thus requires new tools, so we have a separate theory on Random Matrices. There are basically two hindrances on extending the traditional tools.
 
-> TO WRITE
+1. The eigenvalues are non-linear functions of the entries of the matrix $X$, which may not have a very explicit and nice expression. For instance, in generate the eigenvalues are defined as the solution to the characteristic function $det(X - \lambda I) = 0$. This will be a complicated $n$-degree polynomial of $\lambda$, the zeros of which will be difficult to obtain in terms of the coefficients.
+
+2. Secondly, we usually work with independent random variables or conditionally independent random variables (in the case of Martingales[^3]). However, the eigenvalues are the zeros of the same characteristic polynomial, which are very likely to be correlated.
+
 
 Same thing happens for the singular values. We get a quarter circle instead of half circle here.
 
@@ -177,7 +180,93 @@ plt.show()
 ![](fig5.png)
 
 
-> TO WRITE
+## The Distribution of the Spacings
+
+Since we already know there exists some differences between the traditional asymptotic results and results of random matrices through simulation, here we try to do something concrete. Basically, we consider the distribution of spacings. In the traditional case, we can consider something like two i.i.d. standard normal random variables $x_1$ and $x_2$ and try to obtain the probability density function of $s = |x_1 - x_2|$. In the random matrix case, we will start with a $2\times 2$ random matrix with Gaussian entries, then try to see the probability distribution of the distance between the two eigenvalues. 
+
+If our intuition is correct, these two lead to wildly different result.
+
+### The Traditional Case
+
+We have two i.i.d random variables $x_1, x_2 \sim N(0, 1)$ and $s = |x_1 - x_2|$. To determine the density of $s$, we first look the the cumulative probability distribution function of $s$. Clearly, when $s < t$ (for some fixed constant $t$), then given $x_1$, the value of $x_2$ must be in the range from $(x_1 - t)$ to $(x_1 + t)$. Therefore,
+
+$$
+F(s) = \dfrac{1}{2\pi}\int_{-\infty}^{\infty} \int_{x_1-s}^{x_1 + s} e^{-(x_1^2 + x_2^2)/2} dx_2 dx_1
+$$
+
+We can now rewrite the inner integral in terms of a Gaussian integral, i.e.,
+
+$$
+F(s) = \dfrac{1}{2\sqrt{2\pi}} \int_{-\infty}^{\infty} e^{-x_1^2/2} \left( \int_{0}^{(x_1 + s)/\sqrt{2}} e^{-u^2}du - \int_{0}^{(x_1 - s)/\sqrt{2}} e^{-u^2}du \right) dx_1
+$$
+
+
+Now, we can integrate the above with respect to $s$ to obtain a probability density function. Here, we apply Leibnitz rule and the fundamental theorem of calculus to perform the differentiation.
+
+$$
+\begin{align*}
+f(s) & = \dfrac{\partial F(s)}{\partial s}\\\\
+& = \dfrac{1}{4\pi} \int_{-\infty}^{\infty} e^{-x_1^2/2} \left[ e^{-(x_1 + s)^2/2} + e^{-(x_1 - s)^2/2} \right] dx_1\\\\
+& = \dfrac{1}{4\pi} e^{-s^2/4}\left[ \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 + s/\sqrt{2})^2 \right)dx_1 + \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 - s/\sqrt{2})^2 \right)dx_1 \right]\\\\
+& = \dfrac{1}{\sqrt{\pi}} e^{-s^2/4}
+\end{align*}
+$$
+
+Here's how this distribution looks like.
+
+![](fig6A.png)
+
+
+### The 2X2 Gaussian Case
+
+We have seen that the diagonal entries of symmetrized matrix has double the variance of the off-diagonal entries. Let us consider the $2\times 2$ case of a Gaussian random matrix, i.e.,
+$$
+X = \begin{bmatrix}
+  x_1 & x_3\\\\
+  x_3 & x_2\\
+\end{bmatrix}
+$$
+where $x_1, x_2 \sim N(0, 1)$ and $x_3 \sim N(0,1/2)$. In this case, the characteristic equation is simply
+$$
+det(X - \lambda I) = (x_1 - \lambda)(x_2 - \lambda) - x_3^2 = \lambda^2 - (x_1 + x_2)\lambda + (x_1x_2 - x_3^2) = 0
+$$
+This is a quadratic equation in $\lambda$, so we have use the well-known [Sridharacharya's formula](https://en.wikipedia.org/wiki/Sridhara) to the rescue to find the eigenvalues of this $2\times 2$ random matrix.
+
+$$
+\lambda = ((x_1 + x_2) \pm \sqrt{(x_1 - x_2)^2 + 4x_3^2})/2
+$$
+
+Now instead of looking at the probability distribution of the eigenvalues, we will focus on the distribution of the spacings between these two eigenvalues. The spacing $s = \max\{\lambda_1, \lambda_2\} - \min\{ \lambda_1, \lambda_2\}$ can then be described in terms of the entries of the matrix $X$ as 
+
+$$
+s = \sqrt{(x_1 - x_2)^2 + 4x_3^2}
+$$
+
+
+Now, we apply a change of variable technique to obtain the distribution of $s$. Namely, let us consider the transformation $(x_1 - x_2) = r\cos(\theta)$, $2x_3 = r\sin(\theta)$ and $x_1 + x_2 = t$. Then clearly, $s = r$ as $\sin^2(\theta) + \cos^2(\theta) = 1$. Also, $x_1 = (r\cos(\theta) + t)/2$, $x_2 = (t-r\cos(\theta))/2$ and $x_3 = r\sin(\theta)/2$. Therefore,
+
+$$
+p(r, \theta, t) = \dfrac{1}{2\pi\sqrt{\pi}} \exp\left[ -\dfrac{1}{2}\left( (\dfrac{r\cos(\theta) + t}{2})^2 + (\dfrac{t - r\cos(\theta)}{2})^2 + \dfrac{r^2\sin^2(\theta)}{2}  \right)  \right] \times (r/4)
+$$
+
+where the last part $r/4$ comes from the Jacobian of this transformation. Therefore,
+
+$$
+\begin{align*}
+p(s) & = p(r) = \dfrac{r}{8\pi\sqrt{\pi}}\int_{0}^{2\pi} \int_{-\infty}^{\infty} \exp\left[ -r^2/4 - t^2/4 \right] dt d\theta \\\\
+& = \dfrac{r}{4\pi} e^{-r^2/4} \int_{0}^{2\pi} d\theta\\\\
+& = \dfrac{s}{2} e^{-s^2/4}, \\ s > 0
+\end{align*}
+$$
+
+Here's how this distribution looks like.
+
+![](fig6.png)
+
+
+It clearly looks different than the one we obtained from spacings of two i.i.d. normal random variables. It shows that the eigenvalues are highly correlated. One eigenvalue feels the presence of the other, hence the spacing is not very likely to be near zero. This is known as eigenvalue repulsion. One application of this theory of repulsion is that it can be used to model the distribution of electrons as every electron repulses each other due to having the same charge.[^4] On the other hand, for the i.i.d. case, the spacings are very likely to be near $0$, since both of them are independently very likely to be close to their distributional expectation.
+
+In next few posts, we shall dive more into the theoretical aspects and see how we can generalize these things for more than $2\times 2$ case.
 
 
 ## References 
@@ -186,5 +275,6 @@ plt.show()
 
 [^2]: Billingsley, P. (2013). Convergence of probability measures. John Wiley & Sons.
 
+[^3]: [Martingale (Probability Theory) - Wikipedia](https://en.wikipedia.org/wiki/Martingale_(probability_theory)). 
 
-
+[^4]: Livan, G., Novaes, M., & Vivo, P. (2018). Introduction to random matrices theory and practice. Monograph Award, 63, 54-57. https://arxiv.org/abs/1712.07903. 

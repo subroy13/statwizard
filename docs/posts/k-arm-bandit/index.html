@@ -27,7 +27,7 @@ Reinforcement Learning (Part 1) - K-arm Bandit Problem
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.b08e59a47292f4da3aecfc825cd4ccd9.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.9514577755adc1269482294cf2b1526b.css" />
 
 
 
@@ -337,62 +337,59 @@ In recent years, reinforcement learning has seen incredible progress with innova
 </ol>
 <p>Clearly, with every turn of the arm, you can either choose to exploit or explore. You cannot do both.</p>
 <p>Let us try to see the performance of these two approaches. To compare the performance, we will generate $2000$ such $10$-arm bandit problem.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">11</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># these are expected reward, maximum reward is 5</span>
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">k_arm_bandit_reward</span>(arm_k):
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> arm_k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> arm_k <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Invalid arm&#34;</span>)
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> rewards[arm_k]   <span style="color:#75715e"># the reward will be a normally distributed random variable, with mean of that arm and variance 1</span>
-</span></span></code></pre></div><p>Now, here&rsquo;s a bit of python code that uses the first $10$ rounds to get an initial estimate of the rewards of the arms, and then it continues to take greedy action with respect to the observed rewards.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>greedy_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))  <span style="color:#75715e"># store rewards for a greedy policy</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>  rvals <span style="color:#f92672">=</span> [k_arm_bandit_reward(k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]
-</span></span><span style="display:flex;"><span>  max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(rvals)
-</span></span><span style="display:flex;"><span>  greedy_rewards[b, :<span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> rvals
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>    greedy_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(max_k) <span style="color:#75715e"># keep taking the greedy action</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>greedy_rewards <span style="color:#f92672">=</span> greedy_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># finally take average reward over all 2000 problems</span>
-</span></span></code></pre></div><p>Now we do the same for an extreme strategy that does only exploration.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>explore_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>    action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span>    explore_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>explore_rewards <span style="color:#f92672">=</span> explore_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Here&rsquo;s there plot for the average rewards obtained by these two strategies over $1000$ rounds.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">11</span>) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># these are expected reward, maximum reward is 5</span>
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">k_arm_bandit_reward</span>(arm_k):
+   <span style="color:#66d9ef">if</span> arm_k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> arm_k <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">9</span>:
+      <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Invalid arm&#34;</span>)
+   <span style="color:#66d9ef">else</span>:
+      <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> rewards[arm_k]   <span style="color:#75715e"># the reward will be a normally distributed random variable, with mean of that arm and variance 1</span>
+</code></pre></div><p>Now, here&rsquo;s a bit of python code that uses the first $10$ rounds to get an initial estimate of the rewards of the arms, and then it continues to take greedy action with respect to the observed rewards.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">greedy_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))  <span style="color:#75715e"># store rewards for a greedy policy</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+  rvals <span style="color:#f92672">=</span> [k_arm_bandit_reward(k) <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>)]
+  max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(rvals)
+  greedy_rewards[b, :<span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> rvals
+  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">1000</span>):
+    greedy_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(max_k) <span style="color:#75715e"># keep taking the greedy action</span>
+<p>greedy_rewards <span style="color:#f92672">=</span> greedy_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># finally take average reward over all 2000 problems</span>
+</code></pre></div><p>Now we do the same for an extreme strategy that does only exploration.</p></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">explore_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+  <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+    action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>)
+    explore_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
+<p>explore_rewards <span style="color:#f92672">=</span> explore_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Here’s there plot for the average rewards obtained by these two strategies over $1000$ rounds.</p></p>
 <p><img src="greedy-explore-1.png" alt=""></p>
 <p>Clearly, the greedy method performs much better than complete exploration at random. But notice that the greedy method cannot achieve the highest possible reward, i.e., $5$ in this problem.</p>
 <h3 id="epsilon-greedy-strategy">$\epsilon$-greedy strategy</h3>
 <p>Looks like the greedy method does better, but it is not still optimal and there are rooms for improvement. This is because, often the reward from $8$-th or $9$-th arm turns out to better than the reward for the $10$-th arm at the first $10$ rounds, and hence the exploitation strategy continues to take the suboptimal action throughout. It looks like we can do better if we explore sometimes to gather more information about the other arms.</p>
 <p>So here&rsquo;s another strategy. You toss a biased coin with probability of heads turning up as $(1-\epsilon)$ at each round. If it turns up head, you exploit based on whatever information you have. If it turns up tail, you explore randomly by turning one of the $10$ arms, and then update the estimates for reward.</p>
 <p>Here&rsquo;s a simulation by employing this strategy with $\epsilon = 0.1$.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
-</span></span><span style="display:flex;"><span>eps1_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span>   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>      max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
-</span></span><span style="display:flex;"><span>      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
-</span></span><span style="display:flex;"><span>      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)      
-</span></span><span style="display:flex;"><span>      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># update the average</span>
-</span></span><span style="display:flex;"><span>      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>      eps1_rewards[b, t] <span style="color:#f92672">=</span> reward  <span style="color:#75715e"># record the reward</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>eps1_rewards <span style="color:#f92672">=</span> eps1_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>
+eps1_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">10</span>)
+   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+      max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
+      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
+      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)      
+      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># update the average</span>
+      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      eps1_rewards[b, t] <span style="color:#f92672">=</span> reward  <span style="color:#75715e"># record the reward</span>
+<p>eps1_rewards <span style="color:#f92672">=</span> eps1_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.</p></p>
 <p><img src="greedy-explore-2.png" alt=""></p>
 <h3 id="so-can-we-do-better">So, can we do better?</h3>
 <p>Since the $0.1$-greedy strategy still does not always hit the target of $5$, can we make it even better. Note that, the $0.1$-greedy strategy always explores $10%$ of the time, even in the late rounds when the estimates of the reward distribution of the arms is known with high confidence. It does not makes sense to explore that late in the game, and hence, we must keep reducing the $\epsilon$ parameter to reduce exploration over time (or number of rounds).</p>
 <p>Here&rsquo;s the simulation with this strategy, where we take $\epsilon = 10/t$, where $t$ is the number of round. It is very similar to the code for $0.1$-strategy shown earlier, with the only change</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
-</span></span><span style="display:flex;"><span>eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">/</span>(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># dynamic epsilon</span>
-</span></span><span style="display:flex;"><span>action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
-</span></span></code></pre></div><p>in the inner for loop with index variable <code>t</code>. As we had hoped, this performs even better than $0.1$-greedy action.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">max_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards)
+eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">/</span>(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># dynamic epsilon</span>
+action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
+</code></pre></div><p>in the inner for loop with index variable <code>t</code>. As we had hoped, this performs even better than $0.1$-greedy action.</p>
 <p><img src="greedy-explore-3.png" alt=""></p>
 <h2 id="some-questions-to-think-about">Some Questions to think about</h2>
 <p>Here&rsquo;s some questions to think about and some things to try.</p>
@@ -410,14 +407,14 @@ In recent years, reinforcement learning has seen incredible progress with innova
 </ol>
 <p>I shall dive into the answer of these questions in my next post of this series. Till then, feel free to explore (or exploit) the answers to these questions and let me know in the comments.</p>
 <h2 id="references">References</h2>
-<div class="footnotes" role="doc-endnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1" role="doc-endnote">
+<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
+</section>
 
                 </div>
             </div>
@@ -443,6 +440,11 @@ In recent years, reinforcement learning has seen incredible progress with innova
             </a>
         
         
+            <a href="/posts/random-matrix-theory-intro/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
     </div>
     <div class="flex flex-row justify-center gap-4 my-4">
         <a href="/posts/" 
@@ -457,7 +459,7 @@ In recent years, reinforcement learning has seen incredible progress with innova
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
