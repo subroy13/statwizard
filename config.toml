@@ -60,7 +60,7 @@ disqusShortname = 'statwizard'
 
     [[params.social]]
         name = "LinkedIn"
-        link = "#"
+        link = "https://www.linkedin.com/in/subroy13"
         icon = "fab fa-linkedin-in"
         color = "indigo-800"
 

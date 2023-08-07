@@ -7,7 +7,7 @@ mermaid: false
 tags:
     - Reinforcement Learning
 
-draft: true
+draft: false
 prerequisites:
    -  topic: Python Programming
       level: 1
@@ -150,7 +150,7 @@ Clearly, it is much better than the simple UCB algorithm, it is quite close to t
 If you carefully look at what we have been doing so far, there are 2 main things.
 
 1. Based on whatever knowlegde we have, we take some action like pulling a particular arm.
-2. That arm gives us a reward, we observe that, and then we update your knowledge (or estimates) to incorporate that new information about the reward.
+2. That arm gives us a reward, we observe that, and then we update our knowledge (or estimates) to incorporate that new information about the reward.
 
 This is very similar to the concept of Bayesian paradigm in statistics, where one starts with a prior belief about the unknown values (called parameters), he (she) observe the data, and then he (she) updates his (her) belief about these values in the light of data, which is called posterior belief. This entire field is based on [Bayes theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) which came from an essay by Thomas Bayes in 1763. Here's a quick [video](https://www.youtube.com/watch?v=9wCnvr7Xw4E) by StatQuest which provides a decent introduction to Bayes' theorem.
 

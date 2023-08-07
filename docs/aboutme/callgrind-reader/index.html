@@ -109,7 +109,7 @@
                     <i class = "fab fa-github fa-lg"></i>
                 </a>
             
-                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                <a href="https://www.linkedin.com/in/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-linkedin-in fa-lg"></i>
                 </a>
             
@@ -265,12 +265,12 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>To install &ldquo;callgrind-reader&rdquo;, simply run:</p>
-<pre><code>npm install callgrind-reader
+<pre tabindex="0"><code>npm install callgrind-reader
 </code></pre><h2 id="usage">Usage</h2>
 <p>Here&rsquo;s a basic example of how to use &ldquo;callgrind-reader&rdquo; to parse a callgrind file and extract profiling data:</p>
-<pre><code>import { CallGrind } from 'callgrind-reader';
+<pre tabindex="0"><code>import { CallGrind } from &#39;callgrind-reader&#39;;
 <p>// Parse the callgrind file using CallgrindReader
-const reader = new CallGrind(&lsquo;path/to/callgrind/file&rsquo;);
+const reader = new CallGrind('path/to/callgrind/file');
 const result = reader.parse(contents);</p>
 <p>// Access the profiling data
 for (const item of result.profile) {
@@ -294,7 +294,7 @@ console.log(<code>Total flops: ${item.events.flops}</code>);
     <div class="my-6 max-w-6xl md:mx-auto mx-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -109,7 +109,7 @@
                     <i class = "fab fa-github fa-lg"></i>
                 </a>
             
-                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                <a href="https://www.linkedin.com/in/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
                     <i class = "fab fa-linkedin-in fa-lg"></i>
                 </a>
             
@@ -263,81 +263,82 @@ SVD algorithms under outlier contamination.</li>
 <h2 id="installation">Installation</h2>
 <p>You can install the development version from
 <a href="https://github.com/subroy13/rsvddpd">GitHub</a> with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># install.packages(&#34;devtools&#34;)</span>
-devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>)
-</code></pre></div><p>Use the following to install the development version with manuals and
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#75715e"># install.packages(&#34;devtools&#34;)</span>
+</span></span><span style="display:flex;"><span>devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>)
+</span></span></code></pre></div><p>Use the following to install the development version with manuals and
 vignettes, which provides useful information about the structure of the
 function.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>, build_opts <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;--no-resave-data&#34;</span>), build_manual <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, build_vignettes <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
-</code></pre></div><h2 id="examples">Examples</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>devtools<span style="color:#f92672">::</span><span style="color:#a6e22e">install_github</span>(<span style="color:#e6db74">&#34;subroy13/rsvddpd&#34;</span>, build_opts <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;--no-resave-data&#34;</span>), build_manual <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>, build_vignettes <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>)
+</span></span></code></pre></div><h2 id="examples">Examples</h2>
 <p>This is a basic example usages which shows the need for the package.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(rsvddpd)
-<p>X <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">20</span>, nrow <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, ncol <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>)
-<span style="color:#a6e22e">svd</span>(X)
-<span style="color:#75715e">#&gt; $d</span>
-<span style="color:#75715e">#&gt; [1] 5.352022e+01 2.363426e+00 4.870683e-15 7.906968e-16</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $u</span>
-<span style="color:#75715e">#&gt;            [,1]       [,2]        [,3]       [,4]</span>
-<span style="color:#75715e">#&gt; [1,] -0.4430188 -0.7097424 -0.52426094  0.1585890</span>
-<span style="color:#75715e">#&gt; [2,] -0.4798725 -0.2640499  0.81721984  0.1793091</span>
-<span style="color:#75715e">#&gt; [3,] -0.5167262  0.1816426 -0.06165685 -0.8343851</span>
-<span style="color:#75715e">#&gt; [4,] -0.5535799  0.6273351 -0.23130204  0.4964870</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $v</span>
-<span style="color:#75715e">#&gt;             [,1]        [,2]       [,3]       [,4]</span>
-<span style="color:#75715e">#&gt; [1,] -0.09654784  0.76855612 -0.6000256  0.1704800</span>
-<span style="color:#75715e">#&gt; [2,] -0.24551564  0.48961420  0.5577664 -0.5560862</span>
-<span style="color:#75715e">#&gt; [3,] -0.39448345  0.21067228  0.2312115  0.1606664</span>
-<span style="color:#75715e">#&gt; [4,] -0.54345125 -0.06826963  0.2643802  0.6650059</span>
-<span style="color:#75715e">#&gt; [5,] -0.69241905 -0.34721155 -0.4533325 -0.4400661</span>
-</code></pre></div><p>As you can see, the first two singular values are 53.5 and 2.36, and the
-third and fourth singular values are very small positive reals.</p></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">library</span>(rsvddpd)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matrix</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">20</span>, nrow <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>, ncol <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">svd</span>(X)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $d</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1] 5.352022e+01 2.363426e+00 4.870683e-15 7.906968e-16</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $u</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;            [,1]       [,2]        [,3]       [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] -0.4430188 -0.7097424 -0.52426094  0.1585890</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] -0.4798725 -0.2640499  0.81721984  0.1793091</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] -0.5167262  0.1816426 -0.06165685 -0.8343851</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] -0.5535799  0.6273351 -0.23130204  0.4964870</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $v</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;             [,1]        [,2]       [,3]       [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] -0.09654784  0.76855612 -0.6000256  0.1704800</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] -0.24551564  0.48961420  0.5577664 -0.5560862</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] -0.39448345  0.21067228  0.2312115  0.1606664</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] -0.54345125 -0.06826963  0.2643802  0.6650059</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [5,] -0.69241905 -0.34721155 -0.4533325 -0.4400661</span>
+</span></span></code></pre></div><p>As you can see, the first two singular values are 53.5 and 2.36, and the
+third and fourth singular values are very small positive reals.</p>
 <p>Let us see what happens when you contaminate just one entry of the
 matrix by a large value say 100.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">X[2, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">100</span>
-<span style="color:#a6e22e">svd</span>(X)
-<span style="color:#75715e">#&gt; $d</span>
-<span style="color:#75715e">#&gt; [1] 1.070340e+02 3.617861e+01 2.200002e+00 1.851858e-15</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $u</span>
-<span style="color:#75715e">#&gt;            [,1]       [,2]         [,3]          [,4]</span>
-<span style="color:#75715e">#&gt; [1,] -0.1472125 -0.4893994  0.816938282  2.672612e-01</span>
-<span style="color:#75715e">#&gt; [2,] -0.9548191  0.2971284  0.005940614 -1.110223e-16</span>
-<span style="color:#75715e">#&gt; [3,] -0.1753739 -0.5614500 -0.105644232 -8.017837e-01</span>
-<span style="color:#75715e">#&gt; [4,] -0.1894546 -0.5974754 -0.566935489  5.345225e-01</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $v</span>
-<span style="color:#75715e">#&gt;             [,1]       [,2]         [,3]          [,4]</span>
-<span style="color:#75715e">#&gt; [1,] -0.03121244 -0.1097166 -0.798115312  3.357170e-01</span>
-<span style="color:#75715e">#&gt; [2,] -0.08603093 -0.2591083 -0.524844308 -6.516983e-01</span>
-<span style="color:#75715e">#&gt; [3,] -0.94371346  0.3306537 -0.008548386  1.387779e-16</span>
-<span style="color:#75715e">#&gt; [4,] -0.19566792 -0.5578918  0.021697699  6.122270e-01</span>
-<span style="color:#75715e">#&gt; [5,] -0.25048641 -0.7072836  0.294968703 -2.962457e-01</span>
-</code></pre></div><p>Note that, the first singular value changes drastically, being 107,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span>X[2, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">&lt;-</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">svd</span>(X)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $d</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1] 1.070340e+02 3.617861e+01 2.200002e+00 1.851858e-15</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $u</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;            [,1]       [,2]         [,3]          [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] -0.1472125 -0.4893994  0.816938282  2.672612e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] -0.9548191  0.2971284  0.005940614 -1.110223e-16</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] -0.1753739 -0.5614500 -0.105644232 -8.017837e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] -0.1894546 -0.5974754 -0.566935489  5.345225e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $v</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;             [,1]       [,2]         [,3]          [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] -0.03121244 -0.1097166 -0.798115312  3.357170e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] -0.08603093 -0.2591083 -0.524844308 -6.516983e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] -0.94371346  0.3306537 -0.008548386  1.387779e-16</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] -0.19566792 -0.5578918  0.021697699  6.122270e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [5,] -0.25048641 -0.7072836  0.294968703 -2.962457e-01</span>
+</span></span></code></pre></div><p>Note that, the first singular value changes drastically, being 107,
 while second and third singular values 36.1 and 2.2 respectively.
 However, such error is very common in practice, and can pose serious
 problem in many statistical estimation techniques. <code>rSVDdpd</code> solves the
 problem as shown in the following code.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">rSVDdpd</span>(X, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>)
-<span style="color:#75715e">#&gt; $d</span>
-<span style="color:#75715e">#&gt; [1] 5.355990e+01 2.358915e+00 1.492008e-01 6.694858e-11</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $u</span>
-<span style="color:#75715e">#&gt;           [,1]       [,2]       [,3]          [,4]</span>
-<span style="color:#75715e">#&gt; [1,] 0.4426825 -0.7124356  0.4743827  2.672615e-01</span>
-<span style="color:#75715e">#&gt; [2,] 0.4810583 -0.2588203 -0.8376126  2.697441e-07</span>
-<span style="color:#75715e">#&gt; [3,] 0.5163450  0.1804013  0.2408039 -8.017834e-01</span>
-<span style="color:#75715e">#&gt; [4,] 0.5531753  0.6268197  0.1240144  5.345228e-01</span>
-<span style="color:#75715e">#&gt; </span>
-<span style="color:#75715e">#&gt; $v</span>
-<span style="color:#75715e">#&gt;            [,1]        [,2]       [,3]          [,4]</span>
-<span style="color:#75715e">#&gt; [1,] 0.09646637  0.77032520  0.2174706 -5.827481e-01</span>
-<span style="color:#75715e">#&gt; [2,] 0.24532578  0.49133794  0.2200041  7.031679e-01</span>
-<span style="color:#75715e">#&gt; [3,] 0.39606323  0.20319890 -0.8954575  5.552961e-07</span>
-<span style="color:#75715e">#&gt; [4,] 0.54304936 -0.06663662  0.2250709  2.214907e-01</span>
-<span style="color:#75715e">#&gt; [5,] 0.69191099 -0.34562390  0.2276043 -3.419085e-01</span>
-</code></pre></div><h1 id="author">Author</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-r" data-lang="r"><span style="display:flex;"><span><span style="color:#a6e22e">rSVDdpd</span>(X, alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.3</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $d</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1] 5.355990e+01 2.358915e+00 1.492008e-01 6.694858e-11</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $u</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;           [,1]       [,2]       [,3]          [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] 0.4426825 -0.7124356  0.4743827  2.672615e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] 0.4810583 -0.2588203 -0.8376126  2.697441e-07</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] 0.5163450  0.1804013  0.2408039 -8.017834e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] 0.5531753  0.6268197  0.1240144  5.345228e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; $v</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt;            [,1]        [,2]       [,3]          [,4]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [1,] 0.09646637  0.77032520  0.2174706 -5.827481e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [2,] 0.24532578  0.49133794  0.2200041  7.031679e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [3,] 0.39606323  0.20319890 -0.8954575  5.552961e-07</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [4,] 0.54304936 -0.06663662  0.2250709  2.214907e-01</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#&gt; [5,] 0.69191099 -0.34562390  0.2276043 -3.419085e-01</span>
+</span></span></code></pre></div><h1 id="author">Author</h1>
 <ul>
 <li>Subhrajyoty Roy, Indian Statistical Institute, Kolkata (Package
 author and Maintainer)</li>
@@ -362,7 +363,7 @@ license.</p>
     <div class="my-6 max-w-6xl md:mx-auto mx-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
