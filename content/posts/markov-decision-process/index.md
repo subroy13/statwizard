@@ -7,7 +7,7 @@ mermaid: true
 tags:
     - Reinforcement Learning
 
-draft: true
+draft: false
 prerequisites:
     - topic: Python Programming
       level: 1
