@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -318,7 +329,7 @@ which makes $X$ an $n \times n$ symmetric matrix.</p>
 $$
 X_{ij} = (M_{ij} + M_{ji})/2 \sim
 \begin{cases}
-N(0, 1/2) &amp; \text{ if } i \neq j\\
+N(0, 1/2) &amp; \text{ if } i \neq j\\<br>
 N(0, 1) &amp; \text{ if } i = j
 \end{cases}
 $$</p>
@@ -327,21 +338,20 @@ $$
 \Vert X\Vert_2 = \left( \sum_{i,j}X_{ij}^2 \right)^{1/2} = \left( \sum_{i &gt; j}(2X_{ij}^2) + \sum_{i=1}^n X_{ii}^2 \right)^{1/2}.
 $$
 Here, $2X_{ij}^2$ for $i &gt; j$ is independent and identically distributed as $X_{ii}^2$, hence the above sum of basically a sum of i.i.d. entries. We then expect the squared sum to range between $n-3\sqrt{n}$ to $n + 3\sqrt{n}$ using CLT, hence the square root of the sum is expected to range between $\sqrt{n - 3\sqrt{n}}, \sqrt{n + 3\sqrt{n}}$. Let us try to verify this by simulation.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np   <span style="color:#75715e"># import necessary python packages</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>
-</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
-</span></span><span style="display:flex;"><span>norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)   <span style="color:#75715e"># an array to hold the norms</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
-</span></span><span style="display:flex;"><span>  norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(X)  <span style="color:#75715e"># look at matrix norm</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># finally, plot it</span>
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Frobenius Norm of 100x100 Gaussian matrix&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p>Running the above python code and plotting the histogram yields a distribution close to a normal distribution plot. Hence, it reaffirms our belief.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np   <span style="color:#75715e"># import necessary python packages</span>
+<span style="color:#f92672">import</span> matplotlib.pyplot <span style="color:#f92672">as</span> plt
+B <span style="color:#f92672">=</span> <span style="color:#ae81ff">10000</span>
+n <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)   <span style="color:#75715e"># an array to hold the norms</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
+  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
+  norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(X)  <span style="color:#75715e"># look at matrix norm</span>
+<p><span style="color:#75715e"># finally, plot it</span>
+plt<span style="color:#f92672">.</span>hist(norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">'Frobenius Norm of 100x100 Gaussian matrix'</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p>Running the above python code and plotting the histogram yields a distribution close to a normal distribution plot. Hence, it reaffirms our belief.</p></p>
 <p><img src="fig1.png" alt=""></p>
 <h3 id="distribution-of-largest-eigenvalue">Distribution of Largest Eigenvalue</h3>
 <p>Now let&rsquo;s say instead of looking at the $L_2$-norm of the matrix entries, we consider the $L_2$-norm of vectors in the column space of the $X$ matrix. Specifically, we consider the quantity
@@ -350,40 +360,39 @@ $$
 $$
 which can be proven to be equal to the largest eigenvalue of the matrix $X$. Note that, the above norm basically looks that how much change the linear transformation corresponding to $X$ does to a vector $v$, and tries to see the maximum change possible.</p>
 <p>This time, instead of trying to theoretically bound this largest eigenvalue and see where it lies mostly, we will do the simulation. The theoretical tools require a bit of work, and I will try to explain them in subsequent posts of this series.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>eig_norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)   <span style="color:#75715e"># placeholder for storing the largest eigenvalue</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
-</span></span><span style="display:flex;"><span>  eig_norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(X, <span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># look at the largest eigenvalue</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Largest Eigenvalue of the 100x100 Gaussian matrix&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p><img src="fig2.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eig_norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)   <span style="color:#75715e"># placeholder for storing the largest eigenvalue</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
+  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
+  eig_norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>norm(X, <span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># look at the largest eigenvalue</span>
+<p>plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">'Largest Eigenvalue of the 100x100 Gaussian matrix'</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="fig2.png" alt=""></p></p>
 <p>It turns out again we have some kind of Gaussian looking plot, most of the histogram is concentrated around its mean, however, it may be a bit positively skewed. Note that, even if the largest eigenvalue is not a very straightforward linear function as before, we still have this CLT like behaviour and concentration around the mean.</p>
 <p>Let&rsquo;s do the same experiment now for the smallest eigenvalue.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>eig_norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
-</span></span><span style="display:flex;"><span>  eig_norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvalsh(X)[<span style="color:#ae81ff">1</span>]  <span style="color:#75715e"># look at the smallest eigen value</span>
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Smallest Eigenvalue of the 100x100 Gaussian matrix&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p><img src="fig3.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eig_norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
+  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
+  eig_norms[b] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvalsh(X)[<span style="color:#ae81ff">1</span>]  <span style="color:#75715e"># look at the smallest eigen value</span>
+plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
+plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Smallest Eigenvalue of the 100x100 Gaussian matrix&#39;</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="fig3.png" alt=""></p>
 <p>Well, the concentration around the mean was expected, but now it is a bit negatively skewed. It is as if it is trying to balance out the slight positive skewness of the largest eigenvalue.</p>
 <h3 id="distribution-of-eigenvalues">Distribution of Eigenvalues</h3>
 <p>Well, so far we have only seen how each individual eigenvalues behave. Each individual eigenvalue looks approximately like a Gaussian distributed random variable (for large $n$ say, i.e., large number of rows and columns of the random matrix), but with a bit of skewness here and there. What if we try to combine all of these eigenvalues together now? Basically we would keep track of every eigenvalue of the random matrix $X$, and then plot all these eigenvalues together to form a histogram. This will give us some idea about how a random eigenvalue of a random matrix look like.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>eigs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((B, n))   <span style="color:#75715e"># placeholder for tracking the eigenvalues</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
-</span></span><span style="display:flex;"><span>  eval, evec <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eig(X)  <span style="color:#75715e"># look at the eigenvalues</span>
-</span></span><span style="display:flex;"><span>  eigs[b, :] <span style="color:#f92672">=</span> eval
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(eigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Eigenvalues of </span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74">x</span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74"> Gaussian matrix&#34;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p><img src="fig4.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eigs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((B, n))   <span style="color:#75715e"># placeholder for tracking the eigenvalues</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
+  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
+  eval, evec <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eig(X)  <span style="color:#75715e"># look at the eigenvalues</span>
+  eigs[b, :] <span style="color:#f92672">=</span> eval
+plt<span style="color:#f92672">.</span>hist(eigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
+plt<span style="color:#f92672">.</span>xlabel(f<span style="color:#e6db74">&#34;Eigenvalues of {n}x{n} Gaussian matrix&#34;</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="fig4.png" alt=""></p>
 <p>Well, this is no way a Gaussian kind of a distribution anymore. There is, of course, no concentration about the mean, and this semicircular structure of the probability distribution is not very traditional in nature, like the CLT or LLN that we have know so far. Dealing with this kind of distribution thus requires new tools, so we have a separate theory on Random Matrices. There are basically two hindrances on extending the traditional tools.</p>
 <ol>
 <li>
@@ -394,16 +403,16 @@ which can be proven to be equal to the largest eigenvalue of the matrix $X$. Not
 </li>
 </ol>
 <p>Same thing happens for the singular values. We get a quarter circle instead of half circle here.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>sigs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((B, n))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
-</span></span><span style="display:flex;"><span>  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
-</span></span><span style="display:flex;"><span>  sval <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(X, compute_uv <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>, full_matrices<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)  <span style="color:#75715e"># look at the singular values</span>
-</span></span><span style="display:flex;"><span>  sigs[b, :] <span style="color:#f92672">=</span> sva
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>hist(sigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Singular values of </span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74">x</span><span style="color:#e6db74">{</span>n<span style="color:#e6db74">}</span><span style="color:#e6db74"> Gaussian matrix&#34;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p><img src="fig5.png" alt=""></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sigs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((B, n))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)   <span style="color:#75715e"># each entry of the matrix is standard normal</span>
+  X <span style="color:#f92672">=</span> (X <span style="color:#f92672">+</span> X<span style="color:#f92672">.</span>T)<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># symmetrize it</span>
+  sval <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(X, compute_uv <span style="color:#f92672">=</span> False, full_matrices<span style="color:#f92672">=</span>False)  <span style="color:#75715e"># look at the singular values</span>
+  sigs[b, :] <span style="color:#f92672">=</span> sva
+plt<span style="color:#f92672">.</span>hist(sigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
+plt<span style="color:#f92672">.</span>xlabel(f<span style="color:#e6db74">&#34;Singular values of {n}x{n} Gaussian matrix&#34;</span>)
+plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p><img src="fig5.png" alt=""></p>
 <h2 id="the-distribution-of-the-spacings">The Distribution of the Spacings</h2>
 <p>Since we already know there exists some differences between the traditional asymptotic results and results of random matrices through simulation, here we try to do something concrete. Basically, we consider the distribution of spacings. In the traditional case, we can consider something like two i.i.d. standard normal random variables $x_1$ and $x_2$ and try to obtain the probability density function of $s = |x_1 - x_2|$. In the random matrix case, we will start with a $2\times 2$ random matrix with Gaussian entries, then try to see the probability distribution of the distance between the two eigenvalues.</p>
 <p>If our intuition is correct, these two lead to wildly different result.</p>
@@ -419,9 +428,9 @@ $$</p>
 <p>Now, we can integrate the above with respect to $s$ to obtain a probability density function. Here, we apply Leibnitz rule and the fundamental theorem of calculus to perform the differentiation.</p>
 <p>$$
 \begin{align*}
-f(s) &amp; = \dfrac{\partial F(s)}{\partial s}\\
-&amp; = \dfrac{1}{4\pi} \int_{-\infty}^{\infty} e^{-x_1^2/2} \left[ e^{-(x_1 + s)^2/2} + e^{-(x_1 - s)^2/2} \right] dx_1\\
-&amp; = \dfrac{1}{4\pi} e^{-s^2/4}\left[ \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 + s/\sqrt{2})^2 \right)dx_1 + \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 - s/\sqrt{2})^2 \right)dx_1 \right]\\
+f(s) &amp; = \dfrac{\partial F(s)}{\partial s}\\<br>
+&amp; = \dfrac{1}{4\pi} \int_{-\infty}^{\infty} e^{-x_1^2/2} \left[ e^{-(x_1 + s)^2/2} + e^{-(x_1 - s)^2/2} \right] dx_1\\<br>
+&amp; = \dfrac{1}{4\pi} e^{-s^2/4}\left[ \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 + s/\sqrt{2})^2 \right)dx_1 + \int_{-\infty}^{\infty} \exp\left( -\dfrac{1}{2} (\sqrt{2}x_1 - s/\sqrt{2})^2 \right)dx_1 \right]\\<br>
 &amp; = \dfrac{1}{\sqrt{\pi}} e^{-s^2/4}
 \end{align*}
 $$</p>
@@ -431,8 +440,8 @@ $$</p>
 <p>We have seen that the diagonal entries of symmetrized matrix has double the variance of the off-diagonal entries. Let us consider the $2\times 2$ case of a Gaussian random matrix, i.e.,
 $$
 X = \begin{bmatrix}
-x_1 &amp; x_3\\
-x_3 &amp; x_2\
+x_1 &amp; x_3\\<br>
+x_3 &amp; x_2\<br>
 \end{bmatrix}
 $$
 where $x_1, x_2 \sim N(0, 1)$ and $x_3 \sim N(0,1/2)$. In this case, the characteristic equation is simply
@@ -454,8 +463,8 @@ $$</p>
 <p>where the last part $r/4$ comes from the Jacobian of this transformation. Therefore,</p>
 <p>$$
 \begin{align*}
-p(s) &amp; = p(r) = \dfrac{r}{8\pi\sqrt{\pi}}\int_{0}^{2\pi} \int_{-\infty}^{\infty} \exp\left[ -r^2/4 - t^2/4 \right] dt d\theta \\
-&amp; = \dfrac{r}{4\pi} e^{-r^2/4} \int_{0}^{2\pi} d\theta\\
+p(s) &amp; = p(r) = \dfrac{r}{8\pi\sqrt{\pi}}\int_{0}^{2\pi} \int_{-\infty}^{\infty} \exp\left[ -r^2/4 - t^2/4 \right] dt d\theta \\<br>
+&amp; = \dfrac{r}{4\pi} e^{-r^2/4} \int_{0}^{2\pi} d\theta\\<br>
 &amp; = \dfrac{s}{2} e^{-s^2/4}, \ s &gt; 0
 \end{align*}
 $$</p>
@@ -464,23 +473,23 @@ $$</p>
 <p>It clearly looks different than the one we obtained from spacings of two i.i.d. normal random variables. It shows that the eigenvalues are highly correlated. One eigenvalue feels the presence of the other, hence the spacing is not very likely to be near zero. This is known as eigenvalue repulsion. One application of this theory of repulsion is that it can be used to model the distribution of electrons as every electron repulses each other due to having the same charge.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> On the other hand, for the i.i.d. case, the spacings are very likely to be near $0$, since both of them are independently very likely to be close to their distributional expectation.</p>
 <p>In next few posts, we shall dive more into the theoretical aspects and see how we can generalize these things for more than $2\times 2$ case.</p>
 <h2 id="references">References</h2>
-<div class="footnotes" role="doc-endnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Billingsley, P. (2013). Convergence of probability measures. John Wiley &amp; Sons.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1" role="doc-endnote">
+<p>Billingsley, P. (2013). Convergence of probability measures. John Wiley &amp; Sons. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2">
-<p>Feller, W. (1991). An introduction to probability theory and its applications, Volume 2 (Vol. 81). John Wiley &amp; Sons.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2" role="doc-endnote">
+<p>Feller, W. (1991). An introduction to probability theory and its applications, Volume 2 (Vol. 81). John Wiley &amp; Sons. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3">
-<p><a href="https://en.wikipedia.org/wiki/Martingale_(probability_theory)">Martingale (Probability Theory) - Wikipedia</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Martingale_(probability_theory)">Martingale (Probability Theory) - Wikipedia</a>. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4">
-<p>Livan, G., Novaes, M., &amp; Vivo, P. (2018). Introduction to random matrices theory and practice. Monograph Award, 63, 54-57. <a href="https://arxiv.org/abs/1712.07903">https://arxiv.org/abs/1712.07903</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4" role="doc-endnote">
+<p>Livan, G., Novaes, M., &amp; Vivo, P. (2018). Introduction to random matrices theory and practice. Monograph Award, 63, 54-57. <a href="https://arxiv.org/abs/1712.07903">https://arxiv.org/abs/1712.07903</a>. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
+</section>
 
                 </div>
             </div>
@@ -525,7 +534,7 @@ $$</p>
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     

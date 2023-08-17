@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -289,14 +300,13 @@ Reinforcement Learning (Part 2) - K-arm Bandit Problem
 <li>The goal is still the same, it is to maximize the total reward.</li>
 </ul>
 <p>Here is a bit of python code that now implements this reward function.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.75</span>, <span style="color:#ae81ff">0.9</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">k_arm_bandit_reward</span>(arm_k):
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> arm_k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> arm_k <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Invalid arm&#34;</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&gt;</span> rewards[arm_k] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><h2 id="upper-confidence-band-algorithm">Upper Confidence Band Algorithm</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.75</span>, <span style="color:#ae81ff">0.9</span>])
+<p><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">k_arm_bandit_reward</span>(arm_k):
+<span style="color:#66d9ef">if</span> arm_k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> arm_k <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">4</span>:
+<span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&quot;Invalid arm&quot;</span>)
+<span style="color:#66d9ef">else</span>:
+<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&gt;</span> rewards[arm_k] <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><h2 id="upper-confidence-band-algorithm">Upper Confidence Band Algorithm</h2></p>
 <p>Upper Confidence Band (UCB) algorithm is one of the solution to this problem, which lets us dynamically adjusting the exploration-exploitation balance to get to the best result. It was independently proposed by Agarwal<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and Katehakis and Robbins<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>, after the seminal work by Lai and Robbins<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> which proves some optimality property about an algorithm that maintains a score which can provide the best return in the long run. (<em>I won&rsquo;t go more mathematical than this, but if you want to know more, let me know in the comments, I&rsquo;ll make a post about it.</em>)</p>
 <p>Assume that you are currently at round $t$. So, till this round, you have been maintaining your best estimate abour $p_a$ for each action, let us call that $\widehat{p}_a(t)$. Also, you have choosen arm $a$ for $N_a(t)$ number of times. Then, there are three things at play here.</p>
 <ol>
@@ -310,20 +320,20 @@ UCB_t(a) = \widehat{p}_a(t) + \sqrt{\dfrac{2\log(t)}{N_a(t)}}
 $$</p>
 <p>Note that, if $\widehat{p}_a(t)$ is high, we are more likely to choose that arm. However, even when $N_a(t)$ is low, this score can become high leading to exploring that particular arm as it has less number of observations.</p>
 <p>Here, we write a python code as before to simulate the performance of UCB algorithm for $2000$ such bandit problems.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ucb_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards <span style="color:#f92672">+</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> t) <span style="color:#f92672">/</span> (action_counts <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) )<span style="color:#f92672">**</span><span style="color:#ae81ff">0.5</span>)  <span style="color:#75715e"># take maximum of UCB band</span>
-</span></span><span style="display:flex;"><span>      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># update the average</span>
-</span></span><span style="display:flex;"><span>      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># update ucb_rewards</span>
-</span></span><span style="display:flex;"><span>      ucb_rewards[b, t] <span style="color:#f92672">=</span> reward
-</span></span><span style="display:flex;"><span>ucb_rewards <span style="color:#f92672">=</span> ucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Again, we plot the average reward obtained as a function of the number of rounds, for both the cases with $10/t$-greedy algorithm as well as UCB algorithm. The UCB algorithm learns more slowly than the $10/t$-greedy algorithm, but on the long turn, it reaches the level of same performance (or may be slightly better).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">ucb_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
+   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
+   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(avg_rewards <span style="color:#f92672">+</span> (<span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> t) <span style="color:#f92672">/</span> (action_counts <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) )<span style="color:#f92672">**</span><span style="color:#ae81ff">0.5</span>)  <span style="color:#75715e"># take maximum of UCB band</span>
+      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
+      <span style="color:#75715e"># update the average</span>
+      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#75715e"># update ucb_rewards</span>
+      ucb_rewards[b, t] <span style="color:#f92672">=</span> reward
+ucb_rewards <span style="color:#f92672">=</span> ucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+<p></code></pre></div><p>Again, we plot the average reward obtained as a function of the number of rounds, for both the cases with $10/t$-greedy algorithm as well as UCB algorithm. The UCB algorithm learns more slowly than the $10/t$-greedy algorithm, but on the long turn, it reaches the level of same performance (or may be slightly better).</p></p>
 <p><img src="ucb-fig1.png" alt=""></p>
 <h2 id="ucb-variant---klucb-algorithm">UCB Variant - KLUCB Algorithm</h2>
 <p>There are many variants of the UCB algorithm which have been proposed over last two decades.  Here, we shall describe one variant of the algorithm called KL-UCB algorithm, proposed by Garivier and Cappe<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
@@ -337,32 +347,31 @@ KL(p, q) = p\log(p/q) + (1-p)\log((1-p)/(1-q))
 $$</p>
 <p>Note that, unlike the UCB algorithm, here the upper confidence bound is provided implicitly and must be obtained through some numerical procedure. Once this UCB score is obtained, again we choose the arm $a$ which have the maximum UCB score as before.</p>
 <p>The following code implements this KL-UCB algorithm.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>klucb_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># find q using simple search</span>
-</span></span><span style="display:flex;"><span>      qa_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>      rhs_vals <span style="color:#f92672">=</span> (np<span style="color:#f92672">.</span>log(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> c <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> t))) <span style="color:#f92672">/</span> (action_counts <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
-</span></span><span style="display:flex;"><span>          qs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.99</span>, <span style="color:#ae81ff">0.01</span>)
-</span></span><span style="display:flex;"><span>          lhs_vals <span style="color:#f92672">=</span> avg_rewards[a] <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(avg_rewards[a] <span style="color:#f92672">/</span> qs) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> avg_rewards[a]) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log((<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> avg_rewards[a]) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> qs))
-</span></span><span style="display:flex;"><span>          tmp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(lhs_vals <span style="color:#f92672">&lt;=</span> rhs_vals[a])[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">if</span> len(tmp) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
-</span></span><span style="display:flex;"><span>              qa_vals[a] <span style="color:#f92672">=</span> qs[tmp[<span style="color:#ae81ff">0</span>]]
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>              qa_vals[a] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
-</span></span><span style="display:flex;"><span>      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(qa_vals)  <span style="color:#75715e"># take maximum of UCB band</span>
-</span></span><span style="display:flex;"><span>      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># update the average</span>
-</span></span><span style="display:flex;"><span>      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># update ucb_rewards</span>
-</span></span><span style="display:flex;"><span>      klucb_rewards[b, t] <span style="color:#f92672">=</span> reward
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>klucb_rewards <span style="color:#f92672">=</span> klucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>Again we plot its performance over $1000$ rounds.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">klucb_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+   avg_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
+   action_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
+   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+      <span style="color:#75715e"># find q using simple search</span>
+      qa_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(<span style="color:#ae81ff">5</span>)
+      rhs_vals <span style="color:#f92672">=</span> (np<span style="color:#f92672">.</span>log(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> c <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> t))) <span style="color:#f92672">/</span> (action_counts <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">0.1</span>
+      <span style="color:#66d9ef">for</span> a <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">5</span>):
+          qs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">0.01</span>, <span style="color:#ae81ff">0.99</span>, <span style="color:#ae81ff">0.01</span>)
+          lhs_vals <span style="color:#f92672">=</span> avg_rewards[a] <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log(avg_rewards[a] <span style="color:#f92672">/</span> qs) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> avg_rewards[a]) <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>log((<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> avg_rewards[a]) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> qs))
+          tmp <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(lhs_vals <span style="color:#f92672">&lt;=</span> rhs_vals[a])[<span style="color:#ae81ff">0</span>]
+          <span style="color:#66d9ef">if</span> len(tmp) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+              qa_vals[a] <span style="color:#f92672">=</span> qs[tmp[<span style="color:#ae81ff">0</span>]]
+          <span style="color:#66d9ef">else</span>:
+              qa_vals[a] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>
+      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(qa_vals)  <span style="color:#75715e"># take maximum of UCB band</span>
+      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
+      <span style="color:#75715e"># update the average</span>
+      avg_rewards[action_k] <span style="color:#f92672">=</span> (avg_rewards[action_k] <span style="color:#f92672">*</span> action_counts[action_k] <span style="color:#f92672">+</span> reward) <span style="color:#f92672">/</span> (action_counts[action_k] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+      action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#75715e"># update ucb_rewards</span>
+      klucb_rewards[b, t] <span style="color:#f92672">=</span> reward
+<p>klucb_rewards <span style="color:#f92672">=</span> klucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>Again we plot its performance over $1000$ rounds.</p></p>
 <p><img src="ucb-fig2.png" alt=""></p>
 <p>Clearly, it is much better than the simple UCB algorithm, it is quite close to the $10/t$-greedy approach during the initial rounds, which means this algorithm very quickly learns the optimal action.</p>
 <h2 id="thompson-sampling---a-bayesian-touch">Thompson Sampling - A Bayesian Touch</h2>
@@ -372,7 +381,7 @@ $$</p>
 <li>Based on whatever knowlegde we have, we take some action like pulling a particular arm.</li>
 <li>That arm gives us a reward, we observe that, and then we update our knowledge (or estimates) to incorporate that new information about the reward.</li>
 </ol>
-<p>This is very similar to the concept of Bayesian paradigm in statistics, where one starts with a prior belief about the unknown values (called parameters), he (she) observe the data, and then he (she) updates his (her) belief about these values in the light of data, which is called posterior belief. This entire field is based on <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes theorem</a> which came from an essay by Thomas Bayes in 1763. Here&rsquo;s a quick <a href="https://www.youtube.com/watch?v=9wCnvr7Xw4E">video</a> by StatQuest which provides a decent introduction to Bayes&rsquo; theorem.</p>
+<p>This is very similar to the concept of Bayesian paradigm in statistics, where one starts with a prior belief about the unknown values (called parameters), he (she) observe the data, and then he (she) updates his (her) belief about these values in the light of data, which is called posterior belief. This entire field is based on <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes theorem</a> which came from an essay by Thomas Bayes in 1763. Here&rsquo;s a quick <a href="https://www.youtube.com/watch?v=9wCnvr7Xw4E">video</a> by StatQuest which provides a decent introduction to Bayes' theorem.</p>
 <p>Thompson sampling is an algorithm based on this Bayes theorem, tuned to the particular case of reinforcement learning. Here, we start by assuming that every unknown $p_a$ (the probability of getting a reward when pulling arm $a$) follows a prior distribution with density
 $$
 \pi(p_a) = \dfrac{\Gamma(\alpha_a + \beta_a)}{\Gamma(\alpha_a)\Gamma(\beta_a)} p_a^{\alpha_a - 1} (1-p_a)^{\beta_a - 1}, \ p_a \in [0, 1]
@@ -419,26 +428,25 @@ $$</p>
 </ol>
 <p>This entire algorithm is called <strong>Thompson Sampling</strong>, proposed by William R. Thompson in 1993<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>. Note that, in contrast to the greedy method where we find the best arm based on whatever knowledge we have so far, in Thompson sampling, we try to predict the multi-arm bandit game itself using the knowledge and use the best arm in the predicted game. You may want to check out this nice tutorial paper by Russo et al. on Thompson sampling<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup>.</p>
 <p>Here&rsquo;s a bit of python code that implements this Thompson sampling algorithm.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># perform the thompson sampling algorithm</span>
-</span></span><span style="display:flex;"><span>thompson_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
-</span></span><span style="display:flex;"><span>   alphas <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">5</span>)   <span style="color:#75715e"># initially all alpha and beta are 1, hence uniform prior</span>
-</span></span><span style="display:flex;"><span>   betas <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># generate the probs</span>
-</span></span><span style="display:flex;"><span>      pa_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>beta(a <span style="color:#f92672">=</span> alphas, b <span style="color:#f92672">=</span> betas)
-</span></span><span style="display:flex;"><span>      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(pa_vals)  <span style="color:#75715e"># take maximum of simulated posterior probs</span>
-</span></span><span style="display:flex;"><span>      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># calculate posterior and update parameters</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> reward <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
-</span></span><span style="display:flex;"><span>          alphas[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>          betas[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># update thompson_rewards</span>
-</span></span><span style="display:flex;"><span>      thompson_rewards[b, t] <span style="color:#f92672">=</span> reward
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>thompson_rewards <span style="color:#f92672">=</span> thompson_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</span></span></code></pre></div><p>And here&rsquo;s the plot for the experienced rewards by this strategy.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># perform the thompson sampling algorithm</span>
+thompson_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1000</span>))
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2000</span>):
+   alphas <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">5</span>)   <span style="color:#75715e"># initially all alpha and beta are 1, hence uniform prior</span>
+   betas <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">5</span>)
+   <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1000</span>):
+      <span style="color:#75715e"># generate the probs</span>
+      pa_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>beta(a <span style="color:#f92672">=</span> alphas, b <span style="color:#f92672">=</span> betas)
+      action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>argmax(pa_vals)  <span style="color:#75715e"># take maximum of simulated posterior probs</span>
+      reward <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
+      <span style="color:#75715e"># calculate posterior and update parameters</span>
+      <span style="color:#66d9ef">if</span> reward <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+          alphas[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#66d9ef">else</span>:
+          betas[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+      <span style="color:#75715e"># update thompson_rewards</span>
+      thompson_rewards[b, t] <span style="color:#f92672">=</span> reward
+<p>thompson_rewards <span style="color:#f92672">=</span> thompson_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
+</code></pre></div><p>And here’s the plot for the experienced rewards by this strategy.</p></p>
 <p><img src="ucb-fig3.png" alt=""></p>
 <p>Wow! It looks like the Thompson sampling is a clear winner here. This is because instead of focusing on the short run and the future rewards, Thompson sampling focuses on the long run by guessing the multi-arm bandit game instead of the next possible rewards. Since the reward distributions of the arms don&rsquo;t change from time to time, Thompson sampling can leverage the this by sticking to the best arm of the most probable $k$-arm bandit game given the information collected so far.</p>
 <h2 id="some-questions-to-think-about">Some Questions to think about</h2>
@@ -453,29 +461,29 @@ $$</p>
 </ol>
 <p>I shall answer both of these questions in my next post of this series. Till then, feel free to explore (or exploit) the answers to these questions and let me know in the comments.</p>
 <h2 id="references">References</h2>
-<div class="footnotes" role="doc-endnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Agrawal, R. (1995). Sample Mean Based Index Policies with O(log n) Regret for the Multi-Armed Bandit Problem. Advances in Applied Probability, 27(4), 1054–1078. <a href="https://doi.org/10.2307/1427934">https://doi.org/10.2307/1427934</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1" role="doc-endnote">
+<p>Agrawal, R. (1995). Sample Mean Based Index Policies with O(log n) Regret for the Multi-Armed Bandit Problem. Advances in Applied Probability, 27(4), 1054–1078. <a href="https://doi.org/10.2307/1427934">https://doi.org/10.2307/1427934</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2">
-<p>Katehakis, M. N., &amp; Robbins, H. (1995). Sequential choice from several populations. Proceedings of the National Academy of Sciences of the United States of America, 92(19), 8584–8585. <a href="https://doi.org/10.1073/pnas.92.19.8584">https://doi.org/10.1073/pnas.92.19.8584</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2" role="doc-endnote">
+<p>Katehakis, M. N., &amp; Robbins, H. (1995). Sequential choice from several populations. Proceedings of the National Academy of Sciences of the United States of America, 92(19), 8584–8585. <a href="https://doi.org/10.1073/pnas.92.19.8584">https://doi.org/10.1073/pnas.92.19.8584</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3">
-<p>Lai, T.L., &amp; Robbins, H. (1985). Asymptotically efficient adaptive allocation rules.  Advances in Applied Mathematics, 6(1), 4-22. <a href="https://doi.org/10.1016/0196-8858(85)90002-8">https://doi.org/10.1016/0196-8858(85)90002-8</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3" role="doc-endnote">
+<p>Lai, T.L., &amp; Robbins, H. (1985). Asymptotically efficient adaptive allocation rules.  Advances in Applied Mathematics, 6(1), 4-22. <a href="https://doi.org/10.1016/0196-8858(85)90002-8">https://doi.org/10.1016/0196-8858(85)90002-8</a>. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4">
-<p>Garivier, A., &amp; Cappé, O. (2011, December). The KL-UCB algorithm for bounded stochastic bandits and beyond. In Proceedings of the 24th annual conference on learning theory (pp. 359-376). JMLR Workshop and Conference Proceedings.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4" role="doc-endnote">
+<p>Garivier, A., &amp; Cappé, O. (2011, December). The KL-UCB algorithm for bounded stochastic bandits and beyond. In Proceedings of the 24th annual conference on learning theory (pp. 359-376). JMLR Workshop and Conference Proceedings. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5">
-<p>Thompson, W. R. (1933). On the Likelihood that One Unknown Probability Exceeds Another in View of the Evidence of Two Samples. Biometrika, 25(3/4), 285–294. <a href="https://doi.org/10.2307/2332286">https://doi.org/10.2307/2332286</a>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5" role="doc-endnote">
+<p>Thompson, W. R. (1933). On the Likelihood that One Unknown Probability Exceeds Another in View of the Evidence of Two Samples. Biometrika, 25(3/4), 285–294. <a href="https://doi.org/10.2307/2332286">https://doi.org/10.2307/2332286</a>. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:6">
-<p>Russo, D. J., Van Roy, B., Kazerouni, A., Osband, I., &amp; Wen, Z. (2018). A tutorial on thompson sampling. Foundations and Trends® in Machine Learning, 11(1), 1-96. <a href="https://arxiv.org/abs/1707.02038">https://arxiv.org/abs/1707.02038</a>.&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:6" role="doc-endnote">
+<p>Russo, D. J., Van Roy, B., Kazerouni, A., Osband, I., &amp; Wen, Z. (2018). A tutorial on thompson sampling. Foundations and Trends® in Machine Learning, 11(1), 1-96. <a href="https://arxiv.org/abs/1707.02038">https://arxiv.org/abs/1707.02038</a>. <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
+</section>
 
                 </div>
             </div>
@@ -501,6 +509,11 @@ $$</p>
             </a>
         
         
+            <a href="/posts/markov-decision-process/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
     </div>
     <div class="flex flex-row justify-center gap-4 my-4">
         <a href="/posts/" 
@@ -515,7 +528,7 @@ $$</p>
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     

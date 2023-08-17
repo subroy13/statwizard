@@ -1,154 +1,259 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
     <loc>/posts/</loc>
-    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
-  </url><url>
+    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/reinforcement-learning/</loc>
-    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
-  </url><url>
+    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/markov-decision-process/</loc>
+    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/k-arm-bandit-2/</loc>
     <lastmod>2023-08-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/</loc>
-    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2023-08-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/random-matrix-theory/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/posts/random-matrix-theory-intro/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/posts/k-arm-bandit/</loc>
     <lastmod>2023-07-31T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/callgrind-reader/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/system-architecture-design/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/password-manager/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/software-package/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/changepoint-detection/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/fuzzy-systems/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/rough-fuzzy-changepoint-detection/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/time-series-analysis/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/covid19-sintrue-model/</loc>
     <lastmod>2022-08-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/epidemiology/</loc>
     <lastmod>2022-08-17T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/robust-statistics/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/rsvddpd/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/rsvddpd-video-surveillance/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/dimension-reduction/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/image-processing/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/robust-statistical-inference/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/trustworthy-dimensionality-reduction/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/deep-learning/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/posts/texture-network-style-transfer/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/pollution-analysis-kolkata/</loc>
     <lastmod>2020-11-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/roufcp/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/time-series/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/covid19-tracker/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/auction-theory/</loc>
     <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/bayesian-analysis/</loc>
     <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/clustering/</loc>
     <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/regression-analysis/</loc>
     <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/information-content-tea-arxiv/</loc>
     <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/posts/covid19-esir-model/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/posts/covid19-sir-model/</loc>
     <lastmod>2020-03-25T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/seq2seq-chatbot/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/natural-language-processing/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/causal-dag/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/network-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/d-basu-pres/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/tea-auction-feasibility/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/hypothesis-testing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/onset-detection-arxiv/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/tags/sound-processing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/text-pred-app/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
-  </url><url>
+  </url>
+  
+  <url>
     <loc>/aboutme/3darts/</loc>
   </url>
+  
 </urlset>
