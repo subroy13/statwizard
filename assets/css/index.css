@@ -1973,6 +1973,7 @@ video {
 
 mjx-container {
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 .first\:rounded-t-lg:first-child {

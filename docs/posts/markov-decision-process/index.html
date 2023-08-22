@@ -210,51 +210,56 @@ Reinforcement Learning (Part 3) - Markov Decision Process
     <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
         Reinforcement Learning (Part 3) - Markov Decision Process
     </h1>
-    <div class="m-2 p-4 rounded-lg shadow-lg border-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col justify-center items-center gap-2">   
-            <div class="mt-1 flex flex-row text-neutral-800 gap-4">
-                <p class="font-bold">Date:</p>
-                <p class="font-normal">16 August, 2023</p>
-            </div> 
-            <p class="mt-1 text-neutral-600">
-                <span class="font-bold">16</span> minutes read
-            </p>
-            <div class="my-1">
-                
-                    <a href="/tags/reinforcement-learning/" 
-                        class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
-                        hover:underline hover:bg-gray-300 transition ease-in-out">
-                        Reinforcement Learning
-                    </a>
-                
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">16 August, 2023</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">16</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/reinforcement-learning/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Reinforcement Learning
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Probability (Conditional Probability) - </span>
+                        
+                            <span class="text-yellow-600 font-semibold">Intermediate</span>
+                        
+                    </li>
+                    
+                </ul>
             </div>    
         </div>
-        <div class="flex flex-col justify-start gap-2">
-            <h1 class="text-lg font-bold">Prerequisites</h1>
-            <ul class="space-y-2 text-left">
-                
-                <li class="flex items-center space-x-3">
-                    <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                    </svg>
-                    <span>Python Programming - </span>
-                    
-                        <span class="text-green-600 font-semibold">Beginner</span>
-                    
-                </li>
-                
-                <li class="flex items-center space-x-3">
-                    <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
-                    </svg>
-                    <span>Probability (Conditional Probability) - </span>
-                    
-                        <span class="text-yellow-600 font-semibold">Intermediate</span>
-                    
-                </li>
-                
-            </ul>
-        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> This is the third part of the Reinforcement Learning series: Here I discuss about the representing the reinforcement learning problem as a markov decision process, explain standard terminologies and provide ways to estimate the value function.
+        </p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
         <div class="relative col-span-1">
@@ -321,7 +326,7 @@ Reinforcement Learning (Part 3) - Markov Decision Process
 <p>In terms of probability, these can be written as
 $$
 \begin{align*}
-P(A_{t+1} \mid S_t) &amp; = P(A_{t+1} \mid S_t, S_{t-1}, S_{t-2}, \dots ),\\<br>
+P(A_{t+1} \mid S_t) &amp; = P(A_{t+1} \mid S_t, S_{t-1}, S_{t-2}, \dots ),\\
 P(S_{t+1}, R_{t+1} \mid A_t, S_t) &amp; = P(S_{t+1}, R_{t+1} \mid A_t, S_t, A_{t-1}, S_{t-1}, \dots),
 \end{align*}
 $$
@@ -373,30 +378,30 @@ where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long 
 <p>Here, we shall see how an RL agent can try to estimate the value function. For that, we will use the following example game, which is like a maze game within a $4\times 4$ grid. The mission is to start on the top left corner (shown in <span class="text-red-500">Red</span> below) and reach the top right corner (shown in <span class="text-blue-500">Blue</span> below), but there are some obstacles (shown in Gray) along the way. The state is the agent&rsquo;s current position in the grid, and at any point, it can move up, down, left or right. Every move it makes gives no reward normally, unless it reaches the end when it gets a reward of $5$ and hitting any obstacle gives a reward of $(-1)$.</p>
 <p><img src="fig1.png" alt=""></p>
 <p>Let us try to code this environment in <code>python</code>, which takes the current state $S_t$ and the action $A_t$, and returns the new state $S_{t+1}$ and the immediate reward $R_{t+1}$.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gridworld_maze</span>(cur_state, action):
-  x, y <span style="color:#f92672">=</span> cur_state
-  <span style="color:#66d9ef">assert</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]
-  <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;up&#34;</span>:
-    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
-  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;down&#34;</span>:
-    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
-  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;left&#34;</span>:
-    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y)
-  <span style="color:#66d9ef">else</span>:
-    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, y)
-  <span style="color:#75715e"># bottom left corner is (0, 0), top right corner is (3, 3)</span>
-  <span style="color:#66d9ef">if</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>:
-    <span style="color:#75715e"># it is out of bounds</span>
-    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># reward is -1</span>
-  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
-    <span style="color:#75715e"># it is hitting obstacles</span>
-    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">==</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>):
-    <span style="color:#75715e"># reached the end goal</span>
-    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">100</span>)
-  <span style="color:#66d9ef">else</span>:
-    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># just a valid move</span>
-</code></pre></div><p>Now assume that the RL agent behaves randomly. That is, at any state $S_t$, it randomly picks any of the $4$ action, going up or down or left or right. We wish to obtain an estimate of the value function of different states, assuming that the RL agent follows this random policy. Essentially this means to find out which squares in the maze are more important (or closer) to reach the goal when the RL agent is only doing exploration by trying all possible actions.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gridworld_maze</span>(cur_state, action):
+</span></span><span style="display:flex;"><span>  x, y <span style="color:#f92672">=</span> cur_state
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">assert</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;up&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;down&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;left&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, y)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># bottom left corner is (0, 0), top right corner is (3, 3)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># it is out of bounds</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># reward is -1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># it is hitting obstacles</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">==</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># reached the end goal</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># just a valid move</span>
+</span></span></code></pre></div><p>Now assume that the RL agent behaves randomly. That is, at any state $S_t$, it randomly picks any of the $4$ action, going up or down or left or right. We wish to obtain an estimate of the value function of different states, assuming that the RL agent follows this random policy. Essentially this means to find out which squares in the maze are more important (or closer) to reach the goal when the RL agent is only doing exploration by trying all possible actions.</p>
 <h3 id="monte-carlo---accumulation-of-experiences">Monte Carlo - Accumulation of Experiences</h3>
 <p>Now to obtain an estimate of the value function $v_\pi(s)$, one simple way is to let the agent play a lot of these maze games and see how much rewards it can accumulate from these games, starting from which states. We can follow these steps:</p>
 <ol>
@@ -417,28 +422,28 @@ where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long 
 </li>
 </ol>
 <p>We implement this strategy to get an estimate of the value function in the following code. However, to make it more efficient, instead of keeping a list of gains to average out, we keep a counter and the current value of the average and incrementally update the average after every round / episode / game.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span> <span style="color:#75715e"># run 5000 games</span>
-gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
-val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-val_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-  <span style="color:#75715e"># simulate the actions</span>
-  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
-  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-  visits <span style="color:#f92672">=</span> []
-  <span style="color:#66d9ef">while</span> cur_state <span style="color:#f92672">!=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">and</span> niter <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
-    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-    action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
-    cur_state, reward <span style="color:#f92672">=</span> gridworld_maze(cur_state, action)
-    visits<span style="color:#f92672">.</span>append((cur_state, reward))
-  <span style="color:#75715e"># end of episode, now we backoff and revise the value function estimates</span>
-  gain <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-  <span style="color:#66d9ef">for</span> (cur_state, reward) <span style="color:#f92672">in</span> visits[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
-    gain <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> gain
-    x, y <span style="color:#f92672">=</span> cur_state
-    val_ests[x, y] <span style="color:#f92672">=</span> (val_ests[x, y] <span style="color:#f92672">*</span> val_counts[x, y] <span style="color:#f92672">+</span> gain) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> val_counts[x, y])  <span style="color:#75715e"># update the estimated value</span>
-    val_counts[x, y] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>   <span style="color:#75715e"># update the visited count</span>
-</code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span> <span style="color:#75715e"># run 5000 games</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
+</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>val_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># simulate the actions</span>
+</span></span><span style="display:flex;"><span>  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
+</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  visits <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> cur_state <span style="color:#f92672">!=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">and</span> niter <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
+</span></span><span style="display:flex;"><span>    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
+</span></span><span style="display:flex;"><span>    cur_state, reward <span style="color:#f92672">=</span> gridworld_maze(cur_state, action)
+</span></span><span style="display:flex;"><span>    visits<span style="color:#f92672">.</span>append((cur_state, reward))
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># end of episode, now we backoff and revise the value function estimates</span>
+</span></span><span style="display:flex;"><span>  gain <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (cur_state, reward) <span style="color:#f92672">in</span> visits[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+</span></span><span style="display:flex;"><span>    gain <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> gain
+</span></span><span style="display:flex;"><span>    x, y <span style="color:#f92672">=</span> cur_state
+</span></span><span style="display:flex;"><span>    val_ests[x, y] <span style="color:#f92672">=</span> (val_ests[x, y] <span style="color:#f92672">*</span> val_counts[x, y] <span style="color:#f92672">+</span> gain) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> val_counts[x, y])  <span style="color:#75715e"># update the estimated value</span>
+</span></span><span style="display:flex;"><span>    val_counts[x, y] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>   <span style="color:#75715e"># update the visited count</span>
+</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
 <div class="flex gap-4 justify-center items-center flex-wrap">
     <img src="./fig2a.png">
     <img src="./fig2b.png">
@@ -450,51 +455,51 @@ val_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.<
 <p>$$
 \begin{align}
 v^\pi(s)
-&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) E(G_t \mid S_t = s, A_t = a),\\<br>
-&amp; \text{we rewrite the value in terms of policy probabilities and conditional gains for an action}\\<br>
-&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s' \in \mathcal{S}} p(s' \mid s, a) E(G_t \mid S_t = s, A_t = a, S_{t+1} = s'),\\<br>
-&amp; \text{we now do a further conditioning over the next state and introduce the transition dynamics}\\<br>
-&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s' \in \mathcal{S}} p(s' \mid s, a) E(R_{t+1} + \gamma G_{t+1} \mid S_t = s, A_t = a, S_{t+1} = s')\\<br>
-&amp; \text{since, } G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots = R_{t+1} + \gamma G_{t+1}\\<br>
-&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s' \in \mathcal{S}} p(s' \mid s, a) \left( R_{t+1} + \gamma E(G_{t+1} \mid S_{t+1} = s') \right)  \\<br>
-&amp; \text{here, we use the markov property}\\<br>
-&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s' \in \mathcal{S}} p(s' \mid s, a) \left( R_{t+1} + \gamma v^{\pi}(s') \right)
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) E(G_t \mid S_t = s, A_t = a),\\
+&amp; \text{we rewrite the value in terms of policy probabilities and conditional gains for an action}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) E(G_t \mid S_t = s, A_t = a, S_{t+1} = s&rsquo;),\\
+&amp; \text{we now do a further conditioning over the next state and introduce the transition dynamics}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) E(R_{t+1} + \gamma G_{t+1} \mid S_t = s, A_t = a, S_{t+1} = s&rsquo;)\\
+&amp; \text{since, } G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots = R_{t+1} + \gamma G_{t+1}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) \left( R_{t+1} + \gamma E(G_{t+1} \mid S_{t+1} = s&rsquo;) \right)  \\
+&amp; \text{here, we use the markov property}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) \left( R_{t+1} + \gamma v^{\pi}(s&rsquo;) \right)
 \end{align}
 $$</p>
 <p>This equation is called <strong>Bellman Equation</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
-<p>Therefore, one way to estimate the value function is to start with some initial estimate of the value function. Then use the right hand side of the above equation to get a better estimate, and then iterate this process over and over unless we reach a stable estimate of the value function. Note that, you need to have the policy distribution $\pi(a \mid s)$ and the transition dynamics $p(s'\mid s, a)$ for this strategy to work. Fortunately, we have both of them available since we know the game exactly and know how the environment will respond.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
-val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-<span style="color:#75715e"># for obstacles and terminal state, the value is known</span>
-<span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
-  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
-err <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e9</span>
-niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#66d9ef">while</span> True:
-  new_val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-  <span style="color:#75715e"># loop through all states and see how the environment will respond</span>
-  <span style="color:#66d9ef">for</span> cur_x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
-    <span style="color:#66d9ef">for</span> cur_y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
-      <span style="color:#66d9ef">if</span> (cur_x, cur_y) <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)]:
-        <span style="color:#66d9ef">continue</span>
-      <span style="color:#75715e"># for all states except end and obstacles, take the all 4 actions</span>
-      action_vals <span style="color:#f92672">=</span> {}
-      <span style="color:#66d9ef">for</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]:
-        new_state, reward <span style="color:#f92672">=</span> gridworld_maze((cur_x, cur_y), action)
-        action_vals[action] <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> val_ests[new_state[<span style="color:#ae81ff">0</span>], new_state[<span style="color:#ae81ff">1</span>]]
-      new_val_ests[cur_x, cur_y] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean([action_vals[k] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> action_vals])
-  err <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum((new_val_ests <span style="color:#f92672">-</span> val_ests) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">**</span><span style="color:#ae81ff">0.5</span>   <span style="color:#75715e"># see the RMSE</span>
-  niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-  <span style="color:#66d9ef">if</span> err <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1e-5</span> <span style="color:#f92672">or</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">500</span>:
-    <span style="color:#66d9ef">break</span>
-  <span style="color:#66d9ef">else</span>:
-    val_ests <span style="color:#f92672">=</span> new_val_ests<span style="color:#f92672">.</span>copy()
-<span style="color:#75715e"># finally update the value at the obstacles and the end goal</span>
-<span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
-  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
-</code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<p>Therefore, one way to estimate the value function is to start with some initial estimate of the value function. Then use the right hand side of the above equation to get a better estimate, and then iterate this process over and over unless we reach a stable estimate of the value function. Note that, you need to have the policy distribution $\pi(a \mid s)$ and the transition dynamics $p(s&rsquo;\mid s, a)$ for this strategy to work. Fortunately, we have both of them available since we know the game exactly and know how the environment will respond.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
+</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for obstacles and terminal state, the value is known</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
+</span></span><span style="display:flex;"><span>err <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e9</span>
+</span></span><span style="display:flex;"><span>niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>  new_val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># loop through all states and see how the environment will respond</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> cur_x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> cur_y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (cur_x, cur_y) <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># for all states except end and obstacles, take the all 4 actions</span>
+</span></span><span style="display:flex;"><span>      action_vals <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]:
+</span></span><span style="display:flex;"><span>        new_state, reward <span style="color:#f92672">=</span> gridworld_maze((cur_x, cur_y), action)
+</span></span><span style="display:flex;"><span>        action_vals[action] <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> val_ests[new_state[<span style="color:#ae81ff">0</span>], new_state[<span style="color:#ae81ff">1</span>]]
+</span></span><span style="display:flex;"><span>      new_val_ests[cur_x, cur_y] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean([action_vals[k] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> action_vals])
+</span></span><span style="display:flex;"><span>  err <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum((new_val_ests <span style="color:#f92672">-</span> val_ests) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">**</span><span style="color:#ae81ff">0.5</span>   <span style="color:#75715e"># see the RMSE</span>
+</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> err <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1e-5</span> <span style="color:#f92672">or</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">500</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    val_ests <span style="color:#f92672">=</span> new_val_ests<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># finally update the value at the obstacles and the end goal</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
+</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
 <div class="flex gap-4 justify-center items-center flex-wrap">
     <img src="./fig2c.png">
     <img src="./fig2d.png">
@@ -544,20 +549,20 @@ $$</p>
 </li>
 </ol>
 <h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
-<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1">
+<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
-<p><a href="https://en.wikipedia.org/wiki/Shannon_number">https://en.wikipedia.org/wiki/Shannon_number</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2">
+<p><a href="https://en.wikipedia.org/wiki/Shannon_number">https://en.wikipedia.org/wiki/Shannon_number</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
-<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3">
+<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
                 </div>
             </div>
@@ -597,7 +602,7 @@ $$</p>
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
