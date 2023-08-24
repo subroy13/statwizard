@@ -1974,6 +1974,8 @@ video {
 mjx-container {
   overflow-x: scroll;
   overflow-y: hidden;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
 
 .first\:rounded-t-lg:first-child {

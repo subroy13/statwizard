@@ -3,18 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/posts/</loc>
-    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/reinforcement-learning/</loc>
-    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/markov-decision-process/</loc>
-    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+    <loc>/posts/td-algorithms/</loc>
+    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
-    <lastmod>2023-08-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
+    <lastmod>2023-08-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/markov-decision-process/</loc>
     <lastmod>2023-08-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/k-arm-bandit-2/</loc>

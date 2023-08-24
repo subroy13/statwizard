@@ -7,10 +7,10 @@ mermaid: true
 tags:
     - Reinforcement Learning
 
-draft: true
+draft: false
 prerequisites:
     - topic: Python Programming
-      level: 1
+      level: 2
 
     - topic: Probability (Conditional Probability, Expection)
       level: 2
@@ -70,7 +70,39 @@ Now we will try to apply the TD algorithm on the same maze game from the [last p
 
 ![](fig1.png)
 
-> Write code and results here.
+Here is a code that performs the TD algorithm on the maze game.
+
+```python
+# temporal difference learning
+B = 5000   # number of episodes
+gamma = 0.9
+val_ests = np.zeros((4, 4))
+val_ests[3, 3] = 100  # the value for the terminating state
+
+lr = 0.1  # learning rate
+for b in range(B):
+  niter = 0  # number of iterations
+  cur_state = (0, 3)  # the starting state
+  while True:
+    # take a random move from current state
+    action = ["up", "down", "left", "right"][np.random.randint(4)]
+    new_state, reward = gridworld_maze(cur_state, action)
+    val_ests[cur_state[0], cur_state[1]] += lr * (reward + gamma * val_ests[new_state[0], new_state[1]] - val_ests[cur_state[0], cur_state[1]])  # the TD(0) step
+    niter += 1
+    if niter > 100 or new_state == (3, 3):
+      break  # reached the end, reset the game
+    cur_state = new_state # update the state and continue the game
+```
+
+
+The resulting value estimates turn out to be as follows.
+
+<div class="flex gap-4 justify-center items-center flex-wrap">
+    <img src="./fig2a.png">
+    <img src="./fig2b.png">
+</div>
+
+Although the estimates differ from the Monte Carlo estimates and the Dynamic Programming estimated we calculated in the [previous post](https://www.statwizard.in/posts/markov-decision-process/), the heatmap shows that the relative ordering of the value estimates are maintained. This is the main principle of having a value estimate, so that it enables you to compare between two states of the game, like a chess grandmaster often knows which of the two chess board positions is more advantageous with just a glance at them.
 
 
 ## n-step TD Variant
@@ -89,7 +121,49 @@ Another example for a better understanding: Think of the $1$-step TD is the stra
 
 Let's see how $5$-step TD algorithm does in estimating value for the maze game.
 
-> Write code and results here.
+
+```python
+# temporal difference learning - 5-step TD
+B = 5000   # number of episodes
+gamma = 0.9
+td_step = 5
+val_ests = np.zeros((4, 4))
+val_ests[3, 3] = 100  # the value for the terminating state
+
+lr = 0.1  # learning rate
+for b in range(B):
+  niter = 0  # number of iterations
+  cur_state = (0, 3)  # the starting state
+  while True:
+    prev_visits = []   # this holds the (state, reward) pairs
+    runner_state = cur_state if len(prev_visits) == 0 else prev_visits[-1][0]   # an indexing state which runs through the n-step look ahead
+    while len(prev_visits) < td_step:
+      # take a random move from current state
+      action = ["up", "down", "left", "right"][np.random.randint(4)]
+      runner_state, reward = gridworld_maze(runner_state, action)
+      prev_visits.append((runner_state, reward))
+
+    # once it has enough previous visits, we can now apply TD update step
+    target1 = np.sum((gamma ** np.arange(td_step)) *  np.array([r for (_, r) in prev_visits]))  # this is the sum of discounted rewards of 5 steps
+    target2 = (gamma ** td_step) * val_ests[runner_state[0], runner_state[1]]  # the estimated value at the last state
+    val_ests[cur_state[0], cur_state[1]] += lr * (target1 + target2 - val_ests[cur_state[0], cur_state[1]])  # the final TD step
+
+    niter += 1
+    if niter > 100 or (3, 3) in [s for (s, _) in prev_visits]:
+      break # reached the end, reset the game
+    cur_state = prev_visits[0][0]  # the new starting state
+    prev_visits = prev_visits[:-1]
+```
+
+
+The resulting value estimates turn out to be as follows.
+
+<div class="flex gap-4 justify-center items-center flex-wrap">
+    <img src="./fig2c.png">
+    <img src="./fig2d.png">
+</div>
+
+One of the interesting thing to note here is that there is no negative values in the estimates for the 5-step temporal difference method. This is probably because as soon as the end goal is only 5 steps away from a state, the state becomes valuable. With the value of the discount factor $\gamma = 0.9$, the ultimate reward of $100$ (i.e., the reward of reaching end goal) becomes $100\gamma^5 \approx 59$, which is clearly stil a larger reward compared to the punishment of $-1$ by hitting an obstacle. 
 
 
 ## TD($\lambda$) Variant[^2]
@@ -129,11 +203,12 @@ v^\pi_{new}(S_t) = v^\pi_{old}(S_t) + \alpha\left( G^\lambda_{t:(t+n)} - v^\pi_{
 $$
 This is called the **$n$-step TD($\lambda$) algorithm** for value estimation. In principle, this is just reducing the uncertainty by averaging estimates from multiple $n$-step TD algorithms.
 
+I won't demonstrate the code for $n$-step TD($\lambda$) algorithm here, but I encourage the enthusiatic readers to try it out for the maze game and comment below the solution. Unfortunately, there is no prize for getting it, since I'm also on a tight budget here 😅!
 
-Let's see how $5$-step TD($\lambda$) algorithm for $\lambda = 0.9$ performs in estimating value for the maze game.
 
-> Write code and results here.
+## Next in Queue
 
+In my next post in the RL blog series, we will dive deep into how we can use these value estimates to find an optimal strategy for an RL agent. And we will use python to code the algorithm, and then use the code to successfully land a space shuttle on the lunar surface inside a simulator. This should give a sneak peek at the amazing achievements of ISRO scientists who have successfully landed Chadrayaan-3 on the surface of the moon yesterday, on 23rd of August, 2023.
 
 
 
