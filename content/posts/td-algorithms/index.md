@@ -129,7 +129,6 @@ gamma = 0.9
 td_step = 5
 val_ests = np.zeros((4, 4))
 val_ests[3, 3] = 100  # the value for the terminating state
-
 lr = 0.1  # learning rate
 for b in range(B):
   niter = 0  # number of iterations
@@ -142,12 +141,10 @@ for b in range(B):
       action = ["up", "down", "left", "right"][np.random.randint(4)]
       runner_state, reward = gridworld_maze(runner_state, action)
       prev_visits.append((runner_state, reward))
-
     # once it has enough previous visits, we can now apply TD update step
     target1 = np.sum((gamma ** np.arange(td_step)) *  np.array([r for (_, r) in prev_visits]))  # this is the sum of discounted rewards of 5 steps
     target2 = (gamma ** td_step) * val_ests[runner_state[0], runner_state[1]]  # the estimated value at the last state
     val_ests[cur_state[0], cur_state[1]] += lr * (target1 + target2 - val_ests[cur_state[0], cur_state[1]])  # the final TD step
-
     niter += 1
     if niter > 100 or (3, 3) in [s for (s, _) in prev_visits]:
       break # reached the end, reset the game
