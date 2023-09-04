@@ -38,7 +38,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.d5a5c99c471763e7038d35dc4e9d20e7.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.202abfed1dc4f233ffe962df8b79acc8.css" />
 
 
 
@@ -276,12 +276,12 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>To install &ldquo;callgrind-reader&rdquo;, simply run:</p>
-<pre tabindex="0"><code>npm install callgrind-reader
+<pre><code>npm install callgrind-reader
 </code></pre><h2 id="usage">Usage</h2>
 <p>Here&rsquo;s a basic example of how to use &ldquo;callgrind-reader&rdquo; to parse a callgrind file and extract profiling data:</p>
-<pre tabindex="0"><code>import { CallGrind } from &#39;callgrind-reader&#39;;
+<pre><code>import { CallGrind } from 'callgrind-reader';
 <p>// Parse the callgrind file using CallgrindReader
-const reader = new CallGrind('path/to/callgrind/file');
+const reader = new CallGrind(&lsquo;path/to/callgrind/file&rsquo;);
 const result = reader.parse(contents);</p>
 <p>// Access the profiling data
 for (const item of result.profile) {
@@ -305,7 +305,7 @@ console.log(<code>Total flops: ${item.events.flops}</code>);
     <div class="my-6 max-w-6xl md:mx-auto mx-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     

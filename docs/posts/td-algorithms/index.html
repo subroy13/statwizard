@@ -38,7 +38,7 @@ Reinforcement Learning (Part 4) - Temporal Difference Algorithms
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.d5a5c99c471763e7038d35dc4e9d20e7.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.202abfed1dc4f233ffe962df8b79acc8.css" />
 
 
 
@@ -325,26 +325,25 @@ $$</p>
 <p>Now we will try to apply the TD algorithm on the same maze game from the <a href="https://www.statwizard.in/posts/markov-decision-process/">last post</a>. Just to recap, the maze game has a maze shown as follow in the following figure, starting at the red corner to reach the blue corner, avoiding the obstacles shown in gray. The reward for reaching the end goal is $100$ but hitting any obstacle is $-1$.</p>
 <p><img src="fig1.png" alt=""></p>
 <p>Here is a code that performs the TD algorithm on the maze game.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># temporal difference learning</span>
-</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>   <span style="color:#75715e"># number of episodes</span>
-</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
-</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># the value for the terminating state</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>  <span style="color:#75715e"># learning rate</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># number of iterations</span>
-</span></span><span style="display:flex;"><span>  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># take a random move from current state</span>
-</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
-</span></span><span style="display:flex;"><span>    new_state, reward <span style="color:#f92672">=</span> gridworld_maze(cur_state, action)
-</span></span><span style="display:flex;"><span>    val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+=</span> lr <span style="color:#f92672">*</span> (reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> val_ests[new_state[<span style="color:#ae81ff">0</span>], new_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">-</span> val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]])  <span style="color:#75715e"># the TD(0) step</span>
-</span></span><span style="display:flex;"><span>    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">or</span> new_state <span style="color:#f92672">==</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>):
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>  <span style="color:#75715e"># reached the end, reset the game</span>
-</span></span><span style="display:flex;"><span>    cur_state <span style="color:#f92672">=</span> new_state <span style="color:#75715e"># update the state and continue the game</span>
-</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># temporal difference learning</span>
+B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>   <span style="color:#75715e"># number of episodes</span>
+gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># the value for the terminating state</span>
+<p>lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>  <span style="color:#75715e"># learning rate</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># number of iterations</span>
+cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
+<span style="color:#66d9ef">while</span> True:
+<span style="color:#75715e"># take a random move from current state</span>
+action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&quot;up&quot;</span>, <span style="color:#e6db74">&quot;down&quot;</span>, <span style="color:#e6db74">&quot;left&quot;</span>, <span style="color:#e6db74">&quot;right&quot;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
+new_state, reward <span style="color:#f92672">=</span> gridworld_maze(cur_state, action)
+val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+=</span> lr <span style="color:#f92672"><em></span> (reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672"></em></span> val_ests[new_state[<span style="color:#ae81ff">0</span>], new_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">-</span> val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]])  <span style="color:#75715e"># the TD(0) step</span>
+niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+<span style="color:#66d9ef">if</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">or</span> new_state <span style="color:#f92672">==</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>):
+<span style="color:#66d9ef">break</span>  <span style="color:#75715e"># reached the end, reset the game</span>
+cur_state <span style="color:#f92672">=</span> new_state <span style="color:#75715e"># update the state and continue the game</span>
+</code></pre></div><p>The resulting value estimates turn out to be as follows.</p></p>
 <div class="flex gap-4 justify-center items-center flex-wrap">
     <img src="./fig2a.png">
     <img src="./fig2b.png">
@@ -359,37 +358,34 @@ $$</p>
 <p>This now gives you control over how much information you want to propagate to back. (Doesn&rsquo;t it look like a hybrid version of deep neural network with a flexibility to control how much you will propagate the gradients back for parameter estimation!).</p>
 <p>Another example for a better understanding: Think of the $1$-step TD is the strategy that a novice chess player like me would employ. I often only think of only 1 step ahead, just seeing a fork or an x-ray kind of move or 1 move immediate checkmate. Though I might only see only $0$ step ahead if you play too well 😞. $n$-step TD is just extending that capability of that RL agent to play like a grandmaster, who can see several, may be $15-20$ (read $n$) moves ahead. And you want to create a chess world champion like <a href="https://en.wikipedia.org/wiki/AlphaZero">AlphaZero</a>, you might try your hand at 100-step TD! 😎</p>
 <p>Let&rsquo;s see how $5$-step TD algorithm does in estimating value for the maze game.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># temporal difference learning - 5-step TD</span>
-</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>   <span style="color:#75715e"># number of episodes</span>
-</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
-</span></span><span style="display:flex;"><span>td_step <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
-</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># the value for the terminating state</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>  <span style="color:#75715e"># learning rate</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
-</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># number of iterations</span>
-</span></span><span style="display:flex;"><span>  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
-</span></span><span style="display:flex;"><span>    prev_visits <span style="color:#f92672">=</span> []   <span style="color:#75715e"># this holds the (state, reward) pairs</span>
-</span></span><span style="display:flex;"><span>    runner_state <span style="color:#f92672">=</span> cur_state <span style="color:#66d9ef">if</span> len(prev_visits) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> prev_visits[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># an indexing state which runs through the n-step look ahead</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> len(prev_visits) <span style="color:#f92672">&lt;</span> td_step:
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># take a random move from current state</span>
-</span></span><span style="display:flex;"><span>      action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
-</span></span><span style="display:flex;"><span>      runner_state, reward <span style="color:#f92672">=</span> gridworld_maze(runner_state, action)
-</span></span><span style="display:flex;"><span>      prev_visits<span style="color:#f92672">.</span>append((runner_state, reward))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># once it has enough previous visits, we can now apply TD update step</span>
-</span></span><span style="display:flex;"><span>    target1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum((gamma <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>arange(td_step)) <span style="color:#f92672">*</span>  np<span style="color:#f92672">.</span>array([r <span style="color:#66d9ef">for</span> (_, r) <span style="color:#f92672">in</span> prev_visits]))  <span style="color:#75715e"># this is the sum of discounted rewards of 5 steps</span>
-</span></span><span style="display:flex;"><span>    target2 <span style="color:#f92672">=</span> (gamma <span style="color:#f92672">**</span> td_step) <span style="color:#f92672">*</span> val_ests[runner_state[<span style="color:#ae81ff">0</span>], runner_state[<span style="color:#ae81ff">1</span>]]  <span style="color:#75715e"># the estimated value at the last state</span>
-</span></span><span style="display:flex;"><span>    val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+=</span> lr <span style="color:#f92672">*</span> (target1 <span style="color:#f92672">+</span> target2 <span style="color:#f92672">-</span> val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]])  <span style="color:#75715e"># the final TD step</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">or</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">in</span> [s <span style="color:#66d9ef">for</span> (s, _) <span style="color:#f92672">in</span> prev_visits]:
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span> <span style="color:#75715e"># reached the end, reset the game</span>
-</span></span><span style="display:flex;"><span>    cur_state <span style="color:#f92672">=</span> prev_visits[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># the new starting state</span>
-</span></span><span style="display:flex;"><span>    prev_visits <span style="color:#f92672">=</span> prev_visits[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># temporal difference learning - 5-step TD</span>
+B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>   <span style="color:#75715e"># number of episodes</span>
+gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>
+td_step <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># the value for the terminating state</span>
+lr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>  <span style="color:#75715e"># learning rate</span>
+<span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  <span style="color:#75715e"># number of iterations</span>
+  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
+  <span style="color:#66d9ef">while</span> True:
+    prev_visits <span style="color:#f92672">=</span> []   <span style="color:#75715e"># this holds the (state, reward) pairs</span>
+    runner_state <span style="color:#f92672">=</span> cur_state <span style="color:#66d9ef">if</span> len(prev_visits) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">else</span> prev_visits[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]   <span style="color:#75715e"># an indexing state which runs through the n-step look ahead</span>
+    <span style="color:#66d9ef">while</span> len(prev_visits) <span style="color:#f92672">&lt;</span> td_step:
+      <span style="color:#75715e"># take a random move from current state</span>
+      action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
+      runner_state, reward <span style="color:#f92672">=</span> gridworld_maze(runner_state, action)
+      prev_visits<span style="color:#f92672">.</span>append((runner_state, reward))
+    <span style="color:#75715e"># once it has enough previous visits, we can now apply TD update step</span>
+    target1 <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum((gamma <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>arange(td_step)) <span style="color:#f92672">*</span>  np<span style="color:#f92672">.</span>array([r <span style="color:#66d9ef">for</span> (_, r) <span style="color:#f92672">in</span> prev_visits]))  <span style="color:#75715e"># this is the sum of discounted rewards of 5 steps</span>
+    target2 <span style="color:#f92672">=</span> (gamma <span style="color:#f92672">**</span> td_step) <span style="color:#f92672">*</span> val_ests[runner_state[<span style="color:#ae81ff">0</span>], runner_state[<span style="color:#ae81ff">1</span>]]  <span style="color:#75715e"># the estimated value at the last state</span>
+    val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]] <span style="color:#f92672">+=</span> lr <span style="color:#f92672">*</span> (target1 <span style="color:#f92672">+</span> target2 <span style="color:#f92672">-</span> val_ests[cur_state[<span style="color:#ae81ff">0</span>], cur_state[<span style="color:#ae81ff">1</span>]])  <span style="color:#75715e"># the final TD step</span>
+    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+    <span style="color:#66d9ef">if</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">or</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">in</span> [s <span style="color:#66d9ef">for</span> (s, _) <span style="color:#f92672">in</span> prev_visits]:
+      <span style="color:#66d9ef">break</span> <span style="color:#75715e"># reached the end, reset the game</span>
+    cur_state <span style="color:#f92672">=</span> prev_visits[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]  <span style="color:#75715e"># the new starting state</span>
+    prev_visits <span style="color:#f92672">=</span> prev_visits[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
 <div class="flex gap-4 justify-center items-center flex-wrap">
     <img src="./fig2c.png">
     <img src="./fig2d.png">
@@ -408,7 +404,7 @@ $$</p>
 <p>$$
 v^\pi(S_{t}) = \sum_{A_t} \sum_{S_{t+1}} \pi(A_t \mid S_t) p(S_{t+1} \mid S_t, A_t) G_{t:(t+1)}
 $$</p>
-<p>Here $G_{t:(t+1)}$ is the gain we obtain by stepping from state $S_t$ to $S_{t+1}$. In Monte Carlo, we approximate this theoretical expectation by simulating a single path. However, this is like approximating the probability of a coin turning up head by tossing the coin once. As you have guessed, it certainly won&rsquo;t be accurate. We need to toss the coin hundreds of times to get a reasonable approximation. This idea can also be theoretically shown using a result called the <strong>Law of Large Numbers</strong><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Therefore, the principle is to take aggregate multiple estimates together to reduce the uncertainty in estimation.</p>
+<p>Here $G_{t:(t+1)}$ is the gain we obtain by stepping from state $S_t$ to $S_{t+1}$. In Monte Carlo, we approximate this theoretical expectation by simulating a single path. However, this is like approximating the probability of a coin turning up head by tossing the coin once. As you have guessed, it certainly won&rsquo;t be accurate. We need to toss the coin hundreds of times to get a reasonable approximation. This idea can also be theoretically shown using a result called the **Law of Large Numbers**<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. Therefore, the principle is to take aggregate multiple estimates together to reduce the uncertainty in estimation.</p>
 <p>So, Richard Sutton<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> came up with the idea that instead of using the $n$-step gain
 $$
 G_{t:(t+n)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots + \gamma^{n-1}R_{t+n} + \gamma^n v^\pi(S_{t+n})
@@ -427,31 +423,31 @@ for some $0 &lt; \lambda &lt; 1$. And we have the corresponding update equation
 $$
 v^\pi_{new}(S_t) = v^\pi_{old}(S_t) + \alpha\left( G^\lambda_{t:(t+n)} - v^\pi_{old}(S_t) \right)
 $$
-This is called the <strong>$n$-step TD($\lambda$) algorithm</strong> for value estimation. In principle, this is just reducing the uncertainty by averaging estimates from multiple $n$-step TD algorithms.</p>
+This is called the **$n$-step TD($\lambda$) algorithm** for value estimation. In principle, this is just reducing the uncertainty by averaging estimates from multiple $n$-step TD algorithms.</p>
 <p>I won&rsquo;t demonstrate the code for $n$-step TD($\lambda$) algorithm here, but I encourage the enthusiatic readers to try it out for the maze game and comment below the solution. Unfortunately, there is no prize for getting it, since I&rsquo;m also on a tight budget here 😅!</p>
 <h2 id="next-in-queue">Next in Queue</h2>
 <p>In my next post in the RL blog series, we will dive deep into how we can use these value estimates to find an optimal strategy for an RL agent. And we will use python to code the algorithm, and then use the code to successfully land a space shuttle on the lunar surface inside a simulator. This should give a sneak peek at the amazing achievements of ISRO scientists who have successfully landed Chadrayaan-3 on the surface of the moon yesterday, on 23rd of August, 2023.</p>
 <h2 id="references">References</h2>
-<div class="footnotes" role="doc-endnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1">
-<p>Sutton, R.S. Learning to predict by the methods of temporal differences. Mach Learn 3, 9–44 (1988). <a href="https://doi.org/10.1007/BF00115009">https://doi.org/10.1007/BF00115009</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:1" role="doc-endnote">
+<p>Sutton, R.S. Learning to predict by the methods of temporal differences. Mach Learn 3, 9–44 (1988). <a href="https://doi.org/10.1007/BF00115009">https://doi.org/10.1007/BF00115009</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2">
-<p><a href="https://amreis.github.io/ml/reinf-learn/2017/07/08/reinforcement-learning-policy-evaluation-through-temporal-difference.html">Reinforcement Learning: Policy Evaluation through Temporal Difference</a> - Alister Reis&rsquo;s Blog.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://amreis.github.io/ml/reinf-learn/2017/07/08/reinforcement-learning-policy-evaluation-through-temporal-difference.html">Reinforcement Learning: Policy Evaluation through Temporal Difference</a> - Alister Reis&rsquo;s Blog. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3">
-<p><a href="https://amreis.github.io/ml/reinf-learn/2017/11/02/reinforcement-learning-eligibility-traces.html">Reinforcement Learning: Eligibility Traces and TD(lambda)</a> - Alister Reis&rsquo;s Blog.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://amreis.github.io/ml/reinf-learn/2017/11/02/reinforcement-learning-eligibility-traces.html">Reinforcement Learning: Eligibility Traces and TD(lambda)</a> - Alister Reis&rsquo;s Blog. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4">
-<p><a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">https://en.wikipedia.org/wiki/Law_of_large_numbers</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Law_of_large_numbers">https://en.wikipedia.org/wiki/Law_of_large_numbers</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5">
-<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<li id="fn:5" role="doc-endnote">
+<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
+</section>
 
                 </div>
             </div>
@@ -491,7 +487,7 @@ This is called the <strong>$n$-step TD($\lambda$) algorithm</strong> for value e
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     
