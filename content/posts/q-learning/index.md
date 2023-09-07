@@ -7,8 +7,8 @@ mermaid: mermaid
 tags:
     - Reinforcement Learning
 
-draft: true
-prerequisities:
+draft: false
+prerequisites:
     - topic: Python Programming
       level: 2
 
@@ -250,3 +250,8 @@ Looks like it is failing pretty much. In between we have a few decent episodes t
 
 ![](./lunarlander/episode-6001.gif)
 ![](./lunarlander/episode-8001.gif)
+
+
+It seems that applying Q-Learning to the LunarLander environment presents some challenges compared to the Acrobot environment. Can you think of why? Please share your thoughts in the comments!
+
+However, so far all the algorithms that we have explored uses a table to track down the Q-values for the states action pairs. This is why we need to discretize the continuous observation into a state vector, which makes it lose a few pieces of information. In the next post, we shall learn different algorithms that we can use to solve reinforcement learning with these continuous state space, and event continuous action spaces. Some of these algorithms include Proximal Policy Optimization (PPO), Trust Region Policy Optimization (TRPO) and Deep Q-Network (DQN).  

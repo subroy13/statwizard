@@ -8,8 +8,8 @@
     "hugo:draft": "hugo server -D -F",
     "hugo": "hugo server",
     "dev": "hugo -D && npm run prebuild && npm run hugo:draft",
-    "start": "hugo && npm run prebuild && npm run hugo",
-    "deploy": "hugo && npm run prebuild && hugo"
+    "start": "rm -r docs && hugo && npm run prebuild && npm run hugo",
+    "deploy": "rm -r docs && hugo && npm run prebuild && hugo"
   },
   "repository": {
     "type": "git",
