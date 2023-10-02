@@ -301,11 +301,11 @@ which is very similar to the TD iteration rule that we have seen before.</p>
 <p>In particular,</p>
 <p>$$
 \pi_{new}(a \mid s) = \begin{cases}
-1 &amp; \text{ if } a = \arg\max_{a \in A} Q^\pi(s, a)\\
+1 &amp; \text{ if } a = \arg\max_{a \in A} Q^\pi(s, a)\\<br>
 0 &amp; \text{ otherwise}
 \end{cases}
 $$</p>
-<p>Naturally, this new policy $\pi_{new}$ is called a greedy with respect to the Q-function. Since $\pi_{new}$ is a new policy, the Q-function for this new policy will also change. Using the learning techniques, we can obtain its Q-function estimate, and then again from that Q-function, we can take the greedy approach. We can repeat these two steps <strong>Policy Evaluation</strong> (Q-function estimation) and <strong>Policy Improvement</strong> (Improving the policy by taking greedy action with respect to current Q-function estimate), until we reach a halt. At that time, we have found a policy which is doing its best according to its own value function, and hence it cannot be improved further. Thus, it becomes an optimal policy.</p>
+<p>Naturally, this new policy $\pi_{new}$ is called a greedy with respect to the Q-function. Since $\pi_{new}$ is a new policy, the Q-function for this new policy will also change. Using the learning techniques, we can obtain its Q-function estimate, and then again from that Q-function, we can take the greedy approach. We can repeat these two steps **Policy Evaluation** (Q-function estimation) and **Policy Improvement** (Improving the policy by taking greedy action with respect to current Q-function estimate), until we reach a halt. At that time, we have found a policy which is doing its best according to its own value function, and hence it cannot be improved further. Thus, it becomes an optimal policy.</p>
 <div class="w-full flex justify-center items-center mermaid">
     graph LR
     E1[$\pi_0$] --> |PE| E2["$Q_{\pi_0}(s, a)$"] --> |PI| E3[$\pi_1$] --> |PE| E4["$Q_{\pi_1}(s, a)$"] --> |PI| E5[$\pi_2$] --> |PE| E6["$\dots$"]
@@ -343,91 +343,91 @@ $$</p>
 <h2 id="q-learning-in-action">Q-Learning in action</h2>
 <p>Now, we shall try to implement this Q-learning algorithm in an actual reinforcement learning game. For that, we shall be using the <code>gymnasium</code> package, which is the evolved version of the old <code>gym</code> package developed by openai. <a href="https://gymnasium.farama.org/content/basic_usage/">Here</a> is the package documentation where you can find lots of different game environments which you can use to see if a reinforcement learning works properly or not.</p>
 <p>We start by importing the package and creating the game environment we are going to use.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> gymnasium <span style="color:#66d9ef">as</span> gym
-</span></span><span style="display:flex;"><span>env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;Acrobot-v1&#34;</span>, render_mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rgb_array&#34;</span>)
-</span></span></code></pre></div><p>Each environment describes a game. The setup of the game of <code>Acrobot-v1</code> is as follows: There are two chain links hanging from a point, tied together, and each of the link can freely move within the reasonable bound of physical system. The objective is to apply force to the joint of these two links to ensure that the link touches a line above a certain height from the chain.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> gymnasium <span style="color:#f92672">as</span> gym
+env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;Acrobot-v1&#34;</span>, render_mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rgb_array&#34;</span>)
+</code></pre></div><p>Each environment describes a game. The setup of the game of <code>Acrobot-v1</code> is as follows: There are two chain links hanging from a point, tied together, and each of the link can freely move within the reasonable bound of physical system. The objective is to apply force to the joint of these two links to ensure that the link touches a line above a certain height from the chain.</p>
 <p><img src="./acrobot/episode-1.gif" alt=""></p>
 <p>The observation space or the state for this game consists of some properties like linear and angular velocity of the chains and stuffs, (very complicated physics for me!), so we are just going to assume that it is simply a vector. There are only 3 possible actions at every time, push the joint to the left or to the right or do nothing.</p>
 <p>While we take some random actions, you can see that the chain links just moves erratically and it does not achieve the objective. So, let us apply Q-learning and see whether we can make the agent learn to solve this game.</p>
 <p>Before we do that, since the state is continuous, it is difficult to apply Q-learning right away, since we need to maintain a (state, action) pair table to store the Q-values. So, we discretize the entire state space into $10^6$ boxes, namely $10$ grid boxes for each coordinate of the $6$ dimensional state vector. The following python function is doing that.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np  
-</span></span><span style="display:flex;"><span>N_STEPS <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>  <span style="color:#75715e"># number of steps / grids on each coordinate</span>
-</span></span><span style="display:flex;"><span>obs_space_high <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>high)
-</span></span><span style="display:flex;"><span>obs_space_low <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>low)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># function to convert state vector to discrete state</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert_observation_to_state</span>(observation):
-</span></span><span style="display:flex;"><span>    obs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(observation)
-</span></span><span style="display:flex;"><span>    state <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>floor((obs <span style="color:#f92672">-</span> obs_space_low) <span style="color:#f92672">/</span> (obs_space_high <span style="color:#f92672">-</span> obs_space_low) <span style="color:#f92672">*</span> N_STEPS)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> state<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;int&#39;</span>)<span style="color:#f92672">.</span>clip(<span style="color:#ae81ff">0</span>, N_STEPS<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-</span></span></code></pre></div><p>Now that we have a function to convert the continuous states to discretized state vector, we shall write a class which represents the Acrobot playing RL agent. It shall have 2 functions, one for taking an action given the state and another for updating its Q-values.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># So we are going to create a class which will represent the learning agent</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AcrobotAgent</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, lr, gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>):
-</span></span><span style="display:flex;"><span>        q_shape <span style="color:#f92672">=</span> (N_STEPS, ) <span style="color:#f92672">*</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> (env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n, )
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>q_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(q_shape)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>lr <span style="color:#f92672">=</span> lr
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
-</span></span></code></pre></div><p>The first function will be the function to get the action with the maximum Q-value. This is the Policy improvement step.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_action</span>(self, observation):
-</span></span><span style="display:flex;"><span>    state <span style="color:#f92672">=</span> convert_observation_to_state(observation)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, slice(<span style="color:#66d9ef">None</span>))]<span style="color:#f92672">.</span>argmax()
-</span></span></code></pre></div><p>The second function will be the one which updates the Q-values according to the Q-learning equation described above.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, obs, action, reward, terminated, next_obs):
-</span></span><span style="display:flex;"><span>    state <span style="color:#f92672">=</span> convert_observation_to_state(obs)
-</span></span><span style="display:flex;"><span>    next_state <span style="color:#f92672">=</span> convert_observation_to_state(next_obs)
-</span></span><span style="display:flex;"><span>    target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> (<span style="color:#f92672">not</span> terminated) <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>next_state, slice(<span style="color:#66d9ef">None</span>))]<span style="color:#f92672">.</span>max()
-</span></span><span style="display:flex;"><span>    temporal_diff <span style="color:#f92672">=</span> (target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, action)])
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, action)] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> temporal_diff
-</span></span></code></pre></div><p>Now, we will try these Q-learning method on the Acrobot game for $5000$ episodes, with a learning rate of $0.01$.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
-</span></span><span style="display:flex;"><span>n_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>
-</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># now, perform many episodes</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> episode <span style="color:#f92672">in</span> range(n_episodes):
-</span></span><span style="display:flex;"><span>    obs, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()   <span style="color:#75715e"># start from at rest position</span>
-</span></span><span style="display:flex;"><span>    done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># play a single episode</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
-</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>get_action(obs)
-</span></span><span style="display:flex;"><span>        next_obs, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># update the agent&#39;s q-value estimates</span>
-</span></span><span style="display:flex;"><span>        agent<span style="color:#f92672">.</span>update(obs, action, reward, terminated, next_obs)
-</span></span><span style="display:flex;"><span>        done <span style="color:#f92672">=</span> terminated <span style="color:#f92672">or</span> truncated  <span style="color:#75715e"># check if episode reached a terminating state</span>
-</span></span><span style="display:flex;"><span>        obs <span style="color:#f92672">=</span> next_obs
-</span></span></code></pre></div><p>Once we perform these 2000 episodes, we try to save the agent&rsquo;s behaviour on a new episode and record that as a GIF image.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#f92672">as</span> np  
+N_STEPS <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>  <span style="color:#75715e"># number of steps / grids on each coordinate</span>
+obs_space_high <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>high)
+obs_space_low <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>low)
+<span style="color:#75715e"># function to convert state vector to discrete state</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert_observation_to_state</span>(observation):
+    obs <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(observation)
+    state <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>floor((obs <span style="color:#f92672">-</span> obs_space_low) <span style="color:#f92672">/</span> (obs_space_high <span style="color:#f92672">-</span> obs_space_low) <span style="color:#f92672">*</span> N_STEPS)
+    <span style="color:#66d9ef">return</span> state<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;int&#39;</span>)<span style="color:#f92672">.</span>clip(<span style="color:#ae81ff">0</span>, N_STEPS<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</code></pre></div><p>Now that we have a function to convert the continuous states to discretized state vector, we shall write a class which represents the Acrobot playing RL agent. It shall have 2 functions, one for taking an action given the state and another for updating its Q-values.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># So we are going to create a class which will represent the learning agent</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AcrobotAgent</span>:
+    <span style="color:#66d9ef">def</span> __init__(self, lr, gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.95</span>):
+        q_shape <span style="color:#f92672">=</span> (N_STEPS, ) <span style="color:#f92672">*</span> env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> (env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>n, )
+        self<span style="color:#f92672">.</span>q_vals <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(q_shape)
+        self<span style="color:#f92672">.</span>lr <span style="color:#f92672">=</span> lr
+        self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">=</span> gamma
+</code></pre></div><p>The first function will be the function to get the action with the maximum Q-value. This is the Policy improvement step.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_action</span>(self, observation):
+    state <span style="color:#f92672">=</span> convert_observation_to_state(observation)
+    <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, slice(None))]<span style="color:#f92672">.</span>argmax()
+</code></pre></div><p>The second function will be the one which updates the Q-values according to the Q-learning equation described above.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>(self, obs, action, reward, terminated, next_obs):
+    state <span style="color:#f92672">=</span> convert_observation_to_state(obs)
+    next_state <span style="color:#f92672">=</span> convert_observation_to_state(next_obs)
+    target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> (<span style="color:#f92672">not</span> terminated) <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>gamma <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>next_state, slice(None))]<span style="color:#f92672">.</span>max()
+    temporal_diff <span style="color:#f92672">=</span> (target <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, action)])
+    self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, action)] <span style="color:#f92672">+=</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> temporal_diff
+</code></pre></div><p>Now, we will try these Q-learning method on the Acrobot game for $5000$ episodes, with a learning rate of $0.01$.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">learning_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+n_episodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>
+agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
+<span style="color:#75715e"># now, perform many episodes</span>
+<span style="color:#66d9ef">for</span> episode <span style="color:#f92672">in</span> range(n_episodes):
+    obs, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()   <span style="color:#75715e"># start from at rest position</span>
+    done <span style="color:#f92672">=</span> False
+    <span style="color:#75715e"># play a single episode</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>get_action(obs)
+        next_obs, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+        <span style="color:#75715e"># update the agent&#39;s q-value estimates</span>
+        agent<span style="color:#f92672">.</span>update(obs, action, reward, terminated, next_obs)
+        done <span style="color:#f92672">=</span> terminated <span style="color:#f92672">or</span> truncated  <span style="color:#75715e"># check if episode reached a terminating state</span>
+        obs <span style="color:#f92672">=</span> next_obs
+</code></pre></div><p>Once we perform these 2000 episodes, we try to save the agent&rsquo;s behaviour on a new episode and record that as a GIF image.</p>
 <p><img src="./acrobot/episode-2001.gif" alt=""></p>
 <p>It looks like the agent is not learning anything. Wonder why is that? The behaviour still looks very random.</p>
 <p>The reason is that only a very specific set of actions will lead to the correct goal. So, most of the time, the agent is not able to get any reward. Hence from the initial time itself, the Q-values are not updating much and staying at their initial values only.</p>
 <p>Instead we can do the decaying $\epsilon$-greedy type strategy that we explored in the first post (Check <a href="https://www.statwizard.in/posts/k-arm-bandit/">here</a> if you have not already). Because in the initial episodes, we will be spending much time exploring the consequences of different actions, it is more likely to hit the target a few times and the rewards would propagate through the Q-values appropriately. As the episodes increases, we shall try to decrease the $\epsilon$ to reduce exploration.</p>
 <p>So, here&rsquo;s the few modifications we need to do. The new get action function:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_action</span>(self, observation):
-</span></span><span style="display:flex;"><span>    state <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>convert_observation_to_state(observation)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>eps:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, slice(<span style="color:#66d9ef">None</span>))]<span style="color:#f92672">.</span>argmax()
-</span></span></code></pre></div><p>The new decay episilon function which reduces the episilon after every episode.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decay_epsilon</span>(self):
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>eps <span style="color:#f92672">=</span> max(self<span style="color:#f92672">.</span>final_eps, self<span style="color:#f92672">.</span>eps <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>eps_decay)
-</span></span></code></pre></div><p>and finally in the learning loop we would have</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>start_epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>
-</span></span><span style="display:flex;"><span>epsilon_decay <span style="color:#f92672">=</span> start_epsilon <span style="color:#f92672">/</span> (n_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># reduce the exploration over time</span>
-</span></span><span style="display:flex;"><span>final_epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
-</span></span><span style="display:flex;"><span>agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># now, perform many episodes</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> episode <span style="color:#f92672">in</span> range(n_episodes):
-</span></span><span style="display:flex;"><span>    obs, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()   <span style="color:#75715e"># start from at rest position</span>
-</span></span><span style="display:flex;"><span>    done <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># play a single episode</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
-</span></span><span style="display:flex;"><span>        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>get_action(obs)
-</span></span><span style="display:flex;"><span>        next_obs, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># update the agent&#39;s q-value estimates</span>
-</span></span><span style="display:flex;"><span>        agent<span style="color:#f92672">.</span>update(obs, action, reward, terminated, next_obs)
-</span></span><span style="display:flex;"><span>        done <span style="color:#f92672">=</span> terminated <span style="color:#f92672">or</span> truncated  <span style="color:#75715e"># check if episode reached a terminating state</span>
-</span></span><span style="display:flex;"><span>        obs <span style="color:#f92672">=</span> next_obs
-</span></span><span style="display:flex;"><span>    agent<span style="color:#f92672">.</span>decay_epsilon()
-</span></span></code></pre></div><p>Now that we are exploring a bit at the beginning, we do $5000$ episodes, and after that the result becomes very promising.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_action</span>(self, observation):
+    state <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>convert_observation_to_state(observation)
+    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> self<span style="color:#f92672">.</span>eps:
+        <span style="color:#66d9ef">return</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>q_vals[(<span style="color:#f92672">*</span>state, slice(None))]<span style="color:#f92672">.</span>argmax()
+</code></pre></div><p>The new decay episilon function which reduces the episilon after every episode.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decay_epsilon</span>(self):
+    self<span style="color:#f92672">.</span>eps <span style="color:#f92672">=</span> max(self<span style="color:#f92672">.</span>final_eps, self<span style="color:#f92672">.</span>eps <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>eps_decay)
+</code></pre></div><p>and finally in the learning loop we would have</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">start_epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>
+epsilon_decay <span style="color:#f92672">=</span> start_epsilon <span style="color:#f92672">/</span> (n_episodes <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)  <span style="color:#75715e"># reduce the exploration over time</span>
+final_epsilon <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>
+agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
+<span style="color:#75715e"># now, perform many episodes</span>
+<span style="color:#66d9ef">for</span> episode <span style="color:#f92672">in</span> range(n_episodes):
+    obs, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()   <span style="color:#75715e"># start from at rest position</span>
+    done <span style="color:#f92672">=</span> False
+    <span style="color:#75715e"># play a single episode</span>
+    <span style="color:#66d9ef">while</span> <span style="color:#f92672">not</span> done:
+        action <span style="color:#f92672">=</span> agent<span style="color:#f92672">.</span>get_action(obs)
+        next_obs, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)
+        <span style="color:#75715e"># update the agent&#39;s q-value estimates</span>
+        agent<span style="color:#f92672">.</span>update(obs, action, reward, terminated, next_obs)
+        done <span style="color:#f92672">=</span> terminated <span style="color:#f92672">or</span> truncated  <span style="color:#75715e"># check if episode reached a terminating state</span>
+        obs <span style="color:#f92672">=</span> next_obs
+    agent<span style="color:#f92672">.</span>decay_epsilon()
+</code></pre></div><p>Now that we are exploring a bit at the beginning, we do $5000$ episodes, and after that the result becomes very promising.</p>
 <p><img src="./acrobot/episode-5000.gif" alt=""></p>
 <p>It is a bit hard to see that the chain link is touching the target line. Here&rsquo;s the final frame.</p>
 <p><img src="./acrobot//acrobot-solution.png" alt=""></p>
@@ -467,6 +467,11 @@ $$</p>
             </a>
         
         
+            <a href="/posts/linear-learning/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
     </div>
     <div class="flex flex-row justify-center gap-4 my-4">
         <a href="/posts/" 
@@ -481,7 +486,7 @@ $$</p>
 <div class="my-6 max-w-6xl md:mx-auto mx-4">
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    window.disqus_config = function () {
+    var disqus_config = function () {
     
     
     

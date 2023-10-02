@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Reinforcement Learning (Part 6) - Value Function Approximation
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,500;0,900;1,100;1,500;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<script src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.202abfed1dc4f233ffe962df8b79acc8.css" />
+
+
+
+
+
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+
+<script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+    
+    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
+        <div class="w-[200px] flex items-center">
+            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
+                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
+            </a>
+        </div>
+        <div class="w-full flex flex-row justify-center items-center gap-4">
+            
+                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Home
+                </a>
+            
+                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Posts
+                </a>
+            
+                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    About Me
+                </a>
+            
+                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
+                    Contact Me
+                </a>
+            
+        </div>
+        <div class="w-[200px] flex flex-row justify-around items-center">
+            
+                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fas fa-envelope fa-lg"></i>
+                </a>
+            
+                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-facebook fa-lg"></i>
+                </a>
+            
+                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-github fa-lg"></i>
+                </a>
+            
+                <a href="https://www.linkedin.com/in/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-linkedin-in fa-lg"></i>
+                </a>
+            
+                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
+                    <i class = "fab fa-instagram fa-lg"></i>
+                </a>
+            
+        </div>
+    </div>
+
+    
+    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
+        <div class="w-full flex justify-center items-center">
+            <p class="uppercase font-extrabold font-mono text-2xl">
+                StatWizard
+            </p>
+        </div>
+        <div class="w-[30px] mr-4 relative">
+            <button type="button"
+                id="mobile-menu-button"
+                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+                aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                    
+                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                        aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                
+                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                    aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
+                <ul class="flex flex-col">
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/" class="">
+                                Home
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/posts" class="">
+                                Posts
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/aboutme" class="">
+                                About Me
+                            </a>
+                        </li>
+                    
+                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
+                            <a href="/#contact-me" class="">
+                                Contact Me
+                            </a>
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Reinforcement Learning (Part 6) - Value Function Approximation
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">02 October, 2023</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">13</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/reinforcement-learning/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Reinforcement Learning
+                        </a>
+                    
+                        <a href="/tags/statistical-learning/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Statistical Learning
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-yellow-600 font-semibold">Intermediate</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Differential Calculus - </span>
+                        
+                            <span class="text-yellow-600 font-semibold">Intermediate</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> This is the 6th part of the Reinforcement Learning Series: Here I discuss about techniques to work with infinite state space, where the tabular methods do not work
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#linear-approximation">Linear Approximation</a>
+      <ul>
+        <li><a href="#representation">Representation</a></li>
+        <li><a href="#learning-the-weights">Learning the Weights</a></li>
+      </ul>
+    </li>
+    <li><a href="#nonlinear-encoding">Nonlinear Encoding</a>
+      <ul>
+        <li><a href="#sparse-encoding">Sparse Encoding</a></li>
+        <li><a href="#kernel-encoding">Kernel Encoding</a></li>
+        <li><a href="#solving-the-mountain-car-problem5">Solving the Mountain Car Problem</a></li>
+      </ul>
+    </li>
+    <li><a href="#questions-to-think-about">Questions to think about</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>It&rsquo;s been a while since I made my last post on the reinforcement learning. Here&rsquo;s a brief recap: In the last post (check <a href="https://www.statwizard.in/posts/q-learning/">here</a> if you haven&rsquo;t already), we learned about the Q-learning algorithm. Q-learning is a variant of the temporal difference learning, which tries to combine both the Monte Carlo type algorithm where you experience the rewards, and also the Dynamic Programming algorithms where you theoretically calculate the expected value of each state using recursion techniques.</p>
+<p>However, so far whatever we have discussed has a major drawback: It requires both the state space and the action spaces to be finite and discrete. This means, you can create a table of rows and columns; rows denoting each state and columns denoting each action you take, and in the cell of the table, you can keep updating the value of the state-action pair. Due to this, when solving the <code>acrobot</code> problem from <a href="https://gymnasium.farama.org/content/basic_usage/"><code>OpenAI gym</code></a>, we had to discretize the state into buckets. This is often called <em>sparse encoding</em> of a continuous variable, more on this later.</p>
+<p>For now, we will try to solve another reinforcement problem from the <code>gymnasium</code> package, called <strong>Mountain Car</strong>. The goal in this problem to move a car up into a mountain starting from the bottom of a valley, while the gravity works against the car pulling it downwards. At any point, there are two state variables available, the position of the car and the velocity of it. Based on this, the car has to determine whether to try to move to the left, or to the right, or do nothing and let gravity and the car&rsquo;s acceleration do the magic. The car is asked to move to $200$ turns, every turn gives a reward of $(-1)$ unless you reach the goal above the mountain top to get a reward of $0$. The goal thus becomes to reach the mountain top as fast as possible. You can read more about the environment <a href="https://gymnasium.farama.org/environments/classic_control/mountain_car/">here</a>.</p>
+<p>Here&rsquo;s a gif about an unlearned agent randomly trying to move left or right.</p>
+<p><img src="figure-1.gif" alt=""></p>
+<p>Unfortunately, the tabular methods (you should now be able to guess why it is called tabular! 😎 ) discussed so far cannot handle this environment, since we have two continuous variables (velocity and position) as observations. Instead of the tables, we now need to learn a function approximation which takes in a state and action pair, and output the q-value for that pair.</p>
+<p>$$
+f: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R};   \text{such that} f(s_t, a_t) = Q(s_t, a_t)
+$$</p>
+<p>Since $Q(\cdot)$ is unknown, we usually take linear, polynomial, logistic functions, random forests or neural networks to approximate the Q-function, and all of these approximations work on the basis of finding some correct weights or parameters for that models.</p>
+<h2 id="linear-approximation">Linear Approximation</h2>
+<h3 id="representation">Representation</h3>
+<p>Let us look carefully that the Q-learning update step,</p>
+<p>$$
+Q_{new}(s_t, a_t) = Q_{old}(s_t, a_t) + \alpha (r_{t+1} + \gamma \max_{a} Q_{old}(s_{t+1}, a) - Q_{old}(s_t, a_t))
+$$</p>
+<p>which we can rewrite as</p>
+<p>$$
+Q_{new}(s_t, a_t) = (1-\alpha)Q_{old}(s_t, a_t) + \alpha (r_{t+1} + \gamma \max_{a} Q_{old}(s_{t+1}, a))
+$$</p>
+<p>for some learning rate $\alpha$ and discount factor $\gamma$. This expression tells that the updated Q-value is simply a convex combination of the old Q-value and the target $(r_{t+1} + \gamma \max_{a} Q_{old}(s_{t+1}, a))$. Hence, every such step is taken such that the current Q-value moves a bit towards the target; and the ultimate goal is to make sure that the current Q-value matches with the target. If it matches for some $Q^\ast$, we will have</p>
+<p>$$
+Q^\ast(s_t, a_t) = (r_{t+1} + \gamma \max_{a} Q^\ast(s_{t+1}, a))
+$$</p>
+<p>which is exactly same as the Bellman&rsquo;s optimality equation introduced earlier. See <a href="https://www.statwizard.in/posts/markov-decision-process/">here</a> if you don&rsquo;t know what Bellman equation is.</p>
+<p>Now consider a linear approximation to the Q-value. Hence, instead of creating a table, we consider the special form</p>
+<p>$$
+Q(s_t, a_t) = f(s_t, a_t; W) = \langle W(a_t), s_t \rangle = (W(a_t)_1 \times (s_t)_1 + W(a_t)_2 \times (s_t)_2 + \dots )
+$$</p>
+<p>where $W$ is an unknown weight. To see this for our Mountain car problem, imagine this:</p>
+<p>$$
+\begin{align*}
+Q((\text{position}, \text{velocity}), \text{left})
+&amp; = w_{11} \times \text{position} + w_{12} \times \text{velocity}\\<br>
+Q((\text{position}, \text{velocity}), \text{nothing})
+&amp; = w_{21} \times \text{position} + w_{22} \times \text{velocity}\\<br>
+Q((\text{position}, \text{velocity}), \text{right})
+&amp; = w_{31} \times \text{position} + w_{32} \times \text{velocity}
+\end{align*}
+$$</p>
+<p>where $w_{11}, \dots w_{32}$ are unknown weights which the agent will learn over time. We can also compactly write its form by collecting these weights together in rows,</p>
+<p>$$
+W = \begin{bmatrix}
+w_{11} &amp; w_{12} \\<br>
+w_{21} &amp; w_{22} \\<br>
+w_{31} &amp; w_{32}
+\end{bmatrix}
+$$</p>
+<p>and then a matrix multiplication between $W$ and the vector (postion, velocity) of the car will give us the Q-values for all 3 actions as once. Here&rsquo;s a python code that implements this idea.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">N_ACTION <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+N_STATE_DIM <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+W <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((N_ACTION, N_STATE_DIM))  <span style="color:#75715e"># initialize all action with equal probability</span>
+EPSILON <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>   <span style="color:#75715e"># 10% of the time it would explore</span>
+<span style="color:#75715e"># this function implements the agent&#39;s behaviour</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">agent</span>(observation):
+    <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random() <span style="color:#f92672">&lt;</span> EPSILON:
+        <span style="color:#66d9ef">return</span> env<span style="color:#f92672">.</span>action_space<span style="color:#f92672">.</span>sample()  <span style="color:#75715e"># randomly do an action</span>
+    <span style="color:#66d9ef">else</span>:
+        state <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(observation)<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+        qvals <span style="color:#f92672">=</span> W <span style="color:#960050;background-color:#1e0010">@</span> state
+        <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>argmax(qvals)
+</code></pre></div><h3 id="learning-the-weights">Learning the Weights</h3>
+<p>Now how do we actually learn the unknown weights? 🔍 As mentioned before, we want the Q-value to be such that it satisfies the Bellman equation. So we want the error squared (i.e., the target minus the current Q-value difference squared),</p>
+<p>$$
+(f(s_t, a_t; w) - r_{t+1} - \gamma \max_{a} f(s_{t+1}, a; w))^2
+$$</p>
+<p>to be as small as possible (We take square to ensure negative errors also impacts positively). Since we want to minimize this error with respect to the weights $w$, and for that we can take the derivative of the error with respect to the weights $w$ and set its value equal to $0$. (You might want to see some refresher course in elementary differential calculus<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.) The derivative of this error turns out to be</p>
+<p>$$
+\nabla \text{error} = 2 (f(s_t, a_t; w) - r_{t+1} - \gamma \max_{a} f(s_{t+1}, a; w)) \nabla f(s_t, a_t; w)
+$$</p>
+<p>Here, $\nabla f(s_t, a_t;w)$ denotes the gradient (or the derivative) of the function $f$ with special form. We will figure this out for the linear case in a bit. Since the derivative tells you the slope of the curve how the errors are changing, you actually need to go to the opposite direction of the slope to reduce the error. To see this, consider the case when $\nabla f(s_t, a_t; w)$ is positive (I know the pendantic math folks will scream 😱 here! but just bear with me for the sake of explanation). It means increasing $w$ will increase the value of $f(s_t, a_t; w)$. When $f(s_t, a_t; w)$ is more than the target, then error is positive, hence we would want to reduce the $f(s_t, a_t; w)$ and hence the weights $w$, which can be achieved by taking a step towards the negative of the above expression of gradient. On the other hand, if $f(s_t, a_t; w)$ is less than the target, then we want to increase $f(s_t, a_t; w)$ by increasing value of $w$, which can be again achieved by taking a step towards $-(f(s_t, a_t; w) - \text{target})$ which is positive, hence increases $w$.</p>
+<p>The case when $\nabla f(s_t, a_t; w) &lt; 0$ can be explained similarly, you might want to ponder a little and convince yourself about it.</p>
+<p>Finally, we can use the update rule;</p>
+<p>$$
+w_{new} = w_{old} - \alpha (f(s_t, a_t; w) - r_{t+1} - \gamma \max_{a} f(s_{t+1}, a; w)) \nabla f(s_t, a_t; w)
+$$</p>
+<p>This is often popularly known as the <a href="https://en.wikipedia.org/wiki/Gradient_descent"><strong>Gradient Descent</strong> Method<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></a>. This is often used as a general purpose optimization routine to minimize or maximize any differentiable function. For the linear function case in the Mountain Car problem,</p>
+<p>$$
+f((\text{position}, \text{velocity}), a) = w_{a1} \times \text{position} + w_{a2} \times \text{velocity}
+$$</p>
+<p>and hence</p>
+<p>$$
+\nabla f((\text{position}, \text{velocity}), a) = \begin{bmatrix}
+\text{position}\\<br>
+\text{velocity}
+\end{bmatrix} = \text{the state vector itself}
+$$</p>
+<p>So, here&rsquo;s a python code that implements this update step to train an agent for the Mountain Car problem. The code is pretty similar to what we did before, so you should be able to follow along.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;MountainCar-v0&#34;</span>)  <span style="color:#75715e"># create the environment</span>
+N_EPISODE <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>  <span style="color:#75715e"># we do this many episodes</span>
+DISCOUNT_FACTOR <span style="color:#f92672">=</span> <span style="color:#ae81ff">1.0</span>   <span style="color:#75715e"># discount factor is 1 since this is an episodic task</span>
+LR <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.01</span>   <span style="color:#75715e"># the learning rate</span>
+episode_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(N_EPISODE)   <span style="color:#75715e"># an array to store the rewards history</span>
+<span style="color:#66d9ef">for</span> ep <span style="color:#f92672">in</span> range(N_EPISODE):
+    <span style="color:#75715e"># loop through the environment</span>
+    observation, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>reset()
+    <span style="color:#66d9ef">while</span> True:
+        state <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(observation)<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+        action <span style="color:#f92672">=</span> agent(observation)   <span style="color:#75715e"># get the action suggested by the agent&#39;s policy</span>
+        new_observation, reward, terminated, truncated, info <span style="color:#f92672">=</span> env<span style="color:#f92672">.</span>step(action)  <span style="color:#75715e"># Do the action in the environment</span>
+        new_state <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(new_observation)<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+        new_action <span style="color:#f92672">=</span> agent(new_observation)  <span style="color:#75715e"># get the next suggested action as well</span>
+        target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> DISCOUNT_FACTOR <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>dot(W[new_action, :], new_state)      <span style="color:#75715e"># now do the weight update</span>
+        W[action,:] <span style="color:#f92672">+=</span> LR <span style="color:#f92672">*</span> (target <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>dot(W[action, :], state)) <span style="color:#f92672">*</span> state
+        episode_rewards[ep] <span style="color:#f92672">+=</span> reward   <span style="color:#75715e"># add the rewards history</span>
+        <span style="color:#66d9ef">if</span> terminated <span style="color:#f92672">or</span> truncated:
+            <span style="color:#66d9ef">break</span>
+        observation <span style="color:#f92672">=</span> new_observation  <span style="color:#75715e"># go to the next step</span>
+</code></pre></div><p>Most of this is standard that we have done before for the Q-learning case. However, you can see that the value of the target differs a bit here compared to the Q-learning, if you pay close attention to these lines.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">new_action <span style="color:#f92672">=</span> agent(new_observation)  <span style="color:#75715e"># get the next suggested action as well</span>
+target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> DISCOUNT_FACTOR <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>dot(W[new_action, :], new_state)      <span style="color:#75715e"># now do the weight update</span>
+</code></pre></div><p>Instead of taking the action with the maximum Q-value, it generates the action from the agent itself, and considers its Q-value as the target. This means now the update equation is</p>
+<p>$$
+Q_{new}(s_t, a_t) = (1-\alpha)Q_{old}(s_t, a_t) + \alpha (r_{t+1} + \gamma Q_{old}(s_{t+1}, a_{t+1}))
+$$</p>
+<p>Notice that $\max_a$ is replaced by $a_{t+1}$, to ensure a bit more exploration compared to Q-learning. This method is known as SARSA (State-Action Reward State-Action) in Reinforcement Learning Theory<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p>Here&rsquo;s the trained agent after $5000$ episodes of learning.</p>
+<p><img src="figure-2.gif" alt=""></p>
+<p>Huh! 😟 Not very impressive! It is trying to move to the right and pull the car up, but the gravity is continually pulling it downwards. So, we need to do a bit more.</p>
+<p><img src="figure-4.png" alt=""></p>
+<p>As you can see, the agent is sometimes reaching the goal (receiving higher rewards than $120$), but it is not continually improving.</p>
+<h2 id="nonlinear-encoding">Nonlinear Encoding</h2>
+<p>So far, we have only two features as the observations from our environment; the postion and the velocity. If you know a bit about Newtonian mechanics, you would be able to guess that linear combination of position and velocity makes no sense, they have different units altogether. You might want to take squares, multiply with the mass of the car, adjust for the acceleration by gravity and do all kinds of stuffs. All these operations are nonlinear functions of position and the velocity; so the linear approximation that we considered as the beginning wont work.</p>
+<p>However, we can extend the idea and consider something like this:</p>
+<p>$$
+f((\text{position}, \text{velocity}), a) = w_1 \times \text{position} + w_2 \times \text{position}^2 + w_3 \times \text{velocity} + w_4 \times \text{velocity}^2
+$$</p>
+<p>or take</p>
+<p>$$
+f((\text{position}, \text{velocity}), a) = w_1 \times \text{position} + w_2 \times \text{position}^2 + w_3 \times \text{postion}^3 + w_4 \times \text{velocity} + \dots
+$$</p>
+<p>or take even higher powers. All of these are called encoding of the observation features. Once we encode and create these new variables (position, $\text{position}^2$, and so on), we can use the same technique described above to train an agent, but will much more nonlinear information.</p>
+<h3 id="sparse-encoding">Sparse Encoding</h3>
+<p>Here&rsquo;s a brief review of sparse encoding. Let&rsquo;s say you are giving an exam, where you have a score between 0 to 100, but the course requires you to have a grade of B or above. This grade is basically a sparse encoding of the continuous marks that you have achieved.</p>
+<div class="w-full flex justify-center items-center mermaid">
+flowchart TD
+    S[Score] --> |More than 80| A
+    S --> |Between 60 to 80| B
+    S --> |Between 45 to 60| C
+    S --> |Between 30 to 45| D
+    S --> |Less than 30| E
+</div>
+<p>This certainly helps, because your passing depends on the grade, not of the actual score. But it may not be the case always. For example, consider the problem when you want to determine if a person has some debt based on his / her earnings. Usually, people with very little money and people with very much money has lots of debt (clearly, for separate reasons, the first set for sustaining the survival needs and the second set for making more money, 😏 ). However, most of the people in the middle class family usually fears debt a lot, and they have very less amount of debt. They take debts for buying a car or house, but that&rsquo;s about it. Now in this kind of situation, the output (whether they have a debt or not) is not a completely known function of their earning grade. In such cases, we need to move beyond sparse encoding.</p>
+<h3 id="kernel-encoding">Kernel Encoding</h3>
+<p>In the sparse encoding, the basic idea is that close values of position and velocity should be encoded into the same bucket and hence would have the same action. This means, the RL agent would want to learn how similar two (position, velocity) pairs are from each other rather than the exact values of the position and velocity. To work with this idea, imagine that there is a nonlinear map $\phi$ that takes the input position and velocity and output some feature, and the quantity of interest is</p>
+<p>$$
+\langle \phi(\text{position}_1, \text{velocity}_1),  \phi(\text{position}_2, \text{velocity}_2)\rangle
+= K((\text{position}_1, \text{velocity}_1), (\text{position}_2, \text{velocity}_2))
+$$</p>
+<p>where $K$ is some function that measures the similarity in the $\phi$-transformed space. Hence, rather than individually specifying $\phi$ explcitly, it is often enough to specify $K$ alone which can produce a nonlinear mapping from the observation features to a new set of features<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. The function $K$ is called a <strong>kernel</strong>.</p>
+<h3 id="solving-the-mountain-car-problem5">Solving the Mountain Car Problem<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></h3>
+<p>In our mountain car problem, we consider the Gaussian kernel</p>
+<p>$$
+K(\boldsymbol{x}, \boldsymbol{y}) = \exp\left( -\dfrac{\Vert \boldsymbol{x} - \boldsymbol{y}\Vert^2}{2\sigma^2} \right)
+$$</p>
+<p>with different values of $\sigma^2$. Before passing to this Gaussian kernel, we also do a normalization step which will ensure that the observed position and the velocity has an average close to $0$ and a standard deviation close to $1$.</p>
+<p>Here&rsquo;s the python code that implements this feature encoding.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+<span style="color:#f92672">from</span> sklearn.pipeline <span style="color:#f92672">import</span> FeatureUnion
+<span style="color:#f92672">from</span> sklearn.kernel_approximation <span style="color:#f92672">import</span> RBFSampler
+<span style="color:#75715e"># do normalization</span>
+observation_samples <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([env<span style="color:#f92672">.</span>observation_space<span style="color:#f92672">.</span>sample() <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>_000)])
+scaler <span style="color:#f92672">=</span> StandardScaler()
+scaler<span style="color:#f92672">.</span>fit(observation_samples)
+<span style="color:#75715e"># Create radial basis function sampler to convert states to features for nonlinear function approx</span>
+featurizer <span style="color:#f92672">=</span> FeatureUnion([
+        (<span style="color:#e6db74">&#34;rbf1&#34;</span>, RBFSampler(gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">5.0</span>, n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)),
+        (<span style="color:#e6db74">&#34;rbf2&#34;</span>, RBFSampler(gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">2.0</span>, n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)),
+        (<span style="color:#e6db74">&#34;rbf3&#34;</span>, RBFSampler(gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>, n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)),
+        (<span style="color:#e6db74">&#34;rbf4&#34;</span>, RBFSampler(gamma<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, n_components<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>))
+		])   <span style="color:#75715e"># so each observation becomes transformed into a 400 dimensional vector</span>
+featurizer<span style="color:#f92672">.</span>fit(scaler<span style="color:#f92672">.</span>transform(observation_samples))
+</code></pre></div><p>So now we have a whooping $400$ nonlinear features derived from only two variables, position and velocity. This might be a overkill, but let&rsquo;s see how it performs. Before that, I just want to indicate the lines that needs to be changed in the RL training for this.</p>
+<p>This is the function that converts the position and velocity into 400 features.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_obs_feature</span>(observation):
+  scaled <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>transform([observation])
+  featurized <span style="color:#f92672">=</span> featurizer<span style="color:#f92672">.</span>transform(scaled)
+  <span style="color:#66d9ef">return</span> featurized[<span style="color:#ae81ff">0</span>]
+</code></pre></div><p>Now our weight matrix is a bit big.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">N_STATE_DIM <span style="color:#f92672">=</span> <span style="color:#ae81ff">400</span>
+W <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((N_ACTION, N_STATE_DIM))  <span style="color:#75715e"># initialize all action with equal probability</span>
+</code></pre></div><p>In the training loop, we must have</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">feature <span style="color:#f92672">=</span> get_obs_feature(observation)
+new_feature <span style="color:#f92672">=</span> get_obs_feature(new_observation)
+</code></pre></div><p>and the update statement changes as</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> DISCOUNT_FACTOR <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>dot(W[new_action, :], new_feature)      <span style="color:#75715e"># now do the weight update</span>
+W[action,:] <span style="color:#f92672">+=</span> LR <span style="color:#f92672">*</span> (target <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>dot(W[action, :], feature)) <span style="color:#f92672">*</span> feature   <span style="color:#75715e"># the gradient is now entire 400 dimensional feature vector</span>
+</code></pre></div><p>We just train it for $200$ episodes, and here&rsquo;s the result.</p>
+<p><img src="figure-3.gif" alt=""></p>
+<p>Cool! 😎 Just using a bit of nonlinearity, we could train the RL agent much faster.</p>
+<p><img src="figure-5.png" alt=""></p>
+<p>And this shows that the RL agent is continually learning to increase its rewards, and learning how to reach the goal.</p>
+<h2 id="questions-to-think-about">Questions to think about</h2>
+<p>Here&rsquo;s a few questions to think about before my next post.</p>
+<ol>
+<li>
+<p>What if we use more complicated algorithms rather than linear algorithms. What about using deep neural networks?</p>
+</li>
+<li>
+<p>How do we know what kind of encoding to use for which problem?</p>
+</li>
+</ol>
+<p>We will explore and try to answer some of these questions in the next post of the Reinforcement Learning Series.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Paul&rsquo;s Online Math Notes. <a href="https://tutorial.math.lamar.edu/classes/calci/MinMaxValues.aspx">https://tutorial.math.lamar.edu/classes/calci/MinMaxValues.aspx</a>. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Gradient Descent Wikipedia Page. <a href="https://en.wikipedia.org/wiki/Gradient_descent">https://en.wikipedia.org/wiki/Gradient_descent</a>. <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>Sklearn Kernel Methods User Guide. <a href="https://scikit-learn.org/stable/modules/kernel_approximation.html#rbf-kernel-approx">https://scikit-learn.org/stable/modules/kernel_approximation.html#rbf-kernel-approx</a>. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>Mountain Car SARSA - SamKirkiles' Github. <a href="https://github.com/SamKirkiles/mountain-car-SARSA-AC/tree/master">https://github.com/SamKirkiles/mountain-car-SARSA-AC/tree/master</a>. <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/q-learning/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+</script>
+
+     
+</body>
+</html>
