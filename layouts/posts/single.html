@@ -6,7 +6,7 @@
 
 {{ $item := . }}
 {{ range .Resources.Match "featured*" }}
-    <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+    <div class="relative h-[33vh] max-h-[500px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
         style = "background-image: url('{{ .Permalink }}')">
         {{ if isset $item.Params "imagecaption" }}
             <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">

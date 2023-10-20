@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
+    
+    <!-- Google preconnect for pagespeed improvement -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
-    <script>
+    <script async>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -15,6 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
     <link rel="icon" href="/svg/avatar.svg">
     <title>
         {{ block "title" . }}

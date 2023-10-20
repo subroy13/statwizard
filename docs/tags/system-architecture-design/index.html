@@ -2,8 +2,13 @@
 <html lang="en">
 <head>
     
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
-    <script>
+    <script async>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
@@ -15,6 +20,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
     <link rel="icon" href="/svg/avatar.svg">
     <title>
         
@@ -57,19 +63,7 @@
 </style>
 
 
-
-<script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-</script>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -80,113 +74,185 @@
 <body>
     <div class="app-container min-h-[100vh] flex flex-col justify-between">
         <nav class="bg-white shadow-xl z-50">
-    
-    <div class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center">
-        <div class="w-[200px] flex items-center">
-            <a class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"> 
-                <img src="/images/logo-wide.png" class="h-[75px] inline-block" />    
-            </a>
-        </div>
-        <div class="w-full flex flex-row justify-center items-center gap-4">
-            
-                <a href="/" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Home
-                </a>
-            
-                <a href="/posts" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Posts
-                </a>
-            
-                <a href="/aboutme" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    About Me
-                </a>
-            
-                <a href="/#contact-me" class="px-4 py-2 border rounded-lg hover:bg-gray-100">
-                    Contact Me
-                </a>
-            
-        </div>
-        <div class="w-[200px] flex flex-row justify-around items-center">
-            
-                <a href="mailto:subhrajyotyroy@gmail.com" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fas fa-envelope fa-lg"></i>
-                </a>
-            
-                <a href="https://www.facebook.com/subroy13/" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-facebook fa-lg"></i>
-                </a>
-            
-                <a href="https://github.com/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-github fa-lg"></i>
-                </a>
-            
-                <a href="https://www.linkedin.com/in/subroy13" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-linkedin-in fa-lg"></i>
-                </a>
-            
-                <a href="#" class="hover:text-gray-600 transition-all ease-in-out">
-                    <i class = "fab fa-instagram fa-lg"></i>
-                </a>
-            
-        </div>
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
     </div>
-
-    
-    <div class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden">
-        <div class="w-full flex justify-center items-center">
-            <p class="uppercase font-extrabold font-mono text-2xl">
-                StatWizard
-            </p>
-        </div>
-        <div class="w-[30px] mr-4 relative">
-            <button type="button"
-                id="mobile-menu-button"
-                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
-                aria-controls="mobile-menu" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                    
-                    <svg id="mobile-menu-close-icon" class="bg-white text-neutral-800 outline-none block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                        aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                    </svg>
-                
-                <svg id="mobile-menu-open-icon" class="bg-white text-neutral-800 outline-none hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
-
-            <div id="mobile-menu" class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden">
-                <ul class="flex flex-col">
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/" class="">
-                                Home
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/posts" class="">
-                                Posts
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/aboutme" class="">
-                                About Me
-                            </a>
-                        </li>
-                    
-                        <li class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100">
-                            <a href="/#contact-me" class="">
-                                Contact Me
-                            </a>
-                        </li>
-                    
-                </ul>
-            </div>
-        </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
     </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
 </nav>
 
 
@@ -263,7 +329,21 @@
 
     });
 </script>
-<script type="module">
+
+
+<script defer>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+</script>
+<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<script type="module" defer>
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
     mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
 </script>

@@ -308,12 +308,139 @@ $$
 \Delta w_1 = \alpha \nabla (R_t + \gamma Q(w_2; S_{t+1}) - Q(w_1; S_{t}) )^2
 $$
 
-where $\alpha$ and $\gamma$ are the learning rate and discount factor respectively. Here, we keep updating the weights $w_1$ without updating the weights $w_2$ for several steps. After a fixed number of steps, we finally update $w_2$ by the current value of the weights $w_1$. This means the target $R_t + \gamma Q(w_2; S_{t+1})$ remains static for several steps, creating a more stable target for the neural network for achieve. This diminishes the chance of having wildly varying rewards function as the number of episodes progresses.
+where $\alpha$ and $\gamma$ are the learning rate and discount factor respectively. Here, we keep updating the weights $w_1$ without updating the weights $w_2$ for several steps. After a fixed number of steps, we finally update $w_2$ by the current value of the weights $w_1$. This means the target $R_t + \gamma Q(w_2; S_{t+1})$ remains static for several steps, creating a more stable target for the neural network for achieve. This diminishes the chance of having wildly varying rewards function as the number of episodes progresses. This $Q(w_2; )$ is often called as the evaluation network or the target model.
+
+We first make a function that produces the tensorflow neural network model. In addition to that, we also specify a custom loss function that takes the true Q-values (i.e., as obtained by the TD-target) and the predicted Q-values produced by the current neural network, and produces the sqaured difference of their maximums. This is exactly what you would get as an error for the Q-learning method.
+
+```python
+# the custom loss function to use
+def custom_loss_fn(q_true, q_pred):
+    q_true_action = tf.math.reduce_max(q_true, axis = 1)
+    q_pred_action = tf.math.reduce_max(q_pred, axis = 1)
+    return tf.reduce_sum((q_true_action - q_pred_action)**2)
+#
+# the neural network model
+def simple_nn_model(LR):
+    x = tf.keras.Input(shape = (8, ))
+    h1 = tf.keras.layers.Dense(64, activation = 'relu')(x)
+    h2 = tf.keras.layers.Dense(64, activation = 'relu')(h1)
+    out = tf.keras.layers.Dense(4, activation = 'linear')(h2)
+    model = tf.keras.Model(inputs = x, outputs = out)
+    optimizer = tf.keras.optimizers.Adam(learning_rate=LR)
+    model.compile(optimizer=optimizer, loss=custom_loss_fn)   # makes easier to train
+    return model
+```
+
+The last two lines is a bit new, they are preparing the network network model to reduce that loss function. This compilation step has no outside impact, but the model training (i.e., the gradient descent) becomes much more efficient and faster to do.
+
+Now we get an evaluation model, which is a copy of the current neural network, we can use the following function, which creates a blank model using the above function and then copies the weights from the current model to the blank model.
+
+```python
+def copy_model(model, LR):
+  model2 = simple_nn_model_with_regularizer(LR)   # used only for evaluation, so LR does not matter
+  model2.set_weights(model.get_weights())
+  return model2
+```
+
+One particular thing you might be thinking is that why we did not simply do 
+
+```python
+model2 = model
+```
+
+The reason is that in such a case, `model2` simply refers to a pointer to the original variable `model` that holds the neural network, it does not create an independent copy. Hence, if we perform gradient descent on the first neural network `model`, the weights of `model2` also will keep changing, but we do not want that.
+
+### Moment of Truth
+
+So, we combine all of these ideas and put them together in action. Before that, we define as few utility functions which will be reused.
+
+```python
+# get the q-values for the current state, based on the model
+def get_q_values(model, state):
+  return model.predict([state])[0]
+# selects the best action but with epsilon-greedy nature
+def select_action_epsilon_greedy(q_values, epsilon):
+  if np.random.random() < epsilon:
+    return env.action_space.sample()
+  else:
+    return np.argmax(q_values)
+```
+
+We also provide another function that uses the evaluation network and a batch of state transitions from the replay buffer to compute the target values for that batch.
+
+```python
+def calculate_target_values(target_model, state_transitions, discount_factor):
+  targets = []
+  for state_transition in state_transitions:
+    new_state = state_transition[3]
+    best_action_next_state_q_value = (get_q_values(target_model, new_state)).max()  # this is like the Q-learning, gets the best Q-value in the next state
+    if state_transition[4]:
+      target_value = state_transition[2]   # if it is terminal state, no next reward
+    else:
+      target_value = state_transition[2] + discount_factor * best_action_next_state_q_value
+    target_vector = [0, 0, 0, 0]  # creates a vector to hold the Q-values of 4 actions
+    target_vector[state_transition[1]] = target_value  # here we only update the target for the current action
+    targets.append(target_vector)
+  return np.array(targets)
+```
+
+And here we specify the hyperparameters, initialize a bunch of stuffs like our policy and evaluation networks, and also the replay buffer.
+
+```python
+BUFFER_SIZE = 10_000
+EPSILON = 0.05  # always explore 5% of time
+DISCOUNT = 1
+LR = 1e-3   # learning rate
+N_EPISODE = 2_000  # number of episodes to go through    
+TARGET_NETWORK_REPLACE_STEP = 100   # every 100 steps, we will update our evaluation network as the current model
+TRAIN_EVERY = 4   # every 4 steps, halt and train using batch from replay buffer
+TRAIN_BATCH = 128   # use a batch size of 128 
+replay_buffer = ReplayBuffer(BUFFER_SIZE)  # initialize the replay buffer
+model = simple_nn_model(LR)   # create the policy model
+target_model = copy_model(model, LR)    # create the evaluation network
+episode_rewards = np.zeros(N_EPISODE)     # an array to store historical rewards of the episodes
+stepcount = 0     # counts the number of steps
+```
+
+Finally, we combine all of these into a training loop to train the RL agent.
+
+```python
+for ep in tqdm(range(N_EPISODE)):
+  observation, info = env.reset()
+  while True:
+    stepcount += 1
+    q_values = get_q_values(model, observation)
+    action = select_action_epsilon_greedy(q_values, EPSILON)
+    new_observation, reward, terminated, truncated, info = env.step(action)  # Do the action in the environment
+    episode_rewards[ep] += reward
+    replay_buffer.add((observation, action, reward, new_observation, terminated or truncated))   # add it to the replay buffer
+    if stepcount % TARGET_NETWORK_REPLACE_STEP == 0:
+      target_model = copy_model(model, LR)
+    if stepcount % TRAIN_EVERY == 0:
+      # train the model, take a batch from replay buffer
+      batch = replay_buffer.get_batch(batch_size=TRAIN_BATCH)
+      targets = calculate_target_values(target_model, batch, DISCOUNT)
+      states = np.array([state_transition[0] for state_transition in batch])
+      model.fit(states, targets, epochs=1, batch_size=len(targets), verbose=0)   # this does the gradient descent, but over the batch of inputs
+    if terminated or truncated:
+      break
+    observation = new_observation
+```
+
+Here, we could use the `model.fit` method to perform the gradient descent without using `tf.GradientTape()` as before, this is because we compiled the model before.
+
+It took about 25 minutes to complete the training, although I did a little cheating! Used a free GPU at Google colab as it was available. Here's how the result looks after 2000 episodes.
+
+![](figure-4.gif)
+
+Great! Now our lunar lander is successfully prepared to land on the surface of the moon, and this means, you have now added a bit of rocket science to your awesome store of knowledge.
 
 
+## Conclusion
 
+Starting from an almost zero knowledge of Reinforcement Learning, we have come a long way. Congratulations for making it this far! Hope you have liked the series of posts.
 
-
+This was a beginner-friendly introductory series for all the RL enthusiasts out there. We tried to learn the basic concepts, implement a few hands-on examples, and we have built a whooping Lunar Lander! If you wish for more posts like this, on advanced Reinforcement Learning techniques, let me know in the comments! 
 
 
 ## References

@@ -1246,10 +1246,6 @@ video {
   height: 55px;
 }
 
-.h-\[75px\] {
-  height: 75px;
-}
-
 .h-full {
   height: 100%;
 }
@@ -1260,6 +1256,10 @@ video {
 
 .max-h-\[300px\] {
   max-height: 300px;
+}
+
+.max-h-\[500px\] {
+  max-height: 500px;
 }
 
 .max-h-\[50px\] {
@@ -1566,8 +1566,8 @@ video {
   background-color: rgb(254 240 138 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/images\/cover-1\.png\'\)\] {
-  background-image: url('/images/cover-1.png');
+.bg-\[url\(\'\/images\/cover-1\.webp\'\)\] {
+  background-image: url('/images/cover-1.webp');
 }
 
 .bg-gradient-to-br {
