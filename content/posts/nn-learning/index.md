@@ -5,6 +5,8 @@ imageCaption: ""
 summary: "This is the 7th and final part of the Reinforcement Learning Series: Here I give a brief introduction to deep Q-learning and some techniques to increase RL agent's efficiency"
 
 mermaid: true
+mathjax: true
+
 tags:
     - Reinforcement Learning
     - Statistical Learning
@@ -12,10 +14,12 @@ tags:
 draft: false
 prerequisites:
     - topic: Python Programming
-      level: 2
+      level: 3
     - topic: Differential Calculus
       level: 2
-    - topic: Neural Network
+    - topic: Neural Networks
+      level: 1
+    - topic: Tensorflow and Keras
       level: 1
 ---
 
@@ -25,7 +29,7 @@ Hey everyone! In my last post about Reinforcement Learning (check [here](https:/
 
 Remember that we learned about the interesting Lunar Lander environment[^1] before (see my [post](https://www.statwizard.in/posts/q-learning/) on Q-learning), where we were trying to train an agent to successfully land a moon rover on the surface of the moon. Here's a picture to refresh your memory.
 
-![](episode-6001.gif)
+{{<figure src="episode-6001.gif" size="sm">}}
 
 The goal of this is to train an agent to successfully land on the surface of the moon. It gets to observe state values as an 8-dimensional vector, constituting of its linear positions, linear velocities, angular velocities and many more. It simply has 4 actions to do as follows:
 
@@ -45,12 +49,12 @@ We solved the [Mountain Car problem](https://gymnasium.farama.org/environments/c
 
 Here's a picture of the agent after $2000$ episodes (It takes about 20-25 minutes to completely run on a Google Colab notebook).
 
-![](figure-2.gif)
+{{<figure src="figure-2.gif">}}
 
 
 We also tracked the rewards over these episodes. If we look at the plot of the history of these rewards, it looks like this.
 
-![](figure-2a.png)
+{{<figure src="figure-2a.png">}}
 
 Turns out it is not learning after about $1000$ episodes, and it not getting better. Looks like we need something more powerful.
 
@@ -244,12 +248,13 @@ for ep in tqdm(range(N_EPISODE)):
 
 We train for 200 episodes first to see what's happenning. It takes about 10 minutes in the same Google Colab notebook.
 
-![](figure-3.gif)
+{{<figure src="figure-3.gif">}}
 
 
 Well, turns out it is always taking the action of doing nothing. The history of rewards tells us that the rewards obtained in the episodes are wildly varying, but on average, it has learned almost nothing.
 
-![](figure-3a.png)
+{{<figure src="figure-3a.png">}}
+
 
 We had our hopes up with this better model, but let's try to investigate what's causing this issue.
 
@@ -431,7 +436,7 @@ Here, we could use the `model.fit` method to perform the gradient descent withou
 
 It took about 25 minutes to complete the training, although I did a little cheating! Used a free GPU at Google colab as it was available. Here's how the result looks after 2000 episodes.
 
-![](figure-4.gif)
+{{<figure src="figure-4.gif">}}
 
 Great! Now our lunar lander is successfully prepared to land on the surface of the moon, and this means, you have now added a bit of rocket science to your awesome store of knowledge.
 

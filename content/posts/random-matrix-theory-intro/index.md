@@ -4,6 +4,7 @@ date: "2023-08-06T00:00:00Z"
 imageCaption: ""
 summary: "This is the first introductory post on Random Matrix Theory series: Here I demonstrate some phenemenon about random matrices which are very non-intuitive to the classical thinking of asymptotic result"
 
+mathjax: true
 tags:
     - Random Matrix Theory
 

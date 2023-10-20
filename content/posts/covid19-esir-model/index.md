@@ -4,6 +4,7 @@ date: "2020-04-01T00:00:00Z"
 imageCaption: "[CNN.com](https://edition.cnn.com/2020/03/24/world/coronavirus-newsletter-03-24-20/index.html)"
 summary: In this post, we describe a slight generalization of the basic SIR model of epidemiology and its estimation procedure under both frequentist and Bayesian paradigms. We also make projections of the covid cases over next several days based on the fitted model.
 mermaid: true
+mathjax: true
 tags:
     - Epidemiology
 

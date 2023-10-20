@@ -2,6 +2,10 @@
 {{ .Params.title }}
 {{ end }}
 
+{{ define "customCSS" }}
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+{{ end }}
+
 {{ define "main" }}
 <section class="my-8 md:mx-auto max-w-4xl p-2 md:p-4 shadow-sm rounded-md">
     <p class="text-3xl md:text-6xl font-bold leading-normal md:leading-relaxed text-neutral-800">

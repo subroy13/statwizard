@@ -53,13 +53,11 @@ npm install callgrind-reader
 
 Here's a basic example of how to use "callgrind-reader" to parse a callgrind file and extract profiling data:
 
-```
+```typescript
 import { CallGrind } from 'callgrind-reader';
-
 // Parse the callgrind file using CallgrindReader
 const reader = new CallGrind('path/to/callgrind/file');
 const result = reader.parse(contents);
-
 // Access the profiling data
 for (const item of result.profile) {
     console.log(`Function: ${item.functionName}`);

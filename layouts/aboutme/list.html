@@ -93,49 +93,6 @@
             <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
                 <!-- Write as a LOOP -->
 
-                <!-- Experience Tab -->
-                <div id="experiences-tab-content" class="tab-content container mx-auto w-full h-full">
-                    <div class="relative wrap overflow-hidden p-10 h-full">
-                        <div class="absolute h-full border-[2px] border-blue-600 right-[50%]"></div>
-                        <div class="absolute h-full border-[2px] border-blue-600 left-[50%]"></div>
-                        {{ range $index, $exp := .Params.experiences }}
-                            {{ $timelinealign := "right" }}
-                            {{ $textalign := "left" }}
-                            {{ $flexrow := "" }}
-                            {{ if (modBool $index 2) }}
-                                {{ $timelinealign = "left" }}
-                                {{ $textalign = "right" }}
-                                {{ $flexrow = "flex-row-reverse" }}
-                            {{ end }}
-                            <div class="mb-8 flex justify-between {{ $flexrow }} items-center w-full {{ $timelinealign }}-timeline">
-                                <div class="order-1 w-5/12"></div>
-                                <div class="order-1 w-5/12 px-1 py-4 text-{{ $textalign }}">
-                                    <p class="mb-3 text-base text-blue-400">
-                                        {{ $exp.timeline }}
-                                    </p>
-                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
-                                        {{ $exp.title }}
-                                    </h4>
-                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
-                                        {{ $exp.organization }}
-                                    </h4>
-                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
-                                        <ul>
-                                            <hr/>
-                                            {{ range $exp.description }}
-                                            <li> {{ . }}</li>
-                                            <hr/>
-                                            {{ end }}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        {{ end }}
-
-                    </div>
-                    <img class="mx-auto -mt-36 md:-mt-36" src="/images/launch-rocket.png" />
-                </div>
-
                 <!-- Publications Tab -->
                 <div id="publications-tab-content" class="tab-content container mx-auto w-full h-full">
                     <div class="flex flex-col gap-4">
@@ -296,6 +253,49 @@
                     </div>
                 </div>
 
+                <!-- Experience Tab -->
+                <div id="experiences-tab-content" class="tab-content container mx-auto w-full h-full">
+                    <div class="relative wrap overflow-hidden p-10 h-full">
+                        <div class="absolute h-full border-[2px] border-blue-600 right-[50%]"></div>
+                        <div class="absolute h-full border-[2px] border-blue-600 left-[50%]"></div>
+                        {{ range $index, $exp := .Params.experiences }}
+                            {{ $timelinealign := "right" }}
+                            {{ $textalign := "left" }}
+                            {{ $flexrow := "" }}
+                            {{ if (modBool $index 2) }}
+                                {{ $timelinealign = "left" }}
+                                {{ $textalign = "right" }}
+                                {{ $flexrow = "flex-row-reverse" }}
+                            {{ end }}
+                            <div class="mb-8 flex justify-between {{ $flexrow }} items-center w-full {{ $timelinealign }}-timeline">
+                                <div class="order-1 w-5/12"></div>
+                                <div class="order-1 w-5/12 px-1 py-4 text-{{ $textalign }}">
+                                    <p class="mb-3 text-base text-blue-400">
+                                        {{ $exp.timeline }}
+                                    </p>
+                                    <h4 class="mb-3 font-bold text-xl md:text-2xl">
+                                        {{ $exp.title }}
+                                    </h4>
+                                    <h4 class="mb-3 font-light text-lg text-neutral-700">
+                                        {{ $exp.organization }}
+                                    </h4>
+                                    <div class="text-sm text-left leading-snug text-neutral-800 text-opacity-100">
+                                        <ul>
+                                            <hr/>
+                                            {{ range $exp.description }}
+                                            <li> {{ . }}</li>
+                                            <hr/>
+                                            {{ end }}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {{ end }}
+
+                    </div>
+                    <img class="mx-auto -mt-36 md:-mt-36" src="/images/launch-rocket.png" />
+                </div>
+                
                 <!-- Hobbies Tab -->
                 <div id="hobbies-tab-content" class="tab-content container mx-auto w-full h-full">
                     {{ range .Sections }}

@@ -4,6 +4,7 @@ date: "2023-07-31T00:00:00Z"
 imageCaption: ""
 summary: "This is an introductory post about reinforcement learning. Here I discuss about the exploration-exploitation dilemma with multi-armed bandit problem and potential solutions to this."
 mermaid: false
+mathjax: true
 tags:
     - Reinforcement Learning
 

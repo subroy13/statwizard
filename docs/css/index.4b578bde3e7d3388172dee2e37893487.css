@@ -1242,12 +1242,12 @@ video {
   height: 33vh;
 }
 
-.h-\[55px\] {
-  height: 55px;
+.h-\[50vh\] {
+  height: 50vh;
 }
 
-.h-\[75px\] {
-  height: 75px;
+.h-\[55px\] {
+  height: 55px;
 }
 
 .h-full {
@@ -1566,8 +1566,8 @@ video {
   background-color: rgb(254 240 138 / var(--tw-bg-opacity));
 }
 
-.bg-\[url\(\'\/images\/cover-1\.png\'\)\] {
-  background-image: url('/images/cover-1.png');
+.bg-\[url\(\'\/images\/cover-1\.webp\'\)\] {
+  background-image: url('/images/cover-1.webp');
 }
 
 .bg-gradient-to-br {

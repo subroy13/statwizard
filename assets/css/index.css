@@ -1202,6 +1202,10 @@ video {
   display: inline-block;
 }
 
+.inline {
+  display: inline;
+}
+
 .flex {
   display: flex;
 }
@@ -1242,6 +1246,10 @@ video {
   height: 33vh;
 }
 
+.h-\[50vh\] {
+  height: 50vh;
+}
+
 .h-\[55px\] {
   height: 55px;
 }
@@ -1256,10 +1264,6 @@ video {
 
 .max-h-\[300px\] {
   max-height: 300px;
-}
-
-.max-h-\[500px\] {
-  max-height: 500px;
 }
 
 .max-h-\[50px\] {

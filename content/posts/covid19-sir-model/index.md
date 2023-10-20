@@ -4,6 +4,7 @@ date: "2020-03-25T00:00:00Z"
 imageCaption: "[CNN.com](https://edition.cnn.com/2020/03/24/world/coronavirus-newsletter-03-24-20/index.html)"
 summary: 'In this post, we describe a basic statistical model of epidemiology, named SIR model and its estimation procedure under both frequentist and Bayesian paradigms.'
 mermaid: true
+mathjax: true
 tags:
     - Epidemiology
 

@@ -5,6 +5,7 @@ imageCaption: ""
 summary: "This is the 6th part of the Reinforcement Learning Series: Here I discuss about techniques to work with infinite state space, where the tabular methods do not work"
 
 mermaid: true
+mathjax: true
 tags:
     - Reinforcement Learning
     - Statistical Learning
@@ -28,7 +29,7 @@ For now, we will try to solve another reinforcement problem from the `gymnasium`
 
 Here's a gif about an unlearned agent randomly trying to move left or right.
 
-![](figure-1.gif)
+{{<figure src="figure-1.gif">}}
 
 Unfortunately, the tabular methods (you should now be able to guess why it is called tabular! :sunglasses: ) discussed so far cannot handle this environment, since we have two continuous variables (velocity and position) as observations. Instead of the tables, we now need to learn a function approximation which takes in a state and action pair, and output the q-value for that pair.
 
@@ -190,11 +191,11 @@ Notice that $\max_a$ is replaced by $a_{t+1}$, to ensure a bit more exploration 
 
 Here's the trained agent after $5000$ episodes of learning.
 
-![](figure-2.gif)
+{{<figure src="figure-2.gif">}}
 
 Huh! :worried: Not very impressive! It is trying to move to the right and pull the car up, but the gravity is continually pulling it downwards. So, we need to do a bit more.
 
-![](figure-4.png)
+{{<figure src="figure-4.png">}}
 
 As you can see, the agent is sometimes reaching the goal (receiving higher rewards than $120$), but it is not continually improving.
 
@@ -308,11 +309,11 @@ W[action,:] += LR * (target - np.dot(W[action, :], feature)) * feature   # the g
 
 We just train it for $200$ episodes, and here's the result.
 
-![](figure-3.gif)
+{{<figure src="figure-3.gif">}}
 
 Cool! :sunglasses: Just using a bit of nonlinearity, we could train the RL agent much faster. 
 
-![](figure-5.png)
+{{<figure src="figure-5.png">}}
 
 And this shows that the RL agent is continually learning to increase its rewards, and learning how to reach the goal.
 

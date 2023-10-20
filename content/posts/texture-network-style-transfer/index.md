@@ -4,6 +4,7 @@ date: "2021-01-13T00:00:00Z"
 team: false
 imageCaption: "[post](https://heartbeat.fritz.ai/art-soul-part-1-a-style-transfer-website-based-on-tkinter-and-django-7a897741618) by Nikita Sharma"
 summary: 'In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.'
+mathjax: true
 tags:
   - Image Processing
   - Deep Learning

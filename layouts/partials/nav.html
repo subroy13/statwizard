@@ -6,6 +6,7 @@
     <div class="w-[200px] flex items-center">
       <a
         class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
       >
         <img
           src="/images/logo-wide-resized.png"
@@ -32,6 +33,7 @@
         href="{{ .link }}"
         class="hover:text-gray-600 transition-all ease-in-out"
         aria-label="{{ .icon }} for link {{ .link }}"
+        target="_blank"
       >
         <i class="{{ .icon }} fa-lg"></i>
       </a>

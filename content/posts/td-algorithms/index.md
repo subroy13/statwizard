@@ -4,6 +4,7 @@ date: "2023-08-24T00:00:00Z"
 imageCaption: ""
 summary: "This is the 4th part of the Reinforcement Learning Series: Here I discuss about how the idea of Bellman equations and Monte Carlo methods can be combined into a single algorithm called Temporal Difference. We will also learn about its variants and how we can use it to estimate the value functions."
 mermaid: true
+mathjax: true
 tags:
     - Reinforcement Learning
 

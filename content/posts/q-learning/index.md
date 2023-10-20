@@ -3,7 +3,8 @@ title: 'Reinforcement Learning (Part 5) - Q Learning and Optimal Policy Finding'
 date: "2023-09-07T00:00:00Z"
 imageCaption: ""
 summary: "This is the 5th part of the Reinforcement Learning Series: Here I discuss about techniques to finding optimal policies, and then demonstrate the popular Q-learning algorithm. I also show how it can be implemented to solve actual problems"
-mermaid: mermaid 
+mermaid: true
+mathjax: true
 tags:
     - Reinforcement Learning
 

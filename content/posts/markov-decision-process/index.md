@@ -4,6 +4,7 @@ date: "2023-08-16T00:00:00Z"
 imageCaption: ""
 summary: "This is the third part of the Reinforcement Learning series: Here I discuss about the representing the reinforcement learning problem as a markov decision process, explain standard terminologies and provide ways to estimate the value function."
 mermaid: true
+mathjax: true
 tags:
     - Reinforcement Learning
 

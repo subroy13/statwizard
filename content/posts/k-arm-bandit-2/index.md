@@ -4,6 +4,7 @@ date: "2023-08-07T00:00:00Z"
 imageCaption: ""
 summary: "This is the second part of the Reinforcement Learning series: Here I discuss about dynamically balancing between exploration and exploitation to reach optimal return in long run."
 mermaid: false
+mathjax: true
 tags:
     - Reinforcement Learning
 

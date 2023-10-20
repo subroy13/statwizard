@@ -10,12 +10,6 @@ home:
         affiliation: "[Indian Statistical Institute, Kolkata](https://www.isical.ac.in)"
 tabs:
 
-    -   id: "experiences"
-        title: "My Education and Work Experiences"
-        subtitle: "Nurturing Knowledge and Cultivating Expertise"
-        img: "/svg/eye.svg"
-        icon: "fa fa-globe"
-
     -   id: "publications"
         title: My Publications
         subtitle: "Sharing Knowledge, Insight, and Innovation: I have had the privilege to contribute to the field through talks, publications, and project reports."
@@ -39,6 +33,12 @@ tabs:
         subtitle: "Innovative Solutions, Custom Tools, and Streamlined Workflows: Throughout my journey, I have developed some softwares and packages to address specific needs and enhance productivity, as well as data science tools related to my publications."
         img: "/svg/pyramid.svg"
         icon: "fa fa-cogs"
+
+    -   id: "experiences"
+        title: "My Education and Work Experiences"
+        subtitle: "Nurturing Knowledge and Cultivating Expertise"
+        img: "/svg/eye.svg"
+        icon: "fa fa-globe"
 
     -   id: "hobbies"
         title: Hobbies
