@@ -97,23 +97,22 @@ Now we shall try to see how the total number of Confirmed, deaths and recovered 
 temp <- dat %>% group_by(Date) %>% 
     summarise(Confirmed = sum(Confirmed), Deaths = sum(Deaths), Recovered = sum(Recovered)) %>%
     gather(key = "Variable", value = "Count", -Date)
-
 ggplot(temp, aes(x = Date, y = Count, color = Variable)) + geom_line(size = 1)
 ```
 
-![](./unnamed-chunk-6-1.png)
+{{<figure src="unnamed-chunk-6-1.png">}}
 
 
 The situation is very severe, as the current trend in exponentially increasing in terms of confirmed cases, and the growth rate of recovered is sufficiently slow. If we particular focus on the situation of India, (after 1st March, 2020),
 
-![](unnamed-chunk-7-1.png)
+{{<figure src="unnamed-chunk-7-1.png">}}
 
 
 As of now, there are very less number of recoveries, some deaths, and a lot of (about 400) affected people. We have also compiled how these changes occurs spatially in different countries. They are shown below.
 
-![](./confirmed-1.gif)
+{{<figure src="confirmed-1.gif">}}
 
-![](./deaths-1.gif)
+{{<figure src="deaths-1.gif">}}
 
 
 # SIR Model Description
@@ -122,7 +121,7 @@ The SIR model is one of the compartmental models in epidemiology which is used t
 
 SIR modelling starts with defining 3 different compartments, of states in which a person can be. The states are as follows:
 
-<div class="mermaid">
+<div class="mermaid mx-auto w-full">
     graph LR
     S(Susceptible) --> I(Infected)
     I(Infected) --> R(Recovered / Removed)
@@ -284,17 +283,15 @@ Now that we have the estimated parameters, we can simply generate predictions fo
 
 ```r
 # since predictions are proportions, we multiply with the population to get the count estimates
-
 preds <- pred.SIR(14, ops$par[1], ops$par[2], as.matrix(temp[49, 2:4])) * N
 pred.dat <- tibble(Date = temp$Date[49:62], Pred.Confirmed = preds[, 2], Pred.Removed = preds[, 3])
 pred.dat <- left_join(temp, pred.dat, by = c("Date" = "Date"))  # create a full dataset containing predicted data as well
-
 ggplot( pred.dat , aes(x = Date) ) +
     geom_line(aes(y = Confirmed), color = "black", size = 1) +
     geom_line(aes(y = Pred.Confirmed), color = "blue", size = 1, linetype = "dashed")
 ```
 
-![](./unnamed-chunk-12-1.png)
+{{<figure src="unnamed-chunk-12-1.png">}}
 
 Therefore, we see that SIR model overestimates the true number by about $75$ people at the last day. Nevertheless, this is simple model, which performs fairly good. However, it would have been nice if we could give a confidence interval around that estimate.
 
@@ -302,8 +299,6 @@ Therefore, we see that SIR model overestimates the true number by about $75$ peo
 ## Performance for India
 
 We perform the same exercise for India as well. For India, the population is huge (about $131$ crores) and there is lesser amount of data available, although the first confirmed case of COVID-19 was identified in 30th January, 2020. We have data on $54$ days, among which we shall use all the data before last week, and generate predictions for last week, to visualize its performance.
-
-
 
 The $R_0$ coefficient turns out to be 12.4850813, which is severe as it is a lot more than $1$. 
 
@@ -313,13 +308,12 @@ The $R_0$ coefficient turns out to be 12.4850813, which is severe as it is a lot
 preds <- pred.SIR(7, ops$par[1], ops$par[2], as.matrix(temp[48, 2:4])) * N
 pred.dat <- tibble(Date = temp$Date[48:54], Pred.Confirmed = preds[, 2], Pred.Removed = preds[, 3])
 pred.dat <- left_join(temp, pred.dat, by = c("Date" = "Date"))  # create a full dataset containing predicted data as well
-
 ggplot( pred.dat , aes(x = Date) ) +
     geom_line(aes(y = Confirmed), color = "black", size = 1) +
     geom_line(aes(y = Pred.Confirmed), color = "blue", size = 1, linetype = "dashed")
 ```
 
-![](./unnamed-chunk-14-1.png)
+{{<figure src="unnamed-chunk-14-1.png">}}
 
 Yet in this case, the SIR model does a underestimation in determining the number of confirmed cases by about $100$ cases. Therefore, the seriousness of the pandemic situation is even worse than what is depicted by the number $R_0$, i.e. 12.4850813, it is enitrely possible that the true $R_0$ value is even more at the last week, thereby showing on average an infectious person is infecting more than $12$ persons, which is bad, seriously bad.
 
@@ -332,18 +326,16 @@ To make this prediction, we use all the available datapoints for estimation of t
 ```r
 Y <- as.matrix(temp[, 2:4])
 ops <- optim(par = c(1e-2, 1e-5), fn = LS.SIR, method = "BFGS", Y = Y)
-
 preds <- pred.SIR(22, ops$par[1], ops$par[2], as.matrix(temp[54, 2:4])) * N
 pred.dat <- tibble(Date = temp$Date[54] + 1:22, 
                    Pred.Confirmed = preds[, 2], Pred.Removed = preds[, 3])
 pred.dat <- full_join(temp, pred.dat, by = c("Date" = "Date"))  # create a full dataset containing predicted data as well
-
 ggplot( pred.dat , aes(x = Date) ) +
     geom_line(aes(y = Confirmed), color = "black", size = 1) +
     geom_line(aes(y = Pred.Confirmed), color = "blue", size = 1, linetype = "dashed")
 ```
 
-![](./unnamed-chunk-15-1.png)
+{{<figure src="./unnamed-chunk-15-1.png">}}
 
 So, if there was no lockdown happening, the prediction of confirmed cases in India by middle of April would have be about $4000$. 
 

@@ -362,7 +362,7 @@ To simplify the calculation of derivative, we track the quantity $(\beta \pi(t) 
 The following picture taken from the [paper](https://www.medrxiv.org/content/10.1101/2020.02.29.20029421v1.full.pdf) by Wang et al. shows the concept clearly.
 
 
-![](./deriv.png)
+{{<figure src="deriv.png" class="full">}}
 
 
 ```r
@@ -476,8 +476,7 @@ ggplot(preds$infected, aes(x = date)) +
     labs(x = "Date", y = "P(Infected)") +
     geom_point(data = subdat, aes(x = Date, y = (Confirmed - Removed)/N), color = "black")
 ```
-
-![](./unnamed-chunk-20-1.png)
+{{<figure src="unnamed-chunk-20-1.png">}}
 
 However, if we assume that, the Italy government maintains the current lockdown indefinitely, then $\pi(t) = 0.25$ will continue to remain. In such case, the important dates (as mentioned above) for change in the rate of newly infected can be obtained, as shown in the following plot.
 
@@ -496,7 +495,7 @@ ggplot(preds$infected, aes(x = date)) +
     geom_text(x = preds$second.date[1] - 1, y = 0, label = format(preds$second.date[1], "%b %d"), size = 4 )
 ```
 
-![](./plot2.jpeg)
+{{<figure src="plot2.jpeg">}}
 
 Therefore, in Italy, at about June 24, we should see decreasing increments of newly infected persons, and from August 17 onwards, the proportion of infected people should start to decline.
 
@@ -514,9 +513,7 @@ $$\pi(t) = \begin{cases}
 \end{cases}$$
 
 
-
 Also, note that in India, many places are rural in nature, while most of the urban population and neighbourhood areas are more susceptible to get the disease than others, due to availablity of metro cities and international airports. So, rather than using the whole population size i.e. $131$ crores as $N$, we shall use about $350$ lakhs as the adjusted population size.
-
 
 
 ```r
@@ -552,7 +549,7 @@ ggplot(preds$infected, aes(x = date)) +
     geom_point(data = subdat, aes(x = Date, y = Infected/N), color = "black")
 ```
 
-![](./unnamed-chunk-23-1.png)
+{{<figure src="unnamed-chunk-23-1.png">}}
 
 
 Although it seems that the mean proportion is overestimated during the ovserved period, however the effect of quanting seems to work to a moderate extent, as the estimated proportion stays more or less at the same level. The exact count of the infected people at the end of lockdown, provided that it is maintained properly, should be about $1571$ many infected persons, and about $2114$ confirmed cases of COVID-19.
@@ -573,8 +570,7 @@ ggplot(preds$infected, aes(x = date)) +
     geom_text(x = preds$first.date[1] - 7, y = 2e-4, label = format(preds$first.date[1], "%b %d"), size = 4 ) +
     geom_text(x = preds$second.date[1] + 7, y = 3e-4, label = format(preds$second.date[1], "%b %d"), size = 4 )
 ```
-
-![](./unnamed-chunk-25-1.png)
+{{<figure src="unnamed-chunk-25-1.png">}}
 
 
 Therefore, as it seems, if we keep the lockdown (as it is now), based on the data, it might take till October to have the proportion of infected people becoming insignificant, provided we keep the same level of quanranting effect. However, from March 17, we should see a decrease in the rate of increment in the number of infected, and from March 29 onwards, we should be at a position from where the number of newly infected persons per day starts to decrease gradually.
@@ -596,8 +592,7 @@ ggplot(preds$infected, aes(x = date)) +
     geom_text(x = preds$first.date[1] - 7, y = 2e-4, label = format(preds$first.date[1], "%b %d"), size = 4 ) +
     geom_text(x = preds$second.date[1] + 7, y = 3e-4, label = format(preds$second.date[1], "%b %d"), size = 4 )
 ```
-
-![](./plot5.jpeg)
+{{<figure src="plot5.jpeg">}}
 
 This scenario would be very severe for us, since it would affect about $6\%$ of the urban population on about June 27, and then it would start to decrease gradually. However, it would take almost 2 years, to make this epidemic insignificant, provided there would be no generally accepted antiviral medicine for COVID-19 till then.
 

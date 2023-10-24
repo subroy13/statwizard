@@ -101,7 +101,7 @@ Reinforcement Learning (Part 7) - Solving Lunar Landing
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -449,7 +449,10 @@ Reinforcement Learning (Part 7) - Solving Lunar Landing
                     <h2 id="introduction">Introduction</h2>
 <p>Hey everyone! In my last post about Reinforcement Learning (check <a href="https://www.statwizard.in/posts/linear-learning/">here</a>) we learned about techniques to deal with state spaces of infinite sizes, using the method of linear value approximation. We also solved the Mountain Car problem, and it turned out that adding a bit of nonlinearity like kernel based features helped a lot to train a better RL agent.</p>
 <p>Remember that we learned about the interesting Lunar Lander environment<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> before (see my <a href="https://www.statwizard.in/posts/q-learning/">post</a> on Q-learning), where we were trying to train an agent to successfully land a moon rover on the surface of the moon. Here&rsquo;s a picture to refresh your memory.</p>
-<p><img src="episode-6001.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='episode-6001.gif'>
+</img>
 <p>The goal of this is to train an agent to successfully land on the surface of the moon. It gets to observe state values as an 8-dimensional vector, constituting of its linear positions, linear velocities, angular velocities and many more. It simply has 4 actions to do as follows:</p>
 <ol>
 <li>Do nothing.</li>
@@ -462,9 +465,15 @@ Reinforcement Learning (Part 7) - Solving Lunar Landing
 <p>We first try the technique exactly as we discussed before in this <a href="https://www.statwizard.in/posts/linear-learning/">post</a>. We consider $400$ different kernel based feature transformations of those $8$ variables that the state vector spits out, and then we try to have an weight vector associated with each of these actions. We take the inner product of the respective weight vector with these kernel features, and that becomes our Q-value for that particular action.</p>
 <p>We solved the <a href="https://gymnasium.farama.org/environments/classic_control/mountain_car/">Mountain Car problem</a> with this technique, in about $200$ episodes. Since this is a bit difficult problem compared to that, we allow the agent to train for about $2000$ episodes. Well, turns out it learned something useful, but still not decent enough.</p>
 <p>Here&rsquo;s a picture of the agent after $2000$ episodes (It takes about 20-25 minutes to completely run on a Google Colab notebook).</p>
-<p><img src="figure-2.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-2.gif'>
+</img>
 <p>We also tracked the rewards over these episodes. If we look at the plot of the history of these rewards, it looks like this.</p>
-<p><img src="figure-2a.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-2a.png'>
+</img>
 <p>Turns out it is not learning after about $1000$ episodes, and it not getting better. Looks like we need something more powerful.</p>
 <h2 id="more-power-lets-replicate-the-brain">More Power: Let&rsquo;s Replicate the Brain</h2>
 <p>Well, if we look at the kernel transformed features from before, it was serving two purposes:</p>
@@ -602,9 +611,15 @@ episode_rewards <span style="color:#f92672">=</span> np<span style="color:#f9267
             <span style="color:#66d9ef">break</span>
         observation <span style="color:#f92672">=</span> new_observation   <span style="color:#75715e"># update the observation</span>
 </code></pre></div><p>We train for 200 episodes first to see what&rsquo;s happenning. It takes about 10 minutes in the same Google Colab notebook.</p>
-<p><img src="figure-3.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-3.gif'>
+</img>
 <p>Well, turns out it is always taking the action of doing nothing. The history of rewards tells us that the rewards obtained in the episodes are wildly varying, but on average, it has learned almost nothing.</p>
-<p><img src="figure-3a.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-3a.png'>
+</img>
 <p>We had our hopes up with this better model, but let&rsquo;s try to investigate what&rsquo;s causing this issue.</p>
 <h2 id="neural-network-the-data-hungry-monster">Neural Network: The Data Hungry Monster</h2>
 <p>There are basically two things that went wrong while training the neural network based RL agent.</p>
@@ -736,7 +751,10 @@ stepcount <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</sp
     observation <span style="color:#f92672">=</span> new_observation
 </code></pre></div><p>Here, we could use the <code>model.fit</code> method to perform the gradient descent without using <code>tf.GradientTape()</code> as before, this is because we compiled the model before.</p>
 <p>It took about 25 minutes to complete the training, although I did a little cheating! Used a free GPU at Google colab as it was available. Here&rsquo;s how the result looks after 2000 episodes.</p>
-<p><img src="figure-4.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-4.gif'>
+</img>
 <p>Great! Now our lunar lander is successfully prepared to land on the surface of the moon, and this means, you have now added a bit of rocket science to your awesome store of knowledge.</p>
 <h2 id="conclusion">Conclusion</h2>
 <p>Starting from an almost zero knowledge of Reinforcement Learning, we have come a long way. Congratulations for making it this far! Hope you have liked the series of posts.</p>

@@ -101,7 +101,7 @@ Reinforcement Learning (Part 2) - K-arm Bandit Problem
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -465,8 +465,11 @@ $$</p>
       <span style="color:#75715e"># update ucb_rewards</span>
       ucb_rewards[b, t] <span style="color:#f92672">=</span> reward
 ucb_rewards <span style="color:#f92672">=</span> ucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-<p></code></pre></div><p>Again, we plot the average reward obtained as a function of the number of rounds, for both the cases with $10/t$-greedy algorithm as well as UCB algorithm. The UCB algorithm learns more slowly than the $10/t$-greedy algorithm, but on the long turn, it reaches the level of same performance (or may be slightly better).</p></p>
-<p><img src="ucb-fig1.png" alt=""></p>
+<p></code></pre></div><p>Again, we plot the average reward obtained as a function of the number of rounds, for both the cases with $10/t$-greedy algorithm as well as UCB algorithm. The UCB algorithm learns more slowly than the $10/t$-greedy algorithm, but on the long turn, it reaches the level of same performance (or may be slightly better).</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='ucb-fig1.png'>
+</img></p>
 <h2 id="ucb-variant---klucb-algorithm">UCB Variant - KLUCB Algorithm</h2>
 <p>There are many variants of the UCB algorithm which have been proposed over last two decades.  Here, we shall describe one variant of the algorithm called KL-UCB algorithm, proposed by Garivier and Cappe<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>.</p>
 <p>Here, the choice of upper confidence bound (UCB) score is given by</p>
@@ -503,8 +506,11 @@ $$</p>
       <span style="color:#75715e"># update ucb_rewards</span>
       klucb_rewards[b, t] <span style="color:#f92672">=</span> reward
 <p>klucb_rewards <span style="color:#f92672">=</span> klucb_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</code></pre></div><p>Again we plot its performance over $1000$ rounds.</p></p>
-<p><img src="ucb-fig2.png" alt=""></p>
+</code></pre></div><p>Again we plot its performance over $1000$ rounds.</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='ucb-fig2.png'>
+</img></p>
 <p>Clearly, it is much better than the simple UCB algorithm, it is quite close to the $10/t$-greedy approach during the initial rounds, which means this algorithm very quickly learns the optimal action.</p>
 <h2 id="thompson-sampling---a-bayesian-touch">Thompson Sampling - A Bayesian Touch</h2>
 <h3 id="the-mathematical-concepts">The Mathematical Concepts</h3>
@@ -578,8 +584,11 @@ thompson_rewards <span style="color:#f92672">=</span> np<span style="color:#f926
       <span style="color:#75715e"># update thompson_rewards</span>
       thompson_rewards[b, t] <span style="color:#f92672">=</span> reward
 <p>thompson_rewards <span style="color:#f92672">=</span> thompson_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</code></pre></div><p>And here’s the plot for the experienced rewards by this strategy.</p></p>
-<p><img src="ucb-fig3.png" alt=""></p>
+</code></pre></div><p>And here’s the plot for the experienced rewards by this strategy.</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='ucb-fig3.png'>
+</img></p>
 <p>Wow! It looks like the Thompson sampling is a clear winner here. This is because instead of focusing on the short run and the future rewards, Thompson sampling focuses on the long run by guessing the multi-arm bandit game instead of the next possible rewards. Since the reward distributions of the arms don&rsquo;t change from time to time, Thompson sampling can leverage the this by sticking to the best arm of the most probable $k$-arm bandit game given the information collected so far.</p>
 <h2 id="some-questions-to-think-about">Some Questions to think about</h2>
 <p>Same as the previous post, here&rsquo;s some questions to explore.</p>

@@ -101,7 +101,7 @@ Reinforcement Learning (Part 1) - K-arm Bandit Problem
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -504,8 +504,11 @@ rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">.</sp
     action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>)
     explore_rewards[b, t] <span style="color:#f92672">=</span> k_arm_bandit_reward(action_k)
 <p>explore_rewards <span style="color:#f92672">=</span> explore_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</code></pre></div><p>Here’s there plot for the average rewards obtained by these two strategies over $1000$ rounds.</p></p>
-<p><img src="greedy-explore-1.png" alt=""></p>
+</code></pre></div><p>Here’s there plot for the average rewards obtained by these two strategies over $1000$ rounds.</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='greedy-explore-1.png'>
+</img></p>
 <p>Clearly, the greedy method performs much better than complete exploration at random. But notice that the greedy method cannot achieve the highest possible reward, i.e., $5$ in this problem.</p>
 <h3 id="epsilon-greedy-strategy">$\epsilon$-greedy strategy</h3>
 <p>Looks like the greedy method does better, but it is not still optimal and there are rooms for improvement. This is because, often the reward from $8$-th or $9$-th arm turns out to better than the reward for the $10$-th arm at the first $10$ rounds, and hence the exploitation strategy continues to take the suboptimal action throughout. It looks like we can do better if we explore sometimes to gather more information about the other arms.</p>
@@ -524,8 +527,11 @@ eps1_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">
       action_counts[action_k] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
       eps1_rewards[b, t] <span style="color:#f92672">=</span> reward  <span style="color:#75715e"># record the reward</span>
 <p>eps1_rewards <span style="color:#f92672">=</span> eps1_rewards<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>)
-</code></pre></div><p>Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.</p></p>
-<p><img src="greedy-explore-2.png" alt=""></p>
+</code></pre></div><p>Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='greedy-explore-2.png'>
+</img></p>
 <h3 id="so-can-we-do-better">So, can we do better?</h3>
 <p>Since the $0.1$-greedy strategy still does not always hit the target of $5$, can we make it even better. Note that, the $0.1$-greedy strategy always explores $10%$ of the time, even in the late rounds when the estimates of the reward distribution of the arms is known with high confidence. It does not makes sense to explore that late in the game, and hence, we must keep reducing the $\epsilon$ parameter to reduce exploration over time (or number of rounds).</p>
 <p>Here&rsquo;s the simulation with this strategy, where we take $\epsilon = 10/t$, where $t$ is the number of round. It is very similar to the code for $0.1$-strategy shown earlier, with the only change</p>
@@ -533,7 +539,10 @@ eps1_rewards <span style="color:#f92672">=</span> np<span style="color:#f92672">
 eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">/</span>(t <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)  <span style="color:#75715e"># dynamic epsilon</span>
 action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">10</span>) <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>) <span style="color:#f92672">&lt;</span> eps <span style="color:#66d9ef">else</span> max_k
 </code></pre></div><p>in the inner for loop with index variable <code>t</code>. As we had hoped, this performs even better than $0.1$-greedy action.</p>
-<p><img src="greedy-explore-3.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='greedy-explore-3.png'>
+</img>
 <h2 id="some-questions-to-think-about">Some Questions to think about</h2>
 <p>Here&rsquo;s some questions to think about and some things to try.</p>
 <ol>
@@ -544,7 +553,10 @@ action_k <span style="color:#f92672">=</span> np<span style="color:#f92672">.</s
 <p>If we choose to reduce $\epsilon$ as $0.1/t$ instead of $10/t$, it achieves a reward trajectory even worse than the extreme exploration. Why is that? Here&rsquo;s the visualization plot.</p>
 </li>
 </ol>
-<p><img src="greedy-explore-4.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='greedy-explore-4.png'>
+</img>
 <ol start="3">
 <li>Where does this $\epsilon = 10/t$ come from? Can we use some statistical theories to dynamically come up with this rate of change to be applied on $\epsilon$?</li>
 </ol>

@@ -68,8 +68,7 @@ In essence, the TD algorithm proceeds with the following steps:
 
 Now we will try to apply the TD algorithm on the same maze game from the [last post](https://www.statwizard.in/posts/markov-decision-process/). Just to recap, the maze game has a maze shown as follow in the following figure, starting at the red corner to reach the blue corner, avoiding the obstacles shown in gray. The reward for reaching the end goal is $100$ but hitting any obstacle is $-1$.
 
-
-![](fig1.png)
+{{<figure src="fig1.png">}}
 
 Here is a code that performs the TD algorithm on the maze game.
 

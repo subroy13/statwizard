@@ -101,7 +101,7 @@ Random Matrix Theory - Introduction
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -483,8 +483,11 @@ norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span
 plt<span style="color:#f92672">.</span>hist(norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
 plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">'Frobenius Norm of 100x100 Gaussian matrix'</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p>Running the above python code and plotting the histogram yields a distribution close to a normal distribution plot. Hence, it reaffirms our belief.</p></p>
-<p><img src="fig1.png" alt=""></p>
+</code></pre></div><p>Running the above python code and plotting the histogram yields a distribution close to a normal distribution plot. Hence, it reaffirms our belief.</p>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='fig1.png'>
+</img></p>
 <h3 id="distribution-of-largest-eigenvalue">Distribution of Largest Eigenvalue</h3>
 <p>Now let&rsquo;s say instead of looking at the $L_2$-norm of the matrix entries, we consider the $L_2$-norm of vectors in the column space of the $X$ matrix. Specifically, we consider the quantity
 $$
@@ -500,7 +503,10 @@ which can be proven to be equal to the largest eigenvalue of the matrix $X$. Not
 <p>plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
 plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">'Largest Eigenvalue of the 100x100 Gaussian matrix'</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="fig2.png" alt=""></p></p>
+</code></pre></div><img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='fig2.png'>
+</img></p>
 <p>It turns out again we have some kind of Gaussian looking plot, most of the histogram is concentrated around its mean, however, it may be a bit positively skewed. Note that, even if the largest eigenvalue is not a very straightforward linear function as before, we still have this CLT like behaviour and concentration around the mean.</p>
 <p>Let&rsquo;s do the same experiment now for the smallest eigenvalue.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">eig_norms <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros(B)
@@ -511,7 +517,10 @@ plt<span style="color:#f92672">.</span>show()
 plt<span style="color:#f92672">.</span>hist(eig_norms, bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
 plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Smallest Eigenvalue of the 100x100 Gaussian matrix&#39;</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="fig3.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig3.png'>
+</img>
 <p>Well, the concentration around the mean was expected, but now it is a bit negatively skewed. It is as if it is trying to balance out the slight positive skewness of the largest eigenvalue.</p>
 <h3 id="distribution-of-eigenvalues">Distribution of Eigenvalues</h3>
 <p>Well, so far we have only seen how each individual eigenvalues behave. Each individual eigenvalue looks approximately like a Gaussian distributed random variable (for large $n$ say, i.e., large number of rows and columns of the random matrix), but with a bit of skewness here and there. What if we try to combine all of these eigenvalues together now? Basically we would keep track of every eigenvalue of the random matrix $X$, and then plot all these eigenvalues together to form a histogram. This will give us some idea about how a random eigenvalue of a random matrix look like.</p>
@@ -524,7 +533,10 @@ plt<span style="color:#f92672">.</span>show()
 plt<span style="color:#f92672">.</span>hist(eigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
 plt<span style="color:#f92672">.</span>xlabel(f<span style="color:#e6db74">&#34;Eigenvalues of {n}x{n} Gaussian matrix&#34;</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="fig4.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig4.png'>
+</img>
 <p>Well, this is no way a Gaussian kind of a distribution anymore. There is, of course, no concentration about the mean, and this semicircular structure of the probability distribution is not very traditional in nature, like the CLT or LLN that we have know so far. Dealing with this kind of distribution thus requires new tools, so we have a separate theory on Random Matrices. There are basically two hindrances on extending the traditional tools.</p>
 <ol>
 <li>
@@ -544,7 +556,10 @@ plt<span style="color:#f92672">.</span>show()
 plt<span style="color:#f92672">.</span>hist(sigs<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), bins <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>)
 plt<span style="color:#f92672">.</span>xlabel(f<span style="color:#e6db74">&#34;Singular values of {n}x{n} Gaussian matrix&#34;</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="fig5.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig5.png'>
+</img>
 <h2 id="the-distribution-of-the-spacings">The Distribution of the Spacings</h2>
 <p>Since we already know there exists some differences between the traditional asymptotic results and results of random matrices through simulation, here we try to do something concrete. Basically, we consider the distribution of spacings. In the traditional case, we can consider something like two i.i.d. standard normal random variables $x_1$ and $x_2$ and try to obtain the probability density function of $s = |x_1 - x_2|$. In the random matrix case, we will start with a $2\times 2$ random matrix with Gaussian entries, then try to see the probability distribution of the distance between the two eigenvalues.</p>
 <p>If our intuition is correct, these two lead to wildly different result.</p>
@@ -567,7 +582,10 @@ f(s) &amp; = \dfrac{\partial F(s)}{\partial s}\\<br>
 \end{align*}
 $$</p>
 <p>Here&rsquo;s how this distribution looks like.</p>
-<p><img src="fig6A.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig6A.png'>
+</img>
 <h3 id="the-2x2-gaussian-case">The 2X2 Gaussian Case</h3>
 <p>We have seen that the diagonal entries of symmetrized matrix has double the variance of the off-diagonal entries. Let us consider the $2\times 2$ case of a Gaussian random matrix, i.e.,
 $$
@@ -601,9 +619,11 @@ p(s) &amp; = p(r) = \dfrac{r}{8\pi\sqrt{\pi}}\int_{0}^{2\pi} \int_{-\infty}^{\in
 \end{align*}
 $$</p>
 <p>Here&rsquo;s how this distribution looks like.</p>
-<p><img src="fig6.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig6.png'>
+</img>
 <p>It clearly looks different than the one we obtained from spacings of two i.i.d. normal random variables. It shows that the eigenvalues are highly correlated. One eigenvalue feels the presence of the other, hence the spacing is not very likely to be near zero. This is known as eigenvalue repulsion. One application of this theory of repulsion is that it can be used to model the distribution of electrons as every electron repulses each other due to having the same charge.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> On the other hand, for the i.i.d. case, the spacings are very likely to be near $0$, since both of them are independently very likely to be close to their distributional expectation.</p>
-<p>In next few posts, we shall dive more into the theoretical aspects and see how we can generalize these things for more than $2\times 2$ case.</p>
 <h2 id="references">References</h2>
 <section class="footnotes" role="doc-endnotes">
 <hr>

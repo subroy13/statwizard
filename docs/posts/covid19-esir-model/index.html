@@ -101,7 +101,7 @@ Analysis of basic Epidemiological models - Part 2
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -711,7 +711,10 @@ R_post <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">matr
 </ol>
 <p>To simplify the calculation of derivative, we track the quantity $(\beta \pi(t) \theta^S_t\theta^I_t - \gamma \theta^I_t)$ over time, which is equal to the derivative due to SIR modelling.</p>
 <p>The following picture taken from the <a href="https://www.medrxiv.org/content/10.1101/2020.02.29.20029421v1.full.pdf">paper</a> by Wang et al. shows the concept clearly.</p>
-<p><img src="./deriv.png" alt=""></p>
+<img 
+    class='max-w-full mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='deriv.png'>
+</img>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">theta_diff_pre <span style="color:#f92672">&lt;-</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span>[1<span style="color:#f92672">:</span>T_obs]) <span style="color:#f92672">*</span> theta_pre[, <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>T_obs, <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
 theta_diff_post <span style="color:#f92672">&lt;-</span> theta_post[, , <span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> <span style="color:#a6e22e">sweep</span>(beta_pre <span style="color:#f92672">%*%</span> <span style="color:#a6e22e">t</span>(<span style="color:#66d9ef">pi</span><span style="color:#a6e22e">[</span>(T_obs<span style="color:#ae81ff">+1</span>)<span style="color:#f92672">:</span>(T_obs<span style="color:#f92672">+</span>T_new)]) <span style="color:#f92672">*</span> theta_post[, , <span style="color:#ae81ff">1</span>], MARGIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, STATS <span style="color:#f92672">=</span> gamma_pre)
 theta_diff <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">cbind</span>(theta_diff_pre, theta_diff_post)
@@ -777,7 +780,10 @@ Initializing model
     <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-20-1.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-20-1.png'>
+</img>
 <p>However, if we assume that, the Italy government maintains the current lockdown indefinitely, then $\pi(t) = 0.25$ will continue to remain. In such case, the important dates (as mentioned above) for change in the rate of newly infected can be obtained, as shown in the following plot.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi0 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">200</span>))
 preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forecast.SIR</span>(<span style="color:#ae81ff">7+200</span>, <span style="color:#ae81ff">28</span>, mcmc_samples, <span style="color:#66d9ef">pi</span> <span style="color:#f92672">=</span> pi0, control.params <span style="color:#f92672">=</span> control.params, start.date <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-02-21&#34;</span>)
@@ -790,7 +796,10 @@ preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forec
     <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./plot2.jpeg" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='plot2.jpeg'>
+</img>
 <p>Therefore, in Italy, at about June 24, we should see decreasing increments of newly infected persons, and from August 17 onwards, the proportion of infected people should start to decline.</p>
 <h2 id="estimation-for-india">Estimation for India</h2>
 <p>However, our main concern is to find out the situation of India based on this eSIR modelling. Here, we shall use the $\pi(t)$ function as follows, as per various decision taken by the Government, like restriction on international flights, Janta Curfew and full scale lockdowns etc.</p>
@@ -823,7 +832,10 @@ preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forec
     <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> mean, color <span style="color:#f92672">=</span> phase), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">labs</span>(x <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>, y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;P(Infected)&#34;</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Infected<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-23-1.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-23-1.png'>
+</img>
 <p>Although it seems that the mean proportion is overestimated during the ovserved period, however the effect of quanting seems to work to a moderate extent, as the estimated proportion stays more or less at the same level. The exact count of the infected people at the end of lockdown, provided that it is maintained properly, should be about $1571$ many infected persons, and about $2114$ confirmed cases of COVID-19.</p>
 <p>Similar to Italy, if we extend its forecast for some more days, and keep the same level of quarantining, the model predictions are given in the following plot.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">200</span>)) 
@@ -837,7 +849,10 @@ preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">forec
     <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./unnamed-chunk-25-1.png" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-25-1.png'>
+</img>
 <p>Therefore, as it seems, if we keep the lockdown (as it is now), based on the data, it might take till October to have the proportion of infected people becoming insignificant, provided we keep the same level of quanranting effect. However, from March 17, we should see a decrease in the rate of increment in the number of infected, and from March 29 onwards, we should be at a position from where the number of newly infected persons per day starts to decrease gradually.</p>
 <p>Since, it is very economically and physically dissatisfying to be in a lockdown (or state of home quarantine till October, where Durga Puja festival is going to occur), we might want to go outside. In that case, assuming $\pi(t)$ increases to $0.5$, which is indeed less than 1, due to our increasing awareness of the scenario, then, the predicted situation would look like this.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">pi3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(pi0, <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.1</span>, <span style="color:#ae81ff">19</span>), <span style="color:#a6e22e">rep</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">365</span>)) 
@@ -852,7 +867,10 @@ preds<span style="color:#f92672">$</span>infected<span style="color:#f92672">$</
     <span style="color:#a6e22e">geom_point</span>(data <span style="color:#f92672">=</span> subdat, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> (Confirmed <span style="color:#f92672">-</span> Removed)<span style="color:#f92672">/</span>N), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>first.date[1] <span style="color:#f92672">-</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">2e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>first.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> ) <span style="color:#f92672">+</span>
     <span style="color:#a6e22e">geom_text</span>(x <span style="color:#f92672">=</span> preds<span style="color:#f92672">$</span>second.date[1] <span style="color:#f92672">+</span> <span style="color:#ae81ff">7</span>, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3e-4</span>, label <span style="color:#f92672">=</span> <span style="color:#a6e22e">format</span>(preds<span style="color:#f92672">$</span>second.date[1], <span style="color:#e6db74">&#34;%b %d&#34;</span>), size <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span> )
-</code></pre></div><p><img src="./plot5.jpeg" alt=""></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='plot5.jpeg'>
+</img>
 <p>This scenario would be very severe for us, since it would affect about $6%$ of the urban population on about June 27, and then it would start to decrease gradually. However, it would take almost 2 years, to make this epidemic insignificant, provided there would be no generally accepted antiviral medicine for COVID-19 till then.</p>
 <p>Hence, we must avoid such situation at all costs, and to counter it, we must stay home, at a shelter in place home quarantining atmosphere.</p>
 <h1 id="conclusion">Conclusion</h1>

@@ -101,7 +101,7 @@ Reinforcement Learning (Part 4) - Temporal Difference Algorithms
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -450,7 +450,10 @@ $$</p>
 </ol>
 <h3 id="td-algorithm-for-maze-game">TD Algorithm for Maze Game</h3>
 <p>Now we will try to apply the TD algorithm on the same maze game from the <a href="https://www.statwizard.in/posts/markov-decision-process/">last post</a>. Just to recap, the maze game has a maze shown as follow in the following figure, starting at the red corner to reach the blue corner, avoiding the obstacles shown in gray. The reward for reaching the end goal is $100$ but hitting any obstacle is $-1$.</p>
-<p><img src="fig1.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig1.png'>
+</img>
 <p>Here is a code that performs the TD algorithm on the maze game.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># temporal difference learning</span>
 B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span>   <span style="color:#75715e"># number of episodes</span>

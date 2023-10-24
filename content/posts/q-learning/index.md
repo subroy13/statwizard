@@ -103,7 +103,7 @@ env = gym.make("Acrobot-v1", render_mode = "rgb_array")
 
 Each environment describes a game. The setup of the game of `Acrobot-v1` is as follows: There are two chain links hanging from a point, tied together, and each of the link can freely move within the reasonable bound of physical system. The objective is to apply force to the joint of these two links to ensure that the link touches a line above a certain height from the chain.
 
-![](./acrobot/episode-1.gif)
+{{<figure src="./acrobot/episode-1.gif">}}
 
 The observation space or the state for this game consists of some properties like linear and angular velocity of the chains and stuffs, (very complicated physics for me!), so we are just going to assume that it is simply a vector. There are only 3 possible actions at every time, push the joint to the left or to the right or do nothing. 
 
@@ -176,7 +176,7 @@ for episode in range(n_episodes):
 
 Once we perform these 2000 episodes, we try to save the agent's behaviour on a new episode and record that as a GIF image.
 
-![](./acrobot/episode-2001.gif)
+{{<figure src="./acrobot/episode-2001.gif">}}
 
 
 It looks like the agent is not learning anything. Wonder why is that? The behaviour still looks very random.
@@ -227,12 +227,12 @@ for episode in range(n_episodes):
 
 Now that we are exploring a bit at the beginning, we do $5000$ episodes, and after that the result becomes very promising.
 
-![](./acrobot/episode-5000.gif)
+{{<figure src="./acrobot/episode-5000.gif">}}
 
 
 It is a bit hard to see that the chain link is touching the target line. Here's the final frame.
 
-![](./acrobot//acrobot-solution.png)
+{{<figure src="./acrobot/acrobot-solution.png">}}
 
 
 ## Q-Learning for Moon Landing?
@@ -241,17 +241,16 @@ Next, we will try the same method for the lunar landing enviroment present in th
 
 Here's how the environment looks in action.
 
-![](./lunarlander/episode-1.gif)
+{{<figure src="./lunarlander/episode-1.gif">}}
 
 We try the same thing as we did for the acrobot game. We discretize the state space, and apply Q-learning algorithm to train an RL agent. After $10000$ episodes, this is the result.
 
-![](./lunarlander/episode-10000.gif)
+{{<figure src="./lunarlander/episode-10000.gif">}}
 
 Looks like it is failing pretty much. In between we have a few decent episodes though!
 
-![](./lunarlander/episode-6001.gif)
-![](./lunarlander/episode-8001.gif)
-
+{{<figure src="./lunarlander/episode-6001.gif">}}
+{{<figure src="./lunarlander/episode-8001.gif">}}
 
 It seems that applying Q-Learning to the LunarLander environment presents some challenges compared to the Acrobot environment. Can you think of why? Please share your thoughts in the comments!
 

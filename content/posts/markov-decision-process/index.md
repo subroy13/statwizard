@@ -116,7 +116,7 @@ Therefore, one of the fundamental thing for an RL agent to improve its action is
 
 Here, we shall see how an RL agent can try to estimate the value function. For that, we will use the following example game, which is like a maze game within a $4\times 4$ grid. The mission is to start on the top left corner (shown in <span class="text-red-500">Red</span> below) and reach the top right corner (shown in <span class="text-blue-500">Blue</span> below), but there are some obstacles (shown in Gray) along the way. The state is the agent's current position in the grid, and at any point, it can move up, down, left or right. Every move it makes gives no reward normally, unless it reaches the end when it gets a reward of $5$ and hitting any obstacle gives a reward of $(-1)$. 
 
-![](fig1.png)
+{{<figure src="fig1.png">}}
 
 Let us try to code this environment in `python`, which takes the current state $S_t$ and the action $A_t$, and returns the new state $S_{t+1}$ and the immediate reward $R_{t+1}$. 
 

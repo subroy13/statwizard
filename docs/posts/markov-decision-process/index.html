@@ -101,7 +101,7 @@ Reinforcement Learning (Part 3) - Markov Decision Process
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -503,7 +503,10 @@ where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long 
 <p>Therefore, one of the fundamental thing for an RL agent to improve its action is to known where it stands, by basically estimating the value function (i.e., the expected gain) for its current policy (read for its current strategy).</p>
 <h3 id="example-game">Example Game</h3>
 <p>Here, we shall see how an RL agent can try to estimate the value function. For that, we will use the following example game, which is like a maze game within a $4\times 4$ grid. The mission is to start on the top left corner (shown in <span class="text-red-500">Red</span> below) and reach the top right corner (shown in <span class="text-blue-500">Blue</span> below), but there are some obstacles (shown in Gray) along the way. The state is the agent&rsquo;s current position in the grid, and at any point, it can move up, down, left or right. Every move it makes gives no reward normally, unless it reaches the end when it gets a reward of $5$ and hitting any obstacle gives a reward of $(-1)$.</p>
-<p><img src="fig1.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig1.png'>
+</img>
 <p>Let us try to code this environment in <code>python</code>, which takes the current state $S_t$ and the action $A_t$, and returns the new state $S_{t+1}$ and the immediate reward $R_{t+1}$.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gridworld_maze</span>(cur_state, action):
   x, y <span style="color:#f92672">=</span> cur_state

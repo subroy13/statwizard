@@ -29,11 +29,12 @@ This is a rather long description, but it is about something that really interes
 
 I think the answer to this question is better to show visually, rather than talking about it.
 
-<img src="./out1.png"/>
+{{<figure src="out1.png">}}
 
-<img src="./out2.png"/>
+{{<figure src="out2.png">}}
 
-<img src="./out3.png"/>
+{{<figure src="out3.png">}}
+
 
 
 So, I think now one should get the idea. Neural Style transfer combines the aesthetics of an image on to another image (here the image of the girl named Karya, which has been provided by [Dmitry Ulyanov's Github](https://github.com/DmitryUlyanov/texture_nets)), retaining the content of the image (i.e. retaining the girl in the stylized output). Note that, the effect is particularly visible in 2nd and 3rd images, whereas, for the first image, the style aspect is greatly emphasized.
@@ -88,30 +89,34 @@ Coming back to tensor, it is introduced as an efficient representation of **Mult
 
 Now, to understand how tensor comes into play to define images, one needs to understand the mechanism of how an image is stored digitally. For this, consider a black grid like chessboard, but all cells are coloured white. Now, you start colouring some cells to black, and then you would be able to generate some pictures with tons of block like artifacts. The following example from [logicalzero.com](http://logicalzero.com/gamby/reference/image_formats.html) shows such a smiley face just colouring a 8x8 grid.
 
-<img src="./smiley.png"/>
+{{<figure src="smiley.png">}}
 
 A smiley was okay, but it was not very appealing. Now, since we have a 8x8 grid, and each of the cells can be coloured in 2 ways, black or white. Hence, by simple combinatorics, this generates $2^{256}$ possible images, out of this 8x8 grid, which is about $1.15 \times 10^{77}$. That's a lot! However, not all such combinations will result in visually appealing images, something that we can actually call as a potential image with our natural sense. So, among these vast majority of combinations, only a few will make up images, that our brain can visualize and understand as an image.
 
 However, if we wish to create more complicated images, we need a bigger grid. The reason being that these 8x8 grid cannot be used to approximate complicated curves in the image we encounter in daily life. For instance, increasing the number of cells in the grid, we can create an image of a panda.
 
-<img src="nonogram.png">
+{{<figure src="nonogram.png">}}
 
-*Note: This image transpires as a solution of a puzzle called [Nonogram](https://en.wikipedia.org/wiki/Nonogram), which is also called as Picross or Visual Crosswords or Japanese Crosswords.*
+*Note: This image turns out to be a solution of a puzzle called [Nonogram](https://en.wikipedia.org/wiki/Nonogram), which is also called as Picross or Visual Crosswords or Japanese Crosswords.*
 
 Using finer grids actually results in a better picture, as you can see. Digital black and white images are represented using the technique described above, and each of the grid cell is called a [Pixel](https://en.wikipedia.org/wiki/Pixel). Now, note that, we can represent this grid using a 2-dimensional matrix of 0's and 1's, where a white pixel would be represented as 0 and a black pixel would be repesented as 1. For instance, the smiley image can be matrixified like this:
 
-![](./smiley.png)
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <img src="smiley.png"></img>
+    <div class = "w-full">
+        $$\begin{bmatrix}
+        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
+        0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
+        1 & 0 & 0 & 0 & 0 & 1 & 0 & 1\\\\
+        1 & 0 & 1 & 1 & 1 & 0 & 0 & 1\\\\
+        0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
+        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
+        \end{bmatrix}$$
+    </div>
+</div>
 
-$$\begin{bmatrix}
-0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
-0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
-1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
-1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
-1 & 0 & 0 & 0 & 0 & 1 & 0 & 1\\\\
-1 & 0 & 1 & 1 & 1 & 0 & 0 & 1\\\\
-0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
-0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
-\end{bmatrix}$$
 
 Now, we shall use colour images in this context of Neural Style Transfer. To represent a colour image, we require 3 such matrices. One for Red channel, one for Blue channel and another for Green Channel. Also, the elements of the matrices will be allowed to take values between 0 and 255 (to be represented by 8 digit binary numbers) or to take any real value between 0 and 1, representing the denisty of the colour. For instance, in the above black and white images, we can put the value 0.5 in some elements to represent that those pixels should be coloured using gray, which is a colour midway between black and white. Hence, allowing floating point values would ensure a richer distribution of images.
 
@@ -162,9 +167,7 @@ tensor_to_image(content_image * 255.0)
 ```
 
 
-
-
-![png](./index_13_0.png)
+{{<figure src="index_13_0.png">}}
 
 
 
@@ -178,11 +181,7 @@ style_image = load_img(style_path, rescale = False)
 tensor_to_image(style_image * 255.0)
 ```
 
-
-
-
-![png](./index_15_0.png)
-
+{{<figure src="index_15_0.png">}}
 
 
 This is the style image that we can going to use. So, we think, the final image would look like the image of the artificial celebrity, tessalatted like the style image.
@@ -299,16 +298,14 @@ a = tf.constant([[[1, 2, 3], [4, 5, 6], [7, 8, 9]]])
 periodic_padding(a)
 ```
 
-
-
-
+```console
     <tf.Tensor: shape=(1, 5, 5), dtype=int32, numpy=
     array([[[9, 7, 8, 9, 7],
             [3, 1, 2, 3, 1],
             [6, 4, 5, 6, 4],
             [9, 7, 8, 9, 7],
             [3, 1, 2, 3, 1]]], dtype=int32)>
-
+```
 
 
 Note that, the output tensor has size 5x5, which it obtained by one unit of padding in top, bottom, left and right. Also note that, to the left of 1, we have 3, hence it is as if the rightmost column of the original matrix is wrapped to the left side of the matrix. Similar wrapping is also seen in vertical direction.
@@ -331,7 +328,8 @@ def CircularPadding(inputs, kernel_size = 3):
     return tf.concat(output_split, axis = -1)
 ```
 
-{{< figure src = "convolution.png" width = "500px" >}}
+{{<figure src="convolution.png" class="lg">}}
+
 
 The diagram above shows the main idea of a convolutional layer. Let us say, we have an image, represented by a 5x5x3 tensor (pretty bad for visualizing, but pretty good for understanding), and we wish to perform convolution of this image with a 3x3 kernel. Then the convolution is basically a weighted combination of all the neighbouring pixels from all the layers. To understand mathematically, let us introduce some notations.
 
@@ -438,13 +436,15 @@ model.summary()
 tf.keras.utils.plot_model(model, show_shapes=True)
 ```
 
-![png](./index_29_0.png)
+{{<figure src="index_29_0.png">}}
+
 
 In the function `conv_block`, we take the height and width of the input tensor and the number of channels of the input tensor, and the number of filters to finally output after processing. Note that, after each of the Circular Convolution, we perform a Batch Normalization and a Leaky ReLU layer. 
 
 Batch Normalization layer basically normalizes the outputs with respect to the batch axis (i.e. with respect to the ? or None axis indicated in the diagram, which means you are pass arbitrary number of images through the network) so that the mean values remain close to 0, and standard deviation remains close to 1. The following image from the [2018 paper on Group Normalization](https://arxiv.org/abs/1803.08494) by Yuxin Wu, Kaiming He described the idea of normalization through the following interesting image.
 
-{{< figure src="norm.png" >}}
+{{<figure src="norm.png">}}
+
 
 Finally, Leaky ReLU is a layer than performs an nonlinear activation to the input vector. Leaky ReLU is basically the following function;
 
@@ -504,7 +504,7 @@ model.summary()
 tf.keras.utils.plot_model(model, show_shapes=True)
 ```
 
-![png](./index_33_0.png)
+{{<figure src="index_33_0.png">}}
 
 
 The `join block` is extremely simple, it upsamples the low resolution processed features of the image. Then it normalizes both the higher resolution processed noise, and upsampled version of low resolution features, so that the effect of both branches remain comparable in the network. Finally, it combines the normalized versions.
@@ -513,7 +513,7 @@ The `join block` is extremely simple, it upsamples the low resolution processed 
 
 According to the [paper](https://arxiv.org/abs/1603.03417) describing Texture Networks, the generator should have a structure similar to the following figure.
 
-{{< figure src = "gen.png" >}}
+{{<figure src="gen.png">}}
 
 
 However, it was also mentioned that for style transfer, increasing the number of noise from 5 to 6, actually provides much better quality. So, we start the network from a noise of size 8x8x3, and keep increasing it till 256x256x3, which is of the same size of our original content image.
@@ -666,7 +666,7 @@ generator.summary()
 tf.keras.utils.plot_model(generator, show_shapes = True)
 ```
 
-![png](./index_38_0.png)
+{{<figure src="index_38_0.png">}}
 
 
 Finally, we have a generator model with about 75,000 parameters.
@@ -767,7 +767,7 @@ output = tex_net(content_image, 1)
 tensor_to_image(output['gen'])
 ```
 
-![png](./index_47_0.png)
+{{<figure src="index_47_0.png">}}
 
 
 # Training the Network
@@ -888,7 +888,7 @@ for epoch in range(n_epoch):
     
 
 
-![png](./index_57_1.png)
+{{<figure src="index_57_1.png">}}
 
 
     Epoch: 1
@@ -917,9 +917,7 @@ for epoch in range(n_epoch):
     Loss:  tf.Tensor(2400430.2, shape=(), dtype=float32)
     Loss:  tf.Tensor(2389489.8, shape=(), dtype=float32)
     
-
-
-![png](./index_57_19.png)
+{{<figure src="index_57_19.png">}}
 
 
 Note how the generated image becomes better and better with more iteration, by mimicking the style of tessellation on our image of AI generated celebrity. But the image does not change much after epoch 5, except the colour gets more violet-ish rather than blue-ish. However, you can manipulate the style weights and content weights properly, in order to have a good balance between the content and style. Also, if we take a look at the loss function, we see that the loss was decreasing rapidly at the beginning, and finally it has more or less stabilized at a point where it cannot be lowered further by much. Hence, by looking at the loss function, it seems the generator is trained enough to meet its capacities.
@@ -931,8 +929,7 @@ plt.title('Loss Function over time')
 plt.show()
 ```
 
-
-![png](./index_59_0.png)
+{{<figure src="index_59_0.png">}}
 
 
 From the generation the final stylized image, it seems as if the image of the celebrity is properly tessellated, as we desired. However, it is mostly blue, and there are some funny artifacts and the colour of the skin appearing at the forehead area. This can possibly be resolved by carefully trying out different style and content layer repesentations, as well as adding a variational loss to the custom loss function.
@@ -942,8 +939,7 @@ From the generation the final stylized image, it seems as if the image of the ce
 tensor_to_image(tex_net(content_image, 1)['gen'])
 ```
 
-
-![png](./index_61_0.png)
+{{<figure src="index_61_0.png">}}
 
 
 ## References

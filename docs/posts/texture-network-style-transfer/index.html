@@ -101,7 +101,7 @@ Texture Networks
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -437,9 +437,18 @@ Texture Networks
                     <p>This is a rather long description, but it is about something that really interests me, about how to mix the content of a picture with the style from another picture, called Neural Style Transfer. <strong>Texture Networks</strong> is a Neural Network approach devised by Dmitry Ulyanov, Vadim Lebedev, Andrea Vedaldi and Victor Lempitsky in 2016, which is extremely useful to synthesize new types of textures (which is extensively used in the production of clothing with exclusive designs), as well as being able to work as a style transfer mechanism.</p>
 <h1 id="what-is-neural-style-transfer">What is Neural Style Transfer?</h1>
 <p>I think the answer to this question is better to show visually, rather than talking about it.</p>
-<img src="./out1.png"/>
-<img src="./out2.png"/>
-<img src="./out3.png"/>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='out1.png'>
+</img>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='out2.png'>
+</img>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='out3.png'>
+</img>
 <p>So, I think now one should get the idea. Neural Style transfer combines the aesthetics of an image on to another image (here the image of the girl named Karya, which has been provided by <a href="https://github.com/DmitryUlyanov/texture_nets">Dmitry Ulyanov&rsquo;s Github</a>), retaining the content of the image (i.e. retaining the girl in the stylized output). Note that, the effect is particularly visible in 2nd and 3rd images, whereas, for the first image, the style aspect is greatly emphasized.</p>
 <p>I am going to discuss exactly how I created those stylized images, and hopefully, after reading this, you would be able to reproduce similar results with images of your choice.</p>
 <h1 id="prerequisites">Prerequisites</h1>
@@ -465,23 +474,33 @@ Texture Networks
 <p>Coming back to tensor, it is introduced as an efficient representation of <strong>Multilinear Maps</strong> between vector spaces. Let $V_1, V_2, \dots V_n, W$ be some vector spaces, then, a function $f : V_1 \times V_2 \times\dots V_n \rightarrow W$ is said to be a multilinear map, if $f(v_1, v_2, \dots v_i, \dots v_n)$ is linear in $v_i$ given all other arguments $v_1, \dots v_{i-1}, v_{i+1}, \dots v_n$ are fixed. And such linearity holds of any of its arguments. So, if you are comfortable with the mathematics of Linear Algebra and Matrices, then you would clearly understand that tensor is just a multidimensional generalization of matrices.</p>
 <h2 id="what-an-image-is-do-to-with-tensor">What an Image is do to with Tensor?</h2>
 <p>Now, to understand how tensor comes into play to define images, one needs to understand the mechanism of how an image is stored digitally. For this, consider a black grid like chessboard, but all cells are coloured white. Now, you start colouring some cells to black, and then you would be able to generate some pictures with tons of block like artifacts. The following example from <a href="http://logicalzero.com/gamby/reference/image_formats.html">logicalzero.com</a> shows such a smiley face just colouring a 8x8 grid.</p>
-<img src="./smiley.png"/>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='smiley.png'>
+</img>
 <p>A smiley was okay, but it was not very appealing. Now, since we have a 8x8 grid, and each of the cells can be coloured in 2 ways, black or white. Hence, by simple combinatorics, this generates $2^{256}$ possible images, out of this 8x8 grid, which is about $1.15 \times 10^{77}$. That&rsquo;s a lot! However, not all such combinations will result in visually appealing images, something that we can actually call as a potential image with our natural sense. So, among these vast majority of combinations, only a few will make up images, that our brain can visualize and understand as an image.</p>
 <p>However, if we wish to create more complicated images, we need a bigger grid. The reason being that these 8x8 grid cannot be used to approximate complicated curves in the image we encounter in daily life. For instance, increasing the number of cells in the grid, we can create an image of a panda.</p>
-<img src="nonogram.png">
-<p><em>Note: This image transpires as a solution of a puzzle called <a href="https://en.wikipedia.org/wiki/Nonogram">Nonogram</a>, which is also called as Picross or Visual Crosswords or Japanese Crosswords.</em></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='nonogram.png'>
+</img>
+<p><em>Note: This image turns out to be a solution of a puzzle called <a href="https://en.wikipedia.org/wiki/Nonogram">Nonogram</a>, which is also called as Picross or Visual Crosswords or Japanese Crosswords.</em></p>
 <p>Using finer grids actually results in a better picture, as you can see. Digital black and white images are represented using the technique described above, and each of the grid cell is called a <a href="https://en.wikipedia.org/wiki/Pixel">Pixel</a>. Now, note that, we can represent this grid using a 2-dimensional matrix of 0&rsquo;s and 1&rsquo;s, where a white pixel would be represented as 0 and a black pixel would be repesented as 1. For instance, the smiley image can be matrixified like this:</p>
-<p><img src="./smiley.png" alt=""></p>
-<p>$$\begin{bmatrix}
-0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\<br>
-0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\<br>
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 1 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\\<br>
-1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 &amp; 1\\<br>
-0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0\\<br>
-0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 0\\<br>
-\end{bmatrix}$$</p>
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <img src="smiley.png"></img>
+    <div class = "w-full">
+        $$\begin{bmatrix}
+        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
+        0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
+        1 & 0 & 1 & 0 & 1 & 0 & 0 & 1\\\\
+        1 & 0 & 0 & 0 & 0 & 1 & 0 & 1\\\\
+        1 & 0 & 1 & 1 & 1 & 0 & 0 & 1\\\\
+        0 & 1 & 0 & 0 & 0 & 0 & 1 & 0\\\\
+        0 & 0 & 1 & 1 & 1 & 1 & 0 & 0\\\\
+        \end{bmatrix}$$
+    </div>
+</div>
 <p>Now, we shall use colour images in this context of Neural Style Transfer. To represent a colour image, we require 3 such matrices. One for Red channel, one for Blue channel and another for Green Channel. Also, the elements of the matrices will be allowed to take values between 0 and 255 (to be represented by 8 digit binary numbers) or to take any real value between 0 and 1, representing the denisty of the colour. For instance, in the above black and white images, we can put the value 0.5 in some elements to represent that those pixels should be coloured using gray, which is a colour midway between black and white. Hence, allowing floating point values would ensure a richer distribution of images.</p>
 <p>Coming back to the link between images and tensor, an image is represented by 3 such matrices, in combination, a 3-dimensional tensor, which the dimension or shape being (3, height of the image, width of the image), where 3 being number of channels.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tensor_to_image</span>(tensor):
@@ -512,12 +531,18 @@ Texture Networks
 content_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;../input/artistic-style-transfer/celebGAN_male.png&#39;</span>
 </code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">content_image <span style="color:#f92672">=</span> load_img(content_path, rescale <span style="color:#f92672">=</span> True)
 tensor_to_image(content_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
-</code></pre></div><p><img src="./index_13_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_13_0.png'>
+</img>
 <p>This is the content image, on which we shall apply some style. Note that, the loaded images have elements between 0 and 1, while the <code>tensor_to_img</code> function takes in a tensor with values between 0 and 255, hence we need to multiply all the elements by 255 to convert it to the crucial range where it can be visualized.</p>
 <p>Surprisingly, the image I am using is actually an image generated via Neural Network called <a href="https://arxiv.org/abs/1710.10196">Progressive GAN</a>, which is really interesting work by Tero Karras, Timo Aila, Samuli Laine, Jaakko Lehtinen, who trained a network on <strong>Celeb A</strong> dataset to generate images of new celebrities, who do not exist in real life.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">style_image <span style="color:#f92672">=</span> load_img(style_path, rescale <span style="color:#f92672">=</span> False)
 tensor_to_image(style_image <span style="color:#f92672">*</span> <span style="color:#ae81ff">255.0</span>)
-</code></pre></div><p><img src="./index_15_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_15_0.png'>
+</img>
 <p>This is the style image that we can going to use. So, we think, the final image would look like the image of the artificial celebrity, tessalatted like the style image.</p>
 <h1 id="architecture-of-texture-network">Architecture of Texture Network</h1>
 <p>Texture Network comprised of two main components.</p>
@@ -529,12 +554,10 @@ tensor_to_image(style_image <span style="color:#f92672">*</span> <span style="co
 <p>A <strong>Descriptor Network</strong> is a neural network which takes input of the desired stylized image, and then try to figure out the underlying style and content of the stylized image, and try to match it with the original style image and content image.</p>
 <p>If you are familiar with <a href="https://en.wikipedia.org/wiki/Generative_adversarial_network">Generative Adversarial Networks</a> (GAN), then you would find a lot similarity of Texture Network with GANs. However, unlike to the case of GAN, here, the descriptor network will not be trained, but will be used to measure the style and content of the stylized images generated by Generator Network.</p>
 <p>To understand why such a descriptor network is needed at all, consider an image of a person. If one shifts the image just by one pixel to the left, then using a simple squared error loss between the original image and shifted image would become large, however, from our perception, both images would look identical. Hence, to actually compare the two images, we specifically need to compare high level representations of the images, which will be provided by the descriptor network.</p>
-<figure>
-    <img src="texnet.png"
-         alt="Description of the Network: Taken from the paper introducing Texture Networks"/> <figcaption>
-            <p>Description of the Network: Taken from the paper introducing Texture Networks</p>
-        </figcaption>
-</figure>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='texnet.png'>
+</img>
 <h2 id="choice-of-descriptor-network">Choice of Descriptor Network</h2>
 <p>We use <a href="https://arxiv.org/abs/1409.1556">VGG19</a> as our descriptor network as it is a Very Deep Convolutional Networks for Large-Scale Image Recognition. It was developed by Karen Simonyan, Andrew Zisserman in 2014, and is trained with the ImageNet dataset, comprising of millions of images. Hence, high level features of this network will be an acurate representation of the style and content of images.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">vgg <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>applications<span style="color:#f92672">.</span>VGG19(include_top<span style="color:#f92672">=</span>False, weights<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;imagenet&#39;</span>)   <span style="color:#75715e"># Load VGG19 pretrained Network from Keras</span>
@@ -606,14 +629,13 @@ block5_pool
 \end{bmatrix}$$</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">a <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>constant([[[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>], [<span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>]]])
 periodic_padding(a)
-</code></pre></div><pre><code>&lt;tf.Tensor: shape=(1, 5, 5), dtype=int32, numpy=
-array([[[9, 7, 8, 9, 7],
-        [3, 1, 2, 3, 1],
-        [6, 4, 5, 6, 4],
-        [9, 7, 8, 9, 7],
-        [3, 1, 2, 3, 1]]], dtype=int32)&gt;
-</code></pre>
-<p>Note that, the output tensor has size 5x5, which it obtained by one unit of padding in top, bottom, left and right. Also note that, to the left of 1, we have 3, hence it is as if the rightmost column of the original matrix is wrapped to the left side of the matrix. Similar wrapping is also seen in vertical direction.</p>
+</code></pre></div><pre><code class="language-console" data-lang="console">    &lt;tf.Tensor: shape=(1, 5, 5), dtype=int32, numpy=
+    array([[[9, 7, 8, 9, 7],
+            [3, 1, 2, 3, 1],
+            [6, 4, 5, 6, 4],
+            [9, 7, 8, 9, 7],
+            [3, 1, 2, 3, 1]]], dtype=int32)&gt;
+</code></pre><p>Note that, the output tensor has size 5x5, which it obtained by one unit of padding in top, bottom, left and right. Also note that, to the left of 1, we have 3, hence it is as if the rightmost column of the original matrix is wrapped to the left side of the matrix. Similar wrapping is also seen in vertical direction.</p>
 <p>However, for an image, we need to perform this circular padding for each of the channel. Hence, we first split up the 3 channels of the image, then append circular padding for each one, and finally combine them together. This is done through <code>CircularPadding</code> function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">CircularPadding</span>(inputs, kernel_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>):
     <span style="color:#e6db74">&#34;&#34;&#34;Prepares padding for Circular convolution&#34;&#34;&#34;</span>
@@ -627,9 +649,10 @@ array([[[9, 7, 8, 9, 7],
         outs <span style="color:#f92672">=</span> tf<span style="color:#f92672">.</span>expand_dims(outs, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
         output_split<span style="color:#f92672">.</span>append(outs)
     <span style="color:#66d9ef">return</span> tf<span style="color:#f92672">.</span>concat(output_split, axis <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
-</code></pre></div><figure>
-    <img src="convolution.png" width="500px"/> 
-</figure>
+</code></pre></div><img 
+    class='max-w-lg mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='convolution.png'>
+</img>
 <p>The diagram above shows the main idea of a convolutional layer. Let us say, we have an image, represented by a 5x5x3 tensor (pretty bad for visualizing, but pretty good for understanding), and we wish to perform convolution of this image with a 3x3 kernel. Then the convolution is basically a weighted combination of all the neighbouring pixels from all the layers. To understand mathematically, let us introduce some notations.</p>
 <p>Let $X$ denote the tensor image, and $X_{ijc}$ denote the value of the $(i, j)$-th pixel at the $c$-th channel. Now, let us say we wish to find out the value of the convolution at $(i_0, j_0)$ cell. Then, the convolution is defined as;</p>
 <p>$$H(i_0, j_0) = b + \sum_{(i, j) \in N(i_0, j_0)}\sum_{c} X_{ijc} K((i - i_0), (j - j_0), c)$$</p>
@@ -713,12 +736,16 @@ Non-trainable params: 48
 _________________________________________________________________
 </code></pre>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span>True)
-</code></pre></div><p><img src="./index_29_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_29_0.png'>
+</img>
 <p>In the function <code>conv_block</code>, we take the height and width of the input tensor and the number of channels of the input tensor, and the number of filters to finally output after processing. Note that, after each of the Circular Convolution, we perform a Batch Normalization and a Leaky ReLU layer.</p>
 <p>Batch Normalization layer basically normalizes the outputs with respect to the batch axis (i.e. with respect to the ? or None axis indicated in the diagram, which means you are pass arbitrary number of images through the network) so that the mean values remain close to 0, and standard deviation remains close to 1. The following image from the <a href="https://arxiv.org/abs/1803.08494">2018 paper on Group Normalization</a> by Yuxin Wu, Kaiming He described the idea of normalization through the following interesting image.</p>
-<figure>
-    <img src="norm.png"/> 
-</figure>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='norm.png'>
+</img>
 <p>Finally, Leaky ReLU is a layer than performs an nonlinear activation to the input vector. Leaky ReLU is basically the following function;</p>
 <p>$$f(x) = \begin{cases}
 x &amp; \text{ if } x \geq 0 \\ \alpha x &amp; \text{ if } x &lt; 0
@@ -760,13 +787,17 @@ Non-trainable params: 80
 __________________________________________________________________________________________________
 </code></pre>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(model, show_shapes<span style="color:#f92672">=</span>True)
-</code></pre></div><p><img src="./index_33_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_33_0.png'>
+</img>
 <p>The <code>join block</code> is extremely simple, it upsamples the low resolution processed features of the image. Then it normalizes both the higher resolution processed noise, and upsampled version of low resolution features, so that the effect of both branches remain comparable in the network. Finally, it combines the normalized versions.</p>
 <h2 id="completing-the-generator">Completing the Generator</h2>
 <p>According to the <a href="https://arxiv.org/abs/1603.03417">paper</a> describing Texture Networks, the generator should have a structure similar to the following figure.</p>
-<figure>
-    <img src="gen.png"/> 
-</figure>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='gen.png'>
+</img>
 <p>However, it was also mentioned that for style transfer, increasing the number of noise from 5 to 6, actually provides much better quality. So, we start the network from a noise of size 8x8x3, and keep increasing it till 256x256x3, which is of the same size of our original content image.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">generator_network</span>():
     <span style="color:#75715e"># create input nodes for noise tensors</span>
@@ -899,7 +930,10 @@ Non-trainable params: 1,298
 __________________________________________________________________________________________________
 </code></pre>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tf<span style="color:#f92672">.</span>keras<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>plot_model(generator, show_shapes <span style="color:#f92672">=</span> True)
-</code></pre></div><p><img src="./index_38_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_38_0.png'>
+</img>
 <p>Finally, we have a generator model with about 75,000 parameters.</p>
 <p>It should be clear that the low level features, i.e. the outputs of the lower level (closer to input layer that final layer in VGG19) layers are basically features such a strokes, edges which defines the artistic features of the image, whereas, high level features, i.e. the outputs of the higher level (closer to final layer than input layer in VGG19) are features that contains the summarization of the image, namely the abstract object that image contains, specifically the content of the image.</p>
 <p>However, Gatys et al. in their <a href="https://arxiv.org/abs/1508.06576">paper</a> <strong>A Neural Algorithm for Artistic Style</strong> depicts that the style is basically represented by the correlation of the low level features of an image, rather than the particular output of those low level features. An intuitive explanation to this particular observation can be given as follows: Consider our style image to be an image of a floor covered with square tiles, like a chessboard. Now, think of applying this tiling style to a complicated image of a landscape. To do this, one may need to consider rotating the tiles to be in a shape like diamonds, which may be able to capture better details of some corners presented in the content image. In this case, if we have a vertical and horizontal line detecting kernels as well as criss-cross line detecting kernels in VGG19, then such a pattern would not give similar output for both style image and final stylized image, but would give similar amount of correlation between those features.</p>
@@ -965,7 +999,10 @@ tex_net <span style="color:#f92672">=</span> TextureNetwork(style_layers, conten
 </code></pre></div><p>Note that, since the initial weights are set to 0, or close to 0, the illiterate network produces a black image. So, let us teach the network to learn its trainable parameters and weights, so that it can produces meaningful outputs.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">output <span style="color:#f92672">=</span> tex_net(content_image, <span style="color:#ae81ff">1</span>)
 tensor_to_image(output[<span style="color:#e6db74">&#39;gen&#39;</span>])
-</code></pre></div><p><img src="./index_47_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_47_0.png'>
+</img>
 <h1 id="training-the-network">Training the Network</h1>
 <p>Before training, we require the target variables, based on which our network compares its performance and computes the loss function. In the <a href="https://arxiv.org/abs/1603.03417">paper</a> on Texture Network, the author trains this network on MS COCO and ImageNet dataset. However, we shall use only the content and style image that we have repeatedly, since training on those large datasets would take particularly large amount of time and much computational power, which I lack because of scarcity of funds. So, I shall feed in the same content image and style image to the network repeatedly, and hope that the random noise inputs to the network is going to prevent overfitting of the network.</p>
 <p>So, I define a function called <code>extract targets</code> which will extract the style and content from the style and content images, and then those values can be used to compute the loss function. To explicity write the loss function, we shall use the formula;</p>
@@ -1046,8 +1083,11 @@ Loss:  tf.Tensor(22932934.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(22210894.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(21038836.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(19649052.0, shape=(), dtype=float32)
-</code></pre></p>
-<p><img src="./index_57_1.png" alt="png"></p>
+</code></pre>
+<img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='index_57_1.png'>
+</img></p>
 <pre><code>Epoch: 1
 Loss:  tf.Tensor(16565710.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(13611194.0, shape=(), dtype=float32)
@@ -1059,8 +1099,10 @@ Loss:  tf.Tensor(8675145.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(8301968.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(7836261.0, shape=(), dtype=float32)
 Loss:  tf.Tensor(7389797.5, shape=(), dtype=float32)
-<p>&hellip;</p>
-<p>Epoch: 9
+
+...
+
+Epoch: 9
 Loss:  tf.Tensor(2416303.5, shape=(), dtype=float32)
 Loss:  tf.Tensor(2413389.5, shape=(), dtype=float32)
 Loss:  tf.Tensor(2430066.5, shape=(), dtype=float32)
@@ -1071,16 +1113,25 @@ Loss:  tf.Tensor(2440708.5, shape=(), dtype=float32)
 Loss:  tf.Tensor(2416797.5, shape=(), dtype=float32)
 Loss:  tf.Tensor(2400430.2, shape=(), dtype=float32)
 Loss:  tf.Tensor(2389489.8, shape=(), dtype=float32)
-</code></pre></p>
-<p><img src="./index_57_19.png" alt="png"></p>
+</code></pre>
+<p><img 
+class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+src='index_57_19.png'>
+</img></p>
 <p>Note how the generated image becomes better and better with more iteration, by mimicking the style of tessellation on our image of AI generated celebrity. But the image does not change much after epoch 5, except the colour gets more violet-ish rather than blue-ish. However, you can manipulate the style weights and content weights properly, in order to have a good balance between the content and style. Also, if we take a look at the loss function, we see that the loss was decreasing rapidly at the beginning, and finally it has more or less stabilized at a point where it cannot be lowered further by much. Hence, by looking at the loss function, it seems the generator is trained enough to meet its capacities.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">plt<span style="color:#f92672">.</span>plot(loss_array)
 plt<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#39;Loss Function over time&#39;</span>)
 plt<span style="color:#f92672">.</span>show()
-</code></pre></div><p><img src="./index_59_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_59_0.png'>
+</img>
 <p>From the generation the final stylized image, it seems as if the image of the celebrity is properly tessellated, as we desired. However, it is mostly blue, and there are some funny artifacts and the colour of the skin appearing at the forehead area. This can possibly be resolved by carefully trying out different style and content layer repesentations, as well as adding a variational loss to the custom loss function.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">tensor_to_image(tex_net(content_image, <span style="color:#ae81ff">1</span>)[<span style="color:#e6db74">&#39;gen&#39;</span>])
-</code></pre></div><p><img src="./index_61_0.png" alt="png"></p>
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='index_61_0.png'>
+</img>
 <h2 id="references">References</h2>
 <ol>
 <li>Texture Networks: Feed-forward Synthesis of Textures and Stylized Images - Dmitry Ulyanov, Vadim Lebedev, Andrea Vedaldi, Victor Lempitsky. <a href="https://arxiv.org/abs/1603.03417">https://arxiv.org/abs/1603.03417</a>.</li>

@@ -101,7 +101,7 @@ Reinforcement Learning (Part 5) - Q Learning and Optimal Policy Finding
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -473,7 +473,10 @@ $$</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> gymnasium <span style="color:#f92672">as</span> gym
 env <span style="color:#f92672">=</span> gym<span style="color:#f92672">.</span>make(<span style="color:#e6db74">&#34;Acrobot-v1&#34;</span>, render_mode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;rgb_array&#34;</span>)
 </code></pre></div><p>Each environment describes a game. The setup of the game of <code>Acrobot-v1</code> is as follows: There are two chain links hanging from a point, tied together, and each of the link can freely move within the reasonable bound of physical system. The objective is to apply force to the joint of these two links to ensure that the link touches a line above a certain height from the chain.</p>
-<p><img src="./acrobot/episode-1.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./acrobot/episode-1.gif'>
+</img>
 <p>The observation space or the state for this game consists of some properties like linear and angular velocity of the chains and stuffs, (very complicated physics for me!), so we are just going to assume that it is simply a vector. There are only 3 possible actions at every time, push the joint to the left or to the right or do nothing.</p>
 <p>While we take some random actions, you can see that the chain links just moves erratically and it does not achieve the objective. So, let us apply Q-learning and see whether we can make the agent learn to solve this game.</p>
 <p>Before we do that, since the state is continuous, it is difficult to apply Q-learning right away, since we need to maintain a (state, action) pair table to store the Q-values. So, we discretize the entire state space into $10^6$ boxes, namely $10$ grid boxes for each coordinate of the $6$ dimensional state vector. The following python function is doing that.</p>
@@ -522,7 +525,10 @@ agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
         done <span style="color:#f92672">=</span> terminated <span style="color:#f92672">or</span> truncated  <span style="color:#75715e"># check if episode reached a terminating state</span>
         obs <span style="color:#f92672">=</span> next_obs
 </code></pre></div><p>Once we perform these 2000 episodes, we try to save the agent&rsquo;s behaviour on a new episode and record that as a GIF image.</p>
-<p><img src="./acrobot/episode-2001.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./acrobot/episode-2001.gif'>
+</img>
 <p>It looks like the agent is not learning anything. Wonder why is that? The behaviour still looks very random.</p>
 <p>The reason is that only a very specific set of actions will lead to the correct goal. So, most of the time, the agent is not able to get any reward. Hence from the initial time itself, the Q-values are not updating much and staying at their initial values only.</p>
 <p>Instead we can do the decaying $\epsilon$-greedy type strategy that we explored in the first post (Check <a href="https://www.statwizard.in/posts/k-arm-bandit/">here</a> if you have not already). Because in the initial episodes, we will be spending much time exploring the consequences of different actions, it is more likely to hit the target a few times and the rewards would propagate through the Q-values appropriately. As the episodes increases, we shall try to decrease the $\epsilon$ to reduce exploration.</p>
@@ -555,18 +561,36 @@ agent <span style="color:#f92672">=</span> AcrobotAgent(learning_rate)
         obs <span style="color:#f92672">=</span> next_obs
     agent<span style="color:#f92672">.</span>decay_epsilon()
 </code></pre></div><p>Now that we are exploring a bit at the beginning, we do $5000$ episodes, and after that the result becomes very promising.</p>
-<p><img src="./acrobot/episode-5000.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./acrobot/episode-5000.gif'>
+</img>
 <p>It is a bit hard to see that the chain link is touching the target line. Here&rsquo;s the final frame.</p>
-<p><img src="./acrobot//acrobot-solution.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./acrobot/acrobot-solution.png'>
+</img>
 <h2 id="q-learning-for-moon-landing">Q-Learning for Moon Landing?</h2>
 <p>Next, we will try the same method for the lunar landing enviroment present in the <code>gymnasium</code> package. It contains several continuous state related information as before, and making 4 actions: fire the left engine, fire the right engine, fire the main engine or do nothing.</p>
 <p>Here&rsquo;s how the environment looks in action.</p>
-<p><img src="./lunarlander/episode-1.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./lunarlander/episode-1.gif'>
+</img>
 <p>We try the same thing as we did for the acrobot game. We discretize the state space, and apply Q-learning algorithm to train an RL agent. After $10000$ episodes, this is the result.</p>
-<p><img src="./lunarlander/episode-10000.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./lunarlander/episode-10000.gif'>
+</img>
 <p>Looks like it is failing pretty much. In between we have a few decent episodes though!</p>
-<p><img src="./lunarlander/episode-6001.gif" alt="">
-<img src="./lunarlander/episode-8001.gif" alt=""></p>
+<p><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./lunarlander/episode-6001.gif'>
+</img>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./lunarlander/episode-8001.gif'>
+</img></p>
 <p>It seems that applying Q-Learning to the LunarLander environment presents some challenges compared to the Acrobot environment. Can you think of why? Please share your thoughts in the comments!</p>
 <p>However, so far all the algorithms that we have explored uses a table to track down the Q-values for the states action pairs. This is why we need to discretize the continuous observation into a state vector, which makes it lose a few pieces of information. In the next post, we shall learn different algorithms that we can use to solve reinforcement learning with these continuous state space, and event continuous action spaces. Some of these algorithms include Proximal Policy Optimization (PPO), Trust Region Policy Optimization (TRPO) and Deep Q-Network (DQN).</p>
 

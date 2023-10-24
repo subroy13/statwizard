@@ -101,7 +101,7 @@ Reinforcement Learning (Part 6) - Value Function Approximation
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -430,7 +430,10 @@ Reinforcement Learning (Part 6) - Value Function Approximation
 <p>However, so far whatever we have discussed has a major drawback: It requires both the state space and the action spaces to be finite and discrete. This means, you can create a table of rows and columns; rows denoting each state and columns denoting each action you take, and in the cell of the table, you can keep updating the value of the state-action pair. Due to this, when solving the <code>acrobot</code> problem from <a href="https://gymnasium.farama.org/content/basic_usage/"><code>OpenAI gym</code></a>, we had to discretize the state into buckets. This is often called <em>sparse encoding</em> of a continuous variable, more on this later.</p>
 <p>For now, we will try to solve another reinforcement problem from the <code>gymnasium</code> package, called <strong>Mountain Car</strong>. The goal in this problem to move a car up into a mountain starting from the bottom of a valley, while the gravity works against the car pulling it downwards. At any point, there are two state variables available, the position of the car and the velocity of it. Based on this, the car has to determine whether to try to move to the left, or to the right, or do nothing and let gravity and the car&rsquo;s acceleration do the magic. The car is asked to move to $200$ turns, every turn gives a reward of $(-1)$ unless you reach the goal above the mountain top to get a reward of $0$. The goal thus becomes to reach the mountain top as fast as possible. You can read more about the environment <a href="https://gymnasium.farama.org/environments/classic_control/mountain_car/">here</a>.</p>
 <p>Here&rsquo;s a gif about an unlearned agent randomly trying to move left or right.</p>
-<p><img src="figure-1.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-1.gif'>
+</img>
 <p>Unfortunately, the tabular methods (you should now be able to guess why it is called tabular! 😎 ) discussed so far cannot handle this environment, since we have two continuous variables (velocity and position) as observations. Instead of the tables, we now need to learn a function approximation which takes in a state and action pair, and output the q-value for that pair.</p>
 <p>$$
 f: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R};   \text{such that} f(s_t, a_t) = Q(s_t, a_t)
@@ -543,9 +546,15 @@ Q_{new}(s_t, a_t) = (1-\alpha)Q_{old}(s_t, a_t) + \alpha (r_{t+1} + \gamma Q_{ol
 $$</p>
 <p>Notice that $\max_a$ is replaced by $a_{t+1}$, to ensure a bit more exploration compared to Q-learning. This method is known as SARSA (State-Action Reward State-Action) in Reinforcement Learning Theory<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
 <p>Here&rsquo;s the trained agent after $5000$ episodes of learning.</p>
-<p><img src="figure-2.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-2.gif'>
+</img>
 <p>Huh! 😟 Not very impressive! It is trying to move to the right and pull the car up, but the gravity is continually pulling it downwards. So, we need to do a bit more.</p>
-<p><img src="figure-4.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-4.png'>
+</img>
 <p>As you can see, the agent is sometimes reaching the goal (receiving higher rewards than $120$), but it is not continually improving.</p>
 <h2 id="nonlinear-encoding">Nonlinear Encoding</h2>
 <p>So far, we have only two features as the observations from our environment; the postion and the velocity. If you know a bit about Newtonian mechanics, you would be able to guess that linear combination of position and velocity makes no sense, they have different units altogether. You might want to take squares, multiply with the mass of the car, adjust for the acceleration by gravity and do all kinds of stuffs. All these operations are nonlinear functions of position and the velocity; so the linear approximation that we considered as the beginning wont work.</p>
@@ -614,9 +623,15 @@ new_feature <span style="color:#f92672">=</span> get_obs_feature(new_observation
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">target <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> DISCOUNT_FACTOR <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>dot(W[new_action, :], new_feature)      <span style="color:#75715e"># now do the weight update</span>
 W[action,:] <span style="color:#f92672">+=</span> LR <span style="color:#f92672">*</span> (target <span style="color:#f92672">-</span> np<span style="color:#f92672">.</span>dot(W[action, :], feature)) <span style="color:#f92672">*</span> feature   <span style="color:#75715e"># the gradient is now entire 400 dimensional feature vector</span>
 </code></pre></div><p>We just train it for $200$ episodes, and here&rsquo;s the result.</p>
-<p><img src="figure-3.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-3.gif'>
+</img>
 <p>Cool! 😎 Just using a bit of nonlinearity, we could train the RL agent much faster.</p>
-<p><img src="figure-5.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='figure-5.png'>
+</img>
 <p>And this shows that the RL agent is continually learning to increase its rewards, and learning how to reach the goal.</p>
 <h2 id="questions-to-think-about">Questions to think about</h2>
 <p>Here&rsquo;s a few questions to think about before my next post.</p>

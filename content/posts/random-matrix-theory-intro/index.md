@@ -93,7 +93,7 @@ plt.show()
 
 Running the above python code and plotting the histogram yields a distribution close to a normal distribution plot. Hence, it reaffirms our belief.
 
-![](fig1.png)
+{{<figure src="fig1.png">}}
 
 
 ### Distribution of Largest Eigenvalue
@@ -117,7 +117,9 @@ plt.hist(eig_norms, bins = 50)
 plt.xlabel('Largest Eigenvalue of the 100x100 Gaussian matrix')
 plt.show()
 ```
-![](fig2.png)
+
+{{<figure src="fig2.png">}}
+
 
 It turns out again we have some kind of Gaussian looking plot, most of the histogram is concentrated around its mean, however, it may be a bit positively skewed. Note that, even if the largest eigenvalue is not a very straightforward linear function as before, we still have this CLT like behaviour and concentration around the mean.
 
@@ -134,7 +136,8 @@ plt.xlabel('Smallest Eigenvalue of the 100x100 Gaussian matrix')
 plt.show()
 ```
 
-![](fig3.png)
+{{<figure src="fig3.png">}}
+
 
 Well, the concentration around the mean was expected, but now it is a bit negatively skewed. It is as if it is trying to balance out the slight positive skewness of the largest eigenvalue. 
 
@@ -155,7 +158,8 @@ plt.xlabel(f"Eigenvalues of {n}x{n} Gaussian matrix")
 plt.show()
 ```
 
-![](fig4.png)
+{{<figure src="fig4.png">}}
+
 
 Well, this is no way a Gaussian kind of a distribution anymore. There is, of course, no concentration about the mean, and this semicircular structure of the probability distribution is not very traditional in nature, like the CLT or LLN that we have know so far. Dealing with this kind of distribution thus requires new tools, so we have a separate theory on Random Matrices. There are basically two hindrances on extending the traditional tools.
 
@@ -178,7 +182,7 @@ plt.xlabel(f"Singular values of {n}x{n} Gaussian matrix")
 plt.show()
 ```
 
-![](fig5.png)
+{{<figure src="fig5.png">}}
 
 
 ## The Distribution of the Spacings
@@ -215,7 +219,7 @@ $$
 
 Here's how this distribution looks like.
 
-![](fig6A.png)
+{{<figure src="fig6A.png">}}
 
 
 ### The 2X2 Gaussian Case
@@ -262,12 +266,10 @@ $$
 
 Here's how this distribution looks like.
 
-![](fig6.png)
-
+{{<figure src="fig6.png">}}
 
 It clearly looks different than the one we obtained from spacings of two i.i.d. normal random variables. It shows that the eigenvalues are highly correlated. One eigenvalue feels the presence of the other, hence the spacing is not very likely to be near zero. This is known as eigenvalue repulsion. One application of this theory of repulsion is that it can be used to model the distribution of electrons as every electron repulses each other due to having the same charge.[^4] On the other hand, for the i.i.d. case, the spacings are very likely to be near $0$, since both of them are independently very likely to be close to their distributional expectation.
 
-In next few posts, we shall dive more into the theoretical aspects and see how we can generalize these things for more than $2\times 2$ case.
 
 
 ## References 

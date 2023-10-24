@@ -127,7 +127,7 @@ explore_rewards = explore_rewards.mean(axis = 0)
 
 Here's there plot for the average rewards obtained by these two strategies over $1000$ rounds.
 
-![](greedy-explore-1.png)
+{{<figure src="greedy-explore-1.png">}}
 
 Clearly, the greedy method performs much better than complete exploration at random. But notice that the greedy method cannot achieve the highest possible reward, i.e., $5$ in this problem.
 
@@ -158,7 +158,8 @@ eps1_rewards = eps1_rewards.mean(axis = 0)
 
 Turns out, this performs even better than the greedy method. It achieves a higher reward closer to $5$, but not exactly $5$ even after $1000$ rounds.
 
-![](greedy-explore-2.png)
+{{<figure src="greedy-explore-2.png">}}
+
 
 ### So, can we do better?
 
@@ -174,7 +175,7 @@ action_k = np.random.randint(0, 10) if np.random.rand(1) < eps else max_k
 
 in the inner for loop with index variable `t`. As we had hoped, this performs even better than $0.1$-greedy action.
 
-![](greedy-explore-3.png)
+{{<figure src="greedy-explore-3.png">}}
 
 
 ## Some Questions to think about
@@ -185,7 +186,7 @@ Here's some questions to think about and some things to try.
 
 2. If we choose to reduce $\epsilon$ as $0.1/t$ instead of $10/t$, it achieves a reward trajectory even worse than the extreme exploration. Why is that? Here's the visualization plot.
 
-![](greedy-explore-4.png)
+{{<figure src="greedy-explore-4.png">}}
 
 
 3. Where does this $\epsilon = 10/t$ come from? Can we use some statistical theories to dynamically come up with this rate of change to be applied on $\epsilon$?

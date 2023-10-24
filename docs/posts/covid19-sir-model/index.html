@@ -101,7 +101,7 @@ Analysis of basic Epidemiological models - Part 1
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.4b578bde3e7d3388172dee2e37893487.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.e4514e42feee311b0cc9bf34f860b62c.css" />
 
 
 
@@ -511,17 +511,29 @@ dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as_tibb
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">temp <span style="color:#f92672">&lt;-</span> dat <span style="color:#f92672">%&gt;%</span> <span style="color:#a6e22e">group_by</span>(Date) <span style="color:#f92672">%&gt;%</span> 
     <span style="color:#a6e22e">summarise</span>(Confirmed <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(Confirmed), Deaths <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(Deaths), Recovered <span style="color:#f92672">=</span> <span style="color:#a6e22e">sum</span>(Recovered)) <span style="color:#f92672">%&gt;%</span>
     <span style="color:#a6e22e">gather</span>(key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Variable&#34;</span>, value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Count&#34;</span>, <span style="color:#f92672">-</span>Date)
-<p><span style="color:#a6e22e">ggplot</span>(temp, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Count, color <span style="color:#f92672">=</span> Variable)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
-</code></pre></div><p><img src="./unnamed-chunk-6-1.png" alt=""></p></p>
+<span style="color:#a6e22e">ggplot</span>(temp, <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date, y <span style="color:#f92672">=</span> Count, color <span style="color:#f92672">=</span> Variable)) <span style="color:#f92672">+</span> <span style="color:#a6e22e">geom_line</span>(size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-6-1.png'>
+</img>
 <p>The situation is very severe, as the current trend in exponentially increasing in terms of confirmed cases, and the growth rate of recovered is sufficiently slow. If we particular focus on the situation of India, (after 1st March, 2020),</p>
-<p><img src="unnamed-chunk-7-1.png" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-7-1.png'>
+</img>
 <p>As of now, there are very less number of recoveries, some deaths, and a lot of (about 400) affected people. We have also compiled how these changes occurs spatially in different countries. They are shown below.</p>
-<p><img src="./confirmed-1.gif" alt=""></p>
-<p><img src="./deaths-1.gif" alt=""></p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='confirmed-1.gif'>
+</img>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='deaths-1.gif'>
+</img>
 <h1 id="sir-model-description">SIR Model Description</h1>
 <p>The SIR model is one of the compartmental models in epidemiology which is used to mathematically model the spread of an infectious disease. This model was firstly introduced by William Ogilvy Kermack and A. G. McKendrick, and named as <strong>Kermack-McKendrick Model.</strong> However, with time, this model has obtained several variants, each being better than the one before.</p>
 <p>SIR modelling starts with defining 3 different compartments, of states in which a person can be. The states are as follows:</p>
-<div class="mermaid">
+<div class="mermaid mx-auto w-full">
     graph LR
     S(Susceptible) --> I(Infected)
     I(Infected) --> R(Recovered / Removed)
@@ -674,13 +686,16 @@ converged
 </code></pre></div><pre><code>[1] 3.149289
 </code></pre><p>Now that we have the estimated parameters, we can simply generate predictions for last $14$ days, using this <code>pred.SIR</code> method. Before that, estimate of $R_0$ turns out to be higher than 1, thereby showing the seriousness of the COVID-19 epidemic situation.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># since predictions are proportions, we multiply with the population to get the count estimates</span>
-<p>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pred.SIR</span>(<span style="color:#ae81ff">14</span>, ops<span style="color:#f92672">$</span>par[1], ops<span style="color:#f92672">$</span>par[2], <span style="color:#a6e22e">as.matrix</span>(temp[49, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])) <span style="color:#f92672">*</span> N
+preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pred.SIR</span>(<span style="color:#ae81ff">14</span>, ops<span style="color:#f92672">$</span>par[1], ops<span style="color:#f92672">$</span>par[2], <span style="color:#a6e22e">as.matrix</span>(temp[49, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])) <span style="color:#f92672">*</span> N
 pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(Date <span style="color:#f92672">=</span> temp<span style="color:#f92672">$</span>Date[49<span style="color:#f92672">:</span><span style="color:#ae81ff">62</span>], Pred.Confirmed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">2</span>], Pred.Removed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">3</span>])
-pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">left_join</span>(temp, pred.dat, by <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&quot;Date&quot;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;Date&quot;</span>))  <span style="color:#75715e"># create a full dataset containing predicted data as well</span></p>
-<p><span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;black&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;blue&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;dashed&quot;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-12-1.png" alt=""></p></p>
+pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">left_join</span>(temp, pred.dat, by <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Date&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>))  <span style="color:#75715e"># create a full dataset containing predicted data as well</span>
+<span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>)
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-12-1.png'>
+</img>
 <p>Therefore, we see that SIR model overestimates the true number by about $75$ people at the last day. Nevertheless, this is simple model, which performs fairly good. However, it would have been nice if we could give a confidence interval around that estimate.</p>
 <h2 id="performance-for-india">Performance for India</h2>
 <p>We perform the same exercise for India as well. For India, the population is huge (about $131$ crores) and there is lesser amount of data available, although the first confirmed case of COVID-19 was identified in 30th January, 2020. We have data on $54$ days, among which we shall use all the data before last week, and generate predictions for last week, to visualize its performance.</p>
@@ -688,23 +703,29 @@ pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">le
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pred.SIR</span>(<span style="color:#ae81ff">7</span>, ops<span style="color:#f92672">$</span>par[1], ops<span style="color:#f92672">$</span>par[2], <span style="color:#a6e22e">as.matrix</span>(temp[48, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])) <span style="color:#f92672">*</span> N
 pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(Date <span style="color:#f92672">=</span> temp<span style="color:#f92672">$</span>Date[48<span style="color:#f92672">:</span><span style="color:#ae81ff">54</span>], Pred.Confirmed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">2</span>], Pred.Removed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">3</span>])
 pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">left_join</span>(temp, pred.dat, by <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Date&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>))  <span style="color:#75715e"># create a full dataset containing predicted data as well</span>
-<p><span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;black&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;blue&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;dashed&quot;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-14-1.png" alt=""></p></p>
+<span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>)
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='unnamed-chunk-14-1.png'>
+</img>
 <p>Yet in this case, the SIR model does a underestimation in determining the number of confirmed cases by about $100$ cases. Therefore, the seriousness of the pandemic situation is even worse than what is depicted by the number $R_0$, i.e. 12.4850813, it is enitrely possible that the true $R_0$ value is even more at the last week, thereby showing on average an infectious person is infecting more than $12$ persons, which is bad, seriously bad.</p>
 <h2 id="predictions-till-the-end-of-the-lockdown">Predictions till the end of the Lockdown</h2>
 <p>To make this prediction, we use all the available datapoints for estimation of the parameters. So, we refit the model.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r">Y <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">as.matrix</span>(temp[, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])
 ops <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">optim</span>(par <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1e-2</span>, <span style="color:#ae81ff">1e-5</span>), fn <span style="color:#f92672">=</span> LS.SIR, method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;BFGS&#34;</span>, Y <span style="color:#f92672">=</span> Y)
-<p>preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pred.SIR</span>(<span style="color:#ae81ff">22</span>, ops<span style="color:#f92672">$</span>par[1], ops<span style="color:#f92672">$</span>par[2], <span style="color:#a6e22e">as.matrix</span>(temp[54, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])) <span style="color:#f92672">*</span> N
-pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(Date <span style="color:#f92672">=</span> temp<span style="color:#f92672">$</span>Date[54] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span>,
-Pred.Confirmed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">2</span>], Pred.Removed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">3</span>])
-pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">full_join</span>(temp, pred.dat, by <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&quot;Date&quot;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;Date&quot;</span>))  <span style="color:#75715e"># create a full dataset containing predicted data as well</span></p>
-<p><span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;black&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
-<span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;blue&quot;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&quot;dashed&quot;</span>)
-</code></pre></div><p><img src="./unnamed-chunk-15-1.png" alt=""></p></p>
+preds <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">pred.SIR</span>(<span style="color:#ae81ff">22</span>, ops<span style="color:#f92672">$</span>par[1], ops<span style="color:#f92672">$</span>par[2], <span style="color:#a6e22e">as.matrix</span>(temp[54, <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#ae81ff">4</span>])) <span style="color:#f92672">*</span> N
+pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">tibble</span>(Date <span style="color:#f92672">=</span> temp<span style="color:#f92672">$</span>Date[54] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">22</span>, 
+                   Pred.Confirmed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">2</span>], Pred.Removed <span style="color:#f92672">=</span> preds[, <span style="color:#ae81ff">3</span>])
+pred.dat <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">full_join</span>(temp, pred.dat, by <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;Date&#34;</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Date&#34;</span>))  <span style="color:#75715e"># create a full dataset containing predicted data as well</span>
+<span style="color:#a6e22e">ggplot</span>( pred.dat , <span style="color:#a6e22e">aes</span>(x <span style="color:#f92672">=</span> Date) ) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;black&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">+</span>
+    <span style="color:#a6e22e">geom_line</span>(<span style="color:#a6e22e">aes</span>(y <span style="color:#f92672">=</span> Pred.Confirmed), color <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;blue&#34;</span>, size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>, linetype <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;dashed&#34;</span>)
+</code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./unnamed-chunk-15-1.png'>
+</img>
 <p>So, if there was no lockdown happening, the prediction of confirmed cases in India by middle of April would have be about $4000$.</p>
 <h1 id="conclusion">Conclusion</h1>
 <p>SIR is the simplest epidemiological model that captures the dyamics of the spread of an infectious disease. Note that, now the lockdowns and quanrantines are in place, therefore, it is expected that the different rates in the SIR model also becomes time varying. To capture this nature, we need to extend the SIR model to a slightly more complicated model, named <strong>eSIR</strong>. We shall talk about this in more detail in <a href="../covid19-eSIR-model/">part 2</a> of this post.</p>

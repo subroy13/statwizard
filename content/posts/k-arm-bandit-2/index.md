@@ -89,7 +89,7 @@ ucb_rewards = ucb_rewards.mean(axis = 0)
 
 Again, we plot the average reward obtained as a function of the number of rounds, for both the cases with $10/t$-greedy algorithm as well as UCB algorithm. The UCB algorithm learns more slowly than the $10/t$-greedy algorithm, but on the long turn, it reaches the level of same performance (or may be slightly better).
 
-![](ucb-fig1.png)
+{{<figure src="ucb-fig1.png">}}
 
 ## UCB Variant - KLUCB Algorithm
 
@@ -140,7 +140,7 @@ klucb_rewards = klucb_rewards.mean(axis = 0)
 
 Again we plot its performance over $1000$ rounds.
 
-![](ucb-fig2.png)
+{{<figure src="ucb-fig2.png">}}
 
 Clearly, it is much better than the simple UCB algorithm, it is quite close to the $10/t$-greedy approach during the initial rounds, which means this algorithm very quickly learns the optimal action.
 
@@ -225,7 +225,7 @@ thompson_rewards = thompson_rewards.mean(axis = 0)
 
 And here's the plot for the experienced rewards by this strategy.
 
-![](ucb-fig3.png)
+{{<figure src="ucb-fig3.png">}}
 
 Wow! It looks like the Thompson sampling is a clear winner here. This is because instead of focusing on the short run and the future rewards, Thompson sampling focuses on the long run by guessing the multi-arm bandit game instead of the next possible rewards. Since the reward distributions of the arms don't change from time to time, Thompson sampling can leverage the this by sticking to the best arm of the most probable $k$-arm bandit game given the information collected so far.
 
