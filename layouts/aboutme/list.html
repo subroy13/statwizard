@@ -6,13 +6,6 @@
     <link rel="stylesheet" href="/plugins/lightgallery/css/lightgallery.css">
 {{ end }}
 
-{{ define "customJS" }}
-    <!-- lightgallery plugins -->
-    <script src="/plugins/lightgallery/js/lightgallery.js"></script>
-    <script src="/plugins/lightgallery/js/lg-thumbnail.js"></script>
-    <script src="/plugins/lightgallery/js/lg-fullscreen.js"></script>
-{{ end }}
-
 
 {{ define "main" }}
 
@@ -337,7 +330,13 @@
 
 {{ define "pageScripts" }}
 
+<!-- lightgallery plugins -->
+<script src="/plugins/lightgallery/js/lightgallery.js" async></script>
+<script src="/plugins/lightgallery/js/lg-thumbnail.js" async></script>
+<script src="/plugins/lightgallery/js/lg-fullscreen.js" async></script>
+
 <script>
+    
     $(document).ready(() => {
         $('.tab-content').hide();
         $('.tab-header').hide();
