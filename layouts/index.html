@@ -32,17 +32,45 @@
     </div>
 </section>
 
+<!-- Donation and Cause Section -->
+<section class="bg-gradient-to-b md:bg-gradient-to-r from-blue-700 to-indigo-900 text-white min-h-[100px]">
+    <div class="mx-4 py-16 md:mx-auto max-w-6xl flex flex-col md:flex-row gap-8 justify-center items-center">
+        <h1 class="my-6 w-full text-center font-semibold text-4xl">
+            Story of StatWizard
+        </h1>
+        <div class="my-6 flex flex-col gap-4">
+            <p>
+                Ever been curious about the magic behind data? I sure was. It's like deciphering a secret language, and that's where my journey began. I found this enchanting world of statistics, machine learning and new data science technologies - fascinating, but hidden behind esoteric academic journals and multiple layers of paywalls.
+            </p>
+            <p>
+                So, I decided to create StatWizard, a sort of digital Hogwarts for regular folks like you and me. Think of StatWizard as your guide to becoming a wizard of statistics. I simply want to build a community where we all learn together irrespective of our diverse backgrounds, and this website is the first step where I share whatever interesting stuffs I learn when experimenting and working with data on a day-to-day basis, using open source tools. 
+            </p>
+            <p>
+                StatWizard will always be a free haven for those who wants to master the wizardry of statistics, without any ads or any paywalls. However, you can always support the cause by tossing a few coins to cover up the hosting costs, or reaching out to me with an idea of writing any interesting content.
+            </p>
+            <div class="flex flex-row gap-6 justify-center mt-6">
+                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="statwizard" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Support StatWizard" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+                <a href="/#contact-me"
+                    class="px-6 py-2 flex justify-center items-center rounded-lg cursor-pointer text-white text-3xl" style="background-color: #5F7FFF; font-family: Cookie; letter-spacing: 1px;">
+                    Contact Me with Content Ideas
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 <!-- A basic about me section -->
 <section class="py-8 mx-4 md:mx-auto max-w-6xl">
     <h1 class="mb-4 text-center text-blue-600 text-4xl md:text-6xl">
         About Me
     </h1>
-    <p class="max-w-4xl text-lg px-4 md:mx-auto text-justify break-words text-gray-700">
+    <p class="max-w-4xl text-lg px-4 md:mx-auto text-center break-words text-gray-700">
         I am <span class="text-blue-600 font-semibold">{{ .Params.title }}, </span> 
-        {{ .Params.subtitle }}
     </p>
-    <p class="max-w-4xl text-base md:mx-auto px-4 text-justify break-words text-gray-700">
-      {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
+    <p class="max-w-4xl text-base md:mx-auto px-4 text-center break-words text-gray-700">
+        {{ .Params.subtitle }}
+        {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
           {{ if eq $bioitem_index 0 }}
               You will find me working as 
           {{ else }}
@@ -52,13 +80,12 @@
           at 
           <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
       {{ end }}.
-      {{ .Params.story }}
     </p>
     <div class="mt-8 mx-auto flex flex-row flex-wrap gap-4 justify-center items-center">
       <a href="/aboutme"
         class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
         transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
-        More about me
+        Learn more about me
       </a>
       <a 
         href="/cv/cv.pdf" target="_blank"
