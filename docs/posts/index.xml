@@ -6,7 +6,16 @@
     <description>Recent content in Posts on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Storage Analyzer</title>
+      <link>/posts/storage-analysis/</link>
+      <pubDate>Sun, 03 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/storage-analysis/</guid>
+      <description>Here we will try creating a python program to analyze the storage and find out which files or folders is taking up most spaces.</description>
+    </item>
+    
     <item>
       <title>Reinforcement Learning (Part 7) - Solving Lunar Landing</title>
       <link>/posts/nn-learning/</link>
