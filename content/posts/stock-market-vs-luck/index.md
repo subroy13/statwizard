@@ -16,6 +16,9 @@ prerequisites:
 
     - topic: Personal Finance
       level: 1 
+
+    - topic: Probability
+      level: 1
 ---
 
 ## The Context
@@ -30,6 +33,83 @@ Well, he provided this graph for the S&P500 index, which is a standard equity ma
 
 ## Data Collection
 
+The counterpart of the S&P500 index for India would be the NIFTY50. It is a volume weighted average of per unit share prices of the top 50 large cap stocks (ordered in terms of market cap). It is a considered a very good indicator of the overall performance of the stock market. 
+
+To get the historical data on NIFTY50 index of past few years, I went and checked the Yahoo Finance website[^2]. It looks like this:
+
+{{<figure src="./fig1.png">}}
+
+Here we need to go to the tab titled "Historical Data". Then you can select the dates from which to which you want the historical data for, and then hit apply and download the data as CSV. 
+
+{{<figure src="./fig2.png">}}
+
+
+### The Automation on Data Collection
+
+This looked like a bit of manual task. So I further explored on to figure out if any way I can automate this data collection process. Turns out, there were a few `python` packages like `yfinance`[^3] and `yahoo-finance`[^4] out there to collect historical stock prices from Yahoo Finance website, but all of them are now deprecated and not actively maintained. Well, I dig in further to see their codes present in github, and found a link that can provide all the necessary data.
+
+```
+https://query1.finance.yahoo.com/v8/finance/chart/{SYMBOL}?interval=1d&period1={START}&period2={END}
+```
+
+Here, the `SYMBOL` will be replaced by the symbol of the stock / index, i.e., **^NSEI**, and the `START` and `END` are the placeholders for the start and end dates of the collected time series data, in the unix epoch timestamps format. Finally, we can use the `requests` library in python to programmatically hit this URL and collect the data. Here's a python function that just does that
+
+```python
+# import the necessary libraries as always
+import requests
+import numpy as np
+import pandas as pd
+# a function to fetch the historical prices of a symbol
+def fetch_symbol_history(symbol, startepoch, endepoch):
+  url = f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&period1={startepoch}&period2={endepoch}"
+  headers = {
+      "User-Agent": "Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1"
+  }
+  response = requests.get(url, headers=headers, timeout=5)
+  response.raise_for_status()
+  data = response.json()
+```
+
+Once we have the data from this URL in a JSON format, we can parse this to create a nicely formatted pandas dataframe object, just like how downloading would have provided us. So here's a bit of code that does this. I simply go inside the result key in the JSON, add the necessary information on the columns as a list and pass them to the pandas `DataFrame()` object.
+
+```python
+if "chart" in data:
+    if "error" in data["chart"] and data["chart"]["error"] is not None:
+        raise ValueError(data["chart"]["error"]["description"])
+    if "result" in data["chart"] and len(data["chart"]["result"]) > 0:
+        df = pd.DataFrame({
+            'timestamp': data['chart']['result'][0]['timestamp'],
+            'close': data['chart']['result'][0]['indicators']['quote'][0]['close'],
+            'high': data['chart']['result'][0]['indicators']['quote'][0]['high'],
+            'low': data['chart']['result'][0]['indicators']['quote'][0]['low'],
+            'open': data['chart']['result'][0]['indicators']['quote'][0]['open'],
+            'volume': data['chart']['result'][0]['indicators']['quote'][0]['volume'],
+            'adjclose': data['chart']['result'][0]['indicators']['adjclose'][0]['adjclose']
+        })
+        df['time'] = pd.to_datetime(df['timestamp'], unit = 's')  # this converts the epoch times to human readable date format
+        return df
+```
+
+And here's how we can get the necessary data with a simply call to this function.
+
+```python
+symbol = '^NSEI'
+start = int(dt.datetime(2000, 1, 1).timestamp())
+end = int(dt.datetime.now().timestamp())
+df = fetch_symbol_history(symbol, start, end)
+print(df.head())
+```
+|--------|-----|----|----|----|-------|---------|------|
+|timestamp|	close|	high|	low|	open|	volume|	adjclose|	time|
+|--------|-----|----|----|----|-------|---------|------|
+
+0	1190000700	4494.649902	4549.049805	4482.850098	4518.450195	0.0	4494.649902	2007-09-17 03:45:00
+1	1190087100	4546.200195	4551.799805	4481.549805	4494.100098	0.0	4546.200195	2007-09-18 03:45:00
+2	1190173500	4732.350098	4739.000000	4550.250000	4550.250000	0.0	4732.350098	2007-09-19 03:45:00
+3	1190259900	4747.549805	4760.850098	4721.149902	4734.850098	0.0	4747.549805	2007-09-20 03:45:00
+4	1190346300	4837.549805	4855.700195	4733.700195	4752.950195	0.0	4837.549805	2007-09-21 03:45:00
+
+
 
 
 
@@ -37,4 +117,10 @@ Well, he provided this graph for the S&P500 index, which is a standard equity ma
 ## References
 
 [^1]: Same as Ever: A Guide to What Never Changes - Morgan Housel. https://www.goodreads.com/en/book/show/125116554. 
+
+[^2]: NIFTY50 Quotes - Yahoo Finance. https://finance.yahoo.com/quote/%5ENSEI.
+
+[^3]: YFinance - Python Package, PyPI. https://pypi.org/project/yfinance/.
+
+[^4]: yahoo-finance - Python Package, PyPI. https://pypi.org/project/yahoo-finance/.
 
