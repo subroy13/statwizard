@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Building a Storage Analyzer
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/storage-analysis/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from </p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Building a Storage Analyzer
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">03 December, 2023</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">10</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/software-design/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Software Design
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> Here we will try creating a python program to analyze the storage and find out which files or folders is taking up most spaces.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#the-du-command">The <code>du</code> command</a></li>
+    <li><a href="#moving-it-to-python">Moving it to python</a>
+      <ul>
+        <li><a href="#the-recursion">The Recursion</a></li>
+        <li><a href="#limiting-the-recursion-using-elbow-method">Limiting the Recursion using Elbow Method</a></li>
+        <li><a href="#final-code">Final Code</a></li>
+      </ul>
+    </li>
+    <li><a href="#reporting">Reporting</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>I have a chromebook, very minimal specifications with 4GB of RAM and about 64GB of SSD storage. So, most of my data I keep in cloud. Since I have a very minimal storage here, I often run out of storage if I download too many apps, or I clone too many github repository. In these trying times, I start manually looking for what is taking up more spaces to see if I can reduce spaces by removing unwanted files. Since I know a bit about techs and stuffs, I thought it would be interesting to see if I can automate this daunting process of storage checking and going inside folders to see what is taking up spaces. Here&rsquo;s a post to share what I could achieve for this.</p>
+<p>And here goes a popular saying in the world of software automation 😩 .</p>
+<blockquote>
+<p>Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it.</p>
+</blockquote>
+<h2 id="the-du-command">The <code>du</code> command</h2>
+<p>So to build this storage application, I first looked around what things we already have. My chromebook runs a <code>linux</code> operating system. So I did a bit of a Google search, and voila! there&rsquo;s a command <code>du</code> which can provide the file and the folder size of every file and folder in the current directory.</p>
+<p>So I opened up my terminal in my home directory and typed the following.</p>
+<pre><code class="language-terminal" data-lang="terminal">du -s *
+</code></pre><pre><code>4       commands.txt
+389168  Projects
+289864  R
+92      references.bib
+1028       tmp
+</code></pre><p>Basically the <code>du</code> command accepts the file path where we specify the <code>*</code> as an wildcard to consider all the files and folders, and the argument <code>-s</code> simply summarizes the result by summing up the files and nested folder sizes. The sizes in kilobytes are shown in the first column, and the second column is the file or folder names.</p>
+<p>Now if I have about 100 folders in my home directory, the long list of 100 folders would come up here. I don&rsquo;t want that. Since my goal is to find files which I can delete to save up space, and understand which files / folders are taking most spaces, may be I want to only list down the folders / files having large sizes. Fortunately, I know about pipes in the linux command, and here&rsquo;s what I used.</p>
+<p><code>sudo du -s * | sort -nr | head -10</code></p>
+<p>Basically it does the following:</p>
+<ol>
+<li>Uses <code>du -s *</code> to calculate the sizes of the different files and folders within the current folder.</li>
+<li><code>sort -nr</code> takes the output of step 1 and sorts the data in <strong>n</strong>umerically <strong>r</strong>everse order (so the acronym <code>-nr</code>). In this way, now the folders / files with the largest size comes to the top.</li>
+<li>Finally <code>head -10</code> picks the top 10 values from step 2. So now, we have the top 10 largest files / folders in the current folder.</li>
+</ol>
+<p>The pipe command <code>|</code> simply chains the operations together and processes them one after another.</p>
+<div class="w-full flex justify-center items-center mermaid">
+    graph LR;
+        A[du -s *] --> B[sort -nr] --> C[head -10] --> D(std output)
+</div>
+<h2 id="moving-it-to-python">Moving it to python</h2>
+<p>This <code>du</code> command was all and good, but I wanted to dig further. Now that I know which files / folders are taking most storage, I wanted to programmatically go inside these large folders and run the same <code>du</code> command recursively on them. That way, I can keep digging until I know precisely which files are taking up more storage and what I can delete / compress / reduce in size.</p>
+<p>So, now the search begins on how to run a <code>linux</code> system command from python (I am using python because this is something I am really comfortable with). Turns out python has a builtin package called <code>subprocess</code> just for this purpose.</p>
+<p>Here&rsquo;s a bit of code that I wrote for this.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> subprocess
+command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sudo du -s --exclude=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">.*</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> * | sort -nr | head -10&#34;</span>
+out <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run(command, cwd<span style="color:#f92672">=</span>dirpath, shell<span style="color:#f92672">=</span>True, capture_output<span style="color:#f92672">=</span>True)
+<span style="color:#66d9ef">if</span> out<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
+    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(out<span style="color:#f92672">.</span>stderr)
+<span style="color:#66d9ef">else</span>:
+    stdout <span style="color:#f92672">=</span> out<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</code></pre></div><p>Basically I am running the command by forking another subprocess from the main python process, capturing its output to get the data, and decoding it to be a string instead of the bytecode. Another thing I changed here is that I am excluding folders starting with <code>.</code> (e.g. <code>.git</code>), since those are usually config files and I shouldn&rsquo;t really delete them.</p>
+<p>Now that we have captured the output, I wanted to put it into a pandas dataframe (well, because you know, we data scientist guys always love to work with dataframes 😬 ). So I splitted up the output string by <code>\n</code> (newline character) to form the rows, and then each row I split by <code>\t</code> to get the column values. Finally, I put the entire thing in a function.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> pandas <span style="color:#f92672">as</span> pd 
+<span style="color:#f92672">import</span> subprocess
+<span style="color:#75715e"># the function to run du command and capture its output</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_check_storage_command</span>(dirpath):
+    <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;Checking file details at {dirpath}&#34;</span>)
+    command <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;sudo du -s --exclude=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">.*</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> * | sort -nr | head -10&#34;</span>
+    out <span style="color:#f92672">=</span> subprocess<span style="color:#f92672">.</span>run(command, cwd<span style="color:#f92672">=</span>dirpath, shell<span style="color:#f92672">=</span>True, capture_output<span style="color:#f92672">=</span>True)
+    <span style="color:#66d9ef">if</span> out<span style="color:#f92672">.</span>stderr<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>) <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;&#39;</span>:
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">Exception</span>(out<span style="color:#f92672">.</span>stderr)
+    <span style="color:#66d9ef">else</span>:
+        stdout <span style="color:#f92672">=</span> out<span style="color:#f92672">.</span>stdout<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)
+        rows <span style="color:#f92672">=</span> stdout<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+        data <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Storage&#39;</span>: [], <span style="color:#e6db74">&#39;Item&#39;</span>: []}   <span style="color:#75715e"># a blank data placeholder</span>
+        <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> rows:
+            cols <span style="color:#f92672">=</span> row<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#39;</span>)
+            <span style="color:#66d9ef">if</span> len(cols) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+                data[<span style="color:#e6db74">&#39;Storage&#39;</span>]<span style="color:#f92672">.</span>append(int(cols[<span style="color:#ae81ff">0</span>]))   <span style="color:#75715e"># now inside the dataframe, put the storage</span>
+                data[<span style="color:#e6db74">&#39;Item&#39;</span>]<span style="color:#f92672">.</span>append(cols[<span style="color:#ae81ff">1</span>])         <span style="color:#75715e"># and the file / folder item name</span>
+        df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame(data)
+        <span style="color:#66d9ef">return</span> df 
+</code></pre></div><h3 id="the-recursion">The Recursion</h3>
+<p>So now that we have the <code>du</code> command setup moved over to the python, its time to recursively call the same command to the nested folders inside the current folder, and continue like this. Finally, we collect all the file information and put them back together to see which files are taking up more space.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> os
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_recursive_storage</span>(rootpath):
+    curdf <span style="color:#f92672">=</span> run_check_storage_command(rootpath)
+    dflist <span style="color:#f92672">=</span> []  <span style="color:#75715e"># keep a placeholder for storing the data from nested folders</span>
+    <span style="color:#66d9ef">for</span> index, row <span style="color:#f92672">in</span> curdf<span style="color:#f92672">.</span>iterrows():
+        subpath <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(rootpath, row[<span style="color:#e6db74">&#39;Item&#39;</span>])   <span style="color:#75715e"># this is the nested folder / file path</span>
+        <span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(subpath):
+            <span style="color:#75715e"># so the current path considered is actually a folder</span>
+            subdf <span style="color:#f92672">=</span> fetch_recursive_storage(subpath)  <span style="color:#75715e"># recursively call the same function</span>
+            dflist<span style="color:#f92672">.</span>append(subdf)
+    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>concat([curdf] <span style="color:#f92672">+</span> dflist)
+</code></pre></div><p>The above code snippet does the following:</p>
+<ol>
+<li>Calls the check storage function to get the top 10 largest files / folders in the current directory.</li>
+<li>Loops over each of these items.</li>
+<li>If any of the item is another directory, calls the same function recursively and fetch the storage details of all files / folders inside that directory.</li>
+<li>Finally combine all the details and output.</li>
+</ol>
+<p>The above code works, but looks very slow. To see this, imagine we have 10 folders at the first level. In the next level, for each of these 10 folders, we will have another 10 folders (the largest ones). So in total, at the level 2 there are 100 folders. Now in each of these, we are again looking for 10 folders, so at level 3, we end up having 1000 folders. This number is hence increasing exponentially, and our above code is aimlessly searching for largest files in all these folders combined.</p>
+<h3 id="limiting-the-recursion-using-elbow-method">Limiting the Recursion using Elbow Method</h3>
+<p>It is obvious at this point is that we want to limit the recursion. Instead of going inside all 10 directories all the time, we might want to explore the ones which have very large sizes. To address the exponential increase in the number of directories explored during recursion, we introduce a method to limit the recursion depth using the Elbow Method. This technique is commonly employed in data science to determine the optimal number of clusters in a dataset, but here we adapt it to help identify significant directories worth exploring during recursion.</p>
+<p>Before calling the loop for the recursion, we thus use the following code to limit the number of nested folder recursion, shortening <code>curdf</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># check the elbow</span>
+curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>] <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;Storage&#39;</span>]<span style="color:#f92672">.</span>diff()<span style="color:#f92672">.</span>abs()<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+threshold <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>]<span style="color:#f92672">.</span>median()
+index <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>] <span style="color:#f92672">&gt;</span> (threshold <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> tolerance)))[<span style="color:#ae81ff">0</span>]
+<span style="color:#66d9ef">if</span> index<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+    <span style="color:#75715e"># there is a positive index, only check those entries in a nested way</span>
+    curdf <span style="color:#f92672">=</span> curdf<span style="color:#f92672">.</span>iloc[:(index[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)]
+</code></pre></div><p>In the above snippet, we calculate the absolute differences in storage sizes between consecutive items (&lsquo;Diff Storage&rsquo;). By finding the median of these differences, we establish a threshold. Any directory with a storage size difference above a tolerance level (say 30-50%) of this threshold is considered significant, and hence would be considered. In none of the storage size difference is significant, then it means all folders have a similar size and hence all folders should be explored.</p>
+<p>To illustrate this, consider this example. Suppose you have 4 folders.</p>
+<ul>
+<li>Documents (10 GB)</li>
+<li>Music (8 GB)</li>
+<li>Videos (7 GB)</li>
+<li>Pictures (5 GB)</li>
+</ul>
+<p>Start by plotting these points in a graph.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig1.png'>
+</img>
+<p>As you can see, the drops in file size is linear and there is no significant advantage in choosing to explore only the first 1 or 2 folders. In this case, our size differences would be (10-8) = 2 GB, 1GB and 2GB, so all differences are more or less in the same range.</p>
+<p>On the other hand, imagine you have the 4 folders with sizes</p>
+<ul>
+<li>Documents (10 GB)</li>
+<li>Music (3 GB)</li>
+<li>Videos (3 GB)</li>
+<li>Pictures (2 GB)</li>
+</ul>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig2.png'>
+</img>
+<p>Clearly, it makes sense to explore only the <code>Documents</code> folder first because that has the highest potential for saving large amount of storage space. In this case, the size difference is 7GB, 0GB, and 1GB. Clearly, 7GB is significantly more than the median 1GB.</p>
+<h3 id="final-code">Final Code</h3>
+<p>Finally, since we are using dataframe object, we start to make use of its features like <code>map</code> method to create some depth parameters and the file counts inside a folder. Just to demonstrate how powerful this recursion technique can be to collect storage related information in your computer.</p>
+<p>Here is the complete final code.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># now do this recursively</span>
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_recursive_storage</span>(rootpath, tolerance <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>, depth <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>):
+    <span style="color:#75715e"># this function gets called if rootpath is a directory</span>
+    curdf <span style="color:#f92672">=</span> run_check_storage_command(rootpath)
+    curdf[<span style="color:#e6db74">&#39;Depth&#39;</span>] <span style="color:#f92672">=</span> depth <span style="color:#75715e"># nested depth of the item</span>
+    curdf[<span style="color:#e6db74">&#39;ItemPath&#39;</span>] <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;Item&#39;</span>]<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> x: os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(rootpath, x)) <span style="color:#75715e"># absolute path to the item</span>
+    curdf[<span style="color:#e6db74">&#39;isDirectory&#39;</span>] <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;ItemPath&#39;</span>]<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> x: os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isdir(x) )   <span style="color:#75715e"># is the item a folder</span>
+    <span style="color:#66d9ef">if</span> curdf<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+        <span style="color:#75715e"># check the elbow</span>
+        curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>] <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;Storage&#39;</span>]<span style="color:#f92672">.</span>diff()<span style="color:#f92672">.</span>abs()<span style="color:#f92672">.</span>fillna(<span style="color:#ae81ff">0</span>)
+        threshold <span style="color:#f92672">=</span> curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>]<span style="color:#f92672">.</span>median()
+        index <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>where(curdf[<span style="color:#e6db74">&#39;Diff Storage&#39;</span>] <span style="color:#f92672">&gt;</span> (threshold <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> tolerance)))[<span style="color:#ae81ff">0</span>]
+        <span style="color:#66d9ef">if</span> index<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            <span style="color:#75715e"># there is a positive index, only check those entries in nested way</span>
+            curdf <span style="color:#f92672">=</span> curdf<span style="color:#f92672">.</span>iloc[:(index[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)]
+        dflist <span style="color:#f92672">=</span> []  <span style="color:#75715e"># empty array to hold the dataframe details</span>
+        filecount <span style="color:#f92672">=</span> []
+        nested_filecount <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> index, row <span style="color:#f92672">in</span> curdf<span style="color:#f92672">.</span>iterrows():
+            <span style="color:#66d9ef">if</span> row[<span style="color:#e6db74">&#39;isDirectory&#39;</span>]:
+                subdf <span style="color:#f92672">=</span> fetch_recursive_storage(row[<span style="color:#e6db74">&#39;ItemPath&#39;</span>], tolerance, depth <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+                dflist<span style="color:#f92672">.</span>append(subdf)
+                filecount<span style="color:#f92672">.</span>append((subdf[<span style="color:#e6db74">&#39;isDirectory&#39;</span>] <span style="color:#f92672">==</span> False)<span style="color:#f92672">.</span>sum())
+                nested_filecount<span style="color:#f92672">.</span>append((subdf[<span style="color:#e6db74">&#39;Nested File Count&#39;</span>])<span style="color:#f92672">.</span>sum())
+            <span style="color:#66d9ef">else</span>:
+                filecount<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+                nested_filecount<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">1</span>)
+        <span style="color:#75715e"># all the child folders are properly checked</span>
+        curdf[<span style="color:#e6db74">&#39;File Count&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(filecount)
+        curdf[<span style="color:#e6db74">&#39;Nested File Count&#39;</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array(nested_filecount)        
+    <span style="color:#66d9ef">return</span> pd<span style="color:#f92672">.</span>concat([curdf] <span style="color:#f92672">+</span> dflist)
+</code></pre></div><h2 id="reporting">Reporting</h2>
+<p>Since the sizes are obtained in kilobytes we might want to convert them into a more human readable format. Here&rsquo;s a short function that does this.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sizeof_fmt</span>(num, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;B&#34;</span>):
+    <span style="color:#66d9ef">for</span> unit <span style="color:#f92672">in</span> (<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;Ki&#34;</span>, <span style="color:#e6db74">&#34;Mi&#34;</span>, <span style="color:#e6db74">&#34;Gi&#34;</span>):
+        <span style="color:#66d9ef">if</span> abs(num) <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1024.0</span>:
+            <span style="color:#66d9ef">return</span> f<span style="color:#e6db74">&#34;{num:3.1f}{unit}{suffix}&#34;</span>
+        num <span style="color:#f92672">/=</span> <span style="color:#ae81ff">1024.0</span>
+    <span style="color:#66d9ef">return</span> f<span style="color:#e6db74">&#34;{num:.1f}Yi{suffix}&#34;</span>
+</code></pre></div><p>Finally, I put these into a python file and run the following.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">df <span style="color:#f92672">=</span> fetch_recursive_storage(Path<span style="color:#f92672">.</span>home())
+df[<span style="color:#e6db74">&#39;Storage (Human)&#39;</span>] <span style="color:#f92672">=</span> df[<span style="color:#e6db74">&#39;Storage&#39;</span>]<span style="color:#f92672">.</span>map(<span style="color:#66d9ef">lambda</span> x: sizeof_fmt(x <span style="color:#f92672">*</span> <span style="color:#ae81ff">1024</span>))
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>loc[df[<span style="color:#e6db74">&#39;isDirectory&#39;</span>] <span style="color:#f92672">==</span> False]   <span style="color:#75715e"># only look for the files</span>
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>sort_values([<span style="color:#e6db74">&#39;Storage&#39;</span>, <span style="color:#e6db74">&#39;Depth&#39;</span>], ascending<span style="color:#f92672">=</span>[False, False])
+df <span style="color:#f92672">=</span> df[[<span style="color:#e6db74">&#39;ItemPath&#39;</span>, <span style="color:#e6db74">&#39;Item&#39;</span>, <span style="color:#e6db74">&#39;isDirectory&#39;</span>, <span style="color:#e6db74">&#39;Storage (Human)&#39;</span>, <span style="color:#e6db74">&#39;File Count&#39;</span>, <span style="color:#e6db74">&#39;Nested File Count&#39;</span>, <span style="color:#e6db74">&#39;Depth&#39;</span>]]
+df <span style="color:#f92672">=</span> df<span style="color:#f92672">.</span>reset_index(drop <span style="color:#f92672">=</span> True)
+<span style="color:#66d9ef">print</span>(df<span style="color:#f92672">.</span>head(<span style="color:#ae81ff">10</span>))   <span style="color:#75715e"># print the top 10 files taking large storage</span>
+</code></pre></div><p>Here&rsquo;s the result that I get when I run this in my computer.</p>
+<pre><code>ItemPath                                                                                            Item  isDirectory Storage (Human)  File Count  Nested File Count  Depth
+0   /home/subroy13/R/x86_64-pc-linux-gnu-library/4...                                           vroom.so        False         22.4MiB           0                  1      6
+1   /home/subroy13/R/x86_64-pc-linux-gnu-library/4...                                            ragg.so        False         21.2MiB           0                  1      6
+2   /home/subroy13/Projects/statwizard/docs/aboutm...                                           demo.mp4        False         17.8MiB           0                  1      6
+3   /home/subroy13/Projects/statwizard/docs/aboutm...                            Dissertation Report.pdf        False         10.7MiB           0                  1      6
+4   /home/subroy13/Projects/statwizard/docs/aboutm...                           Presentation Part II.pdf        False          4.4MiB           0                  1      6
+5  /home/subroy13/Projects/statwizard/docs/posts/...                                        figure-4.gif        False          3.1MiB           0                  1      6
+6  /home/subroy13/Projects/statwizard/docs/posts/...                                        figure-2.gif        False          2.6MiB           0                  1      6
+7  /home/subroy13/Projects/statwizard/docs/posts/...                                    episode-2001.gif        False          1.3MiB           0                  1      7
+8  /home/subroy13/Projects/statwizard/docs/posts/...                                       episode-1.gif        False          1.3MiB           0                  1      7
+...
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>In summary, figuring out how to manage storage on my basic Chromebook using programming was a cool way to solve a common problem. This shows that even simple coding can help make daily tasks easier.</p>
+<p>The main idea here is that programming isn&rsquo;t just for complex stuff—it can also make simple, everyday things better. If you&rsquo;ve also used programming to solve everyday problems, I&rsquo;d love to hear about it! This is an invitation to share your experiences, so we can all learn from each other and make life a bit simpler. Together, we build a community where coding isn&rsquo;t just for experts but something anyone can use to make their daily routine smoother.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/nn-learning/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="/posts/stock-market-vs-luck/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+    
+
+
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+
+
+
+
+
+</body>
+</html>
