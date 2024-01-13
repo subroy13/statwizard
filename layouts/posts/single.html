@@ -6,7 +6,7 @@
 
 {{ $item := . }}
 {{ range .Resources.Match "featured*" }}
-    <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
         style = "background-image: url('{{ .Permalink }}')">
         {{ if isset $item.Params "imagecaption" }}
             <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
@@ -123,5 +123,32 @@
     {{ template "_internal/disqus.html" . }}
 </div>
 
+
+{{ end }}
+
+
+{{ define "pageScripts" }}
+{{ $item := . }}
+{{ if $item.Params.mermaid }}
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+{{ end }}
+
+{{ if $item.Params.mathjax }}
+    <!-- Mathjax CDN, load them conditionally -->
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+{{ end }}
 
 {{ end }}

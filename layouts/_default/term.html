@@ -2,6 +2,10 @@
     Tag - {{ .Title }}
 {{ end }}
 
+{{ define "customCSS" }}
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+{{ end }}
+
 {{ define "main" }}
 <section class="mx-4 md:mx-auto max-w-6xl my-8">
     <h1 class="my-8 w-full text-center font-bold text-blue-600 text-2xl md:text-4xl">
@@ -14,8 +18,8 @@
                     <a  href="{{ .Permalink }}" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
                         {{ .Title }}
                     </a>
-                    <p class="text-neutral-800 font-light flex flex-row items-center">
-                        <i class = "far fa-calendar-alt fa-2x mr-3"></i>{{ .Date.Format "January, 2006" }}
+                    <p class="text-neutral-800 w-full flex flex-row-reverse text-sm items-center">
+                        <i class = "far fa-calendar-alt fa-2x mx-3"></i>{{ .Date.Format "01 January, 2006" }}
                     </p>
                 </div>
                 <div class="mt-4 text-neutral-800 text-sm text-justify">
