@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Random Matrix Theory on StatWizard</title>
+    <link>/tags/random-matrix-theory/</link>
+    <description>Recent content in Random Matrix Theory on StatWizard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/random-matrix-theory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Random Matrix Theory - Introduction</title>
+      <link>/posts/2023/random-matrix-theory-intro/</link>
+      <pubDate>Sun, 06 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/random-matrix-theory-intro/</guid>
+      <description>This is the first introductory post on Random Matrix Theory series: Here I demonstrate some phenemenon about random matrices which are very non-intuitive to the classical thinking of asymptotic result</description>
+    </item>
+    
+  </channel>
+</rss>

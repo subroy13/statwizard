@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Time Series on StatWizard</title>
+    <link>/tags/time-series/</link>
+    <description>Recent content in Time Series on StatWizard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>roufcp - Python package</title>
+      <link>/aboutme/software/roufcp/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/software/roufcp/</guid>
+      <description>A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory</description>
+    </item>
+    
+  </channel>
+</rss>

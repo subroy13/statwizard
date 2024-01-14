@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Video Background Extraction
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/2024/background-extraction/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Video Background Extraction
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">14 January, 2024</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">5</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/video-processing/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Video Processing
+                        </a>
+                    
+                        <a href="/tags/linear-algebra/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Linear Algebra
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Image and Video Processing - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Linear Algebra - </span>
+                        
+                            <span class="text-yellow-600 font-semibold">Intermediate</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> You have often seen that Google meet filters or Zoom background filters allows you to change the background of your video. Ever wondered how that is performed? In this post, I am going to explain precisely that, and the math behind it.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#how-to-represent-a-video">How to Represent a Video</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>Given that you&rsquo;ve survived through the Covid-19 pandemic, chances are that you&rsquo;ve probably used video commmunication features of Skype, Whatsapp, Zoom, Google Meet, Microsoft Teams, etc. Specifically for Zoom and Google Meet, they provide a very interesting feature: you can change the background of your video to basically anything, from the beach of Hawaii to a waterfall inside a dense forest in Mount Fuji. And however you move, the background almost instantly matches your movement, making sure your video remains more or less consistent. Ever wondered how this is done? In this post, I am going to describe the math behind this and how it works in depth.</p>
+<p>Here&rsquo;s a example zoom background filters that you can use, taken from a <a href="https://people.com/home/the-best-zoom-backgrounds-for-every-type-of-video-call/">post</a> by Sophie Dodd.</p>
+<p><img src="image1.webp" alt=""></p>
+<p>To give you a bit of context, my PhD research work focuses on a field of robust matrix factorization which has a bit of application in the aforementioned problem. Recently, I went to IMS Asia Pacific Rim Meeting Conference 2024 in Melbourne, Australia, where I presented some of my work. So this post is just a similar presentation, but for a general audience, with a lot of introductory material.</p>
+<h2 id="how-to-represent-a-video">How to Represent a Video</h2>
+<p>Before solving the problem, let us first understand how we can represent a video using numbers (since, you know, math only cares about numbers 😒, nothing else matters to it!). Well, a video is basically a series of images, each changing little by little, and shown to you in a very rapid speed. For example, in movies, the standard rate is 24FPS (24 frames or images are shown per second), while when you play some high definition games, you set your resolution to 60FPS (i.e., 60 images are bombarded to you in every second). Now, the information in these images come to your brain through your eyes and optical nerve, finally your brain combines them into a moving continuous video, even though the original video is a set of fine-grained series of images.</p>
+<p>So a video is mathematically represented by $(I_1, I_2, \dots I_T)$, where each $I_t$ is an image (or frame). The video is $T$ time length long.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='image2.png'>
+</img>
+<p>Let&rsquo;s now focus on an image. In digital image (i.e., images that you see on the computer), it is shown through a rectangular grid, you have a series of rows and columns (think of like a spreadsheet grid you see in Excel) and each cell has a number, denoting the intensity of light in it as a number between 0 and 1. The number $0$ means there is no light absorption, so cell looks like white since every light is reflected back. On the other end, $1$ implies there is absolute absorption so no light comes back and it looks black.</p>
+<p>To see one example, consider a $8\times 8$ grid like chessboard, but all cells are coloured white. Now, you start colouring some cells to black, and then you would be able to generate some pictures with tons of block like artifacts. The following example from <a href="http://logicalzero.com/gamby/reference/image_formats.html">logicalzero.com</a> shows such a smiley face just colouring a 8x8 grid. As as mentioned before, this colouring procedure would also generate an arrangement of rows and columns (like a matrix).</p>
+<div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <img src="smiley.png"></img>
+    <img src="image3.png"></img>
+</div>
+<p>A smiley was okay, but it was not very appealing. However, if we wish to create more complicated images, we need a bigger grid. For instance, when you look at a $720 \times 640$ pixels wide image, that means there are $720$ columns and $640$ rows in the matrix, that represent the image.</p>
+<p>So combining all the discussion as above, we can represent a video like a 3-dimensional matrix. There are $h$ rows, $w$ columns and $T$ timesteps. Each slice of time represents an image or frame, with $h$ pixels tall and $w$ pixels wide. Note that, here we are considering grayscale videos of only for now, I shall explain about colour videos at the very end.</p>
+<p>Let us now see how we can read a video using a python programme and store the information as a 3-dimensional array of numbers (these are usually called tensors in mathematics).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2    <span style="color:#75715e"># this is the opencv library, you can install using pip install opencv-python</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># function that takes the name of the video file and read it into a numpy array and return back</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_video_to_array</span>(fname, grayscale <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>  cap <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>VideoCapture(fname)
+</span></span><span style="display:flex;"><span>  frameCount <span style="color:#f92672">=</span> int(cap<span style="color:#f92672">.</span>get(cv2<span style="color:#f92672">.</span>CAP_PROP_FRAME_COUNT))
+</span></span><span style="display:flex;"><span>  frameWidth <span style="color:#f92672">=</span> int(cap<span style="color:#f92672">.</span>get(cv2<span style="color:#f92672">.</span>CAP_PROP_FRAME_WIDTH))
+</span></span><span style="display:flex;"><span>  frameHeight <span style="color:#f92672">=</span> int(cap<span style="color:#f92672">.</span>get(cv2<span style="color:#f92672">.</span>CAP_PROP_FRAME_HEIGHT))
+</span></span><span style="display:flex;"><span>  buf <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty((frameCount, frameHeight, frameWidth, <span style="color:#ae81ff">3</span>), np<span style="color:#f92672">.</span>dtype(<span style="color:#e6db74">&#39;uint8&#39;</span>))
+</span></span><span style="display:flex;"><span>  fc <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  ret <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (fc <span style="color:#f92672">&lt;</span> frameCount  <span style="color:#f92672">and</span> ret):
+</span></span><span style="display:flex;"><span>      ret, buf[fc] <span style="color:#f92672">=</span> cap<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>      fc <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  cap<span style="color:#f92672">.</span>release()  <span style="color:#75715e"># release capturing of video</span>
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Found </span><span style="color:#e6db74">{</span>frameCount<span style="color:#e6db74">}</span><span style="color:#e6db74"> many image frames in the video </span><span style="color:#e6db74">{</span>fname<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> grayscale:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> buf[:, :, :, <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>   <span style="color:#75715e"># make pixel values between 0 and 1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> buf<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>  <span style="color:#75715e"># make pixel values between 0 and 1</span>
+</span></span></code></pre></div><p>In the above code, we use the <code>cv2</code> library in python to start a video capturing. Then we initiate a buffer in the memory to read the image. Every time a new frame in the video appears, that is converted into numpy array and stored into the buffer. OpenCV by default stores the pixel values as an 8-bit unsigned integer, but we divide it by 255 to make sure the values are represented as light intensities, between 0 and 1, as described above.</p>
+<p>Here is a <a href="https://github.com/andrewssobral/lrslibrary/blob/master/dataset/demo.avi">demo video</a> from <code>LRSLibrary</code> package of MATLAB. The video contains surveillance camera footage of a highway, each frame contains the road and the cars on it. We shall be using this for illustration purpose.</p>
+<video class="video-shortcode" preload='auto' controls>
+    <source src='/video/highway.avi' type='video/avi'>
+    There should have been a video here but your browser does not seem
+    to support it.
+</video>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vid <span style="color:#f92672">=</span> read_video_to_array(<span style="color:#e6db74">&#39;./data/demo.avi&#39;</span>)
+</span></span><span style="display:flex;"><span>vid<span style="color:#f92672">.</span>shape
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>Found 51 many image frames in the video ./data/demo.avi
+</span></span><span style="display:flex;"><span>(51, 48, 48)
+</span></span></code></pre></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/2023/stock-market-vs-luck/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+    
+
+
+
+
+    
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+
+
+</body>
+</html>

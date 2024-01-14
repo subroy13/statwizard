@@ -2014,6 +2014,11 @@ mjx-container {
   padding-top: 10px;
 }
 
+.video-shortcode {
+  max-width: 100%;
+  height: auto;
+}
+
 .first\:rounded-t-lg:first-child {
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+    Rough-Fuzzy CPD: a gradual change point detection algorithm
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+    
+    
+    
+        <div class="relative h-[33vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+            style = "background-image: url('/aboutme/publications/rough-fuzzy-changepoint-detection/featured.webp')">
+            
+                <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                    <p>Cover image taken from <a href="https://link.springer.com/article/10.1007/s42488-022-00077-3">Paper</a></p>
+                </div>
+            
+        </div>
+    
+
+    
+    <div class="grid grid-cols-1 md:grid-cols-3">
+        <div class="col-span-1">
+            <div class="m-2 p-4 rounded-lg shadow-lg border-2 flex flex-col justify-center gap-2 break-words">
+                <h1 class="text-2xl text-blue-600 font-bold">
+                    Rough-Fuzzy CPD: a gradual change point detection algorithm
+                </h1>
+                <div class="mt-2 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">15 November, 2022</p>
+                </div>
+                
+                    <div class="flex flex-row text-neutral-800 gap-4">
+                        <p class="font-bold">Authors:</p>
+                        <ul class="font-normal">
+                            
+                            <li>Ritwik Bhaduri</li> 
+                            
+                            <li>Subhrajyoty Roy</li> 
+                            
+                            <li>Sankar K. Pal</li> 
+                                    
+                        </ul>
+                    </div>
+                
+                <div class="">
+                    <h2 class="text-neutral-900 font-bold">
+                        Metadata:
+                    </h2>
+                    
+                        
+                            <div class="flex flex-row gap-4 items-center">
+                                <h4 class="text-neutral-800 font-semibold">
+                                    Publication Type:
+                                </h4>
+                                <div>
+                                    
+                                        <p><i class = ""></i> Journal Paper</p>
+                                    
+                                </div>
+                            </div>    
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Journal: </span> Journal of Data, Information and Management </p>
+                            
+                            
+                            
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold">Publisher: </span> Springer </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-doi"></i> </span> <a href="https://doi.org/10.1007/s42488-022-00077-3" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank"> Link </a> </p>
+                            
+                            
+                                <p class="text-neutral-800"><span class="font-semibold"> <i class="ai ai-open-access"></i> </span> <a href="https://link.springer.com/article/10.1007/s42488-022-00077-3" class="underline cursor-pointer text-blue-500 hover:text-blue-900 focus:text-blue-900" target="_blank">Access PDF</a> </p>
+                            
+    
+
+                        
+                    
+                </div>
+                <div class="mt-2 py-2">
+                    
+                        <a href="/tags/changepoint-detection/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Changepoint Detection
+                        </a>
+                    
+                        <a href="/tags/time-series-analysis/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Time Series Analysis
+                        </a>
+                    
+                        <a href="/tags/fuzzy-systems/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Fuzzy Systems
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2 p-4 md:px-6">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h1 id="abstract">Abstract</h1>
+<p>Changepoint detection is the problem of finding abrupt or gradual changes in time series data when the distribution of the time series changes significantly. There are many sophisticated statistical algorithms for solving changepoint detection problem, although there is not much work devoted towards gradual changepoints as compared to abrupt ones. Here we present a new approach to solve the changepoint detection problem using the fuzzy rough set theory which is able to detect such gradual changepoints. An expression for the rough-fuzzy estimate of changepoints is derived along with its mathematical properties concerning fast computation. In a statistical hypothesis testing framework, the asymptotic distribution of the proposed statistic on both single and multiple changepoints is derived under the null hypothesis enabling multiple changepoint detection. Extensive simulation studies have been performed to investigate how simple crude statistical measures of disparity can be subjected to improve their efficiency in the estimation of gradual changepoints. Also, the said rough-fuzzy estimate is robust to signal-to-noise ratio, a high degree of fuzziness in true changepoints, and also to hyperparameter values. Simulation studies reveal that the proposed method beats other methods of gradual changepoint detection (including MJPD, HSMUCE, fuzzy methods like FCP, FCMLCP etc) and also popular crisp methods like Binary Segmentation, PELT, and BOCD in detecting gradual changepoints. The applicability of the estimate is demonstrated using multiple real-life datasets including Covid-19. We have developed the python package roufcp for broader dissemination of the methods.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="my-6 max-w-6xl md:mx-auto mx-4">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+     
+</body>
+</html>

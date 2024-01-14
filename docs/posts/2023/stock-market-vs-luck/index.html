@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Is Stock Trading running on a fluke?
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/2023/stock-market-vs-luck/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Is Stock Trading running on a fluke?
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">15 December, 2023</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">13</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/personal-finance/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Personal Finance
+                        </a>
+                    
+                        <a href="/tags/probability/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Probability
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Personal Finance - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Probability - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> In this post, I explore the question of whether stock trading has better winning odds than gambling on heads or tails in an unbiased coin.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-context">The Context</a></li>
+    <li><a href="#data-collection">Data Collection</a></li>
+    <li><a href="#the-automation-of-data-collection">The Automation of Data Collection</a></li>
+    <li><a href="#data-analysis">Data Analysis</a>
+      <ul>
+        <li><a href="#distribution-of-positive-returns">Distribution of Positive Returns</a></li>
+        <li><a href="#distribution-of-returns">Distribution of Returns</a></li>
+        <li><a href="#adjusting-for-inflation">Adjusting for Inflation</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-little-bit-of-money-math-and-probability">A Little Bit of Money Math and Probability</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="the-context">The Context</h2>
+<p>In the past week, I was reading a book called &ldquo;Same as Ever&rdquo; by Morgan Housel<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. This is the same guy who wrote the bestselling book &ldquo;Psychology of Money&rdquo; some years back, so as you can guess, the book is amazing and filled with many profound insights.</p>
+<p>In the book, Morgan says that it is human nature to try to guess and predict the future, which is very much uncertain (Well, my entire data science and statistics career is dependent on trying to use data to predict). However, it is much more useful to look for the things that stay the same (e.g. - human greed) instead of trying to predict new things (e.g. - which technology is going to take over the world), which most likely many of us would be wrong about. In one of its chapters, he says that most things that are good take time, if acted too quickly with too much greed, it starts to have terrible effects. In his own words, &ldquo;A good summary of investing history is that stocks pay a fortune in the long run but seek punitive damages when you demand to be paid sooner.&rdquo;</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig5.png'>
+</img>
+<p>Well, he provided this graph for the S&amp;P500 index, which is a standard equity market index in the United States of America, to illustrate his point. I thought that it would be nice to see how it turns out in the case of India.</p>
+<h2 id="data-collection">Data Collection</h2>
+<p>The counterpart of the S&amp;P500 index for India would be the NIFTY50. It is a volume-weighted average of per unit share prices of the top 50 large-cap stocks (ordered in terms of market cap). It is considered a very good indicator of the overall performance of the stock market.</p>
+<p>To get the historical data on the NIFTY50 index of the past few years, I went and checked the Yahoo Finance website<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. It looks like this:</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig1.png'>
+</img>
+<p>Here we need to go to the tab titled &ldquo;Historical Data&rdquo;. Then you can select the start and end dates for which you want the historical data, and then hit apply and download the data as CSV.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig2.png'>
+</img>
+<h2 id="the-automation-of-data-collection">The Automation of Data Collection</h2>
+<p>This looked like a bit of a manual task. So I further explored to figure out if any way I could automate this data collection process. Turns out, there were a few <code>python</code> packages like <code>yfinance</code><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> and <code>yahoo-finance</code><sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> out there to collect historical stock prices from the Yahoo Finance website, but all of them are now deprecated and not actively maintained. Well, I dig in further to see their codes present in GitHub and found a link that can provide all the necessary data.</p>
+<pre tabindex="0"><code>https://query1.finance.yahoo.com/v8/finance/chart/{SYMBOL}?interval=1d&amp;period1={START}&amp;period2={END}
+</code></pre><p>Here, the <code>SYMBOL</code> will be replaced by the symbol of the stock/index, i.e., <strong>^NSEI</strong>, and the <code>START</code> and <code>END</code> are the placeholders for the start and end dates of the collected time series data, in the Unix epoch timestamps format. Finally, we can use the <code>requests</code> library in python to programmatically hit this URL and collect the data. Here&rsquo;s a python function that just does that</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># import the necessary libraries as always</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pandas <span style="color:#66d9ef">as</span> pd
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># a function to fetch the historical prices of a symbol</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fetch_symbol_history</span>(symbol, startepoch, endepoch):
+</span></span><span style="display:flex;"><span>  url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;https://query1.finance.yahoo.com/v8/finance/chart/</span><span style="color:#e6db74">{</span>symbol<span style="color:#e6db74">}</span><span style="color:#e6db74">?interval=1d&amp;period1=</span><span style="color:#e6db74">{</span>startepoch<span style="color:#e6db74">}</span><span style="color:#e6db74">&amp;period2=</span><span style="color:#e6db74">{</span>endepoch<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>  headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;Mozilla/5.0 (iPad; CPU OS 11_0 like Mac OS X) AppleWebKit/604.1.34 (KHTML, like Gecko) Version/11.0 Mobile/15A5341f Safari/604.1&#34;</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  response <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>  response<span style="color:#f92672">.</span>raise_for_status()
+</span></span><span style="display:flex;"><span>  data <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()
+</span></span></code></pre></div><p>Once we have the data from this URL in a JSON format, we can parse this to create a nicely formatted pandas dataframe object, just like how downloading would have provided us. So here&rsquo;s a bit of code that does this. I simply go inside the result key in the JSON, add the necessary information on the columns as a list, and pass them to the pandas <code>DataFrame()</code> object.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;chart&#34;</span> <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;error&#34;</span> <span style="color:#f92672">in</span> data[<span style="color:#e6db74">&#34;chart&#34;</span>] <span style="color:#f92672">and</span> data[<span style="color:#e6db74">&#34;chart&#34;</span>][<span style="color:#e6db74">&#34;error&#34;</span>] <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(data[<span style="color:#e6db74">&#34;chart&#34;</span>][<span style="color:#e6db74">&#34;error&#34;</span>][<span style="color:#e6db74">&#34;description&#34;</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;result&#34;</span> <span style="color:#f92672">in</span> data[<span style="color:#e6db74">&#34;chart&#34;</span>] <span style="color:#f92672">and</span> len(data[<span style="color:#e6db74">&#34;chart&#34;</span>][<span style="color:#e6db74">&#34;result&#34;</span>]) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        df <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>DataFrame({
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;timestamp&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;timestamp&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;close&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;quote&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;close&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;high&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;quote&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;high&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;low&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;quote&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;low&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;open&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;quote&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;open&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;volume&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;quote&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;volume&#39;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#39;adjclose&#39;</span>: data[<span style="color:#e6db74">&#39;chart&#39;</span>][<span style="color:#e6db74">&#39;result&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;indicators&#39;</span>][<span style="color:#e6db74">&#39;adjclose&#39;</span>][<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;adjclose&#39;</span>]
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>        df[<span style="color:#e6db74">&#39;time&#39;</span>] <span style="color:#f92672">=</span> pd<span style="color:#f92672">.</span>to_datetime(df[<span style="color:#e6db74">&#39;timestamp&#39;</span>], unit <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;s&#39;</span>)  <span style="color:#75715e"># this converts the epoch times to human readable date format</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> df
+</span></span></code></pre></div><p>And here&rsquo;s how we can get the necessary data with a simple call to this function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>symbol <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;^NSEI&#39;</span>
+</span></span><span style="display:flex;"><span>start <span style="color:#f92672">=</span> int(dt<span style="color:#f92672">.</span>datetime(<span style="color:#ae81ff">2000</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>timestamp())
+</span></span><span style="display:flex;"><span>end <span style="color:#f92672">=</span> int(dt<span style="color:#f92672">.</span>datetime<span style="color:#f92672">.</span>now()<span style="color:#f92672">.</span>timestamp())
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> fetch_symbol_history(symbol, start, end)
+</span></span><span style="display:flex;"><span>print(df<span style="color:#f92672">.</span>head())
+</span></span></code></pre></div><table>
+<thead>
+<tr>
+<th>timestamp</th>
+<th>close</th>
+<th>high</th>
+<th>low</th>
+<th>open</th>
+<th>volume</th>
+<th>adjclose</th>
+<th>time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1190000700</td>
+<td>4494.649902</td>
+<td>4549.049805</td>
+<td>4482.850098</td>
+<td>4518.450195</td>
+<td>0.0</td>
+<td>4494.649902</td>
+<td>2007-09-17 03:45:00</td>
+</tr>
+<tr>
+<td>1190087100</td>
+<td>4546.200195</td>
+<td>4551.799805</td>
+<td>4481.549805</td>
+<td>4494.100098</td>
+<td>0.0</td>
+<td>4546.200195</td>
+<td>2007-09-18 03:45:00</td>
+</tr>
+<tr>
+<td>1190173500</td>
+<td>4732.350098</td>
+<td>4739.000000</td>
+<td>4550.250000</td>
+<td>4550.250000</td>
+<td>0.0</td>
+<td>4732.350098</td>
+<td>2007-09-19 03:45:00</td>
+</tr>
+<tr>
+<td>1190259900</td>
+<td>4747.549805</td>
+<td>4760.850098</td>
+<td>4721.149902</td>
+<td>4734.850098</td>
+<td>0.0</td>
+<td>4747.549805</td>
+<td>2007-09-20 03:45:00</td>
+</tr>
+<tr>
+<td>1190346300</td>
+<td>4837.549805</td>
+<td>4855.700195</td>
+<td>4733.700195</td>
+<td>4752.950195</td>
+<td>0.0</td>
+<td>4837.549805</td>
+<td>2007-09-21 03:45:00</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-analysis">Data Analysis</h2>
+<h3 id="distribution-of-positive-returns">Distribution of Positive Returns</h3>
+<p>We start by subsetting the dataframe to pick out only the necessary columns, i.e., the time and the adjusted close price. Since NIFTY50 is an index, there is no corporate action like dividends or stock split associated with it, so the adjusted close price will be the same as the close price.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df2 <span style="color:#f92672">=</span> df[[<span style="color:#e6db74">&#39;time&#39;</span>, <span style="color:#e6db74">&#39;timestamp&#39;</span>, <span style="color:#e6db74">&#39;adjclose&#39;</span>]]<span style="color:#f92672">.</span>sort_values(<span style="color:#e6db74">&#39;timestamp&#39;</span>, ascending <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>Similar to the scenario described by Morgan, consider an investor who performs a trade for different periods ranging from 1 day to 10 years. That means, the investor buys the index (well, I know you cannot directly buy the index, but think of there is an ETF with no exit load and no expense ratio) at any random point in time, holds it for $d$ days and then sell it on the $d+1$-th day, irrespective of the price. The choice of $d$ will vary from 1 day, 3 days, and even to 10 years.</p>
+<p>Here&rsquo;s a bit of code that calculates the returns according to the formula.</p>
+<p>$$\text{Return}_d = \dfrac{(d+1)\text{-th day sell price} - \text{buy price}}{\text{buy price}} \times 100%$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>periods <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">63</span>, <span style="color:#ae81ff">126</span>, <span style="color:#ae81ff">252</span>, <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">252</span>, <span style="color:#ae81ff">10</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">252</span>]  <span style="color:#75715e"># the range of periods to loop for</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> period <span style="color:#f92672">in</span> periods:
+</span></span><span style="display:flex;"><span>  df2[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Return (period = </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>] <span style="color:#f92672">=</span> (df2[<span style="color:#e6db74">&#39;adjclose&#39;</span>] <span style="color:#f92672">-</span> df2[<span style="color:#e6db74">&#39;adjclose&#39;</span>]<span style="color:#f92672">.</span>shift(period)) <span style="color:#f92672">/</span> df2[<span style="color:#e6db74">&#39;adjclose&#39;</span>]<span style="color:#f92672">.</span>shift(period)
+</span></span></code></pre></div><p>There are two notes I wanted to point out here.</p>
+<ol>
+<li>
+<p>You might be wondering where we got this 252 value. It is actually the number of days in a year when trading happens. Close to 52 weeks * 5 days a week, minus some national holidays.</p>
+</li>
+<li>
+<p>Another point is that I explicitly did the calculation of returns (in fractions instead of percentages) by doing the subtraction and division. There is a more direct function present in the <code>pandas</code> library which has the same effect, <code>pct_change</code><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup>.</p>
+</li>
+</ol>
+<p>Now, for each of these periods, we have multiple returns based on when the investor decided to buy the index. Since it is very difficult to time the market, we shall assume that the investor is equally likely to invest at any possible date, so we will see what proportion of times the investor makes a positive return.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pos_gains <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> period <span style="color:#f92672">in</span> periods:
+</span></span><span style="display:flex;"><span>  pos_gain <span style="color:#f92672">=</span> (df2[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Return (period = </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>sum() <span style="color:#f92672">/</span> (<span style="color:#f92672">~</span>df2[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Return (period = </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>]<span style="color:#f92672">.</span>isna())<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex;"><span>  pos_gains<span style="color:#f92672">.</span>append(pos_gain)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># some code to plot it nicely</span>
+</span></span><span style="display:flex;"><span>indices <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(len(pos_gains))
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>rcParams[<span style="color:#e6db74">&#34;figure.figsize&#34;</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">4</span>
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>bar(indices, np<span style="color:#f92672">.</span>array(pos_gains) <span style="color:#f92672">*</span> <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xticks(indices, [<span style="color:#e6db74">&#34;1D&#34;</span>, <span style="color:#e6db74">&#34;1W&#34;</span>, <span style="color:#e6db74">&#34;2W&#34;</span>, <span style="color:#e6db74">&#34;1M&#34;</span>, <span style="color:#e6db74">&#34;3M&#34;</span>, <span style="color:#e6db74">&#34;6M&#34;</span>, <span style="color:#e6db74">&#34;1Y&#34;</span>, <span style="color:#e6db74">&#34;5Y&#34;</span>, <span style="color:#e6db74">&#34;10Y&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;Holding Period&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;Return&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig3.png'>
+</img>
+<p>These are the exact proportions of positive returns as a function of the holding period.</p>
+<ul>
+<li>Period of 1 day is 53.08%</li>
+<li>Period of 5 days is 56.65%</li>
+<li>Period of 10 days is 58.05%</li>
+<li>Period of 22 days is 60.15%</li>
+<li>Period of 63 days is 63.72%</li>
+<li>Period of 126 days is 66.86%</li>
+<li>Period of 252 days is 77.33%</li>
+<li>Period of 1260 days is 98.6%</li>
+<li>Period of 2520 days is 100.0%</li>
+</ul>
+<p>That means, trading every day is almost close to tossing an unbiased coin, you have an edge of only 3%. However, if you trade and hold the index long enough, at least about a year, the chances of having a positive return are extremely high, even more than 75%.</p>
+<h3 id="distribution-of-returns">Distribution of Returns</h3>
+<p>Well, now we know that there is a positive return when you trade long enough. But is the return significantly higher than 0? For example, it does not make sense if you hold the index for 1 year only to see it gain in value by merely 1%. The banks would have given you more returns. We need to see at least a 10%-12% gain agreeing with what all the financial gurus around are telling us.</p>
+<p>Let&rsquo;s verify this.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>res <span style="color:#f92672">=</span> []  <span style="color:#75715e"># a list to hold the data</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> period <span style="color:#f92672">in</span> periods:
+</span></span><span style="display:flex;"><span>  res <span style="color:#f92672">+=</span> [(np<span style="color:#f92672">.</span>round(<span style="color:#ae81ff">100</span> <span style="color:#f92672">*</span> df2[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Return (period = </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>]))<span style="color:#f92672">.</span>describe()]   
+</span></span><span style="display:flex;"><span>pd<span style="color:#f92672">.</span>concat(res, axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>)
+</span></span></code></pre></div><p>Here I use the <code>describe</code> method which gives a nice summary of a pandas series object, calculating its mean, median, maximum, minimum, and quartiles.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Return (period = 1)</th>
+<th>Return (period = 5)</th>
+<th>Return (period = 10)</th>
+<th>Return (period = 22)</th>
+<th>Return (period = 63)</th>
+<th>Return (period = 126)</th>
+<th>Return (period = 252)</th>
+<th>Return (period = 1260)</th>
+<th>Return (period = 2520)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td>3952.00</td>
+<td>3950.00</td>
+<td>3944.00</td>
+<td>3931.00</td>
+<td>3890.00</td>
+<td>3827.00</td>
+<td>3702.00</td>
+<td>2711.00</td>
+<td>1473.00</td>
+</tr>
+<tr>
+<td><strong>mean</strong></td>
+<td>0.05</td>
+<td>0.23</td>
+<td>0.46</td>
+<td>0.95</td>
+<td>2.65</td>
+<td>5.51</td>
+<td>11.69</td>
+<td>67.41</td>
+<td>182.98</td>
+</tr>
+<tr>
+<td><strong>std</strong></td>
+<td>1.39</td>
+<td>3.07</td>
+<td>4.24</td>
+<td>6.45</td>
+<td>11.20</td>
+<td>16.62</td>
+<td>22.78</td>
+<td>29.38</td>
+<td>63.72</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>-13.00</td>
+<td>-19.00</td>
+<td>-31.00</td>
+<td>-39.00</td>
+<td>-43.00</td>
+<td>-50.00</td>
+<td>-57.00</td>
+<td>-11.00</td>
+<td>45.00</td>
+</tr>
+<tr>
+<td><strong>25%</strong></td>
+<td>-1.00</td>
+<td>-1.00</td>
+<td>-2.00</td>
+<td>-2.00</td>
+<td>-3.00</td>
+<td>-3.00</td>
+<td>1.00</td>
+<td>47.00</td>
+<td>129.00</td>
+</tr>
+<tr>
+<td><strong>50%</strong></td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>1.00</td>
+<td>1.00</td>
+<td>3.00</td>
+<td>5.00</td>
+<td>10.00</td>
+<td>73.00</td>
+<td>183.00</td>
+</tr>
+<tr>
+<td><strong>75%</strong></td>
+<td>1.00</td>
+<td>2.00</td>
+<td>3.00</td>
+<td>4.00</td>
+<td>8.00</td>
+<td>13.00</td>
+<td>20.00</td>
+<td>86.00</td>
+<td>235.00</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>18.00</td>
+<td>22.00</td>
+<td>21.00</td>
+<td>33.00</td>
+<td>80.00</td>
+<td>87.00</td>
+<td>105.00</td>
+<td>162.00</td>
+<td>354.00</td>
+</tr>
+</tbody>
+</table>
+<p>The values provided here are in percentages. Let&rsquo;s make a few observations from this 💹.</p>
+<ol>
+<li>
+<p>The mean return is very close to 0 when the holding period is less than a week. So, trading with a very small timeline is nearly based on luck.</p>
+</li>
+<li>
+<p>If you compare the standard deviation (this is kind of the volatility of the returns) with the mean, it shows that trading for a timeline of anything below 5 years runs a significant risk of breaking even or even making negative returns. For instance, the mean and sd (standard deviation) of the returns for the 3-month holding period are 2% and 11% respectively. Since standard deviation gives you a sense of spread, it means that the actual return is very likely to range between (2-11) = (-7)% to (2 + 11) = 13%, which includes the return of 0% of breaking even.</p>
+</li>
+<li>
+<p>For a holding period of 10 years, there were no circumstances before where you had a negative return. The minimum return you could have earned is $45\%$. However, if you have been average with your luck you could have brought yourself about $183\%$ return (almost tripled your money), and if you were are luckiest person, a whooping $354\%$ returns 💰 (almost four and half times your money).</p>
+</li>
+<li>
+<p>If you consider the minimum possible return, note that it decreases from 1 day up to 1 year, and then starts to improve. So one key insight from this is: If you consider yourself a pessimist and think that you have the worst possible luck, it is better to pick one of two options.</p>
+</li>
+</ol>
+<ul>
+<li>You trade every day to minimize volatility.</li>
+<li>You invest and hold stocks for five or more years to maximum expected return.</li>
+</ul>
+<h3 id="adjusting-for-inflation">Adjusting for Inflation</h3>
+<p>Well, some of you may be skeptical and ask if the results are still valid if we adjust the prices for inflation. Well, I did that again, assuming there is a $5\%$ inflation rate.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># assume a 5% inflation rate</span>
+</span></span><span style="display:flex;"><span>inflation_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.05</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># now we calculate the inflation adjusted return</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> period <span style="color:#f92672">in</span> periods:
+</span></span><span style="display:flex;"><span>  expected_return <span style="color:#f92672">=</span> df2[<span style="color:#e6db74">&#39;adjclose&#39;</span>]<span style="color:#f92672">.</span>shift(period) <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> inflation_rate)<span style="color:#f92672">**</span>(period <span style="color:#f92672">/</span> <span style="color:#ae81ff">252</span>)
+</span></span><span style="display:flex;"><span>  df2[<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Adjusted Return (period = </span><span style="color:#e6db74">{</span>period<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>] <span style="color:#f92672">=</span> (df2[<span style="color:#e6db74">&#39;adjclose&#39;</span>] <span style="color:#f92672">-</span> expected_return) <span style="color:#f92672">/</span> expected_return
+</span></span></code></pre></div><p>These are the exact proportions of positive adjusted returns as a function of the holding period.</p>
+<ul>
+<li>Period of 1 day is 52.28%</li>
+<li>Period of 5 days is 55.04%</li>
+<li>Period of 10 days is 55.86%</li>
+<li>Period of 22 days is 56.14%</li>
+<li>Period of 63 days is 58.48%</li>
+<li>Period of 126 days is 58.14%</li>
+<li>Period of 252 days is 64.72%</li>
+<li>Period of 1260 days is 89.01%</li>
+<li>Period of 2520 days is 99.19%</li>
+</ul>
+<p>and the table of summary statistics is given below:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Adjusted Return (period = 1)</th>
+<th>Adjusted Return (period = 5)</th>
+<th>Adjusted Return (period = 10)</th>
+<th>Adjusted Return (period = 22)</th>
+<th>Adjusted Return (period = 63)</th>
+<th>Adjusted Return (period = 126)</th>
+<th>Adjusted Return (period = 252)</th>
+<th>Adjusted Return (period = 1260)</th>
+<th>Adjusted Return (period = 2520)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>count</strong></td>
+<td>3952.00</td>
+<td>3950.00</td>
+<td>3944.00</td>
+<td>3931.00</td>
+<td>3890.00</td>
+<td>3827.00</td>
+<td>3702.00</td>
+<td>2711.00</td>
+<td>1473.00</td>
+</tr>
+<tr>
+<td><strong>mean</strong></td>
+<td>0.03</td>
+<td>0.13</td>
+<td>0.27</td>
+<td>0.54</td>
+<td>1.40</td>
+<td>2.97</td>
+<td>6.37</td>
+<td>31.16</td>
+<td>73.73</td>
+</tr>
+<tr>
+<td><strong>std</strong></td>
+<td>1.39</td>
+<td>3.06</td>
+<td>4.23</td>
+<td>6.42</td>
+<td>11.07</td>
+<td>16.22</td>
+<td>21.69</td>
+<td>23.01</td>
+<td>39.14</td>
+</tr>
+<tr>
+<td><strong>min</strong></td>
+<td>-13.00</td>
+<td>-19.00</td>
+<td>-31.00</td>
+<td>-39.00</td>
+<td>-44.00</td>
+<td>-52.00</td>
+<td>-59.00</td>
+<td>-30.00</td>
+<td>-11.00</td>
+</tr>
+<tr>
+<td><strong>25%</strong></td>
+<td>-1.00</td>
+<td>-1.00</td>
+<td>-2.00</td>
+<td>-3.00</td>
+<td>-4.00</td>
+<td>-5.00</td>
+<td>-4.00</td>
+<td>15.00</td>
+<td>41.00</td>
+</tr>
+<tr>
+<td><strong>50%</strong></td>
+<td>-0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>1.00</td>
+<td>2.00</td>
+<td>3.00</td>
+<td>5.00</td>
+<td>36.00</td>
+<td>74.00</td>
+</tr>
+<tr>
+<td><strong>75%</strong></td>
+<td>1.00</td>
+<td>2.00</td>
+<td>3.00</td>
+<td>4.00</td>
+<td>7.00</td>
+<td>10.00</td>
+<td>14.00</td>
+<td>46.00</td>
+<td>106.00</td>
+</tr>
+<tr>
+<td><strong>max</strong></td>
+<td>18.00</td>
+<td>22.00</td>
+<td>21.00</td>
+<td>32.00</td>
+<td>78.00</td>
+<td>83.00</td>
+<td>95.00</td>
+<td>105.00</td>
+<td>179.00</td>
+</tr>
+</tbody>
+</table>
+<p>Here, even in a 10-year period, you can have about 11% loss in money. However, in expectation, you can still aim to get about 106% returns, i.e., double your money adjusting for inflation. That, to me, is a pretty impressive feat 😎.</p>
+<h2 id="a-little-bit-of-money-math-and-probability">A Little Bit of Money Math and Probability</h2>
+<p>Well, this section is just for the math folks 🤓, we will try to link the above analysis with some probability ideas. To understand how the expected return is changing over time, I made the following plot, log of the holding period on the x-axis vs the logarithm of the expected return percentage on the y-axis.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot(np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>array(periods)), np<span style="color:#f92672">.</span>log(np<span style="color:#f92672">.</span>array(df3<span style="color:#f92672">.</span>loc[df3<span style="color:#f92672">.</span>index <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;mean&#39;</span>])<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)) )
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xticks(np<span style="color:#f92672">.</span>log(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>array(periods)), [<span style="color:#e6db74">&#34;1D&#34;</span>, <span style="color:#e6db74">&#34;1W&#34;</span>, <span style="color:#e6db74">&#34;2W&#34;</span>, <span style="color:#e6db74">&#34;1M&#34;</span>, <span style="color:#e6db74">&#34;3M&#34;</span>, <span style="color:#e6db74">&#34;6M&#34;</span>, <span style="color:#e6db74">&#34;1Y&#34;</span>, <span style="color:#e6db74">&#34;5Y&#34;</span>, <span style="color:#e6db74">&#34;10Y&#34;</span>])
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>xlabel(<span style="color:#e6db74">&#39;log(Holding Period)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>ylabel(<span style="color:#e6db74">&#39;log(Expected Return %)&#39;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='./fig4.png'>
+</img>
+<p>It shows that, if $d$ is your holding period and $r$ is the expected return, then $log(d)$ and $log(r)$ are linearly related. This means,</p>
+<p>$$
+\begin{align*}
+&amp; \log(r) = a + b \log(d)\\
+\Rightarrow &amp; r = e^{a + b \log(d)} = e^a d^b
+\end{align*}
+$$</p>
+<p>Meaning as $d$ increases, the expected return $r$ increases exponentially with $d$ (matches with the so-called compounding effect which is pretty popular in the finance world).</p>
+<p>To understand the setup, let $X_i$ denote a random variable describing the return of a single day (the $i$-th day) and by the analysis above, its expectation is about $0.05\%$ and variance about $2\%$. If you trade every day for $n$ days, your return is</p>
+<p>$$
+S_n = X_1 + X_2 + \dots + X_n
+$$</p>
+<p>whereas if you invest and hold for $n$ days, your return is</p>
+<p>$$
+R_n = (1 + X_1) (1 + X_2) \dots (1 + X_n) - 1
+$$</p>
+<p>since your invested money along with the additional changes gets invested for the next day. If we assume that $X_i$s are independent and identically distributed (which is not actually the case, but they are mostly positively correlated, which shows the following analysis even more in contrast, but we&rsquo;ll avoid it for simplicity), it follows that</p>
+<p>$$
+\begin{align*}
+\mathbb{E}(S_n) &amp; = n \mathbb{E}(X_i) = (0.05n)\% \\
+\text{Var}(S_n) &amp; = n \text{Var}(X_i) = (2n)\% \\
+\mathbb{E}(R_n) &amp; = (1 + \mathbb{E}(X_1))\dots (1 + \mathbb{E}(X_n)) - 1 = (1.0005^n - 1)\times 100\% \\
+\text{Var}(R_n) &amp; = \mathbb{E}((1 + X_i)^2)^n - \mathbb{E}(1 + X_i)^{2n} = ((1.021)^n - (1.0005)^{2n})\times 100\% \\
+\end{align*}
+$$</p>
+<p>Therefore, it shows that for $S_n$ (i.e., for trading every day), the expected return and the variance return are both linear in the number of days. On the other hand, for investing with a large holding period, the expectation and the variance of returns both increase exponentially.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In short, looking at NIFTY50 data supports the idea that if you invest for a longer time, you&rsquo;re more likely to make money. Short-term trading is like flipping a coin – unpredictable. But, when you invest for a while, the chances of making a profit go up a lot.</p>
+<p>The numbers show that short-term trading is riskier, and the profit can be small. On the other hand, long-term investments tend to grow more, even when considering inflation. The math part basically says that if you trade every day, your profit grows in a straight line. But if you invest for a long time, your profit grows much faster.</p>
+<p>So, the bottom line is, that taking your time with investments often leads to better results. Being patient and having a smart strategy can make your money grow steadily over time.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Same as Ever: A Guide to What Never Changes - Morgan Housel. <a href="https://www.goodreads.com/en/book/show/125116554">https://www.goodreads.com/en/book/show/125116554</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>NIFTY50 Quotes - Yahoo Finance. <a href="https://finance.yahoo.com/quote/%5ENSEI">https://finance.yahoo.com/quote/%5ENSEI</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>YFinance - Python Package, PyPI. <a href="https://pypi.org/project/yfinance/">https://pypi.org/project/yfinance/</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>yahoo-finance - Python Package, PyPI. <a href="https://pypi.org/project/yahoo-finance/">https://pypi.org/project/yahoo-finance/</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>Pandas pct_change. <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pct_change.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pct_change.html</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/2023/storage-analysis/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="/posts/2024/background-extraction/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+    
+
+
+
+
+    
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+
+
+</body>
+</html>

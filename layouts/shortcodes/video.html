@@ -1,5 +1,7 @@
 <!-- 16:9 aspect ratio -->
-<div class="embed-responsive embed-responsive-16by9 relative w-full overflow-hidden">
-    <iframe class="embed-responsive-item" src='{{ .Get "src" }}'></iframe>
-</div>
-  
+{{ $width := or (.Get "width") "100%" }}
+<video class="video-shortcode" preload='{{ .Get "preload" }}' controls style='width: {{ $width }}'>
+    <source src='{{ .Get "src" }}' type='{{ .Get "type" }}'>
+    There should have been a video here but your browser does not seem
+    to support it.
+</video>

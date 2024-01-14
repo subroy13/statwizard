@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Image Processing on StatWizard</title>
+    <link>/tags/image-processing/</link>
+    <description>Recent content in Image Processing on StatWizard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="/tags/image-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
+      <link>/aboutme/publications/rsvddpd-video-surveillance/</link>
+      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/rsvddpd-video-surveillance/</guid>
+      <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
+    </item>
+    
+    <item>
+      <title>Texture Networks</title>
+      <link>/posts/2021/texture-network-style-transfer/</link>
+      <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2021/texture-network-style-transfer/</guid>
+      <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
+    </item>
+    
+  </channel>
+</rss>

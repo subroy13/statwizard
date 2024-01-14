@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Publications on StatWizard</title>
+    <link>/aboutme/publications/</link>
+    <description>Recent content in Publications on StatWizard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="/aboutme/publications/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rough-Fuzzy CPD: a gradual change point detection algorithm</title>
+      <link>/aboutme/publications/rough-fuzzy-changepoint-detection/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/rough-fuzzy-changepoint-detection/</guid>
+      <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
+    </item>
+    
+    <item>
+      <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
+      <link>/aboutme/publications/covid19-sintrue-model/</link>
+      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/covid19-sintrue-model/</guid>
+      <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
+    </item>
+    
+    <item>
+      <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
+      <link>/aboutme/publications/rsvddpd-video-surveillance/</link>
+      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/rsvddpd-video-surveillance/</guid>
+      <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
+    </item>
+    
+    <item>
+      <title>Trustworthy Dimensionality Reduction</title>
+      <link>/aboutme/publications/trustworthy-dimensionality-reduction/</link>
+      <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/trustworthy-dimensionality-reduction/</guid>
+      <description>My master&amp;rsquo;s dissertation about creating a new dimensionality reduction technique which is trustworthy.</description>
+    </item>
+    
+    <item>
+      <title>Analysis of Pollution Patterns in Regions of Kolkata</title>
+      <link>/aboutme/publications/pollution-analysis-kolkata/</link>
+      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/pollution-analysis-kolkata/</guid>
+      <description>This article analyzes the pollution patterns of Kolkata based on an extensive historical data of more than 15 years. The analysis focus on interpreting general patterns present in pollution and a prediction methodology, which may be used to calibrate low-cost pollution monitoring sensors.</description>
+    </item>
+    
+    <item>
+      <title>The Information Content of Taster&#39;s Valuation in Tea Auctions of India</title>
+      <link>/aboutme/publications/information-content-tea-arxiv/</link>
+      <pubDate>Thu, 07 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/information-content-tea-arxiv/</guid>
+      <description>Tea auctions across India occur as an ascending open auction, conducted online. Before the auction, a sample of the tea lot is sent to potential bidders and a group of tea tasters. The seller&amp;rsquo;s reserve price is a confidential function of the tea taster&amp;rsquo;s valuation, which also possibly acts as a signal to the bidders.</description>
+    </item>
+    
+    <item>
+      <title>Causal Inference using DAG Models</title>
+      <link>/aboutme/publications/causal-dag/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/causal-dag/</guid>
+      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG)</description>
+    </item>
+    
+    <item>
+      <title>Feasibility of Transparent Price Discovery in Tea through Auction in India</title>
+      <link>/aboutme/publications/tea-auction-feasibility/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/tea-auction-feasibility/</guid>
+      <description>This article examines Tea Auctions in India and forms an idea about the valuations that occur for several of the tea grades, and endeavoured to fit the model determining the final transaction price of the auction based on several relevant factors. The article also looks into the significance of manual valuations as predictors for the final price, and discussed several aspects to do away with the practice of manual valuations.</description>
+    </item>
+    
+    <item>
+      <title>Onset detection - A new approach to QBH system</title>
+      <link>/aboutme/publications/onset-detection-arxiv/</link>
+      <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/aboutme/publications/onset-detection-arxiv/</guid>
+      <description>We develop a QBH system based on detection of onsets of a song, within a statistical framework.</description>
+    </item>
+    
+  </channel>
+</rss>
