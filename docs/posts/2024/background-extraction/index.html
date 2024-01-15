@@ -101,7 +101,7 @@ Video Background Extraction
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
 
 
 
@@ -342,10 +342,10 @@ Video Background Extraction
             <div class="flex flex-col justify-center items-center gap-2">   
                 <div class="mt-1 flex flex-row text-neutral-800 gap-4">
                     <p class="font-bold">Date:</p>
-                    <p class="font-normal">14 January, 2024</p>
+                    <p class="font-normal">15 January, 2024</p>
                 </div> 
                 <p class="mt-1 text-neutral-600">
-                    <span class="font-bold">5</span> minutes read
+                    <span class="font-bold">14</span> minutes read
                 </p>
                 <div class="my-1">
                     
@@ -413,6 +413,16 @@ Video Background Extraction
   <ul>
     <li><a href="#introduction">Introduction</a></li>
     <li><a href="#how-to-represent-a-video">How to Represent a Video</a></li>
+    <li><a href="#background-and-foreground-extraction">Background and Foreground Extraction</a>
+      <ul>
+        <li><a href="#the-transformation">The Transformation</a></li>
+        <li><a href="#singular-value-decomposition-svd">Singular Value Decomposition (SVD)</a></li>
+        <li><a href="#adding-back-the-background">Adding back the background</a></li>
+        <li><a href="#problem-with-camera-tampering">Problem with Camera Tampering</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
   </ul>
 </nav>
                 </div>
@@ -422,25 +432,25 @@ Video Background Extraction
             <div class="text-justify break-words w-full">
                 <div class="prose" style="max-width: none;">
                     <h2 id="introduction">Introduction</h2>
-<p>Given that you&rsquo;ve survived through the Covid-19 pandemic, chances are that you&rsquo;ve probably used video commmunication features of Skype, Whatsapp, Zoom, Google Meet, Microsoft Teams, etc. Specifically for Zoom and Google Meet, they provide a very interesting feature: you can change the background of your video to basically anything, from the beach of Hawaii to a waterfall inside a dense forest in Mount Fuji. And however you move, the background almost instantly matches your movement, making sure your video remains more or less consistent. Ever wondered how this is done? In this post, I am going to describe the math behind this and how it works in depth.</p>
-<p>Here&rsquo;s a example zoom background filters that you can use, taken from a <a href="https://people.com/home/the-best-zoom-backgrounds-for-every-type-of-video-call/">post</a> by Sophie Dodd.</p>
+<p>Given that you&rsquo;ve survived through the Covid-19 pandemic, chances are that you&rsquo;ve probably used video communication features of Skype, WhatsApp, Zoom, Google Meet, Microsoft Teams, etc. Specifically for Zoom and Google Meet, they provide a very interesting feature: you can change the background of your video to basically anything, from the beach of Hawaii to a waterfall inside a dense forest in Mount Fuji. And however you move, the background almost instantly matches your movement, making sure your video remains more or less consistent. Ever wondered how this is done? In this post, I am going to describe the math<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> behind this and how it works in depth.</p>
+<p>Here&rsquo;s an example zoom background filters that you can use, taken from a <a href="https://people.com/home/the-best-zoom-backgrounds-for-every-type-of-video-call/">post</a> by Sophie Dodd.</p>
 <p><img src="image1.webp" alt=""></p>
 <p>To give you a bit of context, my PhD research work focuses on a field of robust matrix factorization which has a bit of application in the aforementioned problem. Recently, I went to IMS Asia Pacific Rim Meeting Conference 2024 in Melbourne, Australia, where I presented some of my work. So this post is just a similar presentation, but for a general audience, with a lot of introductory material.</p>
 <h2 id="how-to-represent-a-video">How to Represent a Video</h2>
-<p>Before solving the problem, let us first understand how we can represent a video using numbers (since, you know, math only cares about numbers 😒, nothing else matters to it!). Well, a video is basically a series of images, each changing little by little, and shown to you in a very rapid speed. For example, in movies, the standard rate is 24FPS (24 frames or images are shown per second), while when you play some high definition games, you set your resolution to 60FPS (i.e., 60 images are bombarded to you in every second). Now, the information in these images come to your brain through your eyes and optical nerve, finally your brain combines them into a moving continuous video, even though the original video is a set of fine-grained series of images.</p>
+<p>Before solving the problem, let us first understand how we can represent a video using numbers (since, you know, maths only cares about numbers 😒, nothing else matters to it!). Well, a video is basically a series of images, each changing little by little, and shown to you in a very rapid speed. For example, in movies, the standard rate is 24FPS (24 frames or images are shown per second), while when you play some high definition games, you set your resolution to 60FPS (i.e., 60 images are bombarded to you in every second). Now, the information in these images come to your brain through your eyes and optical nerve, finally your brain combines them into a moving continuous video, even though the original video is a set of fine-grained series of images.</p>
 <p>So a video is mathematically represented by $(I_1, I_2, \dots I_T)$, where each $I_t$ is an image (or frame). The video is $T$ time length long.</p>
 <img 
     class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
     src='image2.png'>
 </img>
-<p>Let&rsquo;s now focus on an image. In digital image (i.e., images that you see on the computer), it is shown through a rectangular grid, you have a series of rows and columns (think of like a spreadsheet grid you see in Excel) and each cell has a number, denoting the intensity of light in it as a number between 0 and 1. The number $0$ means there is no light absorption, so cell looks like white since every light is reflected back. On the other end, $1$ implies there is absolute absorption so no light comes back and it looks black.</p>
-<p>To see one example, consider a $8\times 8$ grid like chessboard, but all cells are coloured white. Now, you start colouring some cells to black, and then you would be able to generate some pictures with tons of block like artifacts. The following example from <a href="http://logicalzero.com/gamby/reference/image_formats.html">logicalzero.com</a> shows such a smiley face just colouring a 8x8 grid. As as mentioned before, this colouring procedure would also generate an arrangement of rows and columns (like a matrix).</p>
+<p>Let&rsquo;s now focus on an image. In digital image (i.e., images that you see on the computer), it is shown through a rectangular grid, you have a series of rows and columns (think of like a spreadsheet grid you see in Excel) and each cell has a number, denoting the intensity of light in it as a number between 0 and 1. The number $0$ means there is no light absorption, so cell looks like white since every light is reflected back. On the other end, $1$ implies there is absolute absorption, so no light comes back, and it looks black.</p>
+<p>To see one example, consider a $8\times 8$ grid like chessboard, but all cells are coloured white. Now, you start colouring some cells to black, and then you would be able to generate some pictures with tons of block like artefacts. The following example from <a href="http://logicalzero.com/gamby/reference/image_formats.html">logicalzero.com</a> shows such a smiley face just colouring a 8x8 grid. As mentioned before, this colouring procedure would also generate an arrangement of rows and columns (like a matrix).</p>
 <div class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
     <img src="smiley.png"></img>
     <img src="image3.png"></img>
 </div>
 <p>A smiley was okay, but it was not very appealing. However, if we wish to create more complicated images, we need a bigger grid. For instance, when you look at a $720 \times 640$ pixels wide image, that means there are $720$ columns and $640$ rows in the matrix, that represent the image.</p>
-<p>So combining all the discussion as above, we can represent a video like a 3-dimensional matrix. There are $h$ rows, $w$ columns and $T$ timesteps. Each slice of time represents an image or frame, with $h$ pixels tall and $w$ pixels wide. Note that, here we are considering grayscale videos of only for now, I shall explain about colour videos at the very end.</p>
+<p>So combining all the discussion as above, we can represent a video like a 3-dimensional matrix. There are $h$ rows, $w$ columns and $T$ time-steps. Each slice of time represents an image or frame, with $h$ pixels tall and $w$ pixels wide. Note that, here we are considering grayscale videos of only for now, I shall explain about colour videos at the very end.</p>
 <p>Let us now see how we can read a video using a python programme and store the information as a 3-dimensional array of numbers (these are usually called tensors in mathematics).</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> cv2    <span style="color:#75715e"># this is the opencv library, you can install using pip install opencv-python</span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
@@ -464,9 +474,9 @@ Video Background Extraction
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> buf<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>  <span style="color:#75715e"># make pixel values between 0 and 1</span>
 </span></span></code></pre></div><p>In the above code, we use the <code>cv2</code> library in python to start a video capturing. Then we initiate a buffer in the memory to read the image. Every time a new frame in the video appears, that is converted into numpy array and stored into the buffer. OpenCV by default stores the pixel values as an 8-bit unsigned integer, but we divide it by 255 to make sure the values are represented as light intensities, between 0 and 1, as described above.</p>
-<p>Here is a <a href="https://github.com/andrewssobral/lrslibrary/blob/master/dataset/demo.avi">demo video</a> from <code>LRSLibrary</code> package of MATLAB. The video contains surveillance camera footage of a highway, each frame contains the road and the cars on it. We shall be using this for illustration purpose.</p>
-<video class="video-shortcode" preload='auto' controls>
-    <source src='/video/highway.avi' type='video/avi'>
+<p>Here is a <a href="https://github.com/andrewssobral/lrslibrary/blob/master/dataset/demo.avi">demo video</a> from <code>LRSLibrary</code> package<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> of MATLAB. The video contains surveillance camera footage of a highway, each frame contains the road and the cars on it. We shall be using this for illustration purpose.</p>
+<video class="video-shortcode" preload='auto' controls style='width: 30%'>
+    <source src='/video/highway.mp4' type='video/mp4'>
     There should have been a video here but your browser does not seem
     to support it.
 </video>
@@ -474,7 +484,258 @@ Video Background Extraction
 </span></span><span style="display:flex;"><span>vid<span style="color:#f92672">.</span>shape
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>Found 51 many image frames in the video ./data/demo.avi
 </span></span><span style="display:flex;"><span>(51, 48, 48)
-</span></span></code></pre></div>
+</span></span></code></pre></div><p>Now we also need another function to view the image for a particular frame of the video.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> IPython.display <span style="color:#f92672">import</span> display
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> PIL <span style="color:#f92672">import</span> Image
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># image display function</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">display_image</span>(arr, scale_factor <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># ensure that the image scales to 0 to 255, so do a linear transformation</span>
+</span></span><span style="display:flex;"><span>  arr_min <span style="color:#f92672">=</span> arr<span style="color:#f92672">.</span>min()
+</span></span><span style="display:flex;"><span>  arr_max <span style="color:#f92672">=</span> arr<span style="color:#f92672">.</span>max()
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> arr_min <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>    arr2 <span style="color:#f92672">=</span> (arr <span style="color:#f92672">-</span> arr_min)<span style="color:#f92672">/</span>(arr_max <span style="color:#f92672">-</span> arr_min) <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> arr_max <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">255</span>:
+</span></span><span style="display:flex;"><span>    arr2 <span style="color:#f92672">=</span> arr<span style="color:#f92672">/</span>arr_max <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    arr2 <span style="color:#f92672">=</span> arr <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span>
+</span></span><span style="display:flex;"><span>  im <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>fromarray(np<span style="color:#f92672">.</span>ceil(arr2)<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>uint8))
+</span></span><span style="display:flex;"><span>  w, h <span style="color:#f92672">=</span> im<span style="color:#f92672">.</span>size
+</span></span><span style="display:flex;"><span>  display(im<span style="color:#f92672">.</span>resize((scale_factor <span style="color:#f92672">*</span> w,  scale_factor <span style="color:#f92672">*</span> h)))
+</span></span></code></pre></div><p>Note that, since the given array can be arbitrary, its maximum and minimum value can be well beyond the permissible range of 0 to 1. For this case, we scale the values in the array by a linear transformation so that the new array <code>arr2</code> remains within the range $[0, 1]$. Finally, we use the <code>PIL</code> library to convert the numpy array to image, but before that convert it to the range $[0, 255]$ and round to the nearest integer above. This ensures that <code>PIL</code> library receives an array in 8-bit unsigned integer format so that it can be processed properly.</p>
+<p>Here is the image of $41$-th frame of the video shown with a zoom factor of 3x.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>display_image(vid[<span style="color:#ae81ff">40</span>], scale_factor <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div><img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='image4.png'>
+</img>
+<h2 id="background-and-foreground-extraction">Background and Foreground Extraction</h2>
+<h3 id="the-transformation">The Transformation</h3>
+<p>Before performing the background substitution that we want to do, we need to extract the background and the foreground content first from the video frames. How do to that? 🤔 Let&rsquo;s take a step back and try to understand what is meant by the background or the foreground of a video. The background is usually the part of the video that remains constant over time, i.e., it does not change or changes very little from one frame to another. On the other hand, the foreground is the part of the video which is left out after background is taken out, things or objects in the video that are in constant motion.</p>
+<p>Let us now try to transform the video tensor ($T \times h \times w$) into a mathematical object where the above interpretation can prove useful. Let&rsquo;s pick the very first frame of the video, which is an image of size $h \times w$, and we write all its $hw$ many pixel values in a single column. That means, if you have a $3 \times 3$ image of a cross</p>
+<p>$$
+\begin{bmatrix}
+1 &amp; 0 &amp; 1\\
+0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 1
+\end{bmatrix},
+$$</p>
+<p>it is written as a $9$ length vector as $(1, 0, 1, 0, 1, 0, 1, 0, 1)$. For our demo video, $48\times 48$ size images get converted to $2304$ length vector. Now, we do the same for each frame of the video and stack these vectors in rows.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='image5.png'>
+</img>
+<p>Call this big matrix $X = L + S$, where $L$ and $S$ are respectively the background and the foreground part. Okay, now this is the key idea: <strong>Notice that, since the background does not change from one frame to another, the columns of $L$ matrix should be very close to each other, since the columns of $L$ are simply reorganization of background content of the video frames of different timepoints.</strong> If you know a bit about linear algebra, this matrix $L$ should be of very low rank (rank 1 or 2). Therefore, to extract the background and the foreground content, it is enough to look at a rank factorization of the $X$ matrix and use that to recover $L$. We do the same using a technique called <strong>Singular Value Decomposition (SVD)</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<h3 id="singular-value-decomposition-svd">Singular Value Decomposition (SVD)</h3>
+<p>What SVD does is that it takes in a matrix $X$ and decomposes it into three parts $X = UDV^t$, where $U$ and $V$ are unitary or orthogonal matrix, and $D$ is a diagonal matrix. The matrices $U$ and $V$ contains the left and right singular vectors and the diagonal entries of the matrix $D$ contains only the singular values, in a decreasing order. The first few singular values and corresponding vectors are the ones we are interested in, they recover the $L$ matrix.</p>
+<p>If you are not sure about what this is, do not worry, the key takeaway is as follows: If we perform this decomposition SVD and take first few columns from each of the three matrices, they can be used to recover the background content $L$. We will now see that in action.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>X <span style="color:#f92672">=</span> vid<span style="color:#f92672">.</span>reshape((vid<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>T   <span style="color:#75715e"># rowwise pixels, columnwise time,  do the transformation to get X matrix</span>
+</span></span><span style="display:flex;"><span>U, s, Vt <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(X, full_matrices <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>)  <span style="color:#75715e"># do the SVD</span>
+</span></span><span style="display:flex;"><span>rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> U[:, :rank]<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, rank) <span style="color:#f92672">@</span> np<span style="color:#f92672">.</span>diag(s[:rank])<span style="color:#f92672">.</span>reshape(rank, rank) <span style="color:#f92672">@</span> Vt[:rank, :]<span style="color:#f92672">.</span>reshape(rank, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>S <span style="color:#f92672">=</span> X <span style="color:#f92672">-</span> L  <span style="color:#75715e"># do the L + S decomposition</span>
+</span></span><span style="display:flex;"><span>vidbg <span style="color:#f92672">=</span> L<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>reshape(vid<span style="color:#f92672">.</span>shape)   <span style="color:#75715e"># now that we have L, we convert it back to 3d-array format for the background video is seen</span>
+</span></span><span style="display:flex;"><span>vidfg <span style="color:#f92672">=</span> S<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>reshape(vid<span style="color:#f92672">.</span>shape)   <span style="color:#75715e"># do the same for S, the foreground</span>
+</span></span></code></pre></div><p>Here&rsquo;s how the extracted background and foreground of $41$-th frame looks like.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>display_image(vidbg[<span style="color:#ae81ff">40</span>], scale_factor <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>display_image(vidfg[<span style="color:#ae81ff">40</span>], scale_factor <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>)
+</span></span></code></pre></div><div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="image4.png"></img>
+    <p>True Frame</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image6-a.png"></img>
+    <p>Estimated Background</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image6-b.png"></img>
+    <p>Estimated Foreground</p>
+  </div>
+</div>
+<p>It&rsquo;s pretty cool 😎, isn&rsquo;t it?</p>
+<h3 id="adding-back-the-background">Adding back the background</h3>
+<p>Now, in order to perform background substitution like Zoom does, we can simply replace the background content $L$ by our choice of background image. Here are a few random images from <a href="https://picsum.photos/">Lorem Picsum</a> website.</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-4 gap-2">
+  <div class="mx-auto">
+    <img src="bg1.jpg"></img>
+  </div>
+  <div class="mx-auto">
+    <img src="bg2.jpg"></img>
+  </div>
+  <div class="mx-auto">
+    <img src="bg3.jpg"></img>
+  </div>
+  <div class="mx-auto">
+    <img src="bg4.jpg"></img>
+  </div>
+</div>
+<p>So we read the image, transform it into the matrix, and add it to the foreground $S$ to create the new video matrix $X&rsquo;$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>bg1 <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>imread(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;./data/</span><span style="color:#e6db74">{</span>bgname<span style="color:#e6db74">}</span><span style="color:#e6db74">.jpg&#39;</span>)   <span style="color:#75715e"># choose here the background image file path</span>
+</span></span><span style="display:flex;"><span>bg1 <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>resize(bg1, (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>), fx <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>, fy <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.25</span>)   <span style="color:#75715e"># since the images are of size 192 x 192, we rescale it to 48x48</span>
+</span></span><span style="display:flex;"><span>bg1 <span style="color:#f92672">=</span> (bg1<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>float64) <span style="color:#f92672">/</span> <span style="color:#ae81ff">255</span>)<span style="color:#f92672">.</span>mean(axis <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>newbg <span style="color:#f92672">=</span> (L[:, <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>mean() <span style="color:#f92672">+</span> L[:, <span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>std() <span style="color:#f92672">*</span> (bg1 <span style="color:#f92672">-</span> bg1<span style="color:#f92672">.</span>mean()) <span style="color:#f92672">/</span> bg1<span style="color:#f92672">.</span>std())<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>newvid <span style="color:#f92672">=</span> (S <span style="color:#f92672">+</span> newbg[:, np<span style="color:#f92672">.</span>newaxis])<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>reshape(vid<span style="color:#f92672">.</span>shape)
+</span></span></code></pre></div><p>Notice that, only something special we are doing in line 4 of the above code. What it does is that it rescales the background image into the proper range of original background $L$ matrix. So, in that way, the light intensity of your foreground content $S$ closely matches with the new background $L$ matrix. To understand this, think of the following situation: Imagine the video you are doing right now does not have lots of lights, but the image you want to substitute is a sunny beach of Hawaii. Clearly, even if you change the background, it won&rsquo;t look right, because the amount of light and shadows are varying. This simply transformation, adjusts that.</p>
+<p>Here&rsquo;s how it would look after the substitution with above 4 background.</p>
+<div class="p-4 my-0 py-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="./demo-original.gif"></img>
+    <p>Original Video</p>
+  </div>
+  <div class="mx-auto">
+    <img src="./demo-foreground.gif"></img>
+    <p>Estimated Foreground</p>
+  </div>
+  <div class="mx-auto">
+    <img src="./demo-bg1.gif"></img>
+    <p>New Video with Background 1</p>
+  </div>
+</div>
+<div class="p-4 my-0 py-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="./demo-bg2.gif"></img>
+    <p>New Video with Background 2</p>
+  </div>
+  <div class="mx-auto">
+    <img src="./demo-bg3.gif"></img>
+    <p>New Video with Background 3</p>
+  </div>
+  <div class="mx-auto">
+    <img src="./demo-bg4.gif"></img>
+    <p>New Video with Background 4</p>
+  </div>
+</div>
+<h3 id="problem-with-camera-tampering">Problem with Camera Tampering</h3>
+<p>Now my PhD thesis concerns about the effect of camera tampering on this algorithm. Turns out that, even if <strong>only a few frames</strong> of the video is corrupted, this process ends up affecting all frames of the video, irrespective of the time when tampering occurred. For instance, I tamper some random pixels from frame 5 to frame 10 by setting them equal to 0 (i.e., pure black).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>vid2 <span style="color:#f92672">=</span> vid<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>tamper_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>vid2[np<span style="color:#f92672">.</span>ix_(range(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>), np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(<span style="color:#ae81ff">47</span>, size <span style="color:#f92672">=</span> tamper_size), np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>choice(<span style="color:#ae81ff">47</span>, size <span style="color:#f92672">=</span> tamper_size))] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>Here are some of the frames of the new video after tampering.</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="image7-a.png"></img>
+    <p>1st Frame</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image7-b.png"></img>
+    <p>7th Frame</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image7-c.png"></img>
+    <p>15th Frame</p>
+  </div>
+</div>
+<p>We apply the same technique as before and take a look at the 15th frame, its estimated background and foreground.</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="image7-c.png"></img>
+    <p>True Frame 15</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image8-a.png"></img>
+    <p>Estimated Background</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image8-b.png"></img>
+    <p>Estimated Foreground</p>
+  </div>
+</div>
+<p>Clearly, the estimated background and the estimated foreground has these artefacts or noises present in the image, whereas the original image frame was free from tampering. This is bad, since the noise in a single frame corrupts the entire video 😟 .</p>
+<p>Turns out, one needs to use a robust version of SVD in this case, and this is what me and my supervisors (Prof. Ayanendranath Basu and Dr. Abhik Ghosh) developed together in this <a href="https://arxiv.org/abs/2109.10680">paper</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. This algorithm is now available as</p>
+<ul>
+<li>
+<p><code>rsvddpd</code> package <sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> in CRAN R repository, GitHub link <a href="https://github.com/subroy13/rsvddpd">here</a>.</p>
+</li>
+<li>
+<p><code>decompy</code> package <sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> in PyPi repository as a python package, GitHub link <a href="https://github.com/subroy13/decompy">here</a>, with documentation link <a href="https://subroy13.github.io/decompy/index.html">here</a>.</p>
+</li>
+</ul>
+<p>Here we use the <code>decompy</code> library to perform our algorithm rSVDdpd as a robust SVD technique for background modelling. The <code>decompy</code> library also contains several other matrix factorization techniques (about 15 algorithms now, I am aiming for about 100 algorithms here, 😅), you are welcome to try out the library, its functionalities and contribute in any way possible. Since the library is in a nascent stage, the documentation is not great, but a working documentation is hosted <a href="https://subroy13.github.io/decompy/index.html">here</a> for you to check it out!</p>
+<p>Now that I have done enough marketing, let&rsquo;s get going.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> decompy.matrix_factorization <span style="color:#f92672">import</span> RobustSVDDensityPowerDivergence
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># do the transformation X matrix</span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> vid2<span style="color:#f92672">.</span>reshape((vid2<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">.</span>T   <span style="color:#75715e"># rowwise pixels, columnwise time</span>
+</span></span><span style="display:flex;"><span>rank <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>ss <span style="color:#f92672">=</span> RobustSVDDensityPowerDivergence(alpha <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>)<span style="color:#f92672">.</span>decompose(X, rank <span style="color:#f92672">=</span> rank)   <span style="color:#75715e"># here we apply our robust svd algorithm</span>
+</span></span><span style="display:flex;"><span>s2 <span style="color:#f92672">=</span> ss<span style="color:#f92672">.</span>singular_values(<span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>U2, V2 <span style="color:#f92672">=</span> ss<span style="color:#f92672">.</span>singular_vectors(<span style="color:#e6db74">&#39;both&#39;</span>)
+</span></span><span style="display:flex;"><span>L2 <span style="color:#f92672">=</span> U2[:, :rank]<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, rank) <span style="color:#f92672">@</span> np<span style="color:#f92672">.</span>diag(s2[:rank])<span style="color:#f92672">.</span>reshape(rank, rank) <span style="color:#f92672">@</span> V2<span style="color:#f92672">.</span>T[:rank, :]<span style="color:#f92672">.</span>reshape(rank, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>S2 <span style="color:#f92672">=</span> X <span style="color:#f92672">-</span> L2  <span style="color:#75715e"># do the L + S decomposition</span>
+</span></span><span style="display:flex;"><span>vidbg2 <span style="color:#f92672">=</span> L2<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>reshape(vid2<span style="color:#f92672">.</span>shape)  <span style="color:#75715e"># transform L2 and S2 back to video content</span>
+</span></span><span style="display:flex;"><span>vidfg2 <span style="color:#f92672">=</span> S2<span style="color:#f92672">.</span>T<span style="color:#f92672">.</span>reshape(vid2<span style="color:#f92672">.</span>shape)
+</span></span></code></pre></div><p>Here are the results 😏 .</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="image7-c.png"></img>
+    <p>True Frame 15</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image9-b.png"></img>
+    <p>Estimated Background</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image9-c.png"></img>
+    <p>Estimated Foreground</p>
+  </div>
+</div>
+<p>As you can see now the background and the foreground of the non-tampered true frame, i.e., 15th frame remain unaffected, which is what we wanted. However, the originally tampered frame will still remain tampered in its foreground, and can be used to detect changes in video surveillance.</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="mx-auto">
+    <img src="image7-b.png"></img>
+    <p>True Frame 7</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image10-b.png"></img>
+    <p>Estimated Background</p>
+  </div>
+  <div class="mx-auto">
+    <img src="image10-c.png"></img>
+    <p>Estimated Foreground</p>
+  </div>
+</div>
+<h2 id="conclusion">Conclusion</h2>
+<p>I mentioned before that I will talk about colour videos as well. Well, a colour video is represented much like a grayscale video, but instead of one 3d tensor, you have 3 different 3d tensors, one for each primary colour. Every colour video consists of three primary colour channels, Red, Green and Blue (RGB) and by matching their intensities and mixing these colours, you can create a colour video. You can read more about it <a href="https://en.wikipedia.org/wiki/RGB_color_model">here</a> <sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup>.</p>
+<p>So, once you have three 3d tensors for the colour video, one for each channel, you can pretty much apply the above algorithm to all 3 channels separately, and finally combine the results. Here&rsquo;s one sample of how it would look like:</p>
+<div class="p-4 py-2 my-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <div class="mx-auto">
+    <img src="highway-orig.gif"></img>
+    <p>True Video 7</p>
+  </div>
+  <div class="mx-auto">
+    <img src="highway-bg.gif"></img>
+    <p>Changed Background</p>
+  </div>
+</div>
+<p>This is done using classical SVD, so you can see some noisy artefacts coming up. If you use our algorithm <code>rsvdpd</code>, such noisy artefacts are much mitigated. For more details, you can check out our paper at <a href="https://arxiv.org/abs/2109.10680">paper</a> <sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>, which has more similar examples of background subtraction and background substitution.</p>
+<p>And finally, if this looks kind of interesting to you, or you want to collaborate in writing the <code>decompy</code> python package, feel free to drop a comment or reach out to me.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Background Subtraction Website - <a href="https://sites.google.com/site/backgroundsubtraction/Home">https://sites.google.com/site/backgroundsubtraction/Home</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>Low rank and sparse tools for background modelling (LRS Library) in MATLAB - <a href="https://github.com/andrewssobral/lrslibrary">https://github.com/andrewssobral/lrslibrary</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>Singular Value Decomposition (Wikipedia) - <a href="https://en.wikipedia.org/wiki/Singular_value_decomposition">https://en.wikipedia.org/wiki/Singular_value_decomposition</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p>Roy, Subhrajyoty, Ayanendranath Basu, and Abhik Ghosh. &ldquo;A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling.&rdquo; arXiv preprint arXiv:2109.10680 (2021).&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p>rSVDdpd Package in R, CRAN Repository - <a href="https://cran.r-project.org/web/packages/rsvddpd/index.html">https://cran.r-project.org/web/packages/rsvddpd/index.html</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6" role="doc-endnote">
+<p><code>decompy</code> package for Python in PyPI repository - <a href="https://pypi.org/project/decompy/">https://pypi.org/project/decompy/</a>, Documentation Link: <a href="https://subroy13.github.io/decompy/index.html">https://subroy13.github.io/decompy/index.html</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7" role="doc-endnote">
+<p>RGB Colour Model (Wikipedia) - <a href="https://en.wikipedia.org/wiki/RGB_color_model">https://en.wikipedia.org/wiki/RGB_color_model</a>&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
                 </div>
             </div>
         </div>

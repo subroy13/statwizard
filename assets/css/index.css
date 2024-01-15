@@ -2017,6 +2017,8 @@ mjx-container {
 .video-shortcode {
   max-width: 100%;
   height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .first\:rounded-t-lg:first-child {
