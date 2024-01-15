@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Reinforcement Learning (Part 3) - Markov Decision Process
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/2023/markov-decision-process/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from </p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Reinforcement Learning (Part 3) - Markov Decision Process
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">16 August, 2023</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">16</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/reinforcement-learning/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Reinforcement Learning
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Probability (Conditional Probability) - </span>
+                        
+                            <span class="text-yellow-600 font-semibold">Intermediate</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> This is the third part of the Reinforcement Learning series: Here I discuss about the representing the reinforcement learning problem as a markov decision process, explain standard terminologies and provide ways to estimate the value function.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#markov-decision-process-mdp">Markov Decision Process (MDP)</a></li>
+        <li><a href="#the-objective-of-the-rl-agent">The Objective of the RL Agent</a></li>
+        <li><a href="#standard-terminologies">Standard Terminologies</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-a-better-decision">Making a Better Decision</a>
+      <ul>
+        <li><a href="#example-game">Example Game</a></li>
+        <li><a href="#monte-carlo---accumulation-of-experiences">Monte Carlo - Accumulation of Experiences</a></li>
+        <li><a href="#bellman-equation---fixed-point-iteration">Bellman Equation - Fixed point iteration</a></li>
+        <li><a href="#why-value-estimates-are-different">Why value estimates are different?</a></li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>In my previous post (check <a href="https://www.statwizard.in/posts/k-arm-bandit-2/">here</a> if you haven&rsquo;t already), we ended up with a question about how to formally express a reinforcement learning problem, and how should it be represented when the underlying of the system (i.e., the slot machine) itself is changing based on the arm you are choosing. The solution is given by <strong>Markov Decision Process</strong>.</p>
+<h3 id="markov-decision-process-mdp">Markov Decision Process (MDP)</h3>
+<p>Before defining what a Markov Decision Process (MDP) is, let us try to summarize the process the reinforcement learning happens, along with the components involved in the process. There are mainly two major components: An environment (for the $k$-arm bandit problem, it is the slot machine) and an agent (the gambler who wants to pull the arm and win rewards). These two components act in the following way:</p>
+<ol>
+<li>The environment has a state $S_t$ at time $t$, which basically is an abstract representation of the environment features that are useful to the problem of learning. For instance, when you are playing chess or any board game, the state is the positions of all the chess pieces on the board. When you are playing pinball, the state is the values of all the pixels on the computer screen. When you are driving to the airport and you want to find out which road requires minimal time, the state could be the traffic and weather conditions.</li>
+</ol>
+<div class="w-full flex justify-center items-center mermaid">
+    graph RL
+    B[Environment] --> |Measures current state S<sub>t</sub>| A[RL Agent]
+</div>
+<ol start="2">
+<li>Given this state $S_t$ (which are kind of measurable features of the environment as measured by the agent), the agent tries to take one of the possible action $A_t$ at time $t$, which is an element of the action space $\mathcal{A}$. Basically this means, once you see the chess position, you have a set of valid moves that you can play with. For the pinball game, there are only two valid actions at every state: lifting the left flipper or the right flipper. For driving to the airport example, your action is limited to the roads that you can take at every crossing you encounter.</li>
+</ol>
+<div class="w-full flex justify-center items-center mermaid">
+    graph LR
+    A[RL Agent] --> |Action a<sub>t</sub>| B[Environment]
+    B --> |Measures current state S<sub>t</sub>| A
+</div>
+<ol start="3">
+<li>Given this action $A_t$ acted on the environment, the environment spits out a reward $R_{t+1}$ to the agent and its transforms to new state $S_{t+1}$. The agent&rsquo;s objective will be to maximize these rewards over time (both over short and long term, we will get to that shortly). In the chess playing, the reward is +1 when you win, (-1) if you lose the game and 0 for everything else. For the pinball game also we can define a similar reward, adding to the reward whenever the ball bounces of an obstacle. For the driving scenario, every mile you drive more if going to cost some fuel which can essentially be thought of a negative reward.</li>
+</ol>
+<div class="w-full flex justify-center items-center mermaid">
+    graph LR
+    A[RL Agent] --> |Action a<sub>t</sub>| B[Environment]
+    B --> |Measures current state S<sub>t</sub>| A
+    B --> |New state S<sub>t+1</sub><br/>Current reward R<sub>t+1</sub>| A
+</div>
+<blockquote>
+<p>Now a MDP is a decision process as above with an additional Markovian property that the states $S_t$ contain all necessary properties of the environment that an agent needs to take an action, the knowledge of the entire history of the states $S_0, S_1, \dots S_{t-1}, S_t$ does not provide any additional benefit.</p>
+</blockquote>
+<p>In terms of probability, these can be written as 
+$$
+\begin{align*}
+P(A_{t+1} \mid S_t) &amp; = P(A_{t+1} \mid S_t, S_{t-1}, S_{t-2}, \dots ),\\
+P(S_{t+1}, R_{t+1} \mid A_t, S_t) &amp; = P(S_{t+1}, R_{t+1} \mid A_t, S_t, A_{t-1}, S_{t-1}, \dots),
+\end{align*}
+$$
+for all kinds of RL agent that we are going to look at.</p>
+<h3 id="the-objective-of-the-rl-agent">The Objective of the RL Agent</h3>
+<p>The primary goal of a reinforcement learning (RL) agent is to learn a policy that maximize the reward over time (Surely, this is a capitalistic world!). Now, maximizing rewards over time can have two contrasting viewpoint:</p>
+<ol>
+<li>
+<p>The RL agent tries to look for the short term gain and get instant gratification by maximizing its immediate rewards. This is essentially what we would do for the driving example, taking the shortcut road every now and then.</p>
+</li>
+<li>
+<p>The RL agent can also be designed in a way to maximize gains over a very long horizon, essentially delaying gratification by waiting for the right opportunity or building success over time. For instance, a chess grandmaster would do this by thinking 10-20 moves ahead.</p>
+</li>
+</ol>
+<p>To represent both of these paradigms properly, we can use a trick from Finance, namely discounting future values by the inflation rate to obtain a <a href="https://en.wikipedia.org/wiki/Present_value">present value</a>. We define <strong>Gain</strong> at time $t$ as
+$$
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots 
+$$
+where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long term view, you can modify $\gamma$ to be very close to 1, on the other hand, if you want the RL agent to take a short term view, you would want $\gamma$ to be near zero or zero.</p>
+<p>Therefore, instead of focusing on maximizing rewards, the RL agent would aim to maximize the gain $G_t$ for every time step $t$, and would take the action $a$ that has the maximum possible gain.</p>
+<h3 id="standard-terminologies">Standard Terminologies</h3>
+<p>Before diving deeper into the Markov Decision Process, let&rsquo;s clarify some standard terminologies commonly used in reinforcement learning:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<ul>
+<li>
+<p>State Space ($\mathcal{S}$): The set of all possible states that the environment can be in. States encapsulate all relevant information needed for decision making.</p>
+</li>
+<li>
+<p>Action Space ($\mathcal{A}$): The set of all possible actions that the agent can take. The choice of action at a certain state influences the subsequent state and the received reward.</p>
+</li>
+<li>
+<p>Policy ($\pi$): A policy is a strategy or decision-making function that maps states to actions. It defines the agent&rsquo;s behavior in the environment. A policy can be deterministic or stochastic. So you can think of $\pi$ as a collection of conditional probability distributions on the action space $\mathcal{A}$ given the current state $s$, for all $s \in \mathcal{S}$.</p>
+</li>
+<li>
+<p>Transition Dynamics ($P$): The probability distribution over next states and rewards given the current state and action. It characterizes how the environment responds to the agent&rsquo;s actions. Basically, it is the probability distribution over the new state and reward pair $(S_{t+1}, R_{t+1})$ conditional on the current state of the environment $S_t$ and the RL agent&rsquo;s action $A_t$.</p>
+</li>
+<li>
+<p>Value Function ($V^\pi$): The expected gain starting from a particular state and following a specific policy $\pi$. It represents how good it is for the agent to be in a certain state under the policy $\pi$. It is mathematically described as $V^\pi(s) = E_{\pi}(G_t \mid S_t = s)$ where $E(\cdot)$ denotes expectation operator.</p>
+</li>
+<li>
+<p>Quality Function or popularly known as Q-Function ($Q^\pi$): Similar to the value function, but it takes both a state and an action as inputs. It represents the expected cumulative return starting from a certain state, taking a specific action, and then following policy $\pi$. It is mathematically described as $Q^\pi(s, a) = E_{\pi}(G_t \mid S_t = s, A_t = a)$.</p>
+</li>
+</ul>
+<h2 id="making-a-better-decision">Making a Better Decision</h2>
+<p>Now that we are aware of the basic terminologies in the world of Markov Decision Processes, we can formalize the aim of an agent through concrete concepts.</p>
+<p>The RL agent wants to maximize its returns on both short term and the long term, means to increase its gains over time. However, gain $G_t$ is a stochastic quantity, meaning that it can be random due to the random reactions of the environment through its transition dynamics. The straightforward choice is to consider the expected gain $E(G_t)$, and trying to maximize that. But $E(G_t)$ has a name, the value function, which is a map from the state space to real numbers. Some states are basically more rewards, hence has more value and other states are less rewarding. The RL agent would always try to take actions that makes it move from a less rewarding state to a more rewarding state, thus increasing its chances to obtain a greater gain.</p>
+<p>Let us try to understand this in the context of a chess gameplay. You, (say the RL agent), want to win the game. So, one possible strategy you can take is that starting from the 50/50-chance at the beginning of the game, for every move that you take you try to increase your winning chances. But, how your opponent plays is not in your control, so it is very difficult to determine your winning chances at some particular chess position (call it $P_0$). Now think of a situation, where you played $100$ average chess players, all games starting from $P_0$ and you win $82$ of these games. Then it is quite easy for you to say, that particular chess position $P_0$ has a value of $0.82$, as you won $82%$ of the time. Now imagine you have such data on every possible chess positions that can ever occur, then Congratulations! you have cracked a formulae for winning every chess game out there, as every move you take, you can try to create a chess position which is favourable to you. However, it turns out you cannot do this for chess (since the number of possible chess positions can be huge, about $10^{120}$, check out Shannon number for details<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>), so we have some approximations to work with, which I will cover in upcoming blog posts.</p>
+<p>Therefore, one of the fundamental thing for an RL agent to improve its action is to known where it stands, by basically estimating the value function (i.e., the expected gain) for its current policy (read for its current strategy).</p>
+<h3 id="example-game">Example Game</h3>
+<p>Here, we shall see how an RL agent can try to estimate the value function. For that, we will use the following example game, which is like a maze game within a $4\times 4$ grid. The mission is to start on the top left corner (shown in <span class="text-red-500">Red</span> below) and reach the top right corner (shown in <span class="text-blue-500">Blue</span> below), but there are some obstacles (shown in Gray) along the way. The state is the agent&rsquo;s current position in the grid, and at any point, it can move up, down, left or right. Every move it makes gives no reward normally, unless it reaches the end when it gets a reward of $5$ and hitting any obstacle gives a reward of $(-1)$.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig1.png'>
+</img>
+<p>Let us try to code this environment in <code>python</code>, which takes the current state $S_t$ and the action $A_t$, and returns the new state $S_{t+1}$ and the immediate reward $R_{t+1}$.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gridworld_maze</span>(cur_state, action):
+</span></span><span style="display:flex;"><span>  x, y <span style="color:#f92672">=</span> cur_state
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">assert</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;up&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;down&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x, y <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;left&#34;</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, y)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    new_state <span style="color:#f92672">=</span> (x <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, y)
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># bottom left corner is (0, 0), top right corner is (3, 3)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">or</span> new_state[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># it is out of bounds</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)   <span style="color:#75715e"># reward is -1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># it is hitting obstacles</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (cur_state, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">elif</span> new_state <span style="color:#f92672">==</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># reached the end goal</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (new_state, <span style="color:#ae81ff">0</span>)  <span style="color:#75715e"># just a valid move</span>
+</span></span></code></pre></div><p>Now assume that the RL agent behaves randomly. That is, at any state $S_t$, it randomly picks any of the $4$ action, going up or down or left or right. We wish to obtain an estimate of the value function of different states, assuming that the RL agent follows this random policy. Essentially this means to find out which squares in the maze are more important (or closer) to reach the goal when the RL agent is only doing exploration by trying all possible actions.</p>
+<h3 id="monte-carlo---accumulation-of-experiences">Monte Carlo - Accumulation of Experiences</h3>
+<p>Now to obtain an estimate of the value function $v_\pi(s)$, one simple way is to let the agent play a lot of these maze games and see how much rewards it can accumulate from these games, starting from which states. We can follow these steps:</p>
+<ol>
+<li>
+<p>Say the agent plays the game for $1000$ times.</p>
+</li>
+<li>
+<p>At each game, once the game is over, we see a path $S_0, R_1, S_1, \dots R_T, S_T$. Here, $S_T$ is the end goal at the top right corner.</p>
+</li>
+<li>
+<p>Calculate the gains starting from a state along these paths. For example, call $G(S_0) = R_1 + \gamma R_2 + \gamma^2 R_3 + \dots$, $G(S_1) = R_2 + \gamma R_3 + \dots$, and so on.</p>
+</li>
+<li>
+<p>If there are repeatations in $S_0, S_1, \dots S_T$, then the corresponding gain is taken to be the average of all the repeated gains. For example, say $S_{10}$ is the bottom left corner, and then circling around the obstacles, the agent again comes back to the bottom left corner as $S_{20}$. Then, the gain for the bottom left corner is taken to be $(G(S_{10}) + G(S_{20})) / 2$.</p>
+</li>
+<li>
+<p>Finally, by repeating this process for each game, we have a list of gains for each state coming from different games. We can average these gains out and get an approximate value for each state.</p>
+</li>
+</ol>
+<p>We implement this strategy to get an estimate of the value function in the following code. However, to make it more efficient, instead of keeping a list of gains to average out, we keep a counter and the current value of the average and incrementally update the average after every round / episode / game.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>B <span style="color:#f92672">=</span> <span style="color:#ae81ff">5000</span> <span style="color:#75715e"># run 5000 games</span>
+</span></span><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
+</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>val_counts <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> range(B):
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># simulate the actions</span>
+</span></span><span style="display:flex;"><span>  cur_state <span style="color:#f92672">=</span> (<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">3</span>)  <span style="color:#75715e"># the starting state</span>
+</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  visits <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> cur_state <span style="color:#f92672">!=</span> (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>) <span style="color:#f92672">and</span> niter <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1000</span>:
+</span></span><span style="display:flex;"><span>    niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>][np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">4</span>)]
+</span></span><span style="display:flex;"><span>    cur_state, reward <span style="color:#f92672">=</span> gridworld_maze(cur_state, action)
+</span></span><span style="display:flex;"><span>    visits<span style="color:#f92672">.</span>append((cur_state, reward))
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># end of episode, now we backoff and revise the value function estimates</span>
+</span></span><span style="display:flex;"><span>  gain <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (cur_state, reward) <span style="color:#f92672">in</span> visits[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]:
+</span></span><span style="display:flex;"><span>    gain <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> gain
+</span></span><span style="display:flex;"><span>    x, y <span style="color:#f92672">=</span> cur_state
+</span></span><span style="display:flex;"><span>    val_ests[x, y] <span style="color:#f92672">=</span> (val_ests[x, y] <span style="color:#f92672">*</span> val_counts[x, y] <span style="color:#f92672">+</span> gain) <span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> val_counts[x, y])  <span style="color:#75715e"># update the estimated value</span>
+</span></span><span style="display:flex;"><span>    val_counts[x, y] <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>   <span style="color:#75715e"># update the visited count</span>
+</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<div class="flex gap-4 justify-center items-center flex-wrap">
+    <img src="./fig2a.png">
+    <img src="./fig2b.png">
+</div>
+<p>If you see now the heatmap generated from the value estimates, it clearly shows the shortest path the agent needs to take in the maze, just follow along the lighter shades. Hence, just by estimating the value itself, the agent knows how to find a good policy to solve the game.</p>
+<h3 id="bellman-equation---fixed-point-iteration">Bellman Equation - Fixed point iteration</h3>
+<p>The previous strategy we used require use to simulate the experiences of playing the game itself, and then accumulate those experiences to get a good value estimate. In constrast, if we know the dynamics of the environment completely (i.e., which action triggers which state and rewards), we can theoretically come up with a formula for estimating the value function.</p>
+<p>Here&rsquo;s how we do this.</p>
+<p>$$
+\begin{align}
+v^\pi(s) 
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) E(G_t \mid S_t = s, A_t = a),\\
+&amp; \text{we rewrite the value in terms of policy probabilities and conditional gains for an action}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) E(G_t \mid S_t = s, A_t = a, S_{t+1} = s&rsquo;),\\
+&amp; \text{we now do a further conditioning over the next state and introduce the transition dynamics}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) E(R_{t+1} + \gamma G_{t+1} \mid S_t = s, A_t = a, S_{t+1} = s&rsquo;)\\
+&amp; \text{since, } G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots = R_{t+1} + \gamma G_{t+1}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) \left( R_{t+1} + \gamma E(G_{t+1} \mid S_{t+1} = s&rsquo;) \right)  \\
+&amp; \text{here, we use the markov property}\\
+&amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) \left( R_{t+1} + \gamma v^{\pi}(s&rsquo;) \right)
+\end{align}
+$$</p>
+<p>This equation is called <strong>Bellman Equation</strong><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</p>
+<p>Therefore, one way to estimate the value function is to start with some initial estimate of the value function. Then use the right hand side of the above equation to get a better estimate, and then iterate this process over and over unless we reach a stable estimate of the value function. Note that, you need to have the policy distribution $\pi(a \mid s)$ and the transition dynamics $p(s&rsquo;\mid s, a)$ for this strategy to work. Fortunately, we have both of them available since we know the game exactly and know how the environment will respond.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>gamma <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.9</span>   <span style="color:#75715e"># discount factor</span>
+</span></span><span style="display:flex;"><span>val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># for obstacles and terminal state, the value is known</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
+</span></span><span style="display:flex;"><span>err <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e9</span>
+</span></span><span style="display:flex;"><span>niter <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>  new_val_ests <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># loop through all states and see how the environment will respond</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> cur_x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> cur_y <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (cur_x, cur_y) <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>)]:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># for all states except end and obstacles, take the all 4 actions</span>
+</span></span><span style="display:flex;"><span>      action_vals <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">for</span> action <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#34;up&#34;</span>, <span style="color:#e6db74">&#34;down&#34;</span>, <span style="color:#e6db74">&#34;left&#34;</span>, <span style="color:#e6db74">&#34;right&#34;</span>]:
+</span></span><span style="display:flex;"><span>        new_state, reward <span style="color:#f92672">=</span> gridworld_maze((cur_x, cur_y), action)
+</span></span><span style="display:flex;"><span>        action_vals[action] <span style="color:#f92672">=</span> reward <span style="color:#f92672">+</span> gamma <span style="color:#f92672">*</span> val_ests[new_state[<span style="color:#ae81ff">0</span>], new_state[<span style="color:#ae81ff">1</span>]]
+</span></span><span style="display:flex;"><span>      new_val_ests[cur_x, cur_y] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>mean([action_vals[k] <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> action_vals])
+</span></span><span style="display:flex;"><span>  err <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sum((new_val_ests <span style="color:#f92672">-</span> val_ests) <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">**</span><span style="color:#ae81ff">0.5</span>   <span style="color:#75715e"># see the RMSE</span>
+</span></span><span style="display:flex;"><span>  niter <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> err <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1e-5</span> <span style="color:#f92672">or</span> niter <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">500</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    val_ests <span style="color:#f92672">=</span> new_val_ests<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># finally update the value at the obstacles and the end goal</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> x, y <span style="color:#f92672">in</span> [(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>), (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">0</span>), (<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">1</span>)]:
+</span></span><span style="display:flex;"><span>  val_ests[x, y] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>val_ests[<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>  <span style="color:#75715e"># end goal value is 100</span>
+</span></span></code></pre></div><p>The resulting value estimates turn out to be as follows.</p>
+<div class="flex gap-4 justify-center items-center flex-wrap">
+    <img src="./fig2c.png">
+    <img src="./fig2d.png">
+</div>
+<p>Notice that, the heatplot is very similar to the one for the Monte Carlo estimates, and it also demonstrates the optimal path to solve the maze game.</p>
+<p>This particular method is often called <strong>Value Estimation</strong> using Dynamic Programming in Reinforcement Learning literature.</p>
+<h3 id="why-value-estimates-are-different">Why value estimates are different?</h3>
+<p>So we estimated the values using two different method: accumulating experiences through Monte Carlo method, and iterative computation of Bellman equation. Although both shows the same path, the resulting value estimates are slightly different. So, which one is correct?</p>
+<p>Turns out the Monte Carlo estimate is correct in this case. The Bellman equation uses on crucial fact that,</p>
+<p>$$
+G_t = R_{t+1} + \gamma G_{t+1}
+$$</p>
+<p>Now this only holds if there are infinite number of moves in the game and there is no end of the game, it continues even after the game ends. But in our maze example, the game ends when the agent reaches the top right corner (the blue corner) which makes it a terminal state. Hence, the above relation is only approximately true in this case.</p>
+<p>On the other hand, the Monte Carlo method requires a terminating state, otherwise you cannot perform the accumulation step where you refine the value estimates. So, here are the key differences between above two methods.</p>
+<table>
+<thead>
+<tr>
+<th>Monte Carlo Method</th>
+<th>Bellman Equation Iteration (Dynamic Programming)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Works only where the game is finite, there is a terminal state</td>
+<td>Works only when the game is infinite with no terminal state</td>
+</tr>
+<tr>
+<td>Does not require knowledge of transition dynamics</td>
+<td>Require knowledge of transition dynamics</td>
+</tr>
+<tr>
+<td>Need to play / simulate lots of experiences which visits all states at least once</td>
+<td>Does not require any simulation</td>
+</tr>
+</tbody>
+</table>
+<p>Here are some questions to think about before my next post.</p>
+<ol>
+<li>
+<p>What kind of games would have no terminal state? Even if it is not a game, try to think of some situation where you can apply RL.</p>
+</li>
+<li>
+<p>Often you don&rsquo;t know how your opponent / environment will behave if it is a two player or multi-player game. Then, can you combine Monte Carlo with Bellman equation to create an algorithm that works even for infinite games?</p>
+</li>
+<li>
+<p>How to get an optimal or best policy if there are many actions which improves the value of the current state?</p>
+</li>
+</ol>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Shannon_number">https://en.wikipedia.org/wiki/Shannon_number</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/2023/k-arm-bandit-2/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="/posts/2023/td-algorithms/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+    
+
+
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+
+
+
+    
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+
+
+</body>
+</html>

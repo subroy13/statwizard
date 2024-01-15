@@ -32,7 +32,7 @@ tags:
 
 'COVID - 19 Tracker' primarily helps predicting the spread of COVID based on a modified extended e-SIR model. It analyzes districts and state levels and represents a prediction of COVID-19 spread for various scenarios with different possible dates of lockdown relaxation, followed by varying degrees of social distancing guidelines that may be adopted post-lockdown. It also proposes possible strategies to contain the COVID-19 spread in each district depending on fraction of the population that will be infected at the peak. That can help to manage the medical supply chain management.
 
-The dashboard is availble [here](http://covid-tracker.iimv.ac.in:3939/covid/)
+The dashboard is available [here](http://covid-tracker.iimv.ac.in:3939/covid/)
 
 # Features
 
@@ -63,8 +63,7 @@ The dashboard is availble [here](http://covid-tracker.iimv.ac.in:3939/covid/)
 
 This video shows an introductory demonstration about how to use the web application (dashboard) and introduces its various components.
 
-{{< video src = "demo.mp4" >}}
-
+{{< video src="/video/covid19tracker-demo.mp4" type="video/mp4" preload="auto" >}}
 
 
 **Note:** This video does not contain any sound.

@@ -6,22 +6,31 @@
     <description>Recent content in Tags on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Finance</title>
-      <link>/tags/finance/</link>
-      <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
+      <title>Linear Algebra</title>
+      <link>/tags/linear-algebra/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
       
-      <guid>/tags/finance/</guid>
+      <guid>/tags/linear-algebra/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Investing</title>
-      <link>/tags/investing/</link>
+      <title>Video Processing</title>
+      <link>/tags/video-processing/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/video-processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Personal Finance</title>
+      <link>/tags/personal-finance/</link>
       <pubDate>Fri, 15 Dec 2023 00:00:00 +0000</pubDate>
       
-      <guid>/tags/investing/</guid>
+      <guid>/tags/personal-finance/</guid>
       <description></description>
     </item>
     

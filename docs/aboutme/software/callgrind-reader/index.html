@@ -101,7 +101,7 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.1a8bd5422323951e18e71652e7fca2cb.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
 
 
 
@@ -403,21 +403,21 @@
 </ul>
 <h2 id="installation">Installation</h2>
 <p>To install &ldquo;callgrind-reader&rdquo;, simply run:</p>
-<pre><code>npm install callgrind-reader
+<pre tabindex="0"><code>npm install callgrind-reader
 </code></pre><h2 id="usage">Usage</h2>
 <p>Here&rsquo;s a basic example of how to use &ldquo;callgrind-reader&rdquo; to parse a callgrind file and extract profiling data:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CallGrind</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;callgrind-reader&#39;</span>;
-<span style="color:#75715e">// Parse the callgrind file using CallgrindReader
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CallGrind</span>(<span style="color:#e6db74">&#39;path/to/callgrind/file&#39;</span>);
-<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">contents</span>);
-<span style="color:#75715e">// Access the profiling data
-</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">profile</span>) {
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Function: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">functionName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total cycles: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">cycles</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total instructions: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">instructions</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total flops: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">flops</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
-}
-</code></pre></div><p>For more detailed information on how to use &ldquo;callgrind-reader&rdquo;, see the <a href="https://subroy13.github.io/callgrind-reader/">documentation</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">CallGrind</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;callgrind-reader&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Parse the callgrind file using CallgrindReader
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">reader</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">CallGrind</span>(<span style="color:#e6db74">&#39;path/to/callgrind/file&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">result</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">reader</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">contents</span>);
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// Access the profiling data
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">item</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">result</span>.<span style="color:#a6e22e">profile</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Function: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">functionName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total cycles: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">cycles</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total instructions: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">instructions</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Total flops: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">item</span>.<span style="color:#a6e22e">events</span>.<span style="color:#a6e22e">flops</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>For more detailed information on how to use &ldquo;callgrind-reader&rdquo;, see the <a href="https://subroy13.github.io/callgrind-reader/">documentation</a>.</p>
 <h2 id="contribution">Contribution</h2>
 <p>Contributions to &ldquo;callgrind-reader&rdquo; are welcome! If you encounter a bug or want to add a new feature, feel free to open an issue or submit a pull request on the <a href="https://github.com/subroy13/callgrind-reader">GitHub repository</a>.</p>
 <h2 id="license">License</h2>
@@ -432,7 +432,7 @@
     <div class="my-6 max-w-6xl md:mx-auto mx-4">
         <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     

@@ -18,10 +18,10 @@
     
     <item>
       <title>Texture Networks</title>
-      <link>/posts/texture-network-style-transfer/</link>
+      <link>/posts/2021/texture-network-style-transfer/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>/posts/texture-network-style-transfer/</guid>
+      <guid>/posts/2021/texture-network-style-transfer/</guid>
       <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
     </item>
     
