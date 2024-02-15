@@ -1,17 +1,17 @@
 import cv2
 import xlsxwriter as xl
 
-img = cv2.imread('../../static/images/avatar.jpg')
+img = cv2.imread('./test.jpg')
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 print(img.shape)
 h, w, c = img.shape
-SCALE_FACTOR = 0.1
+SCALE_FACTOR = 1
 img = cv2.resize(img, (int(SCALE_FACTOR * h), int(SCALE_FACTOR * h)))
 
 # new sizes
 h, w, c = img.shape
 
-workbook = xl.Workbook('temp.xlsx')
+workbook = xl.Workbook('output.xlsx')
 worksheet = workbook.add_worksheet()
 
 # write the numbers on the worksheet
@@ -20,6 +20,9 @@ for i in range(h):
         worksheet.write_number(3 * i, j, img[i, j, 0])
         worksheet.write_number(3 * i + 1, j, img[i, j, 1])
         worksheet.write_number(3 * i + 2, j, img[i, j, 2])
+
+for i in range(3 * h, 3 * h + 100):
+    worksheet.write_blank(i, 0, '')    # write blank row for white strip
 
 # now add the colouring with conditional formatting
 for i in range(h):
