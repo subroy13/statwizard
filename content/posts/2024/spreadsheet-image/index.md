@@ -1,6 +1,6 @@
 ---
 title: 'LED Screen with Spreadsheet'
-date: "2024-02-01T00:00:00Z"
+date: "2024-02-16T00:00:00Z"
 imageCaption: "[Unstable Diffusion](https://www.unstability.ai/)"
 summary: 
 
@@ -8,7 +8,7 @@ tags:
     - Image Processing
     - Python
 
-draft: true
+draft: false
 mathjax: false 
 
 prerequisites:
