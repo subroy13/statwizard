@@ -7,6 +7,7 @@
     "prebuild": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/index.css --jit",
     "hugo:draft": "hugo server -D -F",
     "hugo": "hugo server",
+    "config:default": "npm config set registry https://registry.npmjs.org/",
     "dev": "hugo -D && npm run prebuild && npm run hugo:draft",
     "start": "rm -r docs && hugo && npm run prebuild && npm run hugo",
     "deploy": "rm -r docs && hugo && npm run prebuild && hugo"

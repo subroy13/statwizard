@@ -6,7 +6,25 @@
     <description>Recent content in Tags on StatWizard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 16 Feb 2024 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Image Processing</title>
+      <link>/tags/image-processing/</link>
+      <pubDate>Fri, 16 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/image-processing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Fri, 16 Feb 2024 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linear Algebra</title>
       <link>/tags/linear-algebra/</link>
@@ -148,15 +166,6 @@
       <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>/tags/dimension-reduction/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Image Processing</title>
-      <link>/tags/image-processing/</link>
-      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/image-processing/</guid>
       <description></description>
     </item>
     

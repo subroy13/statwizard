@@ -417,7 +417,7 @@ Reinforcement Learning (Part 5) - Q Learning and Optimal Policy Finding
 <p>For Monte Carlo algorithms, we keep track of rewards and gains grouped by the state-action pairs instead of grouping by states only.</p>
 </li>
 <li>
-<p>For temporal difference algorithms, we update $Q(s, a)$ as 
+<p>For temporal difference algorithms, we update $Q(s, a)$ as
 $$
 Q^\pi_{new}(S_t, A_t) = Q^\pi_{old}(S_t, A_t) + \alpha \left( R_{t+1}(A_t) + \gamma \sum_{a \in A} \pi(a \mid S_{t+1}) Q^\pi_{old}(S_{t+1}, A_{t+1} = a) - Q^\pi_{old}(S_t, A_t) \right)
 $$
