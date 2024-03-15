@@ -13,8 +13,7 @@
       <pubDate>Fri, 15 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>/posts/2024/growing-memory/</guid>
-      <description>Introduction Time and memory are the two primary constraints for any software design.
-Conclusion Although the general focus is on writing code that is smaller (uses less memory) and faster (takes less time), it usually trades a very basic requirement - &amp;ldquo;simplicity&amp;rdquo;.</description>
+      <description>Recently, I was working on a project where I had to optimize for both time and memory consumption of the program to make it more efficient. In this post, I share a few key insights that I have gained from that.</description>
     </item>
     
   </channel>
