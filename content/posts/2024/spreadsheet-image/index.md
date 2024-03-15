@@ -23,7 +23,7 @@ prerequisites:
 
 A few days ago, I saw this video by Derek Muller on his channel Veritasium[^1] and came to know about the discovery of blue LED by Shuji Nakamura[^2]. It was a nice video, (I highly recommend watching it) and I was thinking of how significant that discovery was. 
 
-To begin with, it led to the creation of smart LED screen that you see on mobile phones, smart TVs, tablets or any other current-era electronic devices. The red and green LED was discovered n 1962 and 1958 respectively, long before the blue LED was invented in 1993. The LED or Light Emitting Diode is a semiconductor device that emits light when electricity is passed through it. Now, if you are interested in the physics of how that works, Muller explains it beautifully[^1], but what I was interested in was to find a simple way to actually see how these colours can be mixed together and create beautiful pictures.
+To begin with, it led to the creation of smart LED screen that you see on mobile phones, smart TVs, tablets or any other current-era electronic devices. The red and green LED were discovered in 1962 and 1958 respectively, long before the blue LED was invented in 1993. The LED or Light Emitting Diode is a semiconductor device that emits light when electricity is passed through it. Now, if you are interested in the physics of how that works, Muller explains it beautifully[^1], but what I was interested in was to find a simple way to actually see how these colours can be mixed together and create beautiful pictures.
 
 ## The Idea
 
