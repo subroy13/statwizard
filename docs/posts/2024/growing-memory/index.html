@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"></script>
+    <script async>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-97N9TLJ517');
+    </script>
+    
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
+    <link rel="icon" href="/svg/avatar.svg">
+    <title>
+        
+Should your program grow memory?
+
+    </title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<style>
+   
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOiCnqEu92Fr1Mu51QrEzAdLw.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51S7ACc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOjCnqEu92Fr1Mu51TLBCc6CsQ.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 100;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOkCnqEu92Fr1MmgVxIIzI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmEU9fBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  @font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmYUtfBBc4.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+</style>
+
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+     
+     
+</head>
+<body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+        <nav class="bg-white shadow-xl z-50">
+  
+  <div
+    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
+  >
+    <div class="w-[200px] flex items-center">
+      <a
+        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+        href="/"
+      >
+        <img
+          src="/images/logo-wide-resized.png"
+          height="50px"
+          width="100px"
+          class="inline-block"
+          alt="StatWizard Logo"
+        />
+      </a>
+    </div>
+    <div class="w-full flex flex-row justify-center items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Posts
+      </a>
+      
+      <a
+        href="/aboutme"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        About Me
+      </a>
+      
+      <a
+        href="/#contact-me"
+        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+      >
+        Contact Me
+      </a>
+      
+    </div>
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-gray-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+
+  
+  <div
+    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
+  >
+    <div class="w-full flex justify-center items-center">
+      <p class="uppercase font-extrabold font-mono text-2xl">
+        StatWizard
+      </p>
+    </div>
+    <div class="w-[30px] mr-4 relative">
+      <button
+        type="button"
+        id="mobile-menu-button"
+        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Open main menu</span>
+        
+        <svg
+          id="mobile-menu-close-icon"
+          class="bg-white text-neutral-800 outline-none block h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        
+        <svg
+          id="mobile-menu-open-icon"
+          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+
+      <div
+        id="mobile-menu"
+        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
+      >
+        <ul class="flex flex-col">
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/" class=""> Home </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/posts" class=""> Posts </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/aboutme" class=""> About Me </a>
+          </li>
+          
+          <li
+            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          >
+            <a href="/#contact-me" class=""> Contact Me </a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+        <div class="content-container">
+            
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/2024/growing-memory/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Should your program grow memory?
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">16 March, 2024</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">12</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="/tags/python/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Python
+                        </a>
+                    
+                        <a href="/tags/r/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            R
+                        </a>
+                    
+                        <a href="/tags/software-design/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Software Design
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Python Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>R Programming - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> Recently, I was working on a project where I had to optimize for both time and memory consumption of the program to make it more efficient. In this post, I share a few key insights that I have gained from that.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#memory-growth-is-bad-for-r">Memory Growth is Bad for R</a>
+      <ul>
+        <li><a href="#growing-memory-method">Growing Memory Method</a></li>
+        <li><a href="#constant-memory-method">Constant Memory Method</a></li>
+        <li><a href="#growing-memory-with-list">Growing Memory with List</a></li>
+        <li><a href="#vectorization">Vectorization</a></li>
+        <li><a href="#performance-comparison">Performance Comparison</a></li>
+      </ul>
+    </li>
+    <li><a href="#memory-growth-is-good-for-python">Memory Growth is Good for Python</a>
+      <ul>
+        <li><a href="#the-methods">The Methods</a></li>
+        <li><a href="#performance-comparison-1">Performance Comparison</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>Time and memory are the two primary constraints for any software design. Usually, you can only optimize for one of these, sacrificing the others. For example, imagine you want to print all the prime numbers from 1 to 100. Let&rsquo;s think of two approaches to solve the problem.</p>
+<ol>
+<li>
+<p>You count the numbers like 1, 2, 3, &hellip; and so on, and for each number, you check whether it is prime or not. To check whether a number (say 17) is prime, you check if it is divisible by 2, then if divisible by 3, then by 4, by 5, by 6, by 7, and so on. Whenever you find a prime number, you print it and go to the next number for checking.</p>
+</li>
+<li>
+<p>Another approach is you keep a list of prime numbers discovered so far. Then for every new number that you want to check if it is prime or not, simply try dividing by only the prime numbers (instead of checking divisibility by 2, 3, 4, 5, 6, and all numbers). Finally, print all the numbers from the list.</p>
+</li>
+</ol>
+<p>In the first approach, we are trying to optimize for memory, but consuming more time checking division with every number. In the second approach, using a bit more memory by keeping a list of prime numbers, it is trying to optimize for time by checking division with only the prime numbers.</p>
+<p>So it looks like if you want your program to be faster, you should use more memory.</p>
+<blockquote>
+<p>Okay, so just shove down a few RAMs to your 10-year-old laptop, and it can feel like it is a super-computer? 💥</p>
+</blockquote>
+<p>Well, the answer to the question of whether ``using more memory makes your program run fast&rsquo;&rsquo; is both yes and no. And no, I am not talking about efficient algorithms that you can implement to reduce both time and memory footprint. Rather, gaining an understanding of how different programming languages store basic data types and data structures can greatly improve the efficiency of your code. Recently, I was working on a project where I had to optimize both the time and memory consumption of the program to make it more efficient. I did some experiments on this and got a few interesting findings that helped me understand this better. I am sharing these findings here in this post so that you also can leverage the same to make your program more efficient.</p>
+<h2 id="memory-growth-is-bad-for-r">Memory Growth is Bad for R</h2>
+<p>Let us consider a simple problem that we want to solve using <code>R</code> programming language. The problem is that, given an array of numbers, we need to return another array whose elements are the square of the corresponding elements of the original array elements. For example, if the input is <code>[1, 2, 3]</code>, then the output should be <code>[1, 4, 9]</code>.</p>
+<div class="mermaid">
+graph LR
+  A[Input Array] --> f[Function Method] --> B[Output Array with squared elements];
+</div>
+<p>Now we will see different methods of solving this problem, some optimize memory, and some optimize computational time.</p>
+<h3 id="growing-memory-method">Growing Memory Method</h3>
+<p>The first method is to optimize for memory usage. So, we create a blank array to hold the output elements, then we loop over the elements of the input array and dynamically keep putting them into the output array.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
+</span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">for </span>(elem in arr) {
+</span></span><span style="display:flex;"><span>    arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(arr2, elem^2)   <span style="color:#75715e"># grow memory</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(arr2)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This is often called the <strong>Growing</strong> Memory__ method.</p>
+<h3 id="constant-memory-method">Constant Memory Method</h3>
+<p>As you have suspected, instead of dynamically adding more elements to the output array, this method initially assigns memory for the entire output array, and then it keeps updating the elements of this output array as required. Since it requires more memory than the previous method, we expect this to be a bit faster.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
+</span></span><span style="display:flex;"><span>  n <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">length</span>(arr)
+</span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(n)   <span style="color:#75715e"># initially allocate memory</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>n) {
+</span></span><span style="display:flex;"><span>    arr2[i] <span style="color:#f92672">&lt;-</span> arr[i]^2
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(arr2)
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="growing-memory-with-list">Growing Memory with List</h3>
+<p>This is a variation of the Growing Memory method, but instead of creating a blank array, we create a list. From the introductory data structure classes, we know that a linked list is a more complicated data structure than an array, so we expect it to be even slower and more complex than the previous two methods.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
+</span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(arr)) {
+</span></span><span style="display:flex;"><span>    arr2[[i]] <span style="color:#f92672">&lt;-</span> arr[i]^2   <span style="color:#75715e"># does not grow memory</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(<span style="color:#a6e22e">unlist</span>(arr2))
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="vectorization">Vectorization</h3>
+<p>Finally, we perform the direct way almost every R practitioner will solve this problem, but using the vectorization capabilities of R. We call this method 4.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return </span>(arr^2)   <span style="color:#75715e"># vectorize</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="performance-comparison">Performance Comparison</h3>
+<p>Let us now compare the time performances of these methods. We will use the <code>microbenchmark</code> package in R to measure the time taken by each method.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">runif</span>(<span style="color:#ae81ff">10000</span>)
+</span></span><span style="display:flex;"><span>times <span style="color:#f92672">&lt;-</span> microbenchmark<span style="color:#f92672">::</span><span style="color:#a6e22e">microbenchmark</span>(<span style="color:#a6e22e">method1</span>(x), <span style="color:#a6e22e">method2</span>(x), <span style="color:#a6e22e">method3</span>(x), <span style="color:#a6e22e">method4</span>(x), times <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>)
+</span></span></code></pre></div><p>Here is a summary of the average time taken by each method, shown in a boxplot below.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig1.png'>
+</img>
+<p>The results indicate that <code>method4</code> is the fastest, followed by <code>method2</code> and <code>method3</code>. The vectorization trick is about <em>30 times</em> faster than the best-competing method, i.e. constant memory method. This constant memory method was about <em>10 times</em> faster than the growing memory method with a list, and finally, the growing memory method with a list is about <em>20 times</em> faster compared to its array-based variant.</p>
+<p>Well, the reason for these surprising results is as follows:</p>
+<ul>
+<li>Since many different background processes managed by operating systems run on a computer, they use different parts of the memory (RAM), so the free spaces on the memory remain scattered. Think of the computer memory as segregated into different chunks, each chunk is the smallest unit of storage where any program can store any data.</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    A1 
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    ...
+</div>
+<ul>
+<li>
+<p>Internally, <code>R</code> always stores vectors or arrays as continuous chunks in this memory, each element occupying one chunk.</p>
+</li>
+<li>
+<p>When you assign <code>x &lt;- c()</code>, the <code>R</code> program looks to the RAM and searches for a single-length free space on the RAM. Actually, a zero-length chunk to store the data and one unit/byte/chunk to store some metadata. For example, in the below diagram, the grayed-out nodes are being used by other programs. So the program scans from first to last, finds the first available continuous chunks of length 1 (i.e., A3), and creates a variable <code>x</code> having a pointer to the start of the chunk <code>A3</code>.</p>
+</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A9,A10 grayNode;
+</div>
+<ul>
+<li>
+<p>Now when in the for loop, we calculate the square and update the array using <code>arr &lt;- c(arr, elem^2)</code>, it determines that it now needs to find a continuous chunk of length 2.</p>
+</li>
+<li>
+<p>So it performs the search from the start again and now sees where it can first time find a continuous chunk of length 2, free from usage of other programs. It finds, <code>A3</code> and <code>A4</code>. So, it copies the value of <code>A3</code> to <code>A3</code> again (well, this is the really inefficient part :sad: ), and copies the value of <code>elem^2</code> to <code>A4</code>. These new chunks used by <code>R</code> are shown in yellow.</p>
+</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    classDef yellowNode fill:#ff0
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A9,A10 grayNode;
+    class A3,A4 yellowNode;
+</div>
+<ul>
+<li>
+<p>Hence, as the list of the array grows, the <code>R</code> program keeps scanning again and again for new continuous memory chunks and copies the data over and over, which makes <strong>the growing memory</strong> method extremely slow.</p>
+</li>
+<li>
+<p>On the other hand, the <strong>constant memory</strong> method assigns the entire continuous chunk of memory at the beginning, so the search for free memory happens only once. This speeds up the process greatly.</p>
+</li>
+</ul>
+<p>Now, maybe you are wondering, how come the <strong>growing memory</strong> method with a list is faster. The reason is that the list data structure does not require you to store data in a continuous memory chunk at all. This is why you cannot directly use a list to perform vectorized computation, since vectorized computing inherently uses <code>C</code> for loops which expects data to be present in continuous memory chunks for rapid access. Therefore, each time we expand the list, <code>R</code> simply needs to look for one additional storage chunk, irrespective of where previous storage chunks are, and store the address (or pointer) to the chunk in the variable&rsquo;s memory.</p>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    classDef yellowNode fill:#ff0
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A10 grayNode;
+    class A3,A9 yellowNode;
+</div>
+<p>Therefore, in <code>R</code>, you should always try using vectorization whenever possible. If not possible, try to pre-allocate memory. And if you don&rsquo;t know how much to allocate, the best bet is to use lists instead of arrays.</p>
+<p>You can find many more useful R tricks and techniques in the book <strong>Advanced R</strong>__ by Hadley Wickham<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h2 id="memory-growth-is-good-for-python">Memory Growth is Good for Python</h2>
+<p>I did the same kind of exercise using <code>Python</code> to compare the behaviour. As you have guessed from the title of this part, it has a completely different behaviour than <code>R</code> when come to memory management.</p>
+<h3 id="the-methods">The Methods</h3>
+<p>In Python, you can start with a blank array, and use <code>append</code> method to grow your array. However, python does not have a concept of a list like R, the <code>list</code> and <code>array</code> have the same meaning in <code>Python</code>.  So, instead of the <code>method3</code> as above, we consider the variant with list comprehension, which is basically a one-liner code to create a list, instead of doing the loop explicitly. Finally, for the vectorization method, we use the popular Python library <code>numpy</code>, which uses a built-in <code>C</code> routine to perform vectorized operations.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_1</span>(arr):
+</span></span><span style="display:flex;"><span>    newarr <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> arr:
+</span></span><span style="display:flex;"><span>        newarr<span style="color:#f92672">.</span>append(elem <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>)   <span style="color:#75715e"># grow the memory</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> newarr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_2</span>(arr):
+</span></span><span style="display:flex;"><span>    newarr <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> len(arr)   <span style="color:#75715e"># allocate constant memory</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(arr)):
+</span></span><span style="display:flex;"><span>        newarr[i] <span style="color:#f92672">=</span> arr[i] <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>   
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> newarr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_3</span>(arr):
+</span></span><span style="display:flex;"><span>    newarr <span style="color:#f92672">=</span> [elem<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> elem <span style="color:#f92672">in</span> arr]   <span style="color:#75715e"># do list comprehension</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> newarr
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_4</span>(arr):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(arr)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># vectorized squaring using numpy</span>
+</span></span></code></pre></div><h3 id="performance-comparison-1">Performance Comparison</h3>
+<p>Here is a summary of the average time taken (in microseconds) by each method, again shown in a boxplot.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig2.png'>
+</img>
+<p>In contrast to <code>R</code>, now <code>method1</code> of growing memory is not the worst out there, comparatively, array modifications in place with constant memory usage are slightly worse. However, again, the vectorization using the <code>numpy</code> C-routine is extremely fast, achieving a result close to the vectorized <code>method4</code> in <code>R</code>.</p>
+<p>Since it was a bit surprising for me, I tried to dig deeper and understand why Python exhibits a completely different behaviour compared to R. I couldn&rsquo;t find a good resource that explains it. However, based on seeing some hints in different documentations, source code for Python, some Reddit forums, here&rsquo;s my understanding:</p>
+<ul>
+<li>
+<p>Python lists are not just only simple continuous memory chunks like <code>R</code>. Python lists are not like <code>R</code> lists either, so these are not stored in scattered memory locations. It still stores the data in continuous memory locations but adds some additional overhead metadata storage that helps with different kinds of optimization.</p>
+</li>
+<li>
+<p>You can actually see this by using <code>sys.getsizeof([1, 2, 3])</code> and noting the size of a list with 3 integers is much more than 24 bytes (3 times 8 bytes for each integer). In fact, the empty list has a size of 64 bytes, and for each additional item, it adds 8 bytes of storage to it, as demonstrated here in this Stack Overflow link<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This initial 64 bytes is the overhead.</p>
+</li>
+<li>
+<p>This overhead contains the address location of the last element of the array.</p>
+</li>
+<li>
+<p>So, now if one uses the <code>append</code> function, Python performs 3 simple steps:</p>
+<ul>
+<li>Gets the address of the last element of the array.</li>
+<li>If the memory location for the next address is free, it just adds the new element there.</li>
+<li>If the next memory location is not available, it searches for an available continuous memory chunk with length + (some additional amount). When it is found, it copies the entire array into this new location<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</li>
+</ul>
+</li>
+<li>
+<p>This means, during <code>method 1</code> when we use <code>append</code>, Python almost never does the copying unless it is absolutely required, hence it has significantly low time complexity.</p>
+</li>
+<li>
+<p>On the other hand, to access the elements of a list, Python needs to do 2 calculations: first, find out the initial address position, and then use that to calculate the i-th address position by offset <code>i</code> many chunks of memory location after that initial address position. This slightly increases the cost compared to <code>method 1</code> since the <code>append()</code> essentially goes only to the next location which is easier to calculate.</p>
+</li>
+<li>
+<p>The list comprehension method is faster than both <code>method 1`` and </code>method 2` since in this case, the list is first created temporarily and then it is copied to the correct location. So, it never runs into the problem of running out of free space, since you absolutely know the size of the array (i.e., the number of available memory locations you will need in a continuous chunk.)</p>
+</li>
+<li>
+<p>Finally, the vectorized routine by <code>numpy</code> is much faster, since the computation happens through low-level <code>C</code> routine, as in the case of <code>R</code> program.</p>
+</li>
+</ul>
+<p>In any case, if you have a better understanding of why Python behaves differently than R, please feel free to comment below. I would love to hear from you.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>In conclusion, the basic investigation into optimizing time and memory constraints underscores the importance of understanding how various programming languages handle memory. However, while prioritizing efficiency, we mustn&rsquo;t forget the significance of simplicity in the code. I believe that</p>
+<ul>
+<li>A developer writes a code that works</li>
+<li>A good developer makes it fast for machines to execute</li>
+<li>A great developer makes it fast for humans to understand</li>
+</ul>
+<p>Thus, achieving a balance between efficiency and clarity is vital for creating software that performs optimally while remaining understandable and maintainable over time.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Advanced R - Hadley Wickham. <a href="https://adv-r.hadley.nz/index.html">https://adv-r.hadley.nz/index.html</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python">https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://www.reddit.com/r/learnpython/comments/yeahqq/what_is_pythons_listappend_method_worst_time/">https://www.reddit.com/r/learnpython/comments/yeahqq/what_is_pythons_listappend_method_worst_time/</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="/posts/2024/spreadsheet-image/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+        </div>
+
+        
+<section
+  id="contact-me"
+  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
+>
+  <div class="max-w-6xl mx-auto my-8 text-white text-center">
+    <p class="font-normal text-2xl py-4">Reach out to me via</p>
+    
+    <div class="hidden">
+      <div class="hover:bg-red-500 focus:bg-red-500"></div>
+      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
+      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
+      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
+      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
+    </div>
+    
+    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
+      >
+        <i class="fas fa-envelope fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-facebook fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-github fa-2x"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-linkedin-in fa-2x"></i>
+      </a>
+      
+      <a
+        href="#"
+        target="_blank"
+        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                    rounded-full border-2 border-white border-solid text-white transition-all 
+                    duration-300 ease-in-out
+                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
+      >
+        <i class="fab fa-instagram fa-2x"></i>
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
+<footer class="bg-neutral-900 text-center text-white">
+    
+    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2023 Copyright:
+        <a class="text-white" href="/">StatWizard.in</a>
+    </div>
+</footer>
+
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+
+    
+
+
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+
+
+
+
+
+</body>
+</html>
