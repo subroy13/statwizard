@@ -1,6 +1,6 @@
 ---
 title: 'Should your program grow memory?'
-date: "2024-03-15T00:00:00Z"
+date: "2024-03-16T00:00:00Z"
 imageCaption: "[Unstable Diffusion](https://www.unstability.ai/)"
 summary: Recently, I was working on a project where I had to optimize for both time and memory consumption of the program to make it more efficient. In this post, I share a few key insights that I have gained from that.
 
@@ -33,7 +33,7 @@ In the first approach, we are trying to optimize for memory, but consuming more 
 
 So it looks like if you want your program to be faster, you should use more memory. 
 
-> Okay, so just shove down a few RAMs to your 10-year old laptop, and it can feel like it is a super-computer? :boom: 
+> Okay, so just shove down a few RAMs to your 10-year-old laptop, and it can feel like it is a super-computer? :boom: 
 
 Well, the answer to the question of whether ``using more memory makes your program run fast'' is both yes and no. And no, I am not talking about efficient algorithms that you can implement to reduce both time and memory footprint. Rather, gaining an understanding of how different programming languages store basic data types and data structures can greatly improve the efficiency of your code. Recently, I was working on a project where I had to optimize both the time and memory consumption of the program to make it more efficient. I did some experiments on this and got a few interesting findings that helped me understand this better. I am sharing these findings here in this post so that you also can leverage the same to make your program more efficient.
 
@@ -214,10 +214,14 @@ graph TD
     class A3,A9 yellowNode;
 </div>
 
+Therefore, in `R`, you should always try using vectorization whenever possible. If not possible, try to pre-allocate memory. And if you don't know how much to allocate, the best bet is to use lists instead of arrays.
+
+You can find many more useful R tricks and techniques in the book **Advanced R**__ by Hadley Wickham[^3].
+
 
 ## Memory Growth is Good for Python
 
-I did the same kind of exercise using `Python` to compare the behavior. As you have guessed from the title of this part, it has a completely different behaviour than `R` when come to memory management.
+I did the same kind of exercise using `Python` to compare the behaviour. As you have guessed from the title of this part, it has a completely different behaviour than `R` when come to memory management.
 
 ### The Methods
 
@@ -254,11 +258,11 @@ Here is a summary of the average time taken (in microseconds) by each method, ag
 
 In contrast to `R`, now `method1` of growing memory is not the worst out there, comparatively, array modifications in place with constant memory usage are slightly worse. However, again, the vectorization using the `numpy` C-routine is extremely fast, achieving a result close to the vectorized `method4` in `R`.
 
-Since it was a bit surprising for me, I tried to dig deeper and understand why Python exhibits a completely different behavior compared to R. I couldn't find a good resource that explains it. However, based on seeing some hints in different documentations, source code for Python, some Reddit forums, here's my understanding:
+Since it was a bit surprising for me, I tried to dig deeper and understand why Python exhibits a completely different behaviour compared to R. I couldn't find a good resource that explains it. However, based on seeing some hints in different documentations, source code for Python, some Reddit forums, here's my understanding:
 
 * Python lists are not just only simple continuous memory chunks like `R`. Python lists are not like `R` lists either, so these are not stored in scattered memory locations. It still stores the data in continuous memory locations but adds some additional overhead metadata storage that helps with different kinds of optimization.
 
-* You can actually see this by using `sys.getsizeof([1, 2, 3])` and noting the size of a list with 3 integers is much more than 24 bytes (3 times 8 bytes for each integer). In fact, the empty list has a size of 64 bytes, and for each additional item, it adds 8 bytes of storage to it, as demonstrated here in this StackOverflow link[^1]. This initial 64 bytes is the overhead.
+* You can actually see this by using `sys.getsizeof([1, 2, 3])` and noting the size of a list with 3 integers is much more than 24 bytes (3 times 8 bytes for each integer). In fact, the empty list has a size of 64 bytes, and for each additional item, it adds 8 bytes of storage to it, as demonstrated here in this Stack Overflow link[^1]. This initial 64 bytes is the overhead.
 
 * This overhead contains the address location of the last element of the array.
 
@@ -275,12 +279,16 @@ Since it was a bit surprising for me, I tried to dig deeper and understand why P
 
 * Finally, the vectorized routine by `numpy` is much faster, since the computation happens through low-level `C` routine, as in the case of `R` program.
 
+In any case, if you have a better understanding of why Python behaves differently than R, please feel free to comment below. I would love to hear from you.
 
 ## Conclusion 
 
+In conclusion, the basic investigation into optimizing time and memory constraints underscores the importance of understanding how various programming languages handle memory. However, while prioritizing efficiency, we mustn't forget the significance of simplicity in the code. I believe that 
+- A developer writes a code that works
+- A good developer makes it fast for machines to execute
+- A great developer makes it fast for humans to understand
 
-
-Although the general focus is on writing code that is smaller (uses less memory) and faster (takes less time), it usually trades a very basic requirement - "simplicity". 
+Thus, achieving a balance between efficiency and clarity is vital for creating software that performs optimally while remaining understandable and maintainable over time.
 
 
 ## References
@@ -288,3 +296,5 @@ Although the general focus is on writing code that is smaller (uses less memory)
 [^1]: https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python
 
 [^2]: https://www.reddit.com/r/learnpython/comments/yeahqq/what_is_pythons_listappend_method_worst_time/
+
+[^3]: Advanced R - Hadley Wickham. https://adv-r.hadley.nz/index.html

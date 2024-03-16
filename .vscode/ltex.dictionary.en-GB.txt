@@ -1,2 +1,3 @@
 grayscale
 rSVDdpd
+grayed-out

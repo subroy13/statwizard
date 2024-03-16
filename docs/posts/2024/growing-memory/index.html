@@ -322,6 +322,15 @@ Should your program grow memory?
 
 
 
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('/posts/2024/growing-memory/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
 
 
 <div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
@@ -333,10 +342,10 @@ Should your program grow memory?
             <div class="flex flex-col justify-center items-center gap-2">   
                 <div class="mt-1 flex flex-row text-neutral-800 gap-4">
                     <p class="font-bold">Date:</p>
-                    <p class="font-normal">15 March, 2024</p>
+                    <p class="font-normal">16 March, 2024</p>
                 </div> 
                 <p class="mt-1 text-neutral-600">
-                    <span class="font-bold">6</span> minutes read
+                    <span class="font-bold">12</span> minutes read
                 </p>
                 <div class="my-1">
                     
@@ -408,12 +417,14 @@ Should your program grow memory?
         <li><a href="#performance-comparison">Performance Comparison</a></li>
       </ul>
     </li>
-    <li><a href="#memory-growth-is-not-bad-for-python">Memory Growth is not bad for Python</a>
+    <li><a href="#memory-growth-is-good-for-python">Memory Growth is Good for Python</a>
       <ul>
+        <li><a href="#the-methods">The Methods</a></li>
         <li><a href="#performance-comparison-1">Performance Comparison</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
   </ul>
 </nav>
                 </div>
@@ -426,27 +437,27 @@ Should your program grow memory?
 <p>Time and memory are the two primary constraints for any software design. Usually, you can only optimize for one of these, sacrificing the others. For example, imagine you want to print all the prime numbers from 1 to 100. Let&rsquo;s think of two approaches to solve the problem.</p>
 <ol>
 <li>
-<p>You count the numbers like 1, 2, 3, &hellip; and so on, and for each number, you check whether it is prime or not. To check whether a number (say 17) is prime, you check if it is divisible by 2, then if divisible by 3, then by 4, by 5, by 6, by 7, and so on. Whenever you find a prime number, you print it, and go to the next number for checking.</p>
+<p>You count the numbers like 1, 2, 3, &hellip; and so on, and for each number, you check whether it is prime or not. To check whether a number (say 17) is prime, you check if it is divisible by 2, then if divisible by 3, then by 4, by 5, by 6, by 7, and so on. Whenever you find a prime number, you print it and go to the next number for checking.</p>
 </li>
 <li>
-<p>Another approach is you keep a list of prime numbers discovered so far. Then for every new number that you want to check if it is prime or not, simply try dividing by only the prime numbers (instead of checking divisiblity by 2, 3, 4, 5, 6, and all numbers). Finally, print all the numbers from the list.</p>
+<p>Another approach is you keep a list of prime numbers discovered so far. Then for every new number that you want to check if it is prime or not, simply try dividing by only the prime numbers (instead of checking divisibility by 2, 3, 4, 5, 6, and all numbers). Finally, print all the numbers from the list.</p>
 </li>
 </ol>
-<p>In the first approach, we are trying to optimize for memory, but consuming more time checking division with every numbers. In the second approach, using a bit more memory by keeping a list of prime numbers, it is trying to optimize for time by checking division with only the prime numbers.</p>
+<p>In the first approach, we are trying to optimize for memory, but consuming more time checking division with every number. In the second approach, using a bit more memory by keeping a list of prime numbers, it is trying to optimize for time by checking division with only the prime numbers.</p>
 <p>So it looks like if you want your program to be faster, you should use more memory.</p>
 <blockquote>
-<p>Okay, so just shove down a few RAMs to your 10-year old laptop, and it can feel like it is a super-computer? 💥</p>
+<p>Okay, so just shove down a few RAMs to your 10-year-old laptop, and it can feel like it is a super-computer? 💥</p>
 </blockquote>
-<p>Well, the answer to the question whether ``using more memory makes your program run fast&rsquo;&rsquo; is both yes and no. And no, I am not talking about efficient algorithms that you can implement to reduce both time and memory footprint. Rather, gaining an understanding of how different programming languages store basic data types and data structures can greatly improve the efficiency of your code. Recently, I was working on a project where I had to optimize for both time and memory consumption of the program to make it more efficient. I did some experiments for this, and got a few interesting findings that helped me understand this better. I am sharing these findings here in this post so that you also can leverage the same to make your program more efficient.</p>
+<p>Well, the answer to the question of whether ``using more memory makes your program run fast&rsquo;&rsquo; is both yes and no. And no, I am not talking about efficient algorithms that you can implement to reduce both time and memory footprint. Rather, gaining an understanding of how different programming languages store basic data types and data structures can greatly improve the efficiency of your code. Recently, I was working on a project where I had to optimize both the time and memory consumption of the program to make it more efficient. I did some experiments on this and got a few interesting findings that helped me understand this better. I am sharing these findings here in this post so that you also can leverage the same to make your program more efficient.</p>
 <h2 id="memory-growth-is-bad-for-r">Memory Growth is Bad for R</h2>
 <p>Let us consider a simple problem that we want to solve using <code>R</code> programming language. The problem is that, given an array of numbers, we need to return another array whose elements are the square of the corresponding elements of the original array elements. For example, if the input is <code>[1, 2, 3]</code>, then the output should be <code>[1, 4, 9]</code>.</p>
 <div class="mermaid">
 graph LR
   A[Input Array] --> f[Function Method] --> B[Output Array with squared elements];
 </div>
-<p>Now we will see different methods of solving this problem, some optimizes memory, some optimizes computational time.</p>
+<p>Now we will see different methods of solving this problem, some optimize memory, and some optimize computational time.</p>
 <h3 id="growing-memory-method">Growing Memory Method</h3>
-<p>The first method is to optimize for memory usage. So, we create a blank array to hold the output elements, then we loop over the elements of the input array, and dynamically keep putting them into the output array.</p>
+<p>The first method is to optimize for memory usage. So, we create a blank array to hold the output elements, then we loop over the elements of the input array and dynamically keep putting them into the output array.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
 </span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>()
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">for </span>(elem in arr) {
@@ -454,9 +465,9 @@ graph LR
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(arr2)
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>This is often called as the <strong>Growing Memory</strong> method.</p>
+</span></span></code></pre></div><p>This is often called the <strong>Growing</strong> Memory__ method.</p>
 <h3 id="constant-memory-method">Constant Memory Method</h3>
-<p>As you have suspected, this instead of dynamically adding more elements to the output array, this method initially assigns memory for the entire output array, and then it keeps updating the elements of this output array as required. Since it requires more memory that previous method, we expect this to be a bit faster.</p>
+<p>As you have suspected, instead of dynamically adding more elements to the output array, this method initially assigns memory for the entire output array, and then it keeps updating the elements of this output array as required. Since it requires more memory than the previous method, we expect this to be a bit faster.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
 </span></span><span style="display:flex;"><span>  n <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">length</span>(arr)
 </span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">numeric</span>(n)   <span style="color:#75715e"># initially allocate memory</span>
@@ -466,7 +477,7 @@ graph LR
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(arr2)
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="growing-memory-with-list">Growing Memory with List</h3>
-<p>This is a variation of the Growing Memory method, but instead of creating a blank array, we create a list. From the introductory data structure classes, we know that linked list is a more complicated data structure than array, so we expect it to be even slower and complex than the previous two methods.</p>
+<p>This is a variation of the Growing Memory method, but instead of creating a blank array, we create a list. From the introductory data structure classes, we know that a linked list is a more complicated data structure than an array, so we expect it to be even slower and more complex than the previous two methods.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method3 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
 </span></span><span style="display:flex;"><span>  arr2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">list</span>()
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">for </span>(i in <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">length</span>(arr)) {
@@ -475,7 +486,7 @@ graph LR
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return</span>(<span style="color:#a6e22e">unlist</span>(arr2))
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="vectorization">Vectorization</h3>
-<p>Finally, we perform the direct way almost every R practioner will solve this problem, but using the vectorization capabilities of R. We call this method 4.</p>
+<p>Finally, we perform the direct way almost every R practitioner will solve this problem, but using the vectorization capabilities of R. We call this method 4.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>method4 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(arr) {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">return </span>(arr^2)   <span style="color:#75715e"># vectorize</span>
 </span></span><span style="display:flex;"><span>}
@@ -483,33 +494,117 @@ graph LR
 <p>Let us now compare the time performances of these methods. We will use the <code>microbenchmark</code> package in R to measure the time taken by each method.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-R" data-lang="R"><span style="display:flex;"><span>x <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">runif</span>(<span style="color:#ae81ff">10000</span>)
 </span></span><span style="display:flex;"><span>times <span style="color:#f92672">&lt;-</span> microbenchmark<span style="color:#f92672">::</span><span style="color:#a6e22e">microbenchmark</span>(<span style="color:#a6e22e">method1</span>(x), <span style="color:#a6e22e">method2</span>(x), <span style="color:#a6e22e">method3</span>(x), <span style="color:#a6e22e">method4</span>(x), times <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>)
-</span></span></code></pre></div><img 
+</span></span></code></pre></div><p>Here is a summary of the average time taken by each method, shown in a boxplot below.</p>
+<img 
     class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
     src='fig1.png'>
 </img>
-<p>Here is a summary of average time taken (in microbenchmark) by each methods.</p>
-<table>
-<thead>
-<tr>
-<th>method 1</th>
-<th>method 2</th>
-<th>method 3</th>
-<th>method 4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>147479.7825</td>
-<td>791.2165</td>
-<td>7296.0665</td>
-<td>24.6135</td>
-</tr>
-</tbody>
-</table>
-<p>The results indicate that the <code>method4</code> is the fastest, followed by <code>method2</code> and <code>method3</code>. The vectorization trick is in that about <em>30 times</em> faster than the best competiting method, i.e. constant memory method. This constant memory method was about <em>10 times</em> faster than the growing memory method with list, and finally, the growing memory method with list is about <em>20 times</em> faster compared its array based variant.</p>
-<p>Well, the reason of this suprising results are as follows:</p>
-<h2 id="memory-growth-is-not-bad-for-python">Memory Growth is not bad for Python</h2>
-<p>I did the same kind of exercise using <code>Python</code> to compare the behaviour. In python, you can start with a blank array, and use <code>append</code> method to grow your array. However, python does not have a concept of list like R, the <code>list</code> and <code>array</code> have the same meaning in <code>Python</code>.  So, instead of the <code>method3</code> as above, we consider the variant with list comprehension, which is basically a one-liner code to create a list, instead of doing the loop explicitly. And finally, for the vectorization method, we use the popular python library <code>numpy</code>, which uses built-in <code>C</code> routine to perform vectorized operations.</p>
+<p>The results indicate that <code>method4</code> is the fastest, followed by <code>method2</code> and <code>method3</code>. The vectorization trick is about <em>30 times</em> faster than the best-competing method, i.e. constant memory method. This constant memory method was about <em>10 times</em> faster than the growing memory method with a list, and finally, the growing memory method with a list is about <em>20 times</em> faster compared to its array-based variant.</p>
+<p>Well, the reason for these surprising results is as follows:</p>
+<ul>
+<li>Since many different background processes managed by operating systems run on a computer, they use different parts of the memory (RAM), so the free spaces on the memory remain scattered. Think of the computer memory as segregated into different chunks, each chunk is the smallest unit of storage where any program can store any data.</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    A1 
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    ...
+</div>
+<ul>
+<li>
+<p>Internally, <code>R</code> always stores vectors or arrays as continuous chunks in this memory, each element occupying one chunk.</p>
+</li>
+<li>
+<p>When you assign <code>x &lt;- c()</code>, the <code>R</code> program looks to the RAM and searches for a single-length free space on the RAM. Actually, a zero-length chunk to store the data and one unit/byte/chunk to store some metadata. For example, in the below diagram, the grayed-out nodes are being used by other programs. So the program scans from first to last, finds the first available continuous chunks of length 1 (i.e., A3), and creates a variable <code>x</code> having a pointer to the start of the chunk <code>A3</code>.</p>
+</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A9,A10 grayNode;
+</div>
+<ul>
+<li>
+<p>Now when in the for loop, we calculate the square and update the array using <code>arr &lt;- c(arr, elem^2)</code>, it determines that it now needs to find a continuous chunk of length 2.</p>
+</li>
+<li>
+<p>So it performs the search from the start again and now sees where it can first time find a continuous chunk of length 2, free from usage of other programs. It finds, <code>A3</code> and <code>A4</code>. So, it copies the value of <code>A3</code> to <code>A3</code> again (well, this is the really inefficient part :sad: ), and copies the value of <code>elem^2</code> to <code>A4</code>. These new chunks used by <code>R</code> are shown in yellow.</p>
+</li>
+</ul>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    classDef yellowNode fill:#ff0
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A9,A10 grayNode;
+    class A3,A4 yellowNode;
+</div>
+<ul>
+<li>
+<p>Hence, as the list of the array grows, the <code>R</code> program keeps scanning again and again for new continuous memory chunks and copies the data over and over, which makes <strong>the growing memory</strong> method extremely slow.</p>
+</li>
+<li>
+<p>On the other hand, the <strong>constant memory</strong> method assigns the entire continuous chunk of memory at the beginning, so the search for free memory happens only once. This speeds up the process greatly.</p>
+</li>
+</ul>
+<p>Now, maybe you are wondering, how come the <strong>growing memory</strong> method with a list is faster. The reason is that the list data structure does not require you to store data in a continuous memory chunk at all. This is why you cannot directly use a list to perform vectorized computation, since vectorized computing inherently uses <code>C</code> for loops which expects data to be present in continuous memory chunks for rapid access. Therefore, each time we expand the list, <code>R</code> simply needs to look for one additional storage chunk, irrespective of where previous storage chunks are, and store the address (or pointer) to the chunk in the variable&rsquo;s memory.</p>
+<div class="mermaid">
+graph TD
+%%{init:{'flowchart':{'nodeSpacing': 2, 'rankSpacing': 2}}}%%    
+    classDef grayNode fill:#bbb;
+    classDef yellowNode fill:#ff0
+    A1
+    A2
+    A3
+    A4
+    A5
+    A6
+    A7
+    A8
+    A9
+    A10
+    A11[...]
+    class A1,A2,A6,A7,A8,A10 grayNode;
+    class A3,A9 yellowNode;
+</div>
+<p>Therefore, in <code>R</code>, you should always try using vectorization whenever possible. If not possible, try to pre-allocate memory. And if you don&rsquo;t know how much to allocate, the best bet is to use lists instead of arrays.</p>
+<p>You can find many more useful R tricks and techniques in the book <strong>Advanced R</strong>__ by Hadley Wickham<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+<h2 id="memory-growth-is-good-for-python">Memory Growth is Good for Python</h2>
+<p>I did the same kind of exercise using <code>Python</code> to compare the behaviour. As you have guessed from the title of this part, it has a completely different behaviour than <code>R</code> when come to memory management.</p>
+<h3 id="the-methods">The Methods</h3>
+<p>In Python, you can start with a blank array, and use <code>append</code> method to grow your array. However, python does not have a concept of a list like R, the <code>list</code> and <code>array</code> have the same meaning in <code>Python</code>.  So, instead of the <code>method3</code> as above, we consider the variant with list comprehension, which is basically a one-liner code to create a list, instead of doing the loop explicitly. Finally, for the vectorization method, we use the popular Python library <code>numpy</code>, which uses a built-in <code>C</code> routine to perform vectorized operations.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_1</span>(arr):
@@ -531,27 +626,68 @@ graph LR
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">array_sq_4</span>(arr):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> np<span style="color:#f92672">.</span>array(arr)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>   <span style="color:#75715e"># vectorized squaring using numpy</span>
 </span></span></code></pre></div><h3 id="performance-comparison-1">Performance Comparison</h3>
-<p>Here is a summary of average time taken (in microseconds) by each methods.</p>
-<table>
-<thead>
-<tr>
-<th>method 1</th>
-<th>method 2</th>
-<th>method 3</th>
-<th>method 4</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2.3 ms</td>
-<td>2.7ms</td>
-<td>2.08ms</td>
-<td>0.000863ms</td>
-</tr>
-</tbody>
-</table>
+<p>Here is a summary of the average time taken (in microseconds) by each method, again shown in a boxplot.</p>
+<img 
+    class='max-w-md mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig2.png'>
+</img>
+<p>In contrast to <code>R</code>, now <code>method1</code> of growing memory is not the worst out there, comparatively, array modifications in place with constant memory usage are slightly worse. However, again, the vectorization using the <code>numpy</code> C-routine is extremely fast, achieving a result close to the vectorized <code>method4</code> in <code>R</code>.</p>
+<p>Since it was a bit surprising for me, I tried to dig deeper and understand why Python exhibits a completely different behaviour compared to R. I couldn&rsquo;t find a good resource that explains it. However, based on seeing some hints in different documentations, source code for Python, some Reddit forums, here&rsquo;s my understanding:</p>
+<ul>
+<li>
+<p>Python lists are not just only simple continuous memory chunks like <code>R</code>. Python lists are not like <code>R</code> lists either, so these are not stored in scattered memory locations. It still stores the data in continuous memory locations but adds some additional overhead metadata storage that helps with different kinds of optimization.</p>
+</li>
+<li>
+<p>You can actually see this by using <code>sys.getsizeof([1, 2, 3])</code> and noting the size of a list with 3 integers is much more than 24 bytes (3 times 8 bytes for each integer). In fact, the empty list has a size of 64 bytes, and for each additional item, it adds 8 bytes of storage to it, as demonstrated here in this Stack Overflow link<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>. This initial 64 bytes is the overhead.</p>
+</li>
+<li>
+<p>This overhead contains the address location of the last element of the array.</p>
+</li>
+<li>
+<p>So, now if one uses the <code>append</code> function, Python performs 3 simple steps:</p>
+<ul>
+<li>Gets the address of the last element of the array.</li>
+<li>If the memory location for the next address is free, it just adds the new element there.</li>
+<li>If the next memory location is not available, it searches for an available continuous memory chunk with length + (some additional amount). When it is found, it copies the entire array into this new location<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>.</li>
+</ul>
+</li>
+<li>
+<p>This means, during <code>method 1</code> when we use <code>append</code>, Python almost never does the copying unless it is absolutely required, hence it has significantly low time complexity.</p>
+</li>
+<li>
+<p>On the other hand, to access the elements of a list, Python needs to do 2 calculations: first, find out the initial address position, and then use that to calculate the i-th address position by offset <code>i</code> many chunks of memory location after that initial address position. This slightly increases the cost compared to <code>method 1</code> since the <code>append()</code> essentially goes only to the next location which is easier to calculate.</p>
+</li>
+<li>
+<p>The list comprehension method is faster than both <code>method 1`` and </code>method 2` since in this case, the list is first created temporarily and then it is copied to the correct location. So, it never runs into the problem of running out of free space, since you absolutely know the size of the array (i.e., the number of available memory locations you will need in a continuous chunk.)</p>
+</li>
+<li>
+<p>Finally, the vectorized routine by <code>numpy</code> is much faster, since the computation happens through low-level <code>C</code> routine, as in the case of <code>R</code> program.</p>
+</li>
+</ul>
+<p>In any case, if you have a better understanding of why Python behaves differently than R, please feel free to comment below. I would love to hear from you.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>Although the general focus is on writing code that is smaller (uses less memory) and faster (takes less time), it usually trades a very basic requirement - &ldquo;simplicity&rdquo;.</p>
+<p>In conclusion, the basic investigation into optimizing time and memory constraints underscores the importance of understanding how various programming languages handle memory. However, while prioritizing efficiency, we mustn&rsquo;t forget the significance of simplicity in the code. I believe that</p>
+<ul>
+<li>A developer writes a code that works</li>
+<li>A good developer makes it fast for machines to execute</li>
+<li>A great developer makes it fast for humans to understand</li>
+</ul>
+<p>Thus, achieving a balance between efficiency and clarity is vital for creating software that performs optimally while remaining understandable and maintainable over time.</p>
+<h2 id="references">References</h2>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Advanced R - Hadley Wickham. <a href="https://adv-r.hadley.nz/index.html">https://adv-r.hadley.nz/index.html</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python">https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://www.reddit.com/r/learnpython/comments/yeahqq/what_is_pythons_listappend_method_worst_time/">https://www.reddit.com/r/learnpython/comments/yeahqq/what_is_pythons_listappend_method_worst_time/</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 
                 </div>
             </div>

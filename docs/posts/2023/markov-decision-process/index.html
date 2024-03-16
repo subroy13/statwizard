@@ -450,7 +450,7 @@ Reinforcement Learning (Part 3) - Markov Decision Process
 <blockquote>
 <p>Now a MDP is a decision process as above with an additional Markovian property that the states $S_t$ contain all necessary properties of the environment that an agent needs to take an action, the knowledge of the entire history of the states $S_0, S_1, \dots S_{t-1}, S_t$ does not provide any additional benefit.</p>
 </blockquote>
-<p>In terms of probability, these can be written as
+<p>In terms of probability, these can be written as 
 $$
 \begin{align*}
 P(A_{t+1} \mid S_t) &amp; = P(A_{t+1} \mid S_t, S_{t-1}, S_{t-2}, \dots ),\\
@@ -470,7 +470,7 @@ for all kinds of RL agent that we are going to look at.</p>
 </ol>
 <p>To represent both of these paradigms properly, we can use a trick from Finance, namely discounting future values by the inflation rate to obtain a <a href="https://en.wikipedia.org/wiki/Present_value">present value</a>. We define <strong>Gain</strong> at time $t$ as
 $$
-G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots
+G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \dots 
 $$
 where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long term view, you can modify $\gamma$ to be very close to 1, on the other hand, if you want the RL agent to take a short term view, you would want $\gamma$ to be near zero or zero.</p>
 <p>Therefore, instead of focusing on maximizing rewards, the RL agent would aim to maximize the gain $G_t$ for every time step $t$, and would take the action $a$ that has the maximum possible gain.</p>
@@ -584,7 +584,7 @@ where $\gamma \in [0, 1]$ is a discounting factor. Now, if you want a very long 
 <p>Here&rsquo;s how we do this.</p>
 <p>$$
 \begin{align}
-v^\pi(s)
+v^\pi(s) 
 &amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) E(G_t \mid S_t = s, A_t = a),\\
 &amp; \text{we rewrite the value in terms of policy probabilities and conditional gains for an action}\\
 &amp; = \sum_{a \in \mathcal{A}} \pi(a \mid s) \sum_{s&rsquo; \in \mathcal{S}} p(s&rsquo; \mid s, a) E(G_t \mid S_t = s, A_t = a, S_{t+1} = s&rsquo;),\\
@@ -679,20 +679,20 @@ $$</p>
 </li>
 </ol>
 <h2 id="references">References</h2>
-<div class="footnotes" role="doc-endnotes">
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1">
+<li id="fn:1" role="doc-endnote">
 <p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2">
+<li id="fn:2" role="doc-endnote">
 <p><a href="https://en.wikipedia.org/wiki/Shannon_number">https://en.wikipedia.org/wiki/Shannon_number</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3">
+<li id="fn:3" role="doc-endnote">
 <p><a href="https://en.wikipedia.org/wiki/Bellman_equation">https://en.wikipedia.org/wiki/Bellman_equation</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div>
+</section>
 
                 </div>
             </div>
