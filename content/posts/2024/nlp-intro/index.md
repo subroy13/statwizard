@@ -1,13 +1,13 @@
 ---
 title: 'Introduction to Natural Language Processing - Part 1'
-date: "2024-04-08T00:00:00Z"
+date: "2030-04-08T00:00:00Z"
 imageCaption: "[Unstable Diffusion](https://www.unstability.ai/)"
 summary: In this series of blog posts, I am going to describe the journey of Natural Language Processing, how it evolved to reach the Large Language Models that we see today and the mathematics behind their inner workings.
 
 tags:
     - Natural Language Processing
 
-draft: false
+draft: true
 mathjax: true
 mermaid: true
 
