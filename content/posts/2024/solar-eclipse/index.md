@@ -2,18 +2,18 @@
 title: 'The Mathematics behind Solar Eclipse'
 date: "2024-04-08T00:00:00Z"
 imageCaption: "[NASA](https://www.nasa.gov/)"
-summary: 
+summary: On April 8, 2024, the people in Texas, United States of America, will watch a cosmic event taking place before their very eyes, a total solar eclipse. But how can this be predicted so accurately down to the second in advance, when our weather predictions are often wrong? In this post, we are going to see how simple mathematics can help us predict these cosmic events so precisely.
 
 tags:
     - Astronomy
-    - Trigonometry
+    - Geometry
 
 draft: false
 mathjax: true
 mermaid: true
 
 prerequisites:
-    - topic: Trigonometry
+    - topic: Geometry
       level: 1
 
     - topic: Astronomy
@@ -23,7 +23,7 @@ prerequisites:
 
 ## Introduction
 
-On April 8, 2024, the people in Texas, United States of America, will watch a cosmic event taking place before their very rise, a total solar eclipse. Well, if you're not a believer in the myths of asuras named Rahu and Ketu, then for you a solar eclipse occurs when the shadow of the moon falls directly on a location on the Earth, and the moon obstructs our view of the Sun. Since the sun's rotation, the moon's rotation, and the Earth's rotation details are all known to astronomers, it is kind of a deterministic mathematical problem to figure out when they are going to line up together. In this problem, we are going to dive deep into this mathematics, and try to figure out when these eclipses occur, and try to predict the future date of eclipses. 
+On April 8, 2024, the people in Texas, United States of America, will watch a cosmic event taking place before their very eyes, a total solar eclipse. Well, if you're not a believer in the myths of asuras named Rahu and Ketu, then for you a solar eclipse occurs when the shadow of the moon falls directly on a location on the Earth, and the moon obstructs our view of the Sun. But how can such a cosmic occurence can be predicted in advance down to the second in advance, when our weather predictions in our locality are often wrong? Turns out, since the sun's rotation, the moon's rotation, and the Earth's rotation details are all known to astronomers, it is kind of a deterministic mathematical problem to figure out when they are going to line up together. In this post, we are going to dive deep into this mathematics, and try to figure out when these eclipses occur, and try to predict the future date of eclipses. 
 
 
 ## Some Background on Solar Eclipse
@@ -136,7 +136,7 @@ To figure this out, we will use Keplar's law, which says that the angular veloci
 - By these two days, the Earth also rotates a bit more. So we can continue this calculation for a few more steps.
 - Finally, we have a lunar month equals $(27.554550 + 2.07872204162) = 29.6332720416$ days. 
 
-This is very close to the actual value of $29.530589$ days with just $0.35\%$ error. 
+This is very close to the actual value of $29.530589$ days with just $0.35\\%$ error. 
 
 
 ### Alignment 4
