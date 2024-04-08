@@ -101,7 +101,7 @@ Random Matrix Theory - Introduction
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.817e5c26a3a8fa77a2d668e133e017b8.css" />
 
 
 
@@ -316,6 +316,38 @@ Random Matrix Theory - Introduction
   </div>
 </nav>
 
+        
+<div
+    class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+    <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+        aria-hidden="true">
+        <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+        </div>
+    </div>
+    <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+        aria-hidden="true">
+        <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+        </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div class="flex flex-col items-center justify-center">
+            <p class="font-semibold leading-6 text-gray-900">
+                We are looking for authors in StatWizard blog!
+            </p>
+            <p class="text-sm">
+                If you've got an interesting story to tell about statistics, mathematics and related fields, reach out to us at 
+                <a href="mailto:admin@statwizard.in" class="hover:underline hover:text-gray-600">
+                    <strong>admin@statwizard.in</strong>
+                </a>
+            </p>    
+        </div>
+    </div>
+    <div class="flex flex-1 justify-end">
+    </div>
+</div>
+
 
         <div class="content-container">
             
@@ -443,7 +475,7 @@ $$
 as $n \rightarrow \infty$. The above convergence can be made in probability or in almost sure sense, in which cases the resulting theorem is called as Weak Law of Large Numbers (WLLN) and Strong Law of Large Numbers (SLLN) respectively. You can learn more about the different notions of probabilistic convergence here<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <p>The result can be generalized to the cases where $\mathbb{E}(X_i)$ is different for each $i$, and also to the case when the expectations either go to $+\infty$ or $-\infty$. However, for the time being, we shall refrain from delving into much depth here. Interested readers may want to check out any standard probabilty book<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>.</p>
 <h3 id="central-limit-theorem-clt">Central Limit Theorem (CLT)</h3>
-<p>We again start with a sequence of independent and identically distributed (i.i.d.) random variables $X_1, \dots X_n$ with finite second moments. Let, these have $0$ mean and variance $1$ (otherwise, we can also work with $Y_i = (X_i - \mathbb{E}(X_i))/\sqrt{var(X_i)}$). Then the Central Limit Theorem asserts that 
+<p>We again start with a sequence of independent and identically distributed (i.i.d.) random variables $X_1, \dots X_n$ with finite second moments. Let, these have $0$ mean and variance $1$ (otherwise, we can also work with $Y_i = (X_i - \mathbb{E}(X_i))/\sqrt{var(X_i)}$). Then the Central Limit Theorem asserts that
 $$
 \sqrt{n}\left( \dfrac{X_1 + \dots + X_n}{n} \right) \rightarrow Z
 $$
@@ -452,14 +484,14 @@ where $Z$ is a random variable following the standard normal distribution. The a
 <h2 id="exploration">Exploration</h2>
 <p>So far we have been working with sums of i.i.d. random variables which is kind of a one-dimensional sequence. Now, let us try to explore how does a matrix with i.i.d. random entries behave. What all quantities or properties of this matrix will behave like LLN or CLT, and what properties do not behave like that, - these are the two fundamental questions we want to answer.</p>
 <h3 id="distribution-of-frobenius-norm">Distribution of Frobenius Norm</h3>
-<p>One of the basic property of a matrix is the norm of the matrix. Let&rsquo;s say we consider a $n \times n$ matrix with each entries randomly distributed as standard normal distribution. We call this $M$. However, as we draw the entries of $M$ randomly, it may not be symmetric. Having a symmetric matrix is usually a desirable property to begin with, so we symmetrize the matrix using the trick 
+<p>One of the basic property of a matrix is the norm of the matrix. Let&rsquo;s say we consider a $n \times n$ matrix with each entries randomly distributed as standard normal distribution. We call this $M$. However, as we draw the entries of $M$ randomly, it may not be symmetric. Having a symmetric matrix is usually a desirable property to begin with, so we symmetrize the matrix using the trick
 $$
 X = (M + M^{\top}) / 2
 $$
 which makes $X$ an $n \times n$ symmetric matrix.</p>
 <p>Note that, the entries of $X$ still follows normal distribution, namely
 $$
-X_{ij} = (M_{ij} + M_{ji})/2 \sim 
+X_{ij} = (M_{ij} + M_{ji})/2 \sim
 \begin{cases}
 N(0, 1/2) &amp; \text{ if } i \neq j\\
 N(0, 1) &amp; \text{ if } i = j
@@ -492,7 +524,7 @@ Here, $2X_{ij}^2$ for $i &gt; j$ is independent and identically distributed as $
 <h3 id="distribution-of-largest-eigenvalue">Distribution of Largest Eigenvalue</h3>
 <p>Now let&rsquo;s say instead of looking at the $L_2$-norm of the matrix entries, we consider the $L_2$-norm of vectors in the column space of the $X$ matrix. Specifically, we consider the quantity
 $$
-\sup_{\Vert v \Vert_2 = 1} \Vert Xv\Vert_2 
+\sup_{\Vert v \Vert_2 = 1} \Vert Xv\Vert_2
 $$
 which can be proven to be equal to the largest eigenvalue of the matrix $X$. Note that, the above norm basically looks that how much change the linear transformation corresponding to $X$ does to a vector $v$, and tries to see the maximum change possible.</p>
 <p>This time, instead of trying to theoretically bound this largest eigenvalue and see where it lies mostly, we will do the simulation. The theoretical tools require a bit of work, and I will try to explain them in subsequent posts of this series.</p>
@@ -627,23 +659,23 @@ $$</p>
 </img>
 <p>It clearly looks different than the one we obtained from spacings of two i.i.d. normal random variables. It shows that the eigenvalues are highly correlated. One eigenvalue feels the presence of the other, hence the spacing is not very likely to be near zero. This is known as eigenvalue repulsion. One application of this theory of repulsion is that it can be used to model the distribution of electrons as every electron repulses each other due to having the same charge.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> On the other hand, for the i.i.d. case, the spacings are very likely to be near $0$, since both of them are independently very likely to be close to their distributional expectation.</p>
 <h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Billingsley, P. (2013). Convergence of probability measures. John Wiley &amp; Sons.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>Feller, W. (1991). An introduction to probability theory and its applications, Volume 2 (Vol. 81). John Wiley &amp; Sons.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p><a href="https://en.wikipedia.org/wiki/Martingale_(probability_theory)">Martingale (Probability Theory) - Wikipedia</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>Livan, G., Novaes, M., &amp; Vivo, P. (2018). Introduction to random matrices theory and practice. Monograph Award, 63, 54-57. <a href="https://arxiv.org/abs/1712.07903">https://arxiv.org/abs/1712.07903</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
                 </div>
             </div>

@@ -101,7 +101,7 @@ Reinforcement Learning (Part 6) - Value Function Approximation
 
 
 
-<link rel="stylesheet" type="text/css" href="/css/index.8d5958b9698e0d2c4cacf8691b4c5842.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.817e5c26a3a8fa77a2d668e133e017b8.css" />
 
 
 
@@ -316,6 +316,38 @@ Reinforcement Learning (Part 6) - Value Function Approximation
   </div>
 </nav>
 
+        
+<div
+    class="relative isolate flex items-center gap-x-6 overflow-hidden bg-gray-50 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+    <div class="absolute left-[max(-7rem,calc(50%-52rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+        aria-hidden="true">
+        <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+        </div>
+    </div>
+    <div class="absolute left-[max(45rem,calc(50%+8rem))] top-1/2 -z-10 -translate-y-1/2 transform-gpu blur-2xl"
+        aria-hidden="true">
+        <div class="aspect-[577/310] w-[36.0625rem] bg-gradient-to-r from-[#ff80b5] to-[#9089fc] opacity-30"
+            style="clip-path: polygon(74.8% 41.9%, 97.2% 73.2%, 100% 34.9%, 92.5% 0.4%, 87.5% 0%, 75% 28.6%, 58.5% 54.6%, 50.1% 56.8%, 46.9% 44%, 48.3% 17.4%, 24.7% 53.9%, 0% 27.9%, 11.9% 74.2%, 24.9% 54.1%, 68.6% 100%, 74.8% 41.9%)">
+        </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div class="flex flex-col items-center justify-center">
+            <p class="font-semibold leading-6 text-gray-900">
+                We are looking for authors in StatWizard blog!
+            </p>
+            <p class="text-sm">
+                If you've got an interesting story to tell about statistics, mathematics and related fields, reach out to us at 
+                <a href="mailto:admin@statwizard.in" class="hover:underline hover:text-gray-600">
+                    <strong>admin@statwizard.in</strong>
+                </a>
+            </p>    
+        </div>
+    </div>
+    <div class="flex flex-1 justify-end">
+    </div>
+</div>
+
 
         <div class="content-container">
             
@@ -436,7 +468,7 @@ Reinforcement Learning (Part 6) - Value Function Approximation
 </img>
 <p>Unfortunately, the tabular methods (you should now be able to guess why it is called tabular! 😎 ) discussed so far cannot handle this environment, since we have two continuous variables (velocity and position) as observations. Instead of the tables, we now need to learn a function approximation which takes in a state and action pair, and output the q-value for that pair.</p>
 <p>$$
-f: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R};   \text{such that} f(s_t, a_t) = Q(s_t, a_t) 
+f: \mathcal{S} \times \mathcal{A} \rightarrow \mathbb{R};   \text{such that} f(s_t, a_t) = Q(s_t, a_t)
 $$</p>
 <p>Since $Q(\cdot)$ is unknown, we usually take linear, polynomial, logistic functions, random forests or neural networks to approximate the Q-function, and all of these approximations work on the basis of finding some correct weights or parameters for that models.</p>
 <h2 id="linear-approximation">Linear Approximation</h2>
@@ -461,11 +493,11 @@ $$</p>
 <p>where $W$ is an unknown weight. To see this for our Mountain car problem, imagine this:</p>
 <p>$$
 \begin{align*}
-Q((\text{position}, \text{velocity}), \text{left}) 
+Q((\text{position}, \text{velocity}), \text{left})
 &amp; = w_{11} \times \text{position} + w_{12} \times \text{velocity}\\
-Q((\text{position}, \text{velocity}), \text{nothing}) 
+Q((\text{position}, \text{velocity}), \text{nothing})
 &amp; = w_{21} \times \text{position} + w_{22} \times \text{velocity}\\
-Q((\text{position}, \text{velocity}), \text{right}) 
+Q((\text{position}, \text{velocity}), \text{right})
 &amp; = w_{31} \times \text{position} + w_{32} \times \text{velocity}
 \end{align*}
 $$</p>
@@ -581,7 +613,7 @@ flowchart TD
 <h3 id="kernel-encoding">Kernel Encoding</h3>
 <p>In the sparse encoding, the basic idea is that close values of position and velocity should be encoded into the same bucket and hence would have the same action. This means, the RL agent would want to learn how similar two (position, velocity) pairs are from each other rather than the exact values of the position and velocity. To work with this idea, imagine that there is a nonlinear map $\phi$ that takes the input position and velocity and output some feature, and the quantity of interest is</p>
 <p>$$
-\langle \phi(\text{position}_1, \text{velocity}_1),  \phi(\text{position}_2, \text{velocity}_2)\rangle 
+\langle \phi(\text{position}_1, \text{velocity}_1),  \phi(\text{position}_2, \text{velocity}_2)\rangle
 = K((\text{position}_1, \text{velocity}_1), (\text{position}_2, \text{velocity}_2))
 $$</p>
 <p>where $K$ is some function that measures the similarity in the $\phi$-transformed space. Hence, rather than individually specifying $\phi$ explcitly, it is often enough to specify $K$ alone which can produce a nonlinear mapping from the observation features to a new set of features<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>. The function $K$ is called a <strong>kernel</strong>.</p>
@@ -645,26 +677,26 @@ $$</p>
 </ol>
 <p>We will explore and try to answer some of these questions in the next post of the Reinforcement Learning Series.</p>
 <h2 id="references">References</h2>
-<section class="footnotes" role="doc-endnotes">
+<div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn:1" role="doc-endnote">
+<li id="fn:1">
 <p>Paul&rsquo;s Online Math Notes. <a href="https://tutorial.math.lamar.edu/classes/calci/MinMaxValues.aspx">https://tutorial.math.lamar.edu/classes/calci/MinMaxValues.aspx</a>.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:2" role="doc-endnote">
+<li id="fn:2">
 <p>Gradient Descent Wikipedia Page. <a href="https://en.wikipedia.org/wiki/Gradient_descent">https://en.wikipedia.org/wiki/Gradient_descent</a>.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:3" role="doc-endnote">
+<li id="fn:3">
 <p>Sutton, R. S., Barto, A. G. (2018). <a href="https://www.google.co.in/books/edition/Reinforcement_Learning_second_edition/sWV0DwAAQBAJ?hl=en">Reinforcement Learning: An Introduction.</a> United Kingdom: MIT Press.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:4" role="doc-endnote">
+<li id="fn:4">
 <p>Sklearn Kernel Methods User Guide. <a href="https://scikit-learn.org/stable/modules/kernel_approximation.html#rbf-kernel-approx">https://scikit-learn.org/stable/modules/kernel_approximation.html#rbf-kernel-approx</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
-<li id="fn:5" role="doc-endnote">
+<li id="fn:5">
 <p>Mountain Car SARSA - SamKirkiles&rsquo; Github. <a href="https://github.com/SamKirkiles/mountain-car-SARSA-AC/tree/master">https://github.com/SamKirkiles/mountain-car-SARSA-AC/tree/master</a>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</section>
+</div>
 
                 </div>
             </div>
