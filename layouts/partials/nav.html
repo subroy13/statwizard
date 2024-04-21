@@ -1,37 +1,25 @@
 <nav class="bg-white shadow-xl z-50">
-  <!-- Big device menu -->
-  <div
-    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
-  >
-    <div class="w-[200px] flex items-center">
-      <a
-        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
-        href="/"
-      >
-        <img
-          src="/images/logo-wide-resized.png"
-          height="50px"
-          width="100px"
-          class="inline-block"
-          alt="StatWizard Logo"
-        />
-      </a>
-    </div>
-    <div class="w-full flex flex-row justify-center items-center gap-4">
+  <!-- Big screen menu -->
+  <div class="hidden md:flex w-full py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center justify-between">
+    <!-- Main menu -->
+    <div class="flex flex-row justify-start items-center gap-4">
       {{ range .Site.Menus.main }}
       <a
         href="{{ .URL | relURL }}"
-        class="px-4 py-2 border rounded-lg hover:bg-gray-100"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
       >
         {{ .Name }}
       </a>
       {{ end }}
     </div>
+
+
+    <!-- Social icons -->
     <div class="w-[200px] flex flex-row justify-around items-center">
       {{ range .Site.Params.social }}
       <a
         href="{{ .link }}"
-        class="hover:text-gray-600 transition-all ease-in-out"
+        class="hover:text-blue-600 transition-all ease-in-out"
         aria-label="{{ .icon }} for link {{ .link }}"
         target="_blank"
       >
@@ -40,73 +28,85 @@
       {{ end }}
     </div>
   </div>
+  <!-- Big screen menu end -->
 
-  <!-- Mobile menu, show/hide based on menu state. -->
-  <div
-    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
-  >
-    <div class="w-full flex justify-center items-center">
-      <p class="uppercase font-extrabold font-mono text-2xl">
-        {{ .Site.Title }}
-      </p>
-    </div>
-    <div class="w-[30px] mr-4 relative">
-      <button
-        type="button"
-        id="mobile-menu-button"
-        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Open main menu</span>
-        <!-- Icon when menu is closed. Menu open: "hidden", Menu closed: "block" -->
-        <svg
-          id="mobile-menu-close-icon"
-          class="bg-white text-neutral-800 outline-none block h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
+  <!-- Mobile screen menu -->
+  <div class="w-full mx-0 flex flex-col gap-0 md:hidden">
+    <div class="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
+      <!-- the logo -->
+      <div class="w-[200px] flex items-center">
+        <a
+          class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+          href="/"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          <img
+            src="/images/logo-wide-2.png"
+            height="75px"
+            width="150px"
+            class="inline-block"
+            alt="StatWizard Logo"
           />
-        </svg>
-        <!-- Icon when menu is open., Menu open: "block", Menu closed: "hidden" -->
-        <svg
-          id="mobile-menu-open-icon"
-          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+        </a>
+      </div>
 
-      <div
-        id="mobile-menu"
-        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
-      >
-        <ul class="flex flex-col">
-          {{ range .Site.Menus.main }}
-          <li
-            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+      <!-- Clicked button -->
+      <div class="w-[30px] mr-4">
+        <button 
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <!-- Icon when menu is closed. Menu open: "hidden", Menu closed: "block" -->
+          <svg
+            id="mobile-menu-close-icon"
+            class="bg-white text-neutral-800 outline-none block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            <a href="{{ .URL | relURL }}" class=""> {{ .Name }} </a>
-          </li>
-          {{ end }}
-        </ul>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          <!-- Icon when menu is open., Menu open: "block", Menu closed: "hidden" -->
+          <svg
+            id="mobile-menu-open-icon"
+            class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
     </div>
+
+    <!-- mobile menu -->
+    <div id="mobile-menu" class="bg-white w-full mx-0 hidden">
+      <ul class="flex flex-col gap-2">
+        {{ range .Site.Menus.main }}
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="{{ .URL | relURL }}" class=""> {{ .Name }} </a>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
   </div>
+  <!-- Mobile screen menu end -->
 </nav>

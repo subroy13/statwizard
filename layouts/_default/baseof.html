@@ -21,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy.">
-    <link rel="icon" href="/svg/avatar.svg">
+    <link rel="icon" href="/images/logo.png">
     <title>
         {{ block "title" . }}
             {{ .Site.Title }}
@@ -36,14 +36,12 @@
 <body>
     <div class="app-container min-h-[100vh] flex flex-col justify-between">
         {{ partial "nav.html" . }}
-        {{ partial "banner.html" . }}
+        <!-- {{ partial "banner.html" . }} -->
 
         <div class="content-container">
             {{ block "main" . }}
             {{ end }}
         </div>
-
-        {{ partial "footer.html" . }}
     </div>
 
     {{ partial "commonScripts.html" . }}
