@@ -110,56 +110,17 @@
     <loc>//localhost:1313/tags/software-package/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/changepoint-detection/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/fuzzy-systems/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/rough-fuzzy-changepoint-detection/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/time-series-analysis/</loc>
-    <lastmod>2022-11-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/covid19-sintrue-model/</loc>
-    <lastmod>2022-08-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/epidemiology/</loc>
-    <lastmod>2022-08-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/talks/talk-multivariate-location-scatter/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/tags/robust-statistics/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/talks/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
+    <lastmod>2021-10-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/aboutme/software/rsvddpd/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/aboutme/publications/rsvddpd-video-surveillance/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/tags/dimension-reduction/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
+    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/robust-statistical-inference/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/talks/talk-algorithmic-fairness/</loc>
-    <lastmod>2021-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/algorithms/</loc>
-    <lastmod>2021-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/debiasing-and-fairness/</loc>
-    <lastmod>2021-08-14T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/aboutme/publications/</loc>
+    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/aboutme/publications/trustworthy-dimensionality-reduction/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
@@ -170,8 +131,11 @@
     <loc>//localhost:1313/posts/2021/texture-network-style-transfer/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/aboutme/publications/pollution-analysis-kolkata/</loc>
-    <lastmod>2020-11-01T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/tags/changepoint-detection/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/fuzzy-systems/</loc>
+    <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/aboutme/software/roufcp/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
@@ -182,20 +146,11 @@
     <loc>//localhost:1313/aboutme/software/covid19-tracker/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/auction-theory/</loc>
-    <lastmod>2020-05-07T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/tags/epidemiology/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/bayesian-analysis/</loc>
-    <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/clustering/</loc>
-    <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/regression-analysis/</loc>
-    <lastmod>2020-05-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/information-content-tea-arxiv/</loc>
-    <lastmod>2020-05-07T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/tags/time-series-analysis/</loc>
+    <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/posts/2020/covid19-esir-model/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
@@ -215,24 +170,11 @@
     <loc>//localhost:1313/tags/network-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/aboutme/talks/talk-tsne/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/tea-auction-feasibility/</loc>
-    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/hypothesis-testing/</loc>
-    <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/onset-detection-arxiv/</loc>
-    <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/sound-processing/</loc>
-    <lastmod>2019-08-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/aboutme/software/text-pred-app/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/aboutme/3darts/</loc>
+  </url><url>
+    <loc>//localhost:1313/research/</loc>
   </url>
 </urlset>

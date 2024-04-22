@@ -16,13 +16,6 @@
       <description>Introduction A few days ago, I saw this video by Derek Muller on his channel Veritasium1 and came to know about the discovery of blue LED by Shuji Nakamura2. It was a nice video, (I highly recommend watching it) and I was thinking of how significant that discovery was.&#xA;To begin with, it led to the creation of smart LED screen that you see on mobile phones, smart TVs, tablets or any other current-era electronic devices.</description>
     </item>
     <item>
-      <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
-      <link>//localhost:1313/aboutme/publications/rsvddpd-video-surveillance/</link>
-      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/rsvddpd-video-surveillance/</guid>
-      <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
-    </item>
-    <item>
       <title>Texture Networks</title>
       <link>//localhost:1313/posts/2021/texture-network-style-transfer/</link>
       <pubDate>Wed, 13 Jan 2021 00:00:00 +0000</pubDate>

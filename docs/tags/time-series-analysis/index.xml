@@ -6,29 +6,8 @@
     <description>Recent content in Time Series Analysis on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/time-series-analysis/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Rough-Fuzzy CPD: a gradual change point detection algorithm</title>
-      <link>//localhost:1313/aboutme/publications/rough-fuzzy-changepoint-detection/</link>
-      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/rough-fuzzy-changepoint-detection/</guid>
-      <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
-    </item>
-    <item>
-      <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
-      <link>//localhost:1313/aboutme/publications/covid19-sintrue-model/</link>
-      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/covid19-sintrue-model/</guid>
-      <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
-    </item>
-    <item>
-      <title>Analysis of Pollution Patterns in Regions of Kolkata</title>
-      <link>//localhost:1313/aboutme/publications/pollution-analysis-kolkata/</link>
-      <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/pollution-analysis-kolkata/</guid>
-      <description>This article analyzes the pollution patterns of Kolkata based on an extensive historical data of more than 15 years. The analysis focus on interpreting general patterns present in pollution and a prediction methodology, which may be used to calibrate low-cost pollution monitoring sensors.</description>
-    </item>
     <item>
       <title>COVID 19 Tracker</title>
       <link>//localhost:1313/aboutme/software/covid19-tracker/</link>

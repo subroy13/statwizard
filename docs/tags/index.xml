@@ -114,34 +114,6 @@
       <description></description>
     </item>
     <item>
-      <title>Changepoint Detection</title>
-      <link>//localhost:1313/tags/changepoint-detection/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/changepoint-detection/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fuzzy Systems</title>
-      <link>//localhost:1313/tags/fuzzy-systems/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/fuzzy-systems/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Time Series Analysis</title>
-      <link>//localhost:1313/tags/time-series-analysis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/time-series-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Epidemiology</title>
-      <link>//localhost:1313/tags/epidemiology/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/epidemiology/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Robust Statistics</title>
       <link>//localhost:1313/tags/robust-statistics/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -156,31 +128,24 @@
       <description></description>
     </item>
     <item>
-      <title>Robust Statistical Inference</title>
-      <link>//localhost:1313/tags/robust-statistical-inference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/robust-statistical-inference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Algorithms</title>
-      <link>//localhost:1313/tags/algorithms/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/algorithms/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Debiasing and Fairness</title>
-      <link>//localhost:1313/tags/debiasing-and-fairness/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/debiasing-and-fairness/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>Deep Learning</title>
       <link>//localhost:1313/tags/deep-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Changepoint Detection</title>
+      <link>//localhost:1313/tags/changepoint-detection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/changepoint-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fuzzy Systems</title>
+      <link>//localhost:1313/tags/fuzzy-systems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/fuzzy-systems/</guid>
       <description></description>
     </item>
     <item>
@@ -191,31 +156,17 @@
       <description></description>
     </item>
     <item>
-      <title>Auction Theory</title>
-      <link>//localhost:1313/tags/auction-theory/</link>
+      <title>Epidemiology</title>
+      <link>//localhost:1313/tags/epidemiology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/auction-theory/</guid>
+      <guid>//localhost:1313/tags/epidemiology/</guid>
       <description></description>
     </item>
     <item>
-      <title>Bayesian Analysis</title>
-      <link>//localhost:1313/tags/bayesian-analysis/</link>
+      <title>Time Series Analysis</title>
+      <link>//localhost:1313/tags/time-series-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/bayesian-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Clustering</title>
-      <link>//localhost:1313/tags/clustering/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/clustering/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Regression Analysis</title>
-      <link>//localhost:1313/tags/regression-analysis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/regression-analysis/</guid>
+      <guid>//localhost:1313/tags/time-series-analysis/</guid>
       <description></description>
     </item>
     <item>
@@ -230,20 +181,6 @@
       <link>//localhost:1313/tags/network-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/network-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hypothesis Testing</title>
-      <link>//localhost:1313/tags/hypothesis-testing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/hypothesis-testing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Sound Processing</title>
-      <link>//localhost:1313/tags/sound-processing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/sound-processing/</guid>
       <description></description>
     </item>
   </channel>

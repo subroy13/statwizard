@@ -1,196 +1,108 @@
 {{ define "main" }}
 
 <!-- Main section -->
-<section class="w-[100vw] h-[100vh] grid grid-cols-2">
-    <div class="w-[200px] h-[200px] absolute inset-x-1/2 inset-y-1/2 -ml-[100px] -mt-[100px] rounded-full border-4 border-l-blue-600 border-b-blue-600 border-r-white border-t-white rotate-45 shadow-lg">
-        <img
-            src="/images/logo.png"
-            class="w-full h-full rounded-full -rotate-45"
-        />
-    </div>
-    <div class="bg-white text-blue-600 col-span-1 w-full h-full flex flex-col">
-        <div class="mt-32 mr-[150px] ml-auto">
-            <h1 id="typehead" class="ml-8 mx-auto text-blue-600 text-4xl font-semibold">          
-            </h1>
-            <div class="mt-2 ml-8">
-                <p class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700">
-                    I am {{ .Params.subtitle }}
-                </p>
-            </div>
-            <div class="mt-4 pl-4 flex flex-col">
-                {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
-                <p class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700 text-right">
-                    {{ if eq $bioitem_index 0 }}
-                        I am currently 
-                    {{ else }}
-                        and
-                    {{ end }}
-                    <span class="font-semibold">
-                        {{ $bioitem_val.bio | markdownify }}
-                    </span>
-                    at 
-                    <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">
-                        {{ $bioitem_val.affiliation | markdownify }}
-                    </span>
-                </p>
-                {{ end }}
-            </div>
-
-            <!-- Menu choices -->
-            <div class="mt-16 pl-auto flex flex-col gap-1 items-end">
-                {{ range .Site.Menus.main }}
-                <a
-                    href = "{{ .URL | relURL }}"
-                    class = "text-black hover:text-blue-600 hover:border-b-2 hover:border-b-blue-600 transition transition-all ease-in-out roboto-medium py-0 my-0"
-                >
-                    {{ .Name }}
-                </a>
-                {{ end }}
-                <a
-                    href = "/cv/cv.pdf"
-                    class = "text-black hover:text-blue-600 hover:border-b-2 hover:border-b-blue-600 transition transition-all ease-in-out roboto-medium py-0 my-0"
-                >
-                    CV
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-700 from-50% text-white col-span-1 w-full h-full">
-        <!-- Statwizard -->
-        <div class="mt-32 mr-auto ml-[150px] pr-8 text-left">
-            <p class="mb-8 font-semibold">
-                I also actively maintain a blog, discussing various interesting concepts and applications of statistics, mathematics, computer science and personal finance.
-            </p>
-            <a 
-                href="/posts"
-                class="group text-white text-lg font-bold"
-            >
-                Explore the blog posts &rarr;
-                <span class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"></span>
-            </a>
-
-            <!-- Support -->
-            <div class="mt-16">
-                <p class="italic">
-                    StatWizard will always be a free haven for those who wants to master the wizardry of statistics, without any ads or any paywalls. However, you can always support my research by tossing a few coins, or reaching out to me for collaboration.
-                </p>
-                <div class="flex flex-row gap-6 justify-center mt-6">
-                    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="statwizard" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Support StatWizard" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-<!-- Hero Section -->
-<section
-  class="min-h-[100vh] mx-4 xl:mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-2
-  bg-[url('/images/cover-1.webp')] bg-gray-300 bg-blend-overlay md:bg-white md:bg-none bg-cover"
+<div
+  class="w-[200px] h-[200px] absolute inset-x-1/2 inset-y-1/2 -ml-[100px] -mt-[100px] rounded-full border-4 border-l-blue-600 border-b-blue-600 border-r-white border-t-white rotate-45 shadow-lg"
 >
-    <div class="min-h-[100vh] flex flex-col gap-6 justify-center">
-        <h1 id="typehead" class="text-blue-600 text-4xl md:text-6xl">            
-        </h1>
+  <img src="/images/logo.png" class="w-full h-full rounded-full -rotate-45" />
+</div>
+<section class="overflow-x-hidden w-full m-0 p-0 h-[100vh] grid grid-cols-2">
+  <div class="bg-white text-blue-600 col-span-1 w-full h-full flex flex-col">
+    <div class="mt-32 mr-[150px] ml-auto">
+      <h1
+        id="typehead"
+        class="ml-8 mx-auto text-blue-600 text-4xl font-semibold"
+      ></h1>
+      <div class="mt-2 ml-8">
         <p
-            class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700"
+          class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700"
         >
-            Join me in a journey:<br/>
-            &bull; To explore applications of statistics, mathematics, computer science and personal finance in your daily lives.<br/>
-            &bull; To ensure accessibility of complex statistical, mathematical and computer science concepts hidden behind a paywall of journals or academic jargons.<br/>
-            <!-- and unravel the magic of statistics in your daily lives by engaging with a range of contents and posts about statistics, mathematics, computer science and personal finance. -->
+          I am {{ .Params.subtitle }}
         </p>
-        <a
-            class="py-2 px-6 rounded-md border-2 text-blue-600 
-                border-blue-600 bg-white hover:bg-blue-600 
-                focus:bg-blue-600 hover:text-white focus:text-white 
-                hover:border-white font-semibold transition ease-in-out 
-                max-w-[200px] text-center animate__animated animate__fadeIn animate__delay-2s"
-            href="/posts"
-        >
-            Explore Posts
-        </a>
-    </div>
-    <div class="hidden md:block">
-        <img src="/images/cover-1.webp" height="100vh" width="auto" alt="Background Image Banner"/>
-    </div>
-</section>
-
-<!-- Donation and Cause Section -->
-<section class="bg-gradient-to-b md:bg-gradient-to-r from-blue-700 to-indigo-900 text-white min-h-[100px]">
-    <div class="mx-4 py-16 md:mx-auto max-w-6xl flex flex-col md:flex-row gap-8 justify-center items-center">
-        <h1 class="my-6 w-full text-center font-semibold text-4xl">
-            Story of StatWizard
-        </h1>
-        <div class="my-6 flex flex-col gap-4">
-            <p>
-                Ever been curious about the magic behind data? I sure was. It's like deciphering a secret language, and that's where my journey began. I found this enchanting world of statistics, machine learning and new data science technologies - fascinating, but hidden behind esoteric academic journals and multiple layers of paywalls.
-            </p>
-            <p>
-                So, I decided to create StatWizard, a sort of digital Hogwarts for regular folks like you and me. Think of StatWizard as your guide to becoming a wizard of statistics. I simply want to build a community where we all learn together irrespective of our diverse backgrounds, and this website is the first step where I share whatever interesting stuffs I learn when experimenting and working with data on a day-to-day basis, using open source tools. 
-            </p>
-            <p>
-                StatWizard will always be a free haven for those who wants to master the wizardry of statistics, without any ads or any paywalls. However, you can always support the cause by tossing a few coins to cover up the hosting costs, or reaching out to me with an idea of writing any interesting content.
-            </p>
-            <div class="flex flex-row gap-6 justify-center mt-6">
-                <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="statwizard" data-color="#5F7FFF" data-emoji=""  data-font="Cookie" data-text="Support StatWizard" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
-                <a href="/#contact-me"
-                    class="px-6 py-2 flex justify-center items-center rounded-lg cursor-pointer text-white text-3xl" style="background-color: #5F7FFF; font-family: Cookie; letter-spacing: 1px;">
-                    Contact Me with Content Ideas
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<!-- A basic about me section -->
-<section class="py-8 mx-4 md:mx-auto max-w-6xl">
-    <h1 class="mb-4 text-center text-blue-600 text-4xl md:text-6xl">
-        About Me
-    </h1>
-    <p class="max-w-4xl text-lg px-4 md:mx-auto text-center break-words text-gray-700">
-        I am <span class="text-blue-600 font-semibold">{{ .Params.title }}, </span> 
-    </p>
-    <p class="max-w-4xl text-base md:mx-auto px-4 text-center break-words text-gray-700">
-        {{ .Params.subtitle }}
+      </div>
+      <div class="mt-4 pl-4 flex flex-col">
         {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
-          {{ if eq $bioitem_index 0 }}
-              You will find me working as 
-          {{ else }}
-              and
-          {{ end }}
-          <span class="font-semibold text-gray-900">{{ $bioitem_val.bio | markdownify }}</span>
-          at 
-          <span class="font-semibold text-blue-700 hover:text-blue-900 hover:cursor-pointer">{{ $bioitem_val.affiliation | markdownify }}</span>
-      {{ end }}.
-    </p>
-    <div class="mt-8 mx-auto flex flex-row flex-wrap gap-4 justify-center items-center">
-      <a href="/aboutme"
-        class="px-6 py-2 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-2xl cursor-pointer text-white
-        transition-all duration-300 ease-in-out hover:bg-gradient-to-bl hover:from-white hover:to-blue-50 hover:text-blue-600 hover:border-2 hover:border-blue-500">
-        Learn more about me
-      </a>
-      <a 
-        href="/cv/cv.pdf" target="_blank"
-        class="px-6 py-2 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600 rounded-full shadow-2xl cursor-pointer hover:text-white
-        transition-all duration-300 ease-in-out bg-white text-blue-600 border-2 border-blue-500">
-        Download my CV
-      </a>
+        <p
+          class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700 text-right"
+        >
+          {{ if eq $bioitem_index 0 }} I am currently {{ else }} and {{ end }}
+          <span class="font-semibold">
+            {{ $bioitem_val.bio | markdownify }}
+          </span>
+          at
+          <span
+            class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer"
+          >
+            {{ $bioitem_val.affiliation | markdownify }}
+          </span>
+        </p>
+        {{ end }}
+      </div>
+
+      <!-- Menu choices -->
+      <div class="mt-16 pl-auto flex flex-col gap-1 items-end">
+        {{ range .Site.Menus.main }}
+        <a
+          href="{{ .URL | relURL }}"
+          class="text-black hover:text-blue-600 hover:border-b-2 hover:border-b-blue-600 transition transition-all ease-in-out roboto-medium py-0 my-0"
+        >
+          {{ .Name }}
+        </a>
+        {{ end }}
+        <a
+          href="/cv/cv.pdf"
+          class="text-black hover:text-blue-600 hover:border-b-2 hover:border-b-blue-600 transition transition-all ease-in-out roboto-medium py-0 my-0"
+        >
+          CV
+        </a>
+      </div>
     </div>
+  </div>
+  <div
+    class="bg-gradient-to-r from-blue-600 to-indigo-700 from-50% text-white col-span-1 w-full h-full"
+  >
+    <!-- Statwizard -->
+    <div class="mt-32 mr-auto ml-[150px] pr-8 text-left">
+      <p class="mb-8 font-semibold">
+        I also actively maintain a blog, discussing various interesting concepts
+        and applications of statistics, mathematics, computer science and
+        personal finance.
+      </p>
+      <a href="/posts" class="group text-white text-lg font-bold">
+        Explore the blog posts &rarr;
+        <span
+          class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white"
+        ></span>
+      </a>
+
+      <!-- Support -->
+      <div class="mt-16">
+        <p class="italic">
+          StatWizard will always be a free haven for those who wants to master
+          the wizardry of statistics, without any ads or any paywalls. However,
+          you can always support my research by tossing a few coins, or reaching
+          out to me for collaboration.
+        </p>
+        <div class="flex flex-row gap-6 justify-center mt-6">
+          <a href="https://www.buymeacoffee.com/statwizard"
+            ><img
+              src="https://img.buymeacoffee.com/button-api/?text=Support StatWizard&emoji=🤝&slug=statwizard&button_colour=40DCA5&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-{{ end }}
-
-{{ define "pageScripts" }}
+{{ end }} {{ define "pageScripts" }}
 
 <!-- Setup and start animation! -->
 <script>
-    var typed = new Typed('#typehead', {
-      strings: ["Hi, ^400 I am Subhrajyoty 👋🏽"],
-      typeSpeed: 20,
-      showCursor: false
-    });
+  var typed = new Typed("#typehead", {
+    strings: ["Hi, ^400 I am Subhrajyoty 👋🏽"],
+    typeSpeed: 20,
+    showCursor: false,
+  });
 </script>
 
 {{ end }}
