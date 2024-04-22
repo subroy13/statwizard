@@ -43,11 +43,9 @@ Reinforcement Learning (Part 3) - Markov Decision Process
 
 
 
-<link rel="stylesheet" type="text/css" href="//localhost:1313/css/index.d00060bc9039e90bdce025261a696154.css" />
 
 
-
-
+<script src="https://cdn.tailwindcss.com"></script>
 
 
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -144,59 +142,54 @@ Reinforcement Learning (Part 3) - Markov Decision Process
     <div class="app-container min-h-[100vh] flex flex-col justify-between">
         <nav class="bg-white shadow-xl z-50">
   
-  <div
-    class="hidden mx-auto max-w-7xl py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center"
-  >
-    <div class="w-[200px] flex items-center">
-      <a
-        class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
-        href="/"
-      >
-        <img
-          src="/images/logo-wide-resized.png"
-          height="50px"
-          width="100px"
-          class="inline-block"
-          alt="StatWizard Logo"
-        />
-      </a>
-    </div>
-    <div class="w-full flex flex-row justify-center items-center gap-4">
+  <div class="hidden md:flex w-full py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center justify-between">
+    
+    <div class="flex flex-row justify-start items-center gap-4">
       
       <a
         href="/"
-        class="px-4 py-2 rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-700 roboto-medium"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
       >
         Home
       </a>
       
       <a
         href="/posts"
-        class="px-4 py-2 rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-700 roboto-medium"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
       >
-        Posts
+        Blog
       </a>
       
       <a
-        href="/aboutme"
-        class="px-4 py-2 rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-700 roboto-medium"
+        href="/research"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
       >
-        About Me
+        Research
       </a>
       
       <a
-        href="/#contact-me"
-        class="px-4 py-2 rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-700 roboto-medium"
+        href="/collection"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
       >
-        Contact Me
+        Collection
+      </a>
+      
+      <a
+        href="/contact"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Contact
       </a>
       
     </div>
+
+
+    
     <div class="w-[200px] flex flex-row justify-around items-center">
       
       <a
         href="mailto:subhrajyotyroy@gmail.com"
-        class="hover:text-gray-600 transition-all ease-in-out"
+        class="hover:text-blue-600 transition-all ease-in-out"
         aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
         target="_blank"
       >
@@ -204,17 +197,8 @@ Reinforcement Learning (Part 3) - Markov Decision Process
       </a>
       
       <a
-        href="https://www.facebook.com/subroy13/"
-        class="hover:text-gray-600 transition-all ease-in-out"
-        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
-        target="_blank"
-      >
-        <i class="fab fa-facebook fa-lg"></i>
-      </a>
-      
-      <a
         href="https://github.com/subroy13"
-        class="hover:text-gray-600 transition-all ease-in-out"
+        class="hover:text-blue-600 transition-all ease-in-out"
         aria-label="fab fa-github for link https://github.com/subroy13"
         target="_blank"
       >
@@ -223,7 +207,7 @@ Reinforcement Learning (Part 3) - Markov Decision Process
       
       <a
         href="https://www.linkedin.com/in/subroy13"
-        class="hover:text-gray-600 transition-all ease-in-out"
+        class="hover:text-blue-600 transition-all ease-in-out"
         aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
         target="_blank"
       >
@@ -231,103 +215,139 @@ Reinforcement Learning (Part 3) - Markov Decision Process
       </a>
       
       <a
+        href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-google-scholar for link https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        target="_blank"
+      >
+        <i class="fab fa-google-scholar fa-lg"></i>
+      </a>
+      
+      <a
         href="#"
-        class="hover:text-gray-600 transition-all ease-in-out"
+        class="hover:text-blue-600 transition-all ease-in-out"
         aria-label="fab fa-instagram for link #"
         target="_blank"
       >
         <i class="fab fa-instagram fa-lg"></i>
       </a>
       
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
     </div>
   </div>
+  
 
   
-  <div
-    class="flex py-4 px-2 max-w-7xl flex-row justify-end items-center md:hidden"
-  >
-    <div class="w-full flex justify-center items-center">
-      <p class="uppercase font-extrabold font-mono text-2xl">
-        StatWizard
-      </p>
-    </div>
-    <div class="w-[30px] mr-4 relative">
-      <button
-        type="button"
-        id="mobile-menu-button"
-        class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-      >
-        <span class="sr-only">Open main menu</span>
-        
-        <svg
-          id="mobile-menu-close-icon"
-          class="bg-white text-neutral-800 outline-none block h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
+  <div class="w-full mx-0 flex flex-col gap-0 md:hidden">
+    <div class="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
+      
+      <div class="w-[200px] flex items-center">
+        <a
+          class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+          href="/"
         >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          <img
+            src="/images/logo-wide-2.png"
+            height="75px"
+            width="150px"
+            class="inline-block"
+            alt="StatWizard Logo"
           />
-        </svg>
-        
-        <svg
-          id="mobile-menu-open-icon"
-          class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
+        </a>
+      </div>
 
-      <div
-        id="mobile-menu"
-        class="absolute end-0 mt-4 -mr-4 bg-white w-[90vw] hidden"
-      >
-        <ul class="flex flex-col">
+      
+      <div class="w-[30px] mr-4">
+        <button 
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
           
-          <li
-            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          <svg
+            id="mobile-menu-close-icon"
+            class="bg-white text-neutral-800 outline-none block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            <a href="/" class=""> Home </a>
-          </li>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
           
-          <li
-            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
+          <svg
+            id="mobile-menu-open-icon"
+            class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            <a href="/posts" class=""> Posts </a>
-          </li>
-          
-          <li
-            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
-          >
-            <a href="/aboutme" class=""> About Me </a>
-          </li>
-          
-          <li
-            class="px-4 sm:px-8 py-2 border first:rounded-t-lg last:rounded-b-lg hover:bg-gray-100"
-          >
-            <a href="/#contact-me" class=""> Contact Me </a>
-          </li>
-          
-        </ul>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
     </div>
+
+    
+    <div id="mobile-menu" class="bg-white w-full mx-0 hidden">
+      <ul class="flex flex-col gap-2">
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/" class=""> Home </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/posts" class=""> Blog </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/research" class=""> Research </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/collection" class=""> Collection </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/contact" class=""> Contact </a>
+        </li>
+        
+      </ul>
+    </div>
   </div>
+  
 </nav>
 
         
@@ -775,93 +795,6 @@ $$</p>
 
 
         </div>
-
-        
-<section
-  id="contact-me"
-  class="py-8 mt-16 w-full bg-gradient-to-r from-neutral-900 to-black"
->
-  <div class="max-w-6xl mx-auto my-8 text-white text-center">
-    <p class="font-normal text-2xl py-4">Reach out to me via</p>
-    
-    <div class="hidden">
-      <div class="hover:bg-red-500 focus:bg-red-500"></div>
-      <div class="hover:bg-blue-500 focus:bg-blue-500"></div>
-      <div class="hover:bg-gray-500 focus:bg-gray-500"></div>
-      <div class="hover:bg-indigo-800 focus:bg-indigo-800"></div>
-      <div class="hover:bg-pink-800 focus:bg-pink-800"></div>
-    </div>
-    
-    <div class="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
-      
-      <a
-        href="mailto:subhrajyotyroy@gmail.com"
-        target="_blank"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-300 ease-in-out
-                    hover:bg-red-500 focus:bg-red-500 hover:text-white focus:text-white"
-      >
-        <i class="fas fa-envelope fa-2x"></i>
-      </a>
-      
-      <a
-        href="https://www.facebook.com/subroy13/"
-        target="_blank"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-300 ease-in-out
-                    hover:bg-blue-500 focus:bg-blue-500 hover:text-white focus:text-white"
-      >
-        <i class="fab fa-facebook fa-2x"></i>
-      </a>
-      
-      <a
-        href="https://github.com/subroy13"
-        target="_blank"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-300 ease-in-out
-                    hover:bg-gray-500 focus:bg-gray-500 hover:text-white focus:text-white"
-      >
-        <i class="fab fa-github fa-2x"></i>
-      </a>
-      
-      <a
-        href="https://www.linkedin.com/in/subroy13"
-        target="_blank"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-300 ease-in-out
-                    hover:bg-indigo-800 focus:bg-indigo-800 hover:text-white focus:text-white"
-      >
-        <i class="fab fa-linkedin-in fa-2x"></i>
-      </a>
-      
-      <a
-        href="#"
-        target="_blank"
-        class="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
-                    rounded-full border-2 border-white border-solid text-white transition-all 
-                    duration-300 ease-in-out
-                    hover:bg-pink-800 focus:bg-pink-800 hover:text-white focus:text-white"
-      >
-        <i class="fab fa-instagram fa-2x"></i>
-      </a>
-      
-    </div>
-  </div>
-</section>
-
-
-<footer class="bg-neutral-900 text-center text-white">
-    
-    <div class="text-center px-0 py-4 w-full" style="background-color: rgba(0, 0, 0, 0.2)">
-        © 2023 Copyright:
-        <a class="text-white" href="//localhost:1313/">StatWizard.in</a>
-    </div>
-</footer>
-
     </div>
 
     <script>
