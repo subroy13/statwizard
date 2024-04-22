@@ -1,0 +1,118 @@
+{{ define "title" }} {{ .Title }} {{ end }} 
+{{ define "main" }}
+
+<section>
+	<div class="my-8 max-w-6xl mx-auto flex flex-row justify-center gap-4 items-center">
+	    <p class="font-base text-neutral-800 text-xl">
+	      My <span class="text-2xl font-semibold text-blue-600">Life Goal</span> is
+	      to try unwrapping the gift of knowledge
+	    </p>
+	<img src="/svg/infinityBox.svg" class="w-full max-w-[50px] max-h-[50px]" />
+	</div>
+
+	<div class="max-w-6xl mx-auto mt-8 pt-8 border-t-[1px] border-t-gray-300">
+		<h2 class="italic text-neutral-800">Here is a list of my publications, a few talks and some softwares I have created!</h2>
+
+		<!-- Main content area -->
+		<div>
+			{{ range .Pages.GroupByDate "2006" }}
+				<div class="mt-8">
+					<h3 class="text-blue-800 text-2xl">{{ .Key }}</h3>
+					<div class="w-full my-2 border-b-[1px] border-b-blue-700"></div>
+					<div>
+						{{ range .Pages }}
+							<div class="grid grid-cols-6 gap-4 items-center">
+								<p class="w-full m-4 font-semibold text-center col-span-1 bg-blue-700 text-white rounded-sm text-xs">
+									{{ upper .Params.mytype  }}
+								</p>
+								<div class="col-span-5 ml-4 my-2">
+									{{ if (eq .Params.mytype "publication") }}
+										<p class="font-semibold">
+											{{ .Title }}
+											- <span class="font-normal text-sm">{{ delimit .Params.authors ", " }}</span>
+										</p>
+
+										<!-- Links -->
+										<div class="flex flex-row gap-4">
+											{{ range .Params.links }}
+								              <a
+								                href="{{ .url }}"
+								                class="text-blue-600 text-sm hover:underline cursor-pointer"
+								              >
+								                {{ if (eq .type "arxiv") }}
+								                  <i class="ai ai-arxiv"></i>
+								                  Preprint 
+								                {{ else if (eq .type "report" ) }}
+								                  <i class="ai ai-open-access"></i>
+								                  {{ .detail }} 
+								                {{ else if (eq .type "journal" ) }}
+								                  <i class="ai ai-doi"></i>
+								                  {{ .detail }} 
+								                {{ else if (eq .type "code" ) }}
+								                  <i class="fab fa-github"></i>
+								                  GitHub 
+								                {{ end }}
+								              </a>
+								              {{ end }}
+										</div>
+
+										<!-- Tags -->
+										<div class="mt-1 w-full flex flex-row flex-wrap gap-2">
+								            {{ range (.GetTerms "tags") }}
+								            <a
+								              href="{{ .Permalink }}"
+								              class="inline-block bg-gray-200 rounded-full px-3 py-[1px] text-sm font-semibold text-gray-700 mr-2 mb-2 hover:underline hover:bg-gray-300 transition ease-in-out"
+								            >
+								              {{ .LinkTitle }}
+								            </a>
+								            {{ end }}
+							          </div>
+
+									{{ else if (eq .Params.mytype "talk") }}
+										<p class="font-semibold">{{ .Title }}
+											<span class="font-normal text-sm">| {{ .Summary }}</span>
+										</p>
+										<a href="{{ .Params.link }}" target="_blank" class="text-blue-600 text-sm hover:underline cursor-pointer"><i class="fas fa-microphone-lines"></i> Slides</a>
+
+										<!-- Tags -->
+										<div class="mt-1 w-full flex flex-row flex-wrap gap-2">
+								            {{ range (.GetTerms "tags") }}
+								            <a
+								              href="{{ .Permalink }}"
+								              class="inline-block bg-gray-200 rounded-full px-3 py-[1px] text-sm font-semibold text-gray-700 mr-2 mb-2 hover:underline hover:bg-gray-300 transition ease-in-out"
+								            >
+								              {{ .LinkTitle }}
+								            </a>
+								            {{ end }}
+							          	</div>
+							        {{ else if (eq .Params.mytype "software" ) }}
+							        	<p class="font-semibold">{{ .Title }}
+											<span class="font-normal text-sm">| {{ .Summary }}</span>
+										</p>
+
+										<!-- Links -->
+										<div class="flex flex-row gap-4">
+											{{ range .Params.links }}
+												{{ if (eq .type "code") }}
+													<a href="{{ .url }}" class="text-sm text-black hover:underline"><i class="fab fa-github"></i> GitHub</a>
+												{{ else if (eq .type "distribution") }}
+													{{ .content | markdownify }}
+												{{ end }}
+											{{ end }}
+										</div>
+									{{ end }}
+								</div>
+							</div>
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+		</div>
+	</div>
+</section>
+
+{{ partial "footer.html" . }}
+{{ end }}
+
+
+

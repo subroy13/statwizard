@@ -6,14 +6,14 @@
     <description>Recent content in Epidemiology on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 02 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/epidemiology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>COVID 19 Tracker</title>
-      <link>//localhost:1313/aboutme/software/covid19-tracker/</link>
-      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/software/covid19-tracker/</guid>
-      <description>A Dashboard for Prediction and Control assistance and management of resources in view of Covid-19 pandemic, sponsored by IIM, Vishakhapatnam</description>
+      <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
+      <link>//localhost:1313/research/2022/covid-sintrue-model/</link>
+      <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/research/2022/covid-sintrue-model/</guid>
+      <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
     </item>
     <item>
       <title>Analysis of basic Epidemiological models - Part 2</title>

@@ -100,38 +100,10 @@
       <description></description>
     </item>
     <item>
-      <title>System Architecture Design</title>
-      <link>//localhost:1313/tags/system-architecture-design/</link>
+      <title>Robust Statistical Inference</title>
+      <link>//localhost:1313/tags/robust-statistical-inference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/system-architecture-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software Package</title>
-      <link>//localhost:1313/tags/software-package/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/software-package/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Robust Statistics</title>
-      <link>//localhost:1313/tags/robust-statistics/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/robust-statistics/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Dimension Reduction</title>
-      <link>//localhost:1313/tags/dimension-reduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/dimension-reduction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Deep Learning</title>
-      <link>//localhost:1313/tags/deep-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/deep-learning/</guid>
+      <guid>//localhost:1313/tags/robust-statistical-inference/</guid>
       <description></description>
     </item>
     <item>
@@ -149,10 +121,10 @@
       <description></description>
     </item>
     <item>
-      <title>Time Series</title>
-      <link>//localhost:1313/tags/time-series/</link>
+      <title>Time Series Analysis</title>
+      <link>//localhost:1313/tags/time-series-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/time-series/</guid>
+      <guid>//localhost:1313/tags/time-series-analysis/</guid>
       <description></description>
     </item>
     <item>
@@ -163,17 +135,38 @@
       <description></description>
     </item>
     <item>
-      <title>Time Series Analysis</title>
-      <link>//localhost:1313/tags/time-series-analysis/</link>
+      <title>High Dimensional Inference</title>
+      <link>//localhost:1313/tags/high-dimensional-inference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/time-series-analysis/</guid>
+      <guid>//localhost:1313/tags/high-dimensional-inference/</guid>
       <description></description>
     </item>
     <item>
-      <title>Natural Language Processing</title>
-      <link>//localhost:1313/tags/natural-language-processing/</link>
+      <title>Dimension Reduction</title>
+      <link>//localhost:1313/tags/dimension-reduction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/natural-language-processing/</guid>
+      <guid>//localhost:1313/tags/dimension-reduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithm</title>
+      <link>//localhost:1313/tags/algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fairness</title>
+      <link>//localhost:1313/tags/fairness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/fairness/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Deep Learning</title>
+      <link>//localhost:1313/tags/deep-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/deep-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -181,6 +174,48 @@
       <link>//localhost:1313/tags/network-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/network-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Auction Theory</title>
+      <link>//localhost:1313/tags/auction-theory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/auction-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Bayesian Analysis</title>
+      <link>//localhost:1313/tags/bayesian-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/bayesian-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Clustering</title>
+      <link>//localhost:1313/tags/clustering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/clustering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Regression Analysis</title>
+      <link>//localhost:1313/tags/regression-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/regression-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hypothesis Testing</title>
+      <link>//localhost:1313/tags/hypothesis-testing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/hypothesis-testing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Sound Processing</title>
+      <link>//localhost:1313/tags/sound-processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/sound-processing/</guid>
       <description></description>
     </item>
   </channel>

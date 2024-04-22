@@ -15,12 +15,5 @@
       <guid>//localhost:1313/posts/2021/texture-network-style-transfer/</guid>
       <description>In this post, I analyse Texture Network, a special type of neural network to synthesize textures and performing Neural Style Transfer, the art of mixing the content of a picture with the style from another picture.</description>
     </item>
-    <item>
-      <title>Chatbot with Seq2Seq model</title>
-      <link>//localhost:1313/aboutme/software/seq2seq-chatbot/</link>
-      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/software/seq2seq-chatbot/</guid>
-      <description>A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.</description>
-    </item>
   </channel>
 </rss>

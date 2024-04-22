@@ -6,14 +6,14 @@
     <description>Recent content in Fuzzy Systems on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 04 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/fuzzy-systems/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>roufcp - Python package</title>
-      <link>//localhost:1313/aboutme/software/roufcp/</link>
-      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/software/roufcp/</guid>
-      <description>A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory</description>
+      <title>Rough Fuzzy CPD: a gradual changepoint detection algorithm</title>
+      <link>//localhost:1313/research/2022/rough-fuzzy-cpd/</link>
+      <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/research/2022/rough-fuzzy-cpd/</guid>
+      <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
     </item>
   </channel>
 </rss>
