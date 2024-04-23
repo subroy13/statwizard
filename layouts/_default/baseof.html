@@ -32,19 +32,20 @@
     <link rel="icon" href="/images/logo.png" />
     <title>{{ block "title" . }} {{ .Site.Title }} {{ end }}</title>
 
-    {{ partial "header.html" . }} {{ block "customCSS" . }} {{ end }} {{ block
-    "customJS" . }} {{ end }}
+    {{ partial "header.html" . }} 
+    {{ block "customCSS" . }} {{ end }} 
+    {{ block "customJS" . }} {{ end }}
   </head>
   <body>
     <div class="app-container min-h-[100vh] flex flex-col justify-between">
       {{ partial "nav.html" . }}
-      <!-- {{ partial "banner.html" . }} -->
 
       <div class="content-container mx-0 px-0">
         {{ block "main" . }} {{ end }}
       </div>
     </div>
 
-    {{ partial "commonScripts.html" . }} {{ block "pageScripts" . }} {{ end }}
+    {{ partial "commonScripts.html" . }} 
+    {{ block "pageScripts" . }} {{ end }}
   </body>
 </html>

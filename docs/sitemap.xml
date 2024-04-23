@@ -229,6 +229,8 @@
   </url><url>
     <loc>//localhost:1313/collection/</loc>
   </url><url>
+    <loc>//localhost:1313/contact/</loc>
+  </url><url>
     <loc>//localhost:1313/cv/</loc>
   </url>
 </urlset>
