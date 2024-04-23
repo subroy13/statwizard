@@ -1,38 +1,31 @@
 {{ define "main" }}
 
 <!-- Main section -->
-<div
-  class="w-[200px] h-[200px] absolute inset-x-1/2 inset-y-1/2 -ml-[100px] -mt-[100px] rounded-full border-4 border-l-blue-600 border-b-blue-600 border-r-white border-t-white rotate-45 shadow-lg"
->
+
+<!-- Main Logo -->
+<div class="hidden md:block w-[200px] h-[200px] absolute inset-x-1/2 inset-y-1/2 -ml-[100px] -mt-[100px] rounded-full border-4 border-l-blue-600 border-b-blue-600 border-r-white border-t-white rotate-45 shadow-lg">
   <img src="/images/logo.png" class="w-full h-full rounded-full -rotate-45" />
 </div>
-<section class="overflow-x-hidden w-full m-0 p-0 h-[100vh] grid grid-cols-2">
+
+<!-- Left Right Banner (Desktop) -->
+<section class="hidden md:grid md:grid-cols-2 items-center overflow-x-hidden w-full m-0 p-0 h-[100vh]">
   <div class="bg-white text-blue-600 col-span-1 w-full h-full flex flex-col">
     <div class="mt-32 mr-[150px] ml-auto">
-      <h1
-        id="typehead"
-        class="ml-8 mx-auto text-blue-600 text-4xl font-semibold"
-      ></h1>
+      <h1 id="typehead" class="ml-8 mx-auto text-blue-600 text-4xl font-semibold"></h1>
       <div class="mt-2 ml-8">
-        <p
-          class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700"
-        >
+        <p class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700">
           I am {{ .Params.subtitle }}
         </p>
       </div>
       <div class="mt-4 pl-4 flex flex-col">
         {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
-        <p
-          class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700 text-right"
-        >
+        <p class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700 text-right">
           {{ if eq $bioitem_index 0 }} I am currently {{ else }} and {{ end }}
           <span class="font-semibold">
             {{ $bioitem_val.bio | markdownify }}
           </span>
           at
-          <span
-            class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer"
-          >
+          <span class="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">
             {{ $bioitem_val.affiliation | markdownify }}
           </span>
         </p>
@@ -52,11 +45,9 @@
       </div>
     </div>
   </div>
-  <div
-    class="bg-gradient-to-r from-blue-600 to-indigo-700 from-50% text-white col-span-1 w-full h-full"
-  >
+  <div class="bg-gradient-to-r from-blue-600 to-indigo-700 from-50% text-white col-span-1 w-full h-full flex flex-col justify-end">
     <!-- Statwizard -->
-    <div class="mt-32 mr-auto ml-[150px] pr-8 text-left">
+    <div class="mb-48 mr-auto ml-[150px] pr-8 text-left">
       <p class="mb-8 font-semibold">
         I also actively maintain a blog, discussing various interesting concepts
         and applications of statistics, mathematics, computer science and
@@ -88,6 +79,81 @@
   </div>
 </section>
 
+
+<!-- Top Down Banner (Mobile) -->
+<section class="block md:hidden overflow-x-hidden w-full m-0 p-0 min-h-[100vh] flex flex-col gap-0">
+  <!-- Top Section -->
+  <div class="text-white bg-gradient-to-b from-blue-600 to-indigo-700 from-50% text-white col-span-1 w-full h-full">
+    <div class="mt-16 mx-auto">
+      <h1 id="typehead-mobile" class="ml-8 mx-auto text-white text-4xl font-semibold"></h1>
+      <div class="mt-4 text-center mx-4">
+        <p class="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-200">
+          I am {{ .Params.subtitle }}
+        </p>
+      </div>
+      <div class="mt-6 px-4 flex flex-col text-sm">
+        <p class="text-light md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-200 text-right">
+          {{ range $bioitem_index, $bioitem_val := .Params.biolist }}
+            {{ if eq $bioitem_index 0 }} I am currently {{ else }} and {{ end }}
+            <span class="font-semibold">
+              {{ $bioitem_val.bio | markdownify }}
+            </span>
+            at
+            <span class="font-semibold text-white underline hover:text-blue-900 cursor-pointer">
+              {{ $bioitem_val.affiliation | markdownify }}
+            </span>
+        {{ end }}
+        </p>
+    </div>
+
+      <!-- Menu choices -->
+      <div class="mt-16 px-auto text-center flex flex-col gap-1">
+        {{ range .Site.Menus.main }}
+        <a
+          href="{{ .URL | relURL }}"
+          class="text-white border-b-2 border-b-white hover:text-gray-200 transition transition-all ease-in-out roboto-medium py-0 my-0"
+        >
+          {{ .Name }}
+        </a>
+        {{ end }}
+      </div>
+
+
+    </div>
+
+    <!-- Statwizard -->
+    <div class="mx-4 mt-8">
+      <p class="mb-8 font-semibold">
+        I also actively maintain a blog, discussing various interesting concepts
+        and applications of statistics, mathematics, computer science and
+        personal finance.
+      </p>
+      <a href="/posts" class="group text-white text-lg font-bold border-2 border-white rounded-md py-2 px-4">
+        Explore the blog posts &rarr;
+      </a>
+
+      <!-- Support -->
+      <div class="my-16">
+        <p class="italic text-gray-200">
+          StatWizard will always be a free haven for those who wants to master
+          the wizardry of statistics, without any ads or any paywalls. However,
+          you can always support my research by tossing a few coins, or reaching
+          out to me for collaboration.
+        </p>
+        <div class="flex flex-row gap-6 justify-center mt-6">
+          <a href="https://www.buymeacoffee.com/statwizard"
+            ><img
+              src="https://img.buymeacoffee.com/button-api/?text=Support StatWizard&emoji=🤝&slug=statwizard&button_colour=40DCA5&font_colour=ffffff&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00"
+          /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{ partial "footer.html" . }}
+</section>
+
+
 {{ end }} {{ define "pageScripts" }}
 
 <!-- Setup and start animation! -->
@@ -97,6 +163,12 @@
     typeSpeed: 20,
     showCursor: false,
   });
+
+  var typed2 = new Typed("#typehead-mobile", {
+    strings: ["Hi, ^400 I am Subhrajyoty 👋🏽"],
+    typeSpeed: 20,
+    showCursor: false,
+  })
 </script>
 
 {{ end }}

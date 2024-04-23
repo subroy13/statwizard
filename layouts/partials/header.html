@@ -12,12 +12,12 @@
 
 
 <!-- Main Tailwind CSS Pipe -->
-<!-- {{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
+{{ $css := resources.Get "css/index.css" | fingerprint "md5" }}
 <link rel="stylesheet" type="text/css" href="{{ $css.Permalink }}" />
- --><!-- Tailwind CSS Pipe end -->
+<!-- Tailwind CSS Pipe end -->
 
 <!-- Tailwind developer CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
 <!-- Load library from the CDN -->
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>

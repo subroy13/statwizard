@@ -6,6 +6,6 @@ summary: A simple text prediction application built for Data Science Specializat
 links:
   - type: code
     url: "https://github.com/subroy13/datasciencecoursera/tree/gh-pages/CapstoneProject"
-  - type: distribution
-    content: "[Shiny Web App](https://subroy13.shinyapps.io/TextPredictionSystem/)"
+  - type: webapp
+    url: "https://subroy13.shinyapps.io/TextPredictionSystem/"
 ---
