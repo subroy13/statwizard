@@ -22,20 +22,29 @@ enableEmoji = true
         weight = 1
 
     [[menu.main]]
-        name = "Posts"
+        name = "Blog"
         url = "/posts"
         weight = 2
 
     [[menu.main]]
-        name = "About Me"
-        url = "/aboutme"
+        name = "Research"
+        url = "/research"
         weight = 3
     
     [[menu.main]]
-        name = "Contact Me"
-        url = "#contact-me"
+        name = "Collection"
+        url = "/collection"
         weight = 4
 
+    [[menu.main]]
+        name = "CV"
+        url = "/cv"
+        weight = 5
+
+    [[menu.main]]
+        name = "Contact"
+        url = "/contact"
+        weight = 6
 
 # Custom Parameters
 
@@ -46,12 +55,6 @@ enableEmoji = true
         link = "mailto:subhrajyotyroy@gmail.com"
         icon = "fas fa-envelope"
         color = "red-500"
-
-    [[params.social]]
-        name = "Facebook"
-        link = "https://www.facebook.com/subroy13/"
-        icon = "fab fa-facebook"
-        color = "blue-500"
 
     [[params.social]]
         name = "Github"
@@ -66,8 +69,19 @@ enableEmoji = true
         color = "indigo-800"
 
     [[params.social]]
+        name = "Google Scholar"
+        link = "https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1"
+        icon = "fab fa-google-scholar"
+        color = "sky-600"
+
+    [[params.social]]
         name = "Instagram"
         link = "#"
         icon = "fab fa-instagram"
         color = "pink-800"
     
+    [[params.social]]
+        name = "Facebook"
+        link = "https://www.facebook.com/subroy13/"
+        icon = "fab fa-facebook"
+        color = "blue-500"

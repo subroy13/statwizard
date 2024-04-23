@@ -1,1 +1,0 @@
-{"rule":"EN_UNPAIRED_BRACKETS","sentence":"^\\QThe \\E(?:Dummy|Ina|Jimmy-)[0-9]+\\Q library also contains several other matrix factorization techniques (about 15 algorithms now, I am aiming for about 100 algorithms here, :sweat_smile:), you are welcome to try out the library, its functionalities and contribute in any way possible.\\E$"}

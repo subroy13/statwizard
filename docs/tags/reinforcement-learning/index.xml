@@ -2,73 +2,60 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reinforcement Learning on StatWizard</title>
-    <link>/tags/reinforcement-learning/</link>
+    <link>//localhost:1313/tags/reinforcement-learning/</link>
     <description>Recent content in Reinforcement Learning on StatWizard</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reinforcement Learning (Part 7) - Solving Lunar Landing</title>
-      <link>/posts/2023/nn-learning/</link>
+      <link>//localhost:1313/posts/2023/nn-learning/</link>
       <pubDate>Fri, 20 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/nn-learning/</guid>
+      <guid>//localhost:1313/posts/2023/nn-learning/</guid>
       <description>This is the 7th and final part of the Reinforcement Learning Series: Here I give a brief introduction to deep Q-learning and some techniques to increase RL agent&amp;rsquo;s efficiency</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 6) - Value Function Approximation</title>
-      <link>/posts/2023/linear-learning/</link>
+      <link>//localhost:1313/posts/2023/linear-learning/</link>
       <pubDate>Mon, 02 Oct 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/linear-learning/</guid>
+      <guid>//localhost:1313/posts/2023/linear-learning/</guid>
       <description>This is the 6th part of the Reinforcement Learning Series: Here I discuss about techniques to work with infinite state space, where the tabular methods do not work</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 5) - Q Learning and Optimal Policy Finding</title>
-      <link>/posts/2023/q-learning/</link>
+      <link>//localhost:1313/posts/2023/q-learning/</link>
       <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/q-learning/</guid>
+      <guid>//localhost:1313/posts/2023/q-learning/</guid>
       <description>This is the 5th part of the Reinforcement Learning Series: Here I discuss about techniques to finding optimal policies, and then demonstrate the popular Q-learning algorithm. I also show how it can be implemented to solve actual problems</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 4) - Temporal Difference Algorithms</title>
-      <link>/posts/2023/td-algorithms/</link>
+      <link>//localhost:1313/posts/2023/td-algorithms/</link>
       <pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/td-algorithms/</guid>
+      <guid>//localhost:1313/posts/2023/td-algorithms/</guid>
       <description>This is the 4th part of the Reinforcement Learning Series: Here I discuss about how the idea of Bellman equations and Monte Carlo methods can be combined into a single algorithm called Temporal Difference. We will also learn about its variants and how we can use it to estimate the value functions.</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 3) - Markov Decision Process</title>
-      <link>/posts/2023/markov-decision-process/</link>
+      <link>//localhost:1313/posts/2023/markov-decision-process/</link>
       <pubDate>Wed, 16 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/markov-decision-process/</guid>
+      <guid>//localhost:1313/posts/2023/markov-decision-process/</guid>
       <description>This is the third part of the Reinforcement Learning series: Here I discuss about the representing the reinforcement learning problem as a markov decision process, explain standard terminologies and provide ways to estimate the value function.</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 2) - K-arm Bandit Problem</title>
-      <link>/posts/2023/k-arm-bandit-2/</link>
+      <link>//localhost:1313/posts/2023/k-arm-bandit-2/</link>
       <pubDate>Mon, 07 Aug 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/k-arm-bandit-2/</guid>
+      <guid>//localhost:1313/posts/2023/k-arm-bandit-2/</guid>
       <description>This is the second part of the Reinforcement Learning series: Here I discuss about dynamically balancing between exploration and exploitation to reach optimal return in long run.</description>
     </item>
-    
     <item>
       <title>Reinforcement Learning (Part 1) - K-arm Bandit Problem</title>
-      <link>/posts/2023/k-arm-bandit/</link>
+      <link>//localhost:1313/posts/2023/k-arm-bandit/</link>
       <pubDate>Mon, 31 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/k-arm-bandit/</guid>
+      <guid>//localhost:1313/posts/2023/k-arm-bandit/</guid>
       <description>This is an introductory post about reinforcement learning. Here I discuss about the exploration-exploitation dilemma with multi-armed bandit problem and potential solutions to this.</description>
     </item>
-    
   </channel>
 </rss>

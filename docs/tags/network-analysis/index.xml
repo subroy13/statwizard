@@ -2,19 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Network Analysis on StatWizard</title>
-    <link>/tags/network-analysis/</link>
+    <link>//localhost:1313/tags/network-analysis/</link>
     <description>Recent content in Network Analysis on StatWizard</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/network-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/network-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Causal Inference using DAG Models</title>
-      <link>/aboutme/publications/causal-dag/</link>
+      <link>//localhost:1313/research/2019/causal-dag-intro/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/aboutme/publications/causal-dag/</guid>
-      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG)</description>
+      <guid>//localhost:1313/research/2019/causal-dag-intro/</guid>
+      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG). This is talk prepared as a part of group class project for Categorical Data Analysis course during my M.Stat. in ISI, Kolkata.</description>
     </item>
-    
   </channel>
 </rss>
