@@ -178,10 +178,10 @@
     </item>
     <item>
       <title>Trustworthy Dimensionality Reduction</title>
-      <link>//localhost:1313/aboutme/publications/trustworthy-dimensionality-reduction/</link>
+      <link>//localhost:1313/research/2021/trustworthy-dimension-reduction/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/trustworthy-dimensionality-reduction/</guid>
-      <description>My master&amp;rsquo;s dissertation about creating a new dimensionality reduction technique which is trustworthy.</description>
+      <guid>//localhost:1313/research/2021/trustworthy-dimension-reduction/</guid>
+      <description>My master&amp;rsquo;s dissertation thesis on proposing a novel dimensionality reduction technique which is trustworthy. This talks covers issues with existing approaches, how to measure trustworthiness, and a proposal that optimizes those metrics.</description>
     </item>
     <item>
       <title>Texture Networks</title>
@@ -234,10 +234,17 @@
     </item>
     <item>
       <title>Causal Inference using DAG Models</title>
-      <link>//localhost:1313/aboutme/publications/causal-dag/</link>
+      <link>//localhost:1313/research/2019/causal-dag-intro/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/causal-dag/</guid>
-      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG)</description>
+      <guid>//localhost:1313/research/2019/causal-dag-intro/</guid>
+      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG). This is talk prepared as a part of group class project for Categorical Data Analysis course during my M.Stat. in ISI, Kolkata.</description>
+    </item>
+    <item>
+      <title>Mount Rainier: The Climber&#39;s Challenge</title>
+      <link>//localhost:1313/research/2019/mt-rainier-study/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/research/2019/mt-rainier-study/</guid>
+      <description>A talk regarding a practical case study of different kinds of Regression Analysis. The case study includes modelling success rate of climbing expedition on Mt. Rainier.</description>
     </item>
     <item>
       <title>tSNE: A way to visualize multidimensional data</title>
@@ -258,7 +265,7 @@
       <link>//localhost:1313/research/2019/onset-detection/</link>
       <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/research/2019/onset-detection/</guid>
-      <description>We develop a QBH system based on detection of onsets of a song, within a statistical framework.</description>
+      <description>We develop a QBH (Query-by-Humming) system based on detection of onsets of a song, within a statistical framework.</description>
     </item>
     <item>
       <title>A simple Text Prediction Application</title>
@@ -266,6 +273,13 @@
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/research/2018/text-pred-app/</guid>
       <description>A simple text prediction application built for Data Science Specialization in Coursera.</description>
+    </item>
+    <item>
+      <title>Curriculum Vitae</title>
+      <link>//localhost:1313/cv/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/cv/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

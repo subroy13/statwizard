@@ -5,7 +5,7 @@ authors:
   - Soham Bonnerjee
   - Subhrajyoty Roy
 date: "2019-08-21T00:00:00Z"
-summary: We develop a QBH system based on detection of onsets of a song, within a statistical framework.
+summary: We develop a QBH (Query-by-Humming) system based on detection of onsets of a song, within a statistical framework.
 tags:
   - Sound processing
   - Hypothesis testing

@@ -15,12 +15,5 @@
       <guid>//localhost:1313/aboutme/publications/trustworthy-dimensionality-reduction/</guid>
       <description>My master&amp;rsquo;s dissertation about creating a new dimensionality reduction technique which is trustworthy.</description>
     </item>
-    <item>
-      <title>Causal Inference using DAG Models</title>
-      <link>//localhost:1313/aboutme/publications/causal-dag/</link>
-      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/aboutme/publications/causal-dag/</guid>
-      <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG)</description>
-    </item>
   </channel>
 </rss>

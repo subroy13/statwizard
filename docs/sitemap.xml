@@ -152,13 +152,7 @@
     <loc>//localhost:1313/tags/fairness/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/aboutme/</loc>
-    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/</loc>
-    <lastmod>2021-06-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/aboutme/publications/trustworthy-dimensionality-reduction/</loc>
+    <loc>//localhost:1313/research/2021/trustworthy-dimension-reduction/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/deep-learning/</loc>
@@ -185,10 +179,19 @@
     <loc>//localhost:1313/research/2020/seq2seq-chatbot/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/aboutme/publications/causal-dag/</loc>
+    <loc>//localhost:1313/tags/causal-inference/</loc>
+    <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/2019/causal-dag-intro/</loc>
+    <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/2019/mt-rainier-study/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/network-analysis/</loc>
+    <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/regression-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/research/2019/talk-tsne/</loc>
@@ -206,9 +209,6 @@
     <loc>//localhost:1313/research/2019/tea-auction/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/tags/regression-analysis/</loc>
-    <lastmod>2019-11-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/tags/hypothesis-testing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
@@ -220,6 +220,10 @@
   </url><url>
     <loc>//localhost:1313/research/2018/text-pred-app/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/aboutme/</loc>
+  </url><url>
+    <loc>//localhost:1313/cv/</loc>
   </url><url>
     <loc>//localhost:1313/aboutme/3darts/</loc>
   </url>
