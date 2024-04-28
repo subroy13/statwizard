@@ -2,234 +2,241 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on StatWizard</title>
-    <link>//localhost:1313/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Apr 2030 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Natural Language Processing</title>
-      <link>//localhost:1313/tags/natural-language-processing/</link>
+      <title>Artificial Intelligence</title>
+      <link>/tags/artificial-intelligence/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/natural-language-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Astronomy</title>
-      <link>//localhost:1313/tags/astronomy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/astronomy/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Geometry</title>
-      <link>//localhost:1313/tags/geometry/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/geometry/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>//localhost:1313/tags/python/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/python/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>R</title>
-      <link>//localhost:1313/tags/r/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/r/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software Design</title>
-      <link>//localhost:1313/tags/software-design/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/software-design/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Image Processing</title>
-      <link>//localhost:1313/tags/image-processing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/image-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Linear Algebra</title>
-      <link>//localhost:1313/tags/linear-algebra/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/linear-algebra/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Video Processing</title>
-      <link>//localhost:1313/tags/video-processing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/video-processing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Personal Finance</title>
-      <link>//localhost:1313/tags/personal-finance/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/personal-finance/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Probability</title>
-      <link>//localhost:1313/tags/probability/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/probability/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Reinforcement Learning</title>
-      <link>//localhost:1313/tags/reinforcement-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/reinforcement-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Statistical Learning</title>
-      <link>//localhost:1313/tags/statistical-learning/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/statistical-learning/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Random Matrix Theory</title>
-      <link>//localhost:1313/tags/random-matrix-theory/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/random-matrix-theory/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Robust Statistical Inference</title>
-      <link>//localhost:1313/tags/robust-statistical-inference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/robust-statistical-inference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Changepoint Detection</title>
-      <link>//localhost:1313/tags/changepoint-detection/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/changepoint-detection/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fuzzy Systems</title>
-      <link>//localhost:1313/tags/fuzzy-systems/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/fuzzy-systems/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Time Series Analysis</title>
-      <link>//localhost:1313/tags/time-series-analysis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/time-series-analysis/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Epidemiology</title>
-      <link>//localhost:1313/tags/epidemiology/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/epidemiology/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>High Dimensional Inference</title>
-      <link>//localhost:1313/tags/high-dimensional-inference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/high-dimensional-inference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Dimension Reduction</title>
-      <link>//localhost:1313/tags/dimension-reduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/dimension-reduction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Algorithm</title>
-      <link>//localhost:1313/tags/algorithm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/algorithm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Fairness</title>
-      <link>//localhost:1313/tags/fairness/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/fairness/</guid>
+      <guid>/tags/artificial-intelligence/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>//localhost:1313/tags/deep-learning/</link>
+      <link>/tags/deep-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/deep-learning/</guid>
+      <guid>/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Generative AI</title>
+      <link>/tags/generative-ai/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/generative-ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Astronomy</title>
+      <link>/tags/astronomy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/astronomy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Geometry</title>
+      <link>/tags/geometry/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/geometry/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Python</title>
+      <link>/tags/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/python/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>R</title>
+      <link>/tags/r/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/r/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Design</title>
+      <link>/tags/software-design/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/software-design/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Image Processing</title>
+      <link>/tags/image-processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/image-processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Linear Algebra</title>
+      <link>/tags/linear-algebra/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/linear-algebra/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Video Processing</title>
+      <link>/tags/video-processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/video-processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Personal Finance</title>
+      <link>/tags/personal-finance/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/personal-finance/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Probability</title>
+      <link>/tags/probability/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/probability/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>/tags/reinforcement-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistical Learning</title>
+      <link>/tags/statistical-learning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/statistical-learning/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Random Matrix Theory</title>
+      <link>/tags/random-matrix-theory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/random-matrix-theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Robust Statistical Inference</title>
+      <link>/tags/robust-statistical-inference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/robust-statistical-inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Changepoint Detection</title>
+      <link>/tags/changepoint-detection/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/changepoint-detection/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fuzzy Systems</title>
+      <link>/tags/fuzzy-systems/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/fuzzy-systems/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Time Series Analysis</title>
+      <link>/tags/time-series-analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/time-series-analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Epidemiology</title>
+      <link>/tags/epidemiology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/epidemiology/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>High Dimensional Inference</title>
+      <link>/tags/high-dimensional-inference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/high-dimensional-inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Dimension Reduction</title>
+      <link>/tags/dimension-reduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/dimension-reduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Algorithm</title>
+      <link>/tags/algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Fairness</title>
+      <link>/tags/fairness/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/tags/fairness/</guid>
       <description></description>
     </item>
     <item>
       <title>Causal Inference</title>
-      <link>//localhost:1313/tags/causal-inference/</link>
+      <link>/tags/causal-inference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/causal-inference/</guid>
+      <guid>/tags/causal-inference/</guid>
       <description></description>
     </item>
     <item>
       <title>Network Analysis</title>
-      <link>//localhost:1313/tags/network-analysis/</link>
+      <link>/tags/network-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/network-analysis/</guid>
+      <guid>/tags/network-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression Analysis</title>
-      <link>//localhost:1313/tags/regression-analysis/</link>
+      <link>/tags/regression-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/regression-analysis/</guid>
+      <guid>/tags/regression-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Auction Theory</title>
-      <link>//localhost:1313/tags/auction-theory/</link>
+      <link>/tags/auction-theory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/auction-theory/</guid>
+      <guid>/tags/auction-theory/</guid>
       <description></description>
     </item>
     <item>
       <title>Bayesian Analysis</title>
-      <link>//localhost:1313/tags/bayesian-analysis/</link>
+      <link>/tags/bayesian-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/bayesian-analysis/</guid>
+      <guid>/tags/bayesian-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Clustering</title>
-      <link>//localhost:1313/tags/clustering/</link>
+      <link>/tags/clustering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/clustering/</guid>
+      <guid>/tags/clustering/</guid>
       <description></description>
     </item>
     <item>
       <title>Hypothesis Testing</title>
-      <link>//localhost:1313/tags/hypothesis-testing/</link>
+      <link>/tags/hypothesis-testing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/hypothesis-testing/</guid>
+      <guid>/tags/hypothesis-testing/</guid>
       <description></description>
     </item>
     <item>
       <title>Sound Processing</title>
-      <link>//localhost:1313/tags/sound-processing/</link>
+      <link>/tags/sound-processing/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/sound-processing/</guid>
+      <guid>/tags/sound-processing/</guid>
       <description></description>
     </item>
   </channel>

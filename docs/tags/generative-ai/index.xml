@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Generative AI on StatWizard</title>
+    <link>/tags/generative-ai/</link>
+    <description>Recent content in Generative AI on StatWizard</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/generative-ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Generative AI - Part 1</title>
+      <link>/posts/2024/generative-ai-intro/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>/posts/2024/generative-ai-intro/</guid>
+      <description>This is a series of blog posts on Generative AI and Prompting Techniques. This post serves as a introduction to the generative AI, its related techniques.</description>
+    </item>
+  </channel>
+</rss>

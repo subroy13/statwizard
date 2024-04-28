@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
 
     
@@ -31,7 +31,7 @@
     />
     <link rel="icon" href="/images/logo.png" />
     <title>
-Introduction to Natural Language Processing - Part 1
+    Tag - Generative AI
 </title>
 
     
@@ -49,7 +49,7 @@ Introduction to Natural Language Processing - Part 1
 
 
 
-<link rel="stylesheet" type="text/css" href="//localhost:1313/css/index.754c001c7a0ca2aeb596f442010085a4.css" />
+<link rel="stylesheet" type="text/css" href="/css/index.d7a9aa5245029e12dff5521a4ac76703.css" />
 
 
 
@@ -142,7 +142,9 @@ Introduction to Natural Language Processing - Part 1
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
-      
+    
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+ 
      
   </head>
   <body>
@@ -373,144 +375,48 @@ Introduction to Natural Language Processing - Part 1
 
       <div class="content-container mx-0 px-0">
         
-
-
-
-
-
-<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
-    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
-        Introduction to Natural Language Processing - Part 1
+<section class="mx-4 md:mx-auto max-w-6xl my-8">
+    <h1 class="my-8 w-full text-center font-bold text-blue-600 text-2xl md:text-4xl">
+        Tag Generative AI
     </h1>
-    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex flex-col justify-center items-center gap-2">   
-                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
-                    <p class="font-bold">Date:</p>
-                    <p class="font-normal">08 April, 2030</p>
-                </div> 
-                <p class="mt-1 text-neutral-600">
-                    <span class="font-bold">3</span> minutes read
-                </p>
-                <div class="my-1">
-                    
-                        <a href="//localhost:1313/tags/natural-language-processing/" 
-                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
-                            hover:underline hover:bg-gray-300 transition ease-in-out">
-                            Natural Language Processing
-                        </a>
-                    
-                </div>    
-            </div>
-            <div class="flex flex-col justify-start gap-2">
-                <h1 class="text-lg font-bold">Prerequisites</h1>
-                <ul class="space-y-2 text-left">
-                    
-                </ul>
-            </div>    
-        </div>
-        <p class="mt-4 p-4 text-sm">
-            <span class="font-semibold">Summary: </span> In this series of blog posts, I am going to describe the journey of Natural Language Processing, how it evolved to reach the Large Language Models that we see today and the mathematics behind their inner workings.
-        </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
-        <div class="relative col-span-1">
-            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
-                <h1 class="text-bold text-xl">Table of Contents</h1>
-                <div class="prose">
-                    <nav id="TableOfContents">
-  <ul>
-    <li><a href="#introduction">Introduction</a>
-      <ul>
-        <li><a href="#whats-a-natural-language">What&rsquo;s a Natural Language?</a></li>
-        <li><a href="#why-nlp-is-hard">Why NLP is hard?</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+    <div class="my-8 bg-neutral-50 flex flex-col gap-4 items-center justify-center">
+        
+            <div class="w-full shadow-lg rounded-md border-2 bg-white p-4">
+                <div class="header flex flex-row justify-start items-center gap-4">
+                    <a  href="/posts/2024/generative-ai-intro/" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
+                        Introduction to Generative AI - Part 1
+                    </a>
+                    <p class="text-neutral-800 w-full flex flex-row-reverse text-sm items-center">
+                        <i class = "far fa-calendar-alt fa-2x mx-3"></i>04 April, 2024
+                    </p>
+                </div>
+                <div class="mt-4 text-neutral-800 text-sm text-justify">
+                    This is a series of blog posts on Generative AI and Prompting Techniques. This post serves as a introduction to the generative AI, its related techniques.
+                </div>
+                <div class="mt-4">
+                    <a 
+                        href="/posts/2024/generative-ai-intro/"
+                        class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+                    >
+                        See more
+                    </a>
                 </div>
             </div>
-        </div>
-        <div class="col-span-3">
-            <div class="text-justify break-words w-full">
-                <div class="prose" style="max-width: none;">
-                    <h2 id="introduction">Introduction</h2>
-<p>Language is one of the most significant gifts of evolution that sets us humans apart from Chimpanzees. Language is often seen as a sign of intelligence, hence as we want to build more and more intelligent machines with the surge of Artificial Intelligence, it becomes evident that we want these machines to comprehend languages as well. For the past 70-80 years, researchers have come up with various ideas to teach language to machines. And, these numerous efforts have ultimately produced the large language models that we see today, often regarded as the most intelligent artificial systems that we have so far.</p>
-<p>In this series of blog posts, I am going to describe the journey of this research around Natural Language Processing (NLP), how it evolved to reach the stage that we see today, and the intuition and mathematics behind their inner workings.</p>
-<h3 id="whats-a-natural-language">What&rsquo;s a Natural Language?</h3>
-<p>Before delving into the topic of NLP, let us take a look at what is natural language first. It is composed of two words, <strong>Natural</strong> and <strong>Language</strong>.</p>
-<p>Oxford Dictionary defines <strong>Language</strong> as a structured system of communication, in writing or in speaking. Now think of a mathematician writing the following</p>
-<p>$$
-\dfrac{1}{e}\int_{0}^{\pi} \sin^2(x)dx
-$$</p>
-<p>Any other formal practitioner of mathematics (irrespective of whether they speak English, Spanish, Japanese, French, or anything else) can inarguably understand what the above expression means. So, here, the mathematician is able to communicate her thoughts without writing a single language-specific word. So this itself qualifies mathematics to be a language. However, mathematics is not a <strong>Natural</strong> language, but rather a <strong>Logical</strong> language.</p>
-<p>To understand this better, think of the time when you first learned English (or your native language). You started with learning letters, and each of these letters is kind of an alien symbol to you. Similarly, here in the expression we use $\sin(x)$, $\int$, $\pi$, $e$, all these are symbols of mathematics (like the letters in English). While mathematical symbols have their own meanings, the letters in English usually don&rsquo;t have any meanings by themselves. Only when you put together some letters together they form a word, and you get some meaning out of it.</p>
-<p>It does not logically come to you why these symbols together should form a particular meaning, you simply memorize it. For example, the letters <em>a</em>, <em>p</em>, <em>p</em>, <em>l</em>, <em>e</em> come together to give the meaning of a red-coloured fruit, but why? There is no logical explanation for this.</p>
-<p>Well, you shouldn&rsquo;t take my word for granted. Let&rsquo;s try to argue why English is not a <strong>Logical</strong> language. If it is logical, then due to logical consistency, a word or a sentence should have the same meaning irrespective of the context used. For example, Mathematics is a logical language since <strong>2 + 2</strong> always has the same meaning as <strong>4</strong>, irrespective of the context it is used. (Group theorists might be snapped at this point, but please bear with me &#x1f64f; ) On the other hand, consider the sentence:</p>
-<blockquote>
-<p>You&rsquo;re killing me</p>
-</blockquote>
-<p>which you can use either at a party after hearing a joke from a friend &#x1f602; or during an ongoing robbery after getting shot &#x1f631; or when the doctor is diagnosing the source of pain in your broken arm &#x1f629; , each time with a different meaning.</p>
-<h3 id="why-nlp-is-hard">Why NLP is hard?</h3>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex flex-row justify-center items-center mb-3">
-        <h2 class="text-lg text-blue-600">
-            With heartfelt appreciation, thank you for being a valued reader, until next time!
-        </h2>
-    </div>
-</div>
-
-
-
-<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
-    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
-    <div class="flex flex-row justify-center gap-4">
-        
-            <a href="//localhost:1313/posts/2024/solar-eclipse/" 
-                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
-                    transition-all ease-in-out rounded-md shadow-sm">
-                Previous Post
-            </a>
         
         
+
+
+
     </div>
-    <div class="flex flex-row justify-center gap-4 my-4">
-        <a href="//localhost:1313/posts/" 
-            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
-                transition-all ease-in-out rounded-md shadow-sm">
-            See all posts
+    <div class="flex flex-row justify-center items-center">
+        <a 
+            href='/tags/'
+            class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+        >
+            See the list of all tags
         </a>
     </div>
-</div>
-
-
-<div class="my-6 max-w-6xl md:mx-auto mx-4">
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
-
+</section>
 
 
       </div>
@@ -534,30 +440,6 @@ $$</p>
 
 <script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
  
-    
-
-
-    <script type="module" defer>
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
-    </script>
-
-
-
-    
-    <script defer>
-        MathJax = {
-            tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']]
-            },
-            svg: {
-                fontCache: 'global'
-            }
-        };
-    </script>
-    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
-
-
-
+     
   </body>
 </html>
