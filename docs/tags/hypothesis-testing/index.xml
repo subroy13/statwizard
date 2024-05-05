@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hypothesis Testing on StatWizard</title>
-    <link>/tags/hypothesis-testing/</link>
+    <link>//localhost:1313/tags/hypothesis-testing/</link>
     <description>Recent content in Hypothesis Testing on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Aug 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/hypothesis-testing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/hypothesis-testing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Onset detection - A new approach to QBH system</title>
-      <link>/research/2019/onset-detection/</link>
+      <link>//localhost:1313/research/2019/onset-detection/</link>
       <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/onset-detection/</guid>
+      <guid>//localhost:1313/research/2019/onset-detection/</guid>
       <description>We develop a QBH (Query-by-Humming) system based on detection of onsets of a song, within a statistical framework.</description>
     </item>
   </channel>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Epidemiology on StatWizard</title>
-    <link>/tags/epidemiology/</link>
+    <link>//localhost:1313/tags/epidemiology/</link>
     <description>Recent content in Epidemiology on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 17 Aug 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/epidemiology/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/epidemiology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
-      <link>/research/2022/covid-sintrue-model/</link>
+      <link>//localhost:1313/research/2022/covid-sintrue-model/</link>
       <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/covid-sintrue-model/</guid>
+      <guid>//localhost:1313/research/2022/covid-sintrue-model/</guid>
       <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
     </item>
     <item>
       <title>Analysis of basic Epidemiological models - Part 2</title>
-      <link>/posts/2020/covid19-esir-model/</link>
+      <link>//localhost:1313/posts/2020/covid19-esir-model/</link>
       <pubDate>Wed, 01 Apr 2020 00:00:00 +0000</pubDate>
-      <guid>/posts/2020/covid19-esir-model/</guid>
+      <guid>//localhost:1313/posts/2020/covid19-esir-model/</guid>
       <description>In this post, we describe a slight generalization of the basic SIR model of epidemiology and its estimation procedure under both frequentist and Bayesian paradigms. We also make projections of the covid cases over next several days based on the fitted model.</description>
     </item>
     <item>
       <title>Analysis of basic Epidemiological models - Part 1</title>
-      <link>/posts/2020/covid19-sir-model/</link>
+      <link>//localhost:1313/posts/2020/covid19-sir-model/</link>
       <pubDate>Wed, 25 Mar 2020 00:00:00 +0000</pubDate>
-      <guid>/posts/2020/covid19-sir-model/</guid>
+      <guid>//localhost:1313/posts/2020/covid19-sir-model/</guid>
       <description>In this post, we describe a basic statistical model of epidemiology, named SIR model and its estimation procedure under both frequentist and Bayesian paradigms.</description>
     </item>
   </channel>

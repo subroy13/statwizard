@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linear Algebra on StatWizard</title>
-    <link>/tags/linear-algebra/</link>
+    <link>//localhost:1313/tags/linear-algebra/</link>
     <description>Recent content in Linear Algebra on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/linear-algebra/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Video Background Extraction</title>
-      <link>/posts/2024/background-extraction/</link>
+      <link>//localhost:1313/posts/2024/background-extraction/</link>
       <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/2024/background-extraction/</guid>
+      <guid>//localhost:1313/posts/2024/background-extraction/</guid>
       <description>You have often seen that Google meet filters or Zoom background filters allows you to change the background of your video. Ever wondered how that is performed? In this post, I am going to explain precisely that, and the math behind it.</description>
     </item>
   </channel>

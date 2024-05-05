@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fairness on StatWizard</title>
-    <link>/tags/fairness/</link>
+    <link>//localhost:1313/tags/fairness/</link>
     <description>Recent content in Fairness on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 14 Aug 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/fairness/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/fairness/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Algorithmic Fairness of Statistical Decision Systems</title>
-      <link>/research/2021/talk-algorithmic-fairness/</link>
+      <link>//localhost:1313/research/2021/talk-algorithmic-fairness/</link>
       <pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/talk-algorithmic-fairness/</guid>
+      <guid>//localhost:1313/research/2021/talk-algorithmic-fairness/</guid>
       <description>This is a talk that I presented during the final year of my M.Stat. at Indian Statistical Institute, for the PCM Memorial Gold Medal Presentation.</description>
     </item>
   </channel>

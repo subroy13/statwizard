@@ -2,17 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Artificial Intelligence on StatWizard</title>
-    <link>/tags/artificial-intelligence/</link>
+    <link>//localhost:1313/tags/artificial-intelligence/</link>
     <description>Recent content in Artificial Intelligence on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 05 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generative AI Text-to-Text Models - Part 2</title>
+      <link>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</link>
+      <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</guid>
+      <description>This is the 2nd blog post on Generative AI and Prompting Techniques blog series. In this post, we dive into encoder-decoder generative AI models and the key tunable settings for the Text-to-Text generative AI models.</description>
+    </item>
     <item>
       <title>Introduction to Generative AI - Part 1</title>
-      <link>/posts/2024/generative-ai-intro/</link>
+      <link>//localhost:1313/posts/2024/generative-ai-intro/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>/posts/2024/generative-ai-intro/</guid>
+      <guid>//localhost:1313/posts/2024/generative-ai-intro/</guid>
       <description>This is a series of blog posts on Generative AI and Prompting Techniques. This post serves as a introduction to the generative AI, its related techniques.</description>
     </item>
   </channel>

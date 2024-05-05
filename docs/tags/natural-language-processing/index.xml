@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Natural Language Processing on StatWizard</title>
+    <link>//localhost:1313/tags/natural-language-processing/</link>
+    <description>Recent content in Natural Language Processing on StatWizard</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Apr 2030 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction to Natural Language Processing - Part 1</title>
+      <link>//localhost:1313/posts/2024/nlp-intro/</link>
+      <pubDate>Mon, 08 Apr 2030 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/nlp-intro/</guid>
+      <description>In this series of blog posts, I am going to describe the journey of Natural Language Processing, how it evolved to reach the Large Language Models that we see today and the mathematics behind their inner workings.</description>
+    </item>
+  </channel>
+</rss>

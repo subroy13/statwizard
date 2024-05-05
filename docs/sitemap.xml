@@ -2,238 +2,247 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/</loc>
+    <loc>//localhost:1313/posts/2024/nlp-intro/</loc>
     <lastmod>2030-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
+    <loc>//localhost:1313/tags/natural-language-processing/</loc>
     <lastmod>2030-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/artificial-intelligence/</loc>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2030-04-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/</loc>
+    <lastmod>2030-04-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/</loc>
+    <lastmod>2030-04-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/artificial-intelligence/</loc>
+    <lastmod>2024-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/deep-learning/</loc>
+    <lastmod>2024-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/generative-ai/</loc>
+    <lastmod>2024-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</loc>
+    <lastmod>2024-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/2024/generative-ai-intro/</loc>
     <lastmod>2024-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/deep-learning/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/generative-ai/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/2024/generative-ai-intro/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2024-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/astronomy/</loc>
+    <loc>//localhost:1313/tags/astronomy/</loc>
     <lastmod>2024-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/geometry/</loc>
+    <loc>//localhost:1313/tags/geometry/</loc>
     <lastmod>2024-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2024/solar-eclipse/</loc>
+    <loc>//localhost:1313/posts/2024/solar-eclipse/</loc>
     <lastmod>2024-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/python/</loc>
+    <loc>//localhost:1313/tags/python/</loc>
     <lastmod>2024-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/r/</loc>
+    <loc>//localhost:1313/tags/r/</loc>
     <lastmod>2024-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2024/growing-memory/</loc>
+    <loc>//localhost:1313/posts/2024/growing-memory/</loc>
     <lastmod>2024-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/software-design/</loc>
+    <loc>//localhost:1313/tags/software-design/</loc>
     <lastmod>2024-03-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/image-processing/</loc>
+    <loc>//localhost:1313/tags/image-processing/</loc>
     <lastmod>2024-02-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2024/spreadsheet-image/</loc>
+    <loc>//localhost:1313/posts/2024/spreadsheet-image/</loc>
     <lastmod>2024-02-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/linear-algebra/</loc>
+    <loc>//localhost:1313/tags/linear-algebra/</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2024/background-extraction/</loc>
+    <loc>//localhost:1313/posts/2024/background-extraction/</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/video-processing/</loc>
+    <loc>//localhost:1313/tags/video-processing/</loc>
     <lastmod>2024-01-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/stock-market-vs-luck/</loc>
+    <loc>//localhost:1313/posts/2023/stock-market-vs-luck/</loc>
     <lastmod>2023-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/personal-finance/</loc>
+    <loc>//localhost:1313/tags/personal-finance/</loc>
     <lastmod>2023-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/probability/</loc>
+    <loc>//localhost:1313/tags/probability/</loc>
     <lastmod>2023-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/storage-analysis/</loc>
+    <loc>//localhost:1313/posts/2023/storage-analysis/</loc>
     <lastmod>2023-12-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/reinforcement-learning/</loc>
+    <loc>//localhost:1313/tags/reinforcement-learning/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/nn-learning/</loc>
+    <loc>//localhost:1313/posts/2023/nn-learning/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/statistical-learning/</loc>
+    <loc>//localhost:1313/tags/statistical-learning/</loc>
     <lastmod>2023-10-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/linear-learning/</loc>
+    <loc>//localhost:1313/posts/2023/linear-learning/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/q-learning/</loc>
+    <loc>//localhost:1313/posts/2023/q-learning/</loc>
     <lastmod>2023-09-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/td-algorithms/</loc>
+    <loc>//localhost:1313/posts/2023/td-algorithms/</loc>
     <lastmod>2023-08-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/markov-decision-process/</loc>
+    <loc>//localhost:1313/posts/2023/markov-decision-process/</loc>
     <lastmod>2023-08-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/k-arm-bandit-2/</loc>
+    <loc>//localhost:1313/posts/2023/k-arm-bandit-2/</loc>
     <lastmod>2023-08-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/random-matrix-theory/</loc>
+    <loc>//localhost:1313/tags/random-matrix-theory/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/random-matrix-theory-intro/</loc>
+    <loc>//localhost:1313/posts/2023/random-matrix-theory-intro/</loc>
     <lastmod>2023-08-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/k-arm-bandit/</loc>
+    <loc>//localhost:1313/posts/2023/k-arm-bandit/</loc>
     <lastmod>2023-07-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2023/rsvddpd-theory/</loc>
+    <loc>//localhost:1313/research/2023/rsvddpd-theory/</loc>
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/</loc>
+    <loc>//localhost:1313/research/</loc>
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/robust-statistical-inference/</loc>
+    <loc>//localhost:1313/tags/robust-statistical-inference/</loc>
     <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2023/callgrind-reader/</loc>
+    <loc>//localhost:1313/research/2023/callgrind-reader/</loc>
     <lastmod>2023-04-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2022/password-manager/</loc>
+    <loc>//localhost:1313/research/2022/password-manager/</loc>
     <lastmod>2022-11-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/changepoint-detection/</loc>
+    <loc>//localhost:1313/tags/changepoint-detection/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/fuzzy-systems/</loc>
+    <loc>//localhost:1313/tags/fuzzy-systems/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2022/rough-fuzzy-cpd/</loc>
+    <loc>//localhost:1313/research/2022/rough-fuzzy-cpd/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/time-series-analysis/</loc>
+    <loc>//localhost:1313/tags/time-series-analysis/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2022/ordinal-response-model/</loc>
+    <loc>//localhost:1313/research/2022/ordinal-response-model/</loc>
     <lastmod>2022-08-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2022/covid-sintrue-model/</loc>
+    <loc>//localhost:1313/research/2022/covid-sintrue-model/</loc>
     <lastmod>2022-08-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/epidemiology/</loc>
+    <loc>//localhost:1313/tags/epidemiology/</loc>
     <lastmod>2022-08-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/high-dimensional-inference/</loc>
+    <loc>//localhost:1313/tags/high-dimensional-inference/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2022/talk-multivariate-location-scatter/</loc>
+    <loc>//localhost:1313/research/2022/talk-multivariate-location-scatter/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2021/rsvddpd-package/</loc>
+    <loc>//localhost:1313/research/2021/rsvddpd-package/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2021/rsvdpd-video-surveillance/</loc>
+    <loc>//localhost:1313/research/2021/rsvdpd-video-surveillance/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/dimension-reduction/</loc>
+    <loc>//localhost:1313/tags/dimension-reduction/</loc>
     <lastmod>2021-09-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/algorithm/</loc>
+    <loc>//localhost:1313/tags/algorithm/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2021/talk-algorithmic-fairness/</loc>
+    <loc>//localhost:1313/research/2021/talk-algorithmic-fairness/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/fairness/</loc>
+    <loc>//localhost:1313/tags/fairness/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2021/trustworthy-dimension-reduction/</loc>
+    <loc>//localhost:1313/research/2021/trustworthy-dimension-reduction/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2021/texture-network-style-transfer/</loc>
+    <loc>//localhost:1313/posts/2021/texture-network-style-transfer/</loc>
     <lastmod>2021-01-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2020/pollution-analysis-kolkata/</loc>
+    <loc>//localhost:1313/research/2020/pollution-analysis-kolkata/</loc>
     <lastmod>2020-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2020/roufcp/</loc>
+    <loc>//localhost:1313/research/2020/roufcp/</loc>
     <lastmod>2020-10-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2020/covid19-tracker-dashboard/</loc>
+    <loc>//localhost:1313/research/2020/covid19-tracker-dashboard/</loc>
     <lastmod>2020-06-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2020/covid19-esir-model/</loc>
+    <loc>//localhost:1313/posts/2020/covid19-esir-model/</loc>
     <lastmod>2020-04-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2020/covid19-sir-model/</loc>
+    <loc>//localhost:1313/posts/2020/covid19-sir-model/</loc>
     <lastmod>2020-03-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2020/seq2seq-chatbot/</loc>
+    <loc>//localhost:1313/research/2020/seq2seq-chatbot/</loc>
     <lastmod>2020-01-10T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/causal-inference/</loc>
+    <loc>//localhost:1313/tags/causal-inference/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2019/causal-dag-intro/</loc>
+    <loc>//localhost:1313/research/2019/causal-dag-intro/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2019/mt-rainier-study/</loc>
+    <loc>//localhost:1313/research/2019/mt-rainier-study/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/network-analysis/</loc>
+    <loc>//localhost:1313/tags/network-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/regression-analysis/</loc>
+    <loc>//localhost:1313/tags/regression-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2019/talk-tsne/</loc>
+    <loc>//localhost:1313/research/2019/talk-tsne/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/auction-theory/</loc>
+    <loc>//localhost:1313/tags/auction-theory/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/bayesian-analysis/</loc>
+    <loc>//localhost:1313/tags/bayesian-analysis/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/clustering/</loc>
+    <loc>//localhost:1313/tags/clustering/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2019/tea-auction/</loc>
+    <loc>//localhost:1313/research/2019/tea-auction/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/hypothesis-testing/</loc>
+    <loc>//localhost:1313/tags/hypothesis-testing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2019/onset-detection/</loc>
+    <loc>//localhost:1313/research/2019/onset-detection/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/sound-processing/</loc>
+    <loc>//localhost:1313/tags/sound-processing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/research/2018/text-pred-app/</loc>
+    <loc>//localhost:1313/research/2018/text-pred-app/</loc>
     <lastmod>2018-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/collection/</loc>
+    <loc>//localhost:1313/collection/</loc>
   </url><url>
-    <loc>/contact/</loc>
+    <loc>//localhost:1313/contact/</loc>
   </url><url>
-    <loc>/cv/</loc>
+    <loc>//localhost:1313/cv/</loc>
   </url>
 </urlset>

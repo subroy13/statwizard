@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"
+    ></script>
+    <script async>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-97N9TLJ517");
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8206710020783397"
+    crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8206710020783397">
+    
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy."
+    />
+    <link rel="icon" href="/images/logo.png" />
+    <title>
+Generative AI Text-to-Text Models - Part 2
+</title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//localhost:1313/css/index.d7a9aa5245029e12dff5521a4ac76703.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+  
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
+      
+     
+  </head>
+  <body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+      <nav class="bg-white shadow-xl z-50">
+  
+  <div class="hidden md:flex w-full py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center justify-between">
+    
+    <div class="flex flex-row justify-start items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Blog
+      </a>
+      
+      <a
+        href="/research"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Research
+      </a>
+      
+      <a
+        href="/collection"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Collection
+      </a>
+      
+      <a
+        href="/cv"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        CV
+      </a>
+      
+      <a
+        href="/contact"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Contact
+      </a>
+      
+    </div>
+
+
+    
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-google-scholar for link https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        target="_blank"
+      >
+        <i class="fab fa-google-scholar fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+  
+
+  
+  <div class="w-full mx-0 flex flex-col gap-0 md:hidden">
+    <div class="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
+      
+      <div class="w-[200px] flex items-center">
+        <a
+          class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+          href="/"
+        >
+          <img
+            src="/images/logo-wide-2.png"
+            height="75px"
+            width="150px"
+            class="inline-block"
+            alt="StatWizard Logo"
+          />
+        </a>
+      </div>
+
+      
+      <div class="w-[30px] mr-4">
+        <button 
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          
+          <svg
+            id="mobile-menu-close-icon"
+            class="bg-white text-neutral-800 outline-none block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          
+          <svg
+            id="mobile-menu-open-icon"
+            class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    
+    <div id="mobile-menu" class="bg-white w-full mx-0 hidden">
+      <ul class="flex flex-col gap-2">
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/" class=""> Home </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/posts" class=""> Blog </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/research" class=""> Research </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/collection" class=""> Collection </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/cv" class=""> CV </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/contact" class=""> Contact </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+</nav>
+
+
+      <div class="content-container mx-0 px-0">
+        
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('//localhost:1313/posts/2024/generative-ai-encoder-decoder/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Generative AI Text-to-Text Models - Part 2
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">05 May, 2024</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">14</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="//localhost:1313/tags/artificial-intelligence/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Artificial Intelligence
+                        </a>
+                    
+                        <a href="//localhost:1313/tags/deep-learning/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Deep Learning
+                        </a>
+                    
+                        <a href="//localhost:1313/tags/generative-ai/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Generative AI
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Probability - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> This is the 2nd blog post on Generative AI and Prompting Techniques blog series. In this post, we dive into encoder-decoder generative AI models and the key tunable settings for the Text-to-Text generative AI models.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#text-to-text-encoder-decoder-model">Text-to-Text Encoder-Decoder Model</a>
+      <ul>
+        <li><a href="#encoder">Encoder</a></li>
+        <li><a href="#decoder">Decoder</a></li>
+        <li><a href="#the-decoder-parameters">The Decoder Parameters</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>In my previous post of the Generative AI series (please check out <a href="https://www.statwizard.in/posts/2024/generative-ai-intro/">here</a> if you haven&rsquo;t already!), we took a basic look at what is Generative AI, and looked at two kinds of generative AI models: Encoder-Decoder type model and Actor-Critic model.</p>
+<p>Recently, most of the generative AI models that came out like ChatGPT, Claude, Llama, etc. all of these fall under the category of Encoder-Decoder type model. In fact, they are specifically text-to-text generative models, i.e., you give some text in and you get a text output back. So, in this post, we shall dive deep into inner workings of such models.</p>
+<p><em>Note: There are some paragraphs where I have highlighted them in yellow, you might want to skip those if you think math is too boring or too hard!</em></p>
+<h2 id="text-to-text-encoder-decoder-model">Text-to-Text Encoder-Decoder Model</h2>
+<p>While the intricate details of the existing AI models (e.g. - ChatGPT, Claude, Llama) are different, they share some common features that makes them very powerful. In the following, we will only look at these common features. Let us take a look at the Encoder and Decoder part separately to understand them better.</p>
+<h3 id="encoder">Encoder</h3>
+<p>In our brain&rsquo;s frontal lobe, there are two special regions: Wernicke&rsquo;s area and Broca&rsquo;s area. These are responsible for understanding speeches, comprehending and finding meaning out of language. The encoder of a generative AI system is an artificial creation of these two regions combined. You can think of it as a machine that converts the input text into a compact representation of its meaning.</p>
+<p>To understand how it works, let us try to think for a moment how we humans understand language. Think of the time when you first learned your second or third language. You probably started with letters without any meaning, then some seemingly arbitrary combination of letters got joined together and made up some word, and you got some meaning for that word. Then words got together into a complex sentence, representing more complex ideas. So, the basis of finding meaning would be to look at the individual words in a sentence, and then combine their meaning to find the meaning of the word.</p>
+<p>Even if this is a very intuititve process, it does not help. Let us consider two examples:</p>
+<p><strong>Example 1:</strong> Consider the two sentences as follows:</p>
+<ul>
+<li>How old are you?</li>
+<li>What is your age?</li>
+</ul>
+<p><strong>Example 2:</strong> Consider the two sentences as follows:</p>
+<ul>
+<li>No, this is nice.</li>
+<li>This is not nice.</li>
+</ul>
+<p>In the first example, even when none of the words are common in the two sentences, both have the same meaning. In the second example, almost all words are common between the two sentences, they have opposite meaning. This gives are two ideas: There might be synonyms, and the meaning of the sentence depend on how the words are arranged in it.</p>
+<h4 id="first-idea">First Idea</h4>
+<p>Due to this, the first idea of encoder system was built using a recurrent neural network. Basically, it looks like this:</p>
+<div class="mermaid">
+graph LR
+    subgraph words
+        W1
+        W2
+        W3
+        W4
+        W5
+    end
+    M1[Input\nMemory] --> P1[+];
+    W1[How] --> |process| P1 --> P2[+]
+    W2[old] --> |process| P2 --> P3[+]
+    W3[are] --> |process| P3 --> P4[+]
+    W4[you] --> |process| P4 --> P5[+]
+    W5[?] --> |process| P5 --> M2[Output\nMemory]
+</div>
+<p>Basically, you have some memory (containing the meaning of the sentence). Then you start to process each word of the sentence one by one, and your memory (or the meaning) of the sentence keeps updating. However, this process is extremely slow, since you cannot process the next word without processing the current word. So everything has to be run sequentially.</p>
+<h4 id="second-idea">Second Idea</h4>
+<p>The idea has evolved the landscape of generative AI was the <strong>Transformers</strong> architecture<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. It is different version of Attention type architecture (e.g. Bahadanau style Attention<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and Luong style Attention<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>), which have been there for quite some time before Transformers came into play.</p>
+<p>The basic non-mathematical idea is like this: When you read through a sentence and try to understand its meaning, you do not always read each and every word. Some words are <em>meaningful</em> (like this) and some words <em>are</em> not (like the word ``<em>are</em>&rsquo;&rsquo;). Also, another thing is when you are reading through a document, there might be multiple sentences that refers to subjects and objects using pronouns (he / she / this / that / it), and the whenever such thing occurs, you kind of know what it means. It is as if, you keep a mental map of things (or entities) you have read so far, and whenever a pronoun occurs, you refer back to it.</p>
+<div class="mermaid">
+graph TD
+    subgraph words
+        W1[How]
+        W2[old]
+        W3[are]
+        W4[you]
+        W5[?]
+    end
+    M1[Input\nMemory] --> P1[+]
+    W1 --> |process| P1 
+    W1 & W2 -.-> A1[Attention] --> |process| P1
+    W1 & W2 & W3 -.-> A2[Attention] --> |process| P1
+    W1 & W2 & W3 & W4 -.-> A3[Attention] --> |process| P1
+    W1 & W2 & W3 & W4 & W5 -.-> A4[Attention] --> |process| P1 --> M2[Output\nMemory]
+</div>
+<p>Attention is a trick that helps you do precisely this. For each word, you can attend to any of the previous word if you need. Now, there is no need to run the process sequentially, since for each word you want to process, you can take in the entire sequence of word before it.</p>
+<div class="w-full text-amber-600 bg-yellow-100 p-2">
+<p>The mathematics behind the Attention mechanism is based on the inner product of vectors. Assume that for every word $w$, you have got a vector $\boldsymbol{v}_w \in \mathbb{R}^{d}$ (usually, $d = 768, 1024, 1536, 2048$, etc.) which is a dense numerical representation of its meaning. This is often called an embedding vector.</p>
+<p>Now, given two such embedding vectors $\boldsymbol{v}_{w1}$ and $\boldsymbol{v}_{w2}$, their inner product $\boldsymbol{v}_{w1}^t \boldsymbol{v}_{w2}$ represents the similarity in meaning between the corresponding words. Now, lets say you are at word $w_i$ and the words in the sentence before it are $w_1, w_2, \dots w_{i-1}$. Then, Transformers-type attention creates a new vectors
+$$
+\boldsymbol{a}_i = \sum_{j=1}^{i-1} (\boldsymbol{v}_{wj}^t \boldsymbol{A} \boldsymbol{v}_{wi}) \boldsymbol{v}_{wj}
+$$
+Here, $\boldsymbol{A}$ is a positive-definite matrix consisting of trainable parameters that controls how the attention should behave. Note that, the above is a dot-product weighted linear combination of the previous words with the weights proportional to how similar the previous words $w_j$ are with the current word $w_i$.</p>
+</div>
+<h3 id="decoder">Decoder</h3>
+<p>The decoder is the reverse process of encoder. It uses the meaning obtained so far, and tries to build a sentence (or setences) from the meaning.</p>
+<p>Again, it helps to relate it to how we humans write something based on an abstract idea in our head. We write one word by one word, and as we write more, the abstract idea changes and turns to take a concrete shape. Exactly same way, decoder also produces its output one word at a time, sequentially.</p>
+<p>Now you might say, is not it too slow? Just like the encoder. Turns out yes, but so far, we have not been able to obtain anything better like Attention mechanism for decoder. May be it is your time to think about! &#x1f604;</p>
+<div class="mermaid">
+graph TD
+    subgraph words 
+        W1[I]
+        W2[am]
+        W3[ten]
+        W4[years]
+        W5[old]
+    end
+    subgraph Memory
+        M1
+        M2
+        M3
+        M4
+        M5
+    end
+    M1 --> |predict| D1[Distribution] --> |sample| W1 --> |update memory| M1
+    M2 --> |predict| D2[Distribution] --> |sample| W2 --> |update memory| M2
+    M3 --> |predict| D3[Distribution] --> |sample| W3 --> |update memory| M3
+    M4 --> |predict| D4[Distribution] --> |sample| W4 --> |update memory| M4
+    M5 --> |predict| D5[Distribution] --> |sample| W5 --> |update memory| M5
+    M1 --> M2 --> M3 --> M4 --> M5
+</div> 
+<h3 id="the-decoder-parameters">The Decoder Parameters</h3>
+<p>At every stage, the decoder is posed with a very simple problem. It is to fill in the blanks for a problem like this.</p>
+<p><em>The weather is ____</em></p>
+<p>You&rsquo;re probably thinking of putting <em>nice</em> in the blanks. But the word <em>gloomy</em> also fits the blanks perfectly. Even if you know the meaning that it should say something positive, the words <em>nice</em>, <em>sunny</em>, <em>amazing</em>, <em>good</em>, all of these are applicable. It is as if the decoder is posed with many choices to pick a correct word, and it can pick any of these.</p>
+<p>In mathematical terms, this is constructed through a probability distribution $p(i)$ over the vocabulary, the set of all words. You can think of probability distribution as a specification of &ldquo;what is the probability / proportion of times the $i$-th word in the vocabulary can be put in the current blanks.&rdquo; To give you an example: In the above blanks, may be $40%$ of the people will put in &ldquo;nice&rdquo; in the blanks, may be $10%$ will put in &ldquo;gloomy&rdquo; and almost no one will put in &ldquo;pizza&rdquo; or &ldquo;cricket&rdquo; in the blanks as it does not make sense. Hence, the probability distribution will specify $p(nice) = 0.4$, $p(gloomy) = 0.1$, and probably $p(pizza) = p(cricket) = 0$.</p>
+<p>So, at every stage of the decoder, it predicts a probability distribution $p(i)$ over the vocabulary and then performs a sampling (i.e., choose a word according to the predicted probability distribution). Now for this sampling, it uses a few specialized hyperparameters.</p>
+<ul>
+<li><strong>Top K:</strong> In general, these models work with vocabularies containing at least a million words. Now, imagine that it has to perform sampling from such a large probability distribution, i.e., roll a million sided dice (on each face of the dice we have a word written), too difficult to do, right? This <code>top K</code> parameter restricts the choice of this word to only the words with the largest $K$ probabilities in this distribution.</li>
+</ul>
+<p>As an example, consider the probabilities as before. We have $p(nice) = 0.4$, $p(gloomy) = 0.1$, and probably $p(pizza) = p(cricket) = 0$. Now, using <code>top K = 1</code> will restrict the probability distribution to the words with largest $1$ probabilities, i.e., the only possible word becomes &ldquo;nice&rdquo;.</p>
+<div class="w-full text-amber-600 bg-yellow-100 p-2">
+<p>In mathematical terms, it means the transformed probability distribution is
+$$
+p_{new}(i) = \dfrac{p_{old}(i)}{\sum_{j = 1}^{K} p_{old, (j)}}
+$$
+where $p_{old, (1)} \geq p_{old, (2)} \geq \dots p_{old, (K)}$ are the ordered probabilities.</p>
+</div>
+<ul>
+<li>
+<p><strong>Top P:</strong> It is similar to top K, but instead of specifying how many words exactly to retain, you specify what percentage of words with large probabilities to retain. That means, if you put <code>top P = 0.25</code>, and you&rsquo;ve got a million words, that is equivalent to saying <code>top K = 250,000</code>.</p>
+</li>
+<li>
+<p><strong>Temperature:</strong> The temperature is a parameter that controlls how much this probability distribution sharpens towards its largest values. It is a value between $0$ and $1$. If temperature is equal to $1$, the probability distribution remains as it is. If it is close to $0$, it has a similar effect like <code>top K</code> or <code>top P</code>, by increasing the probability for more likely words and decreasing the probability for less likely words. As an analogoue, you can think of this as a controller for the income equality, if it is close to $0$, the rich gets richer and the poor gets poorer.</p>
+</li>
+</ul>
+<div class="w-full text-amber-600 bg-yellow-100 p-2">
+<p>In mathematical terms, the transformed probability distribution is
+$$
+p_{new}(i) = \dfrac{p_{old}(i)^{1/\tau}}{\sum_{j = 1}^{\vert V\vert} p_{old}(j)^{1/\tau} }, \ \tau \in (0, 1]
+$$
+The set $V$ is the vocabulary and $\tau$ is the temperature parameter. If $\tau = 1$, $p_{new}(i) = p_{old}(i)$. If $\tau \rightarrow 0$, we have $p_{new}(i) = \boldsymbol{1}(p_{old}(i) = \max_{j} p_{old}(j) )$, i.e., it becomes a degenerate probability distribution at the word with largest probability.</p>
+</div>
+<p>In layman terms, it means if you choose temperature close to $1$, the decoder has more words to choose from. So, it can experiment with different styles of writing, hence it is useful for poetic or artistic style of writings. On the other hand, if you choose temperature close to $0$, the decoder has less words to choose from, and it starts to be repeatative and more factual in response.</p>
+<p>Note that, you can do the same thing with controlling either <code>top P</code> or <code>top K</code> also.</p>
+<p>Let us see how this temperature, top P and top K work with generative AI. Since all three of these parameters have similar kind of effect, restriction of the set of words to sample from, many LLM currently only provide option for tuning the temperature parameter. Here, I make use of Claude<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> model from Anthropic to demonstrate the effect of temperature.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>// Settings: Temperature = 0, Model = anthropic.claude.haiku
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Tell me a joke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: Here&#39;s a silly joke for you:
+</span></span><span style="display:flex;"><span>Why can&#39;t a bicycle stand up on its own? Because it&#39;s two-tired!
+</span></span><span style="display:flex;"><span>How was that? I tried to come up with a simple, lighthearted pun-based joke. Let me know if you&#39;d like to hear another one!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Tell me a joke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: Here&#39;s a silly joke for you:
+</span></span><span style="display:flex;"><span>Why can&#39;t a bicycle stand up on its own? Because it&#39;s two-tired!
+</span></span><span style="display:flex;"><span>How was that? I tried to come up with a simple, lighthearted pun-based joke. Let me know if you&#39;d like to hear another one!
+</span></span></code></pre></div><p>Now even when I try multiple times the same prompt, I get back the same joke, over and over. On the other hand, when I change the temperature to 1, we get back a different joke every time.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>// Settings: Temperature = 1, Model = anthropic.claude.haiku
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Tell me a joke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: Here&#39;s a silly joke for you:
+</span></span><span style="display:flex;"><span>Why don&#39;t scientists trust atoms? Because they make up everything!
+</span></span><span style="display:flex;"><span>How was that? I tried to find a simple, family-friendly joke that would hopefully give you a little chuckle. Let me know if you&#39;d like to hear another one!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Tell me a joke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: Here&#39;s a classic joke for you:
+</span></span><span style="display:flex;"><span>Why can&#39;t a bicycle stand up by itself? It&#39;s two-tired!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Tell me a joke
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: What do you call a fake noodle? An impasta!
+</span></span></code></pre></div><p>As you can see, by increasing the temperature value close to $1$ (or you can make it even beyond 1), we get back different kinds of responses from the same machine. So, you might want to change the temperature value to add an element of surprise when using generative AI text-to-text models.</p>
+<ul>
+<li><strong>Max Tokens:</strong> This is the maximum number of words (or tokens, i.e., sub-word) that the decoder needs to predict. Usually, this is something associated with the cost. The more number of words (or tokens) you predict, the more the AI model needs to run, the more cost it is going to incur. Usually, you would want to set it to be about 100 max tokens when your answer will be 1-2 paragraphs at most.</li>
+</ul>
+<p>As an example, when I set the max token to very small number, say 3, then the response from Claude model gets interrupted after predicting the 3rd token.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>// Settings: Max tokens to sample = 3, Model = anthropic.claude.haiku
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Hello
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: Hello! How
+</span></span></code></pre></div><ul>
+<li><strong>Stop sequence:</strong> This is the sequence of words that if predicted, the decoder will stop predicting more words. For instance, by default we have a special word <code>&lt;EOS&gt;</code> (End of Sentence) which is used to denote that the decoder has completed the writing.</li>
+</ul>
+<p>Stop sequence is useful when you want the model to stop its responses intentionally after a specific word is generated. Let me show you an example. Let&rsquo;s say, you want to predict whether a sentence has positive or negative sentiment. Now, when you ask something like this to Claude, it also provides an elaborate explanation.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>// Settings: Stop Sequences = [], Model = anthropic.claude.haiku
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Classify the following sentence as positive or negative sentiment. 
+</span></span><span style="display:flex;"><span>Today is a bright day, best weather to play outside.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: The given sentence has a positive sentiment.
+</span></span><span style="display:flex;"><span>The sentence describes the day as <span style="color:#e6db74">&#34;a bright day&#34;</span> and mentions the <span style="color:#e6db74">&#34;best weather to play outside&#34;</span>, which suggests a positive and upbeat tone. There are no negative words or expressions used, and the overall sentiment conveyed is one of positivity and enjoyment.
+</span></span></code></pre></div><p>However, we might be only interest in knowing only if it has &ldquo;postive&rdquo; or &ldquo;negative&rdquo; sentiment. May be the result will be passed to another workflow which expects the input to be binary: either &ldquo;positive&rdquo; or &ldquo;negative&rdquo; category, without any explanatory text. You can achieve this by setting a stop sequence here, by asking the model to stop at the token <strong>&ldquo;tive&rdquo;</strong>. Note that, both <strong>postive</strong> and <strong>negative</strong> ends in this token, so whenever this occurs, we can look at the last word and see whether it is positive or negative.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cmd" data-lang="cmd"><span style="display:flex;"><span>// Settings: Stop Sequences = [], Model = anthropic.claude.haiku
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; User: Classify the following sentence as positive or negative sentiment. 
+</span></span><span style="display:flex;"><span>Today is a bright day, best weather to play outside.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; Assistant: The given sentence has a positive
+</span></span></code></pre></div><p>Now, it is easy to write a parser code that takes this text, looks at the last word and checks if it is positive or negative.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So far, we have look into how the internal settings of the models modify the response of the generated text. Effective tuning of these settings can have visible impact on your generative AI based solutions and use-cases.</p>
+<p>In the next post of this blog series, we will see how we can control the behaviour of the model generated text using the input text itself, i.e., the prompt. We will go over a bit on different prompt engineering techniques and how that can be used effectively to solve different use-cases.</p>
+<h2 id="references">References</h2>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Vaswani, Ashish, et al. &ldquo;Attention is all you need.&rdquo; Advances in neural information processing systems 30 (2017).&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Bahdanau, Dzmitry, Kyunghyun Cho, and Yoshua Bengio. &ldquo;Neural machine translation by jointly learning to align and translate.&rdquo; arXiv preprint arXiv:1409.0473 (2014). (Also see the Tensorflow Bahdanau Attention Documentation -  <a href="https://www.tensorflow.org/addons/api_docs/python/tfa/seq2seq/BahdanauAttention">https://www.tensorflow.org/addons/api_docs/python/tfa/seq2seq/BahdanauAttention</a>)&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Luong, Minh-Thang, Hieu Pham, and Christopher D. Manning. &ldquo;Effective approaches to attention-based neural machine translation.&rdquo; arXiv preprint arXiv:1508.04025 (2015). (Also see the Tensorflow Luong Attention Documentation - <a href="https://www.tensorflow.org/addons/api_docs/python/tfa/seq2seq/LuongAttention">https://www.tensorflow.org/addons/api_docs/python/tfa/seq2seq/LuongAttention</a>)&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Claude - Anthropic. Link: <a href="https://claude.ai/">https://claude.ai/</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row justify-center items-center mb-3">
+        <h2 class="text-lg text-blue-600">
+            With heartfelt appreciation, thank you for being a valued reader, until next time!
+        </h2>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="//localhost:1313/posts/2024/generative-ai-intro/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="//localhost:1313/posts/2024/nlp-intro/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="//localhost:1313/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="statwizard" data-description="Support me on Buy me a coffee!" data-message="Thank you for visiting! You can now support the StatWizard to build a Hogwarts for Statistics!" data-color="#5F7FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+ 
+    
+
+
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+
+
+
+    
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+
+
+  </body>
+</html>

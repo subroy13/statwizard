@@ -1,5 +1,5 @@
 baseURL = "/"
-paginate = 6
+paginate = 9
 languageCode = "en-us"
 title = "StatWizard"
 publishDir = "docs"

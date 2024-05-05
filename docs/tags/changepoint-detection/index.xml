@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Changepoint Detection on StatWizard</title>
-    <link>/tags/changepoint-detection/</link>
+    <link>//localhost:1313/tags/changepoint-detection/</link>
     <description>Recent content in Changepoint Detection on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 15 Nov 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/changepoint-detection/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/changepoint-detection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rough Fuzzy CPD: a gradual changepoint detection algorithm</title>
-      <link>/research/2022/rough-fuzzy-cpd/</link>
+      <link>//localhost:1313/research/2022/rough-fuzzy-cpd/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/rough-fuzzy-cpd/</guid>
+      <guid>//localhost:1313/research/2022/rough-fuzzy-cpd/</guid>
       <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
     </item>
   </channel>

@@ -2,157 +2,157 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Research on StatWizard</title>
-    <link>/research/</link>
+    <link>//localhost:1313/research/</link>
     <description>Recent content in Research on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/research/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/research/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Analysis of the rSVDdpd Algorithm: A Robust Singular Value Decomposition Method using Density Power Divergence</title>
-      <link>/research/2023/rsvddpd-theory/</link>
+      <link>//localhost:1313/research/2023/rsvddpd-theory/</link>
       <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>/research/2023/rsvddpd-theory/</guid>
+      <guid>//localhost:1313/research/2023/rsvddpd-theory/</guid>
       <description>This paper deals with the theoretical aspects of one of my earlier paper introducing rSVDdpd algorithm.</description>
     </item>
     <item>
       <title>callgrind-reader</title>
-      <link>/research/2023/callgrind-reader/</link>
+      <link>//localhost:1313/research/2023/callgrind-reader/</link>
       <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
-      <guid>/research/2023/callgrind-reader/</guid>
+      <guid>//localhost:1313/research/2023/callgrind-reader/</guid>
       <description>An npm package written in typescript to parse callgrind like files and extract profiling metrics from code</description>
     </item>
     <item>
       <title>Pwdmgr</title>
-      <link>/research/2022/password-manager/</link>
+      <link>//localhost:1313/research/2022/password-manager/</link>
       <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/password-manager/</guid>
+      <guid>//localhost:1313/research/2022/password-manager/</guid>
       <description>An open source python application for lightweight password management system through console.</description>
     </item>
     <item>
       <title>Rough Fuzzy CPD: a gradual changepoint detection algorithm</title>
-      <link>/research/2022/rough-fuzzy-cpd/</link>
+      <link>//localhost:1313/research/2022/rough-fuzzy-cpd/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/rough-fuzzy-cpd/</guid>
+      <guid>//localhost:1313/research/2022/rough-fuzzy-cpd/</guid>
       <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
     </item>
     <item>
       <title>Robust and Efficient Estimation in Ordinal Response Models using the Density Power Divergence</title>
-      <link>/research/2022/ordinal-response-model/</link>
+      <link>//localhost:1313/research/2022/ordinal-response-model/</link>
       <pubDate>Tue, 30 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/ordinal-response-model/</guid>
+      <guid>//localhost:1313/research/2022/ordinal-response-model/</guid>
       <description>In real life, we frequently come across data sets that involve some independent explanatory variable(s) generating a set of ordinal responses. In this paper, we explore a minimum distance estimation procedure based on the popular density power divergence (DPD) to yield robust parameter estimates for the ordinal response model.</description>
     </item>
     <item>
       <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
-      <link>/research/2022/covid-sintrue-model/</link>
+      <link>//localhost:1313/research/2022/covid-sintrue-model/</link>
       <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/covid-sintrue-model/</guid>
+      <guid>//localhost:1313/research/2022/covid-sintrue-model/</guid>
       <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
     </item>
     <item>
       <title>Review of Robust Location and Scatter Estimators</title>
-      <link>/research/2022/talk-multivariate-location-scatter/</link>
+      <link>//localhost:1313/research/2022/talk-multivariate-location-scatter/</link>
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/talk-multivariate-location-scatter/</guid>
+      <guid>//localhost:1313/research/2022/talk-multivariate-location-scatter/</guid>
       <description>This is an invited session given to the graduate students of Indian Statistical Insitute, Kolkata in a course on Robust Statistics</description>
     </item>
     <item>
       <title>rsvddpd</title>
-      <link>/research/2021/rsvddpd-package/</link>
+      <link>//localhost:1313/research/2021/rsvddpd-package/</link>
       <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/rsvddpd-package/</guid>
+      <guid>//localhost:1313/research/2021/rsvddpd-package/</guid>
       <description>An R package to perform robust singular value decomposition using minimum density power divergence estimator</description>
     </item>
     <item>
       <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
-      <link>/research/2021/rsvdpd-video-surveillance/</link>
+      <link>//localhost:1313/research/2021/rsvdpd-video-surveillance/</link>
       <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/rsvdpd-video-surveillance/</guid>
+      <guid>//localhost:1313/research/2021/rsvdpd-video-surveillance/</guid>
       <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
     </item>
     <item>
       <title>Algorithmic Fairness of Statistical Decision Systems</title>
-      <link>/research/2021/talk-algorithmic-fairness/</link>
+      <link>//localhost:1313/research/2021/talk-algorithmic-fairness/</link>
       <pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/talk-algorithmic-fairness/</guid>
+      <guid>//localhost:1313/research/2021/talk-algorithmic-fairness/</guid>
       <description>This is a talk that I presented during the final year of my M.Stat. at Indian Statistical Institute, for the PCM Memorial Gold Medal Presentation.</description>
     </item>
     <item>
       <title>Trustworthy Dimensionality Reduction</title>
-      <link>/research/2021/trustworthy-dimension-reduction/</link>
+      <link>//localhost:1313/research/2021/trustworthy-dimension-reduction/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/trustworthy-dimension-reduction/</guid>
+      <guid>//localhost:1313/research/2021/trustworthy-dimension-reduction/</guid>
       <description>My master&amp;rsquo;s dissertation thesis on proposing a novel dimensionality reduction technique which is trustworthy. This talks covers issues with existing approaches, how to measure trustworthiness, and a proposal that optimizes those metrics.</description>
     </item>
     <item>
       <title>Analysis of Pollution Patterns in Regions of Kolkata</title>
-      <link>/research/2020/pollution-analysis-kolkata/</link>
+      <link>//localhost:1313/research/2020/pollution-analysis-kolkata/</link>
       <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>/research/2020/pollution-analysis-kolkata/</guid>
+      <guid>//localhost:1313/research/2020/pollution-analysis-kolkata/</guid>
       <description></description>
     </item>
     <item>
       <title>roufcp</title>
-      <link>/research/2020/roufcp/</link>
+      <link>//localhost:1313/research/2020/roufcp/</link>
       <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
-      <guid>/research/2020/roufcp/</guid>
+      <guid>//localhost:1313/research/2020/roufcp/</guid>
       <description>A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory</description>
     </item>
     <item>
       <title>COVID 19 Tracker</title>
-      <link>/research/2020/covid19-tracker-dashboard/</link>
+      <link>//localhost:1313/research/2020/covid19-tracker-dashboard/</link>
       <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>/research/2020/covid19-tracker-dashboard/</guid>
+      <guid>//localhost:1313/research/2020/covid19-tracker-dashboard/</guid>
       <description>A Dashboard for Prediction and Control assistance and management of resources in view of Covid-19 pandemic, sponsored by IIM, Vishakhapatnam</description>
     </item>
     <item>
       <title>Chatbot with Seq2Seq model</title>
-      <link>/research/2020/seq2seq-chatbot/</link>
+      <link>//localhost:1313/research/2020/seq2seq-chatbot/</link>
       <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
-      <guid>/research/2020/seq2seq-chatbot/</guid>
+      <guid>//localhost:1313/research/2020/seq2seq-chatbot/</guid>
       <description>A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.</description>
     </item>
     <item>
       <title>Causal Inference using DAG Models</title>
-      <link>/research/2019/causal-dag-intro/</link>
+      <link>//localhost:1313/research/2019/causal-dag-intro/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/causal-dag-intro/</guid>
+      <guid>//localhost:1313/research/2019/causal-dag-intro/</guid>
       <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG). This is talk prepared as a part of group class project for Categorical Data Analysis course during my M.Stat. in ISI, Kolkata.</description>
     </item>
     <item>
       <title>Mount Rainier: The Climber&#39;s Challenge</title>
-      <link>/research/2019/mt-rainier-study/</link>
+      <link>//localhost:1313/research/2019/mt-rainier-study/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/mt-rainier-study/</guid>
+      <guid>//localhost:1313/research/2019/mt-rainier-study/</guid>
       <description>A talk regarding a practical case study of different kinds of Regression Analysis. The case study includes modelling success rate of climbing expedition on Mt. Rainier.</description>
     </item>
     <item>
       <title>tSNE: A way to visualize multidimensional data</title>
-      <link>/research/2019/talk-tsne/</link>
+      <link>//localhost:1313/research/2019/talk-tsne/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/talk-tsne/</guid>
+      <guid>//localhost:1313/research/2019/talk-tsne/</guid>
       <description>This is a talk I gave during the D. Basu Gold Medal Award Ceremony in Indian Statistical Institute, Kolkata.</description>
     </item>
     <item>
       <title>Feasibility of Transparent Price Discovery in Tea through Auction in India</title>
-      <link>/research/2019/tea-auction/</link>
+      <link>//localhost:1313/research/2019/tea-auction/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/tea-auction/</guid>
+      <guid>//localhost:1313/research/2019/tea-auction/</guid>
       <description>This article examines Tea Auctions in India and forms an idea about the valuations that occur for several of the tea grades, and endeavoured to fit the model determining the final transaction price of the auction based on several relevant factors. The article also looks into the significance of manual valuations as predictors for the final price, and discussed several aspects to do away with the practice of manual valuations.</description>
     </item>
     <item>
       <title>Onset detection - A new approach to QBH system</title>
-      <link>/research/2019/onset-detection/</link>
+      <link>//localhost:1313/research/2019/onset-detection/</link>
       <pubDate>Wed, 21 Aug 2019 00:00:00 +0000</pubDate>
-      <guid>/research/2019/onset-detection/</guid>
+      <guid>//localhost:1313/research/2019/onset-detection/</guid>
       <description>We develop a QBH (Query-by-Humming) system based on detection of onsets of a song, within a statistical framework.</description>
     </item>
     <item>
       <title>A simple Text Prediction Application</title>
-      <link>/research/2018/text-pred-app/</link>
+      <link>//localhost:1313/research/2018/text-pred-app/</link>
       <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
-      <guid>/research/2018/text-pred-app/</guid>
+      <guid>//localhost:1313/research/2018/text-pred-app/</guid>
       <description>A simple text prediction application built for Data Science Specialization in Coursera.</description>
     </item>
   </channel>
