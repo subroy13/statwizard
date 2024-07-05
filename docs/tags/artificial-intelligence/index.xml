@@ -16,6 +16,13 @@
       <description>This is the 2nd blog post on Generative AI and Prompting Techniques blog series. In this post, we dive into encoder-decoder generative AI models and the key tunable settings for the Text-to-Text generative AI models.</description>
     </item>
     <item>
+      <title>Designing Prompts: Generative AI Series - Part 3</title>
+      <link>//localhost:1313/posts/2024/generative-ai-prompts/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/generative-ai-prompts/</guid>
+      <description>This is a series of blog posts on Generative AI and Prompting Techniques. In this post of Generative AI series, we will look into what prompt engineering is, and how to design better prompts to leverage the power of Generative AI in your typical use-cases.</description>
+    </item>
+    <item>
       <title>Introduction to Generative AI - Part 1</title>
       <link>//localhost:1313/posts/2024/generative-ai-intro/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>

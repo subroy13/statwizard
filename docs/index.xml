@@ -16,6 +16,20 @@
       <description>In this series of blog posts, I am going to describe the journey of Natural Language Processing, how it evolved to reach the Large Language Models that we see today and the mathematics behind their inner workings.</description>
     </item>
     <item>
+      <title>Making the most out of Prompts: Generative AI Series Part 4</title>
+      <link>//localhost:1313/posts/2024/making-most-from-prompts/</link>
+      <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/making-most-from-prompts/</guid>
+      <description>This is a series of blog posts on Generative AI and Prompting Techniques. In this post of Generative AI series, we look into different techniques to bring out the best in prompts, along with a popular technique called Retrieval Augmented Generation (RAG).</description>
+    </item>
+    <item>
+      <title>Designing Prompts: Generative AI Series - Part 3</title>
+      <link>//localhost:1313/posts/2024/generative-ai-prompts/</link>
+      <pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/generative-ai-prompts/</guid>
+      <description>This is a series of blog posts on Generative AI and Prompting Techniques. In this post of Generative AI series, we will look into what prompt engineering is, and how to design better prompts to leverage the power of Generative AI in your typical use-cases.</description>
+    </item>
+    <item>
       <title>Generative AI Text-to-Text Models - Part 2</title>
       <link>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</link>
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
