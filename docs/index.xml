@@ -16,6 +16,13 @@
       <description>In this series of blog posts, I am going to describe the journey of Natural Language Processing, how it evolved to reach the Large Language Models that we see today and the mathematics behind their inner workings.</description>
     </item>
     <item>
+      <title>Determinism to Stochasticity: Why Neural Networks could be the way forward?</title>
+      <link>//localhost:1313/posts/2024/determinism-to-stochastic/</link>
+      <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/determinism-to-stochastic/</guid>
+      <description>This is more of a philosophical post, concentrated on the history of evolution of scientific approaches: from mathematical laws, statistical modelling and machine learning predictions.</description>
+    </item>
+    <item>
       <title>How to hack into LLMs? Generative AI Series Part 6</title>
       <link>//localhost:1313/posts/2024/hack-into-llm/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>

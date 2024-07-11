@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"
+    ></script>
+    <script async>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-97N9TLJ517");
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8206710020783397"
+    crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8206710020783397">
+    
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy."
+    />
+    <link rel="icon" href="/images/logo.png" />
+    <title>
+Determinism to Stochasticity: Why Neural Networks could be the way forward?
+</title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//localhost:1313/css/index.be6765e4baa2004dd1fbd2c9a57dbc3f.css" />
+
+
+
+
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+  
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
+      
+     
+  </head>
+  <body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+      <nav class="bg-white shadow-xl z-50">
+  
+  <div class="hidden md:flex w-full py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center justify-between">
+    
+    <div class="flex flex-row justify-start items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/posts"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Blog
+      </a>
+      
+      <a
+        href="/research"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Research
+      </a>
+      
+      <a
+        href="/collection"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Collection
+      </a>
+      
+      <a
+        href="/cv"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        CV
+      </a>
+      
+      <a
+        href="/contact"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Contact
+      </a>
+      
+    </div>
+
+
+    
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-google-scholar for link https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        target="_blank"
+      >
+        <i class="fab fa-google-scholar fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+  
+
+  
+  <div class="w-full mx-0 flex flex-col gap-0 md:hidden">
+    <div class="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
+      
+      <div class="w-[200px] flex items-center">
+        <a
+          class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+          href="/"
+        >
+          <img
+            src="/images/logo-wide-2.png"
+            height="75px"
+            width="150px"
+            class="inline-block"
+            alt="StatWizard Logo"
+          />
+        </a>
+      </div>
+
+      
+      <div class="w-[30px] mr-4">
+        <button 
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          
+          <svg
+            id="mobile-menu-close-icon"
+            class="bg-white text-neutral-800 outline-none block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          
+          <svg
+            id="mobile-menu-open-icon"
+            class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    
+    <div id="mobile-menu" class="bg-white w-full mx-0 hidden">
+      <ul class="flex flex-col gap-2">
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/" class=""> Home </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/posts" class=""> Blog </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/research" class=""> Research </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/collection" class=""> Collection </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/cv" class=""> CV </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/contact" class=""> Contact </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+</nav>
+
+
+      <div class="content-container mx-0 px-0">
+        
+
+
+
+    <div class="relative h-[50vh] max-h-[300px] w-full bg-cover bg-center bg-no-repeat bg-fixed rounded-b-md" 
+        style = "background-image: url('//localhost:1313/posts/2024/determinism-to-stochastic/featured.webp')">
+        
+            <div class = "absolute top-0 left-0 bg-neutral-800/100 w-fit text-white p-1 ml-1 font-xs rounded-md">
+                <p>Cover image taken from <a href="https://www.unstability.ai/">Unstable Diffusion</a></p>
+            </div>
+        
+    </div>
+
+
+
+<div class="mt-4 flex flex-col gap-4 mx-2 px-2 md:mx-4 md:px-8">
+    <h1 class="text-3xl text-center text-neutral-600 font-bold md:px-8 md:pt-6">
+        Determinism to Stochasticity: Why Neural Networks could be the way forward?
+    </h1>
+    <div class="m-2 p-4 rounded-lg shadow-lg border-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col justify-center items-center gap-2">   
+                <div class="mt-1 flex flex-row text-neutral-800 gap-4">
+                    <p class="font-bold">Date:</p>
+                    <p class="font-normal">11 July, 2024</p>
+                </div> 
+                <p class="mt-1 text-neutral-600">
+                    <span class="font-bold">10</span> minutes read
+                </p>
+                <div class="my-1">
+                    
+                        <a href="//localhost:1313/tags/statistics/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Statistics
+                        </a>
+                    
+                        <a href="//localhost:1313/tags/philosophy/" 
+                            class = "inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-base text-gray-700 mr-2 mb-2
+                            hover:underline hover:bg-gray-300 transition ease-in-out">
+                            Philosophy
+                        </a>
+                    
+                </div>    
+            </div>
+            <div class="flex flex-col justify-start gap-2">
+                <h1 class="text-lg font-bold">Prerequisites</h1>
+                <ul class="space-y-2 text-left">
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Scientific Processes - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                    <li class="flex items-center space-x-3">
+                        <svg class="flex-shrink-0 w-3 h-3 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span>Statistics - </span>
+                        
+                            <span class="text-green-600 font-semibold">Beginner</span>
+                        
+                    </li>
+                    
+                </ul>
+            </div>    
+        </div>
+        <p class="mt-4 p-4 text-sm">
+            <span class="font-semibold">Summary: </span> This is more of a philosophical post, concentrated on the history of evolution of scientific approaches: from mathematical laws, statistical modelling and machine learning predictions.
+        </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-2">
+        <div class="relative col-span-1">
+            <div class="sticky top-0 left-0 w-full pl-4 pt-4">
+                <h1 class="text-bold text-xl">Table of Contents</h1>
+                <div class="prose">
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#understanding-the-laws-of-nature">Understanding the Laws of Nature</a></li>
+    <li><a href="#what-happens-if-the-axioms-are-not-true">What happens if the axioms are not true?</a>
+      <ul>
+        <li><a href="#an-anecdote">An anecdote</a></li>
+        <li><a href="#but-the-errors-did-not-vanish">But, the errors did not vanish</a></li>
+      </ul>
+    </li>
+    <li><a href="#neural-networks-another-paradigm-shift">Neural Networks, Another Paradigm Shift</a></li>
+    <li><a href="#why-neural-networks-is-the-way-forward">Why Neural networks is the way forward?</a></li>
+    <li><a href="#conclusion-where-do-we-go-from-here">Conclusion: Where do we go from here?</a></li>
+  </ul>
+</nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-3">
+            <div class="text-justify break-words w-full">
+                <div class="prose" style="max-width: none;">
+                    <h2 id="introduction">Introduction</h2>
+<p>Understanding the world around us is the primary goal of any scientific study. Since ancient times, many civilizations have tried to find the laws of nature, which are found in stone tablets. These derived laws are often simple, and easy to understand and communicate.</p>
+<p>In contrast, in recent times, we have again an incredible ability to predict the outcome of the laws of nature, but using very complex machines such as neural networks. These are generally perceived as a key  technology of the future for computer scientists, while they are regarded as nothing but a regressive step of scientific understanding by some pedantic mathematicians.</p>
+<p>In this post, I look at these contrasting viewpoints from a slightly evolutionary perspective.</p>
+<h2 id="understanding-the-laws-of-nature">Understanding the Laws of Nature</h2>
+<p>Humans, from ancient times, have been equally fascinated by the patterns present in nature, and feared by the unpredictability of it. As a result, they have been trying to uncover the fundamental laws of nature, be it through physics, chemistry, biology or even languages.</p>
+<p>Such studies have been going on for thousands of years before. Mayans came up with extremely accurate calendars five thousand years ago, suggesting their experience in astronomy. Similarly, the proficiency of Egyptians in chemistry is apparent through the use of mummification. Indus Valley civilization leaves multiple records of astounding work on metallurgy and civil engineering. However, the scientific procedures used in these studies are still shrouded in mystery, so we will ignore them for now.</p>
+<p>Skipping forward for two thousand years, around 500-300 BC, we start finding accurate records of scientific thoughts and movements, mostly led by Greek philosophers like Plato, Aristotle, Pythagoras, Archimedes, etc. At this point in time, most of the scientific discovery followed a similar pattern:</p>
+<ul>
+<li>
+<p>Based on the perceived effect of different forces of nature, we come up with a set of axioms. These axioms are considered to be the fundamental truths.</p>
+</li>
+<li>
+<p>These axioms are then made to interact with each other using pure logic.</p>
+</li>
+</ul>
+<p>To give you an example, the entire field of Euclidean geometry was developed using the following 5 axioms.</p>
+<ol>
+<li>A straight line may be drawn between any two points.</li>
+<li>Any terminated straight line segment may be extended indefinitely.</li>
+<li>A circle may be drawn with any given point as center and any given radius.</li>
+<li>All right angles are equal.</li>
+<li>For any given point not on a given line, there is exactly one line through the point that does not meet the given line.</li>
+</ol>
+<p>This means, that if you assume the above 5 statements to be true, and use pure logic, it is possible to prove the Pythagorean Theorem, or Ptolemy’s theorem or any other complicated theorem you learnt during 10th standard geometry.</p>
+<blockquote>
+<p>And this is how every single branch of mathematics was born.</p>
+</blockquote>
+<p>While all of these are well and good, there is one flaw with this approach.</p>
+<h2 id="what-happens-if-the-axioms-are-not-true">What happens if the axioms are not true?</h2>
+<p>Skipping forward another two thousand years, from the 15th century to the 17th century, few people started asking questions about the validity of these axioms. What if, these axioms themselves do not hold true?</p>
+<p>As we all know, Galileo challenged the axiom of Earth being the center of the universe and postulated from his observational studies that this axiom must not be true.</p>
+<p>John Tukey, in his book <strong>Exploratory Data Analysis</strong>, describes this mindset shift from a “confirmatory analysis” to an “exploratory analysis”, where instead of starting with a set of postulated beliefs that confirms the behaviour of nature, one rather keeps an open mind and creates those laws by exploration of the behaviour of the nature directly. An exploratory analyst would then try to reduce these observations as a cause of few fundamental laws.</p>
+<div class="mermaid">
+graph LR
+    subgraph Confirmatory Analysis
+    A[Axiom] -->|logic| B[Law]
+    B -->|describe| C[Nature]
+    end
+    subgraph Exploratory Analysis
+    C -->|observe| D[Law]
+    D -->|compacification| E[Fundamental Laws]
+    end
+</div>
+<h3 id="an-anecdote">An anecdote</h3>
+<p>A related anecdote is from a conversation that took place between Pierre de Simon Laplace (you might know him from Laplace transform) and Napoleon Bonaparte (you might know him as a political leader during the French Revolution) around 1802. Laplace was the physics professor of Napoleon, so Napolean honoured him by making a senator in France, once he gained political power. During this time, Laplace was studying astronomy and discovering laws of planetary movement using the hypothesis of Newtonian gravity. In the end, he wrote a book “Celestial Mechanics”, which he presented to Napoleon. After that, the following conversation took place (paraphrased from <a href="https://institucional.us.es/blogimus/en/2019/02/laplace-napoleon-and-god/#:~:text=Of%20the%20relationship%20between%20Napoleon,in%20this%20great%20book%20you">here</a>),</p>
+<blockquote>
+<p>Napolean: Sire, this is all a great book, but I have not been able to find the name of God even once in your book.</p>
+</blockquote>
+<blockquote>
+<p>Laplace: I have no need for that hypothesis.</p>
+</blockquote>
+<blockquote>
+<p>[Silent]</p>
+</blockquote>
+<blockquote>
+<p>Laplace: The true object of the physical sciences is not the search for primary causes [i.e. God] but the search for laws according to which phenomenon are produced.</p>
+</blockquote>
+<p>However, even though Laplace came up with a set of fundamental laws that could predict the movement of these celestial bodies several years ahead in the future, he still needed something called “error function” to replace the hypothesis of an almighty creator. He understood that nature does not obey these laws precisely, but only approximately. Laplace attributed these “errors” as</p>
+<ul>
+<li>Error due to imprecise measurements.</li>
+<li>Errors due to human errors.</li>
+</ul>
+<p>The optimistic viewpoint of many scientists around that time was that with time, human technology would improve, increasing measurement accuracy and thus decreasing the error component, and might be vanishing someday.</p>
+<h3 id="but-the-errors-did-not-vanish">But, the errors did not vanish</h3>
+<p>David Salsburg, in his book “The Lady Tasting Tea” indicated that</p>
+<blockquote>
+<p>By the end of the nineteenth century, the errors had mounted instead of diminishing. As measurements became more and more precise, more and more error cropped up</p>
+</blockquote>
+<p>It is as if the entire foundation that “there are some fundamental deterministic laws that govern nature” was starting to crumble. Most of the work from the 17th and 18th centuries became too pedantic, and often approximations of reality. Around this time, some scientists started considering merging this form of deterministic law with the study of probability (which was around for some time as a popular tool for Gamblers) to understand the errors, and a new paradigm of “statistics” (in its classical form as we see today) was born.</p>
+<p>This was a philosophical shift in the mindset of the scientists about how scientific studies would be performed. Perhaps, a significant amount of this shift can be attributed to the pioneering work by Ronald A. Fisher, who systematically studied the design of experiments and determined how this error can be reduced even without any precise measurement technology. In John Tukey’s terms, people were again shifting from an exploratory analysis to a confirmatory analysis.</p>
+<img 
+    class='max-w-lg mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig1.png'>
+</img>
+<p>Later, skipping forward to the late 20th century, we see the emergence of quantum theory which partially explains why errors were not reduced as Newton, Laplace and many other contemporaries hoped it to be. It says that the interaction between the particles (atoms, subatomic particles, etc.) is best described theoretically by using randomness equipped with a probability model. On the other hand, measuring these particles&rsquo; properties only gives you a realization of that randomness, which must come with an error.</p>
+<p>Just to reiterate, the deterministic philosophy modelled any dependent variable $Y$ as a deterministic function of the independent variables $X$, i.e.,
+$$
+Y = f(X),
+$$
+where $f$ is usually a simple fundamental law.</p>
+<p>With the emergence of statistical theories, this perception changed to
+$$
+Y = f(X, \epsilon), \ X \text{ is independent of } \epsilon, \ \epsilon \sim \mathbb{P},
+$$
+implying that the dependent variable is now a function of both $X$ and the error $\epsilon$ (independent of $X$), and is governed by a probability law $\mathbb{P}$.</p>
+<h2 id="neural-networks-another-paradigm-shift">Neural Networks, Another Paradigm Shift</h2>
+<p>From 1958’s <strong>perceptron</strong>, the simplest possible neural network built by Frank Rosenblatt, we have now come a long way now in 2020-30 to see neural networks with a few billion parameters. However, from the 1960s to the 2000s, neural networks were seen mostly as a tool from books with not much direct applications to the scientific community.</p>
+<p>The primary evolutionary goal of science is to come up with predictions (predict when the rain will come, predict whether there will be draught, predict the spread of a disease, etc.), for which, the knowledge of fundamental laws is just an intermediary step. While the statistical model of reality provides us with a way to find the underlying fundamental laws governing nature, it does not pave the way to perform the predictions directly. Because the models rely on unobservable errors, it is only possible to give a stochastic prediction of the dependent data Y for unknown independent causes X (e.g. - there is a 60% chance of rain, there is a 90% chance that the disease will not spread as an epidemic, etc.)</p>
+<p>So, to realize the dream of prediction, it is meaningful to remove the error component from the input to the fundamental laws and think that these fundamental laws themselves are an approximate and simplistic version of true laws that govern nature; These true laws are stochastic, and are essentially determined by the extremely complex interactions between atomic and sub-atomic particles concerning the dependent variables X. This means, in mathematical terms, we use the predictive model
+$$
+Y = f(X), \ Y_{\text{pred}} = f_\epsilon(X), \ \Vert f - f_\epsilon\Vert &lt; \epsilon,
+$$
+that means we aim to perform the prediction using an approximate function of the natural laws, instead of trying to understand the natural law itself. This again sets us off on an exploratory path, since now we are not hoping to confirm our understanding of the fundamental laws, but rather explore its effects in a meaningful way that allows us to make better predictions and better decisions. These approximated laws are modelled by neural networks, which is basically multiple stacks of functions interacting with each other in a non-trivial way.</p>
+<p>Just to illustrate this further, while Kepler’s law and Newtonian theories of gravity are used to understand planetary motions, NASA has started applying neural networks as a tool to simulate their motions far ahead in the future, as <a href="https://www.nasa.gov/missions/nasa-takes-a-cue-from-silicon-valley-to-hatch-artificial-intelligence-technologies/">William Steigerwald explained</a>.</p>
+<h2 id="why-neural-networks-is-the-way-forward">Why Neural networks is the way forward?</h2>
+<div class="mermaid">
+graph LR
+    subgraph Before Neural Networks
+    A[Experiment] -->|confirm| B[Science]
+    B -->|explain| C[Fundamental Laws]
+    C -->|use them to predict| D[Nature]
+    end
+</div>
+<p>In summary, before neural networks, we used to use scientific experiments as a way to obtain the fundamental laws, and then use those fundamental laws to understand and predict the behaviour of nature.</p>
+<p>With the advent of powerful computers and neural networks, we skip the intermediate step of understanding and explaining the fundamental laws and move directly to the prediction stage.</p>
+<div class="mermaid">
+graph LR
+    subgraph With Neural Networks
+    A[Experiment] -->|predict| B[Nature]
+    end
+</div>
+<p>This also makes sense, as the quantum theory (mentioned before) tells us that the fundamental laws may not be as simplistic and deterministic as we would want. It may well be that these fundamental laws are the realizations of some random movement of billions of different particles, all behaving in a chaotic manner governed by different stochastic rules. If that’s the case, then the conclusion is very bleak, and it is hopeless to try to find simple explanations of the phenomena in nature.</p>
+<p>This, if true, is in complete contrast with the most fundamental problem-solving principle established in all of science, the well-known <a href="https://en.wikipedia.org/wiki/Occam%27s_razor">Occam’s razor</a>.</p>
+<blockquote>
+<p>The simplest explanation is the best one!</p>
+</blockquote>
+<h2 id="conclusion-where-do-we-go-from-here">Conclusion: Where do we go from here?</h2>
+<p>Suppose we just change the perspective and consider John Tukey’s taxonomy of scientific approaches. In that case, the era of artificial intelligence brimming with neural networks and generative AI can be regarded as an exploratory analysis. People are every day coming up with better models, and most of it is driven by the exploration of new datasets, new computational tricks and new model architectures. Looking at this journey, we can see a fascinating pattern:</p>
+<ul>
+<li>Greek era to Renaissance:  Confirmatory → Exploratory</li>
+<li>Renaissance to Statistical era: Exploratory → Confirmatory</li>
+<li>Current AI era: Back to Exploratory</li>
+</ul>
+<img 
+    class='max-w-lg mx-4 md:mx-auto rounded-lg h-auto shadow-md' 
+    src='fig2.webp'>
+</img>
+<p>The entire timeline of changes in scientific approaches can be described by two cycles of movement between confirmatory and exploratory analysis phases and vice versa, and each time, the cycle length decreases due to the exponential technological advances of humankind.</p>
+<p>As we stand at this crossroads of scientific inquiry, we face some intriguing questions:</p>
+<ul>
+<li>Can we find a balance between the elegant simplicity of fundamental laws and the complex predictive power of neural networks?</li>
+<li>Will our next scientific renaissance come from a return to confirmatory analysis?</li>
+<li>How might our understanding of the universe change in the coming decades?</li>
+</ul>
+<p>What do you think? Share your thoughts in the comments and let&rsquo;s continue this fascinating discussion!</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col justify-center items-center my-4 p-4" style="background-color: #14101b;">
+        <h2 class="text-lg text-white my-4">
+            Thank you very much for being a valued reader! 🙏🏽 Subscribe below to get notified when new posts are out. 📢 Stay tuned until next time!
+        </h2>
+        <iframe src="https://statwizard.substack.com/embed" width="480" height="150" style="border:1px solid black; background:black;" frameborder="0" scrolling="no"></iframe>
+    </div>
+</div>
+
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4 text-center shadow-md rounded-md p-4">
+    <p class="italic text-lg font-semibold my-4">Explore more posts like this</p>
+    <div class="flex flex-row justify-center gap-4">
+        
+            <a href="//localhost:1313/posts/2024/hack-into-llm/" 
+                class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                    transition-all ease-in-out rounded-md shadow-sm">
+                Previous Post
+            </a>
+        
+        
+            <a href="//localhost:1313/posts/2024/nlp-intro/" class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900
+             focus:bg-neutral-900 transition-all ease-in-out rounded-md shadow-sm">
+                Next Post
+            </a>
+        
+    </div>
+    <div class="flex flex-row justify-center gap-4 my-4">
+        <a href="//localhost:1313/posts/" 
+            class="px-6 py-2 bg-blue-800 text-white hover:bg-neutral-900 focus:bg-neutral-900 
+                transition-all ease-in-out rounded-md shadow-sm">
+            See all posts
+        </a>
+    </div>
+</div>
+
+
+<div class="my-6 max-w-6xl md:mx-auto mx-4">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "statwizard" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+
+
+      </div>
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+ 
+    
+
+
+    <script type="module" defer>
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, securityLevel: "loose" });
+    </script>
+
+
+
+    
+    <script defer>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.min.js"></script>
+
+
+
+  </body>
+</html>
