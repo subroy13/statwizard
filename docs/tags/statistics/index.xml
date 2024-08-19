@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Statistics on StatWizard</title>
-    <link>//localhost:1313/tags/statistics/</link>
+    <link>/tags/statistics/</link>
     <description>Recent content in Statistics on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 11 Jul 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/statistics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Determinism to Stochasticity: Why Neural Networks could be the way forward?</title>
-      <link>//localhost:1313/posts/2024/determinism-to-stochastic/</link>
+      <link>/posts/2024/determinism-to-stochastic/</link>
       <pubDate>Thu, 11 Jul 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/determinism-to-stochastic/</guid>
+      <guid>/posts/2024/determinism-to-stochastic/</guid>
       <description>This is more of a philosophical post, concentrated on the history of evolution of scientific approaches: from mathematical laws, statistical modelling and machine learning predictions.</description>
     </item>
   </channel>

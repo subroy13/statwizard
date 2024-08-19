@@ -2,52 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Artificial Intelligence on StatWizard</title>
-    <link>//localhost:1313/tags/artificial-intelligence/</link>
+    <link>/tags/artificial-intelligence/</link>
     <description>Recent content in Artificial Intelligence on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 29 Jun 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/artificial-intelligence/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to hack into LLMs? Generative AI Series Part 6</title>
-      <link>//localhost:1313/posts/2024/hack-into-llm/</link>
+      <link>/posts/2024/hack-into-llm/</link>
       <pubDate>Sat, 29 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/hack-into-llm/</guid>
+      <guid>/posts/2024/hack-into-llm/</guid>
       <description>This is the 6th and the final part of the blog post series on Generative AI and Prompting Techniques. In this post, we discuss about the security implications of Generative AI Techniques.</description>
     </item>
     <item>
       <title>Chaining Language Model to Algorithm: Generative AI Series Part 5</title>
-      <link>//localhost:1313/posts/2024/chaining-language-to-algorithm/</link>
+      <link>/posts/2024/chaining-language-to-algorithm/</link>
       <pubDate>Fri, 14 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/chaining-language-to-algorithm/</guid>
+      <guid>/posts/2024/chaining-language-to-algorithm/</guid>
       <description>This is the 5th part of the blog post series on Generative AI and Prompting Techniques. In this post, we dive into the prompting technique known as function calling and tool use and see them in action.</description>
     </item>
     <item>
       <title>Making the most out of Prompts: Generative AI Series Part 4</title>
-      <link>//localhost:1313/posts/2024/making-most-from-prompts/</link>
+      <link>/posts/2024/making-most-from-prompts/</link>
       <pubDate>Sat, 01 Jun 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/making-most-from-prompts/</guid>
+      <guid>/posts/2024/making-most-from-prompts/</guid>
       <description>This is a series of blog posts on Generative AI and Prompting Techniques. In this post of Generative AI series, we look into different techniques to bring out the best in prompts, along with a popular technique called Retrieval Augmented Generation (RAG).</description>
     </item>
     <item>
       <title>Designing Prompts: Generative AI Series - Part 3</title>
-      <link>//localhost:1313/posts/2024/generative-ai-prompts/</link>
+      <link>/posts/2024/generative-ai-prompts/</link>
       <pubDate>Fri, 17 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/generative-ai-prompts/</guid>
+      <guid>/posts/2024/generative-ai-prompts/</guid>
       <description>This is a series of blog posts on Generative AI and Prompting Techniques. In this post of Generative AI series, we will look into what prompt engineering is, and how to design better prompts to leverage the power of Generative AI in your typical use-cases.</description>
     </item>
     <item>
       <title>Generative AI Text-to-Text Models - Part 2</title>
-      <link>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</link>
+      <link>/posts/2024/generative-ai-encoder-decoder/</link>
       <pubDate>Sun, 05 May 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/generative-ai-encoder-decoder/</guid>
+      <guid>/posts/2024/generative-ai-encoder-decoder/</guid>
       <description>This is the 2nd blog post on Generative AI and Prompting Techniques blog series. In this post, we dive into encoder-decoder generative AI models and the key tunable settings for the Text-to-Text generative AI models.</description>
     </item>
     <item>
       <title>Introduction to Generative AI - Part 1</title>
-      <link>//localhost:1313/posts/2024/generative-ai-intro/</link>
+      <link>/posts/2024/generative-ai-intro/</link>
       <pubDate>Sun, 28 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/2024/generative-ai-intro/</guid>
+      <guid>/posts/2024/generative-ai-intro/</guid>
       <description>This is a series of blog posts on Generative AI and Prompting Techniques. This post serves as a introduction to the generative AI, its related techniques.</description>
     </item>
   </channel>

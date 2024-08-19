@@ -8,4 +8,6 @@ links:
     url: "https://github.com/subroy13/rsvddpd"
   - type: distribution
     content: "[![CRAN R - Downloads](https://cranlogs.r-pkg.org/badges/rsvddpd)](https://cran.r-project.org/package=rsvddpd)"
+  - type: distribution
+    content: "[![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/subroy13/rsvddpd/blob/master/LICENSE.md)"
 ---

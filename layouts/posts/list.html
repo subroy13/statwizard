@@ -11,12 +11,15 @@
     <p class="text-3xl md:text-6xl font-bold leading-normal md:leading-relaxed text-neutral-800">
         {{ .Title }}
     </p>
-    <p class="font-normal text-sm text-black">
-        {{ .Description }}
+    <p class="font-normal text-black">
+        My blog posts on interesting stories, concepts and applications on statistics, mathematics, computer science and personal finance is available on <a href="https://statwizard.substack.com/?showWelcome=true" target="_blank" class="text-blue-600 hover:text-blue-900 hover:underline">SubStack</a>, subscribe below for free to get these posts delivered right into your inbox 📬.
     </p>
+    <div class="mt-8">
+        {{ partial "substack.html" . }}
+    </div>
 </section>
 
-<section class="my-8 md:mx-auto max-w-6xl">
+<!-- <section class="my-8 md:mx-auto max-w-6xl">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         {{ range .Paginator.Pages }}
         <div class="hover:scale-105 transition ease-in-out max-w-sm rounded overflow-hidden shadow-lg">
@@ -53,14 +56,8 @@
     </div>
 
     {{ partial "pagination.html" . }}
-</section>
+</section> -->
 
-<section style="background-color: #14101b;">
-    <!-- Call to action -->
-    <div class="mt-8 pb-8 flex items-center justify-center flex-col">
-        <p class="my-4 text-white font-bold text-lg">Subscribe below to get these posts delivered right into your inbox</p>
-        <iframe src="https://statwizard.substack.com/embed" width="960" height="320" style="border:1px solid #blue; background:blue;" frameborder="0" scrolling="no"></iframe>
-    </div>
-</section>
+{{ partial "footer.html" . }}
 
 {{ end }}

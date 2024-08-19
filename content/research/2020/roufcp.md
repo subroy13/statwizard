@@ -8,4 +8,6 @@ links:
     url: "https://github.com/subroy13/roufcp"
   - type: distribution
     content: "[![PyPI - Downloads](https://img.shields.io/pypi/dm/roufcp)](https://pypi.org/project/roufcp/)"
+  - type: distribution
+    content: "[![](https://img.shields.io/badge/license-MIT-blue)](https://github.com/subroy13/roufcp/blob/master/LICENSE)"
 ---
