@@ -6,7 +6,7 @@ export default function Footer() {
         <>
             <section
                 id="contact-me"
-                className="py-8 w-full bg-gradient-to-r from-neutral-900 to-black"
+                className="py-8 mt-8 w-full bg-gradient-to-r from-neutral-900 to-black"
             >
                 <div className="max-w-6xl mx-auto my-8 text-white text-center">
                     <p className="font-normal text-2xl py-4">Reach out to me via</p>

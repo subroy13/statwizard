@@ -1,8 +1,23 @@
-import { faFacebookSquare, faGithubSquare, faGitSquare, faGoogleScholar, faInstagramSquare, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import { faFacebookSquare, faGithubSquare, faGitSquare, faGoogleScholar, faInstagram, faInstagramSquare, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 
 export const SITE_NAME = "StatWizard"
 export const SITE_DESCRIPTION = "Personal website of Subhrajyoty Roy"
+export const SITE_HELLO = "Hi, I am Subhrajyoty 👋🏽"
+export const SITE_SUBTITLE = "I am just a soul curious about learning about statistics, mathematics and data science."
+
+export const AFFILIATIONS = [
+    {
+        position: "Principal Information Researcher",
+        organization: "SysCloud",
+        url: "https://www.syscloud.com"
+    },
+    {
+        position: "Research Fellow",
+        organization: "Indian Statistical Institute, Kolkata",
+        url: "https://www.isical.ac.in"
+    }
+]
 
 export const MAIN_MENU = [
     {
@@ -55,7 +70,7 @@ export const SOCIAL_MENU = [
     {
         "name": "Instagram",
         "link": "#",
-        "icon": faInstagramSquare,
+        "icon": faInstagram,
         "color": "pink-800"
     },
     {
