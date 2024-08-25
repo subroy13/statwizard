@@ -16,6 +16,18 @@ export const SOFTWARES: Array<{
 	},
 	badges?: Array<{ imgsrc: string, url: string }>
 }> = [
+    {
+        title: "Chatbot with Seq2Seq model",
+        date: "2020-01-10",
+        description: "A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.",
+        links: {
+            source: "https://github.com/subroy13/seq2seq_attention_bot",
+            dist: {
+                label: "Installation Instructions",
+                url: "https://github.com/subroy13/seq2seq_attention_bot/Readme.md"
+            },
+        }
+    },
 	{
 	    title: "A simple Text Prediction Application",
 	    date: "2018-11-13",
