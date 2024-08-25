@@ -1,5 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { MAIN_MENU, SOCIAL_MENU } from "../constants";
+import { CustomIcon } from "./CustomIcon";
 
 export default function Navbar() {
     return (
@@ -31,7 +32,7 @@ export default function Navbar() {
                                 aria-label={`${social.icon} for link ${social.link}`}
                                 target="_blank"
                             >
-                                <FontAwesomeIcon icon={social.icon}/>
+                                <CustomIcon icon={social.icon} />
                             </a>
                         ))
                     }

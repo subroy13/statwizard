@@ -1,5 +1,4 @@
-import { faFacebookSquare, faGithubSquare, faGitSquare, faGoogleScholar, faInstagram, faInstagramSquare, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
+import { FaEnvelope, FaGithub, FaGoogleScholar, FaInstagram, FaLinkedinIn, FaSquareFacebook } from "react-icons/fa6"
 
 export const SITE_NAME = "StatWizard"
 export const SITE_DESCRIPTION = "Personal website of Subhrajyoty Roy"
@@ -29,16 +28,12 @@ export const MAIN_MENU = [
         route: "/research"
     },
     {
-        name: "CV",
-        route: "/cv"
+        name: "Softwares",
+        route: "/softwares"
     },
     {
         name: "Collection",
         route: "/collection"
-    },
-    {
-        name: "Softwares",
-        route: "/softwares"
     },
     {
         name: "Contact",
@@ -50,37 +45,37 @@ export const SOCIAL_MENU = [
     {
         name: "subhrajyotyroy@gmail.com",
         link: "mailto:subhrajyotyroy@gmail.com",
-        icon: faEnvelope,
+        icon: FaEnvelope,
         color: "red-500"
     },
     {
         "name": "Github",
         "link": "https://github.com/subroy13",
-        "icon": faGithubSquare,
+        "icon": FaGithub,
         "color": "gray-500"
     },
     {
         "name": "LinkedIn",
         "link": "https://www.linkedin.com/in/subroy13",
-        "icon": faLinkedinIn,
+        "icon": FaLinkedinIn,
         "color": "indigo-800"
     },
     {
         "name": "Google Scholar",
         "link": "https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1",
-        "icon": faGoogleScholar,
+        "icon": FaGoogleScholar,
         "color": "sky-600"
     },
     {
         "name": "Instagram",
         "link": "#",
-        "icon": faInstagram,
+        "icon": FaInstagram,
         "color": "pink-800"
     },
     {
         "name": "Facebook",
         "link": "https://www.facebook.com/subroy13/",
-        "icon": faFacebookSquare,
+        "icon": FaSquareFacebook,
         "color": "blue-500"
     }
 ]

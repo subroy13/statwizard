@@ -1,11 +1,9 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { makeGroups } from '../lib/common';
 import { IResearchItem, ITalk, RESEARCH_PAPERS, TALKS } from './content';
-import { faCode, faDatabase, faMicrophoneLines } from '@fortawesome/free-solid-svg-icons';
-import { SiDoi } from "react-icons/si";
+import { SiArxiv, SiDoi } from "react-icons/si";
 import Footer from '../ui/Footer';
 import { CustomIcon } from '../ui/CustomIcon';
-import { FaDatabase, FaGithubAlt, FaMicrophoneLines } from 'react-icons/fa6';
+import { FaDatabase, FaGithub, FaMicrophoneLines } from 'react-icons/fa6';
 
 
 export default function ResearchPage() {
@@ -34,9 +32,9 @@ export default function ResearchPage() {
                 </div>
 
                 {/*Main content area*/}
-                <div className='mx-4'>
+                <div className='mx-4 md:mx-auto max-w-6xl'>
                     {
-                        Object.keys(researchGroups).sort().map((year) => (
+                        Object.keys(researchGroups).sort().reverse().map((year) => (
                             <div className="mt-8" key={year}>
                                 <h3 className="text-blue-800 text-2xl">
                                     {year}
@@ -50,7 +48,7 @@ export default function ResearchPage() {
                                             <div key={item.title} className="grid grid-cols-6 gap-4 items-center">
                                                 <p className="w-full m-4 font-semibold text-center col-span-1 bg-blue-700 text-white rounded-sm text-xs text-clip">
                                                     {
-                                                        (item as any)?.authors ? "Publication" : "Talk"
+                                                        (item as any)?.authors ? "PUBLICATION" : "TALK"
                                                     }
                                                 </p>
                                                 {
@@ -78,7 +76,10 @@ export default function ResearchPage() {
                                                                                 ll.type === "arxiv" &&
                                                                                 (
                                                                                     <>
-                                                                                        {/* <icon/> */}
+                                                                                        <CustomIcon
+                                                                                            icon={SiArxiv}
+                                                                                            style={{ display: "inline-block", marginRight: "5px" }}
+                                                                                        />
                                                                                         Preprint
                                                                                     </>
                                                                                 )
@@ -88,7 +89,7 @@ export default function ResearchPage() {
                                                                                 (
                                                                                     <>
                                                                                         <CustomIcon
-                                                                                            icon={FaGithubAlt}
+                                                                                            icon={FaGithub}
                                                                                             style={{ display: "inline-block", marginRight: "5px" }}
                                                                                         />
                                                                                         GitHub

@@ -42,7 +42,7 @@ export default function HomePage() {
             {/* <!-- Menu choices --> */}
             <div className="mt-16 pl-auto flex flex-col gap-1 items-end">
               {
-                MAIN_MENU.map((menu) => (
+                MAIN_MENU.concat([{ name: "CV", route: "/content/cv.pdf" }]).map((menu) => (
                   <a
                     key={menu.name}
                     href={menu.route}

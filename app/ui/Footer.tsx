@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SOCIAL_MENU } from "../constants";
+import { CustomIcon } from "./CustomIcon";
 
 export default function Footer() {
     return (
@@ -20,12 +20,12 @@ export default function Footer() {
                                     key={social.name}
                                     href={social.link}
                                     target="_blank"
-                                    className="m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
+                                    className={`m-2 p-4 h-[55px] w-[55px] flex justify-center items-center
                                     rounded-full border-2 border-white border-solid text-white transition-all 
                                     duration-300 ease-in-out
-                                    hover:bg-{{ .color }} focus:bg-{{ .color }} hover:text-white focus:text-white"
+                                    hover:bg-${social.color} focus:bg-${social.color} hover:text-white focus:text-white`}
                                 >
-                                    <FontAwesomeIcon icon={social.icon} />
+                                    <CustomIcon icon={social.icon} size={40} />
                                 </a>
                             ))
                         }
