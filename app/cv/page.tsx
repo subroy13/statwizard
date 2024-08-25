@@ -1,5 +1,5 @@
 import Footer from "../ui/Footer";
-import { EXPERIENCES, SKILLSETS } from "./cvelements";
+import { EXPERIENCES, SKILLSETS } from "./content";
 
 export default function CVPage() {
     return (

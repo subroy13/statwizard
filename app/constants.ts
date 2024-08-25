@@ -37,6 +37,10 @@ export const MAIN_MENU = [
         route: "/collection"
     },
     {
+        name: "Softwares",
+        route: "/softwares"
+    },
+    {
         name: "Contact",
         route: "/contact"
     }
