@@ -1,8 +1,14 @@
+"use client";
 
+import Image from "next/image";
 import { MAIN_MENU, SOCIAL_MENU } from "../constants";
 import { CustomIcon } from "./CustomIcon";
+import Link from 'next/link';
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+
+    const pathname = usePathname();
     return (
         <nav className="bg-white shadow-xl z-50">
             {/* Big screen menu */}
@@ -11,13 +17,13 @@ export default function Navbar() {
                 <div className="flex flex-row justify-start items-center gap-4">
                     {
                         MAIN_MENU.map((menu) => (
-                            <a
+                            <Link
                                 key={menu.name}
                                 href={menu.route}
-                                className="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+                                className={`px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium ${menu.route === pathname ? `bg-gray-100 border-b-2 border-blue-600 text-blue-600` : ''}`}
                             >
                                 {menu.name}
-                            </a>
+                            </Link>
                         ))
                     }
                 </div>
@@ -25,7 +31,7 @@ export default function Navbar() {
                 <div className="w-[200px] flex flex-row justify-around items-center">
                     {
                         SOCIAL_MENU.map((social) => (
-                            <a
+                            <Link
                                 key={social.name}
                                 href={social.link}
                                 className="hover:text-blue-600 transition-all ease-in-out"
@@ -33,7 +39,7 @@ export default function Navbar() {
                                 target="_blank"
                             >
                                 <CustomIcon icon={social.icon} />
-                            </a>
+                            </Link>
                         ))
                     }
                 </div>
@@ -45,18 +51,18 @@ export default function Navbar() {
                 <div className="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
                     {/* the logo */}
                     <div className="w-[200px] flex items-center">
-                        <a
+                        <Link
                             className="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
                             href="/"
                         >
-                            <img
+                            <Image
                                 src="/images/logo-wide-2.png"
-                                height="75px"
-                                width="150px"
+                                height={75}
+                                width={150}
                                 className="inline-block"
                                 alt="StatWizard Logo"
                             />
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Clicked button */}
@@ -114,9 +120,9 @@ export default function Navbar() {
                                     key={menu.name}
                                     className="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
                                 >
-                                    <a href={menu.route}>
+                                    <Link href={menu.route}>
                                         {menu.name}
-                                    </a>
+                                    </Link>
                                 </li>
                             ))
                         }

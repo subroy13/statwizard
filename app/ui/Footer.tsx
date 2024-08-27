@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SOCIAL_MENU } from "../constants";
 import { CustomIcon } from "./CustomIcon";
 
@@ -16,7 +17,7 @@ export default function Footer() {
                     <div className="flex flex-row flex-wrap justify-center items-center mx-auto gap-4">
                         {
                             SOCIAL_MENU.map((social) => (
-                                <a
+                                <Link
                                     key={social.name}
                                     href={social.link}
                                     target="_blank"
@@ -26,7 +27,7 @@ export default function Footer() {
                                     hover:bg-${social.color} focus:bg-${social.color} hover:text-white focus:text-white`}
                                 >
                                     <CustomIcon icon={social.icon} size={40} />
-                                </a>
+                                </Link>
                             ))
                         }
                     </div>

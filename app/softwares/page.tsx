@@ -4,6 +4,7 @@ import { CustomIcon } from "../ui/CustomIcon";
 import Footer from "../ui/Footer";
 import { ISoftware, SKILLSETS, SOFTWARES } from "./content"
 import { FaCode, FaGlobe } from "react-icons/fa6";
+import Image from "next/image";
 
 export default function SoftwaresPage() {
     const softwareGroups = makeGroups<ISoftware>(
@@ -18,7 +19,13 @@ export default function SoftwaresPage() {
                 {/* Hero section  */}
                 <div className="mt-8 mx-4 grid grid-cols-1 md:grid-cols-4">
                     <div className="col-span-1 w-full flex flex-row-reverse">
-                        <img src="/svg/eye.svg" className="w-[200px] h-[200px] mx-4" />
+                        <Image
+                            src="/svg/eye.svg"
+                            className="w-[200px] h-[200px] mx-4"
+                            alt="eye image"
+                            width={200}
+                            height={200}
+                        />
                     </div>
                     <div className="col-span-3 mx-4 md:mx-0">
                         <h1 className="text-align text-black italic">I have experience using the following technologies</h1>
@@ -31,7 +38,10 @@ export default function SoftwaresPage() {
                                         </h3>
                                         <div className="flex flex-row flex-wrap gap-2">
                                             {set.items.map((badge, i) => (
-                                                <img src={badge} key={i} />
+                                                <img
+                                                    src={badge}
+                                                    key={i}
+                                                />
                                             ))}
                                         </div>
                                     </div>

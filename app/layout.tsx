@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { SITE_NAME, SITE_DESCRIPTION } from "./constants";
 import Navbar from "./ui/Navbar";
-
-const inter = Inter({ subsets: ["latin"] });
+import { inter } from "./lib/fonts";
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -24,9 +22,9 @@ export default function RootLayout({
           <div className="content-container mx-0 px-0">
             {children}
           </div>
+          {/* Below we insert the modal wrapper*/}
+          <div id="modal-root"></div>
         </div>
-
-
       </body>
     </html>
   );

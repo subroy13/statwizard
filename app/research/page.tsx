@@ -4,6 +4,7 @@ import { SiArxiv, SiDoi } from "react-icons/si";
 import Footer from '../ui/Footer';
 import { CustomIcon } from '../ui/CustomIcon';
 import { FaDatabase, FaGithub, FaMicrophoneLines } from 'react-icons/fa6';
+import Image from 'next/image';
 
 
 export default function ResearchPage() {
@@ -24,7 +25,13 @@ export default function ResearchPage() {
                         My <span className="text-2xl font-semibold text-blue-600">Life Goal</span> is
                         to try unwrapping the gift of knowledge
                     </p>
-                    <img src="/svg/infinityBox.svg" className="w-full max-w-[50px] max-h-[50px]" />
+                    <Image
+                        src="/svg/infinityBox.svg"
+                        className="w-full max-w-[50px] max-h-[50px]"
+                        alt="InfinityBox"
+                        width={50}
+                        height={50}
+                    />
                 </div>
 
                 <div className="max-w-6xl mx-auto mt-8 pt-8 border-t-[1px] border-t-gray-300">

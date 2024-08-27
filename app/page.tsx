@@ -1,12 +1,19 @@
 import { AFFILIATIONS, MAIN_MENU, SITE_HELLO, SITE_SUBTITLE } from "./constants";
 import SubStack from "./ui/Substack";
+import Image from 'next/image';
 
 export default function HomePage() {
   return (
     <>
       {/**<!-- Main Logo --> */}
       <div className="hidden md:block w-[200px] h-[200px] absolute inset-x-1/2 inset-y-1/2 -ml-[100px] -mt-[100px] rounded-full border-4 border-l-blue-600 border-b-blue-600 border-r-white border-t-white rotate-45 shadow-lg">
-        <img src="/images/logo.png" className="w-full h-full rounded-full -rotate-45" />
+        <Image
+          src="/images/logo.png"
+          alt="Logo"
+          width={200}
+          height={200}
+          className="w-full h-full rounded-full -rotate-45"
+        />
       </div>
       {/* Left Right Banner (Desktop) */}
       <section className="hidden md:grid md:grid-cols-2 items-center overflow-x-hidden w-full m-0 p-0 h-[100vh]">
