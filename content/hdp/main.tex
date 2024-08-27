@@ -32,6 +32,8 @@
     This contains the lecture notes of the course on \textit{High Dimensional Probability} by Roman Vershynin. The course is available for free at online~\url{https://www.math.uci.edu/~rvershyn/teaching/hdp/hdp.html}.
 \end{abstract}
 
+\tableofcontents
+
 
 \section{Introduction to High Dimensional Ideas}
 
@@ -43,7 +45,7 @@
 
 Empirical observation: it is exponentially harder to deal with larger \# of dimensions rather than larger \# of observations. To illustrate this, let's consider an example problem.
 
-\begin{examplebox}
+\begin{example}
 	Let's say we want to numerically compute the integral
 	\begin{equation*} 
 		\int_0^1 \cdots \int_0^1 f(x_1, \ldots, x_d) dx_1 \ldots dx_d
@@ -52,95 +54,109 @@ Empirical observation: it is exponentially harder to deal with larger \# of dime
 	\begin{equation*}
 		\int_{[0, 1]} f(x)dx \approx \dfrac{1}{n}\sum_{i=1}^n f(x_i), \ n = (1/\epsilon).
 	\end{equation*}
-	\noindent Note that, 
-\end{examplebox}
+	\noindent Note that, this will ensure that the bias is of order $O(\epsilon)$, assuming $f$ is bounded. To see this,
+    \begin{align*}
+        \left\vert \int_{[0, 1]} f(x)dx - \dfrac{1}{n}\sum_{i=1}^n f(x_i) \right\vert
+        & \leq \dfrac{1}{n}\sum_{i=1}^{n} \left\vert \int_{[(i-1)/n, i/n]} f(x)dx - f(x_i) \right\vert\\
+        & = \dfrac{1}{n}\sum_{i=1}^{n} \left\vert f(t_i) - f(x_i) \right\vert\\
+        & = O(1/n) = O(\epsilon)
+    \end{align*}
+    \noindent where $t_i$ is a tag obtained by using Integral Mean Value Theorem on $f$, for the interval $[(i-1)/n, i/n]$. 
 
-\sr{CHECK FROM HERE}
+    In general, for $d$-dimensional hypercube $[0, 1]^d$, we require $n = O(1/\epsilon^d)$ many points to achieve an error bound of $O(\epsilon)$.
+\end{example}
+
+Therefore, we need the number of points to be exponential in dimension to achieve the same level of accuracy. This is also called \textbf{the curse of dimensionality}.
+
+However, there is a better way to solve this problem, by using Monte Carlo method, which uses probabily to achieve good result for this. Instead of choosing the points on the grid, choose uniformly at random. Pick $N$ points:
+
+\begin{equation*}
+    S_N = \dfrac{1}{N}\sum_{i=1}^N f(x_i), \ x_i \sim \text{Uniform}([0, 1]^d)
+\end{equation*} 
+
+Note that, $\E(S_N) = \E(f(X)) = \int_{[0, 1]^d} f(x)dx$. The average $L^2$ error is given by
+\begin{align*}
+    \E\left[\left(\frac{1}{N} \sum_{i=1}^N f(x_i) - \int_{[0,1]^d} f(x) dx\right)^2 \right] 
+    & = \var\left( \frac{1}{N} \sum_{i=1}^N f(x_i) \right)\\
+    & = \dfrac{\var(f(X))}{N} \leq C/N
+\end{align*}
+\noindent since $f(x)$ is bounded. Therefore, the RMSE = $O(\frac{1}{\sqrt{N}})$, independent of the dimension $d$. 
+
+\begin{note}
+    Thinking in terms of probability might help to overcome in high-dimensional inference problems.
+\end{note}
 
 
+\subsection{Convexity}
 
-\textbf{Example Problem:} Numerically compute the integral 
-$\int_0^1 \cdots \int_0^1 f(x_1, \ldots, x_d) dx_1 \ldots dx_d$
+Usually in high-dimensional (HD) problems, convexity helps a lot.
 
-$\rightarrow$ Usual numerical integration approach: \\
-Take a grid, 
-$\int_{[0,1]^d} f(x) dx \approx \frac{1}{n} \sum_{i=1}^{n^d} f(x_i)$, resolution = $\epsilon$
+\begin{definitionbox}
+    A set $T \subset \R^n$ is convex if $\forall x,y \in T$, the segment $[x,y] \in T$.
+\end{definitionbox}
 
-In general, for resolution $\epsilon$, we require: $n = (\frac{1}{\epsilon})^d$ points. (exponential in d)\\
-(Curse of dimensionality)
+Let us consider a few examples as follows:
 
-\textbf{Probabilistic method} can help, use "Monte Carlo method": Instead of choosing the points on the grid, choose uniformly at random. Pick N points:
-
-$\int_{[0,1]^d} f(x) dx \approx \frac{1}{N} \sum_{i=1}^N f(x_i)$, $x_i \sim \text{Uniform}([0,1]^d)$
-
-Note that, $\mathbb{E}(\frac{1}{N} \sum_{i=1}^N f(x_i)) = \mathbb{E}f(x) = \int_{[0,1]^d} f(x) dx$
-
-$L^2$-error: $\mathbb{E}[(\frac{1}{N} \sum_{i=1}^N f(x_i) - \int_{[0,1]^d} f(x) dx)^2] = \text{Var}(\frac{1}{N} \sum_{i=1}^N f(x_i)) = \frac{\text{Var}(f(x))}{N}$
-
-$\rightarrow$ RMSE = $O(\frac{1}{\sqrt{N}})$, independent of dimension d
-
-\section*{Lecture 2}
-
-Usually in HD problems, convexity helps a lot.
-
-\textbf{Def:} A set $T \subset \mathbb{R}^n$ is convex if $\forall x,y \in T$, the segment $[x,y] \in T$.
-
-Examples are:
 \begin{tikzpicture}[scale=0.5]
 \draw (0,0) -- (1,1) -- (2,0) -- cycle;
-\node at (1,-0.5) {convex};
+\node at (4,0.5) {convex};
 \end{tikzpicture}
+
+
 \begin{tikzpicture}[scale=0.5]
 \draw (3,0) ellipse (1cm and 0.5cm);
-\node at (3,-0.7) {convex};
+\node at (7, 0) {convex};
 \end{tikzpicture}
+
+
 \begin{tikzpicture}[scale=0.5]
 \draw (6,0) -- (7,1) -- (8,0);
-\node at (7,-0.5) {non convex};
+\node at (10,0.5) {non convex};
 \end{tikzpicture}
+
+
 \begin{tikzpicture}[scale=0.5]
 \draw (9,0) rectangle (10,1);
 \draw (11,0) rectangle (12,1);
-\node at (10.5,-0.5) {non convex};
-\node at (10.5,-1) {(union)};
+\node at (20,0.5) {non convex (union of convex sets)};
 \end{tikzpicture}
 
-The convex hull $\text{conv}(T)$ of a set $T \subset \mathbb{R}^n$ is the smallest convex set that contains $T$.
-
-
-\textbf{Fact:} $\forall z \in \text{conv}(T)$, we have a decomposition, $z = \sum_{i=1}^m \lambda_i z_i$, where, $\lambda_i \geq 0$,
-$\sum_{i=1}^m \lambda_i = 1$, and each $z_i \in T$
-
-(Note that, the above combination / representation can may not be unique or parsimonious)
-
-\textbf{Caratheodory Theorem:} $\forall z \in \text{conv}(T)$, $\exists$ a representation (convex comb) of $\leq (n+1)$ points in $T$, where, $T \subset \mathbb{R}^n$.
-
-$\rightarrow$ Note that, the choice of basis in the representation can depend on $z$.
-
-$\rightarrow$ Usually $(n+1)$ is unreasonable, there is dimension dependence.
-
-$\rightarrow$ But if we allow approximately get $z$ back, we can make use of probability to get far better representation.
-
-\begin{tikzpicture}
-\draw (0,0) -- (2,0) -- (1,2) -- cycle;
-\node at (0,0) {B};
-\node at (2,0) {C};
-\node at (1,2) {A};
-\node at (1.5,1) {D};
-\node at (0.7,0.7) {$z^*$};
-\node at (1.3,0.3) {$z_*$};
-\node[right] at (2.5,1) {$\mathbb{R}^2$};
+\begin{tikzpicture}[scale=0.5]
+\draw (5,0) rectangle (8,1);
+\draw (6,-1) rectangle (7,2);
+\draw[fill = gray] (6,0) rectangle (7,1);
+\node at (16,0.5) {convex (intersection of convex sets)};
 \end{tikzpicture}
 
-$z^* \in \text{span}\{A,B,D\}$
-$z_* \in \text{span}\{A,B,C\}$
+This means union of convex sets may not be convex, but intersection of convex sets is convex. Thus, starting with a set $T$, we can consider the intersection of all such convex sets that are superset of $T$.
 
-\textbf{Thm (Approximate Caratheodory Thm):} Let $T \subset \mathbb{R}^n$, and $\text{diam}(T) \leq 1$ (otherwise rescale)
-Then, $\forall z \in \text{conv}(T)$, $\forall k \in \mathbb{N}$, $\exists z_1, z_2, \ldots, z_k \in T$ (may be same)
-s.t.
-$$\left\|z - \frac{1}{k} \sum_{i=1}^k z_i\right\|_2 \leq \frac{1}{\sqrt{2k}}$$
+\begin{definitionbox}
+    The convex hull $\text{conv}(T)$ of a set $T \subset \R^n$ is the smallest convex set that contains $T$.
+\end{definitionbox}
 
-$\rightarrow$ So if we want error $\epsilon$, the choose, $k = \frac{1}{2\epsilon^2}$ (dimension free)
+\begin{theorembox}
+    $\forall z \in \text{conv}(T)$, we have a decomposition, $z = \sum_{i=1}^m \lambda_i z_i$, where, $\lambda_i \geq 0$, $\sum_{i=1}^m \lambda_i = 1$, and each $z_i \in T$. Note that, the above combination or representation may not be unique or parsimonious.
+\end{theorembox}
+
+\begin{theorembox}[Caratheodory Theorem]
+    $\forall z \in \text{conv}(T)$, $\exists$ a representation (convex combination) of $\leq (n+1)$ points in $T$, where, $T \subset \R^n$.
+\end{theorembox}
+
+Note that, the choice of basis in the representation obtained by Caratheodory Theorem may depend on the choice of $z$. Also, the number $(n+1)$ is unimprovable, there is a dimension dependence here. However, it turns out if we allow to get $z$ back only approximately, we can use a similar trick like the Monte Carlo method of get a better representation, that may be dimension-independent.
+
+\begin{theorembox}[Approximate Caratheodory Theorem]
+    Let $T \subset \R^n$, and $\text{diam}(T) \leq 1$ (otherwise we can rescale). Then, $\forall z \in \text{conv}(T)$, $\forall k \in \N$, $\exists z_1, z_2, \ldots, z_k \in T$ (these points may be same) such that
+    \begin{equation*}
+        \left\Vert z - \frac{1}{k} \sum_{i=1}^k z_i\right\Vert_2 \leq \frac{1}{\sqrt{2k}}
+    \end{equation*}
+    This means, if we want error to be less than equal to $\epsilon$, the choose, $k = \frac{1}{2\epsilon^2}$ (which is dimension free).
+\end{theorembox}
+
+\begin{proof}
+    
+\end{proof}
+
+
 
 \textbf{Proof (empirical method f./ Maurey):}
 
