@@ -102,8 +102,8 @@ export default function SoftwaresPage() {
                                                         }
                                                         {
                                                             item?.badges && (
-                                                                (item.badges ?? []).map((badge) => (
-                                                                    <a href={badge.url}>
+                                                                (item.badges ?? []).map((badge, i) => (
+                                                                    <a href={badge.url} key={i}>
                                                                         <img src={badge.imgsrc} />
                                                                     </a>
                                                                 ))
