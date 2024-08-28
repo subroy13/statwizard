@@ -1,7 +1,7 @@
 export default function NotFoundPage() {
     return (
         <div className="container min-h-[100vh] mx-auto flex flex-col justify-center items-center gap-4">
-            <p className="font-normal text-sm text-neutral-900 text-justify max-w-4xl">Looks like you've lost! Let us help you get back!</p>
+            <p className="font-normal text-sm text-neutral-900 text-justify max-w-4xl">Looks like you&apos;ve lost! Let us help you get back!</p>
             <img src="/images/img2.webp" className="rounded-full w-[200px] h-[200px]" />
             <a href="/"
                 className="py-2 px-6 bg-neutral-50 border-2 border-neutral-900 text-neutral-900 rounded-sm shadow-sm

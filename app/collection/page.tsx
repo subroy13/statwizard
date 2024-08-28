@@ -29,7 +29,7 @@ export default function CollectionPage(props: any) {
             {
               LECTURE_NOTES.map((item, i) => (
                 <li key={i}>
-                  <a href={item.url} className="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                  <a href={item.url} target="_blank" className="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
                     {item.title}
                   </a>, course offered at <span className="font-semibold">{item.organization}</span>
                 </li>
