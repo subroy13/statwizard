@@ -10,6 +10,5 @@ export default function NotFoundPage() {
                 Go back to homepage
             </a>
         </div>
-
     )
 }

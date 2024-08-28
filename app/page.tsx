@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AFFILIATIONS, MAIN_MENU, SITE_HELLO, SITE_SUBTITLE } from "./constants";
 import SubStack from "./ui/Substack";
 import Image from 'next/image';
@@ -31,12 +32,8 @@ export default function HomePage() {
               {
                 AFFILIATIONS.map((item, i) => (
                   <p key={item.organization} className="text-light text-md md:text-md animate__animated animate__fadeIn animate__delay-2s text-gray-700 text-right">
-                    {i === 0 ? `I am currently` : ` and `}
-                    <span className="font-semibold">
-                      {item.position}
-                    </span>
-                    at
-                    <span className="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">
+                    {i === 0 ? `I am currently ` : ` and `}
+                    <span className="font-semibold">{item.position}</span> at <span className="font-semibold text-blue-700 hover:text-blue-900 cursor-pointer">
                       <a href={item.url}>
                         {item.organization}
                       </a>
@@ -49,14 +46,15 @@ export default function HomePage() {
             {/* <!-- Menu choices --> */}
             <div className="mt-16 pl-auto flex flex-col gap-1 items-end">
               {
-                MAIN_MENU.concat([{ name: "CV", route: "/content/cv.pdf" }]).map((menu) => (
-                  <a
+                MAIN_MENU.concat([{ name: "CV", route: "/content/cv/cv.pdf" }]).map((menu) => (
+                  <Link
                     key={menu.name}
                     href={menu.route}
+                    target={menu.name === 'CV' ? '_blank' : '_self'}
                     className="text-black hover:text-blue-600 hover:border-b-2 hover:border-b-blue-600 transition transition-all ease-in-out roboto-medium py-0 my-0"
                   >
                     {menu.name}
-                  </a>
+                  </Link>
                 ))
               }
             </div>

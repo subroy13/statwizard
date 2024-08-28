@@ -5,6 +5,11 @@ import Footer from "../ui/Footer";
 import { ISoftware, SKILLSETS, SOFTWARES } from "./content"
 import { FaCode, FaGlobe } from "react-icons/fa6";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Softwares | StatWizard',
+}
 
 export default function SoftwaresPage() {
     const softwareGroups = makeGroups<ISoftware>(

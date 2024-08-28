@@ -5,7 +5,11 @@ import Footer from '../ui/Footer';
 import { CustomIcon } from '../ui/CustomIcon';
 import { FaDatabase, FaGithub, FaMicrophoneLines } from 'react-icons/fa6';
 import Image from 'next/image';
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: 'Research | StatWizard',
+}
 
 export default function ResearchPage() {
 

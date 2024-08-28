@@ -1,4 +1,10 @@
+import Head from "next/head";
 import Footer from "../ui/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Contact | StatWizard',
+}
 
 export default function ContactPage() {
   return (

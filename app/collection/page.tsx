@@ -1,6 +1,11 @@
-import { imgList3D, LECTURE_NOTES } from "./content";
+import { imgList3D, LECTURE_NOTES, TUTORIAL_LINKS } from "./content";
 import Gallery from "../ui/Gallery";
 import Footer from "../ui/Footer";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Collection | StatWizard',
+}
 
 export default function CollectionPage(props: any) {
 
@@ -25,7 +30,7 @@ export default function CollectionPage(props: any) {
           </p>
         </div>
         <div className="col-span-5">
-          <ul className="text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4">
+          <ul className="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4">
             {
               LECTURE_NOTES.map((item, i) => (
                 <li key={i}>
@@ -36,6 +41,38 @@ export default function CollectionPage(props: any) {
               ))
             }
           </ul>
+        </div>
+      </div>
+
+      {/* Tutorial Series  */}
+      <div className="my-3 grid grid-cols-1 md:grid-cols-6 bg-blue-100 w-full">
+        <div className="col-span-1 text-center p-4">
+          <h3 className="text-blue-800 text-2xl font-semibold pb-4">
+            Tutorial Series
+          </h3>
+          <p className="text-blue-800 text-sm font-light">
+            Resources on starting out with a specific domain
+          </p>
+        </div>
+        <div className="col-span-5">
+          {
+            TUTORIAL_LINKS.map((topic) => (
+              <div className="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
+                <h2 className="text-normal text-gray-500"><span className="font-semibold text-blue-800">{topic.label}</span> - {topic.description}</h2>
+                <ul className="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4">
+                  {
+                    topic.links.map((item, i) => (
+                      <li key={i}>
+                        <a href={item.url} target="_blank" className="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          {item.title}
+                        </a>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            ))
+          }
         </div>
       </div>
 

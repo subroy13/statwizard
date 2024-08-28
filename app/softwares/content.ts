@@ -26,7 +26,7 @@ export const SOFTWARES: ISoftware[] = [
             source: "https://github.com/subroy13/seq2seq_attention_bot",
             dist: {
                 label: "Installation Instructions",
-                url: "https://github.com/subroy13/seq2seq_attention_bot/Readme.md"
+                url: "https://github.com/subroy13/seq2seq_attention_bot/blob/master/Readme.md"
             },
         }
     },
@@ -96,7 +96,7 @@ export const SOFTWARES: ISoftware[] = [
             source: "https://github.com/subroy13/pwdmgr",
             dist: {
                 label: "Installation Instructions",
-                url: "https://github.com/subroy13/pwdmgr/Readme.md"
+                url: "https://github.com/subroy13/pwdmgr/blob/master/Readme.md"
             }
         }
     },
@@ -139,6 +139,30 @@ export const SOFTWARES: ISoftware[] = [
                 url: "https://github.com/subroy13/decompy"
             }
         ]
+    },
+    {
+        title: "Multi PDF Querybot",
+        description: "This is a simple application where you can upload a PDF document and chat with LLM using a RAG created via in-memory vector store",
+        date: "2023-11-10",
+        links: {
+            source: "https://github.com/subroy13/multi-pdf-querybot",
+            dist: {
+                label: "Usage Guide",
+                url: "https://github.com/subroy13/multi-pdf-querybot/blob/master/README.md"
+            }
+        }
+    },
+    {
+        title: "ChronoModeler",
+        description: "A streamlit application to perform simulation experiments with different models on time series data, using a blueprint based system. Useful for non-stat-savvy people to get quick sense of how modelling works.",
+        date: "2023-06-16",
+        links: {
+            source: "https://github.com/subroy13/chronomodeler",
+            dist: {
+                label: "Usage Guide",
+                url: "https://github.com/subroy13/chronomodeler/blob/main/Readme.md"
+            }
+        }
     }
 ];
 
