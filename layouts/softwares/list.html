@@ -1,0 +1,75 @@
+{{ define "title" }} {{ .Title }} {{ end }} 
+{{ define "main" }}
+
+<section class="mx-2 md:mx-0">
+	<div class="mt-8 grid grid-cols-1 md:grid-cols-4">
+	<div class="col-span-1 w-full flex flex-row-reverse">
+		<img src="/svg/eye.svg" class="w-[200px] h-[200px] mx-4" />
+	</div>
+	<div class="col-span-3 mx-4">
+		<h1 class="text-align text-black italic">I have experience using the following technologies</h1>
+		<div class="flex flex-col gap-4">
+			{{ range .Params.skills }}
+				<h3 class="text-right border-b-[1px] border-b-blue-800 text-blue-600">{{ .category }}</h3>
+				<div class="flex flex-row flex-wrap gap-2">
+					{{ range .items }}
+						{{ . | markdownify }}
+					{{ end }}
+				</div>
+			{{ end }}
+		</div>
+	</div>
+	</div>
+
+
+	<div class="max-w-6xl mx-auto mt-8 mb-8 pt-8 border-t-[1px] border-t-gray-300">
+		<h2 class="italic text-neutral-800">Here is a list of some softwares I have developed!</h2>
+
+		<!-- Main content area -->
+		<div>
+			{{ range .Pages.GroupByDate "2006" }}
+				<div class="mt-8">
+					<h3 class="text-blue-800 text-2xl">{{ .Key }}</h3>
+					<div class="w-full my-2 border-b-[1px] border-b-blue-700"></div>
+					<div>
+						{{ range .Pages }}
+							<div class="grid grid-cols-6 gap-4 items-center">
+								<p class="w-full m-4 font-semibold text-right col-span-1 text-blue-600 rounded-sm text-xl">
+									<i class="fa-solid fa-cube"></i>
+								</p>
+								<div class="col-span-5 ml-4 my-2">
+							        {{ if (eq .Params.mytype "software" ) }}
+							        	<p class="font-semibold">{{ .Title }}
+											<span class="font-normal text-sm">| {{ .Summary }}</span>
+										</p>
+
+										<!-- Links -->
+										<div class="flex flex-row gap-4">
+											{{ range .Params.links }}
+												{{ if (eq .type "code") }}
+													<a href="{{ .url }}" class="text-sm text-blue-600 hover:underline" target="_blank"><i class="fa-solid fa-code"></i> Source Code</a>
+												{{ else if (eq .type "webapp") }}
+													<a href="{{ .url }}" class="text-sm text-blue-600 hover:underline" target="_blank"><i class="fa fa-globe"></i> Web App</a>
+												{{ else if (eq .type "readme") }}
+													<a href="{{ .url }}" class="text-sm text-blue-600 hover:underline" target="_blank"><i class="fa fa-book"></i> Readme</a>
+												{{ else if (eq .type "distribution") }}
+													{{ .content | markdownify }}
+												{{ end }}
+											{{ end }}
+										</div>
+									{{ end }}
+								</div>
+							</div>
+						{{ end }}
+					</div>
+				</div>
+			{{ end }}
+		</div>
+	</div>
+</section>
+
+{{ partial "footer.html" . }}
+{{ end }}
+
+
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Softwares on StatWizard</title>
+    <link>//localhost:1313/softwares/</link>
+    <description>Recent content in Softwares on StatWizard</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 13 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/softwares/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>decompy</title>
+      <link>//localhost:1313/softwares/decompy/</link>
+      <pubDate>Sat, 13 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/decompy/</guid>
+      <description>A Python package containing several robust algorithms for matrix decomposition and analysis.</description>
+    </item>
+    <item>
+      <title>Multi PDF Querybot</title>
+      <link>//localhost:1313/softwares/multi-pdf-querybot/</link>
+      <pubDate>Fri, 10 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/multi-pdf-querybot/</guid>
+      <description>This is a simple application where you can upload a PDF document and chat with LLM using a RAG created via in-memory vector store</description>
+    </item>
+    <item>
+      <title>ChronoModeler</title>
+      <link>//localhost:1313/softwares/chronomodeller/</link>
+      <pubDate>Fri, 16 Jun 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/chronomodeller/</guid>
+      <description>A streamlit application to perform simulation experiments with different models on time series data, using a blueprint based system. Useful for non-stat-savvy people to get quick sense of how modelling works.</description>
+    </item>
+    <item>
+      <title>callgrind-reader</title>
+      <link>//localhost:1313/softwares/callgrind-reader/</link>
+      <pubDate>Tue, 18 Apr 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/callgrind-reader/</guid>
+      <description>An npm package written in typescript to parse callgrind like files and extract profiling metrics from code</description>
+    </item>
+    <item>
+      <title>Pwdmgr</title>
+      <link>//localhost:1313/softwares/password-manager/</link>
+      <pubDate>Sun, 20 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/password-manager/</guid>
+      <description>An open source python application for lightweight password management system through console.</description>
+    </item>
+    <item>
+      <title>rsvddpd</title>
+      <link>//localhost:1313/softwares/rsvddpd-package/</link>
+      <pubDate>Sat, 23 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/rsvddpd-package/</guid>
+      <description>An R package to perform robust singular value decomposition using minimum density power divergence estimator</description>
+    </item>
+    <item>
+      <title>roufcp</title>
+      <link>//localhost:1313/softwares/roufcp/</link>
+      <pubDate>Sun, 04 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/roufcp/</guid>
+      <description>A python package to perform gradual changepoint detection in a time series data using Rough-Fuzzy set theory</description>
+    </item>
+    <item>
+      <title>COVID 19 Tracker</title>
+      <link>//localhost:1313/softwares/covid19-tracker-dashboard/</link>
+      <pubDate>Tue, 02 Jun 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/covid19-tracker-dashboard/</guid>
+      <description>A Dashboard for Prediction and Control assistance and management of resources in view of Covid-19 pandemic, sponsored by IIM, Vishakhapatnam</description>
+    </item>
+    <item>
+      <title>Chatbot with Seq2Seq model</title>
+      <link>//localhost:1313/softwares/seq2seq-chatbot/</link>
+      <pubDate>Fri, 10 Jan 2020 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/seq2seq-chatbot/</guid>
+      <description>A simple Chatbot with Seq2Seq model with Bahadau Attention Mechanism trained on Cornell Movie Corpus dataset.</description>
+    </item>
+    <item>
+      <title>A simple Text Prediction Application</title>
+      <link>//localhost:1313/softwares/text-pred-app/</link>
+      <pubDate>Tue, 13 Nov 2018 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/softwares/text-pred-app/</guid>
+      <description>A simple text prediction application built for Data Science Specialization in Coursera.</description>
+    </item>
+  </channel>
+</rss>

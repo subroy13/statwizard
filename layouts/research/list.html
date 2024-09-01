@@ -10,7 +10,7 @@
 	<img src="/svg/infinityBox.svg" class="w-full max-w-[50px] max-h-[50px]" />
 	</div>
 
-	<div class="max-w-6xl mx-auto mt-8 pt-8 border-t-[1px] border-t-gray-300">
+	<div class="max-w-6xl mx-auto mt-8 mb-8 pt-8 border-t-[1px] border-t-gray-300">
 		<h2 class="italic text-neutral-800">Here is a list of my publications, a few talks and some softwares I have created!</h2>
 
 		<!-- Main content area -->
@@ -88,23 +88,7 @@
 								            </a>
 								            {{ end }}
 							          	</div>
-							        {{ else if (eq .Params.mytype "software" ) }}
-							        	<p class="font-semibold">{{ .Title }}
-											<span class="font-normal text-sm">| {{ .Summary }}</span>
-										</p>
-
-										<!-- Links -->
-										<div class="flex flex-row gap-4">
-											{{ range .Params.links }}
-												{{ if (eq .type "code") }}
-													<a href="{{ .url }}" class="text-sm text-blue-600 hover:underline"><i class="fab fa-github"></i> GitHub</a>
-												{{ else if (eq .type "webapp") }}
-													<a href="{{ .url }}" class="text-sm text-blue-600 hover:underline"><i class="fa fa-globe"></i> Web App</a>
-												{{ else if (eq .type "distribution") }}
-													{{ .content | markdownify }}
-												{{ end }}
-											{{ end }}
-										</div>
+							  
 									{{ end }}
 								</div>
 							</div>

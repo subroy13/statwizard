@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Robust Statistical Inference on StatWizard</title>
-    <link>/tags/robust-statistical-inference/</link>
+    <link>//localhost:1313/tags/robust-statistical-inference/</link>
     <description>Recent content in Robust Statistical Inference on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 20 Apr 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/tags/robust-statistical-inference/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="//localhost:1313/tags/robust-statistical-inference/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Robust and Efficient Estimation in Ordinal Response Models using the Density Power Divergence</title>
-      <link>/research/2024/ordinal-response-model/</link>
+      <link>//localhost:1313/research/ordinal-response-model/</link>
       <pubDate>Sat, 20 Apr 2024 00:00:00 +0000</pubDate>
-      <guid>/research/2024/ordinal-response-model/</guid>
+      <guid>//localhost:1313/research/ordinal-response-model/</guid>
       <description>In real life, we frequently come across data sets that involve some independent explanatory variable(s) generating a set of ordinal responses. In this paper, we explore a minimum distance estimation procedure based on the popular density power divergence (DPD) to yield robust parameter estimates for the ordinal response model.</description>
     </item>
     <item>
       <title>Analysis of the rSVDdpd Algorithm: A Robust Singular Value Decomposition Method using Density Power Divergence</title>
-      <link>/research/2023/rsvddpd-theory/</link>
+      <link>//localhost:1313/research/rsvddpd-theory/</link>
       <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
-      <guid>/research/2023/rsvddpd-theory/</guid>
+      <guid>//localhost:1313/research/rsvddpd-theory/</guid>
       <description>This paper deals with the theoretical aspects of one of my earlier paper introducing rSVDdpd algorithm.</description>
     </item>
     <item>
       <title>Review of Robust Location and Scatter Estimators</title>
-      <link>/research/2022/talk-multivariate-location-scatter/</link>
+      <link>//localhost:1313/research/talk-multivariate-location-scatter/</link>
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>/research/2022/talk-multivariate-location-scatter/</guid>
+      <guid>//localhost:1313/research/talk-multivariate-location-scatter/</guid>
       <description>This is an invited session given to the graduate students of Indian Statistical Insitute, Kolkata in a course on Robust Statistics</description>
     </item>
     <item>
       <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
-      <link>/research/2021/rsvdpd-video-surveillance/</link>
+      <link>//localhost:1313/research/rsvdpd-video-surveillance/</link>
       <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>/research/2021/rsvdpd-video-surveillance/</guid>
+      <guid>//localhost:1313/research/rsvdpd-video-surveillance/</guid>
       <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
     </item>
   </channel>
