@@ -26,6 +26,9 @@
 \setlength{\columnsep}{0mm}
 %----------------------------------------------------------------------------------------
 \usepackage{lipsum}
+\usepackage{enumitem}
+% \usepackage[usenames,dvipsnames]{xcolor}
+% \usepackage{emerald}% for signature font
 
 \begin{document}
 
@@ -33,32 +36,32 @@
 %	TITLE AND CONTACT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\begin{minipage}[t]{0.5\textwidth} 
-	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	
-	{ \fontsize{16}{20} \textcolor{black}{\textbf{\MakeUppercase{Subhrajyoty Roy}}}} % First name
-	
-	\vspace{6pt}
-	
-	{\Large Statistician, Data Scientist, \\ {\small and} Solution Architect Researcher} % Career or current job title
+\begin{minipage}[t]{0.5\textwidth}
+    \vspace{-\baselineskip} % Required for vertically aligning minipages
+
+    { \fontsize{16}{20} {\textbf{\MakeUppercase{Subhrajyoty Roy}}}} % First name
+
+    \vspace{6pt}
+
+    {\Large Research Fellow, Statistics} % Career or current job title
 \end{minipage}
 \hfill
 \begin{minipage}[t]{0.2\textwidth} % 20% of the page width for the first row of icons
-	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	
-	% The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
-	\icon{Globe}{11}{\href{http://www.statwizard.in}{statwizard.in}}\\ 
+    \vspace{-\baselineskip} % Required for vertically aligning minipages
+
+    % The first parameter is the FontAwesome icon name, the second is the box size and the third is the text
+    \icon{GraduationCap}{11}{\href{https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1}{Google Scholar}}\\
     \icon{Phone}{11}{(+91) 80139 76355}\\
     \icon{MapMarker}{11}{Kolkata, India}\\
-	
+
 \end{minipage}
 \begin{minipage}[t]{0.27\textwidth} % 27% of the page width for the second row of icons
-	\vspace{-\baselineskip} % Required for vertically aligning minipages
-	
-	\icon{Envelope}{11}{\href{mailto:roysubhra98@gmail.com}{roysubhra98@gmail.com}}\\	
+    \vspace{-\baselineskip} % Required for vertically aligning minipages
+
+    \icon{Envelope}{11}{\href{mailto:roysubhra98@gmail.com}{roysubhra98@gmail.com}}\\
     \icon{Github}{11}{\href{https://github.com/subroy13}{github.com/subroy13}}\\
-    \icon{LinkedinSquare}{11}{\href{https://www.linkedin.com/subroy13}{/in/subroy13}}\\    
-    
+    \icon{LinkedinSquare}{11}{\href{https://www.linkedin.com/in/subroy13}{/in/subroy13}}\\
+
 \end{minipage}
 
 
@@ -68,33 +71,40 @@
 
 % LEFT PANEL
 \begin{minipage}[t]{0.46\textwidth}
-    \cvsect{Summary}
-	\vspace{-6pt}
- 
+    \cvsect{Interests}
+    \vspace{-6pt}
+
     %Dummy text
-	I am a Solution Architect Researcher with a strong background in Statistics, Machine Learning, System Design and Algorithms development. My speciality lies in transforming business problems into abstraction, comprehending them, building innovative solutions, building robust and scalable systems and validating them with Proof-of-Concepts. \\
+    % My interests include 
+    \begin{itemize}[noitemsep]
+        \item Robust and High-dimensional statistical inference.
+        \item Neural Networks.
+        \item Random Matrices.
+        \item Exploratory Data Analysis.
+    \end{itemize}
+
 \end{minipage}
 \hfill % Whitespace between
 % RIGHT PANEL
 \begin{minipage}[t]{0.46\textwidth}
     \cvsect{Skills}
     \vspace{-6pt}
-    
-    \begin{minipage}[t]{0.2\textwidth}
-        \textbf{Languages:}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[t]{0.73\textwidth}
-        R, Python, SQL, PHP, JavaScript (NestJS, NodeJS, React, NextJS). 
-    \end{minipage}
-    \vspace{4mm}
-    
+
     \begin{minipage}[t]{0.25\textwidth}
-        \textbf{Technologies and Tools:}
+        \textbf{Programming:}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.7\textwidth}
-       AWS (S3, Lambda, ECS, Sagemaker, Bedrock), Docker, MS-Office, \LaTeX
+        R, Python, SQL, PHP, JavaScript (NestJS, NodeJS, React, NextJS).
+    \end{minipage}
+    \vspace{4mm}
+
+    \begin{minipage}[t]{0.25\textwidth}
+        \textbf{Technologies: }
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.7\textwidth}
+        AWS (S3, Lambda, ECS, Sagemaker, Bedrock), Docker, MS-Office, \LaTeX
     \end{minipage}
     \vspace{4mm}
 
@@ -103,9 +113,9 @@
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.75\textwidth}
-       Statistics, Machine Learning, Mathematics, Algorithms, System Architecture Design.
+        Statistics, Machine Learning, Mathematics, Algorithms, System Architecture Design.
     \end{minipage}
-    
+
 \end{minipage}
 
 %----------------------------------------------------------------------------------------
@@ -115,139 +125,32 @@
 \cvsect{Education}
 \begin{entrylist}
     \entry
-		{2021 - Current}
-		{Ph.D. in Statistics (External Research Fellow)}
-		{Indian Statistical Insititute, Kolkata}
-		{Broad area of thesis: Robust Matrix Factorization and High Dimensional Statistical Inference. \\
-        Supervisors: Prof. Ayanendranath Basu and Dr. Abhik Ghosh.}
+    {2021 - Current}
+    {Ph.D. in Statistics (External Research Fellow)}
+    {Indian Statistical Insititute, Kolkata}
+    {Title of thesis: Robust Matrix Factorization using Minimum Distance Estimators: Theory and Applications. \\
+        Supervisors: Ayanendranath Basu and Abhik Ghosh.}
     \entry
-		{2019-2021}
-		{Masters of Statistics (M.Stat.)}
-		{Indian Statistical Insititute, Kolkata}
-		{Grade: $93.8\%$, Specialization: Financial Statistics.}
+    {2019-2021}
+    {Masters of Statistics (M.Stat.)}
+    {Indian Statistical Insititute, Kolkata}
+    {Grade: $93.8\%$, Specialization: Financial Statistics.}
     \entry
-		{2016 - 2019}
-		{Bachelor of Statistics (B.Stat.)}
-		{Indian Statistical Insititute, Kolkata}
-		{Grade: $93.6\%$.}
-	\entry
-		{2014 - 2016}
-		{Higher Secondary (WBCHSE)}
-		{Nimta High School, Kolkata}
-		{Grade: $93.4\%$, District Rank: 2nd.}
-	\entry
-		{2014}
-		{Secondary (WBCSSE)}
-		{Nimta High School, Kolkata}
-		{Grade: $94.57\%$, State Rank: 20th.}
+    {2016 - 2019}
+    {Bachelor of Statistics (B.Stat.)}
+    {Indian Statistical Insititute, Kolkata}
+    {Grade: $93.6\%$.}
+    \entry
+    {2014 - 2016}
+    {Higher Secondary (WBCHSE)}
+    {Nimta High School, Kolkata}
+    {Grade: $93.4\%$, District Rank: 2nd.}
+    \entry
+    {2014}
+    {Secondary (WBCSSE)}
+    {Nimta High School, Kolkata}
+    {Grade: $94.57\%$, State Rank: 20th.}
 \end{entrylist}
-
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCES
-%----------------------------------------------------------------------------------------
-\vspace{-10 pt}
-\cvsect{Experience}
-\begin{entrylist}
-	\entry
-		{July, 2022\\ - Current}
-		{Principal Information Researcher}
-		{SysCloud Pvt. Technologies Ltd.}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item Continuous system improvement, research and new technology development for rapid automation across the company.
-            \item Implementation of several microservices powering the backend of SysCloud's application.
-            \item Implementation of smart search navigation system using Natural Language Processing.
-            \item Research about interesting use-cases of Large Language Models and integration of artificial intelligent systems into the business.
-        \end{itemize}
-        }
-    \entry
-		{July, 2021\\- June, 2022}
-		{Data Scientist}
-		{SysCloud Pvt. Technologies Ltd.}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item Developed models for optimized bidding strategy for Google Ads using reinforcement learning.
-            \item Unified, scalable and robust system architecture development of backup, restore and export of any cloud, resulting in business expansion for 4 new clouds (Quickbooks, Hubspot, Salesforce and Slack).
-        \end{itemize}
-        }
-    \entry
-		{2020\\\footnotesize{May - June}}
-		{Data Scientist Intern}
-		{General Electric (Aviation)}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item Understanding of impact of COVID-19 on Aviation industry with an analysis of historical tweets data using Natural Language Processing.
-        \end{itemize}
-        }
-	\entry
-		{2019\\\footnotesize{May - June}}
-		{Data Scientist Intern}
-		{SysCloud Pvt. Technologies Ltd.}
-		{\vspace{-10pt}
-        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
-            \item Developed a new architecture for G-suite and Office 365 backup and restore with cost optimization and performance efficiency in mind.
-            \item Solving phishing email detection problem using combination of Natural Language Processing and Deep learning.
-        \end{itemize}
-        }
-\end{entrylist}
-
-
-
-%----------------------------------------------------------------------------------------
-%	Accolades
-%----------------------------------------------------------------------------------------
-\cvsect{Accolades}
-\begin{entrylist}
-    \vspace*{-0.5cm}
-    \entry
-        {2023}
-        {AIR 6 at National Eligibility Test (Mathematics)}
-        {Council of Scientific and Industrial Research (CSIR), Govt. of India}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2022}
-        {J. K. Ghosh Memorial Gold Medal}
-        {Indian Statistical Insititute, Kolkata}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2020}
-        {Scaled score 324 at Graduate Record Examination (GRE - General)}
-        {Educational Testing Service (ETS)}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2020}
-        {Nikhilesh Bhattacharya Memorial Gold Medal}
-        {Indian Statistical Insititute, Kolkata}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2020}
-        {D. Basu Memorial Gold Medal}
-        {Indian Statistical Insititute, Kolkata}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2019}
-        {Scaled score 890 (93 percentile) at GRE Mathematics Subject Test}
-        {Educational Testing Service (ETS)}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2018}
-        {Top Quartile Listing at Simon Marais Mathematical Competition}
-        {Australian Mathematical Science Insititute}
-        {}
-    \vspace*{-0.5cm}
-    \entry
-        {2016}
-        {AIR 1 in Undergraduate Entrance Examination}
-        {Insititute of Mathematics and Application, Bhubaneshwar}
-        {}
-\end{entrylist}
-
 
 %----------------------------------------------------------------------------------------
 %	Publications
@@ -257,20 +160,70 @@
 \begin{minipage}{\textwidth}
     \small
     \begin{enumerate}
-        \item Roy, S., Basu, A., \& Ghosh, A. (2023). Robust Principal Component Analysis using Density Power Divergence. \textit{arXiv preprint arXiv:2309.13531}.
-        \item Roy, S., Ghosh, A., \& Basu, A. (2023). Analysis of the rSVDdpd Algorithm: A Robust Singular Value Decomposition Method using Density Power Divergence. \textit{arXiv preprint arXiv:2307.10591}.
-        \item Roy, S., Sarkar, A., Ghosh, A., \& Basu, A. (2023). Breakdown Point Analysis of the Minimum S-Divergence Estimator. \textit{arXiv preprint arXiv:2304.07466.}
+        \item Pyne, A., Roy, S., Ghosh, A., \& Basu, A. (2024). Robust and efficient estimation in ordinal response models using the density power divergence. \textit{Statistics}, 1-40.
+        \item Deb, S., Neves, C., \& Roy, S. (2024). Nonparametric quantile regression for spatio-temporal processes. \textit{arXiv preprint arXiv:2405.13783}.
+        \item Roy, S. (2024). Trustworthy Dimensionality Reduction. \textit{arXiv preprint arXiv:2405.05868}. (\textit{Master's dissertation thesis}).
+        \item Roy, S., Basu, A., \& Ghosh, A. (2023). Robust Principal Component Analysis using Density Power Divergence. \textit{arXiv preprint arXiv:2309.13531}. (currently in review at the \textit{Journal of Machine Learning Research}).
+        \item Roy, S., Ghosh, A., \& Basu, A. (2023). Analysis of the rSVDdpd Algorithm: A Robust Singular Value Decomposition Method using Density Power Divergence. \textit{arXiv preprint arXiv:2307.10591}. (currently in review at \textit{Statistics and Computing}).
+        \item Roy, S., Sarkar, A., Ghosh, A., \& Basu, A. (2023). Breakdown Point Analysis of a General Class of Minimum Divergence Estimator. \textit{arXiv preprint arXiv:2304.07466.} (currently in review at \textit{Bernoulli}).
         \item Bhaduri, R., Roy, S., \& Pal, S. K. (2022). Rough-Fuzzy CPD: a gradual change point detection algorithm. \textit{Journal of Data, Information and Management}, 4(3-4), 243-266.
         \item Ghatak, A., Singh Patel, S., Bonnerjee, S., \& Roy, S. (2022). A generalized epidemiological model with dynamic and asymptomatic population. \textit{Statistical Methods in Medical Research}, 31(11), 2137-2163.
-        \item Pyne, A., Roy, S., Ghosh, A., \& Basu, A. (2022). Robust and efficient estimation in ordinal response models using the density power divergence. \textit{arXiv preprint arXiv:2208.14011.}
-        \item Roy, S., Basu, A., \& Ghosh, A. (2021). A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling. \textit{arXiv preprint arXiv:2109.10680.}
+        \item Roy, S., Basu, A., \& Ghosh, A. (2021). A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling. \textit{arXiv preprint arXiv:2109.10680.} (currently in review at \textit{Statistics and Computing}).
         \item Roy, S., Sengupta, D., Rudra, K., \& Saha, U. S. (2020). Analysis of Pollution Patterns in Regions of Kolkata. \textit{Calcutta Statistical Association Bulletin}, 72(2), 133-170.
         \item Dalal, A., Mukherjee, D., \& Roy, S. (2020). The Information Content of Taster's Valuation in Tea Auctions of India. \textit{arXiv preprint arXiv:2005.02814.}
         \item Bhaduri, R., Bonnerjee, S., \& Roy, S. (2019). Onset detection: A new approach to QBH system. \textit{arXiv preprint arXiv:1908.07409}.
-    \end{enumerate}        
+    \end{enumerate}
 \end{minipage}
 
 
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCES
+%----------------------------------------------------------------------------------------
+% \vspace{-10 pt}
+\cvsect{Industry Experience}
+\begin{entrylist}
+    \entry
+    {July, 2022\\ - Current}
+    {Principal Information Researcher}
+    {SysCloud Pvt. Technologies Ltd.}
+    {\vspace{-10pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
+            \item Continuous system improvement, research and new technology development across the company.
+            \item Implementation of several microservices powering the backend of SysCloud's application.
+            \item Implementation of chatbots, smart search navigation systems using Natural Language Processing and Generative AI.
+        \end{itemize}
+    }
+    \entry
+    {July, 2021\\- June, 2022}
+    {Data Scientist}
+    {SysCloud Pvt. Technologies Ltd.}
+    {\vspace{-10pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
+            \item Developed models for optimized bidding strategy for Google Ads using reinforcement learning.
+            \item Unified, scalable and robust system architecture development of backup, restore and export of any cloud, resulting in business expansion for 4 new clouds (Quickbooks, Hubspot, Salesforce and Slack).
+        \end{itemize}
+    }
+    \entry
+    {2020\\\footnotesize{May - June}}
+    {Data Scientist Intern}
+    {General Electric (Aviation)}
+    {\vspace{-10pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
+            \item Understanding of impact of COVID-19 on Aviation industry with an analysis of historical tweets data.
+        \end{itemize}
+    }
+    \entry
+    {2019\\\footnotesize{May - June}}
+    {Data Scientist Intern}
+    {SysCloud Pvt. Technologies Ltd.}
+    {\vspace{-10pt}
+        \begin{itemize}[noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt, leftmargin=-1pt]
+            \item Developed cost optimization techniques for backup and restore of G-suite and Office 365 files.
+            \item Solving phishing email detection problem using combination of NLP and Deep learning.
+        \end{itemize}
+    }
+\end{entrylist}
 
 
 %----------------------------------------------------------------------------------------
@@ -280,72 +233,139 @@
 \begin{entrylist}
     \vspace{-10pt}
     \entry
-        {2023}
-        {\texttt{callgrid-reader} - A typescript utility package to read, parse and analyze callgrind files for profiling analysis of codes}
-        {\href{https://www.npmjs.com/package/callgrind-reader}{NPM Link}}
-        {}
+    {2023}
+    {\texttt{callgrid-reader} - A typescript utility package to read, parse and analyze callgrind files for profiling analysis of codes}
+    {\href{https://www.npmjs.com/package/callgrind-reader}{NPM Link}}
+    {}
     \vspace{-10pt}
     \entry
-        {2023}
-        {\texttt{decompy} - A Python package implementing several robust matrix and tensor decomposition algorithms}
-        {\href{https://pypi.org/project/decompy/}{PyPI Link}}
-        {}
+    {2023}
+    {\texttt{decompy} - A Python package implementing several robust matrix and tensor decomposition algorithms}
+    {\href{https://pypi.org/project/decompy/}{PyPI Link}}
+    {}
     \vspace{-10pt}
     \entry
-        {2022}
-        {\texttt{roufcp} - A Python package implementing rough-fuzzy set theory based gradual changepoint detection algorithm}
-        {\href{https://pypi.org/project/roufcp/}{PyPI Link}}
-        {}
-        \vspace{-10pt}
+    {2022}
+    {\texttt{roufcp} - A Python package implementing rough-fuzzy set theory based gradual changepoint detection algorithm}
+    {\href{https://pypi.org/project/roufcp/}{PyPI Link}}
+    {}
+    \vspace{-10pt}
     \entry
-        {2021}
-        {\texttt{rsvddpd} - An R package to perform a robust Singular Value Decomposition using Density Power Divergence}
-        {\href{https://cran.r-project.org/web/packages/rsvddpd/index.html}{CRAN Link}}
-        {}
+    {2021}
+    {\texttt{rsvddpd} - An R package to perform a robust Singular Value Decomposition using Density Power Divergence}
+    {\href{https://cran.r-project.org/web/packages/rsvddpd/index.html}{CRAN Link}}
+    {}
     \entry
-        {2020}
-        {COVID-19 Tracker: A Dashboard for prediction and control assistance}
-        {}
-        {Developed a dashboard to visualize Covid-19 situation in different states of India. It dynamically estimates the time varying reproduction rate and prediction of COVID-19 spread for various lockdown scenarios for district levels in India, based on a modified eSIR model. The project was funded by Indian Insititute of Management, Vishakhapatnam.}
+    {2020}
+    {COVID-19 Tracker: A Dashboard for prediction and control assistance}
+    {}
+    {Developed a dashboard to visualize Covid-19 situation in different states of India. It dynamically estimates the time varying reproduction rate and prediction of COVID-19 spread for various lockdown scenarios for district levels in India, based on a modified eSIR model. The project was funded by Indian Insititute of Management, Vishakhapatnam.}
     \entry
-		{2019\\Class Project}
-		{Analysis of Climber's challengens in scaling Mount Rainier}
-		{\href{https://github.com/subroy13/mount-rainier-case-study}{Report Link} }
-		{Modelling of climber's success rate in climbing Mount Rainier based on weather modelling. Modelling of climber's team sizes for insights about mountaineering based local economy.}
+    {2019\\Class Project}
+    {Analysis of Climber's challengens in scaling Mount Rainier}
+    {\href{https://github.com/subroy13/mount-rainier-case-study}{Report Link} }
+    {Modelling of climber's success rate in climbing Mount Rainier based on weather modelling. Modelling of climber's team sizes for insights about mountaineering based local economy.}
     \entry
-		{2019\\Class Project}
-		{An Introduction of Causal Inference using Direct Acyclic Graph}
-		{\href{https://www.statwizard.in/aboutme/causal-dag/final-report.pdf}{Report Link} }
-		{Understanding of the setup and assumptions for causal inference. Estimating effect of interven-
+    {2019\\Class Project}
+    {An Introduction of Causal Inference using Direct Acyclic Graph}
+    {\href{https://www.statwizard.in/aboutme/causal-dag/final-report.pdf}{Report Link} }
+    {Understanding of the setup and assumptions for causal inference. Estimating effect of interven-
         tion using frontdoor and backdoor criterion, simulations and applications to real world datasets to estimate
         causality.}
 \end{entrylist}
 
 
 %----------------------------------------------------------------------------------------
+%	Accolades
+%----------------------------------------------------------------------------------------
+\cvsect{Accolades}
+\begin{entrylist}
+    \vspace*{-0.5cm}
+    \entry
+    {2024}
+    {AWS Cloud Practitioner Certification}
+    {Amazon Web Services (AWS)}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2023}
+    {AIR 6 at National Eligibility Test (Mathematics)}
+    {Council of Scientific and Industrial Research (CSIR), Govt. of India}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2022}
+    {J. K. Ghosh Memorial Gold Medal}
+    {Indian Statistical Insititute, Kolkata}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2020}
+    {Scaled score 324 at Graduate Record Examination (GRE - General)}
+    {Educational Testing Service (ETS)}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2020}
+    {Nikhilesh Bhattacharya Memorial Gold Medal}
+    {Indian Statistical Insititute, Kolkata}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2020}
+    {D. Basu Memorial Gold Medal}
+    {Indian Statistical Insititute, Kolkata}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2019}
+    {Scaled score 890 (93 percentile) at GRE Mathematics Subject Test}
+    {Educational Testing Service (ETS)}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2018}
+    {Top Quartile Listing at Simon Marais Mathematical Competition}
+    {Australian Mathematical Science Insititute}
+    {}
+    \vspace*{-0.5cm}
+    \entry
+    {2016}
+    {AIR 1 in Undergraduate Entrance Examination}
+    {Insititute of Mathematics and Application, Bhubaneshwar}
+    {}
+\end{entrylist}
+
+
+
+%----------------------------------------------------------------------------------------
 %	LANGUAGES
 %----------------------------------------------------------------------------------------
 \vspace{-10 pt}
-	\cvsect{Languages}
-    \vspace{-6pt}
-    
-    \begin{minipage}{0.45\textwidth}
-        \begin{itemize}[noitemsep]
-            \item \textbf{English} - Professional Working proficiency
-            \item \textbf{Hindi} - Professional Working proficiency
-        \end{itemize}    
-    \end{minipage}
-    \hfill
-    \begin{minipage}{0.45\textwidth}
-        \begin{itemize}[noitemsep]
-            \item \textbf{Japanese} - Elementary proficiency
-            \item \textbf{Bengali} - Native proficiency
-        \end{itemize}            
-    \end{minipage}
+\cvsect{Languages}
+\vspace{-6pt}
+
+\begin{minipage}{0.45\textwidth}
+    \begin{itemize}[noitemsep]
+        \item \textbf{English} - Professional Working proficiency
+        \item \textbf{Hindi} - Professional Working proficiency
+    \end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\textwidth}
+    \begin{itemize}[noitemsep]
+        \item \textbf{Japanese} - Elementary proficiency
+        \item \textbf{Bengali} - Native proficiency
+    \end{itemize}
+\end{minipage}
 
 
 %----------------------------------------------------------------------------------------
 
-
+\vspace{2cm}
+\textit{I certify that the information provided in this resume is true and accurate to the best of my knowledge}
+\begin{flushright}
+    --- {\textit{Subhrajyoty Roy}}
+\end{flushright}
 
 \end{document}

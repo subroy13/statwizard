@@ -1,1 +1,12 @@
+# latex files to ignore
 
+*.log
+*.aux
+*.out
+*.toc
+*.bbl
+*.blg
+*synctex.gz
+*.fdb_latexmk
+*.fls
+*.synctex*
