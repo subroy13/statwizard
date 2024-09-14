@@ -888,9 +888,170 @@ The following lemma establishes that this connection between the finiteness of a
 \end{lemma}
 
 \begin{proof}
+    \textbf{$(1) \implies (2)$:} Without loss of generality, assume that $K_1 = 1$. Then,
+    \begin{align*}
+        \E\abs{X}^p
+         & = \int_{0}^\infty \prob(\abs{X}^p > t) dt                                                \\
+         & = \int_{0}^\infty \prob(\abs{X} > s) p s^{p-1} ds,\  \text{ by substitution of } t = s^p \\
+         & \leq \int_{0}^\infty 2e^{-s^2} ps^{p-1} ds                                               \\
+         & = p(p/2 - 1)! \ \text{ as it is Gamma integral }                                         \\
+         & \leq p p^{p/2 - 1} = p^{p/2}.
+    \end{align*}
+    \noindent Therefore, $\norm{X}_{L^p} \leq \sqrt{p}$.
 
+    \textbf{$(2) \implies (3)$:} Without loss of generality, assume $K_2 = 1$. Then,
+    \begin{align*}
+        \E(e^{X^2/100})
+         & = \E\left( \sum_{p=0}^\infty \dfrac{(X^2/100)^p}{p!} \right)   \\
+         & = \sum_{p=0}^\infty \dfrac{1}{p! (100)^p} \E(X^{2p})           \\
+         & \leq \sum_{p=0}^\infty \dfrac{1}{p! (100)^p} (2p)^{p}          \\
+         & \text{ since by Stirling's approximation } p! \geq e^{-p}p^p   \\
+         & \leq \sum_{p=0}^\infty \dfrac{(2p)^p}{(100)^p (p/e)^p}         \\
+         & = \sum_{p=0}^{\infty} \left( \dfrac{2e}{100} \right)^p \leq 2.
+    \end{align*}
+
+    \textbf{$(3) \implies (4)$:} Without loss of generality, assume that $K_3 = 1$. We know that $e^x \leq x + e^{x^2}$ for all $x \in \R$. Therefore,
+    \begin{align*}
+        \E(e^{\lambda X})
+         & \leq \E(\lambda X) + \E(e^{\lambda^2 X^2})                                           \\
+         & = 0 + \left( \E(e^{X^2}) \right)^{\lambda^2}, \ \text{ assume } \abs{\lambda} \leq 1 \\
+         & \leq 2^{\lambda^2} = e^{\lambda^2 \log(2)}.
+    \end{align*}
+
+    \textbf{$(4) \implies (1)$:} Without loss of generality, assume that $K_4 = 1$. Then,
+    \begin{align*}
+        \prob(\abs{X} \geq t)
+         & = \prob(e^{\lambda \abs{x}} \geq e^{\lambda t})                               \\
+         & \leq e^{-\lambda t} \E(e^{\lambda \abs{X}}), \ \text{ by Markov's inequality} \\
+         & \leq e^{-\lambda t} e^{\lambda^2}                                             \\
+         & = e^{-\lambda t + \lambda^2}
+    \end{align*}
+    \noindent Optimizing over $\lambda$, we get $\lambda = t/2$, yielding the bound $e^{-t^2/4}$.
 \end{proof}
 
+\begin{lemmabox}
+    If $X_i$s are independent mean zero sub-Gaussian random variables, then $\norm{\sum_i X_i}_{\psi_2} \leq C \sum_{i=1}^n \norm{X_i}_{\psi_2}$ for some absolute constant $C$.
+\end{lemmabox}
+
+\begin{proof}
+    We will make use of the sub-Gaussian Lemma. Note that,
+    \begin{align*}
+        \E(e^{\lambda \sum_i X_i})
+         & = \prod_{i=1}^n \E(e^{\lambda X_i}), \ \text{ by independence } \\
+         & \leq \prod_{i=1}^n e^{C \norm{X_i}_{\psi_2}^2 \lambda_i^2}      \\
+         & = e^{C \sum_i \norm{X_i}_{\psi_2}^2 \lambda_i^2}.
+    \end{align*}
+    \noindent By equivalence of the sub-Gaussian properties, we get that $\sum_{i} X_i$ is also a sub-Gaussian random variable and that
+    \begin{equation*}
+        \norm{\sum_i X_i}_{\psi_2} \leq C' \sum_{i=1}^n \norm{X_i}_{\psi_2}
+    \end{equation*}
+    \noindent for some constant $C'$.
+\end{proof}
+
+As a result, the Hoeffding's inequality follows for sub-Gaussian random variables as well, because the tail behaviour indicates Gaussianity.
+
+\begin{theorembox}[Hoeffding's inequality for sub-Gaussian random variables]
+    If $X_i$ are independent mean zero sub-Gaussian random variables, then
+    \begin{equation*}
+        \prob\left(\abs{\sum_i X_i} \geq t\right) \leq 2e^{-C t^2/\sigma^2}
+    \end{equation*}
+    \noindent where $\sigma^2 = \sum_{i=1}^n \norm{X_i}_{\psi_2}^2$. This $\sigma^2$ is kind of a proxy for the variance.
+\end{theorembox}
+
+However, it turns out that the sub-Gaussian class is not large enough to capture all kind of random variables that we usually deal with. For example, if $X$ is sub-Gaussian, then $X^2$ is not sub-Gaussian.
+\begin{equation*}
+    \prob(X^2 \geq t) = \prob(\abs{X} \geq \sqrt{t}) \asymp e^{-c(\sqrt{t})^2} = e^{-ct} >> e^{-ct^2}, \ \forall t > 0.
+\end{equation*}
+\noindent The tail in this case is heavier than the Gaussian case, but it still decays exponentially. We call this a \textbf{sub-exponential} random variable.
+
+\subsubsection{Sub-exponential Random Variables}
+
+A similar lemma as before can be stated for sub-exponential random variables.
+
+\begin{lemma}[sub-exponential Lemma]
+    For all random variable $X$, the following the equivalent.
+    \begin{enumerate}
+        \item $\exists K_1$ such that $\prob(\abs{X} \geq t) \leq 2 e^{-t/K_1}$, for all $t > 0$.
+        \item $\exists K_2$ such that $\norm{X}_{L^p} \leq K_2 p$, for all $p \geq 1$.
+        \item $\exists K_3$ such that $\E\exp(\abs{X}/K_3) \leq 2$.
+        \item $\exists K_4$ such that $\E\exp(\lambda X) \leq e^{\lambda^2 K_4^2}$, for all $\abs{\lambda} \leq 1/K_4$.
+    \end{enumerate}
+    \noindent These constants $K_1, \dots, K_4$, are all equivalent to the sub-exponential norm $\norm{X}_{\psi_1}$.
+\end{lemma}
+
+A particular thing to note that is the last bound on the MGF does not hold for all $\lambda$, because the MGF may not converge for all $\lambda$. To understand this, note that
+\begin{equation*}
+    \E(e^{\lambda X})= \int_0^\infty e^{\lambda x} p(x)dx \asymp \int_0^\infty e^{\lambda x}e^{-cx} dx
+\end{equation*}
+\noindent so the integral converges if and only if $\lambda < c$.
+
+Clearly, Hoeffding's inequality does not hold for sub-exponential random variables in general. Since if $n = 1$, we cannot have $\prob(\abs{X} \geq t) \leq e^{-ct^2}$. However, once we accumulate multiple independent $X_i$s, we can still obtain a Gaussian tail behaviour.
+
+\begin{theorembox}[Bernstein's inequality]
+    Let $X_i$s are independent mean zero sub-exponential random variables. Then,
+    \begin{equation*}
+        \prob\left( \abs{\sum_{i=1}^n X_i} \geq t  \right) \leq 2\exp\left[ - C\min\left\{ \dfrac{t^2}{\sigma^2}, \dfrac{t}{K} \right\} \right]
+    \end{equation*}
+    \noindent where $\sigma^2 = \sum_{i=1}^n \norm{X_i}_{\psi_1}^2$ and $K = \max_{i=1}^n \norm{X_i}_{\psi_1}$.
+\end{theorembox}
+
+\subsection{Applications: Part 2}
+
+\subsubsection{Thin Shell Phenomenon}
+
+Consider a Gaussian random vector $g \sim N(0, I_n)$. We expect the samples from this $N(0, I_n)$ to look like the left one, but the actual picture looks like the right one in a high-dimensional space.
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw (-1.5, -1.5) rectangle (1.5, 1.5);
+        \node at (0.9, 0) {$0 \in \R^n$};
+        \node at (0, 0) {$\circ$};
+        \foreach \Point in {(0.1, 0.4), (-0.1, 0.2), (-0.2, -0.1), (-0.2, -0.4), (0.5, 0.7), (0.2, 0.2), (-0.4, -0.8), (-0.4, 0.1), (0, -0.3), (-0.7, -0.2), (0.3, -0.4)}{
+                \node at \Point {\textbullet};
+            }
+
+        \draw (10, 0) circle (1.5);
+        \draw[dotted] (10, 0) circle (1);
+        \foreach \Point in {(10.5, 0.6), (9.7, -0.8), (10.2, -1), (9, -0.1), (9.4, 0.5)}{
+                \node at \Point {\textbullet};
+            }
+    \end{tikzpicture}
+\end{figure}
+
+
+This means the samples concentrate on a thin ring close the to boundary of a the $\sqrt{n}$-ball, instead of concentrating near zero. The next theorem establishes this fact.
+
+\begin{theorembox}
+    For $g \sim N(0, I_n)$, $\prob(0.99\sqrt{n} \leq \norm{g}_2 \leq 1.01\sqrt{n}) \geq 1 - 2e^{-cn}$, for some sufficiently small but absolute constant $c$.
+\end{theorembox}
+
+\begin{proof}
+    Note that,
+    \begin{equation*}
+        \norm{g}_2^2 - n
+        = \sum_{i=1}^n (g_i^2 - 1)
+        = \sum_{i=1}^n (g_i^2 - \E(g_i^2))
+    \end{equation*}
+    \noindent Since the above is a sum of i.i.d. terms, we can apply concentration inequalities. In particular, $g_i$ is sub-Gaussian, so $g_i^2$ is only sub-exponential, hence we need to apply Bernstein's inequality. Using that, we get
+    \begin{equation*}
+        \prob\left( \vert \norm{g}_2^2 - n\vert \geq 0.01n \right) \leq 2 \exp\left[ - c\min\left( \dfrac{n^2}{\sigma^2}, \dfrac{n}{K} \right) \right]
+    \end{equation*}
+    \noindent where
+    \begin{align*}
+        \sigma^2 & = \sum_{i=1}^n \norm{g_i^2 - 1}_{\psi_1} \leq nC                                            \\
+        K        & = \max_{i} \norm{g_i^2 - 1}_{\psi_1} = \norm{g_1^2 - 1}_{\psi_1} (\text{ as i.i.d.}) \leq C
+    \end{align*}
+    \noindent Therefore, we have
+    \begin{equation*}
+        \prob\left( 0.99n \leq \norm{g}_2^2 - n \leq 1.01n \right) \geq 1 - 2e^{-c' n}
+    \end{equation*}
+    \noindent for some $c'$. Now, note that
+    \begin{equation*}
+        \dfrac{\norm{g}_2 - \sqrt{n}}{\sqrt{n}} = \dfrac{\norm{g}_2^2 - n}{\sqrt{n}(\norm{g}_2 + \sqrt{n})} = \dfrac{\leq 0.01n}{\geq \sqrt{n} \times \sqrt{n}} \leq 0.01n,
+    \end{equation*}
+    \noindent Therefore, the result follows.
+\end{proof}
 
 
 
@@ -899,135 +1060,8 @@ The following lemma establishes that this connection between the finiteness of a
 
 
 
-\textbf{Proof:} (1) $\Rightarrow$ (2), WLOG, assume $k_1 = 1$,
-
-Then $\E |X|^p = \int_0^{\infty} \prob(|X|^p > t) dt$ \hspace{2cm} (change of integral lemma)
-
-$= \int_0^{\infty} \prob(|X| > s) ps^{p-1} ds$ \hspace{1.5cm} ($t = s^p \Rightarrow dt = ps^{p-1} ds$)
-
-$\leq \int_0^{\infty} 2e^{-s^2} ps^{p-1} ds = p (\frac{p}{2}-1)!$ \hspace{1cm} (Gamma integral)
-
-$\leq p p^{p/2-1} = p^{p/2}$
-
-$\Rightarrow \|X\|_p = (\E|X|^p)^{1/p} \leq \sqrt{p}$
-
-(2) $\Rightarrow$ (3) WLOG, assume $k_2 = 1$,
-
-$\E(e^{X^2/100}) = \E(\sum_{p=0}^{\infty} \frac{(X^2/100)^p}{p!})$ \hspace{2cm} (Taylor series)
-
-$= \sum_{p=0}^{\infty} \frac{1}{p!} \cdot \frac{1}{(100)^p} \cdot \E(X^{2p}) \leq \sum_{p=0}^{\infty} \frac{1}{(100)^p p!} \cdot (\sqrt{2p})^{2p}$
-
-By Stirling's approx., $p! \geq e^{-p} p^p$
-
-$\Rightarrow \E(e^{X^2/100}) \leq \sum_{p=0}^{\infty} \frac{1}{(100)^p p!} \cdot (\sqrt{2p})^{2p} = \sum_{p=0}^{\infty} (\frac{2e}{100})^p \leq 2$.
-\hspace*{8cm} $< \frac{1}{50}$
-
-(3) $\Rightarrow$ (4) WLOG, $k_3 = 1$, use $e^x \leq x + e^{x^2}$, $\forall x \in \mathbb{R}$
-
-Therefore, $\E e^{\lambda X} \leq \E(\lambda X) + \E(e^{\lambda^2 X^2})$
-\hspace*{4cm} $\downarrow$ \hspace*{1cm} $= 0$
-\hspace*{4cm} $\to \leq (\E e^{X^2})^{\lambda^2}$, if $|\lambda| < 1$
-\hspace*{4cm} $\leq 2^{\lambda^2} = e^{\lambda^2 \log 2}$
-
-(4) $\Rightarrow$ (1) WLOG, $k_4 = 1$
-
-$\prob(|X| > t) = \prob(e^{\lambda X} > e^{\lambda t}) \leq e^{-\lambda t} \E(e^{\lambda X}) \leq e^{-\lambda t} \cdot e^{\lambda^2/2} = \exp(\lambda^2/2 - \lambda t)$
-\hspace*{8cm} (by Markov)
-\hspace*{7cm} minimizing over $\lambda$ yields $\leq e^{-t^2/4}$.
-\hspace*{8cm} ($\lambda = t/2$)
-
-$\bullet$ Since, $\|X\|_{\psi_2} \leftarrow$ Sub-Gaussian norm we have
-for orlicz function $(e^{x^2} - 1)$. So, in the Sub-Gaussian lemma, we can take
-all $k_i$'s as some constant times $\|X\|_{\psi_2}$.
-
-\textbf{Homework:}
-(Classical form of Chernoff bound) Let, $S \sim Bin(N, \mu/N)$. Then $\prob(S > t) < e^{-t}$, $\forall t > e\mu$
-
-\textbf{Proof:} We know from our version, $\prob(S > t) \leq e^{-\mu} (\frac{e\mu}{t})^t$, $\forall t > \mu$.
-
-Since, $t > e\mu \Rightarrow \log t > 2 + \log \mu$
-\hspace*{3cm} $\Rightarrow t \log t > 2t + t \log \mu > 2t + t \log \mu - \mu$
-\hspace*{3cm} $\Rightarrow -t > -\mu + t \log \mu + t - t \log t$
-\hspace*{3cm} $\Rightarrow e^{-t} > e^{-\mu} \cdot \mu^t \cdot e^t \cdot t^{-t} \geq \prob(S > t)$.
-
-\textbf{Proposition:} If $X_i$'s are indep, mean zero, sub-Gaussian, then $\|\sum_{i=1}^N X_i\|_{\psi_2} \leq C \sum_{i=1}^N \|X_i\|_{\psi_2}^2$
-
-\textbf{Proof:} $\E e^{\lambda \sum X_i} = \prod_{i=1}^N \E e^{\lambda X_i} \leq \prod_{i=1}^N e^{ck_i^2 \lambda^2}$
-\hspace*{4cm} $\uparrow$ \hspace*{2cm} $k_i^2 = \|X_i\|_{\psi_2}^2$
-\hspace*{3cm} (independence)
-\hspace*{4cm} $\leq e^{c(\sum_{i=1}^N k_i^2) \lambda^2}$
-
-by equivalence of subgaussian properties, $\sum X_i$ is Sub-Gaussian, \& $\|\sum X_i\|_{\psi_2} \leq C \sum k_i$
-
-Renormalizing this \& using equivalence to tail behaviour, we get
-
-\textbf{Thm:} (Sub-Gaussian Hoeffding lemma) If $X_i$ are indep, mean zero, sub-gaussian, then
-
-$\prob(|\sum_{i=1}^N X_i| > t) \leq 2 \exp(-ct^2/\sigma^2)$, where, $\sigma^2 = \sum_{i=1}^N \|X_i\|_{\psi_2}^2$
-\hspace*{8cm} this is kind of "variance
-\hspace*{8cm} proxy"!
-
-Turns out, sub-gaussian class is not large enough.
-If $X \sim$ sub-gaussian, then, $X^2 \not\sim$ sub-gaussian.
-
-$\prob(X^2 > t) = \prob(|X| > \sqrt{t}) \sim e^{-(\sqrt{t})^2} = e^{-t} \gg e^{-\sqrt{t}}$, $\forall t > 0$
-\hspace*{7cm} heavier than
-
-\section*{Sub-exponential and Thin Shell Phenomenon}
-
-\textbf{Sub-exponential lemma:} $\forall$ r.v. X, the following are equivalent:
-
-(1) $\exists k_1$, $\prob(|X| > t) \leq 2e^{-t/k_1}$, $\forall t > 0$
-
-(2) $\exists k_2$ s.t. $\|X\|_p \leq k_2 p$, $\forall p \geq 1$
-
-(3) $\exists k_3$ s.t. $\E \exp(|X|/k_3) \leq 2$
-\hspace*{4cm} $\longrightarrow$ yields us, $k_3 = \|X\|_{\psi_1}$
-\hspace*{4cm} (sub-exponential norm)
-
-(4) $\exists k_4$ s.t. $\E e^{\lambda X} \leq e^{\lambda^2 k_4^2}$, $\forall |\lambda| \leq \frac{1}{k_4}$
-
-(The last one follows as $\int$ in the MGF, $\E e^{\lambda X} = \int e^{\lambda x} \prob(dx)$
-\hspace*{4cm} $\sim e^{-cx}$
-$\Rightarrow$ This is similar to the Chernoff case,
-near the tails, it follows Gaussian behaviour), (so if $\lambda > c$, the integral
-even if the tail is heavy). \hspace*{4cm} won't converge)
-
-Does Hoeffding's bound hold for sub-exponential $X_i$? $\longrightarrow$ No! If $N=1$, we cannot
-\hspace*{6cm} have,
-Surprisingly, once you accumulate multiple indep $X_i$'s \hspace*{1cm} $\prob(|X| > t) \leq e^{-ct^2}$
-they produce Gaussian tail:
-
-\textbf{Bernstein's inequality:} If $X_i$'s are indep, mean 0, sub-exponential, then,
-
-$\prob(|\sum_{i=1}^n X_i| > t) \leq 2 \exp[-c \cdot \min(\frac{t^2}{\sigma^2}, \frac{t}{K})]$, \hspace*{1cm} (Proof is same
-\hspace*{8cm} as MGF
-where, $\sigma^2 = \sum_{i=1}^n \|X_i\|_{\psi_1}^2$, $K = \max_i \|X_i\|_{\psi_1}$ \hspace*{1cm} method)
-\hspace*{1cm} $\uparrow$ notice $\psi_1$
 
 \textbf{Thin Shell Phenomenon:}
-
-Consider a Gaussian random vector $g \sim N(0, I_n)$
-So, the samples from $N(0, I_n)$ is supposed to look like
-\begin{tikzpicture}
-    \draw (0,0) rectangle (1,1);
-    \node at (0.5,0.5) {$0 \in \mathbb{R}^n$};
-    \draw[->] (1.5,0.5) -- (2,0.5) node[midway,above] {but this};
-    \node[right] at (2,0.5) {is not correct,};
-    \draw[->] (3.5,0.5) -- (4,0.5) node[midway,above] {instead};
-    \node[right] at (4,0.5) {we have...};
-\end{tikzpicture}
-
-\begin{tikzpicture}
-    \draw (0,0) circle (1);
-    \draw[->] (1.2,0) -- (2,0) node[midway,above] {$\sqrt{n}$ ball};
-    \node at (0,0) {$0$};
-\end{tikzpicture}
-
-\hspace*{8cm} The points
-\hspace*{8cm} concentrate
-Thm: For $g \sim N(0, I_n)$ $\prob(\sqrt{n} - 0.99 \leq \|g\|_2 \leq 1.01 \sqrt{n}) \geq 1 - 2e^{-cn}$ \hspace*{0.5cm} in a thin shell
-\hspace*{8cm} near $\sqrt{n}$-ball
 
 Proof: Consider, $\|g\|_2^2 - n = \sum_{i=1}^n (g_i^2 - 1)$ \hspace*{2cm} $g_i =$ coordinate of $g$
 \hspace*{4cm} $= \sum_{i=1}^n (g_i^2 - \E g_i^2) \longrightarrow$ sum of iid terms
