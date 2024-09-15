@@ -820,9 +820,9 @@ To ensure that this definition is valid, we need to show the resulting quantity 
           \end{equation*}
           \noindent To see this, note that
           \begin{align*}
-                         & \E\psi(\abs{X + Y}/k)                                                                                                                                                                                                                                       \\
-              \leq \quad & \E\psi(\abs{X}/k + \abs{Y}/k), \text{ since } \psi \text{ is increasing }                                                                                                                                                                                   \\
-              = \quad    & \E\psi\left( \dfrac{\abs{X}}{\norm{X}_\psi} \dfrac{\norm{X}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} + \dfrac{\abs{Y}}{\norm{Y}_\psi} \dfrac{\norm{Y}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} \right)                                                              \\
+               & \E\psi(\abs{X + Y}/k) \\
+              \leq \quad & \E\psi(\abs{X}/k + \abs{Y}/k), \text{ since } \psi \text{ is increasing } \\
+              = \quad    & \E\psi\left( \dfrac{\abs{X}}{\norm{X}_\psi} \dfrac{\norm{X}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} + \dfrac{\abs{Y}}{\norm{Y}_\psi} \dfrac{\norm{Y}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} \right)
               = \quad    & \dfrac{\norm{X}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} \E\psi\left( \dfrac{\abs{X}}{\norm{X}_\psi} \right) + \dfrac{\norm{Y}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} \E\psi\left( \dfrac{\abs{Y}}{\norm{Y}_\psi} \right), \text{ since } \psi \text{ is convex } \\
               \leq \quad & \dfrac{\norm{X}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} + \dfrac{\norm{Y}_\psi}{\norm{X}_\psi + \norm{Y}_\psi} = 1.
           \end{align*}
@@ -1053,90 +1053,75 @@ This means the samples concentrate on a thin ring close the to boundary of a the
     \noindent Therefore, the result follows.
 \end{proof}
 
+\subsubsection{Dimension Reduction}
+
+Let $x_1, x_2, \dots x_N \in \R^d$ be a set of $d$-dimensional vectors. We want to reduce or translate them into $y_1, y_2, \dots y_N \in \R^n$ where $n << d$ so that the pairwise distances are approximately preserved. Turns out, to do this effectively, we can choose $n$ to be as small as $O(\log N)$. This means, for $N$ datapoints, we can effectively capture them in a $\log(N)$ dimensional vector space without losing pairwise distances. This was proved by Johnson and Linderstrass in 1984.
+
+\begin{theorembox}[Johnson Linderstrass, 1984]
+    For all $x_1, \dots x_N \in \R^d$, there exists a linear map $T: \R^d \rightarrow \R^n$ such that with $n \leq C\log(N)$ for some absolute constant $C$, we have 
+    \begin{equation*}
+        0.99 \norm{x_i - x_j}_2 \leq \norm{T(x_i) - T(x_j)}_2 \leq 1.01 \norm{x_i - x_j}_2,
+    \end{equation*}
+    \noindent for all $i, j = 1, 2, \dots N$. 
+\end{theorembox}
+
+\begin{proof}
+    Choose a random map $T$ corresponding to a random matrix $1/\sqrt{n}G$ where $G$ is a random Gaussian matrix, i.e., $G_{ij} \sim N(0, 1)$. 
+
+    Fix any $z \in \R^d$ such that $\norm{z}_2 = 1$. Then, $Gz \sim N(0, I_n)$. Therefore, by Thin-shell phenomenon, we have 
+    \begin{equation*}
+        \prob\left( 0.99\sqrt{n} \leq \norm{Gz}_2 \leq 1.01 \sqrt{n} \right) \geq 1 - 2e^{-cn}.
+    \end{equation*}
+    \noindent Now for any $i$ and $j$ such that $x_i \neq x_j$, using the above, we have 
+    \begin{align*}
+        & \prob\left( 0.99\sqrt{n} \leq \norm{G\dfrac{(x_i - x_j)}{ \norm{x_i - x_j}_2 } }_2 \leq 1.01 \sqrt{n} \right) \geq 1 - 2e^{-cn}\\
+        \implies & \prob\left( 0.99\norm{x_i - x_j}_2 \leq \norm{T(x_i) - T(x_j)}_2 \leq 1.01 \norm{x_i - x_j}_2 \right) \geq 1 - 2e^{-cn}
+    \end{align*}
+    \noindent Now, an application of union bound reveals that, the probability that the above event happens for all pair of points $x_i$ and $x_j$, is at least $1 - 2N^2 e^{-cn}$. By choosing $n = 4\log(N)/c$, we get that the lower bound is at least $1 - 2/N^2$, which is positive for all $N > 2$. 
+
+    This means, the probability that a random map will satisfy the criterion is strictly positive, hence there exists such a projection that preserves the pairwise distances approximately.
+\end{proof}
+
+\subsection{Combinatorial Optimization}
+
+Combinatorial optimizations refer to the class of optimization problems that usually requires integer or natural number solutions, also sometimes restricted to have a upper bound or lower bound limits, or takes values in a finite set. Let us look at a few example problems.
+
+\begin{example}
+    Given a list of numbers $\{ a_i \}_{i=1}^n$, find the maximum possible value of $\sum_{i=1}^n a_i x_i$ subject to the restriction that $x_i \in \{ +1, -1 \}$. This is a linear objective function, and there exists a direct solution by taking $x_i = \text{sign}(a_i)$.
+\end{example}
+
+\begin{example}
+    Given a list of numbers $\{ a_{ij} \}_{i,j=1}^n$, find the maximum possible value of $\sum_{i=1}^n\sum_{j=1}^n a_{ij} x_iy_j$ subject to the restriction that $x_i \in \{ +1, -1 \}, y_j \in \{ +1, -1\}$. This is a quadratic objective function. Turns out this is an NP-hard problem. Even if we restrict $x_i = y_i$, the problem still remains NP-hard.
+\end{example}
+
+Therefore, we should look at some kind of relaxation in order to be able to solve this problem efficiently. 
+
+\begin{enumerate}
+    \item \textbf{Spectral Relaxation:} Currently, we need to optimize over the boolean cube $\{-1, +1\}^n$. Instead, we can optimize this over the $\sqrt{n}$-ball $B(0, \sqrt{n})$. This allows us to algebraic manipulation to use theories of vector space. In particular, note that 
+    \begin{equation*}
+        \max_{x \in \{-1, +1\}^n} \sum_{i,j} a_{ij}x_i x_j \leq \max_{\norm{x} \leq \sqrt{n}} \sum_{i,j} a_{ij}x_ix_j = (\sqrt{n})^2 \max_{\norm{x} \leq 1} x\tr Ax = n \lambda_1(A)
+    \end{equation*}
+    \noindent and the maximizing $x$ is the eigenvector of $A$ corresponding to the largest eigenvalue. Here, we optimize an upper bound instead of the original objective function. However, using the upper bound allows us to apply Spectral theory and find a solution analytically. To get a proper solution to the boolean cube, we can then take $x_i = \text{sign}(e_{1i}(A))$, i.e., the signs of the coordinates of the first eigenvetor $e_1(A)$.
+    \item \textbf{Semi-definite programming:} The other relaxation is to reparametrize the system bringing in new variables $z_{ij} = x_i x_j$ which leads to the linear objective function $\sum_{i,j}a_{ij}z_{ij}$, which is easy to solve. However, the matrix $Z$ comprising of the elements $z_{ij}$ need to satisfy a few broad conditions:
+    \begin{enumerate}
+        \item $Z$ is symmetric, since $z_{ij} = x_i x_j = x_j x_i = z_{ji}$.
+        \item $Z_{ii} = x_i^2 = 1$, i.e., the diagonals are equal to $1$.
+        \item $Z$ is positive definite.
+    \end{enumerate}
+    \noindent Therefore, one can consider a relaxed version of the problem with new parameter $z_{ij}$ where $Z$ satisfy the above conditions, and the objective function becomes linear. Moreover, the constraints lead to a convex set hence the entire system can be efficiently solved by using convex programming.
+\end{enumerate}
+
+Now, we present a few small applications where this kind of combinatorial optimization problem may appear.
+
+
+
+
+
+
 
 
 \pagebreak
 \sr{CHECK FROM HERE}
-
-
-
-
-\textbf{Thin Shell Phenomenon:}
-
-Proof: Consider, $\|g\|_2^2 - n = \sum_{i=1}^n (g_i^2 - 1)$ \hspace*{2cm} $g_i =$ coordinate of $g$
-\hspace*{4cm} $= \sum_{i=1}^n (g_i^2 - \E g_i^2) \longrightarrow$ sum of iid terms
-
-$g_i^2$ is sub-exponential
-
-So, we apply Bernstein's ineq., $\prob(|\|g\|_2^2 - n| \geq 0.01 n) \leq 2e^{-c \min(\frac{n^2}{\sigma^2}, \frac{n}{K})}$
-
-$\sigma^2 = \sum_{i=1}^n \|g_i^2 - 1\|_{\psi_1} \leq n C$, and, $K = \max_i \|g_i^2 - 1\|_{\psi_1} = \|g_1^2 - 1\|_{\psi_1} \leq C$
-\hspace*{8cm} $\uparrow$
-\hspace*{8cm} Since iid
-
-Therefore, $\prob(0.99 n \leq \|g\|_2^2 \leq 1.01 n) \geq 1 - 2e^{-c \min(\frac{n^2}{Cn}, \frac{n}{C})} \geq 1 - 2e^{-cn}$
-\hspace*{2cm} $\underbrace{\text{take square root now,}}$
-\hspace*{2cm} \& get another constant
-
-\section*{Dimension Reduction}
-
-Let $x_1, x_2, \ldots, x_N \in \mathbb{R}^n$ be given map to $\mathbb{R}^m$, $m \ll n$
-where we preserve the pairwise distances (approximately)
-Is it possible with $m = O(\log N)$?
-
-\textbf{Thm} (Johnson - Lindenstrauss lemma, 1984) $\forall x_1, \ldots, x_N \in \mathbb{R}^d$, $\exists$ a linear map $T$:
-$T: \mathbb{R}^d \to \mathbb{R}^m$, such that, $m < C \log N$, and,
-$0.99 \|x_i - x_j\|_2 \leq \|T(x_i) - T(x_j)\|_2 \leq 1.01 \|x_i - x_j\|_2, \forall i,j=1,2,\ldots,N$
-
-\textbf{Proof:} Choose a random map, say, matrix corresponding to $T$ is, $G_i$, with $G_{ij} \stackrel{iid}{\sim} N(0,1)$
-
-$m \begin{bmatrix} G \end{bmatrix}_d = \begin{bmatrix} I \end{bmatrix}_m$ \hspace{2cm} Fix any $z \in \mathbb{R}^d$, s.t. $\|z\|_2 = 1$.
-
-\hspace{4cm} Then, $Gz \sim N(0,I_m)$, as, $(Gz)_i = \sum_{j=1}^d G_{ij} z_j$
-\hspace{7cm} $\sim N(0, \sum_{j=1}^d z_j^2) = N(0,1)$
-
-By thin shell theorem:
-$\prob(0.99 \sqrt{m} \leq \|Gz\|_2 \leq 1.01 \sqrt{m}) \geq 1 - 2e^{-cm}$ \hspace{2cm} (1)
-
-Now for any $i,j$, using (1), we have, $\prob(0.99 \sqrt{m} \leq \|G(\frac{x_i-x_j}{\|x_i-x_j\|_2})\|_2 \leq 1.01 \sqrt{m}) \geq 1 - 2e^{-cm}$
-
-$\Rightarrow \prob(0.99 \sqrt{m} \|x_i-x_j\|_2 \leq \|T(x_i)-T(x_j)\|_2 \leq 1.01 \sqrt{m} \|x_i-x_j\|_2) \geq 1 - 2e^{-cm}$
-
-$\Rightarrow$ By union $\forall i,j$ pairs,
-bound, \hspace{4cm} where, $T = \frac{1}{\sqrt{m}} G$.
-
-$\prob(\forall i,j, 0.99 \|x_i-x_j\|_2 \leq \|T(x_i)-T(x_j)\|_2 \leq 1.01 \|x_i-x_j\|_2) \geq 1 - 2N^2e^{-cm}$
-\hspace{7cm} $= 1 - 2\exp(-cm+2\log N)$
-
-Choose $cm = 4\log N$, so to get, $\geq 1 - 2\exp(-2\log N) = 1 - \frac{2}{N^2} > 0$, if $N \geq 2$
-
-$\Rightarrow m = \frac{4}{c}\log N = O(\log N)$.
-
-$\Rightarrow \exists$ a map for which this holds deterministically.
-
-\textbf{Obs:}
-$\Rightarrow$ The std $\sigma(X)$ captures only "2nd moment" \& average spread, while Sub-Gaussian
-norm captures all moments, MGF, etc. This exercise shows Sub-Gauss.
-norm dominates $\sigma(X)$ but not other way around.
-
-$\Rightarrow$ Let, $X$ be sub-gaussian, \& assume $\E X = 0$. WLOG.
-\hspace{7cm} $\to$ absolute
-Then, $\sigma(X) = (\E X^2)^{1/2} = \|X\|_2 \leq \sqrt{2} K_2 \|X\|_{\psi_2} \leq C \|X\|_{\psi_2}$
-
-$\Rightarrow$ Let, $X \sim N(\mu, \sigma^2)$, then, $\sigma(X) = \sigma$, and, let $\|X\|_{\psi_2} = K$ \hspace{1cm} (*)
-
-Then, $\E(e^{X^2/K^2}) \leq 2 \Rightarrow \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sigma} e^{x^2/K^2} \cdot e^{-x^2/2\sigma^2} dx < 2 \Rightarrow \frac{\sigma^2}{K^2} < \frac{1}{2\sigma^2}$
-\hspace{8cm} $\Rightarrow K^2 > 2\sigma^2$
-
-$\Rightarrow K = \sqrt{2}\sigma$ works.
-
-$\Rightarrow \|X\|_{\psi_2} \leq \sqrt{2}\sigma = 4$ \hspace{1cm} $\boxed{\|X\|_{\psi_2} \leq C \sigma(X)}$ $\to$ in this case reverse
-\hspace{5cm} $\uparrow$ (*) \hspace{2cm} inequality holds
-
-$\Rightarrow$ But consider, $X \sim Poisson(\lambda)$
-$\|X\|_{\psi_2} = \infty$, as it is not sub-gaussian
-\hspace{3cm} So, we do not have (*).
-But, $Var(X) = \lambda \Rightarrow \sigma(X) = \sqrt{\lambda} < \infty$,
 
 
 
