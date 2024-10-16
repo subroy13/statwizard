@@ -1082,9 +1082,9 @@ Let $x_1, x_2, \dots x_N \in \R^d$ be a set of $d$-dimensional vectors. We want 
     This means, the probability that a random map will satisfy the criterion is strictly positive, hence there exists such a projection that preserves the pairwise distances approximately.
 \end{proof}
 
-\subsection{Combinatorial Optimization}
+\section{Combinatorial Optimization}
 
-Combinatorial optimizations refer to the class of optimization problems that usually requires integer or natural number solutions, also sometimes restricted to have a upper bound or lower bound limits, or takes values in a finite set. Let us look at a few example problems.
+Combinatorial optimizations refer to the class of optimization problems that usually requires integer or natural number solutions, also sometimes restricted to have an upper bound or lower bound limit, or takes values in a finite set. Let us look at a few example problems.
 
 \begin{example}
     Given a list of numbers $\{ a_i \}_{i=1}^n$, find the maximum possible value of $\sum_{i=1}^n a_i x_i$ subject to the restriction that $x_i \in \{ +1, -1 \}$. This is a linear objective function, and there exists a direct solution by taking $x_i = \text{sign}(a_i)$.
@@ -1111,84 +1111,592 @@ Therefore, we should look at some kind of relaxation in order to be able to solv
     \noindent Therefore, one can consider a relaxed version of the problem with new parameter $z_{ij}$ where $Z$ satisfy the above conditions, and the objective function becomes linear. Moreover, the constraints lead to a convex set hence the entire system can be efficiently solved by using convex programming.
 \end{enumerate}
 
-Now, we present a few small applications where this kind of combinatorial optimization problem may appear.
+\noindent Now, we present a few small applications where this kind of combinatorial optimization problem may appear.
+
+\textbf{Ising Model:} Ising model is a model to explain electromagnetism. According to this model, every atom has a spin or polarity. When electricity is passed through the object, the polarity of the atoms of that object lines up together, and the overall magnetism property starts building up. Let $x_i$ be the state of the $i$-th atom (i.e., $+1$ or $-1$, depending on the polarity of the atom), and let $a_{ij}$ be the interaction strength between atom $i$ and atom $j$ (which is reciprocal of the squared distance between atom $i$ and atom $j$). Then, the overall energy of the system is given by the Hamiltonian,
+\begin{equation*}
+    H(x) = \sum_{i,j} a_{ij}x_i x_j,
+\end{equation*}
+\noindent which is also called free energy. Given a material, the objective is to find the maximum energy or magnetism possible.
+
+\textbf{Clustering of Points:} Let $v_1, v_2, \dots v_n \in \R^d$ be points, and let $a_{ij} = \norm{v_i - v_j}_2$. We want to cluster these points. Let, $x_i$ be a quantity that takes values $+1$ or $-1$ depending on which cluster the point $v_i$ is in. Now, the core objective of the clustering should be, 
+\begin{enumerate}
+    \item If $x_ix_j = 1$, then $a_{ij}$ should be small since both $v_i$ and $v_j$ belongs to the same cluster.
+    \item If $x_i x_j = -1$, then $a_{ij}$ would be large as they belong to the different clusters.
+\end{enumerate}
+\noindent Therefore, the objective is to minimize the objective function
+\begin{multline*}
+    \min_{x_i \in \{ -1, +1\}} \sum_{i,j}a_{ij}x_i x_j = \sum \text{distance in cluster 1} + \sum \text{distance in cluster 2}\\
+    - \sum \text{distance between clusters}
+\end{multline*}
+\noindent Frieze-Jerrum (1997) generalizes the same idea for multiple clusters and solves it.
+
+\textbf{Max-cut of a graph:} Given a graph $G = (V, E)$, the max cut problem aims to find two disjoint partitions $V_1$ and $V_2$ of the vertex set $V$ such that the \# of edges between $V_1$ and $V_2$ are largest possible. Therefore, the maximum cut objective function is
+\begin{equation*}
+    \textbf{Max cut of } G = \max_{V = V_1 \cup V_2} \vert E(V_1, V_2)\vert.
+\end{equation*}
+\noindent To solve this, consider the adjacency matrix $A$ such that $a_{ij} = \bb{1}((i, j) \in E)$. Let, $x_i = 1$ if the vertex $i$ is in $V_1$, otherwise it is $(-1)$. Therefore,
+\begin{equation*}
+    (1 - x_i x_j) = \begin{cases}
+        2 & \text{ if } (i, j) \in E(V_1, V_2)\\
+        0 & \text{ otherwise }
+    \end{cases}
+\end{equation*}
+\noindent So, $E(V_1, V_2)$ is the number of edges between crossing over two partitions and is given by $\sum_{i,j} a_{ij}(1 - x_ix_j)/4$. 
 
 
+Now that we have seen some applications where this combinatorial problem is applicable, and also seen how we can create a relaxation of this, let us try to solve the relaxed problem. We will show that in certain cases, the solution to the relaxed version is not very far from the largest value of the quadratic forms.
 
+\begin{definitionbox}[Gram Matrix]
+    The gram matrix of the vectors $v_1, v_2, \dots v_n \in \R^d$ is a $n\times n$-matrix with entries $\inner{v_i, v_j}$. 
+\end{definitionbox}
 
+\begin{lemmabox}
+    For any $n \times n$ positive semi-definite matrix, there exists a choice of vectors $v_1, v_2, \dots v_n$ such that it can be written as a Gram matrix of this set of vectors.
+\end{lemmabox}
+
+\begin{proof}
+    The proof follows easily from the Cholesky decomposition of the p.d. matrix.
+\end{proof}
+
+Using this lemma along with the semi-definite relaxation, we can write the matrix $Z$ as a Gram matrix, so that $z_{ij} = \inner{v_i, v_j}$. Also, we need $z_{ii} = 1 = \norm{v_i}_2^2$, i.e., the vectors $v_1, \dots v_n$ are unit vectors. Therefore, the objective becomes
+\begin{equation*}
+    \max_{z_{ij}} \sum_{i,j} a_{ij} z_{ij} = \max_{v_i \in \R^n, \norm{v_i} = 1} \sum_{i,j} a_{ij}\inner{v_i, v_j}
+\end{equation*}
+\noindent Compare this to the original combinatorial problem
+\begin{equation*}
+    \max_{x_i \in \{ -1, +1\} } \sum_{i,j} a_{ij}x_i x_j.
+\end{equation*}
+\noindent One may think of these $x_i$s as unit vectors in $\R^1$ instead of $v_i \in \R^n$.
+
+\begin{note}
+    It says that the semi-definite relaxation of the optimization problem replaces that one-dimensional vectors with $n$-dimensional vectors, (apparently that would have made things more difficult, but this is not the case here).
+\end{note}
+
+Now, given a solution to the SDP (semi-definite problem), we can get back the original $x_i$ and $x_j$ but probably clustering the original vectors $v_i$s together. Ideally, we should have a clustering of the vectors as follows. Then, we can draw a line to separate them, that accordingly we can pick $x_i$ and $x_j$. If the separation vector is $v$, then we would be looking at $x_i := \text{sign}(\inner{v, v_i})$. 
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \draw[thin,gray!40] (-2,-2) grid (2,2);
+        \draw[->] (0, 0)--(1.2, 0.9);
+        \draw[->] (0, 0)--(1.3, 0.8);
+        \draw[->] (0, 0)--(1.4, 1);
+        \draw[->] (0, 0)--(-1.2, -0.3);
+        \draw[->] (0, 0)--(-1.3, -0.2);
+        \draw[->] (0, 0)--(-1.4, -0.3);
+        \draw[line width=2pt,blue] (-1, 1)--(1, -1);
+        \node at (1.5, 1.5) {$+1$};
+        \node at (-1.5, -1) {$-1$};
+    \end{tikzpicture}
+\end{figure}
+
+\noindent Turns out, even a randomized cut (the algorithm is called \textbf{Randomized Rounding}), also works equally well in most cases. This means, we simply that $g \sim N(0, I_n)$, a randomly distributed Gaussian vector, and use the mapping $v \rightarrow \text{sign}(\inner{v, g})$ to get the solution.
+
+\begin{lemmabox}[Grothendieck's identity]
+    For any vectors $u, v \in \R^n$, such that $\norm{u} = \norm{v} = 1$, and a random vector $g \sim N(0, I_n)$, the following holds:
+    \begin{equation*}
+        \E \text{sign}(\inner{u, g})\text{sign}(\inner{v, g}) = \dfrac{2}{\pi}\sin^{-1}(\inner{u, v})
+    \end{equation*}
+\end{lemmabox}
+\begin{proof}
+    Note that, if $\theta = g/\norm{g}$, then $\theta$ is a random vector uniformly distributed on the unit $n$-dimensional hypersphere. Let $P$ be the plane on which both the vectors $u$ and $v$ reside. Since $S \cap P$ is the unit circle, $\theta$ restricted to $P$ becomes uniformly distributed on a unit circle.
+
+    Hence, it is enough to restrict the problem to the plane $P$ since none of the inner product changes because of that. Therefore, essentially it is enough to prove the above for only $n = 2$ case.
+
+    Let us now assume $u, v \in \R^2$ and $\theta$ is a uniformly distributed vector on the unit circle. Let's try to find out the region on the choice of $\theta$ for which we have $\text{sign}(\inner{u, \theta}) = 1$, i.e., it is the region where $\inner{u, \theta} > 0$. This means, we need to look at the perpendicular line $u^{\perp}$, and the region on the side of $u$ is this particular region where $\inner{u,\theta} > 0$. 
+
+    \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}
+            % Draw the unit circle
+            \draw[thick] (0,0) circle (3);
+            
+            % Draw vector u and v
+            \draw[->, thick, red] (0,0) -- (2.5, 1) node[anchor=west] {$\mathbf{u}$};
+            \draw[->, thick, blue] (0,0) -- (-1.5, 2) node[anchor=south] {$\mathbf{v}$};
+            
+            % Shaded region where <u, x> > 0
+            \fill[red, opacity=0.2] (0,0) -- (1.2, -2.75) arc (-67:113:3) -- cycle;
+            \node at (3.5, 2) [red] {$\langle \mathbf{u}, \mathbf{\theta} \rangle > 0$};
+            
+            % Shaded region where <v, x> > 0
+            \fill[blue, opacity=0.2] (0,0) -- (-2.8, -1.2) arc (203:33:3) -- cycle;
+            \node at (-3, -1.5) [blue] {$\langle \mathbf{v}, \mathbf{\theta} \rangle > 0$};
+        \end{tikzpicture}
+    \end{figure}
+
+    By using this idea, we note that,
+    \begin{equation*}
+        \text{sign}(\inner{u, \theta})\text{sign}(\inner{v, \theta}) = \begin{cases}
+            1 & \text{ where } \theta \in [-v^\perp, u^\perp] \cup [v^\perp, -u^\perp]\\
+            (-1) & \text{ where } \theta \in [u^\perp, v^\perp] \cup [-u^\perp, -v^\perp].
+        \end{cases}
+    \end{equation*}
+    \noindent Let, $\alpha$ be the angle between $u$ and $v$. Then,
+    \begin{align*}
+        \E\text{sign}(\inner{u, \theta})\text{sign}(\inner{v, \theta}) 
+        & = \dfrac{1}{2\pi} \text{arclength}\left( 2 \times (2(\pi/2 - \alpha) + \alpha) - (2\pi - 2\times (2(\pi/2 - \alpha) + \alpha)) \right)\\
+        & = \dfrac{1}{2\pi} \text{arclength}\left( 2\pi - 2\alpha - (2\pi - (2\pi - 2\alpha)) \right)\\
+        & = \dfrac{1}{2\pi}\text{arclength}(2\pi - 4\alpha)\\
+        & = 1 - \dfrac{4}{2\pi}\cos^{-1}(\inner{u, v})\\
+        & = \dfrac{2}{\pi}\sin^{-1}(\inner{u, v})
+    \end{align*}
+\end{proof}
+
+\begin{theorembox}[Goeman and Williamson's algorithm]
+    The expected cut based on the randomized rounding partition of the solution to the SDP problem is at least $0.878$ times of the solution to the max-cut problem. 
+\end{theorembox}
+
+\begin{proof}
+    The expected cut for a graph $G$ with partitions given by $x_i$s, we have 
+    \begin{align*}
+        \text{Expected cut} 
+        & = \E\left( \dfrac{1}{4} \sum_{i,j}a_{ij}(1 - x_i x_j) \right)\\
+        & = \dfrac{1}{4}\sum_{i,j}a_{ij}(1 - \E x_i x_j)\\
+        & = \dfrac{1}{4}\sum_{i,j} a_{ij}(1 - \E\text{sign}(\inner{v_i, g})\text{sign}(\inner{v_j, g}))\\
+        & = \dfrac{1}{4}\sum_{i,j}a_{ij}(1 - 2/\pi \sin^{-1}(\inner{v_i, v_j})), \ \text{ by Grothendieck's identity}\\
+        & = \dfrac{1}{4}\sum_{i,j} a_{ij} \dfrac{2}{\pi} \cos^{-1}(\inner{v_i, v_j})\\
+        & \geq \dfrac{1}{4}\sum_{i,j} a_{ij} \times 0.878 (1 - \inner{v_i, v_j}), \ \text{ by linearization of arc cosine function}\\
+        & \qquad \text{ since } 2/\pi\cos^{-1}(\theta) \geq 0.878(1- \theta)\\
+        & = 0.878 \times \left( \dfrac{1}{4}\sum_{i,j}a_{ij}(1 - \inner{v_i, v_j}) \right)\\
+        & = 0.878 \times \text{SDP}(G) \geq 0.878 \times \text{Max cut}(G)
+    \end{align*}
+\end{proof}
+
+While the above shows that the randomized rounding algorithm does not lose much in terms of tightness, one crude step we use here is that the maximum value of the SDP is at least as large as the maximum value of the original max-cut problem. The below result shows the reverse inequality up to a scaling factor to show that this relaxation is not too bad.
+
+\begin{theorembox}[Grothendieck's inequality (1953)]
+    For any $a_{ij}$ and any dimension $d$, we have
+    \begin{equation*}
+        \max_{u_i, v_j \in \R^d, \norm{u_i} = \norm{v_j} = 1} \sum_{i,j}a_{ij}\inner{u_i, v_j} \leq 1.782 \times \max_{x_i, y_j \in \{+1, -1\} }\sum_{i,j} a_{ij}x_i y_j
+    \end{equation*}
+\end{theorembox}
+\begin{proof}
+    The proof uses two techniques: First, a randomized rounding process. Second, a kernel trick to reach the intended nonlinearity to apply Grothendieck's lemma.
+
+    Suppose there exists two function $\phi, \psi$ such that 
+    \begin{equation*}
+        \inner{\phi(u), \psi(v)} = \sin\left( \dfrac{\beta \pi}{2}\inner{u,v} \right), \ \text{ where } \beta = \dfrac{2}{\pi}\ln(1+\sqrt{2}).
+    \end{equation*}
+    \noindent Then by Grothendieck's identity, we have
+    \begin{equation*}
+        \E\text{sign}(\inner{\phi(u_i), g})\text{sign}(\inner{\psi(v_j), g}) = \dfrac{2}{\pi}\sin^{-1}\left( \inner{\phi(u_i), \psi(v_j)} \right) = \beta\inner{u_i, v_j}.
+    \end{equation*}
+    \noindent Therefore,
+    \begin{align*}
+        \sum_{i,j}a_{ij}\inner{u_i, v_j}
+        & = \dfrac{1}{\beta} \sum_{i,j} a_{ij} \E\text{sign}(\inner{\phi(u_i), g})\text{sign}(\inner{\psi(v_j), g})\\
+        & = \dfrac{1}{\beta} \E\left( \sum_{i,j} a_{ij}x_i^\ast y_j^\ast \right), \text{ where } x_i^\ast, y_j^\ast \in \{ -1, +1 \}\\
+        & \leq \dfrac{1}{\beta} \max_{x_i, y_j \in \{-1, +1\} } \sum_{i,j} a_{ij}x_i y_j, \ \text{ and } 1/\beta = 1.782
+    \end{align*}
+    \noindent Taking maximum on the left-hand side now completes the solution.
+\end{proof}
+
+Now, the proof relies on the existence of $\beta, \phi$ and the $\psi$ functions. So, we will show the existence of these feature maps using tensor calculus. We shall do this in several steps.
+
+\begin{enumerate}
+    \item Let $u \in \R^n$. Then define tensor product $u \otimes u = [u_iu_j]_{i,j=1}^{n} = uu\tr \in \R^{n^2}$. Note that,
+    \begin{equation*}
+        \inner{u \otimes u, v\otimes v} = \sum_{i,j} u_i u_j v_i v_j = (\sum_i u_i v_i)(\sum_j u_j v_j) = \inner{u,v}^2.
+    \end{equation*}
+    \item Note that, similarly define $u \otimes u \otimes u$ to be the 3d-tensor with entries $u_iu_ju_k$ for all possible values of $(i,j,k)$. Similar to above, $\inner{u \otimes u\otimes u, v\otimes v \otimes v} = \inner{u,v}^3$. In general,
+    \begin{equation*}
+        \inner{u^{\otimes k}, v^{\otimes k}} = \inner{u, v}^k, \text{ for any } k \geq 1.
+    \end{equation*}
+    \item For any two vectors $u \in \R^n$ and $v \in \R^m$ ($m$ may be different from $n$), define the direct sum of them as 
+    \begin{equation*}
+        u \oplus v = [u_1, \dots, u_n, v_1, \dots, v_m] \in \R^{m+n}.
+    \end{equation*}
+    \noindent This helps us build,
+    \begin{equation*}
+        \inner{u \oplus v, x \oplus y} = \inner{u, x} + \inner{v, y}, \text{ provided the dimensions match}
+    \end{equation*}
+    \item Therefore, by combining the above two procedures (tensor product and direct sum), we can build any polynomial of the inner products. In case we want a negative coefficient, it is possible to do so by carefully choosing $\phi$ and $\psi$ to be different in one coordinate on the polynomial. For example, if we want to build $2\inner{u, v} + 3\inner{u,v}^2 - 5\inner{u, v}^3$, we take
+    \begin{align*}
+        \phi(u) & = \sqrt{2}u \oplus \sqrt{3}u^{\otimes 2} \oplus \sqrt{5}u^{\otimes 3} \in \R^{n + n^2 + n^3}\\
+        \psi(v) & = \sqrt{2}v \oplus \sqrt{3}v^{\otimes 2} \oplus (-\sqrt{5})v^{\otimes 3} \in \R^{n + n^2 + n^3}
+    \end{align*}
+    \item For all real analytic function $f(x) = \sum_{k=0}^\infty c_k x^k$, we can now obtain feature maps $\phi$ and $\psi: \R^d \rightarrow L^2$ such that $\inner{\phi(u), \psi(v)} = f(\inner{u, v})$. Moreover, $\norm{\phi(u)}_2^2 = \norm{psi(v)}_2^2 = \sum_{k=0}^\infty \abs{c_k}$. For the sine function,
+    \begin{align*}
+        & f(x) = \sin(cx) = cx - \dfrac{(cx)^3}{3!} + \dfrac{(cx)^5}{5!} \dots \\
+        \implies & \norm{\phi} = \sum_{k=0}^{\infty} = c + \dfrac{c^3}{3!} + \dfrac{c^5}{5!} + \dots = (e^c - e^{-c})/2 := 1, \ \text{ we want it to map to unit vector}\\
+        \implies & c = \ln(1 + \sqrt{2}) := \dfrac{\beta \pi}{2}\\
+        \implies & \beta = \dfrac{2}{\pi}\ln(1 + \sqrt{2})
+    \end{align*}
+\end{enumerate}
+
+\subsection{Support Vector Machines (SVM) and Kernel Trick}
+
+In machine learning, we use the Support Vector Machine (SVM) to perform binary classification which uses this ``kernel trick'' described above. Let's say, you have a dataset $(x_i, y_i)$ with $x_i \in \R^d$, $y_i \in \{-1, +1 \}$. We want to find a linear separation using $w \in \R^d$ such that
+\begin{equation*}
+    \inner{w, x_i} \begin{cases}
+        > 1 & \text{ if } y_i = 1\\
+        < (-1) & \text{ if } y_i = (-1)
+    \end{cases}
+\end{equation*}
+\noindent i.e., $\inner{w, x_i} y_i > 1$ for all $i = 1, 2, \dots n$.
+
+However, having a linear separation is overly optimistic, in practice we may not have that. Instead, we can find a feature map $\phi : \R^d \rightarrow H$ (some Hilbert space) such that on $H$, there is a linear separation. Therefore, we can find $w^\ast$ such that $\inner{w^\ast, \phi(x_i)}y_i > 1$ for all $i$. If we have $n$ datapoints, then if we have $H$ to be $n$-dimensional, we must have a linear separation. Thus, we can consider the points $x_j$s as basis, so that $w = \sum_{j} \alpha_j x_j$. With the feature map transformation, we then would have $w = \sum_j \alpha_j \phi(x_j)$. Therefore, the final objective becomes
+\begin{equation*}
+    \text{Find } \alpha_j \text{ such that } \sum_{j=1}^n y_j \alpha_j \inner{\phi(x_j), \phi(x_i)} > 1, \ \forall i.
+\end{equation*}
+\noindent Therefore, to solve this problem, one simply requires the knowledge of the inner product in the feature space, but not necessarily the feature map $H$. Hence, we can pick any positive definition function $K$ (called the kernel) and assume that
+\begin{equation*}
+    \inner{\phi(x_1), \phi(x_2)} := K(x_1, x_2).
+\end{equation*}
+\noindent This algorithm is called \textbf{Hard-margin SVM}.
+
+Note that, hard-margin SVM perfectly classifies the binary classes, and allows no outliers. This means, even if one or two points misclassify, SVM can produce a feature map which is extremely complex. In order to allow small amount of outliers, we can combine the objectives along with a hinge-loss function.
+
+\begin{definitionbox}[Hinge Loss]
+    The hinge loss function is defined as $(1-t)_{+} = \max\{ 1 - t, 0 \}$.
+\end{definitionbox}
+
+The \textbf{Soft-margin SVM} considers the objective function to minimize
+\begin{equation*}
+    l(w) = \sum_{i=1}^n \left( 1 - \inner{w, x_i}y_i \right)_{+} + \lambda \norm{w}_2^2
+\end{equation*}
+\noindent where $\lambda$ is a penalization parameter. 
+
+\begin{theorembox}[Mercer]
+    For any continuous, symmetric and positive semi-definite kernel function $K$, there exists a map $\phi: \R^d \rightarrow H$ such that $K(x, y) = \inner{\phi(x), \phi(y)}$.
+\end{theorembox}
+
+\section{Spectral Analysis}
+
+\subsection{Principal Component Analysis}
+
+To visualize high-dimensional data, we use PCA (Principal Component Analysis). Let $X \in \R^d$, $\E(X) = 0$ and $\E(XX\tr) = \Sigma$. Then we can perform eigen-decomposition of $\Sigma$ to obtain the eigenvalues $\lambda_i(\Sigma)$ and the eigenvectors $v_i(\Sigma)$, which are called the ``principal components'' of $X$. 
+
+However, we do not know $\Sigma$, we can only estimate it using a sample covariance matrix in the light of data. Given a finite sample $X_1, \dots X_n \in \R^d$, we have the estimated sample covariance matrix 
+\begin{equation*}
+    \Sigma_n = \dfrac{1}{n}\sum_{i=1}^n X_i X_i\tr,
+\end{equation*}
+\noindent assume there are mean-centered. We hope that, the PCA applied on $\Sigma_n$ will be close to PCA applied on $\Sigma$. There are two questions:
+
+\begin{enumerate}
+    \item How many samples do we require to establish this approximation?
+    \item What is the error rate? 
+\end{enumerate}
+
+The answer to the first question turns out to be surprisingly only $O(d)$. That means, you need only linear many samples as the dimension to get a full picture. For the second question, we need to study some basic tools of random matrix theory.
+
+Let's start by considering the answer to the first question. The first goal will be to show that $\Sigma_n \approx \Sigma$ in operator norm.
+
+Let $S^{d-1}$ be the $d$-dimensional unit sphere in $\R^d$. Then,
+\begin{equation*}
+    \norm{\Sigma_n - \Sigma}_2^2 = \max_{v \in S^{d-1}} \abs{v\tr (\Sigma_n - \Sigma)v} = \max_{v \in S^{d-1}} \left\vert \dfrac{1}{n}\sum_{i=1}^n \inner{X_i, v}^2 - \E\inner{X, v}^2 \right\vert.
+\end{equation*}
+\noindent Let us call this quantity as $Z(v) = \frac{1}{n}\sum_{i=1}^n \inner{X_i, v}^2 - \E\inner{X, v}^2$. Note that, $\{ Z(v): v \in S^{d-1} \}$ is a random process indexed by $v \in S^{d-1}$. For a fixed $v$, we can show a bound by using concentration inequality. Since the maximum is taken over an uncountable set, we cannot use union bound to proceed. We need to reduce it to an $\epsilon$-net type idea.
+
+\begin{lemmabox}
+    For all $\epsilon > 0$, the sphere $S^{d-1}$ has an $\epsilon$-net $\{ x_1, x_2, \dots x_N\}$, such that $N \leq (2/\epsilon + 1)^d$.
+\end{lemmabox}
+\begin{proof}
+    Consider the minimal $\epsilon$-net. The $\epsilon/2$-ball centered at the $x_i$s must be disjoint. If not, there exists $i \neq j$ such that $\norm{x_i - x_j} < \epsilon$, because of triangle inequality. This means, the $\epsilon$-net is not minimal since we can remove $x_j$. 
+
+    Note that, all balls lie in the $(1 + \epsilon/2)$-ball. This means,
+    \begin{align*}
+        & \text{Vol}(B(1+\epsilon/2)) \geq N \text{Vol}(B(\epsilon/2))\\
+        \implies & N \leq \dfrac{(1+\epsilon/2)^d}{(\epsilon/2)^d} = (2/\epsilon + 1)^d
+    \end{align*}
+\end{proof}
+\noindent The next step in the plan is to approximate the operator norm (i.e., the maximum over $S^{d-1}$) with the maximum over an $\epsilon$-net. 
+
+\begin{lemmabox}
+    For a real symmetric matrix $A$, let $\mathcal{N} \subseteq S^{d-1}$ be an $\epsilon$-net of $S^{d-1}$, then $\norm{A} \leq 1/(1-\epsilon) \max_{x \in \mathcal{N}}\norm{Ax}$.
+\end{lemmabox}
+\begin{proof}
+    The definition of the operator norm says that there exists $u \in S^{d-1}$ such that $\norm{Au} = \norm{A}$, since we can take $u$ to the eigenvector corresponding to the first eigenvalue of $A$ (which will have real coordinates as $A$ is real symmetric). By definition of the $\epsilon$-net, there exists $x \in \mathcal{N}$ such that $\norm{x - u} \leq \epsilon$, hence, by Cauchy-Schwartz inequality,
+    \begin{equation*}
+        \norm{Ax - Au} = \norm{A(x -u)} \leq \norm{A}\norm{x-u} \leq \norm{A}\epsilon.
+    \end{equation*}
+    \noindent Now, it follows that by triangle inequality,
+    \begin{equation*}
+        \norm{Ax} = \norm{Au - (Au - Ax)} \geq \norm{Au} - \norm{Ax - Au} \geq (1 - \epsilon)\norm{A}.
+    \end{equation*}
+    \noindent Taking maximum over all $x \in \mathcal{N}$ now completes the proof.
+\end{proof}
+
+As a corollary, if we choose $\epsilon = 1/4$, then our previous results imply that $\abs{\mathcal{N}} \leq 9^d$. Also, we get that
+\begin{equation*}
+    \norm{\Sigma_n - \Sigma} \leq 2 \max_{v \in \mathcal{N}} \left\vert \dfrac{1}{n}\sum_{i=1}^n \inner{X_i, v}^2 - \E\inner{X, v}^2 \right\vert.
+\end{equation*}
+
+Now, if we assume that $X_i$s are independent and subGaussian, then $\inner{X_i, v}$ is simply a linear combination of the coordinates of $X_i$, hence is also subGaussian. As a result, $\inner{X_i, v}^2$ are sub-exponential. Let $K = \norm{\inner{X_i, v}^2}_{\psi_1} = \norm{X_i\tr X_i}_{\psi_1}$ For a fixed $v \in \mathcal{N} \subseteq S^{d-1}$, using Berstein's inequality,
+\begin{align*}
+    \prob\left( \left\vert \dfrac{1}{n}\sum_{i=1}^n \inner{X_i, v}^2 - \E\inner{X, v}^2 \right\vert > \delta \right)
+    & = \prob\left( \left\vert \sum_{i=1}^n \inner{X_i, v}^2 - \E\inner{X, v}^2 \right\vert > \delta n \right)\\
+    & \leq 2 \exp\left[ - c \min\left( \dfrac{\delta^2 n^2}{K^2 n}, \dfrac{\delta n}{K} \right) \right]\\
+    & = 2 \exp\left[ - c\min\left(  \dfrac{\delta^2}{K^2}, \dfrac{\delta}{K} \right)n \right]
+\end{align*}
+
+\begin{theorembox}
+    If $X_i$ are independent subGaussian random variables and $n \geq Cd$ for some absolute constant $C$, then we have $\norm{\Sigma_n - \Sigma} \leq 0.1 \norm{\Sigma}$, with probability at least $1 - 2e^{-cn}$.
+\end{theorembox}
+\begin{proof}
+    Without loss of generality, assume that $\norm{\Sigma} = 1$, otherwise, we can rescale. For a fixed $v \in S^{d-1}$, since $\norm{\Sigma} = 1$, we have
+    \begin{equation*}
+        \E\inner{X, v}^2 \leq \norm{\Sigma} = 1 \implies \norm{X_i}_{\psi_1} \leq C,
+    \end{equation*}
+    \noindent for some absolute constant $C$. Therefore, by using Berstein's inequality as shown above,
+    \begin{equation*}
+        \prob\left( \left\vert Z(v) \right\vert > \delta = 0.01 \right)
+        \leq 2 e^{-cn}, \ \text{ for some c}.
+    \end{equation*}
+    \noindent By using union bound, we now have
+    \begin{equation*}
+        \prob\left( \max_{v \in \mathcal{N}} \left\vert Z(v) \right\vert > 0.01 \right) \leq \abs{\mathcal{N}} 2e^{-cn} = 9^d \times 2 e^{-cn} \leq 2e^{-c'n/2},
+    \end{equation*}
+    \noindent if $d < C"n$. This means, the complement event holds with probability $1 - 2^{-c'n/2}$, and when it holds, we have
+    \begin{equation*}
+        \norm{\Sigma_n - \Sigma} \leq 2 \max{v \in \mathcal{N}} \vert Z(v)\vert \leq 2 \times 0.01 \leq 0.1,
+    \end{equation*}
+    \noindent which completes the proof.
+\end{proof}
+
+Now that we have the ``closeness'' of $\Sigma_n$ and $\Sigma$, we want to show that the eigenvalues and the eigenvectors also remain approximately close.
+
+\begin{theorembox}[Weyl's inequality]
+    For all $d \times d$ symmetric matrices $A$ and $B$, $\max_{i} \vert \lambda_i(A) - \lambda_i(B)\vert \leq \norm{A-B}$.
+\end{theorembox}
+\noindent Since we have $\norm{\Sigma_n - \Sigma}$ to be small, this shows that the eigenvalues of the sample covariance matrix will closely resemble the eigenvalues of the true covariance matrix.
+
+In the case of eigenvectors, there are some difficulties:
+\begin{enumerate}
+    \item Two eigenvectors may be the same up to the same sign.
+    \item For a given eigenvalue with more than one geometric multiplicity, there are multiple eigenvectors that can only have a rotational invariance.
+    \item Suppose two eigenvalues are close to each other, but the perturbation switches their order. Then, the corresponding eigenvectors also switch. This means, these swapped eigenvectors will be orthogonal to each other, not at all close.
+\end{enumerate}
+\noindent Therefore, we need to have something called a ``spectral gap'', i.e., all the eigenvalues are sufficiently apart.
+
+\begin{theorembox}[Davis Kahan inequality]
+    Let $A, B$ be two $d \times d$ symmetric matrices. Let $P_A$ be the projection operator onto the span of $\{ v_1(A), \dots, v_k(A) \}$ for some $k = 1, 2, \dots, d$. Similarly defined $P_B$ to be the projection operator onto the span of eigenvectors of $B$. Then,
+    \begin{equation*}
+        \norm{P_A - P_B} \leq \dfrac{\norm{A - B}}{\lambda_k(A) - \lambda_{k+1}(A)}.
+    \end{equation*}
+\end{theorembox}
+
+This entire analysis now shows why the method of principal component analysis works. A few important remarks are mentioned below.
+
+\begin{note}
+    \begin{enumerate}
+        \item Linear sample size $n = O(d)$ is the optimal choice in general.
+        \item For structured data, it may be possible to do principal component analysis with a smaller sample size. For example, if $X = (X_1, \dots, X_1)$, then $X$ is essentially one-dimensional and then $n = O(1)$.
+        \item If the data is inherently $k$-dimensional, then $n = O(k)$ is usually enough. This general result is proved by~\cite{koltchinskii2017}.
+    \end{enumerate}
+\end{note}
+
+\subsection{Bulk Spectram Analysis}
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+    % Draw x-axis
+    \draw[->] (-0.5, 0) -- (5, 0) node[right] {$x$};
+    % Points mostly grouped between 0 and 1
+    \foreach \x in {0.2, 0.3, 0.35, 0.4, 0.45, 0.55, 0.65, 0.7, 0.75, 0.85, 0.9} {
+        \fill (\x, 0) circle (2pt);
+    }
+    % Outlying points
+    \fill (3, 0) circle (2pt); % Outlier at x = 3
+    \fill (4, 0) circle (2pt); % Outlier at x = 4
+    % Label the outliers
+    \node[above] at (3.5, 0) {Signal};
+    \node[above] at (0.5, 0) {Bulk noise};
+    \end{tikzpicture}
+    \caption{Spectral distribution of real-life data}
+\end{figure}
+
+When we analyse real-life data, we often have the above kind of picture if we plot the spectrum of the covariance matrix under consideration. Bulk of the spectrum will be distributed across a range, which consists of the noises, and then there are a few spectral values that stands out as outliers, these are only the meaningful components of the signal. Therefore, to identify the signal, we need to understand how the spectrum of pure noise would look like, as then we can remove that and get the proper signal out of the data.
+
+The spectrum behaviour of the pure noise data is given by ``Marchenko Pastur Law (1967)''. We shall talk about this in a short while.
+
+\subsubsection{Wigner's Law}
+
+We begin by considering a simpler model instead. Let $W$ be a symmetric $n \times n$ random matrix such that all of its entries on and above the diagonal are i.i.d. standard normal random variables. Then Wigner's law demonstrates the asymptotic behaviour of the spectral density of $W/\sqrt{n}$. 
+
+\begin{theorembox}[Wigner's Law (1958)]
+    For the above random matrix $W$, for any $-2 \leq a \leq b \leq 2$, the number of eigenvalues of $W/\sqrt{n}$ lying between $[a, b]$, say denoted by $N_{W/\sqrt{n}}([a, b])$ satisfy
+    \begin{equation*}
+        \lim_{n\rightarrow \infty} \dfrac{N_{W/\sqrt{n}}([a, b])}{n} = \int_a^b \rho_{sc}(x) dx,
+    \end{equation*}
+    \noindent where $\rho_{sc}(x) = \sqrt{4-x^2}/2\pi$ where $x \in [-2, 2]$. This is often called the ``semicircle'' density.
+\end{theorembox}
+
+Before we aim to prove this, we need a few tools at our disposal.
+
+\begin{enumerate}
+    \item If we have a partition matrix 
+    \begin{equation*}
+        M = \begin{bmatrix}
+            a & b\tr \\
+            b & D
+        \end{bmatrix},
+    \end{equation*}
+    \noindent then if $D$ is invertible, then the formula for Schur's complement formula says
+    \begin{equation*}
+        M_{11}^{-1} = \text{(1,1)-th entry of } M^{-1} = \dfrac{1}{a - b\tr D^{-1}b}.
+    \end{equation*}
+    \item If $g \sim N(0, I_n)$, then $\E(g\tr M g) = \trace{M}$.
+    \item For a symmetric matrix $M$, we have 
+    \begin{equation*}
+        \lambda_i(M^{-1}) = \dfrac{1}{\lambda_i(M)}, \text{ and, } 
+        \lambda_i(M - zI) = \lambda_i(M) - z, \ z \in \R.
+    \end{equation*}
+    \item One function that contains information about eigenvalues is $f(z) = \det(A - zI)$, for which the roots of this function are the eigenvalues.
+    \item Consider another function where the eigenvalues are the poles of the function. Hence,
+    \begin{equation*}
+        f(z) = \dfrac{1}{n}\sum_{i=1}^n \dfrac{1}{\lambda_i - z} = \dfrac{1}{n}\sum_{i=1}^n \lambda_i( (A-zI)^{-1} ) = \dfrac{1}{n}\trace{(A - zI)^{-1}}.
+    \end{equation*}
+    \noindent This last matrix $(A - zI)^{-1}$ is often called ``resolvent function'' of the matrix $A$.
+    \item On a similar note, one can define \textbf{Stieljes transform}. Stieljes transform of a distribution of a random variable $X$ is 
+    \begin{equation*}
+        S(z) = \E\left[ \dfrac{1}{X - z} \right], z \in \C.
+    \end{equation*}
+    \noindent It is possible to show that $S(z)$ can uniquely define the distribution of $X$ (much like the characteristic function). In fact, its inversion formula is given by
+    \begin{equation*}
+        f(x) = \lim_{\epsilon \rightarrow 0+} \dfrac{S(x+i\epsilon) - S(x-i\epsilon)}{2\pi i}.
+    \end{equation*}
+\end{enumerate}
+
+The following is an informal proof of Wigner's law based on these ideas.
+
+\begin{proof}
+    
+    
+    \noindent\textbf{Step 1:} 
+    Let $\lambda_1, \dots, \lambda_n$ be the eigenvalues of $W/\sqrt{n}$. Define the Stieljes transform of the empirical spectral density, 
+    \begin{equation*}
+        S_n(z) = \dfrac{1}{n}\sum_{i=1}^n \dfrac{1}{\lambda_i - z} = \dfrac{1}{n}\trace{\left( \dfrac{1}{\sqrt{n}}W - zI \right)^{-1}} = \dfrac{1}{n}\sum_{i=1}^n M_{ii}^{-1},
+    \end{equation*}
+    \noindent where $M$ is equal to the matrix $(W/\sqrt{n} - zI)$. Note that, $M$ can be partitioned as
+    \begin{equation*}
+        M = \begin{bmatrix}
+            \dfrac{W_{11}}{\sqrt{n}} - z & \dfrac{1}{\sqrt{n}}g\tr\\
+            \dfrac{1}{\sqrt{n}}g & \bar{M}\\
+        \end{bmatrix},
+    \end{equation*}
+    \noindent where $g \sim N(0, I_{n-1})$. Therefore, by the formula of Schur's complement, we have
+    \begin{align*}
+        M_{11}^{-1} 
+        & = \dfrac{1}{\dfrac{W_{11}}{\sqrt{n}} - z - \dfrac{1}{n}g\tr \bar{M}^{-1}g }\\
+        & \approx \dfrac{1}{ 0 - z - \dfrac{1}{n}\E(g\tr \bar{M}^{-1} g) }\\
+        & = \dfrac{1}{-z - \dfrac{1}{n} \trace{(\bar{M})^{-1}} }\\
+        & \approx \dfrac{1}{-z - \dfrac{n}{n-1}S_{n-1}(z)}, \ \text{ assuming } \bar{M} \approx M, \text{ but just of dimension } (n-1)
+    \end{align*}
+    \noindent As $n \rightarrow \infty$, we have in the limit,
+    \begin{equation*}
+        S_\infty(z) = \lim_{n\rightarrow \infty} \dfrac{1}{n}\sum_{i=1}M_{ii}^{-1}
+        = -\dfrac{1}{z + S_\infty(z)},
+    \end{equation*}
+    \noindent i.e., $S_\infty(z) + (z + S_\infty(z))^{-1} = 0$. Solving for $S_\infty(z)$ yields
+    \begin{equation*}
+        S_\infty(z) = \dfrac{-z + \sqrt{z^2 - 4}}{2}.
+    \end{equation*}
+
+    \noindent\textbf{Step 2:}
+    Due to the Stieljes inversion, it is now enough to show that the semicircle distribution $\rho_{sc}(x)$ has the same Stieljes transformation.
+
+    To see this, we note that
+    \begin{align*}
+        S_{sc}(z) 
+        & = \dfrac{1}{2\pi} \int_{-2}^2 \dfrac{\sqrt{4 - x^2}}{x - z}dx\\
+        & = \dfrac{1}{2\pi} \int_{\pi}^0 \dfrac{-4\sin^2(\theta)}{2\cos(\theta) - z} d\theta, \ \text{ letting } x = \cos(\theta)\\
+        & = \dfrac{1}{\pi} \int_0^\pi \dfrac{2\sin^2(\theta)}{2\cos(\theta) - z}d\theta\\
+        & = -\dfrac{1}{4i\pi} \int_{\norm{\alpha} = 1} \dfrac{(\alpha^2 - 1)^2}{\alpha^2 (\alpha^2 + 1 - \alpha z)}d\alpha, \ \text{ letting } \alpha = e^{i\theta}
+    \end{align*}
+    \noindent Now in the last integral, we need to apply Cauchy's Residue formula. Note that, the given function has 3 poles, at $\alpha_0 = 0$ of order $2$, at $\alpha_1 = (z+\sqrt{z^2-4})/2$ and at $\alpha_2 = (z-\sqrt{z^2-4})/2$. 
+
+    The pole at $\alpha_1 = (z + \sqrt{z^2-4})/2$ lies outside the unit circle, hence to use the Residue theorem, we calculate the residues at $\alpha_0$ and $\alpha_2$. 
+    \begin{align*}
+        \text{Res}(\alpha_0)
+        & = \dfrac{4\alpha_0(\alpha_0^2 - 1)(\alpha_0^2 + 1 - z\alpha_0) - (\alpha_0^2 - 1)^2(2\alpha_0 - z)}{(\alpha^2_0 + 1 - z\alpha_0)^2} = z\\
+        \text{Res}(\alpha_2)
+        & = \dfrac{(\alpha_2^2 - 1)^2}{\alpha_2^2 (\alpha_2 - (z + \sqrt{z^2 -4})/2)} = -\sqrt{z^2-4}
+    \end{align*}
+    \noindent Therefore, by applying the Residue theorem for integrals,
+    \begin{equation*}
+        S_{sc}(z) = -\dfrac{1}{4\pi i} \int_{\norm{\alpha} = 1} \dfrac{(\alpha^2 - 1)^2}{\alpha^2 (\alpha^2 + 1 - \alpha z)}
+        = -\dfrac{2\pi i}{4\pi i} \left[ \text{Res}(\alpha_0) + \text{Res}(\alpha_2) \right] = \dfrac{-z+\sqrt{z^2 - 4}}{2},
+    \end{equation*}
+    \noindent which matches with the Stieljes transform $S_\infty(z)$ derived earlier.
+
+    \noindent\textbf{Step 3:} Now we apply the Steiljes inverse to complete the proof.
+\end{proof}
+
+We have a similar theorem for the singular values which may arise from a matrix with different dimensions. 
+
+\begin{theorembox}[Marchenko-Pastur, 1967]
+    Let $X_1, X_2, \dots, X_n \sim N(0, I_d)$ and $\Sigma_n = n^{-1}\sum_{i=1}^n X_i X_i\tr$, the sample covariance matrix. Suppose that $d/n \rightarrow r \in (0, 1)$ as $n \rightarrow \infty$. Then, the spectral density of $\Sigma_n$ converges to the Marchenko Pastur law, given by
+    \begin{equation*}
+        \rho_{MP}(x) = \dfrac{1}{2\pi rx} \sqrt{(x-a)(b-x)}, \ x \in [a, b],
+    \end{equation*}
+    \noindent where $a = (1 - \sqrt{r})^2$ and $b = (1 + \sqrt{r})^2$.
+\end{theorembox}
+
+To prove this result, we need to know the following two results.
+
+\begin{enumerate}
+    \item \textbf{Stieljes transformation of MP law:} Using similar calculation as above, we can calculate the Stieljes transformation of the Marchenko Pastur law as 
+    \begin{equation*}
+        S_{MP}(z) = \dfrac{1 - z - r + \sqrt{(1-z-r)^2 - 4zr}}{2}.
+    \end{equation*}
+    \item \textbf{Sherman-Morrison Formula:} Given two vectors $x, y \in \R^d$ and $M \in \R^{d\times d}$, we have
+    \begin{equation*}
+        (M + xy\tr)^{-1} = M^{-1} - \dfrac{M^{-1} xy\tr M^{-1}}{1 + y\tr M^{-1}x}.
+    \end{equation*}
+    \noindent Let $q = y\tr M^{-1}x$. Then, we get that
+    \begin{equation*}
+        y\tr (M + xy\tr)^{-1}x 
+        = q - \dfrac{q^2}{1 + q} = 1 - \dfrac{1}{1+q}
+        = 1 - \dfrac{1}{y\tr M^{-1}x}.
+    \end{equation*}
+\end{enumerate}
+
+The following is again an informal proof of Marchenko-Pastur theorem using these two basic ideas.
+
+\begin{proof}
+    Our steps will be similar to the Wigner's theorem. We shall derive the limiting Stieljes transform of the spectral density of $\Sigma_n$ and show that it matches with the Stieljes transform of MP law. Let $S_n(z)$ be the Stieljes transform of the spectral density of $\Sigma_n$, i.e.,
+    \begin{equation*}
+        S_n(z) 
+        = \dfrac{1}{d}\sum_{k=1}^d \lambda_k(\Sigma_n - zI)^{-1}
+        = \dfrac{n}{d}\trace{ \left(\sum_{i=1}^n X_i X_i\tr - nzI\right)^{-1} }
+        \rightarrow \dfrac{1}{r}\trace{A^{-1}},
+    \end{equation*}
+    \noindent where $A$ is the matrix it is replacing, i.e., $A = \sum_{i=1}^n X_i X_i\tr - nzI$. Let $B = \sum_{i=1}^{n-1} X_i X_i\tr - nzI = A - X_nX_n\tr$. Now, it follows that
+
+    \begin{align*}
+        & X_n\tr A^{-1}X_n = X_n\tr (B + X_nX_n\tr)^{-1}X_n = 1 - \dfrac{1}{1 + X_n\tr B^{-1} X_n} \\
+        \implies & X_n\tr A^{-1}X_n \approx 1 - \dfrac{1}{1 + \E(X_n\tr B^{-1}X_n ) }\\
+        \implies & X_n\tr A^{-1}X_n \approx 1 - \dfrac{1}{1 + \trace{B^{-1}}}, \ \text{ since } X_n \text{ are } B \text{ independent }\\
+        \implies & X_n\tr A^{-1}X_n \approx 1 - \dfrac{1}{1 +  rS_{n-1}(nz/(n-1)) } \\
+        \implies & \sum_{k=1}^n X_k\tr A^{-1}X_k \approx n \left[ 1 - \dfrac{1}{1 +  rS_{n-1}(nz/(n-1)) } \right]\\
+        \implies & \trace{\sum_{k=1}^n X_kX_k\tr  A^{-1}} \approx n \left[ 1 - \dfrac{1}{1 +  rS_{n-1}(nz/(n-1)) } \right]\\
+        \implies & \trace{(A + nzI)A^{-1}} \approx n \left[ 1 - \dfrac{1}{1 +  rS_{n-1}(nz/(n-1)) } \right]\\
+        \implies & d + nzr S_n(z) = d (1 + zS_n(z)) \approx n \left[ 1 - \dfrac{1}{1 +  rS_{n-1}(nz/(n-1)) } \right]
+    \end{align*}
+    \noindent Taking limit on both sides and using $S_{\infty}(z)$ to denote the limiting Stieljes transform, we obtain the relation
+    \begin{equation*}
+        1 + z S_\infty(z) = \dfrac{1}{r}\left[ 1 - \dfrac{1}{1 + rS_\infty(z)} \right] = \dfrac{S_\infty(z)}{1 + rS_\infty(z)}.
+    \end{equation*}
+    \noindent Solving this yields,
+    \begin{equation*}
+        S_\infty(z) = \dfrac{1 - z - r + \sqrt{(1 - z - r)^2 - 4zr} }{2}.
+    \end{equation*}
+\end{proof}
 
 
 
 
 \pagebreak
-\sr{CHECK FROM HERE}
 
+
+\begin{thebibliography}{99}
+    \bibitem[Koltchinskii~and~Lounici~(2017)]{koltchinskii2017} Koltchinskii, Vladimir, and Karim Lounici. "Concentration inequalities and moment bounds for sample covariance operators." Bernoulli (2017): 110-133.
+\end{thebibliography}
 
 
 \end{document}
 
-
-\textbf{Homework:}
-
-\textbf{Q1:} \text{Let, } X_1, X_2, \dots, X_N \text{ be non-negative i.i.d. r.v. Assume PDF of each } X_i \text{ is uniformly bounded by } 1.
-\begin{enumerate}[a)]
-    \item \text{Show that } \prob(X_i < \epsilon) \leq \epsilon, \forall \epsilon > 0.
-
-          \text{Follows from, } \prob(X_i < \epsilon) = \int_0^\epsilon f(x) dx \leq \epsilon \cdot \left(\sup_x f(x) \leq 1\right)
-
-    \item \text{Show that MGF of each } X_i \text{ satisfies, } \E \left[e^{-tX_i}\right] \leq \frac{1}{t}, \forall t > 0.
-
-          \text{To see this, } \E \left[e^{-tX_i}\right] = \int_0^\infty e^{-tx} f(x) dx \leq \frac{1}{t}
-
-    \item \text{Deduce that averaging increases the strength of (a) exponentially, i.e. }
-
-          \prob\left(\frac{1}{N}\sum_{i=1}^N X_i < \epsilon\right) \leq (c\epsilon)^N, \forall \epsilon > 0.
-
-          \text{To see this, }
-          \begin{align*}
-              \prob\left(\frac{1}{N}\sum_{i=1}^N X_i < \epsilon\right) & = \prob\left(e^{-\frac{t}{N}\sum_{i=1}^N X_i} > e^{-tN\epsilon}\right)                    \\
-                                                                       & \leq e^{-tN\epsilon} \E\left[e^{-\frac{t}{N}\sum_{i=1}^N X_i}\right]                      \\
-                                                                       & = e^{-tN\epsilon} \left(\E\left[e^{-\frac{t}{N}X_i}\right]\right)^N \quad \text{(Markov)} \\
-                                                                       & \leq e^{-tN\epsilon} \left(\frac{1}{t}\right)^N
-          \end{align*}
-
-          \text{Now, we optimize over } t > 0, \text{ setting:} \quad e^{LNE} = \exp\left(-tN\epsilon - N\log t\right)
-
-          \Rightarrow \frac{\partial (\text{bound})}{\partial t} = -NE - \frac{N}{t} = t \frac{1}{t} \Rightarrow (\text{bound}) = e^{N\left(E + \frac{1}{t}\right)} = (c\epsilon)^N
-\end{enumerate}
-
-\textbf{Q2:} \text{(Boosting Randomized Algorithm): Assume there is a randomized procedure that gives the correct key result w.p. } \left(\frac{1}{2} + \delta\right), \delta > 0 \text{ small. To improve confidence, we use "boosting" i.e., run the algorithm } N \text{ times (indep.) \& take majority vote.}
-
-\text{Show that it answers correctly with exponentially large close to 1 prob.}
-
-\begin{enumerate}[a)]
-    \item \text{let, } X_i = \mathbf{1}\left(\text{ith run given correct}\right) \sim \text{Ber}\left(\frac{1}{2} + \delta\right)
-          \Rightarrow \E X_i = \frac{1}{2} + \delta
-
-          \prob\left(\text{boosting is wrong}\right) = \prob\left(S_N \leq \frac{N}{2}\right) = \prob\left(S_N - \E S_N \leq -N\delta\right)
-\end{enumerate}
-
-
-\text{By Hoeffding's bound, } \prob(S_N - \E S_N \leq -N\delta) \leq \exp\left(-\frac{N\delta^2}{2\left(\frac{1}{2}+\delta\right)^2}\right) = \exp\left(-\frac{N\delta^2}{2(\frac{1}{4}+o(1))}\right)
-
-\Rightarrow \prob(S_N \text{ (i.e., boosting is correct)}) = 1 - e^{-c_2 N\delta^2}, \text{ for some } c.
-
-\textbf{Q3:} \text{Show that, } \forall m \in \left\{ 0,1,\dots, n^3 \right\} \quad \sum_{k=0}^m \binom{m}{k}\binom{m}{k} \left(\frac{1}{n}\right)^k \leq \left(\frac{en}{m}\right)^m
-
-\text{(a)} \quad \text{Enough to show, } \sum_{k=0}^m \binom{m}{k} \leq \left(\frac{em}{m}\right)^m \quad \text{since } \binom{m}{k} \leq 1. \text{(ETS)}
-
-\text{For the first term, } n^m \binom{m}{k} \sum_{k=0}^m = \text{number of ways to pick } m \text{ items from } n \text{ items with repetition.}
-
-\text{For 2nd term, } \sum_{k=0}^m \binom{m}{k} \sigma = \left(1 + \frac{m}{n}\right)^m \leq 2^m \leq e^2 \cdot e^m
-
-\textbf{(b)} \quad \text{Let, } S_N \sim \text{Binom}(\mu N, \mu/N). \text{Show that, } \prob(S_N \geq t) \geq e^{-\mu \left(\frac{\mu}{t} \right)^t }, \forall t \geq \mu.
-
-\text{(Reverse Chernoff inequality)}
-
-\text{(a)} \quad \prob(S_N \geq t) = \sum_{k=t}^N \binom{N}{k}\left(\frac{\mu}{N}\right)^k \left(1 - \frac{\mu}{N}\right)^{N-k}
-
-\geq \sum_{k=t}^N \binom{N}{k} \left(\frac{\mu}{N}\right)^k \left(1 - \frac{\mu}{N}\right)^{N-k} \quad \text{(by def. of Binomial)}
-
-\geq \sum_{k=t}^N \left(\frac{\mu}{N}\right)^t e^{-\mu} \quad (\text{by part (a)})
-
-\geq \left(\frac{\mu}{t}\right)^t e^{-\mu}
