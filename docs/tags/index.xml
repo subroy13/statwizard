@@ -6,13 +6,34 @@
     <description>Recent content in Tags on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 20 Apr 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dimension Reduction</title>
+      <link>//localhost:1313/tags/dimension-reduction/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/dimension-reduction/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Matrix Factorization</title>
+      <link>//localhost:1313/tags/matrix-factorization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/matrix-factorization/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Robust Statistical Inference</title>
       <link>//localhost:1313/tags/robust-statistical-inference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/robust-statistical-inference/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Video Processing</title>
+      <link>//localhost:1313/tags/video-processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/video-processing/</guid>
       <description></description>
     </item>
     <item>
@@ -48,20 +69,6 @@
       <link>//localhost:1313/tags/high-dimensional-inference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/tags/high-dimensional-inference/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Dimension Reduction</title>
-      <link>//localhost:1313/tags/dimension-reduction/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/dimension-reduction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Image Processing</title>
-      <link>//localhost:1313/tags/image-processing/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/tags/image-processing/</guid>
       <description></description>
     </item>
     <item>

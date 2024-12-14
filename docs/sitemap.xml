@@ -2,19 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>//localhost:1313/research/</loc>
-    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/tags/dimension-reduction/</loc>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/ordinal-response-model/</loc>
-    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/tags/matrix-factorization/</loc>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/</loc>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/2024-rpcadpd/</loc>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/robust-statistical-inference/</loc>
-    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/</loc>
-    <lastmod>2024-04-20T00:00:00+00:00</lastmod>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/</loc>
+    <lastmod>2024-11-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/2024-rsvddpd/</loc>
+    <lastmod>2024-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/tags/video-processing/</loc>
+    <lastmod>2024-09-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/research/2024-ordinal-response-model/</loc>
     <lastmod>2024-04-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/softwares/decompy/</loc>
@@ -25,9 +40,6 @@
   </url><url>
     <loc>//localhost:1313/softwares/multi-pdf-querybot/</loc>
     <lastmod>2023-11-10T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/research/rsvddpd-theory/</loc>
-    <lastmod>2023-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/softwares/chronomodeller/</loc>
     <lastmod>2023-06-16T00:00:00+00:00</lastmod>
@@ -44,13 +56,13 @@
     <loc>//localhost:1313/tags/fuzzy-systems/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/rough-fuzzy-cpd/</loc>
+    <loc>//localhost:1313/research/2022-rough-fuzzy-cpd/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/time-series-analysis/</loc>
     <lastmod>2022-11-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/covid-sintrue-model/</loc>
+    <loc>//localhost:1313/research/2022-covid-sintrue-model/</loc>
     <lastmod>2022-08-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/epidemiology/</loc>
@@ -59,34 +71,25 @@
     <loc>//localhost:1313/tags/high-dimensional-inference/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/talk-multivariate-location-scatter/</loc>
+    <loc>//localhost:1313/research/2022-talk-multivariate-location-scatter/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/softwares/rsvddpd-package/</loc>
     <lastmod>2021-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/rsvdpd-video-surveillance/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/dimension-reduction/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>//localhost:1313/tags/image-processing/</loc>
-    <lastmod>2021-09-22T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>//localhost:1313/tags/algorithm/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/talk-algorithmic-fairness/</loc>
+    <loc>//localhost:1313/research/2021-talk-algorithmic-fairness/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/fairness/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/trustworthy-dimension-reduction/</loc>
+    <loc>//localhost:1313/research/2021-trustworthy-dimension-reduction/</loc>
     <lastmod>2021-06-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/pollution-analysis-kolkata/</loc>
+    <loc>//localhost:1313/research/2020-pollution-analysis-kolkata/</loc>
     <lastmod>2020-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/softwares/roufcp/</loc>
@@ -101,10 +104,10 @@
     <loc>//localhost:1313/tags/causal-inference/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/causal-dag-intro/</loc>
+    <loc>//localhost:1313/research/2019-causal-dag-intro/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/mt-rainier-study/</loc>
+    <loc>//localhost:1313/research/2019-mt-rainier-study/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/network-analysis/</loc>
@@ -113,7 +116,7 @@
     <loc>//localhost:1313/tags/regression-analysis/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/talk-tsne/</loc>
+    <loc>//localhost:1313/research/2019-talk-tsne/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/auction-theory/</loc>
@@ -125,13 +128,13 @@
     <loc>//localhost:1313/tags/clustering/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/tea-auction/</loc>
+    <loc>//localhost:1313/research/2019-tea-auction/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/hypothesis-testing/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/research/onset-detection/</loc>
+    <loc>//localhost:1313/research/2019-onset-detection/</loc>
     <lastmod>2019-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/tags/sound-processing/</loc>

@@ -10,9 +10,9 @@
     <atom:link href="//localhost:1313/tags/network-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Causal Inference using DAG Models</title>
-      <link>//localhost:1313/research/causal-dag-intro/</link>
+      <link>//localhost:1313/research/2019-causal-dag-intro/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/causal-dag-intro/</guid>
+      <guid>//localhost:1313/research/2019-causal-dag-intro/</guid>
       <description>Introduction to Causal Analysis using Directed Acylic Graphs (DAG). This is talk prepared as a part of group class project for Categorical Data Analysis course during my M.Stat. in ISI, Kolkata.</description>
     </item>
   </channel>

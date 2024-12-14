@@ -6,27 +6,27 @@
     <description>Recent content in Dimension Reduction on StatWizard</description>
     <generator>Hugo 0.125.2</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/tags/dimension-reduction/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A New Robust Scalable Singular Value Decomposition Algorithm for Video Surveillance Background Modelling</title>
-      <link>//localhost:1313/research/rsvdpd-video-surveillance/</link>
-      <pubDate>Wed, 22 Sep 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/rsvdpd-video-surveillance/</guid>
-      <description>Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present the estimation of singular values through density power divergence which is robust and efficient.</description>
+      <title>Robust Principal Component Analysis using Density Power Divergence</title>
+      <link>//localhost:1313/research/2024-rpcadpd/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/research/2024-rpcadpd/</guid>
+      <description>Usual Principal component analysis (PCA) is wildly impacted by the presence of outliers. In this article, we present a technique to obtain robust principal component estimates using minimum density power divergence estimators. Theoretical guarantees of convergence, consistency, asymptotic distribution and robustness are derived.</description>
     </item>
     <item>
       <title>Trustworthy Dimensionality Reduction</title>
-      <link>//localhost:1313/research/trustworthy-dimension-reduction/</link>
+      <link>//localhost:1313/research/2021-trustworthy-dimension-reduction/</link>
       <pubDate>Mon, 21 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/trustworthy-dimension-reduction/</guid>
+      <guid>//localhost:1313/research/2021-trustworthy-dimension-reduction/</guid>
       <description>My master&amp;rsquo;s dissertation thesis on proposing a novel dimensionality reduction technique which is trustworthy. This talks covers issues with existing approaches, how to measure trustworthiness, and a proposal that optimizes those metrics.</description>
     </item>
     <item>
       <title>tSNE: A way to visualize multidimensional data</title>
-      <link>//localhost:1313/research/talk-tsne/</link>
+      <link>//localhost:1313/research/2019-talk-tsne/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/talk-tsne/</guid>
+      <guid>//localhost:1313/research/2019-talk-tsne/</guid>
       <description>This is a talk I gave during the D. Basu Gold Medal Award Ceremony in Indian Statistical Institute, Kolkata.</description>
     </item>
   </channel>

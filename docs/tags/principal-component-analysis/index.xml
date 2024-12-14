@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Principal Component Analysis on StatWizard</title>
+    <link>//localhost:1313/tags/principal-component-analysis/</link>
+    <description>Recent content in Principal Component Analysis on StatWizard</description>
+    <generator>Hugo 0.125.2</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/principal-component-analysis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Robust Principal Component Analysis using Density Power Divergence</title>
+      <link>//localhost:1313/research/2024-rpcadpd/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/research/2024-rpcadpd/</guid>
+      <description>Usual Principal component analysis (PCA) is wildly impacted by the presence of outliers. In this article, we present a technique to obtain robust principal component estimates using minimum density power divergence estimators. Theoretical guarantees of convergence, consistency, asymptotic distribution and robustness are derived.</description>
+    </item>
+  </channel>
+</rss>
