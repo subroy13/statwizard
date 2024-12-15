@@ -369,7 +369,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-32 mb-8">
       <div class="col-span-1 flex flex-row-reverse">
         
-        <img src="/images/profile.jpg" class="w-64 h-64 rounded"/>
+        <img src="/images/profile.jpg" class="w-48 h-48 rounded"/>
       </div>
 
       
@@ -406,6 +406,17 @@
       </div>
     </div>
 
+    <div class="mt-4 max-w-6xl mx-auto">
+          <p class="font-semibold text-center text-gray-600 max-w-xl mx-auto">
+            I also actively maintain a blog, discussing various interesting concepts
+            and applications of statistics, machine learning and neural networks.
+          </p>
+            <div class="flex flex-col items-center justify-center my-4">
+    <iframe src="https://statwizard.substack.com/embed" width="960" height="320" style="border:3px solid #aaa; background:white;" frameborder="0" scrolling="no" class="rounded-md"></iframe>
+  </div>
+      </div>
+
+
     
     <div class="mt-8 mb-32 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
        
@@ -413,13 +424,47 @@
         <div class="col-span-1 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="#">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Research
+                Research Interests
               </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              Here is some content and lorem ipsum.
+            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 md-content">
+              Robust Statistical Inference, Matrix and Tensor Factorization, Statistical Divergences, Robust AI / ML, Spatio-temporal Analysis.
             </p>
-            <a href="/research" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <a href="/research" class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="col-span-1 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Softwares
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 md-content">
+              For reproducibility of my work, I have developed some packages in R and Python. Most of the source codes are available at my <a href="https://github.com/subroy13">GitHub</a>.
+            </p>
+            <a href="/softwares" class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="col-span-1 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Interesting Notes and Blogposts
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 md-content">
+              A curated list of some notes, tutorials and blog posts.
+            </p>
+            <a href="/collection?tab=tutorials" class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Read more
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
@@ -433,10 +478,27 @@
                 Ideas
               </h5>
             </a>
-            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-              A closet of various research and project ideas.
+            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 md-content">
+              A list of ideas for different projects that I want to work on. If you like any of them, contact me for a potential collaboration opportunity.
             </p>
-            <a href="/ideas" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <a href="/collection?tab=ideas" class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Read more
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+        </div>
+        
+        <div class="col-span-1 p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Curriculum Vitae
+              </h5>
+            </a>
+            <p class="mb-3 font-normal text-gray-600 dark:text-gray-400 md-content">
+              My curriculum vitae is available here.
+            </p>
+            <a href="/contents/cv.pdf" class="mt-2 inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                 Read more
                 <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>

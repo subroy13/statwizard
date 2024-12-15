@@ -8,12 +8,23 @@ biolist:
     affiliation: "[Indian Statistical Institute, Kolkata](https://www.isical.ac.in)"
 
 carditems:
-  - heading: Research
-    content: Here is some content and lorem ipsum.
+  - heading: Research Interests
+    content: Robust Statistical Inference, Matrix and Tensor Factorization, Statistical Divergences, Robust AI / ML, Spatio-temporal Analysis. 
     link: "/research"
 
+  - heading: Softwares
+    content: For reproducibility of my work, I have developed some packages in R and Python. Most of the source codes are available at my [GitHub](https://github.com/subroy13).
+    link: "/softwares"
+
+  - heading: Interesting Notes and Blogposts
+    content: A curated list of some notes, tutorials and blog posts.
+    link: "/collection?tab=tutorials"
+
   - heading: Ideas
-    content: A closet of various research and project ideas.
-    link: "/ideas"
-    
+    content: A list of ideas for different projects that I want to work on. If you like any of them, contact me for a potential collaboration opportunity.
+    link: "/collection?tab=ideas"
+
+  - heading: Curriculum Vitae 
+    content: My curriculum vitae is available here.
+    link: "/contents/cv.pdf"
 ---
