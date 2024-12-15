@@ -378,7 +378,7 @@
     <div class="border-b border-gray-200">
         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500">
             <li class="me-2">
-                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 text-gray-400 group" data-tab="tutorials">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group text-blue-600 border-blue-600 active" data-tab="tutorials">
                     <i class="fa-solid fa-book w-4 h-4 me-2 group-hover:text-gray-500"></i>
                     Tutorials
                 </button>
@@ -386,13 +386,19 @@
             <li class="me-2">
                 <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="ideas">
                     <i class="fa-solid fa-lightbulb w-4 h-4 me-2 group-hover:text-gray-500"></i>
-                    Idea Closet
+                    Idea Vault
                 </button>
             </li>
             <li class="me-2">
-                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group text-blue-600 border-blue-600 active" data-tab="3darts">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="3darts">
                     <i class="fa-solid fa-paint-roller w-4 h-4 me-2"></i>
                     3D Arts
+                </button>
+            </li>
+            <li class="me-2">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="quotes">
+                    <i class="fa-solid fa-comment  w-4 h-4 me-2"></i>
+                    Quotes
                 </button>
             </li>
         </ul>
@@ -401,17 +407,14 @@
     
     <div class="mt-4">
       <div class="tab-content hidden" id="tutorials">
-        <div class="my-3 grid grid-cols-1 md:grid-cols-6 bg-green-100 w-full">
-            <div class="col-span-1 text-center p-4">
-              <h3 class="text-green-800 text-2xl font-semibold pb-4">
-                Notes, Tutorials
-              </h3>
-              <p class="text-green-800 text-sm font-light">
-                A collection of interesting notes, tutorials, and blog posts.
-              </p>
-            </div>
-            <div class="col-span-5">
-              
+        <h3 class="text-green-800 text-2xl font-semibold pb-4">
+            Notes, Tutorials
+        </h3>
+        <p class="text-green-800 text-sm font-light">
+            A collection of lecture notes, tutorials, assignment problems, and blog posts.
+        </p>
+        <div class="mt-4 p-4">
+            
               <div class="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
                 <h2 class="text-normal text-gray-500"><span class="font-semibold text-blue-800">
                     Undergraduate and Postgraduate level Statistics course Assignements and Solutions
@@ -490,137 +493,387 @@
                 </ul>
                </div>
                
-            </div>
+              <div class="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
+                <h2 class="text-normal text-gray-500"><span class="font-semibold text-blue-800">
+                    Visual proof of the formula for area of a circle.
+                </span> - Possibly the best visual proof I have seen so far. The proof is by Rabbi Abraham (a Jewish philosopher living in Spain and France).</h2>
+                <ul class="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4 flex flex-row flex-wrap gap-4 items-center justify-left">
+                    
+                        <li>
+                        <a href="https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          Alexander Bogomolny&#39;s post on the Area of Circle by Rabbi Abraham bar Hiyya Hanasi
+                        </a>
+                      </li>
+                    
+                </ul>
+               </div>
+               
+              <div class="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
+                <h2 class="text-normal text-gray-500"><span class="font-semibold text-blue-800">
+                    Explorable Explorations
+                </span> - It is a decentralized “movement” of creators that creates cool interactive ways to learn different scientific ideas.</h2>
+                <ul class="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4 flex flex-row flex-wrap gap-4 items-center justify-left">
+                    
+                        <li>
+                        <a href="" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          Explorable Explanations
+                        </a>
+                      </li>
+                    
+                        <li>
+                        <a href="" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          Embedding projector
+                        </a>
+                      </li>
+                    
+                        <li>
+                        <a href="" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          The Evolution of Trust
+                        </a>
+                      </li>
+                    
+                        <li>
+                        <a href="" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          Seeing Theory
+                        </a>
+                      </li>
+                    
+                </ul>
+               </div>
+               
         </div>
       </div>
       <div class="tab-content hidden" id="ideas">
-        <p>This is the content of Tab 2.</p>
+        <h3 class="text-2xl text-blue-800 font-semibold pb-4">
+            Ideas & Open Questions
+        </h3>
+        <p class="text-sm text-blue-800 font-light">
+            A collection of ideas and questions that excite me. Feel free to reach out if something resonates!
+        </p>
+        <div class="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+                 <div class="bg-gray-100 shadow-md rounded-lg p-6 my-2">
+                    <p class="text-gray-600 mb-4">
+                        A product where there is a small camera inside the refrigerator. It takes picutres of the inside of the refrigerator and detects what vegetables / groceries are there using object detection. It then compares against historical eating behaviour of the owner and tells if something needs to be refilled.
+                    </p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm text-gray-500">Added: 
+                        Jul 15, 2024
+                      </span>
+                      <span class="text-sm text-blue-700 font-medium">Type: Technical</span>
+                    </div>
+                  </div>
+            
+                 <div class="bg-gray-100 shadow-md rounded-lg p-6 my-2">
+                    <p class="text-gray-600 mb-4">
+                        A product which uses doorbell camera to take pictures, and then perform face detection and match against your contact list (or social network friend list). Whenever someone rings your doorbell, it says aloud who it is.
+                    </p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm text-gray-500">Added: 
+                        Jul 15, 2024
+                      </span>
+                      <span class="text-sm text-blue-700 font-medium">Type: Academic</span>
+                    </div>
+                  </div>
+            
+        </div>
       </div>
       <div class="tab-content hidden" id="3darts">
-        <div class="grid grid-cols-1 md:grid-cols-6 bg-red-100 w-full">
-            <div class="col-span-1 text-center p-4">
-                <h3 class="text-red-800 text-2xl font-semibold pb-4">3D Arts</h3>
-                <p class="text-red-800 text-sm font-light">
-                    Some 3D models I have created using Blender, Bryce 3D, Wings 3D.
-                </p>
+        <h3 class="text-red-800 text-2xl font-semibold pb-4">3D Arts</h3>
+        <p class="text-red-800 text-sm font-light">
+            Some 3D models I have created using Blender, Bryce and Wings 3D.
+        </p>
+        <div class="mt-4 p-4">
+            <div id = "gallery" class="py-8 mx-4 grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Fireworks.png" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Fireworks_hue5bec8c9ec79742a99637c30a7f194d6_1972420_300x150_fit_q90_box_3.png"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Abstract%203.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Abstract%203_hue9fad7bb578bdc0c377d0e8a4709e16c_54201_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Abstract1.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Abstract1_hu1c05df87c854835b2247bfe6b8761b22_740426_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Assassin_s%20Creed%20Syndicate.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Assassin_s%20Creed%20Syndicate_hu3692169fa3c9e2f248deb7b4cb2dc60d_314440_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/basic-couch.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/basic-couch_hub7d499ec8f45c745a7c1ae9bcb3161d9_886745_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Chess_pawn_to_king.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Chess_pawn_to_king_hudadd9445a9296dfdfc67a591491d87f1_230768_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/coffeecup.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/coffeecup_hu319ed5cc16342fe1b58f7495621216a0_134164_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/desert.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/desert_hu9d0bd6c8d08897d4605fe5fd964571c7_309941_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/fiber-background.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/fiber-background_hu32c7b8d0b8d04f34753c58a742cca131_468245_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/infinte%20square.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/infinte%20square_hu9661fe6f8e34ebd4cb5fb69a9ade4214_279428_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/simple-chair.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/simple-chair_hu426ad494e10c4d7c09f9e3940e695734_205341_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/space-fantasy.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/space-fantasy_hu32c7b8d0b8d04f34753c58a742cca131_415871_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/studytable.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/studytable_hud40ea09a43e8dc2c636525fd66889047_802408_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
+                    
+                    <div data-src = "//localhost:1313/3darts/Woven%20cube.jpg" class="item">
+                        <img
+                            src="//localhost:1313/3darts/Woven%20cube_hu1a704f0a9ed31d03ef8515e82893fe4c_40853_300x150_fit_q90_box.jpg"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                
             </div>
-            <div class="col-span-5">
-                <div id = "gallery" class="py-8 mx-4 grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Fireworks.png" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Fireworks_hue5bec8c9ec79742a99637c30a7f194d6_1972420_300x150_fit_q90_box_3.png"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Abstract%203.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Abstract%203_hue9fad7bb578bdc0c377d0e8a4709e16c_54201_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Abstract1.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Abstract1_hu1c05df87c854835b2247bfe6b8761b22_740426_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Assassin_s%20Creed%20Syndicate.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Assassin_s%20Creed%20Syndicate_hu3692169fa3c9e2f248deb7b4cb2dc60d_314440_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/basic-couch.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/basic-couch_hub7d499ec8f45c745a7c1ae9bcb3161d9_886745_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Chess_pawn_to_king.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Chess_pawn_to_king_hudadd9445a9296dfdfc67a591491d87f1_230768_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/coffeecup.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/coffeecup_hu319ed5cc16342fe1b58f7495621216a0_134164_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/desert.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/desert_hu9d0bd6c8d08897d4605fe5fd964571c7_309941_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/fiber-background.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/fiber-background_hu32c7b8d0b8d04f34753c58a742cca131_468245_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/infinte%20square.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/infinte%20square_hu9661fe6f8e34ebd4cb5fb69a9ade4214_279428_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/simple-chair.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/simple-chair_hu426ad494e10c4d7c09f9e3940e695734_205341_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/space-fantasy.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/space-fantasy_hu32c7b8d0b8d04f34753c58a742cca131_415871_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/studytable.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/studytable_hud40ea09a43e8dc2c636525fd66889047_802408_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                        
-                        <div data-src = "//localhost:1313/3darts/Woven%20cube.jpg" class="item">
-                            <img
-                                src="//localhost:1313/3darts/Woven%20cube_hu1a704f0a9ed31d03ef8515e82893fe4c_40853_300x150_fit_q90_box.jpg"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    
-                </div>
-            </div>
+        </div>
+      </div>
+      <div class="tab-content hidden" id="quotes">
+        <h3 class="text-gray-800 text-2xl font-semibold pb-4">
+            Quotes
+        </h3>
+        <p class="text-gray-800 text-sm font-light">
+            A collection of quotes that are very dear to me!
+        </p>
+        <div class="mt-4 p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    Fire, uncontrolled, can burn your house down. Fire, controlled, can cook your food &amp; keep you warm. Can we control what we&#39;ve made?
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Nicky Case
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    Both the optimist and the pessimist contribute to society: the optimist invents the airplane, and the pessimist invents the parachute.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Gil Stern
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    We are smart, but not because we stand on the shoulders of giants or are giants ourselves. We stand on the shoulders of a very large pyramid of hobbits.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Joseph Heinrich
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    The ultimate fate of all intelligent beings is always to become as grand as their thoughts.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Cixin Liu
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    If the human brain were so simple that we could understand it, we would be so simple that we couldn’t.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Emerson M. Pugh
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    Failing to prepare is the same as preparing to fail.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Benjamin Franklin
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    The best time to plant a tree was 30 years ago. The second best time is today.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Unknown
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    What customer wants, is not a “perfect product”, but a “reliable product”
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Edward Deming
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    The world is awful. The world is much better. The world can be much better. It is wrong to think these three statements contradict each other. We need to see that they are all true to see that a better world is possible.
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        Max Roser
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                
+            </div>     
         </div>
       </div>
     </div>

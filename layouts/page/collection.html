@@ -20,7 +20,7 @@
     <div class="border-b border-gray-200">
         <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500">
             <li class="me-2">
-                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 text-gray-400 group" data-tab="tutorials">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group text-blue-600 border-blue-600 active" data-tab="tutorials">
                     <i class="fa-solid fa-book w-4 h-4 me-2 group-hover:text-gray-500"></i>
                     Tutorials
                 </button>
@@ -28,13 +28,19 @@
             <li class="me-2">
                 <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="ideas">
                     <i class="fa-solid fa-lightbulb w-4 h-4 me-2 group-hover:text-gray-500"></i>
-                    Idea Closet
+                    Idea Vault
                 </button>
             </li>
             <li class="me-2">
-                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg group text-blue-600 border-blue-600 active" data-tab="3darts">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="3darts">
                     <i class="fa-solid fa-paint-roller w-4 h-4 me-2"></i>
                     3D Arts
+                </button>
+            </li>
+            <li class="me-2">
+                <button class="tab-link inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg text-gray-400 border-transparent hover:text-gray-600 hover:border-gray-300 group" data-tab="quotes">
+                    <i class="fa-solid fa-comment  w-4 h-4 me-2"></i>
+                    Quotes
                 </button>
             </li>
         </ul>
@@ -43,17 +49,14 @@
     <!-- Tab Contents -->
     <div class="mt-4">
       <div class="tab-content hidden" id="tutorials">
-        <div class="my-3 grid grid-cols-1 md:grid-cols-6 bg-green-100 w-full">
-            <div class="col-span-1 text-center p-4">
-              <h3 class="text-green-800 text-2xl font-semibold pb-4">
-                Notes, Tutorials
-              </h3>
-              <p class="text-green-800 text-sm font-light">
-                A collection of interesting notes, tutorials, and blog posts.
-              </p>
-            </div>
-            <div class="col-span-5">
-              {{ range .Params.tutorials }}
+        <h3 class="text-green-800 text-2xl font-semibold pb-4">
+            Notes, Tutorials
+        </h3>
+        <p class="text-green-800 text-sm font-light">
+            A collection of lecture notes, tutorials, assignment problems, and blog posts.
+        </p>
+        <div class="mt-4 p-4">
+            {{ range .Params.tutorials }}
               <div class="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
                 <h2 class="text-normal text-gray-500"><span class="font-semibold text-blue-800">
                     {{ .label }}
@@ -69,33 +72,79 @@
                 </ul>
                </div>
                {{ end }}
-            </div>
         </div>
       </div>
       <div class="tab-content hidden" id="ideas">
-        <p>This is the content of Tab 2.</p>
+        <h3 class="text-2xl text-blue-800 font-semibold pb-4">
+            Ideas & Open Questions
+        </h3>
+        <p class="text-sm text-blue-800 font-light">
+            A collection of ideas and questions that excite me. Feel free to reach out if something resonates!
+        </p>
+        <div class="mt-4 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+            {{ range .Params.ideas }}
+                 <div class="bg-gray-100 shadow-md rounded-lg p-6 my-2">
+                    <p class="text-gray-600 mb-4">
+                        {{ .description | markdownify }}
+                    </p>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm text-gray-500">Added: 
+                        {{ .date | time.Format "Jan 2, 2006" }}
+                      </span>
+                      <span class="text-sm text-blue-700 font-medium">Type: {{ .type }}</span>
+                    </div>
+                  </div>
+            {{ end }}
+        </div>
       </div>
       <div class="tab-content hidden" id="3darts">
-        <div class="grid grid-cols-1 md:grid-cols-6 bg-red-100 w-full">
-            <div class="col-span-1 text-center p-4">
-                <h3 class="text-red-800 text-2xl font-semibold pb-4">3D Arts</h3>
-                <p class="text-red-800 text-sm font-light">
-                    Some 3D models I have created using Blender, Bryce 3D, Wings 3D.
-                </p>
+        <h3 class="text-red-800 text-2xl font-semibold pb-4">3D Arts</h3>
+        <p class="text-red-800 text-sm font-light">
+            Some 3D models I have created using Blender, Bryce and Wings 3D.
+        </p>
+        <div class="mt-4 p-4">
+            <div id = "gallery" class="py-8 mx-4 grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
+                {{ range resources.Match "/3darts/*.*" }}
+                    {{ $image := .Fit "300x150 q90" }}
+                    <div data-src = "{{ .Permalink }}" class="item">
+                        <img
+                            src="{{ $image.Permalink }}"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                {{ end }}
             </div>
-            <div class="col-span-5">
-                <div id = "gallery" class="py-8 mx-4 grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
-                    {{ range resources.Match "/3darts/*.*" }}
-                        {{ $image := .Fit "300x150 q90" }}
-                        <div data-src = "{{ .Permalink }}" class="item">
-                            <img
-                                src="{{ $image.Permalink }}"
-                                class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
-                            />
-                        </div>
-                    {{ end }}
-                </div>
-            </div>
+        </div>
+      </div>
+      <div class="tab-content hidden" id="quotes">
+        <h3 class="text-gray-800 text-2xl font-semibold pb-4">
+            Quotes
+        </h3>
+        <p class="text-gray-800 text-sm font-light">
+            A collection of quotes that are very dear to me!
+        </p>
+        <div class="mt-4 p-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {{ range .Params.quotes }}
+                    <div class="col-span-1 border-2 border-gray-200 p-4 rounded-sm">
+                        <figure class="max-w-screen-md mx-auto text-center">
+                            <i class="fa-solid fa-quote-right text-gray-400 text-2xl"></i>
+                            <blockquote>
+                                <p class="text-xl italic font-medium text-gray-900 dark:text-white">
+                                    {{ .quote }}
+                                </p>
+                            </blockquote>
+                            <figcaption class="flex items-center justify-center mt-6 space-x-3 rtl:space-x-reverse">
+                                <div class="flex items-center divide-x-2 rtl:divide-x-reverse divide-gray-500 dark:divide-gray-700">
+                                    <cite class="pe-3 font-medium text-gray-900 dark:text-white">
+                                        {{ .by }}
+                                    </cite>
+                                </div>
+                            </figcaption>
+                        </figure>                        
+                    </div>
+                {{ end }}
+            </div>     
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ carditems:
     link: "/collection?tab=tutorials"
 
   - heading: Ideas
-    content: A list of ideas for different projects that I want to work on. If you like any of them, contact me for a potential collaboration opportunity.
+    content: A collection of ideas for new projects and open questions I wish to work on. If something resonates with you, contact me for a potential collaboration opportunity.
     link: "/collection?tab=ideas"
 
   - heading: Curriculum Vitae 
