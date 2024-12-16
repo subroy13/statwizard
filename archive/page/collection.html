@@ -1,0 +1,118 @@
+{{ define "title" }}
+    {{ .Title }}
+{{ end }}
+
+{{ define "customCSS" }}
+    <link rel="stylesheet" href="/plugins/lightgallery/css/lightgallery.css">
+{{ end }}
+
+
+{{ define "main" }}
+<div class="w-full px-4 md:px-auto md:mx-auto">
+    <!-- First row-->
+    <div class="my-16 flex flex-col justify-center items-center">
+        <img src="/svg/hobby.svg" class="h-[150px]" />
+        <h2 class="text-gray-700 text-lg font-semibold">
+            A compendium of ideas, lecture notes, hobbies and some interesting stuffs I have collected over time!
+        </h2>
+    </div>
+
+    <!-- Lecture Notes -->
+    <div class="my-3 grid grid-cols-1 md:grid-cols-6 bg-green-100 w-full">
+        <div class="col-span-1 text-center p-4">
+          <h3 class="text-green-800 text-2xl font-semibold pb-4">
+            Lecture Notes & Assignments
+          </h3>
+          <p class="text-green-800 text-sm font-light">
+            Some lecture notes of different courses around the world!
+          </p>
+        </div>
+        <div class="col-span-5">
+          <ul class="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4">
+            {{ range .Params.notes }}
+                <li>
+                  <a href="{{ .url }}" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                    {{ .title }}
+                  </a>, course offered at <span class="font-semibold">{{ .organization }}</span>
+                </li>
+            {{ end }}
+          </ul>
+        </div>
+    </div>
+
+    <!-- Tutorials -->
+    <div class="my-3 grid grid-cols-1 md:grid-cols-6 bg-blue-100 w-full">
+        <div class="col-span-1 text-center p-4">
+          <h3 class="text-blue-800 text-2xl font-semibold pb-4">
+            Tutorial Series
+          </h3>
+          <p class="text-blue-800 text-sm font-light">
+            Resources on starting out with a specific domain
+          </p>
+        </div>
+        <div class="col-span-5">
+            {{ range .Params.tutorials }}
+              <div class="border-b-2 border-blue-800 py-2 my-2" key={topic.label}>
+                <h2 class="text-normal text-gray-500"><span class="font-semibold text-blue-800">
+                    {{ .label }}
+                </span> - {{ .description }}</h2>
+                <ul class="ml-4 text-sm text-gray-500 list-disc list-inside dark:text-gray-400 space-y-1 my-4 flex flex-row flex-wrap gap-4 items-center justify-left">
+                    {{ range .links }}
+                        <li>
+                        <a href="{{ .url }}" target="_blank" class="text-blue-600 hover:text-underline hover:text-blue-800 focus:text-underline focus:text-blue-800">
+                          {{ .title }}
+                        </a>
+                      </li>
+                    {{ end }}
+                </ul>
+              </div>
+            {{ end }}
+        </div>
+    </div>
+
+
+    <!-- 3d Arts -->
+    <div class="grid grid-cols-1 md:grid-cols-6 bg-red-100 w-full">
+        <div class="col-span-1 text-center p-4">
+            <h3 class="text-red-800 text-2xl font-semibold pb-4">3D Arts</h3>
+            <p class="text-red-800 text-sm font-light">
+                Some 3D models I have created using Blender, Bryce 3D, Wings 3D.
+            </p>
+        </div>
+        <div class="col-span-5">
+            <div id = "gallery" class="py-8 mx-4 grid grid-cols-2 md:grid-cols-6 gap-4 justify-start items-center">
+                {{ range resources.Match "/3darts/*.*" }}
+                    {{ $image := .Fit "300x150 q90" }}
+                    <div data-src = "{{ .Permalink }}" class="item">
+                        <img
+                            src="{{ $image.Permalink }}"
+                            class="w-[300px] h-[100px] object-cover hover:scale-105 rounded-md border-2 cursor-pointer"
+                        />
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
+{{ end }}
+
+
+
+{{ define "pageScripts" }}
+
+<!-- lightgallery plugins -->
+<script src="/plugins/lightgallery/js/lightgallery.js" async></script>
+<script src="/plugins/lightgallery/js/lg-thumbnail.js" async></script>
+<script src="/plugins/lightgallery/js/lg-fullscreen.js" async></script>
+
+<script>
+    $(document).ready(() => {
+        $("#gallery").lightGallery({
+            selector: '.item'
+        });
+    })
+</script>
+
+{{ end }}

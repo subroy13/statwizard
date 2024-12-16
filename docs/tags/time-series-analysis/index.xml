@@ -10,23 +10,23 @@
     <atom:link href="//localhost:1313/tags/time-series-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rough Fuzzy CPD: a gradual changepoint detection algorithm</title>
-      <link>//localhost:1313/research/rough-fuzzy-cpd/</link>
+      <link>//localhost:1313/research/2022-rough-fuzzy-cpd/</link>
       <pubDate>Tue, 15 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/rough-fuzzy-cpd/</guid>
+      <guid>//localhost:1313/research/2022-rough-fuzzy-cpd/</guid>
       <description>This article proposes a methodology to incorporate rough-fuzzy set theory into the changepoint detection algorithms to enable them more befitting towards gradual changepoint detection.</description>
     </item>
     <item>
       <title>A generalized epidemiological model with dynamic and asymptomatic population</title>
-      <link>//localhost:1313/research/covid-sintrue-model/</link>
+      <link>//localhost:1313/research/2022-covid-sintrue-model/</link>
       <pubDate>Wed, 17 Aug 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/covid-sintrue-model/</guid>
+      <guid>//localhost:1313/research/2022-covid-sintrue-model/</guid>
       <description>This article proposes a new epidemiological model SINTRUE to model the dynamics of a contaminating disease with a significant asymptomatic population. As an working example, we use the Covid-19 data of Chattisgarh to model and predict the second wave of covid.</description>
     </item>
     <item>
       <title>Analysis of Pollution Patterns in Regions of Kolkata</title>
-      <link>//localhost:1313/research/pollution-analysis-kolkata/</link>
+      <link>//localhost:1313/research/2020-pollution-analysis-kolkata/</link>
       <pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/pollution-analysis-kolkata/</guid>
+      <guid>//localhost:1313/research/2020-pollution-analysis-kolkata/</guid>
       <description></description>
     </item>
   </channel>

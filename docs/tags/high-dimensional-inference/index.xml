@@ -10,9 +10,9 @@
     <atom:link href="//localhost:1313/tags/high-dimensional-inference/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Review of Robust Location and Scatter Estimators</title>
-      <link>//localhost:1313/research/talk-multivariate-location-scatter/</link>
+      <link>//localhost:1313/research/2022-talk-multivariate-location-scatter/</link>
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/talk-multivariate-location-scatter/</guid>
+      <guid>//localhost:1313/research/2022-talk-multivariate-location-scatter/</guid>
       <description>This is an invited session given to the graduate students of Indian Statistical Insitute, Kolkata in a course on Robust Statistics</description>
     </item>
   </channel>
