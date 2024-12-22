@@ -10,9 +10,9 @@
     <atom:link href="//localhost:1313/tags/bayesian-analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Feasibility of Transparent Price Discovery in Tea through Auction in India</title>
-      <link>//localhost:1313/research/tea-auction/</link>
+      <link>//localhost:1313/research/2019-tea-auction/</link>
       <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/research/tea-auction/</guid>
+      <guid>//localhost:1313/research/2019-tea-auction/</guid>
       <description>This article examines Tea Auctions in India and forms an idea about the valuations that occur for several of the tea grades, and endeavoured to fit the model determining the final transaction price of the auction based on several relevant factors. The article also looks into the significance of manual valuations as predictors for the final price, and discussed several aspects to do away with the practice of manual valuations.</description>
     </item>
   </channel>

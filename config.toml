@@ -37,14 +37,9 @@ enableEmoji = true
         weight = 4
 
     [[menu.main]]
-        name = "CV"
-        url = "/contents/cv.pdf"
-        weight = 5
-
-    [[menu.main]]
         name = "Contact"
         url = "/contact"
-        weight = 6
+        weight = 5
 
 # Custom Parameters
 

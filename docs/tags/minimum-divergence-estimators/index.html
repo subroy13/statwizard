@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+    
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-97N9TLJ517"
+    ></script>
+    <script async>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-97N9TLJ517");
+    </script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8206710020783397"
+    crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-8206710020783397">
+    
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StatWizard: Access beginner-friendly blog posts covering various applications of statistics, data science, computer programming and finance. Also hosts the personal website of the author, Subhrajyoty Roy."
+    />
+    <link rel="icon" href="/images/logo.png" />
+    <title>
+    Tag - Minimum Divergence Estimators
+</title>
+
+    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css">
+
+
+
+
+
+
+
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+
+<style>
+  html {
+      scroll-behavior: smooth;
+  }
+  
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  .roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  .roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  .roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  .roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  .roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  .roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  .roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+</style>
+
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> 
+    
+<link rel="stylesheet" href="/css/paginatorStyle.css">
+ 
+     
+  </head>
+  <body>
+    <div class="app-container min-h-[100vh] flex flex-col justify-between">
+      <nav class="bg-white shadow-xl z-50">
+  
+  <div class="hidden md:flex w-full py-2 px-4 md:px-6 lg:px-8 md:flex flex-row items-center justify-between">
+    
+    <div class="flex flex-row justify-start items-center gap-4">
+      
+      <a
+        href="/"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Home
+      </a>
+      
+      <a
+        href="/research"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Research
+      </a>
+      
+      <a
+        href="/softwares"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Softwares
+      </a>
+      
+      <a
+        href="/collection"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Collection
+      </a>
+      
+      <a
+        href="/contact"
+        class="px-4 py-2 box-border rounded-t-lg hover:bg-gray-100 hover:border-b-2 hover:border-blue-600 hover:text-blue-600 roboto-medium"
+      >
+        Contact
+      </a>
+      
+    </div>
+
+
+    
+    <div class="w-[200px] flex flex-row justify-around items-center">
+      
+      <a
+        href="mailto:subhrajyotyroy@gmail.com"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fas fa-envelope for link mailto:subhrajyotyroy@gmail.com"
+        target="_blank"
+      >
+        <i class="fas fa-envelope fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://github.com/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-github for link https://github.com/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-github fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.linkedin.com/in/subroy13"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-linkedin-in for link https://www.linkedin.com/in/subroy13"
+        target="_blank"
+      >
+        <i class="fab fa-linkedin-in fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-google-scholar for link https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1"
+        target="_blank"
+      >
+        <i class="fab fa-google-scholar fa-lg"></i>
+      </a>
+      
+      <a
+        href="#"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-instagram for link #"
+        target="_blank"
+      >
+        <i class="fab fa-instagram fa-lg"></i>
+      </a>
+      
+      <a
+        href="https://www.facebook.com/subroy13/"
+        class="hover:text-blue-600 transition-all ease-in-out"
+        aria-label="fab fa-facebook for link https://www.facebook.com/subroy13/"
+        target="_blank"
+      >
+        <i class="fab fa-facebook fa-lg"></i>
+      </a>
+      
+    </div>
+  </div>
+  
+
+  
+  <div class="w-full mx-0 flex flex-col gap-0 md:hidden">
+    <div class="w-full mx-0 flex flx-row px-2 py-4 justify-between items-center">
+      
+      <div class="w-[200px] flex items-center">
+        <a
+          class="uppercase font-extrabold font-mono text-2xl flex flex-row justify-center items-center gap-2"
+          href="/"
+        >
+          <img
+            src="/images/logo-wide-2.png"
+            height="75px"
+            width="150px"
+            class="inline-block"
+            alt="StatWizard Logo"
+          />
+        </a>
+      </div>
+
+      
+      <div class="w-[30px] mr-4">
+        <button 
+          type="button"
+          id="mobile-menu-button"
+          class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:text-white outline-none"
+          aria-controls="mobile-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          
+          <svg
+            id="mobile-menu-close-icon"
+            class="bg-white text-neutral-800 outline-none block h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+            />
+          </svg>
+          
+          <svg
+            id="mobile-menu-open-icon"
+            class="bg-white text-neutral-800 outline-none hidden h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    
+    <div id="mobile-menu" class="bg-white w-full mx-0 hidden">
+      <ul class="flex flex-col gap-2">
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/" class=""> Home </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/research" class=""> Research </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/softwares" class=""> Softwares </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/collection" class=""> Collection </a>
+        </li>
+        
+        <li
+          class="px-4 py-2 box-border hover:bg-gray-100 hover:text-blue-600 hover:border-b-2 hover:border-blue-600"
+        >
+          <a href="/contact" class=""> Contact </a>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+  
+</nav>
+
+
+      <div class="content-container mx-0 px-0">
+        
+<section class="mx-4 md:mx-auto max-w-6xl my-8">
+    <h1 class="my-8 w-full text-center font-bold text-blue-600 text-2xl md:text-4xl">
+        Tag Minimum Divergence Estimators
+    </h1>
+    <div class="my-8 bg-neutral-50 flex flex-col gap-4 items-center justify-center">
+        
+            <div class="w-full shadow-lg rounded-md border-2 bg-white p-4">
+                <div class="header flex flex-row justify-start items-center gap-4">
+                    <a  href="//localhost:1313/research/2024-rsvddpd/" class="text-blue-600 text-lg font-semibold cursor-pointer hover:text-blue-800 transition ease-in-out">
+                        Robust singular value decomposition with application to video surveillance background modelling
+                    </a>
+                    <p class="text-neutral-800 w-full flex flex-row-reverse text-sm items-center">
+                        <i class = "far fa-calendar-alt fa-2x mx-3"></i>07 July, 2023
+                    </p>
+                </div>
+                <div class="mt-4 text-neutral-800 text-sm text-justify">
+                    Classical singular value decomposition suffers from presence of outliers in the data. In this article, we present a novel algorithm called rSVDdpd that enables robust estimation of singular values and vectors through minimum density power divergence estimator. The algorithm is scalable, highly parallelizable and computationally efficient. In addition to the theoretical findings, we demonstrate an application of background modelling for video surveillance data.
+                </div>
+                <div class="mt-4">
+                    <a 
+                        href="//localhost:1313/research/2024-rsvddpd/"
+                        class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+                    >
+                        See more
+                    </a>
+                </div>
+            </div>
+        
+        
+
+
+
+    </div>
+    <div class="flex flex-row justify-center items-center">
+        <a 
+            href='/tags/'
+            class="py-2 px-6 bg-blue-600 text-white cursor-pointer hover:bg-blue-800 transition ease-in-out rounded-md shadow-sm"
+        >
+            See the list of all tags
+        </a>
+    </div>
+</section>
+
+
+      </div>
+    </div>
+
+    <script>
+    $(document).ready(() => {
+
+        
+        $('#mobile-menu-button').click(() => {
+            $('#mobile-menu').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('hidden');
+            $('#mobile-menu-close-icon').toggleClass('block');
+            $('#mobile-menu-open-icon').toggleClass('hidden');
+            $('#mobile-menu-open-icon').toggleClass('block');
+        });
+
+    });
+</script>
+
+
+<script async src="https://kit.fontawesome.com/ca14d5004b.js" crossorigin="anonymous"></script>
+ 
+     
+  </body>
+</html>
