@@ -1,0 +1,13 @@
+*.aux
+*.fdb
+*.fdb_*
+*.fls
+*.out
+tmp/
+temp/
+cache/
+*.synctex.*
+*.log
+*.blg
+*.bcf
+*.bbl

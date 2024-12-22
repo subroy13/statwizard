@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{enumitem}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\makeatletter% since there's an at-sign (@) in the command name
+\renewcommand{\@maketitle}{%
+  \parindent=0pt% don't indent paragraphs in the title block
+  {\begin{center}
+    \huge \bfseries\textsc{\@title}
+    \end{center}}
+  \par%
+  {
+    \begin{center}
+        \large\textbf{Subhrajyoty Roy}
+    \end{center}
+  }\vspace*{2mm}\par%
+  {\begin{minipage}{0.49\textwidth}
+    \@author
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \raggedleft
+    \@date
+  \end{minipage}}
+  \vspace*{2mm}\\
+  \HRule\par
+  \vspace{4mm}
+}
+\makeatother% resets the meaning of the at-sign (@)
+
+\title{Teaching Statement}
+\author{External Research Fellow,\\
+Interdisciplinary Statistical Research Unit,\\
+Applied Statistics Division,\\
+Indian Statistical Institute, Kolkata
+}
+\date{Principal Information Researcher,\\
+SysCloud Technologies Pvt. Ltd.\\
+8th Floor, ISprout, Sohini Tech Park, \\
+Nanakramguda Rd, Financial District, Hyderabad
+}
+
+\begin{document}
+\maketitle% prints the title block
+
+As a lifelong learner, I find happiness in getting to know new ideas and thoughts, which are multiplied when shared with others. This deep-rooted passion for constant learning and sharing forms the foundation of my teaching philosophy.
+
+\section*{\underline{Teaching Experiences}}
+
+My teaching journey began when I was an undergraduate at the Indian Statistical Institute, Kolkata, when I used to help some students with statistics for their higher secondary-level curriculum. Almost all of them later went on to do major in Statistics, a testament to my ability to instil a passion for the subject into them. During my PhD at the Indian Statistical Institute, I was honoured to be invited as a \textbf{guest lecturer for a Robust Statistics course} in the M.Stat. programme there. The topic of the lecture focused on advanced areas in robust statistics, focusing on the challenges in robust estimation of multivariate and high-dimensional data and their applications. I was also fortunate enough to \textbf{conduct various workshops at my workplace, SysCloud Technologies Pvt. Ltd.} As a principal information researcher, my sessions focused on different areas of natural language processing, deep learning, and emergent generative artificial intelligence systems. Since many of my colleagues lack formal training in mathematics, these sessions emphasized more on practical applications with curated examples and hands-on training. I have also been invited to teach an online course on \textbf{``Mathematics for Data Science'' at Great Learning}. The cohort under my guidance consisted of over 150 professionals from a diverse range of backgrounds, including many international students. My effective communication as a mentor there consistently earned me ratings above 4.5 out of 5. A particularly challenging but rewarding experience was when I was offered to conduct a doubt-clearing session for over 600 students from multiple cohorts, due to my lucid style of explaining difficult concepts. To effectively manage such a large group of audience in a remote training session, I conducted a survey beforehand to collect all the doubts of different students, became prepared with the solutions and set proper expectations about the session contents at the beginning of the lecture.
+
+\section*{\underline{Teaching Philosophy and Methodologies}}
+
+I view the aim of teaching is to nurture students towards a step of self-sufficiency, as in the Japanese proverb “Shu-ha-ri”: “When the student is truly ready, the teacher will disappear.” Thus, my goal as an educator is threefold, depending on which stage of this journey a student is in.
+\begin{enumerate}[noitemsep]
+    \item To impart knowledge to help the students develop a core foundational understanding of a topic.
+    \item To inspire curiosity that motivates the students to ask novel questions and propose solutions.
+    \item To instil confidence and guide them to a path of independent thinking.
+\end{enumerate}
+\noindent In the following, I describe in detail how I try to shape my own teaching methodologies to meet these objectives.
+
+While helping students build foundational knowledge, I tailor my teaching methods to meet the needs of my audience. For students with less formal training in mathematics, I strongly rely on illustrative examples and visual aids, to help them get an intuitive understanding of the concepts. This is a simple “show then tell” technique that helps the students visualize a concrete relatable example first, and then move on to the abstract results. Also, I have found it extremely beneficial to conduct some hands-on training exercises. For example, in the workshops at SysCloud, I conducted a hands-on training session where each participant built a simple deep neural network model to classify phishing emails. This way, the students retained most of their learning even after the session was over. Conversely, for more mathematically inclined students, in addition to the formal theorem proving and illustrative examples, I also emphasize the importance of various assumptions with the help of counterexamples. This helps them solidify their understanding of the mathematical foundations underlying the topic.
+
+I aim to create an engaging and interactive learning environment where the students can feel free to raise novel questions. Often, I employ a ``therefore and but'' storytelling approach. In this approach, I present the objectives or some applications at the outset of a topic, and then work collaboratively with the students towards solutions. “But” each such solution may come with additional challenges, so ``therefore'', we seek newer improved solutions – this narrative style alternating between crisis and resolutions — creates a dynamic and engaging learning environment for the students. For example, in my guest lecture on Robust Statistics, I presented the problem of robust estimation of location and scatter of multivariate data at the beginning, and then worked collaboratively with the students to come up with intuitive methods of estimation. They presented simple coordinate-wise median-based techniques, and correspondingly I discussed the problem with such a naive approach. Then we moved on to more complicated approaches such as spatial median, minimum volume ellipsoid (MVE), minimum covariance determinant (MCD), etc. Every time a new approach was presented, we dissected it to understand what problems it solves, and again what new problems it creates --- thus enabling the students to compare different methods and understand their pros and cons. From my experiences, this approach promotes active participation and helps the students develop independent problem-solving skills. 
+
+To cultivate curiosity, I sometimes end my lectures with open-ended questions that encourage students to think critically beyond the classroom materials, and serve as the seeds for intellectual discussions for subsequent sessions. In multiple instances, it has resulted the students to approach me beyond the classroom hours to engage into thought-provoking discussions. In fact, in SysCloud, these initial discussions have even translated into a collaborative project that later became a generative AI-based comprehensive system to detect, analyze, postmortem, repair, alert and report infrastructure failures across microservices, which have fetched us a first-prize at a Game Day competition hosted by \textbf{Amazon Web Services}.
+
+In addition to these, I am very responsive to emails. I maintain a website where all of my guest lecture materials, and relevant simulation codes are available which can help the students refer to the classroom materials later on. I also actively maintain a bi-weekly newsletter, StatWizard, where I engage more than 200 subscribers from diverse backgrounds with interesting stories, applications and tutorials on various topics in data science.
+
+
+\section*{\underline{Future Teaching Interests}}
+
+Having an amalgamation of both research backgrounds in robust and high-dimensional statistics, and an industrial background in working with natural language processing and deep learning, I am eager to develop new courses bringing a unique blend of theory and applications. These are detailed below:
+\begin{enumerate}
+    \item \textbf{Decision Analytics with Robust Machine Learning}: This course would cover robust statistical methods and machine learning techniques to deal with real-life noisy data with outliers, and include applications like fraud detection (anomaly detection in general), video background modelling, image watermarking, etc. This course is primarily targeted at doctoral and MBA students who will be able to understand the key challenges in applying textbook procedures to real-life noisy data and learn ways to circumvent them.
+    \item \textbf{Methods in Deep Learning}: This course would cover the basics of neural networks, single-layer perception, multi-layered perception, convolutional neural networks (CNN), recurrent and gated neural networks (RNN), sequence-to-sequence (Seq2Seq) models, transformers, autoencoders (VAE), generative adversarial networks (GAN) etc. For doctoral students, this course will have some emphasis on the theoretical foundations of deep learning. On the other hand, for MBA students, this course can be adapted to be more application-oriented with multiple case studies.
+    \item \textbf{Generative AI and System Design:} This course would cover the foundations of generative AI systems such as embeddings, transformers and attention mechanisms. Then it will proceed towards more advanced topics such as Dynamic Prompting, Retrieval Augmented Generation (RAG), Function Calling (Tool Use), Agentic Workflows, etc. and fine-tuning techniques like LoRA, VERA, DoRA, PEFT, etc. The course will also cover deployment strategies, AI safety and ethical considerations, LLM security, and practical implementations.
+\end{enumerate}
+\noindent In addition to these specialized topics, I am prepared to teach any core topics in statistics, probability and basic courses in mathematics (e.g. linear algebra, real and complex analysis).
+
+\section*{\underline{Conclusion}}
+
+Being a learner, I continuously seek to enhance the quality of my teaching by observing other great presenters. For example, watching TED talks and attending seminars helps me identify various teaching tricks and techniques that keep the audience engaged and focused, making them capable of recall and transferring learning to their own use cases. Then I try to adopt these techniques to my own teaching styles.
+
+Finally, as an educator, my mission is to inspire a love for learning while equipping students with the tools to think independently. Overall, I believe teaching is an essential aspect of being a Professor and I hope to continue improving at it.
+
+
+\end{document}
+
+
+

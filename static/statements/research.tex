@@ -1,0 +1,93 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  citecolor=blue
+}
+
+\usepackage{natbib}
+\bibliographystyle{abbrv}
+
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+
+\makeatletter% since there's an at-sign (@) in the command name
+\renewcommand{\@maketitle}{%
+  \parindent=0pt% don't indent paragraphs in the title block
+  {\begin{center}
+    \huge \bfseries\textsc{\@title}
+    \end{center}}
+  \par%
+  {
+    \begin{center}
+        \large\textbf{Subhrajyoty Roy}
+    \end{center}
+  }\vspace*{2mm}\par%
+  {\begin{minipage}{0.49\textwidth}
+    \@author
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.49\textwidth}
+    \raggedleft
+    \@date
+  \end{minipage}}
+  \vspace*{2mm}\\
+  \HRule\par
+  \vspace{4mm}
+}
+\makeatother% resets the meaning of the at-sign (@)
+
+\title{Research Statement}
+\author{PhD Candidate,\\
+Interdisciplinary Statistical Research Unit,\\
+Applied Statistics Division,\\
+Indian Statistical Institute, Kolkata
+}
+\date{Principal Information Researcher,\\
+SysCloud Technologies Pvt. Ltd.\\
+8th Floor, ISprout, Sohini Tech Park, \\
+Nanakramguda Rd, Financial District, Hyderabad
+}
+
+
+\begin{document}
+\maketitle% prints the title block
+
+\section*{Research Interests}
+
+My research interests lie in robust statistics, high-dimensional data analysis, and spatio-temporal data analysis, with a strong focus on developing methods that are theoretically sound, computationally efficient, and practically impactful. Additionally, I am interested in exploring different applications of these methodologies in diverse domains such as video and image processing, epidemiology, and environmental sciences. A recurring theme in my current research work is leveraging robust statistical frameworks to handle real-world datasets that are often contaminated with noise and outliers, high-dimensional, or exhibit intricate temporal and spatial dependencies.
+
+
+\section*{Research Contributions}
+
+My doctoral research has been centered around the development of robust matrix factorization methods using minimum divergence estimators. Minimum divergence estimators have a natural appeal to parametric statistical inference problems. Many of these estimators have strong robustness properties, in fact, as we show in~\cite{roy2023breakdown}, such estimators often have an asymptotic breakdown point free of data dimension. This property makes them extremely attractive in developing robust techniques for analyzing high-dimensional data. As an example, I introduced novel algorithms for Robust Singular Value Decomposition (rSVD)~\cite{roy2024rsvddpd} and Robust Principal Component Analysis (rPCA)~\cite{roy2024rpcadpd} based on the Minimum Density Power Divergence Estimator (MDPDE). I also show that these methods are embarrassingly parallel and scale to arbitrarily high-dimensional data, and exhibit strong robustness even under high contamination. Theoretical guarantees like equivariance, consistency, and asymptotic normality also establish the soundness of these estimators as illustrated in~\cite{roy2024rpcadpd}. For reproducibility and broader dissemination of my work, I have published an R package \texttt{rsvdpd}~\cite{rsvddpd-package} and a python package \texttt{decompy}~\cite{decompy-package}.
+
+There are multiple applications of the proposed robust matrix factorization techniques across different domains. In~\cite{roy2024rsvddpd}, I demonstrate one such application in developing a background modelling and foreground estimation technique on video surveillance data, which provides a simple unsupervised approach to solving this problem in contrast to the supervised state-of-the-art deep learning models. Further applications of the matrix factorization techniques based on minimum distance estimators include dimensionality reduction, matrix completion, image and video watermarking, latent semantic indexing, fraud detection, etc.
+
+My master's dissertation was focused on the development of a robust and trustworthy dimensionality reduction technique~\cite{roy2024trustworthy}. In this, I proposed multiple criteria for measuring the reliability of any dimensionality reduction technique, and a novel method that adheres to these criteria. The algorithm combined multiple techniques from various fields, such as Voronoi tessellation from computational geometry and multidimensional scaling from machine learning. The resulting algorithm was found to be competitive with state-of-the-art algorithms like tSNE and UMAP for several benchmark datasets.
+
+In non-parametric statistical inference, spatio-temporal modelling of the data is another research avenue that I have a keen interest in. This began with my research on the analysis of the environmental data on air pollution patterns of my hometown, Kolkata, India~\cite{roy2020pollution}. This research combined exploratory insights on environmental challenges in urban areas and the detection of temporal and spatial patterns using nonparametric smoothing techniques. Another collaborative research contribution of mine is the development of a nonparametric quantile regression modelling framework for spatio-temporal data~\cite{deb2024nonparametric}. Beyond the usual theoretical guarantees like consistency, asymptotic normality, and derivation of simultaneous confidence intervals, we also show an application for estimating quantile levels of daily energy demands across different households throughout the years. This application has a broader impact on designing the supply chain of the energy markets. I have also worked on designing a novel Rough-Fuzzy Change Point Detection (roufcp) algorithm~\cite{bhaduri2022rough}, which is particularly useful in the detection of gradual changepoints in time-series data. By combining rough set theory and fuzzy logic with nonparametric smoothing techniques, this work provides potential applications in detecting gradual changes in data streams, language patterns, and environmental and climatology data.
+
+As a part of the multidisciplinary effort, I have also contributed towards developing a generalized epidemiological model incorporating dynamic changes to the population due to migratory movements, and the presence of asymptomatic cases. This model, as shown in~\cite{ghatak2022generalized}, has provided useful insights into prediction of a second wave for the spread of infectious diseases like COVID-19. Additionally, one of my research on ordinal response models~\cite{pyne2024robust} demonstrates how minimum density power divergence estimator can be used to provide robust and efficient estimators for solving classification problems.
+
+
+\section*{Future Research Plans}
+
+Building onto my previous works, I aim to further advance the theoretical and computational aspects of robust statistics (based on minimum divergence estimation) and their applications. I plan to generalize my robust PCA and SVD methodologies to tensor decomposition, which has direct applications in hyperspectral imaging, neuroimaging, and explaining the structure of convolutional neural networks. 
+
+Due to my industrial experience as the Principal Information Researcher at SysCloud, I am also familiar with the advances in deep learning, specifically in deep generative models. One of my research interests is to explore the application of various statistical divergence measures in these deep generative networks (such as in score based generative modelling for Stable Diffusions), which may open up new directions of researches for enabling robustness and fairness guarantees for these neural network models. 
+
+With the rise of the Internet of Things (IoT) and sensor networks, spatio-temporal data is becoming increasingly prevalent. I plan to expand my works on nonparametric and spatiotemporal analysis with more generalized frameworks. One of my ongoing projects involves incorporating infinite dimensional historical covariates in a spatiotemporal model and supports irregularly spaced distribution of the observed points of space and time.
+
+In addition to all of the above, I am always eager to collaborate with domain experts to apply my methodologies to novel areas such as climate science, finance, public health, etc. Additionally, I would continue to theoretically explore the limitations and various generalizations of divergence based estimators. In one of my current projects, we are exploring the properties of a generalized class of divergence that includes many popular divergences, such as the density power divergence, logarithmic super divergence and $(\phi,\gamma)$-divergence.
+
+By bridging theoretical advancements with practical applications, my future research endeavours will continue to address pressing challenges in robustness in statistics, machine learning and generative models, while contributing to their foundational understanding. 
+
+
+\bibliography{myref}
+\end{document}
