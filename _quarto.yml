@@ -1,0 +1,47 @@
+project:
+  type: website
+
+website:
+  title: "Subhrajyoty Roy"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About Me
+      - href: research/index.qmd
+        text: Research
+      - href: software.qmd
+        text: OSS
+      - href: research/talks.qmd
+        text: Talks
+      - href: notes/index.qmd
+        text: Notes
+    search: false
+    tools:
+      - icon: github
+        href: https://github.com/subroy13
+      - icon: linkedin
+        href: https://www.linkedin.com/in/subroy13
+      - icon: envelope-at
+        href: mailto:roy.s@wustl.edu
+      - icon: mortarboard-fill
+        href: https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1
+  body-footer: |
+    <div style="text-align:center; font-size:0.9em; color:#555; border-top: 1px solid black; margin-top: 2.5em; padding-top: 1em;">
+    © 2025 Subhrajyoty Roy • Postdoctoral Research Scholar, Washington University in St. Louis •
+    <a href="mailto:roy.s@wustl.edu">Email</a> •
+    <a href="https://github.com/subroy13">GitHub</a> •
+    <a href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1">Google Scholar</a>
+    </div>
+  # cookie-consent: true
+
+format:
+  html:
+    theme:
+      light: litera
+      dark: cyborg
+    css: ./static/css/styles.css
+    smooth-scroll: true
+
+

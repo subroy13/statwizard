@@ -1,0 +1,45 @@
+---
+title: About Me
+format:
+    html:
+        toc: true
+        toc-location: right
+
+---
+
+## Education
+
+**Indian Statistical Institute, Kolkata** | India<br/>
+PhD in Statistics | Aug 2021 - June 2025<br/>
+During my PhD, I was fortunate to work with [Ayanendranath Basu](https://scholar.google.co.in/citations?user=HiIWY7sAAAAJ&hl=en) and [Abhik Ghosh](https://www.isical.ac.in/~abhik.ghosh/). My doctoral thesis is about developing fast and scalable algorithms for robust SVD and robust PCA using the minimum density power divergence.
+
+- If you are interested in applying these methods, see this [R package](https://cran.r-project.org/web/packages/rsvddpd/index.html) or this [Python package](https://pypi.org/project/decompy/).
+
+- If you are more into maths, may be take a look at my PhD thesis [here](https://dspace.isical.ac.in/jspui/handle/10263/7574).
+
+**Indian Statistical Institute, Kolkata** | India<br/>
+M.Stat. | Aug 2019 - July 2021
+
+**Indian Statistical Institute, Kolkata** | India<br/>
+B.Stat. | Aug 2016 - July 2019
+
+## Experience
+
+**Washington Univeristy in St. Louis** | Postdoctoral Researcher | Aug 2025 - current
+
+**SysCloud Inc.** | Principal Information Researcher | July 2022 - June 2025
+
+::: callout-note
+The job of an **Information Researcher** to research, design and build automated systems using algorithms, machine learning, and deep learning techniques. You can think of this as a convex combination of data scientist, solution architect and full-stack developer.
+::: 
+
+**SysCloud Inc.** | Data Scientist | July 2021 - June 2022
+
+
+## Places I have been
+
+Most of my travel revolves around visiting academic conferences. So far, I have been to 4 out of 7 continents, and I hope to get to all 7 someday! 🗺️⁀જ✈︎
+
+```{=html}
+<iframe src="https://www.google.com/maps/d/embed?mid=1VPh2l50ToO9Y6r0VmrUSgmStxb6H9_E&ehbc=2E312F" width="640" height="480"></iframe>
+```

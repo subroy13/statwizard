@@ -1,0 +1,20 @@
+---
+title: "Subhrajyoty Roy"
+about:
+  template: jolla
+  image: ./static/images/profile.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/subroy13
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/subroy13
+    - icon: mortarboard-fill
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1
+---
+
+
+I am a **Postdoctoral Researcher** in the [Department of Statistics and Data Science](https://sds.wustl.edu/) at Washington University in St. Louis.
+

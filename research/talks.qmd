@@ -1,0 +1,66 @@
+---
+title: Talks & Seminars
+toc: true
+page-layout: full
+---
+
+
+Below is a curated list of invited lectures, conference presentations, public lectures, and special talks delivered over the years.
+
+---
+
+## 2025
+
+#### Localized Detection of Authenticity in Mixed Source Texts via an Epidemic Change-Point Perspective 
+
+<span class="badge bg-primary">Invited Talk</span>  
+**Graduate Student Seminar**, Washington University in St. Louis, USA.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2025/2025-wustl-gss/2025_wustl_gss.pdf)
+
+#### Generalized Alpha-Beta Divergence, its Properties and Associated Entropy  
+<span class="badge bg-secondary">Contributory Talk</span>  
+**International Conference on Robust Statistics (ICORS) 2025**, Stresa, Piedmont, Italy.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2025/icors-2025/icors2025_slides.pdf)
+
+---
+
+## 2024
+
+#### Robust Principal Component Analysis using Density Power Divergence  
+<span class="badge bg-warning">Best Paper Nominee</span>  
+**IISA Conference 2024**, Cochin University of Science and Technology.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/iisa2024/iisa2024_slides.pdf)
+
+#### Robust Matrix Factorization using Density Power Divergence and its Applications  
+<span class="badge bg-info">Public Lecture</span>  
+**Doctoral Research Lecture**, Indian Statistical Institute, Kolkata.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/pre-thesis-talk.pdf)
+
+#### A Novel and Scalable Background Modelling Algorithm for Video Surveillance Data  
+<span class="badge bg-secondary">Contributory Talk</span>  
+**IMS Asia Pacific Rim Meeting (APRM 2024)**, University of Melbourne.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/ims-aprm-2024.pdf)
+
+#### A Review of Robust Location and Scatter Estimators  
+<span class="badge bg-success">Guest Lecture</span>  
+**Robust Statistics Course (M.Stat.’22 & M.Stat.’24)**, Indian Statistical Institute, Kolkata.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v2_2024.pdf)
+
+---
+
+## 2021
+
+#### Algorithmic Fairness of Statistical Decision Systems  
+<span class="badge bg-danger">Memorial Lecture</span>  
+**Prasanta Chandra Mahalanobis Memorial Lecture**, Indian Statistical Institute, Kolkata.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2021/algorithmic-fairness/PCM%20Presentation.pdf)
+
+---
+
+## 2019
+
+#### Visualising Multivariate Data using t-SNE  
+<span class="badge bg-danger">Memorial Lecture</span>  
+**D. Basu Memorial Lecture**, Indian Statistical Institute, Kolkata.  
+[Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2019/tsne-visualization/t-SNE_%20A%20way%20to%20Visualize%20Multidimensional%20Dataset.pdf)
+

@@ -1,0 +1,107 @@
+---
+title: Research
+description: "Research interests and articles"
+toc: true
+page-layout: full
+---
+
+My current research interest concentrates on **Robust Statistics**, **Dependent Data Analysis** and development of **Statistical Methods for Deep Learning**.
+
+---
+
+<!-- ::: callout-note 
+\* means equal contribution.
+::: -->
+
+
+### Statistical Methods for Deep Learning
+
+> Deep learning models have found super-accurate inferences and profound applications in many fields. Unfortunately, we understand very little about them: There's always concerns about safety, ethics and so many other things. There's been a proliferation of statistical ideas that combines old techniques with these modern blackboxes to assure reliability and help us understand them more.
+
+1. Bonnerjee, Soham, Sayar Karmakar, and Subhrajyoty Roy.  
+    "**WISER: Segmenting watermarked region – an epidemic change-point perspective.**"  
+    *arXiv preprint* arXiv:2509.21160 (2025).  
+    [Open Access Link](https://arxiv.org/abs/2509.21160)
+
+
+### Dependent Data Analysis
+
+> Observations are often correlated with each other, sometimes these correlation occur temporally, or spatially, or both. Dependent Data Analysis aims to obtain valid inference guarantees for these kinds of datasets.
+
+1. Deb, Soudeep, Claudia Neves, and Subhrajyoty Roy. "**Nonparametric quantile regression for spatio-temporal processes.**" *arXiv preprint* arXiv:2405.13783 (2024). [Open Access Link](https://arxiv.org/abs/2405.13783)
+
+1. Bhaduri, Ritwik, Subhrajyoty Roy, and Sankar K. Pal. "**Rough-Fuzzy CPD: a gradual change point detection algorithm.**" *Journal of Data, Information and Management* 4, no. 3 (2022): 243–266.  [Link](https://link.springer.com/article/10.1007/s42488-022-00077-3) | [Open Access Link](https://arxiv.org/pdf/2010.06370)
+
+
+### Robust Statistics
+
+> Robust Statistics aims to deliver guaranteed inferences even when your data may contain outliers, or the assumptions underlying your inference strategy are slightly violated.
+ 
+1. Roy, Subhrajyoty, Abhik Ghosh, and Ayanendranath Basu. "**Robust Rank Estimation for Noisy Matrices**." *arXiv preprint* arXiv:2510.19583 (2025). [Open Access Link](https://arxiv.org/pdf/2510.19583)
+
+2. Jana, Suryasis, Subhrajyoty Roy, Ayanendranath Basu, and Abhik Ghosh.  
+    "**Asymptotic breakdown point analysis of the minimum density power divergence estimator under independent non-homogeneous setups.**"  
+    *arXiv preprint* arXiv:2508.12426 (2025).  
+    [Open Access Link](https://arxiv.org/abs/2508.12426)
+
+3. Roy, Subhrajyoty. "**Robust Matrix Factorization using the Density Power Divergence and its Applications**". *ISI PhD Thesis TH646* (2025). [Open Access Link](https://dspace.isical.ac.in/jspui/handle/10263/7574)
+
+
+5. Roy, Subhrajyoty, Supratik Basu, Abhik Ghosh, and Ayanendranath Basu.  
+    "**Generalized Alpha-Beta Divergence and Associated Entropy Measures.**"  
+    *arXiv preprint* arXiv:2507.04637 (2025).  
+    [Open Access Link](https://arxiv.org/abs/2507.04637)
+
+4. Roy, Subhrajyoty, Abir Sarkar, Abhik Ghosh, and Ayanendranath Basu. "**Asymptotic Breakdown Point Analysis for a General Class of Minimum Divergence Estimators**." *Bernoulli* (2025+) (Accepted). [Open Access Link](https://arxiv.org/abs/2304.07466)
+
+
+3. Roy, Subhrajyoty, Ayanendranath Basu, and Abhik Ghosh.  
+   "**Robust Principal Component Analysis using Density Power Divergence**."  *Journal of Machine Learning Research* 25, no. 324 (2024): 1–40.  [Link](https://jmlr.org/papers/v25/23-1096.html) | [Open Access Link](https://arxiv.org/pdf/2309.13531)
+
+
+2. Pyne, Arijit, Subhrajyoty Roy, Abhik Ghosh, and Ayanendranath Basu.  
+   "**Robust and efficient estimation in ordinal response models using the density power divergence.**"  
+   *Statistics* 58, no. 3 (2024): 481–520.  
+   [Link](https://www.tandfonline.com/doi/full/10.1080/02331888.2024.2347329) | [Open Access Link](https://arxiv.org/pdf/2208.14011)
+
+1. Roy, Subhrajyoty, Abhik Ghosh, and Ayanendranath Basu.  
+   "**Robust singular value decomposition with application to video surveillance background modelling**."  
+   *Statistics and Computing* 34, no. 5 (2024): 178.  
+   [Link](https://link.springer.com/article/10.1007/s11222-024-10493-7) | [Open Access Link](https://arxiv.org/pdf/2109.10680) | [Supplementary Material](rsvddpd.qmd)
+
+
+### Applications and Exploratory Data Analysis
+
+In addition of these broad topics of interests, there's been a few works which is more application-oriented, and does not fit into one of these categories.
+
+1. Roy, Subhrajyoty.  
+    "**Trustworthy Dimensionality Reduction.**"  
+    *arXiv preprint* arXiv:2405.05868 (2024).  
+    [Open Access Link](https://arxiv.org/abs/2405.05868)
+
+2. Ghatak, Anirban, Shivshanker Singh Patel, Soham Bonnerjee, and Subhrajyoty Roy.  
+   "**A generalized epidemiological model with dynamic and asymptomatic population.**"  
+   *Statistical Methods in Medical Research* 31, no. 11 (2022): 2137–2163.  
+   [Link](https://journals.sagepub.com/doi/abs/10.1177/09622802221115877) | [Open Access Link](https://arxiv.org/pdf/2011.09686)
+
+4. Roy, Subhrajyoty, Debasis Sengupta, Kalyan Rudra, and Udit Surya Saha.  
+   "**Analysis of Pollution Patterns in Regions of Kolkata.**"  
+   *Calcutta Statistical Association Bulletin* 72, no. 2 (2020): 133–170.  
+   [Link](https://journals.sagepub.com/doi/abs/10.1177/0008068320976781)
+
+3. Dalal, Abhinandan, Diganta Mukherjee, and Subhrajyoty Roy.  
+    "**The Information Content of Taster's Valuation in Tea Auctions of India.**"  
+    *arXiv preprint* arXiv:2005.02814 (2020).  
+    [Open Access Link](https://arxiv.org/abs/2005.02814)
+
+2. Mukherjee, Diganta, Abhinandan Dalal, and Subhrajyoty Roy.  
+   "**Feasibility of Transparent Price Discovery in Tea through Auction in India.**"  
+   *Commodity Insights Yearbook MCX* (2019): 44–52.  
+   [Link](https://www.mcxindia.com/docs/default-source/about-us/commodity-insights-yearbook/2019/02-emerging-trends/feasibility-of-transparent-price-discovery-in-tea-through-auction-in-india-dr-diganta-mukherjee-mr-abhinandan-dalal-and-mr-subhrajyoty-roy.pdf) | [Open Access Link](https://arxiv.org/abs/2005.02814)
+
+
+1. Bhaduri, Ritwik, Soham Bonnerjee, and Subhrajyoty Roy.  
+    "**Onset detection: A new approach to QBH system.**"  
+    *arXiv preprint* arXiv:1908.07409 (2019).  
+    [Open Access Link](https://arxiv.org/abs/1908.07409)
+

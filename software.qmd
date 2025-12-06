@@ -1,0 +1,104 @@
+---
+title: Open Source Softwares
+page-layout: full
+format:
+  html:
+    toc: true
+    toc-location: right
+---
+
+## Software, Tools & Packages
+
+Below is a curated collection of software, packages, and tools I have developed or contributed to — resulting from various academic and personal projects.
+
+---
+
+### 🧰 Packages
+
+- **handanim**
+A Python library for programmatically generating *hand-drawn sketch-style animations*.  
+Ideal for instructional videos, visual explanations, and stylized presentations.
+
+    - 📘 Docs: <https://subroy13.github.io/handanim> 
+    - 💻 GitHub: <https://github.com/subroy13/handanim>
+<!-- - 📦 PyPI: <https://pypi.org/project/handanim>   -->
+
+
+<!-- **Badges:**  
+![PyPI Version](https://img.shields.io/pypi/v/handanim)
+![PyPI Downloads](https://img.shields.io/pypi/dm/handanim) -->
+
+
+- **decompy**
+A Python package implementing several *robust matrix decomposition* algorithms, supporting outlier-resistant SVD/PCA pipelines.
+    - 📦 PyPI: <https://pypi.org/project/decompy>  
+    - 💻 GitHub: <https://github.com/subroy13/decompy>
+    - ![PyPI Version](https://img.shields.io/pypi/v/decompy) ![PyPI Downloads](https://img.shields.io/pypi/dm/decompy)
+
+
+- **roufcp** Robust gradual changepoint detection in time series using Rough-Fuzzy set theory. Useful for weak or soft transitions where classic CPD fails.
+  - 📦 PyPI: <https://pypi.org/project/roufcp>  
+  - 💻 GitHub: <https://github.com/subroy13/roufcp>
+  - ![PyPI Version](https://img.shields.io/pypi/v/roufcp)  ![PyPI Downloads](https://img.shields.io/pypi/dm/roufcp)
+
+
+- **rsvddpd** Robust Singular Value Decomposition using the *Minimum Density Power Divergence Estimator (MDPDE)*.
+  - 📦 CRAN: <https://cran.r-project.org/web/packages/rsvddpd/index.html>
+  - 📘 Vignette: <https://cran.r-project.org/web/packages/rsvddpd/vignettes/rSVDdpd-intro.html>
+  - 💻 GitHub: <https://github.com/subroy13/rsvddpd>
+  - ![R Version](https://img.shields.io/github/r-package/v/subroy13/rsvddpd) | 
+```{r}
+#| echo: false
+#| results: asis
+#| comment: ""
+
+# Generate the Markdown code for the badge
+cranlogs::cranlogs_badge("rsvddpd", summary = "last-month")
+```
+
+
+- **callgrind-reader**
+A TypeScript library to parse **callgrind-like profiling output**, extract metrics, and integrate into analysis tools.
+  - 📦 npm: <https://www.npmjs.com/package/callgrind-reader>  
+  - ![npm](https://img.shields.io/npm/v/callgrind-reader) ![npm downloads](https://img.shields.io/npm/dm/callgrind-reader)
+
+# 🛠️ Projects
+
+Below are some applications and experimental systems built for research, teaching, or exploration.
+
+- **Multi PDF Querybot**
+Upload multiple PDFs and interactively question them using an in-memory vector-store-based RAG pipeline.
+   - 🔍 Multi-document semantic search  
+   - 💬 LLM-powered chatbot interface  
+   - ⚡ Fast, memory-based indexing
+   - **Repo:** <https://github.com/subroy13/multi-pdf-querybot> 
+
+- **ChronoModeler**
+A streamlit application to perform simulation experiments with different models on time series data, using a blueprint-based system. Useful for non-stat-savvy people to get a quick sense of how time series modelling works.
+    - **Repo:** <https://github.com/subroy13/chronomodeler>
+
+- **PWDMGR**
+A lightweight console-based password manager built in Python.
+    - **Repo:** <https://github.com/subroy13/pwdmgr>
+
+- **Covid-19 Tracker**
+A forecasting & resource-support dashboard for Covid-19, sponsored by IIM Vishakhapatnam.
+  - 📈 Real-time case tracking  
+  - 🔮 Forecasting visualizations  
+  - 🏥 Resource management tools  
+  - **Link:** <http://covid-tracker.iimv.ac.in:3939/covid/>
+
+
+- **Seq2Seq Attention-Based Chatbot**
+Classic neural chatbot trained on the Cornell Movie Dialogs Corpus, using a Seq2Seq architecture with **Bahdanau attention**.
+    - **Repo:** <https://github.com/subroy13/seq2seq-attention-bot>
+
+- **N-gram Text Predictor**
+A simple text prediction engine developed for the JHU Data Science Specialization (Coursera).
+    - **Repo:** <https://subroy13.shinyapps.io/TextPredictionSystem/>  
+
+---
+
+# Want to Collaborate?
+
+If you'd like to explore or contribute to any of these tools, feel free to reach out!

@@ -1,0 +1,11 @@
+---
+title: Notes
+description: This is a place where I share some of my notes. If you find an error, please submit a [pull request](). You can also get in touch with me [here](mailto:subhrajyotyroy@gmail.com).
+page-layout: full
+toc: true
+---
+
+# Hello
+
+Hello
+
