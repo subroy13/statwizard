@@ -16,5 +16,9 @@ about:
 ---
 
 
-I am a **Postdoctoral Researcher** in the [Department of Statistics and Data Science](https://sds.wustl.edu/) at Washington University in St. Louis.
+I am a **Postdoctoral Researcher** in the [Department of Statistics and Data Science](https://sds.wustl.edu/) at Washington University in St. Louis. 
+
+You may be interested in my [Research](./research/index.qmd) or the [open-source software tools](./software.qmd) I have created (or maintaining), or learning [about me](./about.qmd) in general. I also have [some notes](./notes/index.qmd) here based on my understanding of various topics, including statistics, personal finance, and even my take on the philosophy of life.
+
+For more formal reasons, my [Curriculum Vitae](https://github.com/subroy13/statwiztalks/blob/main/cv.pdf) may be more useful.
 

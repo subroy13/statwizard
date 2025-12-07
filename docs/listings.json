@@ -1,0 +1,11 @@
+[
+  {
+    "listing": "/notes/index.html",
+    "items": [
+      "/notes/concepts/robust-stat.html",
+      "/notes/concepts/spatial-stat.html",
+      "/notes/technicals/uniform-consistency-proof.html",
+      "/notes/technicals/optimizer-consistency-proof.html"
+    ]
+  }
+]

@@ -1,6 +1,6 @@
 project:
   type: website
-
+  output-dir: docs
 website:
   title: "Subhrajyoty Roy"
   navbar:
@@ -17,7 +17,7 @@ website:
         text: Talks
       - href: notes/index.qmd
         text: Notes
-    search: false
+    search: true
     tools:
       - icon: github
         href: https://github.com/subroy13
@@ -27,13 +27,9 @@ website:
         href: mailto:roy.s@wustl.edu
       - icon: mortarboard-fill
         href: https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1
-  body-footer: |
-    <div style="text-align:center; font-size:0.9em; color:#555; border-top: 1px solid black; margin-top: 2.5em; padding-top: 1em;">
-    © 2025 Subhrajyoty Roy • Postdoctoral Research Scholar, Washington University in St. Louis •
-    <a href="mailto:roy.s@wustl.edu">Email</a> •
-    <a href="https://github.com/subroy13">GitHub</a> •
-    <a href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en&authuser=1">Google Scholar</a>
-    </div>
+  page-footer: 
+    center: © 2025 Subhrajyoty Roy
+  back-to-top-navigation: true
   # cookie-consent: true
 
 format:

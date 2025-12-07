@@ -1,0 +1,117 @@
+---
+title: Proof of Uniform Consistency
+date: "11/8/2025"
+categories:
+    - Proof Technique
+    - Consistency
+bibliography: refs.bib
+---
+
+# Uniform Consistency
+
+Let us assume that $f$ be a function and $f_n$ be its empirical counterpart (possibly stochastic). Let $x \in \chi$ be some input variable, $\chi$ is some abstract space. 
+
+Suppose using empirical process (or law of large numbers, etc.) we can somehow show that for every fixed $x \in \chi$, 
+$$
+\vert f_n(x) - f(x) \vert = o_p(1)
+$$
+However, we need a stronger result that establish this uniformly over all choices of $x \in \chi$, i.e., we require
+$$
+\sup_{x \in \chi} \vert f_n(x) - f(x)\vert = o_p(1)
+$$
+
+There are few typical ways to approach this problem.
+
+## Approach: Stochastic Equicontinuity
+
+This approach aims to leverage some compactness-kind characterization of the space $\chi$. Suppose that $\chi$ is compact. However, that is not enough. To see this, note that if $\chi$ is compact, we can consider a finite subcover for this, and if we can show that the uniform convergence holds for every subcover, because there are only finitely many, we can take further supremum over them. Therefore, we need to show something like:
+$$
+\sup_{x \in B(y, \cdot)} \vert f_n(x) - f(x)\vert = o_p(1)
+$$
+where $B(y, \cdot)$ is a ball in $\chi$ centered around $y$. However, because $\chi$ is compact, it is also complete, and hence one can actually work with the Cauchy-sequences kind of thing. Therefore, to show the above, one version would be to work with 
+$$
+\sup_{x \in B(y, \cdot)} \vert f_n(x) - f_n(y)\vert = o_p(1)
+$$
+This is a version of equicontinuity, but for possibly random functions, hence called **stochastic equicontinuity**. Also, it needs to be hold only probabilistically for most $y$s, not for all. 
+
+Here are the final assumptions.
+
+- (A1) $\chi$ is compact.
+- (A2) For every $\epsilon, \eta > 0$, there exists a random $\Delta_n(\epsilon, \eta)$ and constant $n_0(\epsilon, \eta)$ such that for all $n \geq n_0(\epsilon,\eta)$, $\mathbb{P}(\vert \Delta_n(\epsilon, \eta) \vert > \epsilon) \leq \eta$ and for all $x \in \chi$, there exists a neighbourhood (open set) $N(x, \epsilon, \eta)$ such that 
+$$
+\sup_{y, y' \in N(x, \epsilon, \eta)} \vert f_n(y) - f_n(y') \vert \leq \Delta_n(\epsilon, \eta), \ n \geq n_0(\epsilon, \eta)
+$$
+
+Under this assumptions, we can lift the pointwise convergence of $f_n(x)$ to $f(x)$ for each fixed $x \in \chi$ to the uniform convergence over all $x \in \chi$. The detailed proof can be found in [@newey1991].
+
+
+## Approach: $\epsilon$-net bound
+
+Another interesting technique when the space $\chi$ is not compact, is to use an $\epsilon$-net type bounding argument.
+
+First note that, 
+$$
+\mathbb{P}(\sup_{x \in \chi} | f_n(x) - f(x)| > \delta) = \mathbb{P}(\cup_{x \in \chi} \{ |f_n(x) - f(x)| > \delta \})
+$$
+One can now try to bound this by an union bound, i.e., by $|\chi| \sup_{x \in \chi} \mathbb{P}(|f_n(x) - f(x) | > \delta)$, which is typically $|\chi| \times o_p(1)$. However, $\chi$ is generally an uncountable set, hence the above bound is useless. The strategy is to bound this set by some number of open balls which (like an open cover) and then control this number of open balls with the decay rate of the probability.
+
+Typically, there are 3 steps of this kind of proof.
+
+### Step 1
+
+Here, we use Hoeffding's inequality (if the stochastic functions $f_n$ are uniformly bounded) or use Berstein's inequality (or even a version of Talagrand's inequality), which provides some sort of exponential concentration: For every $x \in \chi$, we have 
+$$
+\mathbb{P}(|f_n(x) - f(x)| > \delta) \leq C e^{-c h(n, \delta)}
+$$
+where $h(n,\delta)$ is some function of $n$ and $\delta > 0$. The constant $C$ and $c$ are typically chosen to be independent of $x \in \chi$.
+
+### Step 2
+
+At this stage, we try to build an $\epsilon$-net cover for the space $\chi$. It means, to find a set $S \subset \chi$ of representative points such that for any $x \in \chi$, there exists $s' \in S$ such that $|x - s'| < \epsilon$. 
+
+Let $N_\epsilon(\chi)$ be the $\epsilon$-net covering number for the space $\chi$, which is the size of the smallest such $\epsilon$-net set $S$ for $\chi$. In general, $N_\epsilon(\chi)$ can just be a bound on the cardinality of that smallest set, it does not need to be exactly calculated.
+
+### Step 3
+
+Now for any fixed $x \in \chi$, let $s \in S$ be its representative point in the $\epsilon$-net. Then,
+$$
+\begin{align*}
+    | f_n(x) - f(x) | 
+    & = | f_n(x) - f_n(s) - (f(x) - f(s)) + f_n(s) - f(s) |\\
+    & \leq |f_n(x) - f_n(s)| + |f(x) - f(s)| + |f_n(s) - f(s)|\\
+    & \leq \sup_{|x - s| < \epsilon} |f_n(x) - f_n(s)| + \sup_{|x - s| < \epsilon} |f(x) - f(s)| + |f_n(s) - f(s)|
+\end{align*}
+$$
+Often, $f_n$ and $f$ are nice continuous type functions (sometimes even Lipschitz) so that the first two terms are of $O(g(\epsilon))$ for some function $g(\cdot)$, and the constant is actually free of the choice of $x \in \chi$. This means,
+$$
+\begin{align*}
+\mathbb{P}(\sup_{x \in \chi} |f_n(x) - f(x)| > \delta) 
+& = \mathbb{P}(\sup_{s \in S} |f_n(s) - f(s)| > \delta - g(\epsilon))\\
+& \leq \mathbb{P}(\sup_{s \in S} |f_n(s) - f(s)| > g'(\delta))
+\end{align*}
+$$
+for some function $g'(\cdot)$ and appropriately chosen small $\epsilon$ as a function of $\delta$. What this step shows is that there is only a little error in replacing the difference between $f_n$ and $f$ at this general point $x \in \chi$ to the same difference but now evaluated in one of the points in the $\epsilon$-net.
+
+This now helps us to write:
+$$
+\begin{align*}
+    \mathbb{P}(\sup_{x \in \chi} |f_n(x) - f(x)| > \delta)
+    & = \mathbb{P}(\sup_{s \in S} |f_n(s) - f(s)| > g'(\delta))\\
+    & \leq N_\epsilon(\chi) \mathbb{P}(|f_n(s) - f(s)| > g'(\delta))\\
+    & \leq N_\epsilon(\chi) \times C e^{-c h(n, g'(\delta))}
+\end{align*}
+$$
+Now putting the expression of $\epsilon$ in terms of $\delta$ and taking appropriate limit of $n$ typically makes this bound tend to $0$. Note that, here union bound makes sense as we have a finite-set (i.e., the $\epsilon$-net).
+
+More details can be found in [@erdogdu2024] and [@vershyninHDP].
+
+
+## Approach: Radamacher complexity bound
+
+Another way to approach this kind of problem is to hope for a variational-type bound, where the space $\chi$ is too broad for the covering number to be useful, or the exponential concentration does not hold.
+
+
+## References 
+
+::: {#refs}
+:::

@@ -1,11 +1,87 @@
 ---
 title: Notes
-description: This is a place where I share some of my notes. If you find an error, please submit a [pull request](). You can also get in touch with me [here](mailto:subhrajyotyroy@gmail.com).
+description: This is a place where I share some of my notes. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request]() and correct the error. You can also get in touch with me [here](mailto:subhrajyotyroy@gmail.com).
 page-layout: full
 toc: true
+page-navigation: true
+listing:
+    - id: concepts
+      contents: "./concepts/*.qmd"
+      type: default
+      categories: true
+      date-format: long
+      sort: "date desc"
+      sort-ui: true
+      filter-ui: true
+      fields: 
+        - title
+        - description
+        - date
+        - categories
+        - word-count
+    - id: technicals
+      contents: "./technicals/*.qmd"
+      type: default
+      categories: true
+      date-format: long
+      sort: "date desc"
+      sort-ui: true
+      filter-ui: true
+      fields: 
+        - title
+        - description
+        - date
+        - categories
+        - word-count
+    - id: reflections
+      contents: "./reflections/*.qmd"
+      type: default
+      categories: true
+      date-format: long
+      sort: "date desc"
+      sort-ui: true
+      filter-ui: true
+      fields: 
+        - title
+        - description
+        - date
+        - categories
+        - word-count
+
 ---
 
-# Hello
+## Concept Guides
 
-Hello
+These are the various notes that I use to learn a new topic / material. These reflect my own understanding of various topics, as guided by the various resources I used to learn them.
 
+:::{#concepts}
+:::
+
+
+## Technical Materials
+
+These are like some of the useful proof techniques, some puzzles and interesting mathematical (or statistical) problems I have collected over the years.
+
+:::{#technicals}
+:::
+
+## Reflections
+
+These are my own way of understanding the ways of the world, again guided by various non-fiction books, podcasts and a few philosophy lessons.
+
+:::{#reflections}
+:::
+
+
+## Recommended Resources
+
+Internet is full of interesting things. Here's a few that I like:
+
+1. Seeing Theory. <http://seeing-theory.brown.edu/> - Interactive Visualization of Introduction of Probability and Statistics.
+2. The Idea behind Explorable Explorations: <https://blog.ncase.me/explorable-explanations/>. And here's the list of such explanations: <https://explorabl.es/>.
+3. [Alexander Bogomolny's post on the Area of Circle by Rabbi Abraham bar Hiyya Hanasi](https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml) - Probably the best proof that I have seen for showing that the area of a circle is half of the radius times the circumference.
+4. [The Mathematics of Juggling](https://www.youtube.com/watch?v=38rf9FLhl-8) - Allen Knutson.
+
+
+
+<!-- 3. CSC 2532 Winter 2024: Statistical Learning Theory: <https://erdogdu.github.io/csc2532/> -->

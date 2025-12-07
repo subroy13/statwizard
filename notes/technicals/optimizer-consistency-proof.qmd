@@ -1,0 +1,47 @@
+---
+title: Proof of Statistical Consistency of an Optimizer
+date: "4/13/2024"
+categories:
+    - Proof Technique
+    - Consistency
+bibliography: refs.bib
+---
+
+# Statistical Consistency of an Optimizer
+
+Suppose you have a function $Q(\theta)$ and its empirical counterpart is given by $Q_n(\theta)$. Let
+$$
+\theta^* = \arg\max_{\theta \in \Theta} Q(\theta), \ \quad
+\hat{\theta}_n = \arg\max_{\theta \in \Theta} Q_n(\theta)
+$$
+
+(where one can replace the above by argmin as well). Then, one typical use-case is to show that $\hat{\theta}_n$ is close to $\theta^\ast$. 
+
+One trick to do that is as follows:
+
+$$
+\begin{align*}
+    Q(\theta^*) - Q(\hat{\theta}_n)
+    & = Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) + (Q_n(\theta^*) - Q_n(\hat{\theta}_n))\\
+    & \leq Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n)\\
+    & \qquad \text{ since the last term is negative by definition of } \hat{\theta}_n\\
+    & \leq \vert Q(\theta^*) - Q_n(\theta^*) \vert + \vert Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) \vert\\
+    & 2 \sup_{\theta \in \Theta} \vert Q(\theta) - Q_n(\theta)\vert
+\end{align*}
+$$
+
+Often, one can show that this bound is very small (because $Q_n$ is the empirical version of $Q$), all we need is to strengthen the usual bound to uniform convergence over $\theta$.
+
+At this point, we have 
+$$
+Q(\theta^*) - Q_n(\hat{\theta}_n) = o_p(1) \ (\approx \text{small})
+$$
+as $n \to \infty$. This means, if $Q$ is even locally convex near its unique global minima, then that would imply $\hat{\theta}_n$ must be close to $\theta^\ast$. Note that the significance here is than we do not have to produce any assumption of convexity (or something similar) to the random function $Q_n(\cdot)$, instead focus on only the deterministic function $Q(\cdot)$ instead.
+
+The typical assumption required here is that there should be no sequence of local minimas of $Q$ that can approximate the global minimum $Q(\theta^*)$ without approaching $\theta^*$. See [@vaartAsymptoticBook] for a more formal statement of this assumption.
+
+
+## References
+
+::: {#refs}
+:::

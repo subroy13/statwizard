@@ -1,0 +1,57 @@
+---
+title: Spatial Statistics
+date: "7/12/2025"
+toc: true
+categories:
+    - Statistics
+    - Depedent Data
+---
+
+# Introduction
+
+Often we find ourselves with a dataset which has a location / spatial information that should be part of the modelling. This can be useful to model the dependence structure of datasets, and this dependence structure can be positively / negatively correlated.
+
+- **Air Pollution Measurements:** Air pollution levels of nearby locations are positively correlated.
+- **Plant growths:** Plants in the nearby locations compete with each other for the same resources, growth of one kind of plant may be negatively correlated with the growth of another.
+
+
+
+## How spatial analysis is different?
+
+* When we observe say $Y_n = (Y(s_1), \dots, Y(s_n))$ where $s_1, \dots, s_n$ are the spatial locations, think of this as a single realization of a $n$-variable random vector, instead of the usual $n$ replications of a univariate random vector. It is not clear at this point, whether any inference is possible based on a single sample observation[1].
+
+* When time series methodologies are concerned, the sample indices have a natural ordering, hence $Y_t$ depends only on the past values $\{ Y_s : s < t \}$. However, for the spatial case, say even when agricultural plots are arranged in a line to produce a natural ordering, the value $Y_{t}$ may depend on both $Y_{t-1}$ and $Y_{t+1}$.
+
+## Types of Spatial Data
+
+In the spatial data, there are two things in concern.
+
+* There is a spatial horizon $S$. From this spatial horizon, some locations $s_1, \dots, s_n$ are where the samples are observed.
+* For each of these locations, some variables $Y(s)$ is observed.
+
+Therefore, we assume the existence of a stochastic process $\{  Y(s): s \in S \}$.
+
+There are 3 major types of spatial data based on the characteristics of this stochastic process.
+
+1. **Point Patterns:** The location themselves are realizations of some stochastic process, e.g., events of earthquakes / volcano. 
+   - The main question here is to try to find patterns / clusters on which locations these events happen or are they happen randomly throughout the spatial horizon.
+   - Usually, if we just observe the locations alone, these are called __unmarked point process__. Example is location of volcanos.
+   - If we also observe some variables associated with these event locations, these are called __marked point process__. Example is along with the location of earthquake, we also measure its intensity.
+2. __Geostatistical Data__: The underlying stochastic process for the $Y$-variable is defined on the continuous domain $S$. However, due to fixed sampling design, we observe $Y(s)$ only at few designated locations, e.g. $Y(s_1), \dots, Y(s_n)$. 
+    - The aim is to use the observed values to predict the continuous surface $Y(s)$, and use the neighbouring correlation to improve the prediction.
+    - Example is to predict the underground oil reserves based on the quantity of oil at few mining locations.
+3. __Lattice Data__: The underlying sampling frame is a fixed designed areal units. In each of these areal units, some $Y$-observations are made. These areal units could be subplots, counties, census tracts, etc.
+    - Example is agricultural plots are sub-divided into subplots, where different types of crop-yields are observed.
+    - If it is census-tract data, then often the aim is to do some kind of regression of one spatial-process on another to explain its variation.
+    - Another aim is to predict the observation (called "__kriging__") at the unobserved lattice areal units based on the observed values.
+
+# Inference for Spatial Linear Models
+
+
+
+
+# References
+
+[1]: Schabenberger, Oliver. "Statistical methods for spatial data analysis." Chapman Hall/CRC (2005).
+
+[2]: Whittle, Peter. "On stationary processes in the plane." Biometrika (1954): 434-449.
