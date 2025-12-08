@@ -57,6 +57,20 @@ These are the various notes that I use to learn a new topic / material. These re
 :::{#concepts}
 :::
 
+Also take a look at some of my blogs posts as follows:
+
+* An eight-part tutorial series on Natural Language Processing is available at my [substack](https://statwizard.substack.com/t/natural-language-processing-series).
+
+* A six-part tutorial series on the basics of Generative AI is available at my [substack](https://statwizard.substack.com/t/generative-ai-llm-series).
+
+* A seven-part tutorial series on the basics of Reinforcement Learning is available at my [substack](https://statwizard.substack.com/t/reinforcement-learning-series).
+
+* A three part series on how to do natural language text processing using R.
+  - [Text mining in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter1.html).
+  - [Text Classification in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter2.html).
+  - [Changepoint Analysis of Linguistics in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter3.html).
+
+
 
 ## Technical Materials
 
@@ -64,6 +78,12 @@ These are like some of the useful proof techniques, some puzzles and interesting
 
 :::{#technicals}
 :::
+
+Also take a look at,
+
+* [Practice questions and solutions](https://github.com/subroy13/bstat-assignments) to various assignments of the B.Stat. programme at Indian Statistical Institute, Kolkata.
+* [Practice questions and solutions](https://github.com/subroy13/mstat-assignments) to various assignments of the M.Stat. programme at Indian Statistical Institute, Kolkata.
+
 
 ## Reflections
 

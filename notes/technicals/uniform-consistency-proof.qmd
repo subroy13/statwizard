@@ -1,6 +1,7 @@
 ---
 title: Proof of Uniform Consistency
 date: "11/8/2025"
+toc: true
 categories:
     - Proof Technique
     - Consistency

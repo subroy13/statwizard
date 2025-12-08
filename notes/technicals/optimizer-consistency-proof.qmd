@@ -1,6 +1,7 @@
 ---
 title: Proof of Statistical Consistency of an Optimizer
 date: "4/13/2024"
+toc: true
 categories:
     - Proof Technique
     - Consistency

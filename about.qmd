@@ -4,6 +4,7 @@ format:
     html:
         toc: true
         toc-location: right
+lightbox: auto
 
 ---
 
@@ -43,3 +44,32 @@ Most of my travel revolves around visiting academic conferences. So far, I have 
 ```{=html}
 <iframe src="https://www.google.com/maps/d/embed?mid=1VPh2l50ToO9Y6r0VmrUSgmStxb6H9_E&ehbc=2E312F" width="640" height="480"></iframe>
 ```
+
+## Hobbies
+
+### Pre-Stable Diffusion Era
+
+One of my hobby was to build various 3D art forms using softwares like Bryce 3D, Daz Studio, Blender, etc. It was really fascinating to me to see how mathematical ideas (e.g. coordinate geometries) are applied in the 3D modelling world. Here's a [beginner friendly tutorial](https://www.cs.trinity.edu/~jhowland/class.files.cs357.html/blender/blender-stuff/m3d.pdf) on this topic.
+
+Here's a few outputs that came out of this activities.
+
+
+```{r}
+#| echo: false
+#| output: asis
+
+img_path <- "./static/hobby_images/3darts"
+
+files <- list.files(img_path, full.names = TRUE)
+
+cat("::: {.grid}\n")
+
+for (f in files) {
+  cat("::: {.g-col-6 .g-col-md-4 .g-col-lg-3}\n")
+  cat(sprintf("![](%s){.lightbox group=\"3darts\"}\n", f))
+  cat(":::\n")
+}
+
+cat(":::\n")
+```
+

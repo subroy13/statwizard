@@ -13,7 +13,8 @@ Below is a curated collection of software, packages, and tools I have developed 
 
 ---
 
-### 🧰 Packages
+### 🧰 Packages & Tools
+
 
 - **handanim**
 A Python library for programmatically generating *hand-drawn sketch-style animations*.  
@@ -22,6 +23,10 @@ Ideal for instructional videos, visual explanations, and stylized presentations.
     - 📘 Docs: <https://subroy13.github.io/handanim> 
     - 💻 GitHub: <https://github.com/subroy13/handanim>
 <!-- - 📦 PyPI: <https://pypi.org/project/handanim>   -->
+
+::: callout-important
+I am actively looking for collaboration in the **handanim** project. If building *hand-drawn sketch-style animations* videos using reproducible Python code sounds interesting to you, please reach out to me by [email](mailto:subhrajyotyroy@gmail.com)! or create an issue in [Github](https://github.com/subroy13/handanim/issues)
+:::
 
 
 <!-- **Badges:**  
@@ -61,6 +66,9 @@ cranlogs::cranlogs_badge("rsvddpd", summary = "last-month")
 A TypeScript library to parse **callgrind-like profiling output**, extract metrics, and integrate into analysis tools.
   - 📦 npm: <https://www.npmjs.com/package/callgrind-reader>  
   - ![npm](https://img.shields.io/npm/v/callgrind-reader) ![npm downloads](https://img.shields.io/npm/dm/callgrind-reader)
+
+- **mathaddons.sty**
+A LaTeX package for writing research papers containing multiple useful mathematical commands. [Click here](https://curated-webrepo.s3.ap-south-1.amazonaws.com/mathaddons.sty) to download.
 
 # 🛠️ Projects
 
