@@ -440,7 +440,7 @@ Important
 </section>
 <section id="want-to-collaborate" class="level1">
 <h1>Want to Collaborate?</h1>
-<p>If you’d like to explore or contribute to any of these tools, feel free to reach out!</p>
+<p>If you’d like to explore or contribute to any of these tools, feel free to reach out <a href="mailto:subhrajyotyroy@gmail.com">here</a>!</p>
 
 
 </section>
@@ -532,7 +532,7 @@ Important
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("^((?!statwizard\.in).)*$");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -546,6 +546,11 @@ Important
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {

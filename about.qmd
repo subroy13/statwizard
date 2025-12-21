@@ -51,7 +51,7 @@ Most of my travel revolves around visiting academic conferences. So far, I have 
 
 One of my hobby was to build various 3D art forms using softwares like Bryce 3D, Daz Studio, Blender, etc. It was really fascinating to me to see how mathematical ideas (e.g. coordinate geometries) are applied in the 3D modelling world. Here's a [beginner friendly tutorial](https://www.cs.trinity.edu/~jhowland/class.files.cs357.html/blender/blender-stuff/m3d.pdf) on this topic.
 
-Here's a few outputs that came out of this activities.
+Here are some outputs that came out of these activities.
 
 
 ```{r}

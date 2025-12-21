@@ -109,4 +109,4 @@ A simple text prediction engine developed for the JHU Data Science Specializatio
 
 # Want to Collaborate?
 
-If you'd like to explore or contribute to any of these tools, feel free to reach out!
+If you'd like to explore or contribute to any of these tools, feel free to reach out [here](mailto:subhrajyotyroy@gmail.com)!

@@ -39,5 +39,6 @@ format:
       dark: cyborg
     css: ./static/css/styles.css
     smooth-scroll: true
-
+    link-external-newwindow: true
+    link-external-filter: "^((?!statwizard\\.in).)*$"
 

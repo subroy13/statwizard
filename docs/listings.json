@@ -4,6 +4,8 @@
     "items": [
       "/notes/concepts/robust-stat.html",
       "/notes/concepts/spatial-stat.html",
+      "/notes/concepts/aws_data_analytics.html",
+      "/notes/concepts/aws_cloud_basics.html",
       "/notes/technicals/uniform-consistency-proof.html",
       "/notes/technicals/optimizer-consistency-proof.html"
     ]

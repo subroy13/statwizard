@@ -74,14 +74,41 @@ Also take a look at some of my blogs posts as follows:
 
 ## Technical Materials
 
-These are like some of the useful proof techniques, some puzzles and interesting mathematical (or statistical) problems I have collected over the years.
+These are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.
 
 :::{#technicals}
 :::
 
-Also take a look at,
+
+## Teaching Materials
+
+### 10+2 Level
+
+* A [short notes](../static/teaching/10%2B2%20Level/Riemann%20Integration%2010%2B2%20Level.pdf) on Riemann Integration.
+
+* Practice Problem Sets for 10+2 Level Statistics (West Bengal State Board).
+    - [Problem Set 1](../static/teaching/10%2B2%20Level/10%2B2%20Statisitcs%20Mock%20Exam.pdf)
+    - [Problem Set 2](../static/teaching/10%2B2%20Level/10%2B2%20Statistics%20Mock%20Exam%20-%20002.pdf)
+
+* Practice Problem Sets for B.Stat. Entrace Exam for Indian Statistical Institute.
+  - [MCQ Set 1](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20mcq_001.pdf)
+  - [MCQ Set 2](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20mcq_002.pdf)
+  - [MCQ Set 3](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20mcq_003.pdf)
+  - [MCQ Set 4](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20mcq_004.pdf)
+  - [MCQ Set 5](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20mcq_005.pdf)
+  - [SAQ Set 1](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20saq_001.pdf)
+  - [SAQ Set 2](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20saq_002.pdf)
+  - [SAQ Set 3](../static/teaching/ISI%20BStat%20Entrance/ISI%20BStat%20Entrance%20-%20saq_003.pdf)
+
+### Undergraduate Level
 
 * [Practice questions and solutions](https://github.com/subroy13/bstat-assignments) to various assignments of the B.Stat. programme at Indian Statistical Institute, Kolkata.
+
+* A short [lecture slide deck](../static/teaching/Linear%20Algebra.pdf) on Linear Algebra and its applications.
+
+
+### Graduate Level
+
 * [Practice questions and solutions](https://github.com/subroy13/mstat-assignments) to various assignments of the M.Stat. programme at Indian Statistical Institute, Kolkata.
 
 

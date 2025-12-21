@@ -16,7 +16,7 @@ My current research interest concentrates on **Robust Statistics**, **Dependent 
 
 ### Statistical Methods for Deep Learning
 
-> Deep learning models have found super-accurate inferences and profound applications in many fields. Unfortunately, we understand very little about them: There's always concerns about safety, ethics and so many other things. There's been a proliferation of statistical ideas that combines old techniques with these modern blackboxes to assure reliability and help us understand them more.
+> Deep learning models have found super-accurate inferences and profound applications in many fields. Unfortunately, we understand very little about them: There's always concerns about safety, ethics and reliability. There's been a proliferation of statistical ideas that combines year-old techniques with these modern blackboxes to assure trustworthiness and help us understand them more.
 
 1. Bonnerjee, Soham, Sayar Karmakar, and Subhrajyoty Roy.  
     "**WISER: Segmenting watermarked region – an epidemic change-point perspective.**"  
@@ -72,7 +72,7 @@ My current research interest concentrates on **Robust Statistics**, **Dependent 
 
 ### Applications and Exploratory Data Analysis
 
-In addition of these broad topics of interests, there's been a few works which is more application-oriented, and does not fit into one of these categories.
+> In addition of these broad topics of interests, I have been fortunated to be part of some collaborative application-oriented work, that do not fit into one of the above categories.
 
 1. Roy, Subhrajyoty.  
     "**Trustworthy Dimensionality Reduction.**"  
@@ -84,17 +84,17 @@ In addition of these broad topics of interests, there's been a few works which i
    *Statistical Methods in Medical Research* 31, no. 11 (2022): 2137–2163.  
    [Link](https://journals.sagepub.com/doi/abs/10.1177/09622802221115877) | [Open Access Link](https://arxiv.org/pdf/2011.09686)
 
-4. Roy, Subhrajyoty, Debasis Sengupta, Kalyan Rudra, and Udit Surya Saha.  
+3. Roy, Subhrajyoty, Debasis Sengupta, Kalyan Rudra, and Udit Surya Saha.  
    "**Analysis of Pollution Patterns in Regions of Kolkata.**"  
    *Calcutta Statistical Association Bulletin* 72, no. 2 (2020): 133–170.  
    [Link](https://journals.sagepub.com/doi/abs/10.1177/0008068320976781)
 
-3. Dalal, Abhinandan, Diganta Mukherjee, and Subhrajyoty Roy.  
+4. Dalal, Abhinandan, Diganta Mukherjee, and Subhrajyoty Roy.  
     "**The Information Content of Taster's Valuation in Tea Auctions of India.**"  
     *arXiv preprint* arXiv:2005.02814 (2020).  
     [Open Access Link](https://arxiv.org/abs/2005.02814)
 
-2. Mukherjee, Diganta, Abhinandan Dalal, and Subhrajyoty Roy.  
+5. Mukherjee, Diganta, Abhinandan Dalal, and Subhrajyoty Roy.  
    "**Feasibility of Transparent Price Discovery in Tea through Auction in India.**"  
    *Commodity Insights Yearbook MCX* (2019): 44–52.  
    [Link](https://www.mcxindia.com/docs/default-source/about-us/commodity-insights-yearbook/2019/02-emerging-trends/feasibility-of-transparent-price-discovery-in-tea-through-auction-in-india-dr-diganta-mukherjee-mr-abhinandan-dalal-and-mr-subhrajyoty-roy.pdf) | [Open Access Link](https://arxiv.org/abs/2005.02814)

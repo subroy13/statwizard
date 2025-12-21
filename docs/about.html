@@ -377,7 +377,7 @@ Note
 <section id="pre-stable-diffusion-era" class="level3">
 <h3 class="anchored" data-anchor-id="pre-stable-diffusion-era">Pre-Stable Diffusion Era</h3>
 <p>One of my hobby was to build various 3D art forms using softwares like Bryce 3D, Daz Studio, Blender, etc. It was really fascinating to me to see how mathematical ideas (e.g.&nbsp;coordinate geometries) are applied in the 3D modelling world. Here’s a <a href="https://www.cs.trinity.edu/~jhowland/class.files.cs357.html/blender/blender-stuff/m3d.pdf">beginner friendly tutorial</a> on this topic.</p>
-<p>Here’s a few outputs that came out of this activities.</p>
+<p>Here are some outputs that came out of these activities.</p>
 <div class="grid">
 <div class="g-col-6 g-col-md-4 g-col-lg-3">
 <p><a href="./static/hobby_images/3darts/Abstract 2.png" class="lightbox" data-gallery="3darts"><img src="./static/hobby_images/3darts/Abstract 2.png" class="img-fluid"></a></p>
@@ -508,7 +508,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("^((?!statwizard\.in).)*$");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -522,6 +522,11 @@ Note
           if (link.dataset.originalHref !== undefined) {
             link.href = link.dataset.originalHref;
           }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
         }
       }
     function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
