@@ -5,6 +5,7 @@ toc: true
 categories:
     - Statistics
     - Depedent Data
+draft: true
 ---
 
 # Introduction

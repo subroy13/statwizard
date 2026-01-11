@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-11-24">
+
+<title>Practical Data Science – Subhrajyoty Roy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<meta name="quarto:status" content="draft">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><div id="quarto-draft-alert" class="alert alert-warning"><i class="bi bi-pencil-square"></i>Draft</div>
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Subhrajyoty Roy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html"> 
+<span class="menu-text">OSS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/talks.html"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/index.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/subroy13" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/subroy13" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="mailto:roy.s@wustl.edu" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope-at"></i></a>
+    <a href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-mortarboard-fill"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-paradigms" id="toc-learning-paradigms" class="nav-link active" data-scroll-target="#learning-paradigms">Learning Paradigms</a></li>
+  <li><a href="#training-techniques" id="toc-training-techniques" class="nav-link" data-scroll-target="#training-techniques">Training Techniques</a>
+  <ul class="collapse">
+  <li><a href="#cost-of-training-large-models" id="toc-cost-of-training-large-models" class="nav-link" data-scroll-target="#cost-of-training-large-models">Cost of Training Large Models</a></li>
+  <li><a href="#fine-tuning-strategies-for-large-language-models" id="toc-fine-tuning-strategies-for-large-language-models" class="nav-link" data-scroll-target="#fine-tuning-strategies-for-large-language-models">Fine-tuning Strategies for Large Language Models</a></li>
+  <li><a href="#optimization-using-momentum-with-gradient-descent" id="toc-optimization-using-momentum-with-gradient-descent" class="nav-link" data-scroll-target="#optimization-using-momentum-with-gradient-descent">Optimization using Momentum with Gradient Descent</a></li>
+  <li><a href="#gradient-accumulation" id="toc-gradient-accumulation" class="nav-link" data-scroll-target="#gradient-accumulation">Gradient Accumulation</a></li>
+  </ul></li>
+  <li><a href="#topics" id="toc-topics" class="nav-link" data-scroll-target="#topics">Topics</a>
+  <ul class="collapse">
+  <li><a href="#model-parallelism" id="toc-model-parallelism" class="nav-link" data-scroll-target="#model-parallelism">Model Parallelism</a></li>
+  <li><a href="#dropout-layers-discussion" id="toc-dropout-layers-discussion" class="nav-link" data-scroll-target="#dropout-layers-discussion">Dropout Layers Discussion</a></li>
+  <li><a href="#knowledge-distillation" id="toc-knowledge-distillation" class="nav-link" data-scroll-target="#knowledge-distillation">Knowledge Distillation</a></li>
+  <li><a href="#activation-pruning" id="toc-activation-pruning" class="nav-link" data-scroll-target="#activation-pruning">Activation Pruning</a></li>
+  <li><a href="#ml-models-testing-deployment-strategy" id="toc-ml-models-testing-deployment-strategy" class="nav-link" data-scroll-target="#ml-models-testing-deployment-strategy">ML Models Testing + Deployment Strategy</a></li>
+  <li><a href="#cross-validation-techniques" id="toc-cross-validation-techniques" class="nav-link" data-scroll-target="#cross-validation-techniques">Cross-validation Techniques</a></li>
+  <li><a href="#human-labelling-for-baselining" id="toc-human-labelling-for-baselining" class="nav-link" data-scroll-target="#human-labelling-for-baselining">Human Labelling for Baselining</a></li>
+  <li><a href="#leaky-variables" id="toc-leaky-variables" class="nav-link" data-scroll-target="#leaky-variables">Leaky Variables</a></li>
+  <li><a href="#feature-engineering-techniques" id="toc-feature-engineering-techniques" class="nav-link" data-scroll-target="#feature-engineering-techniques">Feature Engineering Techniques</a></li>
+  <li><a href="#feature-importance" id="toc-feature-importance" class="nav-link" data-scroll-target="#feature-importance">Feature Importance</a></li>
+  <li><a href="#model-simplification" id="toc-model-simplification" class="nav-link" data-scroll-target="#model-simplification">Model Simplification</a></li>
+  </ul></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Practical Data Science</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Data Science</div>
+    <div class="quarto-category">Software</div>
+    <div class="quarto-category">Deep Learning</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 24, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="learning-paradigms" class="level2">
+<h2 class="anchored" data-anchor-id="learning-paradigms">Learning Paradigms</h2>
+<p>Beyond the usual training of neural networks, there are few major learning variants:</p>
+<ol type="1">
+<li><p><strong>Transfer Learning:</strong> Here, you take a pre-trained model, and train only a few top layers to ensure that it adapts to the specific tasks. For example, a pre-trained model capable to comprehension of English language, could be used via transfer learning to summarize paragraphs, or for question-answering.</p></li>
+<li><p><strong>Fine tuning:</strong> Again we take a pretrained model, but train all the weights (or parameters) but only for a small scale dataset (less number of epoch) to make it adhere to the nuisances of that dataset. A pre-trained large image classification model can be fine-tuned to classify between different types of insects and their species, which may be useful for a group of entomologists.</p></li>
+<li><p><strong>Multi-task Learning:</strong> Here, we take atleast two different tasks, and we want to keep the idea of shared parameters like transfer learning. But, instead of training for one task at a time, we combine the losses arising from two different tasks, and then train the entire network (like fine tuning). The network architecture looks like it has a few shared parameter at the bottom layers, but suddenly it splits off into branches, each adapted to a specific task, and uses different parameters and different set of top layers.</p></li>
+</ol>
+<p><img src="../../static/images/notes_practical_data_science/learning_paradigms.png" class="img-fluid"></p>
+<p>Additionally, there are also different variants that are emerging due to specific needs.</p>
+<ul>
+<li><strong>Federated Learning:</strong>
+<ul>
+<li>Modern devices like mobiles and other IoT devices collects lots of data. But most of these data are private.</li>
+<li>Due to privacy concerns, the ML model training cannot use whole of the data as they do not remain in a central place.</li>
+<li>Instead of bringing the data to the models, we bring the model to the data.</li>
+<li>Each IoT device downloads a part of the model, trains it on the private data by computing a few gradient steps, and send back to server.</li>
+<li>The server aggregates the gradient steps from billions of users, and updates the entire model from an aggregated source of data.</li>
+</ul></li>
+<li><strong>Active Learning:</strong>
+<ul>
+<li>Suppose we want to build a supervised system, but we do not have a training data with labels, only unlabelled data is present.</li>
+<li>This means, we need to build the system step-by-step where each step should ideally improve the model.</li>
+<li>Active Learning refers to a paradigm where the sampling is done simulteneously with model training. What this means is the following:
+<ul>
+<li>Start with a small human annotated datasets. Large part of the data remains unlabelled.</li>
+<li>Train a model using that annotated part. We understand that this model is going to be inaccurate. Let it be. Also create some sort of uncertainty measure.</li>
+<li>Use the model to predict the labels / make inference on rest of the dataset, along with confidence level.</li>
+<li>Whichever samples have low confidence level, for them, ask the human annotator to label them.</li>
+<li>Retrain the model on this new dataset.</li>
+</ul></li>
+<li>While combining the low-confidence data with the seed data, we can also use the high-confidence data. The labels would be the model’s predictions. This variant of active learning is called “Co-operative learning”.</li>
+</ul></li>
+</ul>
+<p><img src="../../static/images/notes_practical_data_science/active_learning.png" class="img-fluid"></p>
+</section>
+<section id="training-techniques" class="level2">
+<h2 class="anchored" data-anchor-id="training-techniques">Training Techniques</h2>
+<section id="cost-of-training-large-models" class="level3">
+<h3 class="anchored" data-anchor-id="cost-of-training-large-models">Cost of Training Large Models</h3>
+<p>Let us ask the question:</p>
+<blockquote class="blockquote">
+<p>How much memory does it take to train a <span class="math inline">\(n\)</span> billion parameter model?</p>
+</blockquote>
+<p>The key trick is to remember this approximate conversion table:</p>
+<ul>
+<li><p><span class="math inline">\(10^3\)</span> bytes = 1 thousand bytes = 1 KB</p></li>
+<li><p><span class="math inline">\(10^6\)</span> bytes = 1 million bytes = 1 MB</p></li>
+<li><p><span class="math inline">\(10^9\)</span> bytes = 1 billion bytes = 1 GB</p></li>
+</ul>
+<p>Let us now look at the amount of storage we need:</p>
+<ol type="1">
+<li><p>If each parameter has <code>float16</code> representation, they take 16 bits or 2 bytes. Hence, we need <span class="math inline">\(2n\)</span> billion bytes or <span class="math inline">\(2n\)</span> GB of RAM to load the model.</p></li>
+<li><p>If we are training, each parameter will have its own gradient value that we need to store, resulting in another <span class="math inline">\(2n\)</span> GB of storage.</p></li>
+<li><p>If we use Adam optimizer, then we have a formula like:</p></li>
+</ol>
+<p><span class="math display">\[
+\hat{\theta}^{(t+1)} = \hat{\theta}^{(t)} - \alpha \frac{\partial L}{\partial \theta}\vert_{\theta = \hat{\theta}^{(t)}} + \beta \frac{m_t}{\sqrt{v_t}}
+\]</span></p>
+<p>These <span class="math inline">\(m_t\)</span> and <span class="math inline">\(v_t\)</span> are momentum and variance parameters, and since we are doing division and taking square roots, we will need more precision for them. Standard is to use <code>float32</code> for these variables. Hence, storing momentum requires <span class="math inline">\(4n\)</span> GB, and so is variance.</p>
+<p>Together we need <span class="math inline">\((2 + 2 + 4 + 4)n = 12n\)</span> GB of storage for full-precision training. But for testing, we need only <span class="math inline">\(2n\)</span> GB of storage.</p>
+</section>
+<section id="fine-tuning-strategies-for-large-language-models" class="level3">
+<h3 class="anchored" data-anchor-id="fine-tuning-strategies-for-large-language-models">Fine-tuning Strategies for Large Language Models</h3>
+<p>There have been proposals of various fine-tuning strategies for large language models, that does not require the whole <span class="math inline">\(12n\)</span> GB of storage in your RAM.</p>
+<ol type="1">
+<li><strong>LoRA:</strong> LoRA (Low Rank Adaptation) is a fine-tuning technique where instead of modifying the parameters (or weights) for the LLM directly, we add a low-rank adjustment on top of it. Say, at a particular layer of the large language model, we need a trainable weights <span class="math inline">\(W\)</span> of dimensions <span class="math inline">\(h_1 \times h_2\)</span>, where <span class="math inline">\(h_1\)</span> and <span class="math inline">\(h_2\)</span> are large. Then, with the fine-tuning, we replace it by <span class="math display">\[
+W + AB^t
+\]</span></li>
+</ol>
+<p>where <span class="math inline">\(A\)</span> is of dimension <span class="math inline">\(h_1 \times r\)</span> and <span class="math inline">\(B\)</span> is of dimension <span class="math inline">\(r \times h_2\)</span> and <span class="math inline">\(r\)</span> is a much smaller number than <span class="math inline">\(h_1\)</span> and <span class="math inline">\(h_2\)</span>. The matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are trainable.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A challenge is that both the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not identifiable, for example, <span class="math inline">\(AB = cA \times c^{-1}B\)</span> for any <span class="math inline">\(c \neq 0\)</span>. Usually, to avoid this, one approach is to always keep the <span class="math inline">\(A\)</span> matrix normalized so that <span class="math inline">\(||A||_2 = 1\)</span>.</p>
+</div>
+</div>
+<ol start="2" type="1">
+<li><p><strong>LoRA-FA:</strong> LoRA with Frozen A. In this case, to avoid the identifiability issue, one may take <span class="math inline">\(A\)</span> to be fixed as the matrix comprising of first <span class="math inline">\(r\)</span> left singular vectors of <span class="math inline">\(W\)</span> corresponding to the largest (in magnitude) <span class="math inline">\(r\)</span> singular values of <span class="math inline">\(W\)</span>. Then, only the matrix <span class="math inline">\(B\)</span> is trained.</p></li>
+<li><p><strong>VeRA:</strong> VeRA (Vector based Random Matrix Adaptation) is a technique where we parametrize the weight matrix <span class="math inline">\(W\)</span> as</p></li>
+</ol>
+<p><span class="math display">\[
+W = ADB^t + E
+\]</span></p>
+<p>where <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are the top <span class="math inline">\(r\)</span> left and right singular vectors and are kept fixed. The diagonal matrix <span class="math inline">\(D\)</span> and error matrix <span class="math inline">\(E\)</span> are trainable. A sparsity structure can be adapted to <span class="math inline">\(E\)</span> to reduce computational cost of training a large number of parameters.</p>
+<p><img src="../../static/images/notes_practical_data_science/llm_training_techniques.png" class="img-fluid"></p>
+</section>
+<section id="optimization-using-momentum-with-gradient-descent" class="level3">
+<h3 class="anchored" data-anchor-id="optimization-using-momentum-with-gradient-descent">Optimization using Momentum with Gradient Descent</h3>
+<p>Suppose that we have a loss function <span class="math inline">\(L(\theta)\)</span> that we want to minimize with respect to <span class="math inline">\(\theta\)</span>. Typical gradient descent updates look like:</p>
+<p><span class="math display">\[
+\theta^{(t+1)} = \theta^{(t)} - \alpha \nabla L(\theta^{(t)})
+\]</span></p>
+<p>Theoretically, under suitably small step sizes (i.e., <span class="math inline">\(\alpha\)</span>), gradient descent always improves the objective, and converges always to a local minimum. Furthermore, with some additional assumptions, the rate of convergence can be proven to be exponential.</p>
+<p>However, in many practical scenarios, you will see that the drop in objective value is significant at first, but becomes lesser and lesser as things approach minima: and the pace of convergence slows down very much. This happens because near the minima, we would have <span class="math inline">\(\nabla L(\theta) \approx 0\)</span>, which essentially says that the typical gradient descent will only take very timid steps. But imagine you are going down the hill (the most common analogue how you would describe a gradient descent algorithm) by taking the steepest road, and you are now near the foot of the hill. Would you still look for the steepest road around there, or would you continue down the same way? The momentum says that you can use the previously computed gradients (which essentially gives you some direction where you came from) to help your descent steps navigate the way. This idea is summarized into a moving average type formula:</p>
+<p><span class="math display">\[
+\theta^{(t+1)}
+= \theta^{(t)} - \alpha \nabla L(\theta^{(t)}) - \alpha \sum_{k=1}^t \beta^k \nabla L(\theta^{(t-k)})
+\]</span></p>
+<p>At this point, you may be concerned with the fact that implementing this rule will require one to store all the previously computed gradients, i.e., <span class="math inline">\(\nabla L(\theta^{(t-k)})\)</span> for <span class="math inline">\(k = 1, 2, \dots, t\)</span> which can be very challenging and quickly run into memory issues. However, simple algebraic calculations can reduce the above daunting equation into two simpler nice equations to avoid this problem:</p>
+<p><span class="math display">\[
+\begin{align*}
+z^{(t+1)} &amp; = \beta z^{(t)} + \nabla L(\theta^{(t)})\\
+\theta^{(t+1)} &amp; = \theta^{(t)} - \alpha z^{(t+1)}
+\end{align*}
+\]</span></p>
+<p>This is essentially the <strong>momentum</strong> trick. A nice visualization along with a detailed example is available by <span class="citation" data-cites="goh2017why">Goh (<a href="#ref-goh2017why" role="doc-biblioref">2017</a>)</span> on this topic.</p>
+</section>
+<section id="gradient-accumulation" class="level3">
+<h3 class="anchored" data-anchor-id="gradient-accumulation">Gradient Accumulation</h3>
+<p>Gradient accumulation is a simple technique by which you can perform neural network training using smaller batches but effectively get the benefit of using a bigger batch size.</p>
+<p>In standard training, you might want a batch size of 64 for stable convergence. However, loading 64 complex examples (like high-res images or long text sequences) into your GPU’s VRAM at once might cause it to crash. You are forced to use a smaller batch size (e.g., 8), but this can make your gradient updates “noisy” and unstable, leading to poor training performance.</p>
+<p>Gradient accumulation solves this by breaking the large batch down but deferring the update step. Instead of updating the model weights after every small batch of 8, you run the small batch, calculate the gradients, and add them to a “bucket” of gradients. You repeat this <span class="math inline">\(8\)</span> times (<span class="math inline">\(8\)</span> batches <span class="math inline">\(\times\)</span> <span class="math inline">\(8\)</span> samples = <span class="math inline">\(64\)</span> samples). Only after the <span class="math inline">\(8\)</span>-th small batch do you actually update the model weights using the total accumulated gradients. A pytorch implementation of this would look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>accumulation_steps <span class="op">=</span> <span class="dv">8</span>             <span class="co"># Define how many steps to wait</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (data, label) <span class="kw">in</span> <span class="bu">enumerate</span>(loader):</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    output <span class="op">=</span> model(data)           <span class="co"># Forward</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> criterion(output, label)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss <span class="op">/</span> accumulation_steps <span class="co"># Normalize loss to account for the accumulation</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    loss.backward()                <span class="co"># Backward (grads are added to existing grads)</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Only update weights every 4 steps</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> accumulation_steps <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        optimizer.step()           <span class="co"># Update weights using accumulated grads</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()      <span class="co"># Clear grads</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="topics" class="level2">
+<h2 class="anchored" data-anchor-id="topics">Topics</h2>
+<section id="model-parallelism" class="level3">
+<h3 class="anchored" data-anchor-id="model-parallelism">Model Parallelism</h3>
+</section>
+<section id="dropout-layers-discussion" class="level3">
+<h3 class="anchored" data-anchor-id="dropout-layers-discussion">Dropout Layers Discussion</h3>
+</section>
+<section id="knowledge-distillation" class="level3">
+<h3 class="anchored" data-anchor-id="knowledge-distillation">Knowledge Distillation</h3>
+</section>
+<section id="activation-pruning" class="level3">
+<h3 class="anchored" data-anchor-id="activation-pruning">Activation Pruning</h3>
+</section>
+<section id="ml-models-testing-deployment-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="ml-models-testing-deployment-strategy">ML Models Testing + Deployment Strategy</h3>
+</section>
+<section id="cross-validation-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="cross-validation-techniques">Cross-validation Techniques</h3>
+</section>
+<section id="human-labelling-for-baselining" class="level3">
+<h3 class="anchored" data-anchor-id="human-labelling-for-baselining">Human Labelling for Baselining</h3>
+</section>
+<section id="leaky-variables" class="level3">
+<h3 class="anchored" data-anchor-id="leaky-variables">Leaky Variables</h3>
+</section>
+<section id="feature-engineering-techniques" class="level3">
+<h3 class="anchored" data-anchor-id="feature-engineering-techniques">Feature Engineering Techniques</h3>
+<ul>
+<li>Cyclical Features</li>
+<li>Categorical Data Encoding Techniques</li>
+</ul>
+</section>
+<section id="feature-importance" class="level3">
+<h3 class="anchored" data-anchor-id="feature-importance">Feature Importance</h3>
+<p>Talk about Predictive Power Score</p>
+<p>Identify Drift using Proxy Labelling</p>
+</section>
+<section id="model-simplification" class="level3">
+<h3 class="anchored" data-anchor-id="model-simplification">Model Simplification</h3>
+<p>How to convert a random forest model to a single decision tree?</p>
+</section>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>Many materials covered here are taken from the website by <span class="citation" data-cites="Chawla_2025">Chawla (<a href="#ref-Chawla_2025" role="doc-biblioref">2025</a>)</span>.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Chawla_2025" class="csl-entry" role="listitem">
+Chawla, Avi. 2025. <span>“Daily Dose of Data Science.”</span> <em>Daily Dose of Data Science</em>. <a href="https://www.dailydoseofds.com/">https://www.dailydoseofds.com/</a>.
+</div>
+<div id="ref-goh2017why" class="csl-entry" role="listitem">
+Goh, Gabriel. 2017. <span>“Why Momentum Really Works.”</span> <em>Distill</em>. <a href="https://doi.org/10.23915/distill.00006">https://doi.org/10.23915/distill.00006</a>.
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("^((?!statwizard\.in).)*$");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Subhrajyoty Roy</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
