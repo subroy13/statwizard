@@ -9,9 +9,9 @@ My current research interest concentrates on **Robust Statistics**, **Dependent 
 
 ---
 
-<!-- ::: callout-note 
-\* means equal contribution.
-::: -->
+::: callout-note 
+This page is updated less frequently. For latest updates, see my [Google Scholar](https://scholar.google.com/citations?user=Gocm0lYAAAAJ&hl=en) page.
+:::
 
 
 ### Statistical Methods for Deep Learning
@@ -27,6 +27,8 @@ My current research interest concentrates on **Robust Statistics**, **Dependent 
 ### Dependent Data Analysis
 
 > Observations are often correlated with each other, sometimes these correlation occur temporally, or spatially, or both. Dependent Data Analysis aims to obtain valid inference guarantees for these kinds of datasets.
+
+1. Roy, Subhrajyoty, Soudeep Deb, Sayar Karmakar, and Rishideep Roy. "**Nonparametric regression of spatio-temporal data using infinite-dimensional covariates**" *arXiv preprint* arXiv:2604.01593 (2026). [Open Access Link](https://arxiv.org/abs/2604.01593)
 
 1. Deb, Soudeep, Claudia Neves, and Subhrajyoty Roy. "**Nonparametric quantile regression for spatio-temporal processes.**" *arXiv preprint* arXiv:2405.13783 (2024). [Open Access Link](https://arxiv.org/abs/2405.13783)
 
@@ -52,7 +54,7 @@ My current research interest concentrates on **Robust Statistics**, **Dependent 
     *arXiv preprint* arXiv:2507.04637 (2025).  
     [Open Access Link](https://arxiv.org/abs/2507.04637)
 
-4. Roy, Subhrajyoty, Abir Sarkar, Abhik Ghosh, and Ayanendranath Basu. "**Asymptotic Breakdown Point Analysis for a General Class of Minimum Divergence Estimators**." *Bernoulli* (2025+) (Accepted). [Open Access Link](https://arxiv.org/abs/2304.07466)
+6. Roy, Subhrajyoty, Abir Sarkar, Abhik Ghosh, and Ayanendranath Basu. "**Asymptotic Breakdown Point Analysis for a General Class of Minimum Divergence Estimators**." *Bernoulli* 32(1) (2026): 698-722. [Link](https://projecteuclid.org/journals/bernoulli/volume-32/issue-1/Asymptotic-breakdown-point-analysis-for-a-general-class-of-minimum/10.3150/25-BEJ1876.short) | [Open Access Link](https://arxiv.org/abs/2304.07466)
 
 
 3. Roy, Subhrajyoty, Ayanendranath Basu, and Abhik Ghosh.  
