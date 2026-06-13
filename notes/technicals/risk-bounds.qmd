@@ -1,0 +1,376 @@
+---
+title: Risk Bounds
+date: "06/12/2026"
+date-modified: last-modified
+toc: true
+categories:
+    - Proof Technique
+    - Consistency
+bibliography: refs.bib
+---
+
+# Introduction and Setting
+
+In a learning problem, you are given a sample $X_1, \dots, X_n$, and an objective function $L(\theta; X)$ which represents the loss incurred by choosing parameter $\theta$ for a given observation $X$. Our goal is to estimate the parameter $\theta$ that minimizes the expected loss over all possible observations. Let $\theta^\star$ be the true parameter that minimizes the expected loss:
+
+$$
+\theta^\star = \arg\min_{\theta \in \Theta} \mathbb{E}[L(\theta; X)] = \arg\min_{\theta \in \Theta} Q(\theta)
+$$
+
+while the sample-dependent estimator is given by anologus empirical counterpart
+
+$$
+\hat{\theta}_n = \arg\min_{\theta \in \Theta} L(\theta; X_1, \dots, X_n) = \arg\min_{\theta \in \Theta} Q_n(\theta)
+$$
+
+In most cases, you are typically interested in establishing that $\hat{\theta}_n$ is "close" to $\theta^\star$ in some sense. Some general tricks have been developed in this regard; and the purpose of this note is to illustrate these proof techniques in a "non-rigorous" but "mathematically meaningful" way.
+
+To connect $Q_n(\cdot)$ and $Q(\cdot)$, we assume that $\mathbb{E}(Q_n(\theta)) = Q(\theta)$, for any $\theta \in \Theta$, and the expectation is taken over the distribution of the sample $X$.
+
+# Technique 1: Uniform Bound Reversal
+
+This is probably one of the most "common" approach in modern machine learning and statistical learning settings. Note that,
+
+$$
+\begin{align*}
+    Q(\theta^*) - Q(\hat{\theta}_n)
+    & = Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) + (Q_n(\theta^*) - Q_n(\hat{\theta}_n))\\
+    & \leq Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n)\\
+    & \qquad \text{ since the last term is negative by definition of } \hat{\theta}_n\\
+    & \leq \vert Q(\theta^*) - Q_n(\theta^*) \vert + \vert Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) \vert\\
+    & \leq 2 \sup_{\theta \in \Theta} \vert Q(\theta) - Q_n(\theta)\vert
+\end{align*}
+$$
+
+Suppose that we are able to establish the bound on the right hand side is negligible as $n \to \infty$ (which is like establishing uniform consistency of the empirical risk). Then, we have 
+$$
+Q(\theta^*) - Q_n(\hat{\theta}_n) = o_p(1) \ (\approx \text{small}) 
+\implies Q(\theta^*) - Q(\hat{\theta}_n) = o_p(1).
+$$
+
+This means, if $Q$ is even locally convex near its unique global minima, then that would imply $\hat{\theta}_n$ must be close to $\theta^\ast$. Note that the significance here is than we do not have to produce any assumption of convexity (or something similar) to the random function $Q_n(\cdot)$, instead focus on only the deterministic function $Q(\cdot)$ instead.
+
+**Typical Assumption:** There should be no sequence of local minimas of $Q$ that can approximate the global minimum $Q(\theta^*)$ without approaching $\theta^*$. See [@vaartAsymptoticBook] for a more formal statement of this assumption.
+
+## Techniques to establish the uniform consistency
+
+A standard technique to show the uniform consistency, i.e.,
+$$
+\sup_{\theta \in \Theta} \vert Q_n(\theta) - Q(\theta)\vert = o_p(1)
+$$
+
+is to first demonstrate a pointwise consistency result for each fixed $\theta \in \Theta$, and then somehow lift this convergence to uniform convergence. The pointwise convergence for any fixed $\theta \in \Theta$ can be established by standard empirical process concentration (e.g., law of large numbers, etc.) which yields that $Q_n(\theta) = Q(\theta) + o_p(1)$. 
+
+If $\Theta$ is countably finite, then we can lift the convergence to uniform convergence quite easily. When $\Theta$ is countably infinite or uncountable, we have several tricks up our sleeves.
+
+### Approach 1: Stochastic Equicontinuity
+
+This approach aims to leverage some compactness-kind characterization of the space $\Theta$. Suppose that $\Theta$ is compact. However, that is not enough. To see this, note that if $\Theta$ is compact, we can consider a finite subcover of this, and if we can show that the uniform convergence holds for every subcover, because there are only finitely many, we can take further supremum over them. Therefore, we need to show something like:
+$$
+\sup_{\theta \in B(\theta', \cdot)} \vert Q_n(\theta) - Q(\theta)\vert = o_p(1)
+$$
+where $B(\theta', \cdot)$ is a ball in $\Theta$ centered around $\theta'$. However, because $\Theta$ is compact, it is also complete, and hence one can actually work with the Cauchy-sequences kind of thing. Therefore, to show the above, one version would be to work with 
+$$
+\sup_{\theta \in B(\theta', \cdot)} \vert Q_n(\theta) - Q_n(\theta')\vert = o_p(1)
+$$
+This is a version of equicontinuity, but for possibly random functions, hence called **stochastic equicontinuity**. Also, it needs to be hold only probabilistically for most $\theta$'s, not for all. 
+
+Here are the final assumptions.
+
+- (A1) $\Theta$ is compact.
+- (A2) For every $\epsilon, \eta > 0$, there exists a random $\Delta_n(\epsilon, \eta)$ and constant $n_0(\epsilon, \eta)$ such that for all $n \geq n_0(\epsilon,\eta)$, $\mathbb{P}(\vert \Delta_n(\epsilon, \eta) \vert > \epsilon) \leq \eta$ and for all $\theta \in \Theta$, there exists a neighbourhood (open set) $N(\theta, \epsilon, \eta)$ such that 
+$$
+\sup_{\theta', \theta'' \in N(\theta, \epsilon, \eta)} \vert Q_n(\theta') - Q_n(\theta'') \vert \leq \Delta_n(\epsilon, \eta), \ n \geq n_0(\epsilon, \eta)
+$$
+
+Under these assumptions, we can lift the pointwise convergence of $Q_n(\theta)$ to $Q(\theta)$ for each fixed $\theta \in \Theta$ to the uniform convergence over all $\theta \in \Theta$. The detailed proof can be found in @newey1991.
+
+### Approach 2: $\epsilon$-net bound
+
+Another interesting technique when the space $\Theta$ is not compact, is to use an $\epsilon$-net type bounding argument.
+
+First note that, 
+$$
+\mathbb{P}(\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta)| > \delta) = \mathbb{P}(\cup_{\theta \in \Theta} \{ |Q_n(\theta) - Q(\theta)| > \delta \})
+$$
+One can now try to bound this by a union bound, i.e., by $|\Theta| \sup_{\theta \in \Theta} \mathbb{P}(|Q_n(\theta) - Q(\theta) | > \delta)$, which is typically $|\Theta| \times o_p(1)$. However, $\Theta$ is generally an uncountable set, hence the above bound is useless. The strategy is to bound this set by some number of open balls which (like an open cover) and then control this number of open balls with the decay rate of the probability.
+
+Typically, there are 3 steps of this kind of proof.
+
+**Step 1**
+
+Here, we use Hoeffding's inequality (if the stochastic functions $Q_n$ are uniformly bounded) or use Berstein's inequality (or even a version of Talagrand's inequality), which provides some sort of exponential concentration: For every $\theta \in \Theta$, we have 
+$$
+\mathbb{P}(|Q_n(\theta) - Q(\theta)| > \delta) \leq C e^{-c h(n, \delta)}
+$$
+where $h(n,\delta)$ is some function of $n$ and $\delta > 0$. The constant $C$ and $c$ are typically chosen to be independent of $\theta \in \Theta$.
+
+**Step 2**
+
+At this stage, we try to build an $\epsilon$-net cover for the space $\Theta$. It means, to find a set $S \subset \Theta$ of representative points such that for any $\theta \in \Theta$, there exists $s \in S$ such that $|\theta - s| < \epsilon$. 
+
+Let $N_\epsilon(\Theta)$ be the $\epsilon$-net covering number for the space $\Theta$, which is the size of the smallest such $\epsilon$-net set $S$ for $\Theta$. In general, $N_\epsilon(\Theta)$ can just be a bound on the cardinality of that smallest set, it does not need to be exactly calculated.
+
+**Step 3**
+
+Now for any fixed $\theta \in \Theta$, let $s \in S$ be its representative point in the $\epsilon$-net. Then,
+$$
+\begin{align*}
+    | Q_n(\theta) - Q(\theta) | 
+    & = | Q_n(\theta) - Q_n(s) - (Q(\theta) - Q(s)) + Q_n(s) - Q(s) |\\
+    & \leq |Q_n(\theta) - Q_n(s)| + |Q(\theta) - Q(s)| + |Q_n(s) - Q(s)|\\
+    & \leq \sup_{|\theta - s| < \epsilon} |Q_n(\theta) - Q_n(s)| + \sup_{|\theta - s| < \epsilon} |Q(\theta) - Q(s)| + |Q_n(s) - Q(s)|
+\end{align*}
+$$
+Often, $Q_n$ and $Q$ are nice continuous type functions (sometimes even Lipschitz) so that the first two terms are of $O(g(\epsilon))$ for some function $g(\cdot)$, and the constant is actually free of the choice of $\theta \in \Theta$. This means,
+$$
+\begin{align*}
+\mathbb{P}(\sup_{\theta \in \Theta} |Q_n(\theta) - Q(\theta)| > \delta) 
+& = \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| > \delta - g(\epsilon))\\
+& \leq \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| > g'(\delta))
+\end{align*}
+$$
+for some function $g'(\cdot)$ and appropriately chosen small $\epsilon$ as a function of $\delta$. What this step shows is that there is only a little error in replacing the difference between $Q_n$ and $Q$ at this general point $\theta \in \Theta$ to the same difference but now evaluated in one of the points in the $\epsilon$-net.
+
+This now helps us to write:
+$$
+\begin{align*}
+    \mathbb{P}(\sup_{\theta \in \Theta} |Q_n(\theta) - Q(\theta)| > \delta)
+    & \leq \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| > g'(\delta))\\
+    & \leq N_\epsilon(\Theta) \mathbb{P}(|Q_n(s) - Q(s)| > g'(\delta))\\
+    & \leq N_\epsilon(\Theta) \times C e^{-c h(n, g'(\delta))}
+\end{align*}
+$$
+Now putting the expression of $\epsilon$ in terms of $\delta$ and taking appropriate limit of $n$ typically makes this bound tend to $0$. Note that, here union bound makes sense as we have a finite-set (i.e., the $\epsilon$-net).
+
+More details can be found in @erdogdu2024 and @vershyninHDP.
+
+
+### Approach 3: Rademacher complexity bound
+
+Another way to approach this kind of problem is to hope for a variational-type bound, where the space $\Theta$ is too broad for the covering number to be directly applied to the space, or we want to achieve bounds that depend on the actual data distribution rather than the worst-case space geometry. 
+
+This approach is particularly common in statistical learning theory. Suppose the empirical function $Q_n(\theta)$ can be written as an empirical average over $n$ independent random variables $X_1, \dots, X_n$, i.e., $Q_n(\theta) = \frac{1}{n} \sum_{i=1}^n L(\theta; X_i)$ and $Q(\theta) = \mathbb{E}[L(\theta; X_i)]$. We want to uniformly bound the supremum of the empirical process:
+$$
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | = \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}[L(\theta; X_i)] \right|
+$$
+Let $\mathcal{L} = \{L(\theta; \cdot) : \theta \in \Theta\}$ denote the function class. The proof typically proceeds in three main steps.
+
+**Step 1: Symmetrization**
+
+We first bound the expected value of this supremum. We introduce a "copy sample" $X_1', \dots, X_n'$, drawn from the same distribution and independent of the original sample $X_1, \dots, X_n$.
+ 
+$$
+\begin{align*}
+& \mathbb{E}_X \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}[L(\theta; X_i)] \right| \right] \\
+={} & \mathbb{E}_X \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}_{X'} \left[ \frac{1}{n} \sum_{i=1}^n L(\theta; X_i') \right] \right| \right]\\
+\leq{} & \mathbb{E}_{X, X'} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \left( L(\theta; X_i) - L(\theta; X_i') \right) \right| \right] \quad \text{(by Jensen's inequality)}
+\end{align*}
+$$
+
+Next, we introduce Rademacher random variables $\sigma_1, \dots, \sigma_n$, which are independent and take values $+1$ or $-1$ with equal probability $1/2$. Since $X_i$ and $X_i'$ have the same distribution, $L(\theta; X_i) - L(\theta; X_i')$ are symmetric, multiplying with $\sigma_i$ (i.e., randomly flipping its sign) does not change the distribution of the difference:
+$$
+\begin{align*}
+\dots & = \mathbb{E}_{X, X', \sigma} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \sigma_i \left( L(\theta; X_i) - L(\theta; X_i') \right) \right| \right]\\
+& \leq 2 \mathbb{E}_{X, \sigma} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \sigma_i L(\theta; X_i) \right| \right] \equiv 2 \mathcal{R}_n(\mathcal{L})
+\end{align*}
+$$
+Here, $\mathcal{R}_n(\mathcal{L})$ is the **Expected Rademacher Complexity** of the function class $\mathcal{L}$. It measures how well the function class can fit random noise ($\sigma_i$).
+
+**Step 2: Concentration**
+
+While Step 1 bounds the expectation, we want a high-probability bound. If the functions $L(\theta; X)$ are uniformly bounded, say $L(\theta; X) \in [a, b]$, we can use **McDiarmid's Inequality**. 
+
+Let $\Phi(X_1, \dots, X_n) = \sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) |$. Changing a single observation $X_i$ to another value $X_i'$ changes the value of $\Phi$ by at most $(b-a)/n$. By McDiarmid's inequality, with probability at least $1 - \delta$:
+$$
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \leq \mathbb{E} \left[ \sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \right] + (b-a) \sqrt{\frac{\log(1/\delta)}{2n}}
+$$
+
+**Step 3: Bounding the Rademacher Complexity**
+
+Combining Step 1 and Step 2, we get that with probability at least $1-\delta$:
+$$
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \leq 2 \mathcal{R}_n(\mathcal{L}) + (b-a) \sqrt{\frac{\log(1/\delta)}{2n}}
+$$
+The remaining task is to show that $\mathcal{R}_n(\mathcal{L}) = o(1)$ (typically $O(1/\sqrt{n})$). This is usually done using:
+
+- **Massart's Finite Lemma:** If $\mathcal{L}$ evaluated on the sample is a finite set.
+
+- **VC Dimension:** For binary function classes.
+
+- **Dudley's Entropy Integral:** Uses covering numbers of the empirical $L_2$ space, giving a tighter, data-dependent metric entropy bound compared to the $\epsilon$-net approach over $\Theta$ directly.
+
+This establishes uniform consistency $\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | = o_p(1)$ as long as the Rademacher complexity vanishes as $n \to \infty$. See @Wainwright_2019 for an overview of the Rademacher complexity and its application to uniform consistency.
+
+# Technique 2: Algorithmic Stability
+
+The first technique essentially tries to bound the worst-case error over the entire parameter space $\Theta$ using uniform convergence. Sometimes, this is too pessimistic. Algorithm-dependent bounds bypass uniform convergence by analyzing the specific parameter estimate output by a learning algorithm $\mathcal{A}$.
+
+Note that,
+$$
+\begin{align*}
+Q(\hat{\theta}_n) - Q(\theta^\star) 
+& = \underbrace{[Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)]}_{\text{Term 1}} + \underbrace{[Q_n(\hat{\theta}_n) - Q_n(\theta^\star)]}_{\text{Term 2}} + \underbrace{[Q_n(\theta^\star) - Q(\theta^\star)]}_{\text{Term 3}}\\
+& \leq \underbrace{[Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)]}_{\text{Term 1}} + \underbrace{[Q_n(\theta^\star) - Q(\theta^\star)]}_{\text{Term 3}}
+\end{align*}
+$$
+
+since by definition, the second term is negative. Since $\theta^\star$ is a fixed quantity, by standard empirical concentration, we have that the third term is asymptotically negligible. Therefore, one only requires control on the first term, which can be viewed as a **generalization gap**, i.e., the difference between testing error and the training error at the estimated parameter $\hat{\theta}_n$. 
+
+**Definition:** An algorithm is stable if changing a single data point in the training sample $S = \{X_1, \dots, X_n\}$ does not significantly alter the loss of the output parameter. Formally, an algorithm $\mathcal{A}$ has **uniform stability** $\beta_n$ with respect to the loss function $L$ if for any two training sets $S, S'$ that differ by exactly one point,
+$$
+\sup_{x} | L(\mathcal{A}(S); x) - L(\mathcal{A}(S'); x) | \leq \beta_n
+$$
+If $\beta_n = O(1/n)$ (which holds for strongly convex regularized empirical risk minimization, for instance), the algorithm is well-behaved. Essentially, here $\mathcal{A}(S) = \hat{\theta}_n$, and $\mathcal{A}$ can be regarded as a functional. The *intuitive* idea for the proof now is that if an algorithm is stable, then as we replace the sample points in $S$ one by one, a *stable* algorithm will only provide bounded fluctuations in both $Q_n$ and $Q$, and adding up these fluctuations can be controlled using standard exponential concentration inequalities.
+
+Let, $\Phi(S) = Q(\mathcal{A}(S)) - Q_n(\mathcal{A}(S))$. Replace $S$ by $S'$, where $S$ and $S'$ differ by exactly one observation. Then, 
+
+$$
+\vert Q(\mathcal{A}(S)) - Q(\mathcal{A}(S'))\vert 
+\leq \mathbb{E}\left[ \vert L(\mathcal{A}(S)) - L(\mathcal{A}(S')) \vert \right]
+\leq \beta_n,
+$$
+by Jensen's inequality. On the other hand, the different in empirical risk is
+$$
+\vert Q_n(\mathcal{A}(S)) - Q_n(\mathcal{A}(S'))\vert 
+= \left\vert \frac{1}{n}\sum_{i=1}^n L(X_i, \mathcal{A}(S)) - \frac{1}{n}\sum_{i=1}^n L(X'_i, \mathcal{A}(S')) \right\vert \leq \beta_n + \frac{M}{n},
+$$
+where $M$ is an upperbound on the loss function $L$. The inequality follows from the fact that we can replace each summand $L(X'_i, \mathcal{A}(S'))$ with $L(X_i, \mathcal{A}(S))$ which will encounter an error of $\beta_n$ for all observations that are common to both $S$ and $S'$, but will contribute an error of $M$ for the single mismatched observation. Thus, $\Phi(S)$ satisfies the bounded differences condition with $c_i = 2\beta_n + \frac{M}{n}$. Applying McDiarmid's inequality gives that with probability at least $1-\delta$:
+$$
+Q(\hat{\theta}_n) \leq Q_n(\hat{\theta}_n) + \beta_n + (2n\beta_n + M) \sqrt{\frac{\log(1/\delta)}{2n}}
+$$
+
+
+# Technique 3: Taylor Expansion and Bahadur Representation
+
+While uniform convergence and algorithmic stability provide high-probability bounds on the risk or generalization gap, another fundamental approach in classical statistics focuses on the asymptotic distribution and local behavior of the estimator $\hat{\theta}_n$. This approach relies on smoothness assumptions of the objective function.
+
+### Taylor Series Expansion of the Gradient
+
+Assume that the empirical risk $Q_n(\theta)$ and the expected risk $Q(\theta)$ are twice continuously differentiable. Since $\hat{\theta}_n$ minimizes $Q_n$, it must satisfy the first-order condition (estimating equation):
+$$
+\nabla Q_n(\hat{\theta}_n) = 0
+$$
+Similarly, the true parameter $\theta^\star$ minimizes the expected risk, so:
+$$
+\nabla Q(\theta^\star) = \mathbb{E}[\nabla L(\theta^\star; X)] = 0
+$$
+
+We can take a first-order Taylor expansion of the gradient $\nabla Q_n(\hat{\theta}_n)$ around the true parameter $\theta^\star$:
+$$
+0 = \nabla Q_n(\hat{\theta}_n) \approx \nabla Q_n(\theta^\star) + \nabla^2 Q_n(\theta^\star) (\hat{\theta}_n - \theta^\star)
+$$
+Rearranging this gives us an expression for the parameter estimation error:
+$$
+\sqrt{n}(\hat{\theta}_n - \theta^\star) \approx - \left[ \nabla^2 Q_n(\theta^\star) \right]^{-1} \sqrt{n} \nabla Q_n(\theta^\star)
+$$
+
+By the Law of Large Numbers, the empirical Hessian converges to the expected Hessian: $\nabla^2 Q_n(\theta^\star) \xrightarrow{p} \nabla^2 Q(\theta^\star) := H$. 
+Furthermore, $\nabla Q_n(\theta^\star) = \frac{1}{n} \sum_{i=1}^n \nabla L(\theta^\star; X_i)$ is an average of independent, mean-zero random vectors. By the Central Limit Theorem, $\sqrt{n} \nabla Q_n(\theta^\star) \xrightarrow{d} \mathcal{N}(0, J)$, where $J = \text{Var}(\nabla L(\theta^\star; X))$. 
+
+This yields the classic asymptotic normality result for M-estimators:
+$$
+\sqrt{n}(\hat{\theta}_n - \theta^\star) \xrightarrow{d} \mathcal{N}(0, H^{-1} J H^{-1})
+$$
+
+### Bahadur Representation
+
+The approximation used above can be made rigorous using the **Bahadur Representation**. It expresses the complex, implicit estimator $\hat{\theta}_n$ as a simple empirical average of independent random variables plus a lower-order remainder term:
+$$
+\hat{\theta}_n - \theta^\star = \frac{1}{n} \sum_{i=1}^n \psi(X_i; \theta^\star) + o_p(n^{-1/2})
+$$
+where $\psi(x; \theta^\star) = - H^{-1} \nabla L(\theta^\star; x)$ is known as the **influence function**. 
+
+### Connecting back to Risk Bounds
+
+To see how this local parameter estimation error relates to the excess risk $Q(\hat{\theta}_n) - Q(\theta^\star)$, we can expand the expected risk $Q(\hat{\theta}_n)$ using Taylor's theorem around $\theta^\star$:
+$$
+Q(\hat{\theta}_n) \approx Q(\theta^\star) + \underbrace{\nabla Q(\theta^\star)^T}_{=0} (\hat{\theta}_n - \theta^\star) + \frac{1}{2} (\hat{\theta}_n - \theta^\star)^T H (\hat{\theta}_n - \theta^\star)
+$$
+Since $\hat{\theta}_n - \theta^\star = O_p(1/\sqrt{n})$, the quadratic form means the excess risk is:
+$$
+Q(\hat{\theta}_n) - Q(\theta^\star) = O_p(1/n)
+$$
+This local smoothness approach yields a "fast rate" of $O_p(1/n)$ for the excess risk, whereas standard uniform convergence often only yields a "slow rate" of $O_p(1/\sqrt{n})$. 
+
+**Note:** This idea shows that even an estimator with semiparametric rate of consistency $\hat{\theta}_n = \theta^\star + o_p(n^{-1/4})$ can still produce excess risk at the parametric rate of $O_p(1/n)$! This is a common phenomenon in semiparametric models where a limited amount of information about the infinite-dimensional nuisance parameter can be tolerated.
+
+
+# Technique 4: PAC-Bayesian Bounds
+
+The PAC-Bayesian (Probably Approximately Correct - Bayesian) framework provides another alternative to worst-case uniform bounds. Instead of finding a single best parameter estimate $\hat{\theta}_n$ it evaluates a posterior distribution over parameters. 
+
+Before seeing the data $S = \{X_1, \dots, X_n\}$, we fix a **prior distribution** $\Pi$ over the parameter space $\Theta$. After observing $S$, the algorithm outputs a **posterior distribution** $\hat{\Pi}$ over $\Theta$ (this is not necessarily a true Bayesian posterior; it can be any data-dependent distribution).
+
+We are interested in bounding the expected risk over this posterior, $\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)]$, by the empirical risk $\mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)]$. *You should be able to contrast this with the Algorithmic Stability approach, which was a deterministic version of this*.
+
+### Intuitive Explanation
+
+The key insight of the PAC-Bayes approach is that the generalization error of the *distribution* $\hat{\Pi}$ can be bounded directly using information-theoretic tools, without needing a single "best" parameter estimate. The proof essentially finds out how much the expected value of a measurable function changes under the change of measure from $\Pi$ to $\hat{\Pi}$, via the KL divergence between them. Then, the measurable function is cleverly chosen to quantify the generalization error via 2 parts: The first part uses standard concentration to bound the generalization error (random quantity) to its expected value, and then the 2nd part uses the KL divergence to bound the expectated generalization error.
+
+The step by step details are provided below.
+
+### Step-by-Step Derivation of PAC-Bayes Bounds
+
+The core of the PAC-Bayes proof relies on a change-of-measure inequality and Markov's inequality. Assume for simplicity that our loss function $L(\theta; X)$ is bounded in $[0, 1]$.
+
+**Step 1: The Donsker-Varadhan Variational Formula**
+A fundamental result in information theory states that for any measurable function $f(\theta)$ and distributions $\Pi$, $\hat{\Pi}$:
+$$
+\mathbb{E}_{\theta \sim \hat{\Pi}}[f(\theta)] \leq \text{KL}(\hat{\Pi} \| \Pi) + \log \mathbb{E}_{\theta \sim \Pi}[e^{f(\theta)}]
+$$
+
+To see the proof, simply expand the KL divergence using its definition, and apply Jensen's inequality to the likelihood ratio; see @donsker1983varadhan for proof.
+
+**Step 2: Apply to the Generalization Gap**
+We choose $f(\theta) = \lambda (Q(\theta) - Q_n(\theta))$ for some fixed $\lambda > 0$. Substituting this into the variational formula gives:
+$$
+\lambda \mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta) - Q_n(\theta)] \leq \text{KL}(\hat{\Pi} \| \Pi) + \log \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right]
+$$
+
+**Step 3: Bounding the Moment Generating Function (MGF)**
+We now need to control the rightmost term. Since $\Pi$ is chosen *before* seeing the data $S$, we can take the expectation over the data $S$. By Tonelli's theorem, we can swap the expectations:
+$$
+\mathbb{E}_S \left[ \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \right] = \mathbb{E}_{\theta \sim \Pi} \left[ \mathbb{E}_S \left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \right]
+$$
+For any *fixed* $\theta$, $Q(\theta) - Q_n(\theta)$ is the standard empirical process difference. By Hoeffding's lemma (or standard concentration inequalities), its MGF has the bound
+$$
+\mathbb{E}_S \left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \leq e^{c\lambda^2/n}
+$$
+for some constant $c > 0$. This means, $\mathbb{E}_S \left[ \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta)) - c\lambda^2/n} \right] \right] \leq 1$.
+
+
+
+**Step 4: High Probability Bound via Markov's Inequality**
+
+We now choose $Z = \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta)) - c\lambda^2/n} \right]$. Since $Z \in [0, 1]$, by Markov's inequality, we have
+$$
+\mathbb{P}(Z > 1/\delta) \leq \delta \mathbb{E}[Z] \leq \delta
+$$
+
+That means, with probability at least $1 - \delta$, $Z < 1/\delta$. Taking the logarithm of both sides:
+$$
+\log \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \leq c\frac{\lambda^2}{n} + \log\left(\frac{1}{\delta}\right)
+$$
+
+**Step 5: Bringing it together**
+Substitute the high-probability bound from Step 4 back into the Donsker-Varadhan inequality from Step 2 and dividing both sides by $\lambda$ yields the desired bound:
+
+$$
+\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)] \leq \mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)] + \frac{\text{KL}(\hat{\Pi} \| \Pi) + \log\left(\frac{1}{\delta}\right)}{\lambda} + c\frac{\lambda}{n}
+$$
+
+Since the above holds for any $\lambda > 0$, one can choose $\lambda$ optimally, and obtain a bound of the order 
+$$
+\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)] \leq \mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)] + O\left( \sqrt{\frac{\text{KL}(\hat{\Pi} \| \Pi) + \log \left( \frac{1}{\delta} \right)}{2n}}\right)
+$$
+
+This is incredibly powerful because the complexity penalty $\text{KL}(\hat{\Pi} \| \Pi)$ is distribution-dependent and can be very small if the algorithm's posterior $\hat{\Pi}$ remains close to the prior $\Pi$. It entirely bypasses measures like VC dimension or Rademacher complexity, offering tighter bounds for complex models (like neural networks) where uniform bounds are vacuously large.
+
+@Alquier_2021 provides a nice review of PAC-Bayesian bounds. 
+
+
+## References
+
+::: {#refs}
+:::

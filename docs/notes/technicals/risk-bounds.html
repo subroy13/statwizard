@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-06-12">
+
+<title>Risk Bounds – Subhrajyoty Roy</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../static/css/styles.css">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Subhrajyoty Roy</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../software.html"> 
+<span class="menu-text">OSS</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/talks.html"> 
+<span class="menu-text">Talks</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../notes/index.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/subroy13" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://www.linkedin.com/in/subroy13" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="mailto:roy.s@wustl.edu" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-envelope-at"></i></a>
+    <a href="https://scholar.google.com/citations?user=Gocm0lYAAAAJ&amp;hl=en&amp;authuser=1" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-mortarboard-fill"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-and-setting" id="toc-introduction-and-setting" class="nav-link active" data-scroll-target="#introduction-and-setting">Introduction and Setting</a></li>
+  <li><a href="#technique-1-uniform-bound-reversal" id="toc-technique-1-uniform-bound-reversal" class="nav-link" data-scroll-target="#technique-1-uniform-bound-reversal">Technique 1: Uniform Bound Reversal</a>
+  <ul class="collapse">
+  <li><a href="#techniques-to-establish-the-uniform-consistency" id="toc-techniques-to-establish-the-uniform-consistency" class="nav-link" data-scroll-target="#techniques-to-establish-the-uniform-consistency">Techniques to establish the uniform consistency</a>
+  <ul class="collapse">
+  <li><a href="#approach-1-stochastic-equicontinuity" id="toc-approach-1-stochastic-equicontinuity" class="nav-link" data-scroll-target="#approach-1-stochastic-equicontinuity">Approach 1: Stochastic Equicontinuity</a></li>
+  <li><a href="#approach-2-epsilon-net-bound" id="toc-approach-2-epsilon-net-bound" class="nav-link" data-scroll-target="#approach-2-epsilon-net-bound">Approach 2: <span class="math inline">\(\epsilon\)</span>-net bound</a></li>
+  <li><a href="#approach-3-rademacher-complexity-bound" id="toc-approach-3-rademacher-complexity-bound" class="nav-link" data-scroll-target="#approach-3-rademacher-complexity-bound">Approach 3: Rademacher complexity bound</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#technique-2-algorithmic-stability" id="toc-technique-2-algorithmic-stability" class="nav-link" data-scroll-target="#technique-2-algorithmic-stability">Technique 2: Algorithmic Stability</a></li>
+  <li><a href="#technique-3-taylor-expansion-and-bahadur-representation" id="toc-technique-3-taylor-expansion-and-bahadur-representation" class="nav-link" data-scroll-target="#technique-3-taylor-expansion-and-bahadur-representation">Technique 3: Taylor Expansion and Bahadur Representation</a>
+  <ul class="collapse">
+  <li><a href="#taylor-series-expansion-of-the-gradient" id="toc-taylor-series-expansion-of-the-gradient" class="nav-link" data-scroll-target="#taylor-series-expansion-of-the-gradient">Taylor Series Expansion of the Gradient</a></li>
+  <li><a href="#bahadur-representation" id="toc-bahadur-representation" class="nav-link" data-scroll-target="#bahadur-representation">Bahadur Representation</a></li>
+  <li><a href="#connecting-back-to-risk-bounds" id="toc-connecting-back-to-risk-bounds" class="nav-link" data-scroll-target="#connecting-back-to-risk-bounds">Connecting back to Risk Bounds</a></li>
+  </ul></li>
+  <li><a href="#technique-4-pac-bayesian-bounds" id="toc-technique-4-pac-bayesian-bounds" class="nav-link" data-scroll-target="#technique-4-pac-bayesian-bounds">Technique 4: PAC-Bayesian Bounds</a>
+  <ul class="collapse">
+  <li><a href="#intuitive-explanation" id="toc-intuitive-explanation" class="nav-link" data-scroll-target="#intuitive-explanation">Intuitive Explanation</a></li>
+  <li><a href="#step-by-step-derivation-of-pac-bayes-bounds" id="toc-step-by-step-derivation-of-pac-bayes-bounds" class="nav-link" data-scroll-target="#step-by-step-derivation-of-pac-bayes-bounds">Step-by-Step Derivation of PAC-Bayes Bounds</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Risk Bounds</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Proof Technique</div>
+    <div class="quarto-category">Consistency</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 12, 2026</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 12, 2026</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-and-setting" class="level1">
+<h1>Introduction and Setting</h1>
+<p>In a learning problem, you are given a sample <span class="math inline">\(X_1, \dots, X_n\)</span>, and an objective function <span class="math inline">\(L(\theta; X)\)</span> which represents the loss incurred by choosing parameter <span class="math inline">\(\theta\)</span> for a given observation <span class="math inline">\(X\)</span>. Our goal is to estimate the parameter <span class="math inline">\(\theta\)</span> that minimizes the expected loss over all possible observations. Let <span class="math inline">\(\theta^\star\)</span> be the true parameter that minimizes the expected loss:</p>
+<p><span class="math display">\[
+\theta^\star = \arg\min_{\theta \in \Theta} \mathbb{E}[L(\theta; X)] = \arg\min_{\theta \in \Theta} Q(\theta)
+\]</span></p>
+<p>while the sample-dependent estimator is given by anologus empirical counterpart</p>
+<p><span class="math display">\[
+\hat{\theta}_n = \arg\min_{\theta \in \Theta} L(\theta; X_1, \dots, X_n) = \arg\min_{\theta \in \Theta} Q_n(\theta)
+\]</span></p>
+<p>In most cases, you are typically interested in establishing that <span class="math inline">\(\hat{\theta}_n\)</span> is “close” to <span class="math inline">\(\theta^\star\)</span> in some sense. Some general tricks have been developed in this regard; and the purpose of this note is to illustrate these proof techniques in a “non-rigorous” but “mathematically meaningful” way.</p>
+<p>To connect <span class="math inline">\(Q_n(\cdot)\)</span> and <span class="math inline">\(Q(\cdot)\)</span>, we assume that <span class="math inline">\(\mathbb{E}(Q_n(\theta)) = Q(\theta)\)</span>, for any <span class="math inline">\(\theta \in \Theta\)</span>, and the expectation is taken over the distribution of the sample <span class="math inline">\(X\)</span>.</p>
+</section>
+<section id="technique-1-uniform-bound-reversal" class="level1">
+<h1>Technique 1: Uniform Bound Reversal</h1>
+<p>This is probably one of the most “common” approach in modern machine learning and statistical learning settings. Note that,</p>
+<p><span class="math display">\[
+\begin{align*}
+    Q(\theta^*) - Q(\hat{\theta}_n)
+    &amp; = Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) + (Q_n(\theta^*) - Q_n(\hat{\theta}_n))\\
+    &amp; \leq Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n)\\
+    &amp; \qquad \text{ since the last term is negative by definition of } \hat{\theta}_n\\
+    &amp; \leq \vert Q(\theta^*) - Q_n(\theta^*) \vert + \vert Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) \vert\\
+    &amp; \leq 2 \sup_{\theta \in \Theta} \vert Q(\theta) - Q_n(\theta)\vert
+\end{align*}
+\]</span></p>
+<p>Suppose that we are able to establish the bound on the right hand side is negligible as <span class="math inline">\(n \to \infty\)</span> (which is like establishing uniform consistency of the empirical risk). Then, we have <span class="math display">\[
+Q(\theta^*) - Q_n(\hat{\theta}_n) = o_p(1) \ (\approx \text{small})
+\implies Q(\theta^*) - Q(\hat{\theta}_n) = o_p(1).
+\]</span></p>
+<p>This means, if <span class="math inline">\(Q\)</span> is even locally convex near its unique global minima, then that would imply <span class="math inline">\(\hat{\theta}_n\)</span> must be close to <span class="math inline">\(\theta^\ast\)</span>. Note that the significance here is than we do not have to produce any assumption of convexity (or something similar) to the random function <span class="math inline">\(Q_n(\cdot)\)</span>, instead focus on only the deterministic function <span class="math inline">\(Q(\cdot)\)</span> instead.</p>
+<p><strong>Typical Assumption:</strong> There should be no sequence of local minimas of <span class="math inline">\(Q\)</span> that can approximate the global minimum <span class="math inline">\(Q(\theta^*)\)</span> without approaching <span class="math inline">\(\theta^*\)</span>. See <span class="citation" data-cites="vaartAsymptoticBook">(<a href="#ref-vaartAsymptoticBook" role="doc-biblioref">Van der Vaart 2000</a>)</span> for a more formal statement of this assumption.</p>
+<section id="techniques-to-establish-the-uniform-consistency" class="level2">
+<h2 class="anchored" data-anchor-id="techniques-to-establish-the-uniform-consistency">Techniques to establish the uniform consistency</h2>
+<p>A standard technique to show the uniform consistency, i.e., <span class="math display">\[
+\sup_{\theta \in \Theta} \vert Q_n(\theta) - Q(\theta)\vert = o_p(1)
+\]</span></p>
+<p>is to first demonstrate a pointwise consistency result for each fixed <span class="math inline">\(\theta \in \Theta\)</span>, and then somehow lift this convergence to uniform convergence. The pointwise convergence for any fixed <span class="math inline">\(\theta \in \Theta\)</span> can be established by standard empirical process concentration (e.g., law of large numbers, etc.) which yields that <span class="math inline">\(Q_n(\theta) = Q(\theta) + o_p(1)\)</span>.</p>
+<p>If <span class="math inline">\(\Theta\)</span> is countably finite, then we can lift the convergence to uniform convergence quite easily. When <span class="math inline">\(\Theta\)</span> is countably infinite or uncountable, we have several tricks up our sleeves.</p>
+<section id="approach-1-stochastic-equicontinuity" class="level3">
+<h3 class="anchored" data-anchor-id="approach-1-stochastic-equicontinuity">Approach 1: Stochastic Equicontinuity</h3>
+<p>This approach aims to leverage some compactness-kind characterization of the space <span class="math inline">\(\Theta\)</span>. Suppose that <span class="math inline">\(\Theta\)</span> is compact. However, that is not enough. To see this, note that if <span class="math inline">\(\Theta\)</span> is compact, we can consider a finite subcover of this, and if we can show that the uniform convergence holds for every subcover, because there are only finitely many, we can take further supremum over them. Therefore, we need to show something like: <span class="math display">\[
+\sup_{\theta \in B(\theta', \cdot)} \vert Q_n(\theta) - Q(\theta)\vert = o_p(1)
+\]</span> where <span class="math inline">\(B(\theta', \cdot)\)</span> is a ball in <span class="math inline">\(\Theta\)</span> centered around <span class="math inline">\(\theta'\)</span>. However, because <span class="math inline">\(\Theta\)</span> is compact, it is also complete, and hence one can actually work with the Cauchy-sequences kind of thing. Therefore, to show the above, one version would be to work with <span class="math display">\[
+\sup_{\theta \in B(\theta', \cdot)} \vert Q_n(\theta) - Q_n(\theta')\vert = o_p(1)
+\]</span> This is a version of equicontinuity, but for possibly random functions, hence called <strong>stochastic equicontinuity</strong>. Also, it needs to be hold only probabilistically for most <span class="math inline">\(\theta\)</span>’s, not for all.</p>
+<p>Here are the final assumptions.</p>
+<ul>
+<li>(A1) <span class="math inline">\(\Theta\)</span> is compact.</li>
+<li>(A2) For every <span class="math inline">\(\epsilon, \eta &gt; 0\)</span>, there exists a random <span class="math inline">\(\Delta_n(\epsilon, \eta)\)</span> and constant <span class="math inline">\(n_0(\epsilon, \eta)\)</span> such that for all <span class="math inline">\(n \geq n_0(\epsilon,\eta)\)</span>, <span class="math inline">\(\mathbb{P}(\vert \Delta_n(\epsilon, \eta) \vert &gt; \epsilon) \leq \eta\)</span> and for all <span class="math inline">\(\theta \in \Theta\)</span>, there exists a neighbourhood (open set) <span class="math inline">\(N(\theta, \epsilon, \eta)\)</span> such that <span class="math display">\[
+\sup_{\theta', \theta'' \in N(\theta, \epsilon, \eta)} \vert Q_n(\theta') - Q_n(\theta'') \vert \leq \Delta_n(\epsilon, \eta), \ n \geq n_0(\epsilon, \eta)
+\]</span></li>
+</ul>
+<p>Under these assumptions, we can lift the pointwise convergence of <span class="math inline">\(Q_n(\theta)\)</span> to <span class="math inline">\(Q(\theta)\)</span> for each fixed <span class="math inline">\(\theta \in \Theta\)</span> to the uniform convergence over all <span class="math inline">\(\theta \in \Theta\)</span>. The detailed proof can be found in <span class="citation" data-cites="newey1991">Newey (<a href="#ref-newey1991" role="doc-biblioref">1991</a>)</span>.</p>
+</section>
+<section id="approach-2-epsilon-net-bound" class="level3">
+<h3 class="anchored" data-anchor-id="approach-2-epsilon-net-bound">Approach 2: <span class="math inline">\(\epsilon\)</span>-net bound</h3>
+<p>Another interesting technique when the space <span class="math inline">\(\Theta\)</span> is not compact, is to use an <span class="math inline">\(\epsilon\)</span>-net type bounding argument.</p>
+<p>First note that, <span class="math display">\[
+\mathbb{P}(\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta)| &gt; \delta) = \mathbb{P}(\cup_{\theta \in \Theta} \{ |Q_n(\theta) - Q(\theta)| &gt; \delta \})
+\]</span> One can now try to bound this by a union bound, i.e., by <span class="math inline">\(|\Theta| \sup_{\theta \in \Theta} \mathbb{P}(|Q_n(\theta) - Q(\theta) | &gt; \delta)\)</span>, which is typically <span class="math inline">\(|\Theta| \times o_p(1)\)</span>. However, <span class="math inline">\(\Theta\)</span> is generally an uncountable set, hence the above bound is useless. The strategy is to bound this set by some number of open balls which (like an open cover) and then control this number of open balls with the decay rate of the probability.</p>
+<p>Typically, there are 3 steps of this kind of proof.</p>
+<p><strong>Step 1</strong></p>
+<p>Here, we use Hoeffding’s inequality (if the stochastic functions <span class="math inline">\(Q_n\)</span> are uniformly bounded) or use Berstein’s inequality (or even a version of Talagrand’s inequality), which provides some sort of exponential concentration: For every <span class="math inline">\(\theta \in \Theta\)</span>, we have <span class="math display">\[
+\mathbb{P}(|Q_n(\theta) - Q(\theta)| &gt; \delta) \leq C e^{-c h(n, \delta)}
+\]</span> where <span class="math inline">\(h(n,\delta)\)</span> is some function of <span class="math inline">\(n\)</span> and <span class="math inline">\(\delta &gt; 0\)</span>. The constant <span class="math inline">\(C\)</span> and <span class="math inline">\(c\)</span> are typically chosen to be independent of <span class="math inline">\(\theta \in \Theta\)</span>.</p>
+<p><strong>Step 2</strong></p>
+<p>At this stage, we try to build an <span class="math inline">\(\epsilon\)</span>-net cover for the space <span class="math inline">\(\Theta\)</span>. It means, to find a set <span class="math inline">\(S \subset \Theta\)</span> of representative points such that for any <span class="math inline">\(\theta \in \Theta\)</span>, there exists <span class="math inline">\(s \in S\)</span> such that <span class="math inline">\(|\theta - s| &lt; \epsilon\)</span>.</p>
+<p>Let <span class="math inline">\(N_\epsilon(\Theta)\)</span> be the <span class="math inline">\(\epsilon\)</span>-net covering number for the space <span class="math inline">\(\Theta\)</span>, which is the size of the smallest such <span class="math inline">\(\epsilon\)</span>-net set <span class="math inline">\(S\)</span> for <span class="math inline">\(\Theta\)</span>. In general, <span class="math inline">\(N_\epsilon(\Theta)\)</span> can just be a bound on the cardinality of that smallest set, it does not need to be exactly calculated.</p>
+<p><strong>Step 3</strong></p>
+<p>Now for any fixed <span class="math inline">\(\theta \in \Theta\)</span>, let <span class="math inline">\(s \in S\)</span> be its representative point in the <span class="math inline">\(\epsilon\)</span>-net. Then, <span class="math display">\[
+\begin{align*}
+    | Q_n(\theta) - Q(\theta) |
+    &amp; = | Q_n(\theta) - Q_n(s) - (Q(\theta) - Q(s)) + Q_n(s) - Q(s) |\\
+    &amp; \leq |Q_n(\theta) - Q_n(s)| + |Q(\theta) - Q(s)| + |Q_n(s) - Q(s)|\\
+    &amp; \leq \sup_{|\theta - s| &lt; \epsilon} |Q_n(\theta) - Q_n(s)| + \sup_{|\theta - s| &lt; \epsilon} |Q(\theta) - Q(s)| + |Q_n(s) - Q(s)|
+\end{align*}
+\]</span> Often, <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(Q\)</span> are nice continuous type functions (sometimes even Lipschitz) so that the first two terms are of <span class="math inline">\(O(g(\epsilon))\)</span> for some function <span class="math inline">\(g(\cdot)\)</span>, and the constant is actually free of the choice of <span class="math inline">\(\theta \in \Theta\)</span>. This means, <span class="math display">\[
+\begin{align*}
+\mathbb{P}(\sup_{\theta \in \Theta} |Q_n(\theta) - Q(\theta)| &gt; \delta)
+&amp; = \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| &gt; \delta - g(\epsilon))\\
+&amp; \leq \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| &gt; g'(\delta))
+\end{align*}
+\]</span> for some function <span class="math inline">\(g'(\cdot)\)</span> and appropriately chosen small <span class="math inline">\(\epsilon\)</span> as a function of <span class="math inline">\(\delta\)</span>. What this step shows is that there is only a little error in replacing the difference between <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(Q\)</span> at this general point <span class="math inline">\(\theta \in \Theta\)</span> to the same difference but now evaluated in one of the points in the <span class="math inline">\(\epsilon\)</span>-net.</p>
+<p>This now helps us to write: <span class="math display">\[
+\begin{align*}
+    \mathbb{P}(\sup_{\theta \in \Theta} |Q_n(\theta) - Q(\theta)| &gt; \delta)
+    &amp; \leq \mathbb{P}(\sup_{s \in S} |Q_n(s) - Q(s)| &gt; g'(\delta))\\
+    &amp; \leq N_\epsilon(\Theta) \mathbb{P}(|Q_n(s) - Q(s)| &gt; g'(\delta))\\
+    &amp; \leq N_\epsilon(\Theta) \times C e^{-c h(n, g'(\delta))}
+\end{align*}
+\]</span> Now putting the expression of <span class="math inline">\(\epsilon\)</span> in terms of <span class="math inline">\(\delta\)</span> and taking appropriate limit of <span class="math inline">\(n\)</span> typically makes this bound tend to <span class="math inline">\(0\)</span>. Note that, here union bound makes sense as we have a finite-set (i.e., the <span class="math inline">\(\epsilon\)</span>-net).</p>
+<p>More details can be found in <span class="citation" data-cites="erdogdu2024">Erdogdu (<a href="#ref-erdogdu2024" role="doc-biblioref">2024</a>)</span> and <span class="citation" data-cites="vershyninHDP">Vershynin (<a href="#ref-vershyninHDP" role="doc-biblioref">2018</a>)</span>.</p>
+</section>
+<section id="approach-3-rademacher-complexity-bound" class="level3">
+<h3 class="anchored" data-anchor-id="approach-3-rademacher-complexity-bound">Approach 3: Rademacher complexity bound</h3>
+<p>Another way to approach this kind of problem is to hope for a variational-type bound, where the space <span class="math inline">\(\Theta\)</span> is too broad for the covering number to be directly applied to the space, or we want to achieve bounds that depend on the actual data distribution rather than the worst-case space geometry.</p>
+<p>This approach is particularly common in statistical learning theory. Suppose the empirical function <span class="math inline">\(Q_n(\theta)\)</span> can be written as an empirical average over <span class="math inline">\(n\)</span> independent random variables <span class="math inline">\(X_1, \dots, X_n\)</span>, i.e., <span class="math inline">\(Q_n(\theta) = \frac{1}{n} \sum_{i=1}^n L(\theta; X_i)\)</span> and <span class="math inline">\(Q(\theta) = \mathbb{E}[L(\theta; X_i)]\)</span>. We want to uniformly bound the supremum of the empirical process: <span class="math display">\[
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | = \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}[L(\theta; X_i)] \right|
+\]</span> Let <span class="math inline">\(\mathcal{L} = \{L(\theta; \cdot) : \theta \in \Theta\}\)</span> denote the function class. The proof typically proceeds in three main steps.</p>
+<p><strong>Step 1: Symmetrization</strong></p>
+<p>We first bound the expected value of this supremum. We introduce a “copy sample” <span class="math inline">\(X_1', \dots, X_n'\)</span>, drawn from the same distribution and independent of the original sample <span class="math inline">\(X_1, \dots, X_n\)</span>.</p>
+<p><span class="math display">\[
+\begin{align*}
+&amp; \mathbb{E}_X \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}[L(\theta; X_i)] \right| \right] \\
+={} &amp; \mathbb{E}_X \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n L(\theta; X_i) - \mathbb{E}_{X'} \left[ \frac{1}{n} \sum_{i=1}^n L(\theta; X_i') \right] \right| \right]\\
+\leq{} &amp; \mathbb{E}_{X, X'} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \left( L(\theta; X_i) - L(\theta; X_i') \right) \right| \right] \quad \text{(by Jensen's inequality)}
+\end{align*}
+\]</span></p>
+<p>Next, we introduce Rademacher random variables <span class="math inline">\(\sigma_1, \dots, \sigma_n\)</span>, which are independent and take values <span class="math inline">\(+1\)</span> or <span class="math inline">\(-1\)</span> with equal probability <span class="math inline">\(1/2\)</span>. Since <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_i'\)</span> have the same distribution, <span class="math inline">\(L(\theta; X_i) - L(\theta; X_i')\)</span> are symmetric, multiplying with <span class="math inline">\(\sigma_i\)</span> (i.e., randomly flipping its sign) does not change the distribution of the difference: <span class="math display">\[
+\begin{align*}
+\dots &amp; = \mathbb{E}_{X, X', \sigma} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \sigma_i \left( L(\theta; X_i) - L(\theta; X_i') \right) \right| \right]\\
+&amp; \leq 2 \mathbb{E}_{X, \sigma} \left[ \sup_{\theta \in \Theta} \left| \frac{1}{n} \sum_{i=1}^n \sigma_i L(\theta; X_i) \right| \right] \equiv 2 \mathcal{R}_n(\mathcal{L})
+\end{align*}
+\]</span> Here, <span class="math inline">\(\mathcal{R}_n(\mathcal{L})\)</span> is the <strong>Expected Rademacher Complexity</strong> of the function class <span class="math inline">\(\mathcal{L}\)</span>. It measures how well the function class can fit random noise (<span class="math inline">\(\sigma_i\)</span>).</p>
+<p><strong>Step 2: Concentration</strong></p>
+<p>While Step 1 bounds the expectation, we want a high-probability bound. If the functions <span class="math inline">\(L(\theta; X)\)</span> are uniformly bounded, say <span class="math inline">\(L(\theta; X) \in [a, b]\)</span>, we can use <strong>McDiarmid’s Inequality</strong>.</p>
+<p>Let <span class="math inline">\(\Phi(X_1, \dots, X_n) = \sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) |\)</span>. Changing a single observation <span class="math inline">\(X_i\)</span> to another value <span class="math inline">\(X_i'\)</span> changes the value of <span class="math inline">\(\Phi\)</span> by at most <span class="math inline">\((b-a)/n\)</span>. By McDiarmid’s inequality, with probability at least <span class="math inline">\(1 - \delta\)</span>: <span class="math display">\[
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \leq \mathbb{E} \left[ \sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \right] + (b-a) \sqrt{\frac{\log(1/\delta)}{2n}}
+\]</span></p>
+<p><strong>Step 3: Bounding the Rademacher Complexity</strong></p>
+<p>Combining Step 1 and Step 2, we get that with probability at least <span class="math inline">\(1-\delta\)</span>: <span class="math display">\[
+\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | \leq 2 \mathcal{R}_n(\mathcal{L}) + (b-a) \sqrt{\frac{\log(1/\delta)}{2n}}
+\]</span> The remaining task is to show that <span class="math inline">\(\mathcal{R}_n(\mathcal{L}) = o(1)\)</span> (typically <span class="math inline">\(O(1/\sqrt{n})\)</span>). This is usually done using:</p>
+<ul>
+<li><p><strong>Massart’s Finite Lemma:</strong> If <span class="math inline">\(\mathcal{L}\)</span> evaluated on the sample is a finite set.</p></li>
+<li><p><strong>VC Dimension:</strong> For binary function classes.</p></li>
+<li><p><strong>Dudley’s Entropy Integral:</strong> Uses covering numbers of the empirical <span class="math inline">\(L_2\)</span> space, giving a tighter, data-dependent metric entropy bound compared to the <span class="math inline">\(\epsilon\)</span>-net approach over <span class="math inline">\(\Theta\)</span> directly.</p></li>
+</ul>
+<p>This establishes uniform consistency <span class="math inline">\(\sup_{\theta \in \Theta} | Q_n(\theta) - Q(\theta) | = o_p(1)\)</span> as long as the Rademacher complexity vanishes as <span class="math inline">\(n \to \infty\)</span>. See <span class="citation" data-cites="Wainwright_2019">Wainwright (<a href="#ref-Wainwright_2019" role="doc-biblioref">2019</a>)</span> for an overview of the Rademacher complexity and its application to uniform consistency.</p>
+</section>
+</section>
+</section>
+<section id="technique-2-algorithmic-stability" class="level1">
+<h1>Technique 2: Algorithmic Stability</h1>
+<p>The first technique essentially tries to bound the worst-case error over the entire parameter space <span class="math inline">\(\Theta\)</span> using uniform convergence. Sometimes, this is too pessimistic. Algorithm-dependent bounds bypass uniform convergence by analyzing the specific parameter estimate output by a learning algorithm <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<p>Note that, <span class="math display">\[
+\begin{align*}
+Q(\hat{\theta}_n) - Q(\theta^\star)
+&amp; = \underbrace{[Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)]}_{\text{Term 1}} + \underbrace{[Q_n(\hat{\theta}_n) - Q_n(\theta^\star)]}_{\text{Term 2}} + \underbrace{[Q_n(\theta^\star) - Q(\theta^\star)]}_{\text{Term 3}}\\
+&amp; \leq \underbrace{[Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)]}_{\text{Term 1}} + \underbrace{[Q_n(\theta^\star) - Q(\theta^\star)]}_{\text{Term 3}}
+\end{align*}
+\]</span></p>
+<p>since by definition, the second term is negative. Since <span class="math inline">\(\theta^\star\)</span> is a fixed quantity, by standard empirical concentration, we have that the third term is asymptotically negligible. Therefore, one only requires control on the first term, which can be viewed as a <strong>generalization gap</strong>, i.e., the difference between testing error and the training error at the estimated parameter <span class="math inline">\(\hat{\theta}_n\)</span>.</p>
+<p><strong>Definition:</strong> An algorithm is stable if changing a single data point in the training sample <span class="math inline">\(S = \{X_1, \dots, X_n\}\)</span> does not significantly alter the loss of the output parameter. Formally, an algorithm <span class="math inline">\(\mathcal{A}\)</span> has <strong>uniform stability</strong> <span class="math inline">\(\beta_n\)</span> with respect to the loss function <span class="math inline">\(L\)</span> if for any two training sets <span class="math inline">\(S, S'\)</span> that differ by exactly one point, <span class="math display">\[
+\sup_{x} | L(\mathcal{A}(S); x) - L(\mathcal{A}(S'); x) | \leq \beta_n
+\]</span> If <span class="math inline">\(\beta_n = O(1/n)\)</span> (which holds for strongly convex regularized empirical risk minimization, for instance), the algorithm is well-behaved. Essentially, here <span class="math inline">\(\mathcal{A}(S) = \hat{\theta}_n\)</span>, and <span class="math inline">\(\mathcal{A}\)</span> can be regarded as a functional. The <em>intuitive</em> idea for the proof now is that if an algorithm is stable, then as we replace the sample points in <span class="math inline">\(S\)</span> one by one, a <em>stable</em> algorithm will only provide bounded fluctuations in both <span class="math inline">\(Q_n\)</span> and <span class="math inline">\(Q\)</span>, and adding up these fluctuations can be controlled using standard exponential concentration inequalities.</p>
+<p>Let, <span class="math inline">\(\Phi(S) = Q(\mathcal{A}(S)) - Q_n(\mathcal{A}(S))\)</span>. Replace <span class="math inline">\(S\)</span> by <span class="math inline">\(S'\)</span>, where <span class="math inline">\(S\)</span> and <span class="math inline">\(S'\)</span> differ by exactly one observation. Then,</p>
+<p><span class="math display">\[
+\vert Q(\mathcal{A}(S)) - Q(\mathcal{A}(S'))\vert
+\leq \mathbb{E}\left[ \vert L(\mathcal{A}(S)) - L(\mathcal{A}(S')) \vert \right]
+\leq \beta_n,
+\]</span> by Jensen’s inequality. On the other hand, the different in empirical risk is <span class="math display">\[
+\vert Q_n(\mathcal{A}(S)) - Q_n(\mathcal{A}(S'))\vert
+= \left\vert \frac{1}{n}\sum_{i=1}^n L(X_i, \mathcal{A}(S)) - \frac{1}{n}\sum_{i=1}^n L(X'_i, \mathcal{A}(S')) \right\vert \leq \beta_n + \frac{M}{n},
+\]</span> where <span class="math inline">\(M\)</span> is an upperbound on the loss function <span class="math inline">\(L\)</span>. The inequality follows from the fact that we can replace each summand <span class="math inline">\(L(X'_i, \mathcal{A}(S'))\)</span> with <span class="math inline">\(L(X_i, \mathcal{A}(S))\)</span> which will encounter an error of <span class="math inline">\(\beta_n\)</span> for all observations that are common to both <span class="math inline">\(S\)</span> and <span class="math inline">\(S'\)</span>, but will contribute an error of <span class="math inline">\(M\)</span> for the single mismatched observation. Thus, <span class="math inline">\(\Phi(S)\)</span> satisfies the bounded differences condition with <span class="math inline">\(c_i = 2\beta_n + \frac{M}{n}\)</span>. Applying McDiarmid’s inequality gives that with probability at least <span class="math inline">\(1-\delta\)</span>: <span class="math display">\[
+Q(\hat{\theta}_n) \leq Q_n(\hat{\theta}_n) + \beta_n + (2n\beta_n + M) \sqrt{\frac{\log(1/\delta)}{2n}}
+\]</span></p>
+</section>
+<section id="technique-3-taylor-expansion-and-bahadur-representation" class="level1">
+<h1>Technique 3: Taylor Expansion and Bahadur Representation</h1>
+<p>While uniform convergence and algorithmic stability provide high-probability bounds on the risk or generalization gap, another fundamental approach in classical statistics focuses on the asymptotic distribution and local behavior of the estimator <span class="math inline">\(\hat{\theta}_n\)</span>. This approach relies on smoothness assumptions of the objective function.</p>
+<section id="taylor-series-expansion-of-the-gradient" class="level3">
+<h3 class="anchored" data-anchor-id="taylor-series-expansion-of-the-gradient">Taylor Series Expansion of the Gradient</h3>
+<p>Assume that the empirical risk <span class="math inline">\(Q_n(\theta)\)</span> and the expected risk <span class="math inline">\(Q(\theta)\)</span> are twice continuously differentiable. Since <span class="math inline">\(\hat{\theta}_n\)</span> minimizes <span class="math inline">\(Q_n\)</span>, it must satisfy the first-order condition (estimating equation): <span class="math display">\[
+\nabla Q_n(\hat{\theta}_n) = 0
+\]</span> Similarly, the true parameter <span class="math inline">\(\theta^\star\)</span> minimizes the expected risk, so: <span class="math display">\[
+\nabla Q(\theta^\star) = \mathbb{E}[\nabla L(\theta^\star; X)] = 0
+\]</span></p>
+<p>We can take a first-order Taylor expansion of the gradient <span class="math inline">\(\nabla Q_n(\hat{\theta}_n)\)</span> around the true parameter <span class="math inline">\(\theta^\star\)</span>: <span class="math display">\[
+0 = \nabla Q_n(\hat{\theta}_n) \approx \nabla Q_n(\theta^\star) + \nabla^2 Q_n(\theta^\star) (\hat{\theta}_n - \theta^\star)
+\]</span> Rearranging this gives us an expression for the parameter estimation error: <span class="math display">\[
+\sqrt{n}(\hat{\theta}_n - \theta^\star) \approx - \left[ \nabla^2 Q_n(\theta^\star) \right]^{-1} \sqrt{n} \nabla Q_n(\theta^\star)
+\]</span></p>
+<p>By the Law of Large Numbers, the empirical Hessian converges to the expected Hessian: <span class="math inline">\(\nabla^2 Q_n(\theta^\star) \xrightarrow{p} \nabla^2 Q(\theta^\star) := H\)</span>. Furthermore, <span class="math inline">\(\nabla Q_n(\theta^\star) = \frac{1}{n} \sum_{i=1}^n \nabla L(\theta^\star; X_i)\)</span> is an average of independent, mean-zero random vectors. By the Central Limit Theorem, <span class="math inline">\(\sqrt{n} \nabla Q_n(\theta^\star) \xrightarrow{d} \mathcal{N}(0, J)\)</span>, where <span class="math inline">\(J = \text{Var}(\nabla L(\theta^\star; X))\)</span>.</p>
+<p>This yields the classic asymptotic normality result for M-estimators: <span class="math display">\[
+\sqrt{n}(\hat{\theta}_n - \theta^\star) \xrightarrow{d} \mathcal{N}(0, H^{-1} J H^{-1})
+\]</span></p>
+</section>
+<section id="bahadur-representation" class="level3">
+<h3 class="anchored" data-anchor-id="bahadur-representation">Bahadur Representation</h3>
+<p>The approximation used above can be made rigorous using the <strong>Bahadur Representation</strong>. It expresses the complex, implicit estimator <span class="math inline">\(\hat{\theta}_n\)</span> as a simple empirical average of independent random variables plus a lower-order remainder term: <span class="math display">\[
+\hat{\theta}_n - \theta^\star = \frac{1}{n} \sum_{i=1}^n \psi(X_i; \theta^\star) + o_p(n^{-1/2})
+\]</span> where <span class="math inline">\(\psi(x; \theta^\star) = - H^{-1} \nabla L(\theta^\star; x)\)</span> is known as the <strong>influence function</strong>.</p>
+</section>
+<section id="connecting-back-to-risk-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="connecting-back-to-risk-bounds">Connecting back to Risk Bounds</h3>
+<p>To see how this local parameter estimation error relates to the excess risk <span class="math inline">\(Q(\hat{\theta}_n) - Q(\theta^\star)\)</span>, we can expand the expected risk <span class="math inline">\(Q(\hat{\theta}_n)\)</span> using Taylor’s theorem around <span class="math inline">\(\theta^\star\)</span>: <span class="math display">\[
+Q(\hat{\theta}_n) \approx Q(\theta^\star) + \underbrace{\nabla Q(\theta^\star)^T}_{=0} (\hat{\theta}_n - \theta^\star) + \frac{1}{2} (\hat{\theta}_n - \theta^\star)^T H (\hat{\theta}_n - \theta^\star)
+\]</span> Since <span class="math inline">\(\hat{\theta}_n - \theta^\star = O_p(1/\sqrt{n})\)</span>, the quadratic form means the excess risk is: <span class="math display">\[
+Q(\hat{\theta}_n) - Q(\theta^\star) = O_p(1/n)
+\]</span> This local smoothness approach yields a “fast rate” of <span class="math inline">\(O_p(1/n)\)</span> for the excess risk, whereas standard uniform convergence often only yields a “slow rate” of <span class="math inline">\(O_p(1/\sqrt{n})\)</span>.</p>
+<p><strong>Note:</strong> This idea shows that even an estimator with semiparametric rate of consistency <span class="math inline">\(\hat{\theta}_n = \theta^\star + o_p(n^{-1/4})\)</span> can still produce excess risk at the parametric rate of <span class="math inline">\(O_p(1/n)\)</span>! This is a common phenomenon in semiparametric models where a limited amount of information about the infinite-dimensional nuisance parameter can be tolerated.</p>
+</section>
+</section>
+<section id="technique-4-pac-bayesian-bounds" class="level1">
+<h1>Technique 4: PAC-Bayesian Bounds</h1>
+<p>The PAC-Bayesian (Probably Approximately Correct - Bayesian) framework provides another alternative to worst-case uniform bounds. Instead of finding a single best parameter estimate <span class="math inline">\(\hat{\theta}_n\)</span> it evaluates a posterior distribution over parameters.</p>
+<p>Before seeing the data <span class="math inline">\(S = \{X_1, \dots, X_n\}\)</span>, we fix a <strong>prior distribution</strong> <span class="math inline">\(\Pi\)</span> over the parameter space <span class="math inline">\(\Theta\)</span>. After observing <span class="math inline">\(S\)</span>, the algorithm outputs a <strong>posterior distribution</strong> <span class="math inline">\(\hat{\Pi}\)</span> over <span class="math inline">\(\Theta\)</span> (this is not necessarily a true Bayesian posterior; it can be any data-dependent distribution).</p>
+<p>We are interested in bounding the expected risk over this posterior, <span class="math inline">\(\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)]\)</span>, by the empirical risk <span class="math inline">\(\mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)]\)</span>. <em>You should be able to contrast this with the Algorithmic Stability approach, which was a deterministic version of this</em>.</p>
+<section id="intuitive-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="intuitive-explanation">Intuitive Explanation</h3>
+<p>The key insight of the PAC-Bayes approach is that the generalization error of the <em>distribution</em> <span class="math inline">\(\hat{\Pi}\)</span> can be bounded directly using information-theoretic tools, without needing a single “best” parameter estimate. The proof essentially finds out how much the expected value of a measurable function changes under the change of measure from <span class="math inline">\(\Pi\)</span> to <span class="math inline">\(\hat{\Pi}\)</span>, via the KL divergence between them. Then, the measurable function is cleverly chosen to quantify the generalization error via 2 parts: The first part uses standard concentration to bound the generalization error (random quantity) to its expected value, and then the 2nd part uses the KL divergence to bound the expectated generalization error.</p>
+<p>The step by step details are provided below.</p>
+</section>
+<section id="step-by-step-derivation-of-pac-bayes-bounds" class="level3">
+<h3 class="anchored" data-anchor-id="step-by-step-derivation-of-pac-bayes-bounds">Step-by-Step Derivation of PAC-Bayes Bounds</h3>
+<p>The core of the PAC-Bayes proof relies on a change-of-measure inequality and Markov’s inequality. Assume for simplicity that our loss function <span class="math inline">\(L(\theta; X)\)</span> is bounded in <span class="math inline">\([0, 1]\)</span>.</p>
+<p><strong>Step 1: The Donsker-Varadhan Variational Formula</strong> A fundamental result in information theory states that for any measurable function <span class="math inline">\(f(\theta)\)</span> and distributions <span class="math inline">\(\Pi\)</span>, <span class="math inline">\(\hat{\Pi}\)</span>: <span class="math display">\[
+\mathbb{E}_{\theta \sim \hat{\Pi}}[f(\theta)] \leq \text{KL}(\hat{\Pi} \| \Pi) + \log \mathbb{E}_{\theta \sim \Pi}[e^{f(\theta)}]
+\]</span></p>
+<p>To see the proof, simply expand the KL divergence using its definition, and apply Jensen’s inequality to the likelihood ratio; see <span class="citation" data-cites="donsker1983varadhan">Donsker and Varadhan (<a href="#ref-donsker1983varadhan" role="doc-biblioref">1983</a>)</span> for proof.</p>
+<p><strong>Step 2: Apply to the Generalization Gap</strong> We choose <span class="math inline">\(f(\theta) = \lambda (Q(\theta) - Q_n(\theta))\)</span> for some fixed <span class="math inline">\(\lambda &gt; 0\)</span>. Substituting this into the variational formula gives: <span class="math display">\[
+\lambda \mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta) - Q_n(\theta)] \leq \text{KL}(\hat{\Pi} \| \Pi) + \log \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right]
+\]</span></p>
+<p><strong>Step 3: Bounding the Moment Generating Function (MGF)</strong> We now need to control the rightmost term. Since <span class="math inline">\(\Pi\)</span> is chosen <em>before</em> seeing the data <span class="math inline">\(S\)</span>, we can take the expectation over the data <span class="math inline">\(S\)</span>. By Tonelli’s theorem, we can swap the expectations: <span class="math display">\[
+\mathbb{E}_S \left[ \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \right] = \mathbb{E}_{\theta \sim \Pi} \left[ \mathbb{E}_S \left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \right]
+\]</span> For any <em>fixed</em> <span class="math inline">\(\theta\)</span>, <span class="math inline">\(Q(\theta) - Q_n(\theta)\)</span> is the standard empirical process difference. By Hoeffding’s lemma (or standard concentration inequalities), its MGF has the bound <span class="math display">\[
+\mathbb{E}_S \left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \leq e^{c\lambda^2/n}
+\]</span> for some constant <span class="math inline">\(c &gt; 0\)</span>. This means, <span class="math inline">\(\mathbb{E}_S \left[ \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta)) - c\lambda^2/n} \right] \right] \leq 1\)</span>.</p>
+<p><strong>Step 4: High Probability Bound via Markov’s Inequality</strong></p>
+<p>We now choose <span class="math inline">\(Z = \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta)) - c\lambda^2/n} \right]\)</span>. Since <span class="math inline">\(Z \in [0, 1]\)</span>, by Markov’s inequality, we have <span class="math display">\[
+\mathbb{P}(Z &gt; 1/\delta) \leq \delta \mathbb{E}[Z] \leq \delta
+\]</span></p>
+<p>That means, with probability at least <span class="math inline">\(1 - \delta\)</span>, <span class="math inline">\(Z &lt; 1/\delta\)</span>. Taking the logarithm of both sides: <span class="math display">\[
+\log \mathbb{E}_{\theta \sim \Pi}\left[ e^{\lambda (Q(\theta) - Q_n(\theta))} \right] \leq c\frac{\lambda^2}{n} + \log\left(\frac{1}{\delta}\right)
+\]</span></p>
+<p><strong>Step 5: Bringing it together</strong> Substitute the high-probability bound from Step 4 back into the Donsker-Varadhan inequality from Step 2 and dividing both sides by <span class="math inline">\(\lambda\)</span> yields the desired bound:</p>
+<p><span class="math display">\[
+\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)] \leq \mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)] + \frac{\text{KL}(\hat{\Pi} \| \Pi) + \log\left(\frac{1}{\delta}\right)}{\lambda} + c\frac{\lambda}{n}
+\]</span></p>
+<p>Since the above holds for any <span class="math inline">\(\lambda &gt; 0\)</span>, one can choose <span class="math inline">\(\lambda\)</span> optimally, and obtain a bound of the order <span class="math display">\[
+\mathbb{E}_{\theta \sim \hat{\Pi}}[Q(\theta)] \leq \mathbb{E}_{\theta \sim \hat{\Pi}}[Q_n(\theta)] + O\left( \sqrt{\frac{\text{KL}(\hat{\Pi} \| \Pi) + \log \left( \frac{1}{\delta} \right)}{2n}}\right)
+\]</span></p>
+<p>This is incredibly powerful because the complexity penalty <span class="math inline">\(\text{KL}(\hat{\Pi} \| \Pi)\)</span> is distribution-dependent and can be very small if the algorithm’s posterior <span class="math inline">\(\hat{\Pi}\)</span> remains close to the prior <span class="math inline">\(\Pi\)</span>. It entirely bypasses measures like VC dimension or Rademacher complexity, offering tighter bounds for complex models (like neural networks) where uniform bounds are vacuously large.</p>
+<p><span class="citation" data-cites="Alquier_2021">Alquier (<a href="#ref-Alquier_2021" role="doc-biblioref">2021</a>)</span> provides a nice review of PAC-Bayesian bounds.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Alquier_2021" class="csl-entry" role="listitem">
+Alquier, Pierre. 2021. <span>“User-Friendly Introduction to PAC-Bayes Bounds.”</span> <em>arXiv [Stat.ML]</em>. <a href="https://doi.org/10.48550/arXiv.2110.11216">https://doi.org/10.48550/arXiv.2110.11216</a>.
+</div>
+<div id="ref-donsker1983varadhan" class="csl-entry" role="listitem">
+Donsker, M. D., and S. R. S. Varadhan. 1983. <span>“Asymptotic Evaluation of Certain Markov Process Expectations for Large Time. IV.”</span> <em>Communications on Pure and Applied Mathematics</em> 36 (2): 183–212. https://doi.org/<a href="https://doi.org/10.1002/cpa.3160360204">https://doi.org/10.1002/cpa.3160360204</a>.
+</div>
+<div id="ref-erdogdu2024" class="csl-entry" role="listitem">
+Erdogdu, Murat A. 2024. <span>“CSC 2532: Statistical Learning Theory (Lecture 05 Notes).”</span> <a href="https://erdogdu.github.io/csc2532/lectures/lecture05.pdf" class="uri">https://erdogdu.github.io/csc2532/lectures/lecture05.pdf</a>.
+</div>
+<div id="ref-newey1991" class="csl-entry" role="listitem">
+Newey, Whitney K. 1991. <span>“Uniform Convergence in Probability and Stochastic Equicontinuity.”</span> <em>Econometrica</em> 59 (4): 1161–67. <a href="https://doi.org/10.2307/2938179">https://doi.org/10.2307/2938179</a>.
+</div>
+<div id="ref-vaartAsymptoticBook" class="csl-entry" role="listitem">
+Van der Vaart, Aad W. 2000. <em>Asymptotic Statistics</em>. Vol. 3. Cambridge university press.
+</div>
+<div id="ref-vershyninHDP" class="csl-entry" role="listitem">
+Vershynin, Roman. 2018. <span>“High Dimensional Probability — Lectures 23 and 24.”</span> <a href="https://www.math.uci.edu/~rvershyn/teaching/hdp/hdp.html" class="uri">https://www.math.uci.edu/~rvershyn/teaching/hdp/hdp.html</a>.
+</div>
+<div id="ref-Wainwright_2019" class="csl-entry" role="listitem">
+Wainwright, Martin J. 2019. <em>High-Dimensional Statistics: A Non-Asymptotic Viewpoint</em>. Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge, England: Cambridge University Press. <a href="https://doi.org/10.1017/9781108627771">https://doi.org/10.1017/9781108627771</a>.
+</div>
+</div>
+
+
+</section>
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("^((?!statwizard\.in).)*$");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2025 Subhrajyoty Roy</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
