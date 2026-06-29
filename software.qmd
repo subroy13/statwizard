@@ -13,39 +13,22 @@ Below is a curated collection of software, packages, and tools I have developed 
 
 ---
 
-### 🧰 Packages & Tools
+### 🧰 R Packages
 
 
-- **handanim**
-A Python library for programmatically generating *hand-drawn sketch-style animations*.  
-Ideal for instructional videos, visual explanations, and stylized presentations.
+- **ggkodom** ggkodom is a ggplot2 extension for visualizing individual-level longitudinal trajectories.
+  - 📦 CRAN: <https://cran.r-project.org/web/packages/ggkodom/index.html>
+  - 📘 Vignette: <https://subroy13.github.io/ggkodom/>
+  - 💻 GitHub: <https://github.com/subroy13/ggkodom>
+  - ![R Version](https://img.shields.io/github/r-package/v/subroy13/ggkodom) | 
+```{r}
+#| echo: false
+#| results: asis
+#| comment: ""
 
-    - 📘 Docs: <https://subroy13.github.io/handanim> 
-    - 💻 GitHub: <https://github.com/subroy13/handanim>
-<!-- - 📦 PyPI: <https://pypi.org/project/handanim>   -->
-
-::: callout-important
-I am actively looking for collaboration in the **handanim** project. If building *hand-drawn sketch-style animations* videos using reproducible Python code sounds interesting to you, please reach out to me by [email](mailto:subhrajyotyroy@gmail.com)! or create an issue in [Github](https://github.com/subroy13/handanim/issues)
-:::
-
-
-<!-- **Badges:**  
-![PyPI Version](https://img.shields.io/pypi/v/handanim)
-![PyPI Downloads](https://img.shields.io/pypi/dm/handanim) -->
-
-
-- **decompy**
-A Python package implementing several *robust matrix decomposition* algorithms, supporting outlier-resistant SVD/PCA pipelines.
-    - 📦 PyPI: <https://pypi.org/project/decompy>  
-    - 💻 GitHub: <https://github.com/subroy13/decompy>
-    - ![PyPI Version](https://img.shields.io/pypi/v/decompy) ![PyPI Downloads](https://img.shields.io/pypi/dm/decompy)
-
-
-- **roufcp** Robust gradual changepoint detection in time series using Rough-Fuzzy set theory. Useful for weak or soft transitions where classic CPD fails.
-  - 📦 PyPI: <https://pypi.org/project/roufcp>  
-  - 💻 GitHub: <https://github.com/subroy13/roufcp>
-  - ![PyPI Version](https://img.shields.io/pypi/v/roufcp)  ![PyPI Downloads](https://img.shields.io/pypi/dm/roufcp)
-
+# Generate the Markdown code for the badge
+cranlogs::cranlogs_badge("ggkodom", summary = "last-month")
+```
 
 - **rsvddpd** Robust Singular Value Decomposition using the *Minimum Density Power Divergence Estimator (MDPDE)*.
   - 📦 CRAN: <https://cran.r-project.org/web/packages/rsvddpd/index.html>
@@ -62,6 +45,40 @@ cranlogs::cranlogs_badge("rsvddpd", summary = "last-month")
 ```
 
 
+### 🧩 Python Packages
+
+- **handanim**
+A Python library for programmatically generating *hand-drawn sketch-style animations*.  
+Ideal for instructional videos, visual explanations, and stylized presentations.
+
+    - 📘 Docs: <https://subroy13.github.io/handanim> 
+    - 💻 GitHub: <https://github.com/subroy13/handanim>
+    - 📦 PyPI: <https://pypi.org/project/handanim>  
+    - ![PyPI Version](https://img.shields.io/pypi/v/handanim) | ![PyPI Downloads](https://img.shields.io/pypi/dm/handanim)
+
+
+::: callout-important
+I am actively looking for collaboration in the **handanim** project. If building *hand-drawn sketch-style animations* videos using reproducible Python code sounds interesting to you, please reach out to me by [email](mailto:subhrajyotyroy@gmail.com)! or create an issue in [Github](https://github.com/subroy13/handanim/issues)
+:::
+
+
+
+
+- **decompy**
+A Python package implementing several *robust matrix decomposition* algorithms, supporting outlier-resistant SVD/PCA pipelines.
+    - 📦 PyPI: <https://pypi.org/project/decompy>  
+    - 💻 GitHub: <https://github.com/subroy13/decompy>
+    - ![PyPI Version](https://img.shields.io/pypi/v/decompy) | ![PyPI Downloads](https://img.shields.io/pypi/dm/decompy)
+
+
+- **roufcp** Robust gradual changepoint detection in time series using Rough-Fuzzy set theory. Useful for weak or soft transitions where classic CPD fails.
+  - 📦 PyPI: <https://pypi.org/project/roufcp>  
+  - 💻 GitHub: <https://github.com/subroy13/roufcp>
+  - ![PyPI Version](https://img.shields.io/pypi/v/roufcp)  ![PyPI Downloads](https://img.shields.io/pypi/dm/roufcp)
+
+
+### Others
+
 - **callgrind-reader**
 A TypeScript library to parse **callgrind-like profiling output**, extract metrics, and integrate into analysis tools.
   - 📦 npm: <https://www.npmjs.com/package/callgrind-reader>  
@@ -70,7 +87,7 @@ A TypeScript library to parse **callgrind-like profiling output**, extract metri
 - **mathaddons.sty**
 A LaTeX package for writing research papers containing multiple useful mathematical commands. [Click here](https://curated-webrepo.s3.ap-south-1.amazonaws.com/mathaddons.sty) to download.
 
-# 🛠️ Projects
+## 🛠️ Projects
 
 Below are some applications and experimental systems built for research, teaching, or exploration.
 

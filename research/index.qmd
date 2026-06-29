@@ -46,7 +46,7 @@ This page is updated less frequently. For latest updates, see my [Google Scholar
     *arXiv preprint* arXiv:2508.12426 (2025).  
     [Open Access Link](https://arxiv.org/abs/2508.12426)
 
-3. Roy, Subhrajyoty. "**Robust Matrix Factorization using the Density Power Divergence and its Applications**". *ISI PhD Thesis TH646* (2025). [Open Access Link](https://dspace.isical.ac.in/jspui/handle/10263/7574)
+3. Roy, Subhrajyoty. "**Robust Matrix Factorization using the Density Power Divergence and its Applications**". *ISI PhD Thesis TH646* (2025). [Open Access Link](https://dspace.isical.ac.in/jspui/handle/10263/7574) | [Alternate Link](../static/thesis.pdf)
 
 
 5. Roy, Subhrajyoty, Supratik Basu, Abhik Ghosh, and Ayanendranath Basu.  

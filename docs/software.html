@@ -308,7 +308,9 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#software-tools-packages" id="toc-software-tools-packages" class="nav-link active" data-scroll-target="#software-tools-packages">Software, Tools &amp; Packages</a>
   <ul class="collapse">
-  <li><a href="#packages-tools" id="toc-packages-tools" class="nav-link" data-scroll-target="#packages-tools">🧰 Packages &amp; Tools</a></li>
+  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">🧰 R Packages</a></li>
+  <li><a href="#python-packages" id="toc-python-packages" class="nav-link" data-scroll-target="#python-packages">🧩 Python Packages</a></li>
+  <li><a href="#others" id="toc-others" class="nav-link" data-scroll-target="#others">Others</a></li>
   </ul></li>
   <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects">🛠️ Projects</a></li>
   <li><a href="#want-to-collaborate" id="toc-want-to-collaborate" class="nav-link" data-scroll-target="#want-to-collaborate">Want to Collaborate?</a></li>
@@ -342,14 +344,36 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="software-tools-packages">Software, Tools &amp; Packages</h2>
 <p>Below is a curated collection of software, packages, and tools I have developed or contributed to — resulting from various academic and personal projects.</p>
 <hr>
-<section id="packages-tools" class="level3">
-<h3 class="anchored" data-anchor-id="packages-tools">🧰 Packages &amp; Tools</h3>
+<section id="r-packages" class="level3">
+<h3 class="anchored" data-anchor-id="r-packages">🧰 R Packages</h3>
+<ul>
+<li><strong>ggkodom</strong> ggkodom is a ggplot2 extension for visualizing individual-level longitudinal trajectories.
+<ul>
+<li>📦 CRAN: <a href="https://cran.r-project.org/web/packages/ggkodom/index.html" class="uri">https://cran.r-project.org/web/packages/ggkodom/index.html</a></li>
+<li>📘 Vignette: <a href="https://subroy13.github.io/ggkodom/" class="uri">https://subroy13.github.io/ggkodom/</a></li>
+<li>💻 GitHub: <a href="https://github.com/subroy13/ggkodom" class="uri">https://github.com/subroy13/ggkodom</a></li>
+<li><img src="https://img.shields.io/github/r-package/v/subroy13/ggkodom.png" class="img-fluid" alt="R Version"> | [1] “<a href="https://r-pkg.org/pkg/ggkodom"><img src="https://cranlogs.r-pkg.org/badges/last-month/ggkodom?color=blue.png" class="img-fluid" alt="CRAN RStudio mirror downloads"></a>”</li>
+</ul></li>
+<li><strong>rsvddpd</strong> Robust Singular Value Decomposition using the <em>Minimum Density Power Divergence Estimator (MDPDE)</em>.
+<ul>
+<li>📦 CRAN: <a href="https://cran.r-project.org/web/packages/rsvddpd/index.html" class="uri">https://cran.r-project.org/web/packages/rsvddpd/index.html</a></li>
+<li>📘 Vignette: <a href="https://cran.r-project.org/web/packages/rsvddpd/vignettes/rSVDdpd-intro.html" class="uri">https://cran.r-project.org/web/packages/rsvddpd/vignettes/rSVDdpd-intro.html</a></li>
+<li>💻 GitHub: <a href="https://github.com/subroy13/rsvddpd" class="uri">https://github.com/subroy13/rsvddpd</a></li>
+<li><img src="https://img.shields.io/github/r-package/v/subroy13/rsvddpd.png" class="img-fluid" alt="R Version"> | [1] “<a href="https://r-pkg.org/pkg/rsvddpd"><img src="https://cranlogs.r-pkg.org/badges/last-month/rsvddpd?color=blue.png" class="img-fluid" alt="CRAN RStudio mirror downloads"></a>”</li>
+</ul></li>
+</ul>
+</section>
+<section id="python-packages" class="level3">
+<h3 class="anchored" data-anchor-id="python-packages">🧩 Python Packages</h3>
 <ul>
 <li><p><strong>handanim</strong> A Python library for programmatically generating <em>hand-drawn sketch-style animations</em>.<br>
 Ideal for instructional videos, visual explanations, and stylized presentations.</p>
 <ul>
 <li>📘 Docs: <a href="https://subroy13.github.io/handanim" class="uri">https://subroy13.github.io/handanim</a></li>
-<li>💻 GitHub: <a href="https://github.com/subroy13/handanim" class="uri">https://github.com/subroy13/handanim</a> <!-- - 📦 PyPI: <https://pypi.org/project/handanim>   --></li>
+<li>💻 GitHub: <a href="https://github.com/subroy13/handanim" class="uri">https://github.com/subroy13/handanim</a></li>
+<li>📦 PyPI: <a href="https://pypi.org/project/handanim" class="uri">https://pypi.org/project/handanim</a><br>
+</li>
+<li><img src="https://img.shields.io/pypi/v/handanim.png" class="img-fluid" alt="PyPI Version"> | <img src="https://img.shields.io/pypi/dm/handanim.png" class="img-fluid" alt="PyPI Downloads"></li>
 </ul></li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -365,16 +389,13 @@ Important
 <p>I am actively looking for collaboration in the <strong>handanim</strong> project. If building <em>hand-drawn sketch-style animations</em> videos using reproducible Python code sounds interesting to you, please reach out to me by <a href="mailto:subhrajyotyroy@gmail.com">email</a>! or create an issue in <a href="https://github.com/subroy13/handanim/issues">Github</a></p>
 </div>
 </div>
-<!-- **Badges:**  
-![PyPI Version](https://img.shields.io/pypi/v/handanim)
-![PyPI Downloads](https://img.shields.io/pypi/dm/handanim) -->
 <ul>
 <li><strong>decompy</strong> A Python package implementing several <em>robust matrix decomposition</em> algorithms, supporting outlier-resistant SVD/PCA pipelines.
 <ul>
 <li>📦 PyPI: <a href="https://pypi.org/project/decompy" class="uri">https://pypi.org/project/decompy</a><br>
 </li>
 <li>💻 GitHub: <a href="https://github.com/subroy13/decompy" class="uri">https://github.com/subroy13/decompy</a></li>
-<li><img src="https://img.shields.io/pypi/v/decompy.png" class="img-fluid" alt="PyPI Version"> <img src="https://img.shields.io/pypi/dm/decompy.png" class="img-fluid" alt="PyPI Downloads"></li>
+<li><img src="https://img.shields.io/pypi/v/decompy.png" class="img-fluid" alt="PyPI Version"> | <img src="https://img.shields.io/pypi/dm/decompy.png" class="img-fluid" alt="PyPI Downloads"></li>
 </ul></li>
 <li><strong>roufcp</strong> Robust gradual changepoint detection in time series using Rough-Fuzzy set theory. Useful for weak or soft transitions where classic CPD fails.
 <ul>
@@ -383,13 +404,11 @@ Important
 <li>💻 GitHub: <a href="https://github.com/subroy13/roufcp" class="uri">https://github.com/subroy13/roufcp</a></li>
 <li><img src="https://img.shields.io/pypi/v/roufcp.png" class="img-fluid" alt="PyPI Version"> <img src="https://img.shields.io/pypi/dm/roufcp.png" class="img-fluid" alt="PyPI Downloads"></li>
 </ul></li>
-<li><strong>rsvddpd</strong> Robust Singular Value Decomposition using the <em>Minimum Density Power Divergence Estimator (MDPDE)</em>.
+</ul>
+</section>
+<section id="others" class="level3">
+<h3 class="anchored" data-anchor-id="others">Others</h3>
 <ul>
-<li>📦 CRAN: <a href="https://cran.r-project.org/web/packages/rsvddpd/index.html" class="uri">https://cran.r-project.org/web/packages/rsvddpd/index.html</a></li>
-<li>📘 Vignette: <a href="https://cran.r-project.org/web/packages/rsvddpd/vignettes/rSVDdpd-intro.html" class="uri">https://cran.r-project.org/web/packages/rsvddpd/vignettes/rSVDdpd-intro.html</a></li>
-<li>💻 GitHub: <a href="https://github.com/subroy13/rsvddpd" class="uri">https://github.com/subroy13/rsvddpd</a></li>
-<li><img src="https://img.shields.io/github/r-package/v/subroy13/rsvddpd.png" class="img-fluid" alt="R Version"> | [1] “<a href="https://r-pkg.org/pkg/rsvddpd"><img src="https://cranlogs.r-pkg.org/badges/last-month/rsvddpd?color=blue.png" class="img-fluid" alt="CRAN RStudio mirror downloads"></a>”</li>
-</ul></li>
 <li><strong>callgrind-reader</strong> A TypeScript library to parse <strong>callgrind-like profiling output</strong>, extract metrics, and integrate into analysis tools.
 <ul>
 <li>📦 npm: <a href="https://www.npmjs.com/package/callgrind-reader" class="uri">https://www.npmjs.com/package/callgrind-reader</a><br>
@@ -400,8 +419,8 @@ Important
 </ul>
 </section>
 </section>
-<section id="projects" class="level1">
-<h1>🛠️ Projects</h1>
+<section id="projects" class="level2">
+<h2 class="anchored" data-anchor-id="projects">🛠️ Projects</h2>
 <p>Below are some applications and experimental systems built for research, teaching, or exploration.</p>
 <ul>
 <li><strong>Multi PDF Querybot</strong> Upload multiple PDFs and interactively question them using an in-memory vector-store-based RAG pipeline.
