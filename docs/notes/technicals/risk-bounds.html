@@ -410,7 +410,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Modified</div>
     <div class="quarto-title-meta-contents">
-      <p class="date-modified">June 12, 2026</p>
+      <p class="date-modified">July 22, 2026</p>
     </div>
   </div>
     
@@ -436,13 +436,13 @@ window.Quarto = {
 </section>
 <section id="technique-1-uniform-bound-reversal" class="level1">
 <h1>Technique 1: Uniform Bound Reversal</h1>
-<p>This is probably one of the most “common” approach in modern machine learning and statistical learning settings. Note that,</p>
+<p>This is probably one of the most “common” approach in modern machine learning and statistical learning settings. Note that<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,</p>
 <p><span class="math display">\[
 \begin{align*}
-    Q(\theta^*) - Q(\hat{\theta}_n)
-    &amp; = Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) + (Q_n(\theta^*) - Q_n(\hat{\theta}_n))\\
-    &amp; \leq Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n)\\
-    &amp; \qquad \text{ since the last term is negative by definition of } \hat{\theta}_n\\
+    0 \leq Q(\hat{\theta}_n) - Q(\theta^*)
+    &amp; = (Q_n(\hat{\theta}_n) - Q_n(\theta^\ast)) + (Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)) + (Q_n(\theta^\ast) - Q(\theta^\ast))\\
+    &amp; \leq Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n) + Q_n(\theta^*) - Q(\theta^*) \\
+    &amp; \qquad \text{ since the first term is negative by definition of } \hat{\theta}_n\\
     &amp; \leq \vert Q(\theta^*) - Q_n(\theta^*) \vert + \vert Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) \vert\\
     &amp; \leq 2 \sup_{\theta \in \Theta} \vert Q(\theta) - Q_n(\theta)\vert
 \end{align*}
@@ -688,7 +688,13 @@ Wainwright, Martin J. 2019. <em>High-Dimensional Statistics: A Non-Asymptotic Vi
 </section>
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Corrected, thanks to <a href="https://www.linkedin.com/in/arnab-rakshit-63307524a/">Arnab Rakshit</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

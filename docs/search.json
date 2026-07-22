@@ -172,7 +172,7 @@
     "href": "notes/index.html#technical-materials",
     "title": "Notes",
     "section": "Technical Materials",
-    "text": "Technical Materials\nThese are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nRisk Bounds\n\n\n\nProof Technique\n\nConsistency\n\n\n\n\n\n\n\n\n\nJune 12, 2026\n\n18 min\n\nJune 12, 2026\n\n\n\n\n\nNo matching items"
+    "text": "Technical Materials\nThese are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.\n\n\n   \n    \n    \n      Order By\n      Default\n      \n        Title\n      \n      \n        Date - Oldest\n      \n      \n        Date - Newest\n      \n    \n  \n    \n      \n      \n    \n\n\n\n\n\nRisk Bounds\n\n\n\nProof Technique\n\nConsistency\n\n\n\n\n\n\n\n\n\nJune 12, 2026\n\n18 min\n\nJuly 22, 2026\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "notes/index.html#reflections",
@@ -404,6 +404,13 @@
     "title": "Risk Bounds",
     "section": "References",
     "text": "References\n\n\nAlquier, Pierre. 2021. “User-Friendly Introduction to PAC-Bayes Bounds.” arXiv [Stat.ML]. https://doi.org/10.48550/arXiv.2110.11216.\n\n\nDonsker, M. D., and S. R. S. Varadhan. 1983. “Asymptotic Evaluation of Certain Markov Process Expectations for Large Time. IV.” Communications on Pure and Applied Mathematics 36 (2): 183–212. https://doi.org/https://doi.org/10.1002/cpa.3160360204.\n\n\nErdogdu, Murat A. 2024. “CSC 2532: Statistical Learning Theory (Lecture 05 Notes).” https://erdogdu.github.io/csc2532/lectures/lecture05.pdf.\n\n\nNewey, Whitney K. 1991. “Uniform Convergence in Probability and Stochastic Equicontinuity.” Econometrica 59 (4): 1161–67. https://doi.org/10.2307/2938179.\n\n\nVan der Vaart, Aad W. 2000. Asymptotic Statistics. Vol. 3. Cambridge university press.\n\n\nVershynin, Roman. 2018. “High Dimensional Probability — Lectures 23 and 24.” https://www.math.uci.edu/~rvershyn/teaching/hdp/hdp.html.\n\n\nWainwright, Martin J. 2019. High-Dimensional Statistics: A Non-Asymptotic Viewpoint. Cambridge Series in Statistical and Probabilistic Mathematics. Cambridge, England: Cambridge University Press. https://doi.org/10.1017/9781108627771."
+  },
+  {
+    "objectID": "notes/technicals/risk-bounds.html#footnotes",
+    "href": "notes/technicals/risk-bounds.html#footnotes",
+    "title": "Risk Bounds",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nCorrected, thanks to Arnab Rakshit↩︎"
   },
   {
     "objectID": "notes/concepts/practical-data-science.html",

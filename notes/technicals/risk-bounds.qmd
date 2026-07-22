@@ -29,14 +29,14 @@ To connect $Q_n(\cdot)$ and $Q(\cdot)$, we assume that $\mathbb{E}(Q_n(\theta)) 
 
 # Technique 1: Uniform Bound Reversal
 
-This is probably one of the most "common" approach in modern machine learning and statistical learning settings. Note that,
+This is probably one of the most "common" approach in modern machine learning and statistical learning settings. Note that^[Corrected, thanks to [Arnab Rakshit](https://www.linkedin.com/in/arnab-rakshit-63307524a/)],
 
 $$
 \begin{align*}
-    Q(\theta^*) - Q(\hat{\theta}_n)
-    & = Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) + (Q_n(\theta^*) - Q_n(\hat{\theta}_n))\\
-    & \leq Q(\theta^*) - Q_n(\theta^*) + Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n)\\
-    & \qquad \text{ since the last term is negative by definition of } \hat{\theta}_n\\
+    0 \leq Q(\hat{\theta}_n) - Q(\theta^*)
+    & = (Q_n(\hat{\theta}_n) - Q_n(\theta^\ast)) + (Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n)) + (Q_n(\theta^\ast) - Q(\theta^\ast))\\
+    & \leq Q(\hat{\theta}_n) - Q_n(\hat{\theta}_n) + Q_n(\theta^*) - Q(\theta^*) \\
+    & \qquad \text{ since the first term is negative by definition of } \hat{\theta}_n\\
     & \leq \vert Q(\theta^*) - Q_n(\theta^*) \vert + \vert Q_n(\hat{\theta}_n) - Q(\hat{\theta}_n) \vert\\
     & \leq 2 \sup_{\theta \in \Theta} \vert Q(\theta) - Q_n(\theta)\vert
 \end{align*}
