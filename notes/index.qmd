@@ -85,7 +85,7 @@ These are some of the useful proof techniques that I like and a bunch of technic
 
 ## Reflections
 
-These are my own way of understanding the ways of the world, again guided by various non-fiction books, podcasts and a few philosophy lessons.
+These are my own way of understanding the ways of the world, guided by various non-fiction books, podcasts and a few philosophy lessons.
 
 :::{#reflections}
 :::
@@ -97,7 +97,7 @@ Internet is full of interesting things. Here's a few that I like:
 
 1. Seeing Theory. <http://seeing-theory.brown.edu/> - Interactive Visualization of Introduction of Probability and Statistics.
 2. The Idea behind Explorable Explorations: <https://blog.ncase.me/explorable-explanations/>. And here's the list of such explanations: <https://explorabl.es/>.
-3. [Alexander Bogomolny's post on the Area of Circle by Rabbi Abraham bar Hiyya Hanasi](https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml) - Probably the best proof that I have seen for showing that the area of a circle is half of the radius times the circumference.
+3. [Alexander Bogomolny's post on the Area of Circle by Rabbi Abraham bar Hiyya Hanasi](https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml) - Probably the most interesting proof that I have seen for showing that the area of a circle is half of the radius times the circumference.
 4. [The Mathematics of Juggling](https://www.youtube.com/watch?v=38rf9FLhl-8) - Allen Knutson.
 
 

@@ -11,12 +11,16 @@ Below is a curated list of invited lectures, conference presentations, public le
 
 ## Upcoming
 
+<span class="badge bg-primary">Invited Talk</span> | IISA Conference, Banaras Hindu University, India
 
 ---
 
 ## 2026
 
-<span class="badge bg-primary">Invited Talk</span> | Graduate Student Seminar, Washington University in St. Louis | [Slide deck](https://github.com/subroy13/statwiztalks/tree/main/2026/2026-slu-seminarseries/)
+<span class="badge bg-primary">Invited Talk</span> | EcoSta Conference, Kyoto, Japan | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2026/2026-ecosta/2026_ecosta.pdf)
+
+
+<span class="badge bg-primary">Invited Talk</span> | Graduate Student Seminar, Washington University in St. Louis | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2026/2026-slu-seminarseries/2026_slu_seminar.pdf)
 
 
 ---
@@ -33,7 +37,7 @@ Below is a curated list of invited lectures, conference presentations, public le
 
 ## 2024
 
-<span class="badge bg-warning">Best Paper Nominee</span> | IISA Conference 2024, Cochin University of Science and Technology | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/iisa2024/iisa2024_slides.pdf)
+<span class="badge bg-warning">Best Paper Competition</span> | IISA Conference 2024, Cochin University of Science and Technology | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/iisa2024/iisa2024_slides.pdf)
 
 <span class="badge bg-info">Public Lecture</span> | Doctoral Research Lecture, Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2024/pre-thesis-talk.pdf)
 
@@ -43,11 +47,11 @@ Below is a curated list of invited lectures, conference presentations, public le
 
 ## 2021
 
-<span class="badge bg-danger">Memorial Lecture</span> | Prasanta Chandra Mahalanobis Memorial Lecture, Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2021/algorithmic-fairness/PCM%20Presentation.pdf)
+<span class="badge bg-warning">Gold Medal Lecture</span> | Prasanta Chandra Mahalanobis Memorial Lecture, Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2021/algorithmic-fairness/PCM%20Presentation.pdf)
 
 ---
 
 ## 2019
 
-<span class="badge bg-danger">Memorial Lecture</span> | D. Basu Memorial Lecture, Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2019/tsne-visualization/t-SNE_%20A%20way%20to%20Visualize%20Multidimensional%20Dataset.pdf)
+<span class="badge bg-warning">Gold Medal Lecture</span> | D. Basu Memorial Lecture, Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2019/tsne-visualization/t-SNE_%20A%20way%20to%20Visualize%20Multidimensional%20Dataset.pdf)
 
