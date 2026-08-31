@@ -1,0 +1,49 @@
+- title: "Seeing Theory"
+  description: "Interactive visual introduction to probability and statistics."
+  path: "http://seeing-theory.brown.edu/"
+  categories: [Pedagogy, Probability, Statistics]
+
+- title: "Explorable Explanations"
+  description: "A hub for interactive learning and systemic concepts."
+  path: "https://explorabl.es/"
+  categories: [Pedagogy, Interactive]
+
+- title: Proof of Area of a Circle
+  description: "The most interesting proof that I have seen for showing that the area of a circle is half of the radius times the circumference."
+  path: "https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml"
+  categories: [Pedagogy, Geometry]
+  
+- title: "The Mathematics of Juggling"
+  description: "A talk by Allen Knutson on the mathematics of juggling."
+  path: "https://www.youtube.com/watch?v=38rf9FLhl-8"
+  categories: [Lecture, Mathematics, Abstract Algebra]
+
+- title: "Phishing Quiz"
+  description: "A quiz to test your knowledge of phishing."
+  path: "https://phishingquiz.withgoogle.com/"
+  categories: [Interactive, Cybersecurity, Digital Literacy]
+
+- title: "Bad News: The Game"
+  description: "A game to test your knowledge of fake news."
+  path: "https://harmonysquare.getbadnews.com/"
+  categories: [Interactive, Fake News, Digital Literacy]
+
+- title: "Awesome Math Books"
+  description: "A list of awesome math books."
+  path: "https://github.com/valeman/Awesome_Math_Books"
+  categories: [Collection, Book, Mathematics]
+
+- title: "Awesome List of Awesome Lists"
+  description: "A list of awesome lists."
+  path: "https://github.com/sindresorhus/awesome"
+  categories: [Collection]
+
+- title: "Awesome Agents"
+  description: "A list of awesome agents."
+  path: "https://github.com/kyrolabs/awesome-agents"
+  categories: [Collection, Agents, AI]
+
+- title: "Watmarking of Large Language Models"
+  description: "Lecture by Scott Aaronson on the topic of watmarking large language models."
+  path: "https://www.youtube.com/watch?v=2Kx9jbSMZqA"
+  categories: [Lecture, AI, AI Safety]

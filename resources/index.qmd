@@ -1,0 +1,37 @@
+---
+title: Resources
+description: This is a place where I share some of the interesting resources I have come across over the years. 
+page-layout: full
+toc: true
+page-navigation: true
+listing:
+  - id: resources
+    contents: "./resources.yaml"
+    type: grid
+    categories: true
+    filter-ui: true
+    sort-ui: true
+    grid-columns: 3
+# listing:
+#     - id: reflections
+#       contents: "./reflections/*.qmd"
+#       type: default
+#       categories: true
+#       date-format: long
+#       sort: "date desc"
+#       sort-ui: true
+#       filter-ui: true
+#       fields:
+#         - title
+#         - description
+#         - date
+#         - date-modified
+#         - categories
+#         - reading-time
+
+---
+
+:::{#resources}
+:::
+
+<!-- 3. CSC 2532 Winter 2024: Statistical Learning Theory: <https://erdogdu.github.io/csc2532/> -->

@@ -17,8 +17,8 @@ website:
         text: Talks
       - href: teaching.qmd
         text: Teaching
-      - href: notes/index.qmd
-        text: Notes
+      - href: resources/index.qmd
+        text: Resources
     search: true
     tools:
       - icon: github

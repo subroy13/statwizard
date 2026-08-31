@@ -6,6 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="This contains some of my lectures, tutorials and teaching materials. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request] in Github to correct the error. You can also get in touch with me here.">
 
 <title>Teaching – Subhrajyoty Roy</title>
 <style>
@@ -23,28 +24,30 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-listing/list.min.js"></script>
+<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-de0ed3b9a49d5daa615839eefb10c6a7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-99258d85ffddbd9841977770f8edb96b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,10 +75,96 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-concepts .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-date','listing-date-modified','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-concepts'] = new List('listing-concepts', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-technicals .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-description','listing-date','listing-date-modified','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-technicals'] = new List('listing-technicals', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="static/css/styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../static/css/styles.css">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -247,7 +336,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Subhrajyoty Roy</span>
     </a>
   </div>
@@ -258,32 +347,32 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">About Me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research/index.html"> 
+    <a class="nav-link" href="../research/index.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./software.html"> 
+    <a class="nav-link" href="../software.html"> 
 <span class="menu-text">OSS</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./research/talks.html"> 
+    <a class="nav-link" href="../research/talks.html"> 
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./teaching.html" aria-current="page"> 
+    <a class="nav-link" href="../teaching.qmd"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes/index.html"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link" href="../resources/index.html"> 
+<span class="menu-text">Resources</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -306,17 +395,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link active" data-scroll-target="#lectures">Lectures</a></li>
-  <li><a href="#guest-lectures" id="toc-guest-lectures" class="nav-link" data-scroll-target="#guest-lectures">Guest Lectures</a></li>
-  <li><a href="#teaching-materials" id="toc-teaching-materials" class="nav-link" data-scroll-target="#teaching-materials">Teaching Materials</a>
+  <li><a href="#teaching-materials" id="toc-teaching-materials" class="nav-link active" data-scroll-target="#teaching-materials"><span class="header-section-number">1</span> Teaching Materials</a>
   <ul class="collapse">
-  <li><a href="#level" id="toc-level" class="nav-link" data-scroll-target="#level">10+2 Level</a></li>
-  <li><a href="#undergraduate-level" id="toc-undergraduate-level" class="nav-link" data-scroll-target="#undergraduate-level">Undergraduate Level</a></li>
-  <li><a href="#graduate-level" id="toc-graduate-level" class="nav-link" data-scroll-target="#graduate-level">Graduate Level</a></li>
+  <li><a href="#sec-10-plus-2-level" id="toc-sec-10-plus-2-level" class="nav-link" data-scroll-target="#sec-10-plus-2-level"><span class="header-section-number">1.1</span> 10+2 Level</a></li>
+  <li><a href="#sec-undergrad-level" id="toc-sec-undergrad-level" class="nav-link" data-scroll-target="#sec-undergrad-level"><span class="header-section-number">1.2</span> Undergraduate Level</a></li>
+  <li><a href="#sec-grad-level" id="toc-sec-grad-level" class="nav-link" data-scroll-target="#sec-grad-level"><span class="header-section-number">1.3</span> Graduate Level</a></li>
+  <li><a href="#sec-practitioner-level" id="toc-sec-practitioner-level" class="nav-link" data-scroll-target="#sec-practitioner-level"><span class="header-section-number">1.4</span> Practitioner Level</a></li>
+  <li><a href="#sec-researcher-level" id="toc-sec-researcher-level" class="nav-link" data-scroll-target="#sec-researcher-level"><span class="header-section-number">1.5</span> Researcher Level</a></li>
+  </ul></li>
+  <li><a href="#teaching-experience" id="toc-teaching-experience" class="nav-link" data-scroll-target="#teaching-experience"><span class="header-section-number">2</span> Teaching Experience</a>
+  <ul class="collapse">
+  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures"><span class="header-section-number">2.1</span> Lectures</a></li>
+  <li><a href="#guest-lectures" id="toc-guest-lectures" class="nav-link" data-scroll-target="#guest-lectures"><span class="header-section-number">2.2</span> Guest Lectures</a></li>
   </ul></li>
   </ul>
 </nav>
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q2xvdWQlMjBDb21wdXRpbmc=">Cloud Computing <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q29uc2lzdGVuY3k=">Consistency <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YSUyMFNjaWVuY2U=">Data Science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvb2YlMjBUZWNobmlxdWU=">Proof Technique <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U29mdHdhcmU=">Software <span class="quarto-category-count">(3)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -326,6 +420,11 @@ ul.task-list li input[type="checkbox"] {
 <h1 class="title">Teaching</h1>
 </div>
 
+<div>
+  <div class="description">
+    This contains some of my lectures, tutorials and teaching materials. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request] in Github to correct the error. You can also get in touch with me <a href="mailto:subhrajyotyroy@gmail.com">here</a>.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta column-page-left">
@@ -340,26 +439,18 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="lectures" class="level2">
-<h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
-<ol type="1">
-<li><p>Spring, 2026 - Advanced Linear Models (SDS 4140 &amp; SDS 5140, Graduate Level) | Washington University in St.&nbsp;Louis.</p></li>
-<li><p>Fall, 2025 - Introduction to Probability (SDS 4010, Undergraduate Level) | Washington University in St.&nbsp;Louis.</p></li>
-</ol>
-</section>
-<section id="guest-lectures" class="level2">
-<h2 class="anchored" data-anchor-id="guest-lectures">Guest Lectures</h2>
-<ol type="1">
-<li><p>Spring, 2026 - Linear Models (SDS 5072, Ph.D Level) | Washington University in St.&nbsp;Louis.</p></li>
-<li><p>Fall, 2024 - Robust Statistics | Indian Statistical Institute, Kolkata | <a href="https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v1_2022.pdf">Slide deck</a></p></li>
-<li><p>Fall, 2022 - Robust Statistics | Indian Statistical Institute, Kolkata | <a href="https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v2_2024.pdf">Slide deck</a></p></li>
-</ol>
-<hr>
-</section>
-<section id="teaching-materials" class="level2">
-<h2 class="anchored" data-anchor-id="teaching-materials">Teaching Materials</h2>
-<section id="level" class="level3">
-<h3 class="anchored" data-anchor-id="level">10+2 Level</h3>
+<section id="teaching-materials" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="teaching-materials"><span class="header-section-number">1</span> Teaching Materials</h2>
+<p>The following contains some lecture notes, tutorials and teaching materials, organized at various levels. These include my own personal notes and reflect my own understanding of various topics.</p>
+<ul>
+<li>If you’re a student of 10+2 level looking for mathematics notes, see <a href="#sec-10-plus-2-level" class="quarto-xref">Section&nbsp;1.1</a>.</li>
+<li>If you’re an undergraduate looking to learn Statistics, see <a href="#sec-undergrad-level" class="quarto-xref">Section&nbsp;1.2</a>.</li>
+<li>If you’re a graduate level student looking for notes on Statistics, Machine Learning, or Deep Learning related topics, see <a href="#sec-grad-level" class="quarto-xref">Section&nbsp;1.3</a>.</li>
+<li>If you’re a practitioner of Machine Learning, Statistics or Data Science and want to learn the high level concepts without digging into too much math, see <a href="#sec-practitioner-level" class="quarto-xref">Section&nbsp;1.4</a>.</li>
+<li>If you’re a researcher, I can only offer you notes from <a href="#sec-researcher-level" class="quarto-xref">Section&nbsp;1.5</a>.</li>
+</ul>
+<section id="sec-10-plus-2-level" class="level3" data-number="1.1">
+<h3 data-number="1.1" class="anchored" data-anchor-id="sec-10-plus-2-level"><span class="header-section-number">1.1</span> 10+2 Level</h3>
 <ul>
 <li><p>A <a href="./static/teaching/10plus2level/integration.pdf">short notes</a> on Riemann Integration.</p></li>
 <li><p>Practice Problem Sets for 10+2 Level Statistics (West Bengal State Board).</p>
@@ -380,18 +471,226 @@ ul.task-list li input[type="checkbox"] {
 </ul></li>
 </ul>
 </section>
-<section id="undergraduate-level" class="level3">
-<h3 class="anchored" data-anchor-id="undergraduate-level">Undergraduate Level</h3>
+<section id="sec-undergrad-level" class="level3" data-number="1.2">
+<h3 data-number="1.2" class="anchored" data-anchor-id="sec-undergrad-level"><span class="header-section-number">1.2</span> Undergraduate Level</h3>
 <ul>
 <li><p><a href="https://github.com/subroy13/bstat-assignments">Practice questions and solutions</a> to various assignments of the B.Stat. programme at Indian Statistical Institute, Kolkata.</p></li>
 <li><p>A short <a href="./static/teaching/linalg.pdf">lecture slide deck</a> on Linear Algebra and its applications.</p></li>
 </ul>
 </section>
-<section id="graduate-level" class="level3">
-<h3 class="anchored" data-anchor-id="graduate-level">Graduate Level</h3>
+<section id="sec-grad-level" class="level3" data-number="1.3">
+<h3 data-number="1.3" class="anchored" data-anchor-id="sec-grad-level"><span class="header-section-number">1.3</span> Graduate Level</h3>
 <ul>
-<li><a href="https://github.com/subroy13/mstat-assignments">Practice questions and solutions</a> to various assignments of the M.Stat. programme at Indian Statistical Institute, Kolkata.</li>
+<li><p><a href="https://github.com/subroy13/mstat-assignments">Practice questions and solutions</a> to various assignments of the M.Stat. programme at Indian Statistical Institute, Kolkata.</p></li>
+<li><p>An eight-part tutorial series on Natural Language Processing is available at my <a href="https://statwizard.substack.com/t/natural-language-processing-series">substack</a>.</p></li>
+<li><p>A six-part tutorial series on the basics of Generative AI is available at my <a href="https://statwizard.substack.com/t/generative-ai-llm-series">substack</a>.</p></li>
+<li><p>A seven-part tutorial series on the basics of Reinforcement Learning is available at my <a href="https://statwizard.substack.com/t/reinforcement-learning-series">substack</a>.</p></li>
+<li><p>A three part series on how to do natural language text processing using R.</p>
+<ul>
+<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter1.html">Text mining in R</a>.</li>
+<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter2.html">Text Classification in R</a>.</li>
+<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter3.html">Changepoint Analysis of Linguistics in R</a>.</li>
+</ul></li>
 </ul>
+</section>
+<section id="sec-practitioner-level" class="level3" data-number="1.4">
+<h3 data-number="1.4" class="anchored" data-anchor-id="sec-practitioner-level"><span class="header-section-number">1.4</span> Practitioner Level</h3>
+<p>These reflect my own understanding and notes on various applied topics, as guided by the various resources I used to learn them.</p>
+<div id="listing-concepts" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-concepts-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-concepts'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNTb2Z0d2FyZSUyQ0RlZXAlMjBMZWFybmluZw==" data-listing-date-sort="1732428000000" data-listing-file-modified-sort="1780787284084" data-listing-date-modified-sort="1780787284000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4896">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../teaching/concepts/practical-data-science.html" class="no-external">Practical Data Science</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+
+</div>
+<div class="delink listing-description"><a href="../teaching/concepts/practical-data-science.html" class="no-external">
+Beyond the usual training of neural networks, there are few major learning variants:
+</a></div>
+</div>
+<div class="metadata">
+<a href="../teaching/concepts/practical-data-science.html" class="no-external">
+<div class="listing-date">
+November 24, 2024
+</div>
+<div class="listing-reading-time">25 min</div>
+<div class="metadata-value listing-date-modified">
+June 6, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="U29mdHdhcmUlMkNDbG91ZCUyMENvbXB1dGluZyUyQ0RhdGElMjBTY2llbmNl" data-listing-date-sort="1710306000000" data-listing-file-modified-sort="1780787294872" data-listing-date-modified-sort="1780787294000" data-listing-reading-time-sort="28" data-listing-word-count-sort="5441">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../teaching/concepts/aws_data_analytics.html" class="no-external">AWS Cloud Data Analytics Guide</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2xvdWQlMjBDb21wdXRpbmc='); return false;">Cloud Computing</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
+
+</div>
+<div class="delink listing-description"><a href="../teaching/concepts/aws_data_analytics.html" class="no-external">
+There are a few primary definitions:
+</a></div>
+</div>
+<div class="metadata">
+<a href="../teaching/concepts/aws_data_analytics.html" class="no-external">
+<div class="listing-date">
+March 13, 2024
+</div>
+<div class="listing-reading-time">28 min</div>
+<div class="metadata-value listing-date-modified">
+June 6, 2026
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="U29mdHdhcmUlMkNDbG91ZCUyMENvbXB1dGluZw==" data-listing-date-sort="1708322400000" data-listing-file-modified-sort="1780787281784" data-listing-date-modified-sort="1780787281000" data-listing-reading-time-sort="42" data-listing-word-count-sort="8245">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../teaching/concepts/aws_cloud_basics.html" class="no-external">Introduction of AWS Cloud Computing</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q2xvdWQlMjBDb21wdXRpbmc='); return false;">Cloud Computing</div>
+
+</div>
+<div class="delink listing-description"><a href="../teaching/concepts/aws_cloud_basics.html" class="no-external">
+Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing model.
+</a></div>
+</div>
+<div class="metadata">
+<a href="../teaching/concepts/aws_cloud_basics.html" class="no-external">
+<div class="listing-date">
+February 19, 2024
+</div>
+<div class="listing-reading-time">42 min</div>
+<div class="metadata-value listing-date-modified">
+June 6, 2026
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+<section id="sec-researcher-level" class="level3" data-number="1.5">
+<h3 data-number="1.5" class="anchored" data-anchor-id="sec-researcher-level"><span class="header-section-number">1.5</span> Researcher Level</h3>
+<p>These are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.</p>
+<div id="listing-technicals" class="quarto-listing quarto-listing-container-default">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-technicals-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-technicals'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="UHJvb2YlMjBUZWNobmlxdWUlMkNDb25zaXN0ZW5jeQ==" data-listing-date-sort="1781240400000" data-listing-file-modified-sort="1784725324858" data-listing-date-modified-sort="1784725324000" data-listing-reading-time-sort="18" data-listing-word-count-sort="3511">
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="../teaching/technicals/risk-bounds.html" class="no-external">Risk Bounds</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvb2YlMjBUZWNobmlxdWU='); return false;">Proof Technique</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29uc2lzdGVuY3k='); return false;">Consistency</div>
+
+</div>
+<div class="delink listing-description"><a href="../teaching/technicals/risk-bounds.html" class="no-external">
+In a learning problem, you are given a sample <span class="math inline">\(X_1, \dots, X_n\)</span>, and an objective function <span class="math inline">\(L(\theta; X)\)</span> which represents the loss incurred by choosing parameter <span class="math inline">\(\thet…</span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
+</a></div>
+</div>
+<div class="metadata">
+<a href="../teaching/technicals/risk-bounds.html" class="no-external">
+<div class="listing-date">
+June 12, 2026
+</div>
+<div class="listing-reading-time">18 min</div>
+<div class="metadata-value listing-date-modified">
+July 22, 2026
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div>
+</section>
+</section>
+<section id="teaching-experience" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="teaching-experience"><span class="header-section-number">2</span> Teaching Experience</h2>
+<p>Here’s a list of my teaching experiences.</p>
+<section id="lectures" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="lectures"><span class="header-section-number">2.1</span> Lectures</h3>
+<ol type="1">
+<li><p>Fall, 2026 - Elementary Statistics and Probability (SDS 2020, Undergraduate Level) | Washington University in St.&nbsp;Louis.</p></li>
+<li><p>Spring, 2026 - Advanced Linear Models (SDS 4140 &amp; SDS 5140, Graduate Level) | Washington University in St.&nbsp;Louis.</p></li>
+<li><p>Fall, 2025 - Introduction to Probability (SDS 4010, Undergraduate Level) | Washington University in St.&nbsp;Louis.</p></li>
+</ol>
+</section>
+<section id="guest-lectures" class="level3" data-number="2.2">
+<h3 data-number="2.2" class="anchored" data-anchor-id="guest-lectures"><span class="header-section-number">2.2</span> Guest Lectures</h3>
+<ol type="1">
+<li><p>Spring, 2026 - Linear Models (SDS 5072, Ph.D Level) | Washington University in St.&nbsp;Louis.</p></li>
+<li><p>Fall, 2024 - Robust Statistics | Indian Statistical Institute, Kolkata | <a href="https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v1_2022.pdf">Slide deck</a></p></li>
+<li><p>Fall, 2022 - Robust Statistics | Indian Statistical Institute, Kolkata | <a href="https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v2_2024.pdf">Slide deck</a></p></li>
+</ol>
+
 
 
 </section>
@@ -834,5 +1133,5 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

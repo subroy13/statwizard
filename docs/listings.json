@@ -1,11 +1,15 @@
 [
   {
-    "listing": "/notes/index.html",
+    "listing": "/resources/index.html",
+    "items": []
+  },
+  {
+    "listing": "/teaching/index.html",
     "items": [
-      "/notes/concepts/practical-data-science.html",
-      "/notes/concepts/aws_data_analytics.html",
-      "/notes/concepts/aws_cloud_basics.html",
-      "/notes/technicals/risk-bounds.html"
+      "/teaching/concepts/practical-data-science.html",
+      "/teaching/concepts/aws_data_analytics.html",
+      "/teaching/concepts/aws_cloud_basics.html",
+      "/teaching/technicals/risk-bounds.html"
     ]
   }
 ]

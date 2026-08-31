@@ -9,7 +9,7 @@ format:
 
 ## Software, Tools & Packages
 
-Below is a curated collection of software, packages, and tools I have developed or contributed to — resulting from various academic and personal projects.
+Below is a collection of software, packages, and tools I have developed or contributed to — resulting from various academic and personal projects.
 
 ---
 

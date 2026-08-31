@@ -1,0 +1,136 @@
+---
+title: Teaching
+description: "This contains some of my lectures, tutorials and teaching materials. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request] in Github to correct the error. You can also get in touch with me [here](mailto:subhrajyotyroy@gmail.com)."
+toc: true
+page-layout: full
+page-navigation: true
+number-sections: true
+format: 
+  html:
+    toc-location: right
+
+listing: 
+    - id: concepts
+      contents: "./concepts/*.qmd"
+      type: default
+      categories: true
+      date-format: long
+      sort: "date desc"
+      sort-ui: true
+      filter-ui: true
+      fields:
+        - title
+        - description
+        - date
+        - date-modified
+        - categories
+        - reading-time
+    - id: technicals
+      contents: "./technicals/*.qmd"
+      type: default
+      categories: true
+      date-format: long
+      sort: "date desc"
+      sort-ui: true
+      filter-ui: true
+      fields:
+        - title
+        - description
+        - date
+        - date-modified
+        - categories
+        - reading-time
+---
+
+## Teaching Materials
+
+The following contains some lecture notes, tutorials and teaching materials, organized at various levels. These include my own personal notes and reflect my own understanding of various topics.
+
+* If you're a student of 10+2 level looking for mathematics notes, see @sec-10-plus-2-level.
+* If you're an undergraduate looking to learn Statistics, see @sec-undergrad-level.
+* If you're a graduate level student looking for notes on Statistics, Machine Learning, or Deep Learning related topics, see @sec-grad-level.
+* If you're a practitioner of Machine Learning, Statistics or Data Science and want to learn the high level concepts without digging into too much math, see @sec-practitioner-level.
+* If you're a researcher, I can only offer you notes from @sec-researcher-level.
+
+
+### 10+2 Level {#sec-10-plus-2-level}
+
+* A [short notes](./static/teaching/10plus2level/integration.pdf) on Riemann Integration.
+
+* Practice Problem Sets for 10+2 Level Statistics (West Bengal State Board).
+    - [Problem Set 1](./static/teaching/10plus2level/test1.pdf)
+    - [Problem Set 2](./static/teaching/10plus2level/test2.pdf)
+
+* Practice Problem Sets for B.Stat. Entrance Exam for Indian Statistical Institute.
+  - [MCQ Set 1](./static/teaching/isibstat/mcq_001.pdf)
+  - [MCQ Set 2](./static/teaching/isibstat/mcq_002.pdf)
+  - [MCQ Set 3](./static/teaching/isibstat/mcq_003.pdf)
+  - [MCQ Set 4](./static/teaching/isibstat/mcq_004.pdf)
+  - [MCQ Set 5](./static/teaching/isibstat/mcq_005.pdf)
+  - [SAQ Set 1](./static/teaching/isibstat/saq_001.pdf)
+  - [SAQ Set 2](./static/teaching/isibstat/saq_002.pdf)
+  - [SAQ Set 3](./static/teaching/isibstat/saq_003.pdf)
+
+### Undergraduate Level {#sec-undergrad-level}
+
+
+* [Practice questions and solutions](https://github.com/subroy13/bstat-assignments) to various assignments of the B.Stat. programme at Indian Statistical Institute, Kolkata.
+
+* A short [lecture slide deck](./static/teaching/linalg.pdf) on Linear Algebra and its applications.
+
+### Graduate Level {#sec-grad-level}
+
+* [Practice questions and solutions](https://github.com/subroy13/mstat-assignments) to various assignments of the M.Stat. programme at Indian Statistical Institute, Kolkata.
+
+
+* An eight-part tutorial series on Natural Language Processing is available at my [substack](https://statwizard.substack.com/t/natural-language-processing-series).
+
+* A six-part tutorial series on the basics of Generative AI is available at my [substack](https://statwizard.substack.com/t/generative-ai-llm-series).
+
+* A seven-part tutorial series on the basics of Reinforcement Learning is available at my [substack](https://statwizard.substack.com/t/reinforcement-learning-series).
+
+* A three part series on how to do natural language text processing using R.
+  - [Text mining in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter1.html).
+  - [Text Classification in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter2.html).
+  - [Changepoint Analysis of Linguistics in R](https://subroy13.github.io/party-classification-us-presidents-nlp/chapter3.html).
+
+### Practitioner Level {#sec-practitioner-level}
+
+These reflect my own understanding and notes on various applied topics, as guided by the various resources I used to learn them.
+
+:::{#concepts}
+:::
+
+
+### Researcher Level {#sec-researcher-level}
+
+These are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.
+
+:::{#technicals}
+:::
+
+
+
+
+## Teaching Experience
+
+Here's a list of my teaching experiences.
+
+### Lectures
+
+1. Fall, 2026 - Elementary Statistics and Probability (SDS 2020, Undergraduate Level) | Washington University in St. Louis.
+
+1. Spring, 2026 - Advanced Linear Models (SDS 4140 \& SDS 5140, Graduate Level) | Washington University in St. Louis.
+
+2. Fall, 2025 - Introduction to Probability (SDS 4010, Undergraduate Level) | Washington University in St. Louis.
+
+
+### Guest Lectures
+
+1. Spring, 2026 - Linear Models (SDS 5072, Ph.D Level) |  Washington University in St. Louis.
+
+2. Fall, 2024 - Robust Statistics | Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v1_2022.pdf)
+
+
+1. Fall, 2022 - Robust Statistics | Indian Statistical Institute, Kolkata | [Slide deck](https://github.com/subroy13/statwiztalks/blob/main/2022/multivariate-location-scatter/multivariate_v2_2024.pdf)
+

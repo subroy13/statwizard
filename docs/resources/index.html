@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="This is a place where I share some of my notes. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a pull request and correct the error. You can also get in touch with me here.">
+<meta name="description" content="This is a place where I share some of the interesting resources I have come across over the years.">
 
-<title>Notes – Subhrajyoty Roy</title>
+<title>Resources – Subhrajyoty Roy</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -78,76 +78,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-concepts .list');
+    const listingTargetEl = window.document.querySelector('#listing-resources .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-date-modified','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-concepts'] = new List('listing-concepts', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-technicals .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-date-modified','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-technicals'] = new List('listing-technicals', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-reflections .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-date-modified','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-reflections'] = new List('listing-reflections', options);
+    window['quarto-listings']['listing-resources'] = new List('listing-resources', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -395,12 +339,12 @@ window.Quarto = {
 <span class="menu-text">Talks</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
+    <a class="nav-link" href="../teaching.qmd"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../notes/index.html" aria-current="page"> 
-<span class="menu-text">Notes</span></a>
+    <a class="nav-link active" href="../resources/index.html" aria-current="page"> 
+<span class="menu-text">Resources</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -419,29 +363,20 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#concept-guides" id="toc-concept-guides" class="nav-link active" data-scroll-target="#concept-guides">Concept Guides</a></li>
-  <li><a href="#technical-materials" id="toc-technical-materials" class="nav-link" data-scroll-target="#technical-materials">Technical Materials</a></li>
-  <li><a href="#reflections" id="toc-reflections" class="nav-link" data-scroll-target="#reflections">Reflections</a></li>
-  <li><a href="#recommended-resources" id="toc-recommended-resources" class="nav-link" data-scroll-target="#recommended-resources">Recommended Resources</a></li>
-  </ul>
-</nav>
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Q2xvdWQlMjBDb21wdXRpbmc=">Cloud Computing <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q29uc2lzdGVuY3k=">Consistency <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YSUyMFNjaWVuY2U=">Data Science <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGVlcCUyMExlYXJuaW5n">Deep Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvb2YlMjBUZWNobmlxdWU=">Proof Technique <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U29mdHdhcmU=">Software <span class="quarto-category-count">(3)</span></div></div></div>
+        
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(10)</span></div><div class="category" data-category="QWJzdHJhY3QlMjBBbGdlYnJh">Abstract Algebra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QUk=">AI <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QUklMjBTYWZldHk=">AI Safety <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Qm9vaw==">Book <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29sbGVjdGlvbg==">Collection <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q3liZXJzZWN1cml0eQ==">Cybersecurity <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGlnaXRhbCUyMExpdGVyYWN5">Digital Literacy <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RmFrZSUyME5ld3M=">Fake News <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2VvbWV0cnk=">Geometry <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJhY3RpdmU=">Interactive <span class="quarto-category-count">(3)</span></div><div class="category" data-category="TGVjdHVyZQ==">Lecture <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWF0aGVtYXRpY3M=">Mathematics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UGVkYWdvZ3k=">Pedagogy <span class="quarto-category-count">(3)</span></div><div class="category" data-category="UHJvYmFiaWxpdHk=">Probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3RhdGlzdGljcw==">Statistics <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notes</h1>
+<h1 class="title">Resources</h1>
 </div>
 
 <div>
   <div class="description">
-    This is a place where I share some of my notes. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a <a href="">pull request</a> and correct the error. You can also get in touch with me <a href="mailto:subhrajyotyroy@gmail.com">here</a>.
+    This is a place where I share some of the interesting resources I have come across over the years.
   </div>
 </div>
 
@@ -458,24 +393,15 @@ window.Quarto = {
 </header>
 
 
-<section id="concept-guides" class="level2">
-<h2 class="anchored" data-anchor-id="concept-guides">Concept Guides</h2>
-<p>These are the various notes that I use to learn a new topic / material. These reflect my own understanding of various topics, as guided by the various resources I used to learn them.</p>
-<div id="listing-concepts" class="quarto-listing quarto-listing-container-default">
+<div id="listing-resources" class="quarto-listing quarto-listing-container-grid">
 <div class="listing-actions-group">
    <div class="input-group input-group-sm quarto-listing-sort">
     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-concepts-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-concepts'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+    <select id="listing-resources-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-resources'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
       <option value="" disabled="" selected="" hidden="">Order By</option>
       <option value="index" data-direction="asc">Default</option>
       <option value="listing-title" data-direction="asc">
         Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
       </option>
     </select>
   </div>
@@ -484,216 +410,226 @@ window.Quarto = {
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="RGF0YSUyMFNjaWVuY2UlMkNTb2Z0d2FyZSUyQ0RlZXAlMjBMZWFybmluZw==" data-listing-date-sort="1732428000000" data-listing-file-modified-sort="1780787284084" data-listing-date-modified-sort="1780787284000" data-listing-reading-time-sort="25" data-listing-word-count-sort="4896">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/concepts/practical-data-science.html" class="no-external">Practical Data Science</a>
-</h3>
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="UGVkYWdvZ3klMkNQcm9iYWJpbGl0eSUyQ1N0YXRpc3RpY3M=">
+<a href="http://seeing-theory.brown.edu/" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Seeing Theory
+</h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UGVkYWdvZ3k='); return false;">Pedagogy</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvYmFiaWxpdHk='); return false;">Probability</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RGVlcCUyMExlYXJuaW5n'); return false;">Deep Learning</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGljcw=='); return false;">Statistics</div>
 
 </div>
-<div class="delink listing-description"><a href="../notes/concepts/practical-data-science.html" class="no-external">
-Beyond the usual training of neural networks, there are few major learning variants:
-</a></div>
-</div>
-<div class="metadata">
-<a href="../notes/concepts/practical-data-science.html" class="no-external">
-<div class="listing-date">
-November 24, 2024
-</div>
-<div class="listing-reading-time">25 min</div>
-<div class="metadata-value listing-date-modified">
-June 6, 2026
-</div>
-</a>
+<div class="card-text listing-description delink">
+<p>Interactive visual introduction to probability and statistics.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="U29mdHdhcmUlMkNDbG91ZCUyMENvbXB1dGluZyUyQ0RhdGElMjBTY2llbmNl" data-listing-date-sort="1710306000000" data-listing-file-modified-sort="1780787294872" data-listing-date-modified-sort="1780787294000" data-listing-reading-time-sort="28" data-listing-word-count-sort="5441">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/concepts/aws_data_analytics.html" class="no-external">AWS Cloud Data Analytics Guide</a>
-</h3>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="UGVkYWdvZ3klMkNJbnRlcmFjdGl2ZQ==">
+<a href="https://explorabl.es/" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Explorable Explanations
+</h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UGVkYWdvZ3k='); return false;">Pedagogy</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2xvdWQlMjBDb21wdXRpbmc='); return false;">Cloud Computing</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFNjaWVuY2U='); return false;">Data Science</div>
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
 
 </div>
-<div class="delink listing-description"><a href="../notes/concepts/aws_data_analytics.html" class="no-external">
-There are a few primary definitions:
-</a></div>
-</div>
-<div class="metadata">
-<a href="../notes/concepts/aws_data_analytics.html" class="no-external">
-<div class="listing-date">
-March 13, 2024
-</div>
-<div class="listing-reading-time">28 min</div>
-<div class="metadata-value listing-date-modified">
-June 6, 2026
-</div>
-</a>
+<div class="card-text listing-description delink">
+<p>A hub for interactive learning and systemic concepts.</p>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="U29mdHdhcmUlMkNDbG91ZCUyMENvbXB1dGluZw==" data-listing-date-sort="1708322400000" data-listing-file-modified-sort="1780787281784" data-listing-date-modified-sort="1780787281000" data-listing-reading-time-sort="42" data-listing-word-count-sort="8245">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/concepts/aws_cloud_basics.html" class="no-external">Introduction of AWS Cloud Computing</a>
-</h3>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="UGVkYWdvZ3klMkNHZW9tZXRyeQ==">
+<a href="https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Proof of Area of a Circle
+</h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('U29mdHdhcmU='); return false;">Software</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UGVkYWdvZ3k='); return false;">Pedagogy</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2xvdWQlMjBDb21wdXRpbmc='); return false;">Cloud Computing</div>
+<div class="listing-category" onclick="window.quartoListingCategory('R2VvbWV0cnk='); return false;">Geometry</div>
 
 </div>
-<div class="delink listing-description"><a href="../notes/concepts/aws_cloud_basics.html" class="no-external">
-Cloud computing is the on-demand delivery of IT resources over the Internet with pay-as-you-go pricing model.
-</a></div>
+<div class="card-text listing-description delink">
+<p>The most interesting proof that I have seen for showing that the area of a circle is half of the radius times the circumference.</p>
 </div>
-<div class="metadata">
-<a href="../notes/concepts/aws_cloud_basics.html" class="no-external">
-<div class="listing-date">
-February 19, 2024
 </div>
-<div class="listing-reading-time">42 min</div>
-<div class="metadata-value listing-date-modified">
-June 6, 2026
+</div></a>
 </div>
-</a>
+<div class="g-col-1" data-index="3" data-categories="TGVjdHVyZSUyQ01hdGhlbWF0aWNzJTJDQWJzdHJhY3QlMjBBbGdlYnJh">
+<a href="https://www.youtube.com/watch?v=38rf9FLhl-8" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+The Mathematics of Juggling
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGVjdHVyZQ=='); return false;">Lecture</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWF0aGVtYXRpY3M='); return false;">Mathematics</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWJzdHJhY3QlMjBBbGdlYnJh'); return false;">Abstract Algebra</div>
+
 </div>
+<div class="card-text listing-description delink">
+<p>A talk by Allen Knutson on the mathematics of juggling.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="SW50ZXJhY3RpdmUlMkNDeWJlcnNlY3VyaXR5JTJDRGlnaXRhbCUyMExpdGVyYWN5">
+<a href="https://phishingquiz.withgoogle.com/" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Phishing Quiz
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q3liZXJzZWN1cml0eQ=='); return false;">Cybersecurity</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGlnaXRhbCUyMExpdGVyYWN5'); return false;">Digital Literacy</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A quiz to test your knowledge of phishing.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="SW50ZXJhY3RpdmUlMkNGYWtlJTIwTmV3cyUyQ0RpZ2l0YWwlMjBMaXRlcmFjeQ==">
+<a href="https://harmonysquare.getbadnews.com/" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Bad News: The Game
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJhY3RpdmU='); return false;">Interactive</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RmFrZSUyME5ld3M='); return false;">Fake News</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGlnaXRhbCUyMExpdGVyYWN5'); return false;">Digital Literacy</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A game to test your knowledge of fake news.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="Q29sbGVjdGlvbiUyQ0Jvb2slMkNNYXRoZW1hdGljcw==">
+<a href="https://github.com/valeman/Awesome_Math_Books" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Awesome Math Books
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29sbGVjdGlvbg=='); return false;">Collection</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Qm9vaw=='); return false;">Book</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWF0aGVtYXRpY3M='); return false;">Mathematics</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A list of awesome math books.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="7" data-categories="Q29sbGVjdGlvbg==">
+<a href="https://github.com/sindresorhus/awesome" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Awesome List of Awesome Lists
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29sbGVjdGlvbg=='); return false;">Collection</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A list of awesome lists.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="8" data-categories="Q29sbGVjdGlvbiUyQ0FnZW50cyUyQ0FJ">
+<a href="https://github.com/kyrolabs/awesome-agents" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Awesome Agents
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29sbGVjdGlvbg=='); return false;">Collection</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">Agents</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>A list of awesome agents.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="9" data-categories="TGVjdHVyZSUyQ0FJJTJDQUklMjBTYWZldHk=">
+<a href="https://www.youtube.com/watch?v=2Kx9jbSMZqA" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Watmarking of Large Language Models
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGVjdHVyZQ=='); return false;">Lecture</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUk='); return false;">AI</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QUklMjBTYWZldHk='); return false;">AI Safety</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Lecture by Scott Aaronson on the topic of watmarking large language models.</p>
+</div>
+</div>
+</div></a>
 </div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div>
-<p>Also take a look at some of my blogs posts as follows:</p>
-<ul>
-<li><p>An eight-part tutorial series on Natural Language Processing is available at my <a href="https://statwizard.substack.com/t/natural-language-processing-series">substack</a>.</p></li>
-<li><p>A six-part tutorial series on the basics of Generative AI is available at my <a href="https://statwizard.substack.com/t/generative-ai-llm-series">substack</a>.</p></li>
-<li><p>A seven-part tutorial series on the basics of Reinforcement Learning is available at my <a href="https://statwizard.substack.com/t/reinforcement-learning-series">substack</a>.</p></li>
-<li><p>A three part series on how to do natural language text processing using R.</p>
-<ul>
-<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter1.html">Text mining in R</a>.</li>
-<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter2.html">Text Classification in R</a>.</li>
-<li><a href="https://subroy13.github.io/party-classification-us-presidents-nlp/chapter3.html">Changepoint Analysis of Linguistics in R</a>.</li>
-</ul></li>
-</ul>
-</section>
-<section id="technical-materials" class="level2">
-<h2 class="anchored" data-anchor-id="technical-materials">Technical Materials</h2>
-<p>These are some of the useful proof techniques that I like and a bunch of technical materials that I have collected over the years.</p>
-<div id="listing-technicals" class="quarto-listing quarto-listing-container-default">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-technicals-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-technicals'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UHJvb2YlMjBUZWNobmlxdWUlMkNDb25zaXN0ZW5jeQ==" data-listing-date-sort="1781240400000" data-listing-file-modified-sort="1784725324858" data-listing-date-modified-sort="1784725324000" data-listing-reading-time-sort="18" data-listing-word-count-sort="3511">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="../notes/technicals/risk-bounds.html" class="no-external">Risk Bounds</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvb2YlMjBUZWNobmlxdWU='); return false;">Proof Technique</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29uc2lzdGVuY3k='); return false;">Consistency</div>
-
-</div>
-<div class="delink listing-description"><a href="../notes/technicals/risk-bounds.html" class="no-external">
-In a learning problem, you are given a sample <span class="math inline">\(X_1, \dots, X_n\)</span>, and an objective function <span class="math inline">\(L(\theta; X)\)</span> which represents the loss incurred by choosing parameter <span class="math inline">\(\thet…</span><span class="math inline"></span><span class="math inline"></span><span class="math inline"></span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="../notes/technicals/risk-bounds.html" class="no-external">
-<div class="listing-date">
-June 12, 2026
-</div>
-<div class="listing-reading-time">18 min</div>
-<div class="metadata-value listing-date-modified">
-July 22, 2026
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="reflections" class="level2">
-<h2 class="anchored" data-anchor-id="reflections">Reflections</h2>
-<p>These are my own way of understanding the ways of the world, guided by various non-fiction books, podcasts and a few philosophy lessons.</p>
-<div id="listing-reflections" class="quarto-listing quarto-listing-container-default">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-reflections-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-reflections'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-    </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<div class="list quarto-listing-default">
-
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-</section>
-<section id="recommended-resources" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-resources">Recommended Resources</h2>
-<p>Internet is full of interesting things. Here’s a few that I like:</p>
-<ol type="1">
-<li>Seeing Theory. <a href="http://seeing-theory.brown.edu/" class="uri">http://seeing-theory.brown.edu/</a> - Interactive Visualization of Introduction of Probability and Statistics.</li>
-<li>The Idea behind Explorable Explorations: <a href="https://blog.ncase.me/explorable-explanations/" class="uri">https://blog.ncase.me/explorable-explanations/</a>. And here’s the list of such explanations: <a href="https://explorabl.es/" class="uri">https://explorabl.es/</a>.</li>
-<li><a href="https://www.cut-the-knot.org/Curriculum/Geometry/RABH.shtml">Alexander Bogomolny’s post on the Area of Circle by Rabbi Abraham bar Hiyya Hanasi</a> - Probably the most interesting proof that I have seen for showing that the area of a circle is half of the radius times the circumference.</li>
-<li><a href="https://www.youtube.com/watch?v=38rf9FLhl-8">The Mathematics of Juggling</a> - Allen Knutson.</li>
-</ol>
 <!-- 3. CSC 2532 Winter 2024: Statistical Learning Theory: <https://erdogdu.github.io/csc2532/> -->
 
 
 
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
