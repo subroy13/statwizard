@@ -15,7 +15,7 @@ website:
         text: OSS
       - href: research/talks.qmd
         text: Talks
-      - href: teaching.qmd
+      - href: teaching/index.qmd
         text: Teaching
       - href: resources/index.qmd
         text: Resources
