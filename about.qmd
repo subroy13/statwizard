@@ -12,7 +12,7 @@ lightbox: auto
 
 **Indian Statistical Institute, Kolkata** | India<br/>
 PhD in Statistics | Aug 2021 - June 2025<br/>
-During my PhD, I was fortunate to work with [Ayanendranath Basu](https://scholar.google.co.in/citations?user=HiIWY7sAAAAJ&hl=en) and [Abhik Ghosh](https://www.isical.ac.in/~abhik.ghosh/). My doctoral thesis is about developing fast and scalable algorithms for robust SVD and robust PCA using the minimum density power divergence.
+During my PhD, I was fortunate to work with [Ayanendranath Basu](https://scholar.google.co.in/citations?user=HiIWY7sAAAAJ&hl=en) and [Abhik Ghosh](https://www.isical.ac.in/~abhik.ghosh/). My doctoral thesis is about developing fast and scalable algorithms for robust SVD and robust PCA using the minimum density power divergence. In simple terms, it lets you find the latent factors underlying your data even if some entries in the data are corrupted or misspecified.
 
 - If you are interested in applying these methods, see this [R package](https://cran.r-project.org/web/packages/rsvddpd/index.html) or this [Python package](https://pypi.org/project/decompy/).
 
@@ -65,9 +65,9 @@ files <- list.files(img_path, full.names = TRUE)
 cat("::: {.grid}\n")
 
 for (f in files) {
-  cat("::: {.g-col-6 .g-col-md-4 .g-col-lg-3}\n")
-  cat(sprintf("![](%s){.lightbox group=\"3darts\"}\n", f))
-  cat(":::\n")
+    cat("::: {.g-col-6 .g-col-md-4 .g-col-lg-3}\n")
+    cat(sprintf("![](%s){.lightbox group=\"3darts\"}\n", f))
+    cat(":::\n")
 }
 
 cat(":::\n")

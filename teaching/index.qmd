@@ -1,6 +1,6 @@
 ---
 title: Teaching
-description: "This contains some of my lectures, tutorials and teaching materials. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request] in Github to correct the error. You can also get in touch with me [here](mailto:subhrajyotyroy@gmail.com)."
+description: "This contains some of my lectures, tutorials and teaching materials. If you find an error, I am the one responsible to take the blame, but I would love if you please submit a [pull request] in Github to correct the error. You can also get in touch with me [here](mailto:roysubhra98@gmail.com)."
 toc: true
 page-layout: full
 page-navigation: true
@@ -55,28 +55,28 @@ The following contains some lecture notes, tutorials and teaching materials, org
 
 ### 10+2 Level {#sec-10-plus-2-level}
 
-* A [short notes](./static/teaching/10plus2level/integration.pdf) on Riemann Integration.
+* A [short notes](../static/teaching/10plus2level/integration.pdf) on Riemann Integration.
 
 * Practice Problem Sets for 10+2 Level Statistics (West Bengal State Board).
-    - [Problem Set 1](./static/teaching/10plus2level/test1.pdf)
-    - [Problem Set 2](./static/teaching/10plus2level/test2.pdf)
+    - [Problem Set 1](../static/teaching/10plus2level/test1.pdf)
+    - [Problem Set 2](../static/teaching/10plus2level/test2.pdf)
 
 * Practice Problem Sets for B.Stat. Entrance Exam for Indian Statistical Institute.
-  - [MCQ Set 1](./static/teaching/isibstat/mcq_001.pdf)
-  - [MCQ Set 2](./static/teaching/isibstat/mcq_002.pdf)
-  - [MCQ Set 3](./static/teaching/isibstat/mcq_003.pdf)
-  - [MCQ Set 4](./static/teaching/isibstat/mcq_004.pdf)
-  - [MCQ Set 5](./static/teaching/isibstat/mcq_005.pdf)
-  - [SAQ Set 1](./static/teaching/isibstat/saq_001.pdf)
-  - [SAQ Set 2](./static/teaching/isibstat/saq_002.pdf)
-  - [SAQ Set 3](./static/teaching/isibstat/saq_003.pdf)
+  - [MCQ Set 1](../static/teaching/isibstat/mcq_001.pdf)
+  - [MCQ Set 2](../static/teaching/isibstat/mcq_002.pdf)
+  - [MCQ Set 3](../static/teaching/isibstat/mcq_003.pdf)
+  - [MCQ Set 4](../static/teaching/isibstat/mcq_004.pdf)
+  - [MCQ Set 5](../static/teaching/isibstat/mcq_005.pdf)
+  - [SAQ Set 1](../static/teaching/isibstat/saq_001.pdf)
+  - [SAQ Set 2](../static/teaching/isibstat/saq_002.pdf)
+  - [SAQ Set 3](../static/teaching/isibstat/saq_003.pdf)
 
 ### Undergraduate Level {#sec-undergrad-level}
 
 
 * [Practice questions and solutions](https://github.com/subroy13/bstat-assignments) to various assignments of the B.Stat. programme at Indian Statistical Institute, Kolkata.
 
-* A short [lecture slide deck](./static/teaching/linalg.pdf) on Linear Algebra and its applications.
+* A short [lecture slide deck](../static/teaching/linalg.pdf) on Linear Algebra and its applications.
 
 ### Graduate Level {#sec-grad-level}
 
